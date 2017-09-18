@@ -1,3 +1,4 @@
-# TestTeamRepo
+# CurlewRepo
 
-Edit this file to have your own team name at the top, list the development team members, and a brief description of the project.
+Developers: Minh Ta, Zijian Jia, Max McComb, Jack Canell
+Project description: A 2-in-1 project which includes the Swedish Immigrant Trail and a game builder.
