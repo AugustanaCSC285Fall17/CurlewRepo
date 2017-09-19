@@ -10,20 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.csc285.gamebuilder.MainPaneController">
-   <center>
-<AnchorPane BorderPane.alignment="CENTER">
-   <children>
-      <Label layoutX="193.0" layoutY="143.0" text="Game builder...">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Label>
-      <Button fx:id="uselessButton" layoutX="216.0" layoutY="256.0" mnemonicParsing="false" onAction="#handleUselessButton" text="A Useless Button" />
-      <TextField fx:id="uselessTextField" layoutX="207.0" layoutY="200.0" text="(useless text field)" />
-   </children>
-</AnchorPane>
-   </center>
+<BorderPane prefHeight="400.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.csc285.gamebuilder.MainPaneController">
    <top>
 <MenuBar BorderPane.alignment="CENTER">
   <menus>
@@ -40,4 +27,18 @@
   </menus>
 </MenuBar>
    </top>
+   <left>
+<AnchorPane BorderPane.alignment="CENTER">
+   <children>
+      <Label layoutX="193.0" layoutY="143.0" text="Game builder...">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Button fx:id="addSlideButton" layoutX="30.0" layoutY="47.0" mnemonicParsing="false" onAction="#handleAddSlideButton" text="Add Slide" />
+      <TextField fx:id="showSlideAtTextField" layoutX="177.0" layoutY="112.0" onAction="#handleShowSlideAtTextField" prefHeight="31.0" prefWidth="32.0" />
+            <Button fx:id="showSlideAtButton" layoutX="30.0" layoutY="112.0" mnemonicParsing="false" onAction="#handleShowSlideAtButton" text="Show Slide At" />
+   </children>
+</AnchorPane>
+   </left>
 </BorderPane>

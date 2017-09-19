@@ -17,6 +17,8 @@ public class GameDataTester {
 		gd.addSlide(s1);
 		gd.addSlide(s2);
 		
+		System.out.println(s0);
+		
 		//String serializedJSONText = gd.toJSON();
 		//System.out.println(serializedJSONText);
 		
@@ -24,12 +26,12 @@ public class GameDataTester {
 		//System.out.println("Slide 0 has this image: ");
 		//System.out.println(gdRecreated.getSlide(0).getImageFileName());
 		
-		System.out.println(gd.getSlide(1).getActionChoices().get(1).getChoiceText());
-		System.out.println(gd.getSlide(1).getActionChoices().get(1).getDestinationSlideIndex());
-		gd.removeSlide(0);
+		//System.out.println(gd.getSlide(1).getActionChoices().get(1).getChoiceText());
+		//System.out.println(gd.getSlide(1).getActionChoices().get(1).getDestinationSlideIndex());
+		//gd.removeSlide(0);
 		
-		System.out.println(gd.getSlide(0).getActionChoices().get(1).getChoiceText());
-		System.out.println(gd.getSlide(0).getActionChoices().get(1).getDestinationSlideIndex());
+		//System.out.println(gd.getSlide(0).getActionChoices().get(1).getChoiceText());
+		//System.out.println(gd.getSlide(0).getActionChoices().get(1).getDestinationSlideIndex());
 	}
 
 }
