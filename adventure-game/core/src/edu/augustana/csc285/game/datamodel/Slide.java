@@ -3,11 +3,16 @@ package edu.augustana.csc285.game.datamodel;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Slide {
 	private String title;
 	private String imageFileName;
+	private String gameText; 
+	private String urlText;
+	private boolean gameOver;
 	private List<ActionChoice> actionChoices;
 
+	//DON'T TOUCH IT
 	public Slide() {
 		this.title = "NewSlide";
 		this.imageFileName = "";
@@ -15,10 +20,14 @@ public class Slide {
 		
 	}
 
-	public Slide(String title, String imageFileName) {
+	public Slide(String title, String imageFileName, String gameText
+			    , String urlText) {
+		this.gameText = gameText;
 		this.title = title;
 		this.imageFileName = imageFileName;
+		this.urlText = urlText;
 		this.actionChoices = new ArrayList<>();
+		gameOver = false;
 	}
 
 	public String getTitle() {
@@ -40,11 +49,34 @@ public class Slide {
 	public List<ActionChoice> getActionChoices() {
 		return actionChoices;
 	}
+	
+	// return gameText
+	public String getGameText(){
+		return gameText;
+	}
+	
+	//return the urlText
+	public String getUrlText(){
+		return urlText;
+	}
 
 	public void setActionChoices(List<ActionChoice> actionChoices) {
 		this.actionChoices = actionChoices;
 	}
 	
+<<<<<<< HEAD
+	//Set the gameText
+	public void setGameText(String text){
+		gameText = text;
+	}
+	
+	//Set Url Text
+	public void setUrlText(String url){
+		urlText = url;
+	}
+	
+=======
+>>>>>>> d2f0b2f7bfc0f0e725192fabde7ffaea29a25b7f
 	public String toString(){
 		String s = "";
 		if(actionChoices.size()==0){
