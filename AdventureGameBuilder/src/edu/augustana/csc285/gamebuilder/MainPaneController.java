@@ -1,3 +1,4 @@
+//used this cite to help with converting text to int https://stackoverflow.com/questions/5585779/how-to-convert-a-string-to-an-int-in-java
 package edu.augustana.csc285.gamebuilder;
 
 import javafx.application.Platform;
@@ -11,8 +12,11 @@ import edu.augustana.csc285.game.datamodel.*;
 
 public class MainPaneController {
 
-	@FXML private TextField uselessTextField;
-	@FXML private Button uselessButton;
+	@FXML private TextField showSlideAtTextField;
+	@FXML private Button addSlideButton;
+	@FXML private Button showSlideAtButton;
+	private GameData data = new GameData();
+	private int slideAtTextIndex = 0; //Note Change this later, will cause problems if list is empty
 	
 	// JavaFX initialize method, called after this Pane is created.
 	@FXML
@@ -21,9 +25,22 @@ public class MainPaneController {
 	}
 	
 	@FXML
-	private void handleUselessButton() {
-		Alert alert = new Alert(AlertType.INFORMATION,"This button is useless!");
-		alert.showAndWait();
+	private void handleShowSlideAtTextField(){
+		try{
+		slideAtTextIndex = Integer.parseInt(showSlideAtTextField.getText());
+		new Alert(AlertType.INFORMATION,data.getSlide(slideAtTextIndex).toString()).showAndWait();
+		} catch (NumberFormatException e) {
+			new Alert(AlertType.INFORMATION,"This was not an int.").showAndWait();
+		}
+	}
+	
+	@FXML
+	private void handleAddSlideButton() {
+		data.addSlide(new Slide());
+	}
+	@FXML
+	private void handleShowSlideAtButton() {
+	//	new Alert(AlertType.INFORMATION, )
 	}
 
 	@FXML
