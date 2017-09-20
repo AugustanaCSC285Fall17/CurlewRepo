@@ -4,13 +4,13 @@ public class GameDataTester {
 
 	public static void main(String[] args) {
 		GameData gd = new GameData();
-		Slide s0 = new Slide("Room 0", "slide_000.png");
+		Slide s0 = new Slide("Room 0", "slide_000.png", "text0", "url0");
 		s0.getActionChoices().add(new ActionChoice("go to room 1", 1));
 		s0.getActionChoices().add(new ActionChoice("go to room 2", 2));
-		Slide s1 = new Slide("Room 1", "slide_001.png");
+		Slide s1 = new Slide("Room 1", "slide_001.png", "text1", "url1");
 		s1.getActionChoices().add(new ActionChoice("die", -1));
 		s1.getActionChoices().add(new ActionChoice("go to room 2", 2));
-		Slide s2 = new Slide("Room 2", "slide_002.png");
+		Slide s2 = new Slide("Room 2", "slide_002.png", "text2", "url2");
 		s2.getActionChoices().add(new ActionChoice("go back to room 0", 0));
 		
 		gd.addSlide(s0);

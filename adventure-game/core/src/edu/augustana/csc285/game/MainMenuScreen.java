@@ -16,9 +16,6 @@ public class MainMenuScreen implements Screen {
 	private MainActor actor;
 
 	public MainMenuScreen(final AdventureGame game) {
-<<<<<<< HEAD
-		this.game = game;
-=======
 		this.game = game; 
 		
 		// Initialize startButton
@@ -39,7 +36,6 @@ public class MainMenuScreen implements Screen {
 		game.stage.addActor(startButton);
 		
 		
->>>>>>> d2f0b2f7bfc0f0e725192fabde7ffaea29a25b7f
 		Gdx.input.setInputProcessor(game.stage);
 		
 		
