@@ -4,8 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class MainMenuScreen implements Screen {
 
@@ -16,11 +18,20 @@ public class MainMenuScreen implements Screen {
 	public MainMenuScreen(final AdventureGame game) {
 		this.game = game; 
 		
+		// Initialize startButton
 		TextButton startButton = new TextButton("Start Game" , game.skin, "default");
 		startButton.setWidth(200);
 		startButton.setHeight(60);
 		
 		Dialog dialog = new Dialog("SWEDISH IMMMIGRANT GAME", game.skin);
+		
+		//set up Listener
+		startButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				dialog.show(game.stage);
+			}	
+		});
 		
 		game.stage.addActor(startButton);
 		
