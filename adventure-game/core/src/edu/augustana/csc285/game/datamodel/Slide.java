@@ -7,7 +7,9 @@ import java.util.List;
 public class Slide {
 	private String title;
 	private String imageFileName;
-	//I'll keep this List but i think it is the same as our option list
+	private String gameText; 
+	private String urlText;
+	private boolean gameOver;
 	private List<ActionChoice> actionChoices;
 
 	//DON'T TOUCH IT
@@ -18,10 +20,14 @@ public class Slide {
 		
 	}
 
-	public Slide(String title, String imageFileName) {
+	public Slide(String title, String imageFileName, String gameText
+			    , String urlText) {
+		this.gameText = gameText;
 		this.title = title;
 		this.imageFileName = imageFileName;
+		this.urlText = urlText;
 		this.actionChoices = new ArrayList<>();
+		gameOver = false;
 	}
 
 	public String getTitle() {
@@ -43,9 +49,29 @@ public class Slide {
 	public List<ActionChoice> getActionChoices() {
 		return actionChoices;
 	}
+	
+	// return gameText
+	public String getGameText(){
+		return gameText;
+	}
+	
+	//return the urlText
+	public String getUrlText(){
+		return urlText;
+	}
 
 	public void setActionChoices(List<ActionChoice> actionChoices) {
 		this.actionChoices = actionChoices;
+	}
+	
+	//Set the gameText
+	public void setGameText(String text){
+		gameText = text;
+	}
+	
+	//Set Url Text
+	public void setUrlText(String url){
+		urlText = url;
 	}
 	
 	public String toString(){
