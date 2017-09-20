@@ -25,6 +25,9 @@ public class GameData {
 		slides.add(slide);
 	}
 
+	public int getSlideListSize(){
+		return slides.size();
+	}
 	public void removeSlide(int index) {
 		
 		//loops through every slide

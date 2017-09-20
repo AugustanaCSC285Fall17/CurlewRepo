@@ -28,10 +28,15 @@ public class MainPaneController {
 	private void handleShowSlideAtTextField(){
 		try{
 		slideAtTextIndex = Integer.parseInt(showSlideAtTextField.getText());
+		if(slideAtTextIndex<0||slideAtTextIndex>data.getSlideListSize()-1){
+			new Alert(AlertType.ERROR,"There is no slide at this index").showAndWait();
+		}else{
 		new Alert(AlertType.INFORMATION,data.getSlide(slideAtTextIndex).toString()).showAndWait();
-		} catch (NumberFormatException e) {
-			new Alert(AlertType.INFORMATION,"This was not an int.").showAndWait();
 		}
+		} catch (NumberFormatException e) {
+			new Alert(AlertType.ERROR,"This was not an int.").showAndWait();
+		}
+		
 	}
 	
 	@FXML
