@@ -13,17 +13,25 @@ public class GameDataTester {
 		Slide s2 = new Slide("Room 2", "slide_002.png");
 		s2.getActionChoices().add(new ActionChoice("go back to room 0", 0));
 		
-		gd.getSlides().add(s0);
-		gd.getSlides().add(s1);
-		gd.getSlides().add(s2);
+		gd.addSlide(s0);
+		gd.addSlide(s1);
+		gd.addSlide(s2);
 		
-		String serializedJSONText = gd.toJSON();
-		System.out.println(serializedJSONText);
+		System.out.println(s0);
 		
-		GameData gdRecreated = GameData.fromJSON(serializedJSONText);
-		System.out.println("Slide 0 has this image: ");
-		System.out.println(gdRecreated.getSlides().get(0).getImageFileName());
+		//String serializedJSONText = gd.toJSON();
+		//System.out.println(serializedJSONText);
 		
+		//GameData gdRecreated = GameData.fromJSON(serializedJSONText);
+		//System.out.println("Slide 0 has this image: ");
+		//System.out.println(gdRecreated.getSlide(0).getImageFileName());
+		
+		//System.out.println(gd.getSlide(1).getActionChoices().get(1).getChoiceText());
+		//System.out.println(gd.getSlide(1).getActionChoices().get(1).getDestinationSlideIndex());
+		//gd.removeSlide(0);
+		
+		//System.out.println(gd.getSlide(0).getActionChoices().get(1).getChoiceText());
+		//System.out.println(gd.getSlide(0).getActionChoices().get(1).getDestinationSlideIndex());
 	}
 
 }

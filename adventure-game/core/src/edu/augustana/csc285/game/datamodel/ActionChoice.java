@@ -28,5 +28,8 @@ public class ActionChoice {
 		this.destinationSlideIndex = destinationSlideIndex;
 	}
 	
+	public String toString(){
+		return "The choice text is: " + choiceText + "and the destinationSlideIndex is " + destinationSlideIndex;
+	}
 	
 }
