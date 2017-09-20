@@ -64,6 +64,7 @@ public class Slide {
 		this.actionChoices = actionChoices;
 	}
 	
+<<<<<<< HEAD
 	//Set the gameText
 	public void setGameText(String text){
 		gameText = text;
@@ -74,6 +75,8 @@ public class Slide {
 		urlText = url;
 	}
 	
+=======
+>>>>>>> d2f0b2f7bfc0f0e725192fabde7ffaea29a25b7f
 	public String toString(){
 		String s = "";
 		if(actionChoices.size()==0){

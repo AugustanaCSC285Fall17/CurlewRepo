@@ -42,6 +42,7 @@ public class ActionChoice implements Feasible {
 		this.destinationSlideIndex = destinationSlideIndex;
 	}
 
+
 	public void getReq(int requirement) {
 
 	}
@@ -74,5 +75,7 @@ public class ActionChoice implements Feasible {
 	public String toString() {
 		return "The choice text is: " + choiceText + "and the destinationSlideIndex is " + destinationSlideIndex;
 	}
+
+	
 
 }
