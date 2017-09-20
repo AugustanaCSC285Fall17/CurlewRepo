@@ -8,34 +8,29 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 public class MainMenuScreen implements Screen {
 
 	private final AdventureGame game;
-
-	OrthographicCamera camera;
+	
+	private MainActor actor;
 
 	public MainMenuScreen(final AdventureGame game) {
 		this.game = game;
-
-		camera = new OrthographicCamera();
-		camera.setToOrtho(false, AdventureGame.GAME_SCREEN_WIDTH, 
-								AdventureGame.GAME_SCREEN_HEIGHT);
+		Gdx.input.setInputProcessor(game.stage);
+		
+		
+		actor = new MainActor();
+		game.stage.addActor(actor);
+		game.stage.setKeyboardFocus(actor);
 	}
 
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(0, 0, 0.4f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		camera.update();
-		game.batch.setProjectionMatrix(camera.combined);
-
-		game.batch.begin();
-		game.font.draw(game.batch, "Welcome to Adventure!!! ", 100, 150);
-		game.font.draw(game.batch, "Tap anywhere to begin!", 100, 100);
-		game.batch.end();
-
-		if (Gdx.input.isTouched()) {
-			game.setScreen(new SlideScreen(game));
-			dispose();
-		}
+//		game.font.draw(game.batch, "Welcome to Adventure!!! ", 100, 150);
+//		game.font.draw(game.batch, "Tap anywhere to begin!", 100, 100);
+		game.stage.act(Gdx.graphics.getDeltaTime());
+		game.stage.draw();
+		
+		
 	}
 
 	@Override
