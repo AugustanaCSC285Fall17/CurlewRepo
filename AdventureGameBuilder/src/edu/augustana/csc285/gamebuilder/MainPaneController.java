@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import edu.augustana.csc285.game.datamodel.*;
 
@@ -23,11 +24,17 @@ public class MainPaneController {
 	private int slideAtTextIndex = 0;
 
 	// Room Editor Fields
-	private SlideEditor re = new SlideEditor(data);
+	private SlideEditor se = new SlideEditor(data);
 	@FXML
 	private TextField selectSlideNumberTextField;
 	@FXML
 	private Label currentSlideLabel;
+	@FXML
+	private TextField changeTitleTextField;
+	@FXML
+	private TextArea setGameTextArea;
+	@FXML
+	private Button submitButton;
 
 	// JavaFX initialize method, called after this Pane is created.
 	@FXML
@@ -98,10 +105,20 @@ public class MainPaneController {
 		if (isInputInt(selectSlideNumberTextField.getText())) {
 			int index = Integer.parseInt(selectSlideNumberTextField.getText());
 			if (isIndexASlide(index)) {
-				re.setCurrentSlide(index);
+				se.setCurrentSlide(index);
 				currentSlideLabel.setText(Integer.toString(index));
 			}
 		}
 	}
+	
+	@FXML
+	private void handleChangeTitleTextField() {
+		se.changeTitle(changeTitleTextField.getText());
+	}
+	
 
+	@FXML
+	private void handleSubmitButton(){
+		se.setGameText(setGameTextArea.getText());
+	}
 }

@@ -24,4 +24,13 @@ public class SlideEditor {
 	public void setTitle(String title){
 		
 	}
+
+	public void changeTitle(String title) {
+		data.getSlide(currentSlideIndex).setTitle(title);
+		
+	}
+	
+	public void setGameText(String text){
+		data.getSlide(currentSlideIndex).setGameText(text);
+	}
 }
