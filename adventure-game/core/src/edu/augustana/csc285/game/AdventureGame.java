@@ -3,6 +3,7 @@ package edu.augustana.csc285.game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -14,6 +15,9 @@ public class AdventureGame extends Game {
 	
 	Stage stage;
 	Skin skin;
+	
+	SpriteBatch batch;
+	Sprite sprite;
 	
 	public void create() {
 		skin = new Skin(Gdx.files.internal("skins/uiskin.json"));
