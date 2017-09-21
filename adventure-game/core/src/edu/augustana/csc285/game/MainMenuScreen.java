@@ -49,7 +49,7 @@ public class MainMenuScreen implements Screen {
 		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/slide_000.png")));
 		game.sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
-		InputMultiplexer im = new InputMultiplexer(game.stage, this);
+		InputMultiplexer im = new InputMultiplexer();
 		
 		Gdx.input.setInputProcessor(game.stage);
 	}
