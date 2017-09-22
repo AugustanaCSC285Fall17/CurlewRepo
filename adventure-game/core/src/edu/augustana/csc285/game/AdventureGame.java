@@ -34,7 +34,6 @@ public class AdventureGame extends Game {
 	}
 	
 	public void dispose() {
-		stage.dispose();
 	}
 	
 }
