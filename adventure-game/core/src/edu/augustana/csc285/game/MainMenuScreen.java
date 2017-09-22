@@ -55,7 +55,7 @@ public class MainMenuScreen implements Screen {
 		game.stage.addActor(table);
 		
 		game.batch = new SpriteBatch();
-		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/slide_000.png")));
+		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/mainmenu.png")));
 		game.sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
 		Gdx.input.setInputProcessor(game.stage);
