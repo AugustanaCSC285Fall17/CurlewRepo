@@ -16,7 +16,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public class SlideScreen implements Screen {
 	private AdventureGame game;
-	
+
 	private Table table;
 
 	//private HashMap<String, TextButton> buttons;
@@ -48,7 +48,7 @@ public class SlideScreen implements Screen {
 		game.stage.addActor(table);
 		
 		game.batch = new SpriteBatch();
-		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/testImg.png")));
+		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/Slide1.png")));
 		game.sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
 		Gdx.input.setInputProcessor(game.stage);

@@ -64,6 +64,7 @@ public class Slide {
 		this.actionChoices = actionChoices;
 	}
 	
+
 	//Set the gameText
 	public void setGameText(String text){
 		gameText = text;

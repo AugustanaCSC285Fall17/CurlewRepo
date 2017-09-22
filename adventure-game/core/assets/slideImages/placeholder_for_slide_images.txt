@@ -1,7 +1,0 @@
-Put slide images for your game in this folder, named/numbered consistently
-
-!!! WARNING !!!
-
-We must be sure to carefully document all of your sources and the LICENSES for any creative works you use.
-
-Presumably almost all of the slide images will come from the Swenson Center collection though, so that should be fine.

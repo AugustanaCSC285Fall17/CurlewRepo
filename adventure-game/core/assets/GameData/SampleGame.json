@@ -1,0 +1,58 @@
+
+
+{
+  "slides": [
+    {
+      "title": "Room 0",
+      "imageFileName": "Slide1.png",
+      "gameText": "Wellcome to the new Room",
+      "urlText": "www.google.com",
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "go to room 1",
+          "destinationSlideIndex": 1,
+          "visable": false
+        },
+        {
+          "choiceText": "go to room 2",
+          "destinationSlideIndex": 2,
+          "visable": false
+        }
+      ]
+    },
+    {
+      "title": "Room 1",
+      "imageFileName": "slide_001.png",
+      "gameText": "text1",
+      "urlText": "url1",
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "die",
+          "destinationSlideIndex": -1,
+          "visable": false
+        },
+        {
+          "choiceText": "go to room 2",
+          "destinationSlideIndex": 2,
+          "visable": false
+        }
+      ]
+    },
+    {
+      "title": "Room 2",
+      "imageFileName": "slide_002.png",
+      "gameText": "text2",
+      "urlText": "url2",
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "go back to room 0",
+          "destinationSlideIndex": 0,
+          "visable": false
+        }
+      ]
+    }
+  ]
+}
