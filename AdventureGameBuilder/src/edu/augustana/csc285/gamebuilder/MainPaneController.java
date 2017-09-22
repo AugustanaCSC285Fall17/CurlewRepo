@@ -35,6 +35,8 @@ public class MainPaneController {
 	private TextArea setGameTextArea;
 	@FXML
 	private Button submitButton;
+	@FXML
+	private Button addActionChoiceButton;
 
 	// JavaFX initialize method, called after this Pane is created.
 	@FXML
@@ -122,6 +124,11 @@ public class MainPaneController {
 		if(listIsNotEmpty()){
 		se.setGameText(setGameTextArea.getText());
 		}
+	}
+	
+	@FXML
+	private void handleAddActionChoiceButton(){
+		
 	}
 	
 	private boolean listIsNotEmpty(){

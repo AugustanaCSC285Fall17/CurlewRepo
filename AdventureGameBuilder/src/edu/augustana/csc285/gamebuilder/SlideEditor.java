@@ -21,9 +21,6 @@ public class SlideEditor {
 		this.currentSlideIndex = currentRoom;
 	}
 	
-	public void setTitle(String title){
-		
-	}
 
 	public void changeTitle(String title) {
 		data.getSlide(currentSlideIndex).setTitle(title);
