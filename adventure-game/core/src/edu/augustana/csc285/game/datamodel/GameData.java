@@ -72,4 +72,9 @@ public class GameData {
 		Gson gson = new GsonBuilder().create();
 		return gson.fromJson(jsonData, GameData.class);
 	}
+	
+	public static String getStringFromJSONFile(String fileAddress) {
+		
+		return "";
+	}
 }

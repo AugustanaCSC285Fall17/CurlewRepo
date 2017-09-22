@@ -14,11 +14,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
+import edu.augustana.csc285.game.datamodel.GameData;
+
 public class SlideScreen implements Screen {
 	private AdventureGame game;
 
 	private Table table;
-
+	
+	private GameData mainGameData;
+	
 	//private HashMap<String, TextButton> buttons;
 	private TextButton option1;
 	private TextButton option2;
