@@ -13,7 +13,7 @@ public class SlideScreen implements Screen {
 	
 	public SlideScreen(AdventureGame game) {
 		this.game = game;
-		this.img = new Texture("slideImages/slide_000.png");
+		this.img = new Texture("slideImages/Slide1.png");
 
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, AdventureGame.GAME_SCREEN_WIDTH, 

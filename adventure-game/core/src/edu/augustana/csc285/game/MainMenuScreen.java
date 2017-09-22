@@ -1,40 +1,57 @@
 package edu.augustana.csc285.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Timer;
 
 public class MainMenuScreen implements Screen {
 
 	private final AdventureGame game;
 	
-	private MainActor actor;
+	private Table table;
+	private TextButton startButton;
+	private TextButton quitButton;
+	
+	
 
 	public MainMenuScreen(final AdventureGame game) {
-<<<<<<< HEAD
-		this.game = game;
-=======
 		this.game = game; 
+	
+		table = new Table();
+		table.setWidth(game.stage.getWidth());
+		table.align(Align.center|Align.top);
 		
-		TextButton startButton = new TextButton("Start Game" , game.skin, "default");
-		startButton.setWidth(200);
-		startButton.setHeight(60);
+		table.setPosition(0, Gdx.graphics.getHeight());
 		
-		Dialog dialog = new Dialog("SWEDISH IMMMIGRANT GAME", game.skin);
+		startButton = new TextButton("New Game", game.skin);
+		quitButton = new TextButton("Quit Game", game.skin);
 		
-		game.stage.addActor(startButton);
+		table.padTop(30);
+		table.add(startButton).padBottom(30);
+		table.row();
+		table.add(quitButton);
 		
+		game.stage.addActor(table);
 		
->>>>>>> d2f0b2f7bfc0f0e725192fabde7ffaea29a25b7f
+		game.batch = new SpriteBatch();
+		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/slide_000.png")));
+		game.sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		
+		InputMultiplexer im = new InputMultiplexer();
+		
 		Gdx.input.setInputProcessor(game.stage);
-		
-		
-		actor = new MainActor();
-		game.stage.addActor(actor);
-		game.stage.setKeyboardFocus(actor);
 	}
 
 	@Override
@@ -43,6 +60,10 @@ public class MainMenuScreen implements Screen {
 
 //		game.font.draw(game.batch, "Welcome to Adventure!!! ", 100, 150);
 //		game.font.draw(game.batch, "Tap anywhere to begin!", 100, 100);
+		game.batch.begin();
+		game.sprite.draw(game.batch);
+		game.batch.end();
+		
 		game.stage.act(Gdx.graphics.getDeltaTime());
 		game.stage.draw();
 		

@@ -47,28 +47,12 @@ public class GameData {
 	}
 
 
+
 	public int getSlideListSize(){
 		return slides.size();
 	}
-	public void removeSlide(int index) {
-		
-		//loops through every slide
-		for (int currentSlide = 0; currentSlide < slides.size(); currentSlide++) {
-			List<ActionChoice> choices = slides.get(currentSlide).getActionChoices();
-			//loops through every choice
-			for (int currentActionChoice = 0; currentActionChoice < choices.size(); currentActionChoice++) {
+	
 
-				// for every action choice if the destination slide index is
-				// greater than the remove slide index than the destination
-				// slide index is reduced by 1
-				if (choices.get(currentActionChoice).getDestinationSlideIndex() > index) {
-					choices.get(currentActionChoice)
-							.setDestinationSlideIndex(choices.get(currentActionChoice).getDestinationSlideIndex() - 1);
-				}
-			}
-		}
-		slides.remove(index);
-	}
 
 
 	/**
