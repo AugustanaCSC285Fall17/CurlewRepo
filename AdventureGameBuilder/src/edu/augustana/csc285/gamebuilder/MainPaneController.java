@@ -10,7 +10,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import edu.augustana.csc285.game.datamodel.*;
+
 
 public class MainPaneController {
 
@@ -35,6 +38,10 @@ public class MainPaneController {
 	private TextArea setGameTextArea;
 	@FXML
 	private Button submitButton;
+	@FXML 
+	Button selectSlideImageButton;
+	
+	private Stage mainWindow;
 
 	// JavaFX initialize method, called after this Pane is created.
 	@FXML
@@ -42,6 +49,11 @@ public class MainPaneController {
 		// Slide slide = new Slide();
 	}
 
+	public void setStageAndSetupListeners(Stage primaryStage) {
+		mainWindow = primaryStage;
+		
+	}
+	
 	private boolean isInputInt(String s) {
 		try {
 			int i = Integer.parseInt(s);
@@ -131,4 +143,13 @@ public class MainPaneController {
 	}
 		return true;
 	}
+	
+	@FXML
+	private void handleSelectSlideImageButton(){
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Chose a Slide image");
+		fileChooser.showOpenDialog(mainWindow);
+	}
+
+	
 }

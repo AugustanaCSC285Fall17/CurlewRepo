@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.csc285.gamebuilder.MainPaneController">
+<BorderPane prefHeight="400.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.csc285.gamebuilder.MainPaneController">
    <top>
 <MenuBar BorderPane.alignment="CENTER">
   <menus>
@@ -69,6 +69,7 @@
                         <Label layoutX="14.0" layoutY="130.0" text="Set Slide Game Text" />
                         <TextArea fx:id="setGameTextArea" layoutX="166.0" layoutY="130.0" prefHeight="110.0" prefWidth="214.0" />
                         <Button fx:id="submitButton" layoutX="37.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
+                        <Button fx:id="selectSlideImageButton" layoutX="27.0" layoutY="256.0" mnemonicParsing="false" onAction="#handleSelectSlideImageButton" text="Select a Slide Image" />
                      </children></AnchorPane>
             </content>
           </Tab>
