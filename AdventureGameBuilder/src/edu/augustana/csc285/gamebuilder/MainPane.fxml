@@ -67,7 +67,7 @@
                         <TextField fx:id="changeTitleTextField" layoutX="129.0" layoutY="88.0" onAction="#handleChangeTitleTextField" prefHeight="19.0" prefWidth="376.0" />
                         <Line endX="440.0" layoutX="95.0" layoutY="71.0" startX="-100.0" AnchorPane.bottomAnchor="257.5" AnchorPane.leftAnchor="-5.5" AnchorPane.rightAnchor="333.5" AnchorPane.topAnchor="70.5" />
                         <Label layoutX="14.0" layoutY="130.0" text="Set Slide Game Text" />                 
-                        <Button fx:id="selectSlideImageButton" layoutX="27.0" layoutY="256.0" mnemonicParsing="false" onAction="#handleSelectSlideImageButton" text="Select a Slide Image" />
+                        <Button fx:id="selectSlideImageButton" layoutX="259.0" layoutY="189.0" mnemonicParsing="false" onAction="#handleSelectSlideImageButton" text="Select a Slide Image" />
                         <TextArea fx:id="setGameTextArea" layoutX="14.0" layoutY="156.0" prefHeight="110.0" prefWidth="214.0" />
                         <Button fx:id="submitButton" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
                         <Button fx:id="addActionChoiceButton" layoutX="260.0" layoutY="136.0" mnemonicParsing="false" onAction="#handleAddActionChoiceButton" text="Add Action Choice " />
