@@ -1,10 +1,10 @@
 package edu.augustana.csc285.game.datamodel;
 
-public class GameDataTester {
+public class GameDataTester{
 
 	public static void main(String[] args) {
 		GameData gd = new GameData();
-		Slide s0 = new Slide("Room 0", "slide_000.png");
+		Slide s0 = new Slide("Room 0", "slide_000.png", "Wellcome to the new Room", "www.google.com");
 		s0.getActionChoices().add(new ActionChoice("go to room 1", 1));
 		s0.getActionChoices().add(new ActionChoice("go to room 2", 2));
 		Slide s1 = new Slide("Room 1", "slide_001.png");

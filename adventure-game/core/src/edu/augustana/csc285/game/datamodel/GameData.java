@@ -25,7 +25,7 @@ public class GameData {
 		slides.add(slide);
 	}
 
-<<<<<<< HEAD
+
 	public void removeSlide(int index) {
 		
 		//loops through every slide
@@ -45,7 +45,8 @@ public class GameData {
 		}
 		slides.remove(index);
 	}
-=======
+
+
 	public int getSlideListSize(){
 		return slides.size();
 	}
@@ -68,7 +69,7 @@ public class GameData {
 		}
 		slides.remove(index);
 	}
->>>>>>> d2f0b2f7bfc0f0e725192fabde7ffaea29a25b7f
+
 
 	/**
 	 * @return a serialized JSON-format string that represents this GameData
