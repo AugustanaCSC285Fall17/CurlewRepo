@@ -49,6 +49,10 @@ public class Slide {
 	public List<ActionChoice> getActionChoices() {
 		return actionChoices;
 	}
+	//new method may change later
+	public void addActionChoice () {
+		actionChoices.add(new ActionChoice());
+	}
 	
 	// return gameText
 	public String getGameText(){
@@ -64,6 +68,7 @@ public class Slide {
 		this.actionChoices = actionChoices;
 	}
 	
+
 	//Set the gameText
 	public void setGameText(String text){
 		gameText = text;

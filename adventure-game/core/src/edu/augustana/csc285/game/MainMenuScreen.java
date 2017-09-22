@@ -9,12 +9,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Timer;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public class MainMenuScreen implements Screen {
 
@@ -25,7 +27,6 @@ public class MainMenuScreen implements Screen {
 	private TextButton quitButton;
 	
 	
-
 	public MainMenuScreen(final AdventureGame game) {
 		this.game = game; 
 	
@@ -38,6 +39,14 @@ public class MainMenuScreen implements Screen {
 		startButton = new TextButton("New Game", game.skin);
 		quitButton = new TextButton("Quit Game", game.skin);
 		
+		startButton.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.setScreen(new SlideScreen(game));
+				dispose();
+			}
+		});
+		
 		table.padTop(30);
 		table.add(startButton).padBottom(30);
 		table.row();
@@ -48,8 +57,6 @@ public class MainMenuScreen implements Screen {
 		game.batch = new SpriteBatch();
 		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/slide_000.png")));
 		game.sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		
-		InputMultiplexer im = new InputMultiplexer();
 		
 		Gdx.input.setInputProcessor(game.stage);
 	}
@@ -92,6 +99,7 @@ public class MainMenuScreen implements Screen {
 
 	@Override
 	public void dispose() {
+		
 	}
 }
 
