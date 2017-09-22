@@ -12,8 +12,13 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import edu.augustana.csc285.game.datamodel.*;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+import edu.augustana.csc285.game.datamodel.*;
 
 public class MainPaneController {
 
@@ -39,14 +44,13 @@ public class MainPaneController {
 	@FXML
 	private Button submitButton;
 
-	@FXML 
+	@FXML
 	Button selectSlideImageButton;
-	
+
 	private Stage mainWindow;
 
 	@FXML
 	private Button addActionChoiceButton;
-
 
 	// JavaFX initialize method, called after this Pane is created.
 	@FXML
@@ -56,9 +60,9 @@ public class MainPaneController {
 
 	public void setStageAndSetupListeners(Stage primaryStage) {
 		mainWindow = primaryStage;
-		
+
 	}
-	
+
 	private boolean isInputInt(String s) {
 		try {
 			int i = Integer.parseInt(s);
@@ -96,7 +100,7 @@ public class MainPaneController {
 
 	private void handleShowSlideListButton() {
 		String s = "";
-		if(listIsNotEmpty()) {
+		if (listIsNotEmpty()) {
 			for (int i = 0; i < data.getSlideListSize(); i++) {
 				s += "Slide " + i + " is " + data.getSlide(i).getTitle() + "\n";
 			}
@@ -125,41 +129,43 @@ public class MainPaneController {
 			}
 		}
 	}
-	
+
 	@FXML
 	private void handleChangeTitleTextField() {
-		if(listIsNotEmpty()){
-		se.changeTitle(changeTitleTextField.getText());
+		if (listIsNotEmpty()) {
+			se.changeTitle(changeTitleTextField.getText());
 		}
 	}
-	
 
 	@FXML
-	private void handleSubmitButton(){
-		if(listIsNotEmpty()){
-		se.setGameText(setGameTextArea.getText());
+	private void handleSubmitButton() {
+		if (listIsNotEmpty()) {
+			se.setGameText(setGameTextArea.getText());
 		}
 	}
-	
+
 	@FXML
-	private void handleAddActionChoiceButton(){
-		
+	private void handleAddActionChoiceButton() {
+
 	}
-	
-	private boolean listIsNotEmpty(){
-		if(data.getSlideListSize() == 0) {
+
+	private boolean listIsNotEmpty() {
+		if (data.getSlideListSize() == 0) {
 			new Alert(AlertType.INFORMATION, "There are no slides in the list").showAndWait();
 			return false;
-	}
+		}
 		return true;
 	}
-	
+
 	@FXML
-	private void handleSelectSlideImageButton(){
+	private void handleSelectSlideImageButton() {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Chose a Slide image");
-		fileChooser.showOpenDialog(mainWindow);
+	//	try{
+	//	se.setSlideImage(fileChooser.showOpenDialog(mainWindow));
+	//	}catch(IOException e){
+	//		new Alert(AlertType.ERROR, "There was a problem").showAndWait();
+	//	}
 	}
 
-	
 }
