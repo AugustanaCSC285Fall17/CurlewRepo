@@ -79,9 +79,7 @@ public class MainPaneController {
 
 	private void handleShowSlideListButton() {
 		String s = "";
-		if (data.getSlideListSize() == 0) {
-			new Alert(AlertType.INFORMATION, "There are no slides in the list").showAndWait();
-		} else {
+		if(listIsNotEmpty()) {
 			for (int i = 0; i < data.getSlideListSize(); i++) {
 				s += "Slide " + i + " is " + data.getSlide(i).getTitle() + "\n";
 			}
@@ -113,12 +111,24 @@ public class MainPaneController {
 	
 	@FXML
 	private void handleChangeTitleTextField() {
+		if(listIsNotEmpty()){
 		se.changeTitle(changeTitleTextField.getText());
+		}
 	}
 	
 
 	@FXML
 	private void handleSubmitButton(){
+		if(listIsNotEmpty()){
 		se.setGameText(setGameTextArea.getText());
+		}
+	}
+	
+	private boolean listIsNotEmpty(){
+		if(data.getSlideListSize() == 0) {
+			new Alert(AlertType.INFORMATION, "There are no slides in the list").showAndWait();
+			return false;
+	}
+		return true;
 	}
 }
