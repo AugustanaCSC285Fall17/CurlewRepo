@@ -9,7 +9,7 @@
       "urlText": "www.google.com",
       "gameOver": false,
       "actionChoices": [
-        {
+        {x`
           "choiceText": "go to room 1",
           "destinationSlideIndex": 1,
           "visable": false
@@ -23,7 +23,7 @@
     },
     {
       "title": "Room 1",
-      "imageFileName": "slide_001.png",
+      "imageFileName": "Cat.png",
       "gameText": "text1",
       "urlText": "url1",
       "gameOver": false,
@@ -42,7 +42,7 @@
     },
     {
       "title": "Room 2",
-      "imageFileName": "slide_002.png",
+      "imageFileName": "steam.jpg",
       "gameText": "text2",
       "urlText": "url2",
       "gameOver": false,
