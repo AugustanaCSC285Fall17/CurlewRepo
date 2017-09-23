@@ -18,9 +18,11 @@ import com.google.gson.JsonParser;
  */
 public class GameData {
 	private List<Slide> slides;
+	private int currentSlide;
 
 	public GameData() { // needed for GSon
 		slides = new ArrayList<Slide>();
+		currentSlide = 0;
 	}
 
 	public Slide getSlide(int index) {
@@ -58,8 +60,13 @@ public class GameData {
 		return slides.size();
 	}
 	
-
-
+	public int getCurrentSlide() {
+		return currentSlide;
+	}
+	
+	public void setCurrentSlide(int slide) {
+		currentSlide = slide;
+	}
 
 	/**
 	 * @return a serialized JSON-format string that represents this GameData

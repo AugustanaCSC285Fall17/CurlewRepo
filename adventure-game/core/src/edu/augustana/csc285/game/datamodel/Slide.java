@@ -49,6 +49,10 @@ public class Slide {
 	public List<ActionChoice> getActionChoices() {
 		return actionChoices;
 	}
+	
+	public ActionChoice getActionChoicesAt(int index) {
+		return actionChoices.get(index);
+	}
 	//new method may change later
 	public void addActionChoice () {
 		actionChoices.add(new ActionChoice());

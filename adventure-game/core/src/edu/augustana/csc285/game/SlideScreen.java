@@ -14,19 +14,17 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
+import edu.augustana.csc285.game.datamodel.ActionChoice;
 import edu.augustana.csc285.game.datamodel.GameData;
 import edu.augustana.csc285.game.datamodel.GameDataTester;
+import edu.augustana.csc285.game.datamodel.Slide;
 
 public class SlideScreen implements Screen {
 	private AdventureGame game;
 
 	private Table table;
-	
 	private GameData mainGameData;
-	
-	//private HashMap<String, TextButton> buttons;
-	private TextButton option1;
-	private TextButton option2;
+	private HashMap<String, TextButton> buttons;
 	
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
@@ -35,7 +33,16 @@ public class SlideScreen implements Screen {
 		
 		test(mainGameData);
 		
-		//buttons = new HashMap<String, TextButton>();
+		buttons = new HashMap<String, TextButton>();
+
+		Slide currentSlide = mainGameData.getSlide(mainGameData.getCurrentSlide());
+		
+		for (int i = 0; i < mainGameData.getSlideListSize(); i++) {
+			ActionChoice currentChoice = currentSlide.getActionChoicesAt(i);
+			String currentChoiceText = currentChoice.getChoiceText();
+			
+			buttons.put(currentChoiceText, new TextButton(currentChoiceText, game.skin));
+		}
 		
 		game.stage = new Stage(new ScreenViewport());
 		
@@ -44,15 +51,15 @@ public class SlideScreen implements Screen {
 		table.align(Align.bottomLeft);
 		
 		table.setPosition(0, 0);
-		
-		option1 = new TextButton("Option 1", game.skin);
-		option2 = new TextButton("Option 2", game.skin);
-		
+
 		table.padLeft(40);
 		table.padBottom(60);
-		table.add(option1).padBottom(20);
-		table.row();
-		table.add(option2);
+
+		
+		for (int i = 0; i < mainGameData.getSlideListSize(); i++) {
+			table.add(buttons.get(currentSlide.getActionChoicesAt(i).getChoiceText())).padBottom(20);
+			table.row();
+		}
 		
 		game.stage.addActor(table);
 		
