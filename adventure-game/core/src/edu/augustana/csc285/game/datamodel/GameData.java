@@ -1,6 +1,5 @@
 package edu.augustana.csc285.game.datamodel;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -18,11 +17,10 @@ import com.google.gson.JsonParser;
  */
 public class GameData {
 	private List<Slide> slides;
-	private int currentSlide;
+	private int currentSlideIndex = 0;
 
 	public GameData() { // needed for GSon
 		slides = new ArrayList<Slide>();
-		currentSlide = 0;
 	}
 
 	public Slide getSlide(int index) {
@@ -60,12 +58,12 @@ public class GameData {
 		return slides.size();
 	}
 	
-	public int getCurrentSlide() {
-		return currentSlide;
+	public int getCurrentSlideIndex() {
+		return currentSlideIndex;
 	}
 	
 	public void setCurrentSlide(int slide) {
-		currentSlide = slide;
+		currentSlideIndex = slide;
 	}
 
 	/**
@@ -98,8 +96,6 @@ public class GameData {
 			Object obj = parser.parse(new FileReader(Gdx.files.internal(fileAddress).file()));
 			
 			JsonObject jsonData = (JsonObject) obj;
-
-			System.out.println(jsonData.toString());
 			
 			return fromJSON(jsonData.toString());
 			

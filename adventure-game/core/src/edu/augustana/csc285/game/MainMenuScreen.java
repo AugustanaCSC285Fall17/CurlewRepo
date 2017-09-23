@@ -42,8 +42,16 @@ public class MainMenuScreen implements Screen {
 		startButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				
 				game.setScreen(new SlideScreen(game));
 				dispose();
+			}
+		});
+		
+		quitButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				Gdx.app.exit();
 			}
 		});
 		

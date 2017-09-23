@@ -73,7 +73,7 @@ public class ActionChoice implements Feasible {
 	}
 
 	public String toString() {
-		return "The choice text is: " + choiceText + "and the destinationSlideIndex is " + destinationSlideIndex;
+		return "choiceText: " + choiceText + " destinationSlideIndex: " + destinationSlideIndex;
 	}
 
 	
