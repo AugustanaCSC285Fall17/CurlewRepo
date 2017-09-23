@@ -68,6 +68,11 @@ public class Slide {
 		return urlText;
 	}
 
+	//Return Game Over
+	public boolean isGameOver() {
+		return gameOver;
+	}
+
 	public void setActionChoices(List<ActionChoice> actionChoices) {
 		this.actionChoices = actionChoices;
 	}

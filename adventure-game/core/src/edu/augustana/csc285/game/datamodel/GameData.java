@@ -62,7 +62,7 @@ public class GameData {
 		return currentSlideIndex;
 	}
 	
-	public void setCurrentSlide(int slide) {
+	public void setCurrentSlideIndex(int slide) {
 		currentSlideIndex = slide;
 	}
 

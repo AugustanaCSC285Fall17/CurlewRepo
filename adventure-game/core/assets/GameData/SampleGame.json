@@ -30,7 +30,7 @@
       "actionChoices": [
         {
           "choiceText": "die",
-          "destinationSlideIndex": -1,
+          "destinationSlideIndex": 3,
           "visable": false
         },
         {
@@ -50,6 +50,20 @@
         {
           "choiceText": "go back to room 0",
           "destinationSlideIndex": 0,
+          "visable": false
+        }
+      ]
+    },
+    {
+      "title": "Room Die",
+      "imageFileName": "slide_die.png",
+      "gameText": "die",
+      "urlText": "dieUrl",
+      "gameOver": true,
+      "actionChoices": [
+        {
+          "choiceText": "Quit Game",
+          "destinationSlideIndex": -1,
           "visable": false
         }
       ]

@@ -18,7 +18,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
-public class MainMenuScreen implements Screen {
+public class EndGameScreen implements Screen {
 
 	private final AdventureGame game;
 	
@@ -27,7 +27,7 @@ public class MainMenuScreen implements Screen {
 	private TextButton quitButton;
 	
 	
-	public MainMenuScreen(final AdventureGame game) {
+	public EndGameScreen(final AdventureGame game) {
 		this.game = game; 
 	
 		table = new Table();

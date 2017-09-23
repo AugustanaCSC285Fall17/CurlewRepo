@@ -1,7 +1,6 @@
 package edu.augustana.csc285.game;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -16,11 +15,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import edu.augustana.csc285.game.datamodel.ActionChoice;
 import edu.augustana.csc285.game.datamodel.GameData;
-import edu.augustana.csc285.game.datamodel.GameDataTester;
 import edu.augustana.csc285.game.datamodel.Slide;
 
 public class SlideScreen implements Screen {
@@ -32,58 +29,14 @@ public class SlideScreen implements Screen {
 	private TextField gameText;
 	private ArrayList<TextButton> buttons;
 	
+	private Slide currentSlide;
+	
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
 		
 		mainGameData = GameData.fromJSONFile("GameData/SampleGame.json");
 		
-		buttons = new ArrayList<TextButton>();
-
-		Slide currentSlide = mainGameData.getSlide(mainGameData.getCurrentSlideIndex());
-		
-		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
-			ActionChoice currentChoice = currentSlide.getActionChoicesAt(i);
-			String currentChoiceText = currentChoice.getChoiceText();
-			
-			TextButton newButton = new TextButton(currentChoiceText, game.skin);
-			
-			newButton.addListener(new ClickListener(){
-				
-				@Override
-				public void clicked(InputEvent event, float x, float y) {
-					System.out.println("CLICKED " + currentChoice.toString());
-					mainGameData.setCurrentSlide(currentChoice.getDestinationSlideIndex());
-					
-					game.setScreen(new SlideScreen(game));
-					dispose();
-				}
-			});
-			buttons.add(newButton);
-			
-		}
-		
-		game.stage = new Stage(new ScreenViewport());
-		
-		table = new Table();
-		table.setWidth(game.stage.getWidth());
-		table.align(Align.bottomLeft);
-		
-		table.setPosition(0, 0);
-
-		table.padLeft(40);
-		table.padBottom(60);
-
-		
-		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
-			table.add(buttons.get(i)).width(300).padBottom(20);
-			table.row();
-		}
-		
-		game.stage.addActor(table);
-		
-		game.batch = new SpriteBatch();
-		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/" + currentSlide.getImageFileName())));
-		game.sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		initialize();
 		
 		Gdx.input.setInputProcessor(game.stage);
 	}
@@ -127,7 +80,62 @@ public class SlideScreen implements Screen {
 
 	@Override
 	public void dispose () {
+		game.stage.clear();
+	}
+	
+	private void initialize() {
 		
+		game.stage.clear();
+		
+		buttons = new ArrayList<TextButton>();
+
+		currentSlide = mainGameData.getSlide(mainGameData.getCurrentSlideIndex());
+		
+		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
+			ActionChoice currentChoice = currentSlide.getActionChoicesAt(i);
+			String currentChoiceText = currentChoice.getChoiceText();
+			
+			TextButton newButton = new TextButton(currentChoiceText, game.skin);
+			
+			newButton.addListener(new ClickListener(){
+				
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					System.out.println("CLICKED " + currentChoice.toString());
+					if (currentChoice.getDestinationSlideIndex() == -1)
+						Gdx.app.exit();
+					else
+						mainGameData.setCurrentSlideIndex(currentChoice.getDestinationSlideIndex());
+					
+					System.out.println(currentSlide.toString());
+
+					initialize();
+				}
+			});
+			buttons.add(newButton);
+			
+		}
+		
+		table = new Table();
+		table.setWidth(game.stage.getWidth());
+		table.align(Align.bottomLeft);
+		
+		table.setPosition(0, 0);
+
+		table.padLeft(40);
+		table.padBottom(60);
+
+		
+		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
+			table.add(buttons.get(i)).width(300).padBottom(20);
+			table.row();
+		}
+		
+		game.stage.addActor(table);
+		
+		game.batch = new SpriteBatch();
+		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/" + currentSlide.getImageFileName())));
+		game.sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	}
 
 }
