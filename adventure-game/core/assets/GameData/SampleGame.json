@@ -9,7 +9,7 @@
       "urlText": "www.google.com",
       "gameOver": false,
       "actionChoices": [
-        {x`
+        {
           "choiceText": "go to room 1",
           "destinationSlideIndex": 1,
           "visable": false

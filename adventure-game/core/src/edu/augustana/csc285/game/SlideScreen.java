@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import edu.augustana.csc285.game.datamodel.GameData;
+import edu.augustana.csc285.game.datamodel.GameDataTester;
 
 public class SlideScreen implements Screen {
 	private AdventureGame game;
@@ -29,6 +30,10 @@ public class SlideScreen implements Screen {
 	
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
+		
+		mainGameData = GameData.fromJSONFile("GameData/SampleGame.json");
+		
+		test(mainGameData);
 		
 		//buttons = new HashMap<String, TextButton>();
 		
@@ -98,6 +103,18 @@ public class SlideScreen implements Screen {
 	@Override
 	public void dispose () {
 		
+	}
+	
+	private void test(GameData gdRecreated) {
+		System.out.println("Slide 0 has this image: ");
+		System.out.println(gdRecreated.getSlide(0).getImageFileName());
+		
+		System.out.println(gdRecreated.getSlide(1).getActionChoices().get(1).getChoiceText());
+		System.out.println(gdRecreated.getSlide(1).getActionChoices().get(1).getDestinationSlideIndex());
+		gdRecreated.removeSlide(0);
+		
+		System.out.println(gdRecreated.getSlide(0).getActionChoices().get(1).getChoiceText());
+		System.out.println(gdRecreated.getSlide(0).getActionChoices().get(1).getDestinationSlideIndex());
 	}
 
 }
