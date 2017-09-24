@@ -98,8 +98,8 @@ public class SlideScreen implements Screen {
 		
 		// Initialize game text
 		gameText = new Label(currentSlide.getGameText(), game.skin);
-		gameText.setBounds(30, 30, 300, 300);
-		gameText.setAlignment(Align.center);
+		gameText.setBounds(30, 2 * game.GAME_SCREEN_HEIGHT / 4, game.GAME_SCREEN_WIDTH - 30 * 2, game.GAME_SCREEN_HEIGHT / 4);
+		gameText.setAlignment(Align.center|Align.top);
 		
 		// Loop & create buttons
 		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
