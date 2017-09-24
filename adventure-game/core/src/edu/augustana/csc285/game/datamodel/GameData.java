@@ -1,10 +1,15 @@
 package edu.augustana.csc285.game.datamodel;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 /**
  * This class will represent all of the data needed to load/save an adventure
@@ -12,6 +17,7 @@ import com.google.gson.GsonBuilder;
  */
 public class GameData {
 	private List<Slide> slides;
+	private int currentSlideIndex = 0;
 
 	public GameData() { // needed for GSon
 		slides = new ArrayList<Slide>();
@@ -52,8 +58,13 @@ public class GameData {
 		return slides.size();
 	}
 	
-
-
+	public int getCurrentSlideIndex() {
+		return currentSlideIndex;
+	}
+	
+	public void setCurrentSlideIndex(int slide) {
+		currentSlideIndex = slide;
+	}
 
 	/**
 	 * @return a serialized JSON-format string that represents this GameData
@@ -71,5 +82,29 @@ public class GameData {
 	public static GameData fromJSON(String jsonData) {
 		Gson gson = new GsonBuilder().create();
 		return gson.fromJson(jsonData, GameData.class);
+	}
+	
+	/**
+	 * 
+	 * @param fileAddress the address of the JSON file
+	 * @return a GamaData object, which is created from deserializing the JSON
+	 * 		   data imported from the file.
+	 */
+	public static GameData fromJSONFile(String fileAddress) {
+		JsonParser parser = new JsonParser();
+		try {
+			Object obj = parser.parse(new FileReader(Gdx.files.internal(fileAddress).file()));
+			
+			JsonObject jsonData = (JsonObject) obj;
+			
+			return fromJSON(jsonData.toString());
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 }

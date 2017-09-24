@@ -4,8 +4,8 @@
   "slides": [
     {
       "title": "Room 0",
-      "imageFileName": "Slide1.png",
-      "gameText": "Wellcome to the new Room",
+      "imageFileName": "slide_000.png",
+      "gameText": "Welcome to the new Room",
       "urlText": "www.google.com",
       "gameOver": false,
       "actionChoices": [
@@ -30,7 +30,7 @@
       "actionChoices": [
         {
           "choiceText": "die",
-          "destinationSlideIndex": -1,
+          "destinationSlideIndex": 3,
           "visable": false
         },
         {
@@ -42,7 +42,7 @@
     },
     {
       "title": "Room 2",
-      "imageFileName": "slide_002.png",
+      "imageFileName": "slide_002.jpg",
       "gameText": "text2",
       "urlText": "url2",
       "gameOver": false,
@@ -50,6 +50,20 @@
         {
           "choiceText": "go back to room 0",
           "destinationSlideIndex": 0,
+          "visable": false
+        }
+      ]
+    },
+    {
+      "title": "Room Die",
+      "imageFileName": "slide_die.png",
+      "gameText": "die",
+      "urlText": "dieUrl",
+      "gameOver": true,
+      "actionChoices": [
+        {
+          "choiceText": "Quit Game",
+          "destinationSlideIndex": -1,
           "visable": false
         }
       ]

@@ -10,6 +10,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import edu.augustana.csc285.game.datamodel.*;
 
 public class MainPaneController {
@@ -35,6 +43,12 @@ public class MainPaneController {
 	private TextArea setGameTextArea;
 	@FXML
 	private Button submitButton;
+
+	@FXML
+	Button selectSlideImageButton;
+
+	private Stage mainWindow;
+
 	@FXML
 	private Button addActionChoiceButton;
 
@@ -42,6 +56,11 @@ public class MainPaneController {
 	@FXML
 	private void initialize() {
 		// Slide slide = new Slide();
+	}
+
+	public void setStageAndSetupListeners(Stage primaryStage) {
+		mainWindow = primaryStage;
+
 	}
 
 	private boolean isInputInt(String s) {
@@ -81,7 +100,7 @@ public class MainPaneController {
 
 	private void handleShowSlideListButton() {
 		String s = "";
-		if(listIsNotEmpty()) {
+		if (listIsNotEmpty()) {
 			for (int i = 0; i < data.getSlideListSize(); i++) {
 				s += "Slide " + i + " is " + data.getSlide(i).getTitle() + "\n";
 			}
@@ -110,36 +129,45 @@ public class MainPaneController {
 			}
 		}
 	}
-	
-	@FXML
-	private void handleChangeTitleTextField() {
-		if(listIsNotEmpty()){
-		se.changeTitle(changeTitleTextField.getText());
-		}
-	}
-	
 
 	@FXML
-	private void handleSubmitButton(){
-		if(listIsNotEmpty()){
-		se.setGameText(setGameTextArea.getText());
+	private void handleChangeTitleTextField() {
+		if (listIsNotEmpty()) {
+			se.changeTitle(changeTitleTextField.getText());
+		}
+	}
+
+	@FXML
+	private void handleSubmitButton() {
+		if (listIsNotEmpty()) {
+			se.setGameText(setGameTextArea.getText());
 		}
 	}
 	//have slide index be a field as an int
 	// set choice text also!!!!!
 	@FXML
 	private void handleAddActionChoiceButton(){
-		if (isInputInt(selectSlideNumberTextField.getText())) {
-			int index = Integer.parseInt(selectSlideNumberTextField.getText());
-		data.getSlide(index);
+			se.addActionChoice();
 		}
-	}
-	
-	private boolean listIsNotEmpty(){
-		if(data.getSlideListSize() == 0) {
+
+	private boolean listIsNotEmpty() {
+		if (data.getSlideListSize() == 0) {
 			new Alert(AlertType.INFORMATION, "There are no slides in the list").showAndWait();
 			return false;
-	}
+		}
 		return true;
 	}
+
+	@FXML
+	private void handleSelectSlideImageButton() {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Chose a Slide image");
+		fileChooser.showOpenDialog(mainWindow);
+		try{
+		se.setSlideImage(fileChooser.showOpenDialog(mainWindow));
+		}catch(IOException e){
+			new Alert(AlertType.ERROR, "There was a problem").showAndWait();
+		}
+	}
+
 }
