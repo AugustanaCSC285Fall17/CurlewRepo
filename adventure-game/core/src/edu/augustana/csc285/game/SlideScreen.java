@@ -9,8 +9,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -26,7 +27,7 @@ public class SlideScreen implements Screen {
 	private Table table;
 	private GameData mainGameData;
 	
-	private TextField gameText;
+	private Label gameText;
 	private ArrayList<TextButton> buttons;
 	
 	private Slide currentSlide;
@@ -83,14 +84,24 @@ public class SlideScreen implements Screen {
 		game.stage.clear();
 	}
 	
+	// Initialize slide elements
 	private void initialize() {
 		
+		// Clear the stage before changing slide
 		game.stage.clear();
 		
+		// Create the list of option buttons
 		buttons = new ArrayList<TextButton>();
-
+		
+		// Get the current slide object to initialize buttons & text etc.
 		currentSlide = mainGameData.getSlide(mainGameData.getCurrentSlideIndex());
 		
+		// Initialize game text
+		gameText = new Label(currentSlide.getGameText(), game.skin);
+		gameText.setBounds(30, 30, 300, 300);
+		gameText.setAlignment(Align.center);
+		
+		// Loop & create buttons
 		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
 			ActionChoice currentChoice = currentSlide.getActionChoicesAt(i);
 			String currentChoiceText = currentChoice.getChoiceText();
@@ -116,14 +127,15 @@ public class SlideScreen implements Screen {
 			
 		}
 		
+		// Initialize table & add buttons to table
 		table = new Table();
 		table.setWidth(game.stage.getWidth());
-		table.align(Align.bottomLeft);
+		table.align(Align.topLeft);
 		
-		table.setPosition(0, 0);
+		table.setPosition(0, game.stage.getHeight());
 
 		table.padLeft(40);
-		table.padBottom(60);
+		table.padTop(350);
 
 		
 		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
@@ -131,8 +143,13 @@ public class SlideScreen implements Screen {
 			table.row();
 		}
 		
+		// Add gameText to stage
+		game.stage.addActor(gameText);
+		
+		// Add table to stage
 		game.stage.addActor(table);
 		
+		// Set the background
 		game.batch = new SpriteBatch();
 		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/" + currentSlide.getImageFileName())));
 		game.sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
