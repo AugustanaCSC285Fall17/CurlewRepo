@@ -125,10 +125,14 @@ public class MainPaneController {
 		se.setGameText(setGameTextArea.getText());
 		}
 	}
-	
+	//have slide index be a field as an int
+	// set choice text also!!!!!
 	@FXML
 	private void handleAddActionChoiceButton(){
-		
+		if (isInputInt(selectSlideNumberTextField.getText())) {
+			int index = Integer.parseInt(selectSlideNumberTextField.getText());
+		data.getSlide(index);
+		}
 	}
 	
 	private boolean listIsNotEmpty(){
