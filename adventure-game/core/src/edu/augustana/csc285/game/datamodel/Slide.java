@@ -88,6 +88,10 @@ public class Slide {
 		urlText = url;
 	}
 	
+	public int getActionChoiceListSize(){
+		return actionChoices.size();
+	}
+	
 	public String toString(){
 		String s = "";
 		if(actionChoices.size()==0){
