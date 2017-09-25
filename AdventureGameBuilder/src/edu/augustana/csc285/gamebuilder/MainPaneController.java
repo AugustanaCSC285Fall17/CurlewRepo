@@ -161,11 +161,11 @@ public class MainPaneController {
 	private void handleSelectSlideImageButton() {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Chose a Slide image");
-	//	try{
-	//	se.setSlideImage(fileChooser.showOpenDialog(mainWindow));
-	//	}catch(IOException e){
-	//		new Alert(AlertType.ERROR, "There was a problem").showAndWait();
-	//	}
+		try{
+		se.setSlideImage(fileChooser.showOpenDialog(mainWindow));
+		}catch(IOException e){
+			new Alert(AlertType.ERROR, "There was a problem").showAndWait();
+		}
 	}
 
 }
