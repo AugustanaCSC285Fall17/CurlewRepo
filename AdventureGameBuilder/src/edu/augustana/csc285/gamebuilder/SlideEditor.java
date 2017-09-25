@@ -12,9 +12,7 @@ public class SlideEditor {
 
 	private int currentSlideIndex;
 	private GameData data;
-	
-	
-	
+
 	public SlideEditor(GameData data) {
 		this.currentSlideIndex = -1;
 		this.data = data;
@@ -37,28 +35,34 @@ public class SlideEditor {
 	public void setGameText(String text){
 		data.getSlide(currentSlideIndex).setGameText(text);
 	}
-	
-	
 
-
-
-	public void setSlideImage(File slideImageIn) throws IOException {
-		//read in the image
-		int imageSize = 600;
+	public void addActionChoice() {
+		data.getSlide(currentSlideIndex).addActionChoice();
 		
-		System.out.println(1);
-		
-		BufferedImage inImage = new BufferedImage(imageSize,imageSize,BufferedImage.TYPE_INT_ARGB);
-		inImage = ImageIO.read(slideImageIn);
-		
-		//write the new image
-		File slideImageSave = new File("C:/git/CurlewRepo/adventure-game/core/assets/art/Test.jpg");
-		
-	//	File slideImageSave = new File("Test.jpg");
-		System.out.println(2);
-		
-		ImageIO.write(inImage, ".jpg",slideImageSave );
-		
-		System.out.println(3);
 	}
+	
+	
+
+
+
+
+//	public void setSlideImage(File slideImageIn) throws IOException {
+//		//read in the image
+//		int imageSize = 600;
+//		
+//		System.out.println(1);
+//		
+//		BufferedImage inImage = new BufferedImage(imageSize,imageSize,BufferedImage.TYPE_INT_ARGB);
+//		inImage = ImageIO.read(slideImageIn);
+//		
+//		//write the new image
+//		//File slideImageSave = new File("C:\\git\\CurlewRepo\\adventure-game\\core\\assets\\art\\Test.jpg");
+//		
+//		File slideImageSave = new File("Test.jpg");
+//		System.out.println(2);
+//		
+//		ImageIO.write(inImage, ".jpg",slideImageSave );
+//		
+//		System.out.println(3);
+//	}git
 }

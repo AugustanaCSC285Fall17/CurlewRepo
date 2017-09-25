@@ -30,8 +30,9 @@ public class MainPaneController {
 	private Button showSlideListButton;
 	private GameData data = new GameData();
 	private int slideAtTextIndex = 0;
+	private Stage mainWindow;
 
-	// Room Editor Fields
+	// Slide Editor Fields
 	private SlideEditor se = new SlideEditor(data);
 	@FXML
 	private TextField selectSlideNumberTextField;
@@ -43,14 +44,23 @@ public class MainPaneController {
 	private TextArea setGameTextArea;
 	@FXML
 	private Button submitButton;
-
 	@FXML
-	Button selectSlideImageButton;
-
-	private Stage mainWindow;
-
+	private Button selectSlideImageButton;
 	@FXML
 	private Button addActionChoiceButton;
+	@FXML
+	private Button showSlideInfoButton;
+
+	// ActionChoiceEditor Fields
+	private ActionChoiceEditor ace = new ActionChoiceEditor();
+	@FXML
+	private TextField selectSlideNumberTextField1;
+	@FXML
+	private Label currentSlideLabel1;
+	@FXML
+	private TextField selectActionChoiceTextField;
+	@FXML
+	private Label currentACLabel;
 
 	// JavaFX initialize method, called after this Pane is created.
 	@FXML
@@ -81,13 +91,25 @@ public class MainPaneController {
 		return true;
 	}
 
+	private boolean isIndexAnActionChoice(int index) {
+		if (slideListIsNotEmpty()) {
+			return false;
+		} else {
+			if (aceListIsNotEmpty()) {
+				if (index < 0 || index > data.getSlide(se.getCurrentSlide()).getActionChoiceListSize() - 1) {
+					new Alert(AlertType.ERROR, "There is no Action Choice at this index").showAndWait();
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
 	@FXML
 	private void handleShowSlideAtTextField() {
-		if (isInputInt(showSlideAtTextField.getText())) {
-			slideAtTextIndex = Integer.parseInt(showSlideAtTextField.getText());
-			if (isIndexASlide(slideAtTextIndex)) {
-				new Alert(AlertType.INFORMATION, data.getSlide(slideAtTextIndex).toString()).showAndWait();
-			}
+		slideAtTextIndex = Integer.parseInt(showSlideAtTextField.getText());
+		if (isIndexASlide(slideAtTextIndex)) {
+			new Alert(AlertType.INFORMATION, data.getSlide(slideAtTextIndex).toString()).showAndWait();
 		}
 	}
 
@@ -100,7 +122,7 @@ public class MainPaneController {
 
 	private void handleShowSlideListButton() {
 		String s = "";
-		if (listIsNotEmpty()) {
+		if (slideListIsNotEmpty()) {
 			for (int i = 0; i < data.getSlideListSize(); i++) {
 				s += "Slide " + i + " is " + data.getSlide(i).getTitle() + "\n";
 			}
@@ -121,36 +143,61 @@ public class MainPaneController {
 
 	@FXML
 	private void handleSelectSlideNumberTextField() {
-		if (isInputInt(selectSlideNumberTextField.getText())) {
-			int index = Integer.parseInt(selectSlideNumberTextField.getText());
+		changeCurrentSlide(selectSlideNumberTextField.getText());
+	}
+
+	@FXML
+	private void handleSelectSlideNumberTextField1() {
+		changeCurrentSlide(selectSlideNumberTextField1.getText());
+	}
+
+	private void changeCurrentSlide(String input) {
+		if (isInputInt(input)) {
+			int index = Integer.parseInt(input);
 			if (isIndexASlide(index)) {
 				se.setCurrentSlide(index);
 				currentSlideLabel.setText(Integer.toString(index));
+				currentSlideLabel1.setText(Integer.toString(index));
 			}
 		}
 	}
 
 	@FXML
 	private void handleChangeTitleTextField() {
-		if (listIsNotEmpty()) {
+		if (slideListIsNotEmpty() && wasSlideSelected()) {
 			se.changeTitle(changeTitleTextField.getText());
 		}
 	}
 
 	@FXML
 	private void handleSubmitButton() {
-		if (listIsNotEmpty()) {
+		if (slideListIsNotEmpty() && wasSlideSelected()) {
 			se.setGameText(setGameTextArea.getText());
 		}
 	}
 
+	// have slide index be a field as an int
+	// set choice text also!!!!!
 	@FXML
 	private void handleAddActionChoiceButton() {
-
+		if (wasSlideSelected()) {
+			se.addActionChoice();
+		}
 	}
 
-	private boolean listIsNotEmpty() {
+	private boolean slideListIsNotEmpty() {
 		if (data.getSlideListSize() == 0) {
+			new Alert(AlertType.INFORMATION, "There are no slides in the list").showAndWait();
+			return false;
+		}
+		return true;
+	}
+
+	private boolean aceListIsNotEmpty() {
+		if (!slideListIsNotEmpty()) {
+			return false;
+		}
+		if (data.getSlide(se.getCurrentSlide()).getActionChoiceListSize() == 0) {
 			new Alert(AlertType.INFORMATION, "There are no slides in the list").showAndWait();
 			return false;
 		}
@@ -159,12 +206,50 @@ public class MainPaneController {
 
 	@FXML
 	private void handleSelectSlideImageButton() {
-		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Chose a Slide image");
-		try{
-		se.setSlideImage(fileChooser.showOpenDialog(mainWindow));
-		}catch(IOException e){
-			new Alert(AlertType.ERROR, "There was a problem").showAndWait();
+		if (wasSlideSelected()) {
+			FileChooser fileChooser = new FileChooser();
+			fileChooser.setTitle("Chose a Slide image");
+			// try{
+			// se.setSlideImage(fileChooser.showOpenDialog(mainWindow));
+			// }catch(IOException e){
+			// new Alert(AlertType.ERROR, "There was a problem").showAndWait();
+			// }
+		}
+	}
+
+	@FXML
+	private void handleShowSlideInfoButton() {
+		if (slideListIsNotEmpty() && wasSlideSelected()) {
+			new Alert(AlertType.INFORMATION, data.getSlide(se.getCurrentSlide()).toString()).showAndWait();
+		}
+	}
+
+	private boolean wasSlideSelected() {
+		if (se.getCurrentSlide() == -1) {
+			new Alert(AlertType.ERROR, "Please select a slide first").showAndWait();
+			return false;
+		}
+		return true;
+	}
+
+	private boolean wasActionChoiceSelected() {
+		if (ace.getCurrentActionChoiceIndex() == -1) {
+			new Alert(AlertType.ERROR, "Please select an action choice first").showAndWait();
+			return false;
+		}
+		return true;
+	}
+
+	@FXML
+	private void handleSelectActionChoiceTextField() {
+		if (this.slideListIsNotEmpty()) {
+			if (isInputInt(selectActionChoiceTextField.getText())) {
+				int index = Integer.parseInt(selectActionChoiceTextField.getText());
+				if (isIndexAnActionChoice(index)) {
+					ace.setCurrentActionChoiceIndex(index);
+					currentACLabel.setText(Integer.toString(index));
+				}
+			}
 		}
 	}
 

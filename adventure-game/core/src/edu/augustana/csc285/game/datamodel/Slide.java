@@ -49,6 +49,10 @@ public class Slide {
 	public List<ActionChoice> getActionChoices() {
 		return actionChoices;
 	}
+	
+	public ActionChoice getActionChoicesAt(int index) {
+		return actionChoices.get(index);
+	}
 	//new method may change later
 	public void addActionChoice () {
 		actionChoices.add(new ActionChoice());
@@ -64,6 +68,11 @@ public class Slide {
 		return urlText;
 	}
 
+	//Return Game Over
+	public boolean isGameOver() {
+		return gameOver;
+	}
+
 	public void setActionChoices(List<ActionChoice> actionChoices) {
 		this.actionChoices = actionChoices;
 	}
@@ -77,6 +86,10 @@ public class Slide {
 	//Set Url Text
 	public void setUrlText(String url){
 		urlText = url;
+	}
+	
+	public int getActionChoiceListSize(){
+		return actionChoices.size();
 	}
 	
 	public String toString(){

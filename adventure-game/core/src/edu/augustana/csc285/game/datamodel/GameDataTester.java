@@ -1,7 +1,7 @@
 package edu.augustana.csc285.game.datamodel;
 
 public class GameDataTester{
-
+	
 	public static void main(String[] args) {
 		GameData gd = new GameData();
 
