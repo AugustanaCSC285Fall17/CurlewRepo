@@ -51,9 +51,11 @@ public class MainPaneController {
 	private Button addActionChoiceButton;
 	@FXML
 	private Button showSlideInfoButton;
+	@FXML
+	private Button removeSlideTextField;
 
 	// ActionChoiceEditor Fields
-	private ActionChoiceEditor ace = new ActionChoiceEditor();
+	private ActionChoiceEditor ace = new ActionChoiceEditor(data, se);
 	@FXML
 	private TextField selectSlideNumberTextField1;
 	@FXML
@@ -271,19 +273,33 @@ public class MainPaneController {
 
 	@FXML
 	private void handleAceChoiceSubmitButton() {
-		data.getSlide(se.getCurrentSlide()).getActionChoicesAt(ace.currentActionChoiceIndex)
-				.setChoiceText(aceChoiceTextArea.getText());
+		if(aceSelected())
+		ace.setChoiceText(aceChoiceSubmitButton.getText());
 	}
 
 	@FXML
 	private void handleAceSetDestinationSlideIndexField() {
-		String input = aceSetDestinationSlideIndexField.getText();
-		if (isInputInt(input)) {
-			int index = Integer.parseInt(input);
-			if (isIndexASlide(index)) {
-				data.getSlide(se.getCurrentSlide()).getActionChoicesAt(ace.currentActionChoiceIndex)
-				.setDestinationSlideIndex(index);
+		if (aceSelected()) {
+			String input = aceSetDestinationSlideIndexField.getText();
+			if (isInputInt(input)) {
+				int index = Integer.parseInt(input);
+				if (isIndexASlide(index)) {
+					ace.setDestinationSlideIndex(index);
+				}
 			}
 		}
+	}
+
+	@FXML
+	private void handleRemoveSlideTextField() {
+
+	}
+	
+	private boolean aceSelected(){
+		if(ace.aceSelected()){
+			return true;
+		}else
+		new Alert(AlertType.ERROR, "Please select an action choice");
+		return false;
 	}
 }
