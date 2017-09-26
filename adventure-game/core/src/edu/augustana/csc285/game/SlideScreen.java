@@ -35,7 +35,7 @@ public class SlideScreen implements Screen {
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
 		
-		mainGameData = GameData.fromJSONFile("GameData/SampleGame.json");
+		mainGameData = GameData.fromJSONFile("assets/GameData/SampleGame.json");
 		
 		initialize();
 		
