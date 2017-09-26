@@ -23,13 +23,11 @@ import edu.augustana.csc285.game.datamodel.Slide;
 
 public class SlideScreen implements Screen {
 	private AdventureGame game;
-
 	private Table table;
 	private GameData mainGameData;
-	
+	private Label title;
 	private Label gameText;
 	private ArrayList<TextButton> buttons;
-	
 	private Slide currentSlide;
 	
 	public SlideScreen(final AdventureGame game) {
@@ -97,12 +95,19 @@ public class SlideScreen implements Screen {
 		// Get the current slide object to initialize buttons & text etc.
 		currentSlide = mainGameData.getSlide(mainGameData.getCurrentSlideIndex());
 		
+		// Initialize title text
+		title = new Label(currentSlide.getTitle(), game.skin, "title32");
+		title.setPosition(40, Gdx.graphics.getHeight() - 40);
+		title.setAlignment(Align.left);
+		
 		// Initialize game text		
 		gameText = new Label(currentSlide.getGameText(), game.skin);
 		gameText.setWrap(true);
 		gameText.setWidth(300);
-		gameText.setPosition(40, AdventureGame.GAME_SCREEN_HEIGHT - 100);
-		gameText.setAlignment(Align.left|Align.top);
+		gameText.pack();
+		gameText.setWidth(300);
+		gameText.setAlignment(Align.left);
+		gameText.setPosition(40, Gdx.graphics.getHeight() - 50 - gameText.getHeight());
 		
 		// Loop & create buttons
 		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
@@ -115,13 +120,11 @@ public class SlideScreen implements Screen {
 				
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
-					System.out.println("CLICKED " + currentChoice.toString());
 					if (currentChoice.getDestinationSlideIndex() == -1)
 						Gdx.app.exit();
 					else
 						mainGameData.setCurrentSlideIndex(currentChoice.getDestinationSlideIndex());
 					
-					System.out.println(currentSlide.toString());
 
 					initialize();
 				}
@@ -138,13 +141,16 @@ public class SlideScreen implements Screen {
 		table.setPosition(0, game.stage.getHeight());
 
 		table.padLeft(40);
-		table.padTop(350);
+		table.padTop(300);
 
 		
 		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
 			table.add(buttons.get(i)).width(300).padBottom(20);
 			table.row();
 		}
+		
+		// Add title to stage
+		game.stage.addActor(title);
 		
 		// Add gameText to stage
 		game.stage.addActor(gameText);
