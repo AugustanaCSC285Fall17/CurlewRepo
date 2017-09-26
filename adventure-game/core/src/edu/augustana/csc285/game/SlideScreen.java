@@ -101,13 +101,13 @@ public class SlideScreen implements Screen {
 		// Initialize title text
 		title = new Label(currentSlide.getTitle(), game.skin, "title");
 		title.setWrap(true);
-		title.setWidth(300);
+		title.setWidth(350);
 		title.pack();
-		title.setWidth(300);
+		title.setWidth(350);
 		title.setPosition(40, Gdx.graphics.getHeight() - 20 - title.getHeight());
 		title.setAlignment(Align.topLeft);
 		
-		// Initialize game text		
+		// Initialize game text
 		gameText = new Label(currentSlide.getGameText(), game.skin);
 		gameText.setWrap(true);
 		
@@ -159,7 +159,7 @@ public class SlideScreen implements Screen {
 			table.row();
 		}
 		
-		table.padTop(40 + title.getHeight() + gameText.getHeight());
+		table.padTop(60 + title.getHeight() + gameText.getHeight());
 
 		// Add title to stage
 		game.stage.addActor(title);
@@ -171,10 +171,11 @@ public class SlideScreen implements Screen {
 		game.stage.addActor(table);
 		
 		// Set the background
+		float size = Gdx.graphics.getHeight();
 		game.batch = new SpriteBatch();
 		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/" + currentSlide.getImageFileName())));
-		game.sprite.setPosition(Gdx.graphics.getWidth() - Gdx.graphics.getHeight(), 0);
-		game.sprite.setSize(Gdx.graphics.getHeight(), Gdx.graphics.getHeight());
+		game.sprite.setPosition(Gdx.graphics.getWidth() - size, 0);
+		game.sprite.setSize(size, size);
 	}
 
 }
