@@ -9,6 +9,7 @@ public class Slide {
 	private String imageFileName;
 	private String gameText; 
 	private String urlText;
+	private int slideType;
 	private boolean gameOver;
 	private List<ActionChoice> actionChoices;
 
@@ -21,11 +22,12 @@ public class Slide {
 	}
 
 	public Slide(String title, String imageFileName, String gameText
-			    , String urlText) {
+			    , int slideType, String urlText) {
 		this.gameText = gameText;
 		this.title = title;
 		this.imageFileName = imageFileName;
 		this.urlText = urlText;
+		this.slideType = slideType;
 		this.actionChoices = new ArrayList<>();
 		gameOver = false;
 	}
@@ -66,6 +68,14 @@ public class Slide {
 	//return the urlText
 	public String getUrlText(){
 		return urlText;
+	}
+
+	public int getSlideType() {
+		return slideType;
+	}
+
+	public void setSlideType(int slideType) {
+		this.slideType = slideType;
 	}
 
 	//Return Game Over

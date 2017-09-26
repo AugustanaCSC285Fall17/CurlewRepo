@@ -22,6 +22,9 @@ import edu.augustana.csc285.game.datamodel.GameData;
 import edu.augustana.csc285.game.datamodel.Slide;
 
 public class SlideScreen implements Screen {
+	public static final int NORMAL_SLIDE = 0;
+	public static final int HISTORICAL_POP_UP = 1;
+	
 	private AdventureGame game;
 	private Table table;
 	private GameData mainGameData;
@@ -96,18 +99,26 @@ public class SlideScreen implements Screen {
 		currentSlide = mainGameData.getSlide(mainGameData.getCurrentSlideIndex());
 		
 		// Initialize title text
-		title = new Label(currentSlide.getTitle(), game.skin, "title32");
-		title.setPosition(40, Gdx.graphics.getHeight() - 40);
-		title.setAlignment(Align.left);
+		title = new Label(currentSlide.getTitle(), game.skin, "title");
+		title.setWrap(true);
+		title.setWidth(300);
+		title.pack();
+		title.setWidth(300);
+		title.setPosition(40, Gdx.graphics.getHeight() - 20 - title.getHeight());
+		title.setAlignment(Align.topLeft);
 		
 		// Initialize game text		
 		gameText = new Label(currentSlide.getGameText(), game.skin);
 		gameText.setWrap(true);
-		gameText.setWidth(300);
+		
+		int gameTextWidth = 280;
+		if (currentSlide.getSlideType() == HISTORICAL_POP_UP)
+			gameTextWidth = 550;
+		gameText.setWidth(gameTextWidth);
 		gameText.pack();
-		gameText.setWidth(300);
+		gameText.setWidth(gameTextWidth);
 		gameText.setAlignment(Align.left);
-		gameText.setPosition(40, Gdx.graphics.getHeight() - 50 - gameText.getHeight());
+		gameText.setPosition(50, Gdx.graphics.getHeight() - 30 - title.getHeight() - gameText.getHeight());
 		
 		// Loop & create buttons
 		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
@@ -141,14 +152,15 @@ public class SlideScreen implements Screen {
 		table.setPosition(0, game.stage.getHeight());
 
 		table.padLeft(40);
-		table.padTop(300);
 
 		
 		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
-			table.add(buttons.get(i)).width(300).padBottom(20);
+			table.add(buttons.get(i)).width(280).padBottom(10);
 			table.row();
 		}
 		
+		table.padTop(40 + title.getHeight() + gameText.getHeight());
+
 		// Add title to stage
 		game.stage.addActor(title);
 		

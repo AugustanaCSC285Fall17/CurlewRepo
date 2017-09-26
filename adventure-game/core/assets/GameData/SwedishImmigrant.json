@@ -7,17 +7,18 @@
       "imageFileName": "image4.jpg",
       "gameText": "It’s the 1880s in Sweden. The opportunities in America, such as cheap land and a stable economy, make migration attractive to many Europeans who face problems related to overpopulation. Millions have migrated from their homelands for a new life. You now wish to join them. \n\nWho are you?",
       "urlText": "www.google.com",
+      "slideType" : 0,
       "gameOver": false,
       "actionChoices": [
         {
           "choiceText": "Anders Bengtsson",
           "destinationSlideIndex": 1,
-          "visable": false
+          "visible": false
         },
         {
           "choiceText": "Lovisa Eriksdotter",
           "destinationSlideIndex": 2,
-          "visable": false
+          "visible": false
         }
       ]
     },
@@ -26,12 +27,13 @@
       "imageFileName": "image2.jpg",
       "gameText": "You are an 18 year-old male from Mellby Parish, Småland. You are the youngest of 4 brothers and will not have any farmland to work. There are too many men in your family and not enough farmland. Additionally, the crop failures of 1867-1868 hit your family farm hard. You would also like to avoid Swedish military conscription. You are coming to America to own your own farmland or find a good job.",
       "urlText": "url1",
+      "slideType" : 0,
       "gameOver": false,
       "actionChoices": [
         {
           "choiceText": "Continue",
           "destinationSlideIndex": 3,
-          "visable": false
+          "visible": false
         }
       ]
     },
@@ -40,26 +42,58 @@
       "imageFileName": "image3.jpg",
       "gameText": "You are an 18 year-old female maid from Stockholm. You dislike your job as maid and can’t seem to find a better one because there is too much competition (population has been booming in the city and countryside). You decide to seek better employment in America.",
       "urlText": "url2",
+      "slideType" : 0,
       "gameOver": false,
       "actionChoices": [
         {
           "choiceText": "Continue",
           "destinationSlideIndex": 3,
-          "visable": false
+          "visible": false
         }
       ]
     },
     {
-      "title": "Room Die",
-      "imageFileName": "slide_die.png",
-      "gameText": "die",
+      "title": "Historical Pop-Up: Swedish Names",
+      "imageFileName": "facts.png",
+      "gameText": "Sweden followed a patronymic naming system until the late 19th-century. For example, Anders Bengtsson was so named because he was Anders, the son of Bengt. His son might be named Nils Andersson. A daughter could be Britta Andersdotter (dotter = daughter). Exceptions to this include nobility and clergy. Priests would often combine Greek or Roman endings -ander or -ius to names of parishes to form new names (for example, Eric Norelius).",
       "urlText": "dieUrl",
-      "gameOver": true,
+      "slideType" : 1,
+      "gameOver": false,
       "actionChoices": [
         {
-          "choiceText": "Quit Game",
-          "destinationSlideIndex": -1,
-          "visable": false
+          "choiceText": "Continue",
+          "destinationSlideIndex": 4,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "You’ve received a letter from America.",
+      "imageFileName": "image9.jpg",
+      "gameText": "Receiving letters from those who journeyed to America prompted many of your family friends to pursue their own journey over. Life must be treating them well in America— economic opportunities, building their own legacy and family. The American Dream is a strong pull for Swedes, yourself included. \n\nChoose a letter to read:",
+      "urlText": "dieUrl",
+      "slideType" : 0,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "John Deere letter",
+          "destinationSlideIndex": 5,
+          "visible": false
+        },
+        {
+          "choiceText": "Illinois letter",
+          "destinationSlideIndex": 6,
+          "visible": false
+        },
+        {
+          "choiceText": "Washington letter",
+          "destinationSlideIndex": 7,
+          "visible": false
+        },
+        {
+          "choiceText": "Minnesota letter",
+          "destinationSlideIndex": 8,
+          "visible": false
         }
       ]
     }
