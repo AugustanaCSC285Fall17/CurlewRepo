@@ -9,7 +9,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -32,6 +34,7 @@ public class SlideScreen implements Screen {
 	private Label gameText;
 	private ArrayList<TextButton> buttons;
 	private Slide currentSlide;
+	private ScrollPane scrollPane;
 	
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
@@ -102,10 +105,7 @@ public class SlideScreen implements Screen {
 		title = new Label(currentSlide.getTitle(), game.skin, "title");
 		title.setWrap(true);
 		title.setWidth(350);
-		title.pack();
-		title.setWidth(350);
-		title.setPosition(40, Gdx.graphics.getHeight() - 20 - title.getHeight());
-		title.setAlignment(Align.topLeft);
+		title.setAlignment(Align.left);
 		
 		// Initialize game text
 		gameText = new Label(currentSlide.getGameText(), game.skin);
@@ -115,11 +115,15 @@ public class SlideScreen implements Screen {
 		if (currentSlide.getSlideType() == HISTORICAL_POP_UP)
 			gameTextWidth = 550;
 		gameText.setWidth(gameTextWidth);
-		gameText.pack();
-		gameText.setWidth(gameTextWidth);
 		gameText.setAlignment(Align.left);
-		gameText.setPosition(50, Gdx.graphics.getHeight() - 30 - title.getHeight() - gameText.getHeight());
+
+	    scrollPane = new ScrollPane(gameText);
+	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 280, gameTextWidth, 280);
+	    scrollPane.layout();
+	    scrollPane.setTouchable(Touchable.enabled);
 		
+	    System.err.println(title.getHeight());
+	    
 		// Loop & create buttons
 		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
 			ActionChoice currentChoice = currentSlide.getActionChoicesAt(i);
@@ -153,22 +157,19 @@ public class SlideScreen implements Screen {
 
 		table.padLeft(40);
 
+		table.add(title).padBottom(270).align(Align.left).setActorWidth(350);
+		table.row();
 		
 		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
 			table.add(buttons.get(i)).width(280).padBottom(10);
 			table.row();
 		}
 		
-		table.padTop(60 + title.getHeight() + gameText.getHeight());
-
-		// Add title to stage
-		game.stage.addActor(title);
+		table.padTop(10);
 		
-		// Add gameText to stage
-		game.stage.addActor(gameText);
-		
-		// Add table to stage
+		// Add actors
 		game.stage.addActor(table);
+		game.stage.addActor(scrollPane);
 		
 		// Set the background
 		float size = Gdx.graphics.getHeight();
