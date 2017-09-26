@@ -87,6 +87,12 @@
                         <TextField fx:id="selectActionChoiceTextField" layoutX="202.0" layoutY="57.0" onAction="#handleSelectActionChoiceTextField" prefHeight="31.0" prefWidth="64.0" />
                         <Label layoutX="269.0" layoutY="62.0" text="Current Action Choice:" />
                         <Label fx:id="currentACLabel" layoutX="425.0" layoutY="62.0" text="N/A" />
+                        <Button fx:id="showAceInfoButton" layoutX="382.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleShowAceInfoButton" text="Show ace Info" />
+                        <Label layoutX="42.0" layoutY="96.0" text="Set Choice Text" />
+                        <TextArea fx:id="aceChoiceTextArea" layoutX="16.0" layoutY="126.0" prefHeight="145.0" prefWidth="186.0" />
+                        <Button fx:id="aceChoiceSubmitButton" layoutX="61.0" layoutY="284.0" mnemonicParsing="false" onAction="#handleAceChoiceSubmitButton" text="Submit" />
+                        <TextField fx:id="aceSetDestinationSlideIndexField" layoutX="425.0" layoutY="111.0" onAction="#handleAceSetDestinationSlideIndexField" prefHeight="31.0" prefWidth="54.0" />
+                        <Label layoutX="234.0" layoutY="116.0" text="Set Destination Slide Index:" />
                      </children>
                   </AnchorPane>
               </content>
