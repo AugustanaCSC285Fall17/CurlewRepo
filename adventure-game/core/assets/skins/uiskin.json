@@ -1,10 +1,15 @@
 {
-com.badlogic.gdx.graphics.g2d.BitmapFont: { default-font: { file: fonts/default.fnt } },
+com.badlogic.gdx.graphics.g2d.BitmapFont: { default-font: { file: fonts/MyriadPro18.fnt },
+											label-font: {file: fonts/MyriadPro.fnt},
+											label-font-32: {file: fonts/MyriadPro32.fnt},
+											label-font-22: {file: fonts/MyriadPro22.fnt},
+											label-font-18: {file: fonts/MyriadPro18.fnt} }
 com.badlogic.gdx.graphics.Color: {
 	green: { a: 1, b: 0, g: 1, r: 0 },
 	white: { a: 1, b: 1, g: 1, r: 1 },
 	red: { a: 1, b: 0, g: 0, r: 1 },
 	black: { a: 1, b: 0, g: 0, r: 0 },
+	gray: { a: .7, b: 0, g: 0, r: 0 },
 },
 com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable: {
 	dialogDim: { name: white, color: { r: 0, g: 0, b: 0, a: 0.45 } },
@@ -44,7 +49,8 @@ com.badlogic.gdx.scenes.scene2d.ui.Slider$SliderStyle: {
 	default-vertical: { background: default-slider, knob: default-round-large }
 },
 com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
-	default: { font: default-font, fontColor: white }
+	default: { font: label-font-18, fontColor: gray },
+	title: { font: label-font-32, fontColor: gray }
 },
 com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle: {
 	default: { selection: selection, background: textfield, font: default-font, fontColor: white, cursor: cursor }
