@@ -1,3 +1,4 @@
+
 package edu.augustana.csc285.game.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
