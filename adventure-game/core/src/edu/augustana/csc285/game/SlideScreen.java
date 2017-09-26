@@ -35,7 +35,7 @@ public class SlideScreen implements Screen {
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
 		
-		mainGameData = GameData.fromJSONFile("assets/GameData/SampleGame.json");
+		mainGameData = GameData.fromJSONFile("assets/GameData/SwedishImmigrant.json");
 		
 		initialize();
 		
@@ -44,6 +44,7 @@ public class SlideScreen implements Screen {
 	
 	@Override
 	public void render (float delta) {
+		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		game.batch.begin();
@@ -96,10 +97,12 @@ public class SlideScreen implements Screen {
 		// Get the current slide object to initialize buttons & text etc.
 		currentSlide = mainGameData.getSlide(mainGameData.getCurrentSlideIndex());
 		
-		// Initialize game text
+		// Initialize game text		
 		gameText = new Label(currentSlide.getGameText(), game.skin);
-		gameText.setBounds(30, 2 * game.GAME_SCREEN_HEIGHT / 4, game.GAME_SCREEN_WIDTH - 30 * 2, game.GAME_SCREEN_HEIGHT / 4);
-		gameText.setAlignment(Align.center|Align.top);
+		gameText.setWrap(true);
+		gameText.setWidth(300);
+		gameText.setPosition(40, AdventureGame.GAME_SCREEN_HEIGHT - 100);
+		gameText.setAlignment(Align.left|Align.top);
 		
 		// Loop & create buttons
 		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
@@ -152,7 +155,8 @@ public class SlideScreen implements Screen {
 		// Set the background
 		game.batch = new SpriteBatch();
 		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/" + currentSlide.getImageFileName())));
-		game.sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		game.sprite.setPosition(Gdx.graphics.getWidth() - Gdx.graphics.getHeight(), 0);
+		game.sprite.setSize(Gdx.graphics.getHeight(), Gdx.graphics.getHeight());
 	}
 
 }

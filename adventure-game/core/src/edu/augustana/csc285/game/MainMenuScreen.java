@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -24,21 +25,50 @@ public class MainMenuScreen implements Screen {
 	
 	private Table table;
 	private TextButton startButton;
+	private TextButton aboutButton;
 	private TextButton quitButton;
-	
+	private Label introText;
 	
 	public MainMenuScreen(final AdventureGame game) {
 		this.game = game; 
-	
+		
 		table = new Table();
 		table.setWidth(game.stage.getWidth());
 		table.align(Align.center|Align.top);
 		
 		table.setPosition(0, Gdx.graphics.getHeight());
 		
-		startButton = new TextButton("New Game", game.skin);
-		quitButton = new TextButton("Quit Game", game.skin);
+		initializeButtons();
+
+		String intro = "You are a young Swedish immigrant to America in 1880. "
+				+ "You have made the tough decision to leave your family and life in Sweden behind. "
+				+ "Will you survive and prosper in America?";
 		
+		introText = new Label(intro, game.skin);
+		introText.setWrap(true);
+		introText.setWidth(600);
+		introText.setAlignment(Align.center|Align.top);
+		
+		table.padTop(200);
+		table.add(introText).width(600f);;
+		table.row();
+		table.add(startButton).padTop(20);
+		table.row();
+		table.add(aboutButton).padTop(20);
+		table.row();
+		table.add(quitButton).padTop(20);
+		
+		game.stage.addActor(table);
+		
+		game.batch = new SpriteBatch();
+		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/mainmenu2.jpg")));
+		game.sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		
+		Gdx.input.setInputProcessor(game.stage);
+	}
+
+	private void initializeButtons() {
+		startButton = new TextButton("Take the journey", game.skin);
 		startButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -47,33 +77,28 @@ public class MainMenuScreen implements Screen {
 			}
 		});
 		
+		aboutButton = new TextButton("About", game.skin);
+		aboutButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				dispose();
+				//game.setScreen(new AboutScreen(game));
+			}
+		}); 
+		
+		quitButton = new TextButton("Quit Game", game.skin);
 		quitButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.exit();
 			}
 		});
-		
-		table.padTop(30);
-		table.add(startButton).padBottom(30);
-		table.row();
-		table.add(quitButton);
-		
-		game.stage.addActor(table);
-		
-		game.batch = new SpriteBatch();
-		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/mainmenu.png")));
-		game.sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		
-		Gdx.input.setInputProcessor(game.stage);
 	}
 
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-//		game.font.draw(game.batch, "Welcome to Adventure!!! ", 100, 150);
-//		game.font.draw(game.batch, "Tap anywhere to begin!", 100, 100);
 		game.batch.begin();
 		game.sprite.draw(game.batch);
 		game.batch.end();
