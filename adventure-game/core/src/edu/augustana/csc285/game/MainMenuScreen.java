@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -28,6 +29,7 @@ public class MainMenuScreen implements Screen {
 	private TextButton aboutButton;
 	private TextButton quitButton;
 	private Label introText;
+	private Sprite logo;
 	
 	public MainMenuScreen(final AdventureGame game) {
 		this.game = game; 
@@ -49,7 +51,7 @@ public class MainMenuScreen implements Screen {
 		introText.setWidth(600);
 		introText.setAlignment(Align.center|Align.top);
 		
-		table.padTop(200);
+		table.padTop(210);
 		table.add(introText).width(600f);;
 		table.row();
 		table.add(startButton).padTop(20);
@@ -63,6 +65,12 @@ public class MainMenuScreen implements Screen {
 		game.batch = new SpriteBatch();
 		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/mainmenu2.jpg")));
 		game.sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		
+		Texture logoTexture = new Texture(Gdx.files.internal("art/LogoStroked.png"));
+		logo = new Sprite(logoTexture);
+		logo.setPosition(200, Gdx.graphics.getHeight() - 200);
+		logo.setSize(400, (float) (logoTexture.getHeight() * 400.0 / logoTexture.getWidth()));
+		
 		
 		Gdx.input.setInputProcessor(game.stage);
 	}
@@ -101,6 +109,7 @@ public class MainMenuScreen implements Screen {
 
 		game.batch.begin();
 		game.sprite.draw(game.batch);
+		logo.draw(game.batch);
 		game.batch.end();
 		
 		game.stage.act(Gdx.graphics.getDeltaTime());
