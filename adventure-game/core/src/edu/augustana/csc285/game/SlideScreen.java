@@ -13,9 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
@@ -38,7 +36,6 @@ public class SlideScreen implements Screen {
 	
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
-		mainGameData = GameData.fromJSONFile("assets/GameData/SampleGame.json");
 		mainGameData = GameData.fromJSONFile("assets/GameData/SwedishImmigrant.json");
 		
 		initialize();
@@ -115,10 +112,10 @@ public class SlideScreen implements Screen {
 		if (currentSlide.getSlideType() == HISTORICAL_POP_UP)
 			gameTextWidth = 550;
 		gameText.setWidth(gameTextWidth);
-		gameText.setAlignment(Align.left);
+		gameText.setAlignment(Align.topLeft);
 
-	    scrollPane = new ScrollPane(gameText);
-	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 280, gameTextWidth, 280);
+	    scrollPane = new ScrollPane(gameText, game.skin);
+	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 280, gameTextWidth, 250);
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);
 		
@@ -150,18 +147,18 @@ public class SlideScreen implements Screen {
 		
 		// Initialize table & add buttons to table
 		table = new Table();
-		table.setWidth(game.stage.getWidth());
+		table.setWidth(Gdx.graphics.getWidth());
 		table.align(Align.topLeft);
 		
 		table.setPosition(0, game.stage.getHeight());
 
 		table.padLeft(40);
 
-		table.add(title).padBottom(270).align(Align.left).setActorWidth(350);
+		table.add(title).padTop(10).padBottom(270).align(Align.left).setActorWidth(350);
 		table.row();
 		
 		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
-			table.add(buttons.get(i)).width(280).padBottom(10);
+			table.add(buttons.get(i)).width(260).padTop(10);
 			table.row();
 		}
 		
