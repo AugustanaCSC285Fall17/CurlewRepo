@@ -102,6 +102,9 @@ public class SlideScreen implements Screen {
 		title = new Label(currentSlide.getTitle(), game.skin, "title");
 		title.setWrap(true);
 		title.setWidth(350);
+		title.pack();
+		title.setWidth(350);
+		title.setPosition(40, Gdx.graphics.getHeight() - title.getHeight() - 20);
 		title.setAlignment(Align.left);
 		
 		// Initialize game text
@@ -115,7 +118,7 @@ public class SlideScreen implements Screen {
 		gameText.setAlignment(Align.topLeft);
 
 	    scrollPane = new ScrollPane(gameText, game.skin);
-	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 280, gameTextWidth, 250);
+	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 250, gameTextWidth, 220);
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);
 		
@@ -153,18 +156,16 @@ public class SlideScreen implements Screen {
 		table.setPosition(0, game.stage.getHeight());
 
 		table.padLeft(40);
-
-		table.add(title).padTop(10).padBottom(270).align(Align.left).setActorWidth(350);
-		table.row();
 		
 		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
 			table.add(buttons.get(i)).width(260).padTop(10);
 			table.row();
 		}
 		
-		table.padTop(10);
+		table.padTop(250 + title.getHeight());
 		
 		// Add actors
+		game.stage.addActor(title);
 		game.stage.addActor(table);
 		game.stage.addActor(scrollPane);
 		

@@ -70,7 +70,7 @@
     {
       "title": "You’ve received a letter from America.",
       "imageFileName": "image9.jpg",
-      "gameText": "Receiving letters from those who journeyed to America prompted many of your family friends to pursue their own journey over. Life must be treating them well in America— economic opportunities, building their own legacy and family. The American Dream is a strong pull for Swedes, yourself included.\n\n\nChoose a letter to read:",
+      "gameText": "Receiving letters from those who journeyed to America prompted many of your family friends to pursue their own journey over. Life must be treating them well in America— economic opportunities, building their own legacy and family. The American Dream is a strong pull for Swedes, yourself included.\nChoose a letter to read:",
       "urlText": "dieUrl",
       "slideType" : 0,
       "gameOver": false,
