@@ -3,6 +3,8 @@ package edu.augustana.csc285.game.datamodel;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +22,7 @@ public class GameData {
 	private List<Slide> slides;
 	private Player player;
 	private int currentSlideIndex;
+	public String saveName="SavedFile";
 
 	public GameData() { // needed for GSon
 		slides = new ArrayList<Slide>();
@@ -119,5 +122,21 @@ public class GameData {
 		}
 		
 		return null;
+	}
+	public void saveAs(String saveName){
+		this.saveName=saveName;
+		save();
+	}
+
+	public void save() {
+		String toSave = toJSON();
+		String path = "assets/GameData/"+saveName+".json";
+		try {
+			FileWriter writer = new FileWriter(path);
+			writer.write(toSave);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 }

@@ -32,6 +32,9 @@ public class MainPaneController {
 	private GameData data = new GameData();
 	private int slideAtTextIndex = 0;
 	private Stage mainWindow;
+	
+	@FXML
+	private Button saveButton;
 
 	// Slide Editor Fields
 	private SlideEditor se = new SlideEditor(data);
@@ -77,6 +80,12 @@ public class MainPaneController {
 	@FXML
 	private void initialize() {
 		// Slide slide = new Slide();
+	}
+	
+	@FXML
+	private void handleSaveButton(){
+		data.save();
+	
 	}
 
 	public void setStageAndSetupListeners(Stage primaryStage) {
