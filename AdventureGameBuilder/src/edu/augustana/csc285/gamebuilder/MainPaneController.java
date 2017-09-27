@@ -239,7 +239,7 @@ public class MainPaneController {
 	}
 
 	private boolean wasSlideSelected() {
-		if (se.getCurrentSlide() == -1) {
+		if (!se.wasSlideSelected()) {
 			new Alert(AlertType.ERROR, "Please select a slide first").showAndWait();
 			return false;
 		}
@@ -256,7 +256,7 @@ public class MainPaneController {
 
 	@FXML
 	private void handleSelectActionChoiceTextField() {
-		if (slideListIsNotEmpty()) {
+		if (this.wasSlideSelected()) {
 			if (isInputInt(selectActionChoiceTextField.getText())) {
 				int index = Integer.parseInt(selectActionChoiceTextField.getText());
 				if (isIndexAnActionChoice(index)) {
@@ -276,13 +276,13 @@ public class MainPaneController {
 
 	@FXML
 	private void handleAceChoiceSubmitButton() {
-		if (aceSelected())
+		if (wasAceSelected())
 			ace.setChoiceText(aceChoiceSubmitButton.getText());
 	}
 
 	@FXML
 	private void handleAceSetDestinationSlideIndexField() {
-		if (aceSelected()) {
+		if (wasAceSelected()) {
 			String input = aceSetDestinationSlideIndexField.getText();
 			if (isInputInt(input)) {
 				int index = Integer.parseInt(input);
@@ -293,20 +293,17 @@ public class MainPaneController {
 		}
 	}
 
-
-	private boolean aceSelected(){
-		if(ace.aceSelected()){
+	private boolean wasAceSelected() {
+		if (ace.aceSelected()) {
 			return true;
 		} else
 			new Alert(AlertType.ERROR, "Please select an action choice").showAndWait();
 		return false;
 	}
-	
+
 	@FXML
 	private void handleRemoveSlideTextField() {
 
 	}
-	
-	
-	
+
 }

@@ -54,4 +54,12 @@ public class SlideEditor {
 		Files.copy(slideImageIn.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);
 		data.getSlide(currentSlideIndex).setImageFileName(path);
 	}
+
+	public boolean wasSlideSelected() {
+		if (currentSlideIndex == -1) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }
