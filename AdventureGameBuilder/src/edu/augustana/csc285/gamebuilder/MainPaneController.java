@@ -52,7 +52,7 @@ public class MainPaneController {
 	@FXML
 	private Button showSlideInfoButton;
 	@FXML
-	private Button removeSlideTextField;
+	private TextField removeSlideTextField;
 
 	// ActionChoiceEditor Fields
 	private ActionChoiceEditor ace = new ActionChoiceEditor(data, se);
