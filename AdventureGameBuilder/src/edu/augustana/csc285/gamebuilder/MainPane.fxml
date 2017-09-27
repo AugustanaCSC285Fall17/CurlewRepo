@@ -72,8 +72,7 @@
                         <Button fx:id="submitButton" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
                         <Button fx:id="addActionChoiceButton" layoutX="234.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleAddActionChoiceButton" text="Add Action Choice " />
                         <Button fx:id="showSlideInfoButton" layoutX="233.0" layoutY="204.0" mnemonicParsing="false" onAction="#handleShowSlideInfoButton" text="Show Slide Info" />
-                        <Label layoutX="234.0" layoutY="245.0" text="Remove Slide at Index:" />
-                        <TextField fx:id="removeSlideTextField" layoutX="390.0" layoutY="240.0" onAction="#handleRemoveSlideTextField" prefHeight="11.0" prefWidth="57.0" />
+                        <Button fx:id="removeSlideButton" layoutX="234.0" layoutY="241.0" mnemonicParsing="false" onAction="#handleRemoveSlideButton" text="Remove Current Slide" />
                      </children></AnchorPane>
             </content>
           </Tab>

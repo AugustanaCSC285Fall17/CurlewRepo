@@ -52,7 +52,7 @@ public class MainPaneController {
 	@FXML
 	private Button showSlideInfoButton;
 	@FXML
-	private TextField removeSlideTextField;
+	private Button removeSlideButton;
 
 	// ActionChoiceEditor Fields
 	private ActionChoiceEditor ace = new ActionChoiceEditor(data, se);
@@ -302,7 +302,17 @@ public class MainPaneController {
 	}
 
 	@FXML
-	private void handleRemoveSlideTextField() {
+	private void handleRemoveSlideButton() {
+		if(this.wasSlideSelected()){
+			se.removeSlide();
+			currentSlideLabel.setText("N/A");
+			currentSlideLabel1.setText("N/A");
+			se.setCurrentSlide(-1);
+			selectSlideNumberTextField.clear();
+			selectActionChoiceTextField.clear();
+			setGameTextArea.clear();
+			changeTitleTextField.clear();
+		}
 
 	}
 

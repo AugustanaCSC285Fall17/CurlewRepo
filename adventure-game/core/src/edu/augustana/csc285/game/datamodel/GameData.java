@@ -1,5 +1,6 @@
 package edu.augustana.csc285.game.datamodel;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -51,6 +52,8 @@ public class GameData {
 				}
 			}
 		}
+		File removeImage = new File(slides.get(index).getImageFileName());
+		removeImage.delete();
 		slides.remove(index);
 	}
 
