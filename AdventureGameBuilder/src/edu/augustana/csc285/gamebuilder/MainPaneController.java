@@ -290,11 +290,6 @@ public class MainPaneController {
 		}
 	}
 
-	@FXML
-	private void handleRemoveSlideTextField() {
-
-	}
-	
 	private boolean aceSelected(){
 		if(ace.aceSelected()){
 			return true;
@@ -302,4 +297,12 @@ public class MainPaneController {
 		new Alert(AlertType.ERROR, "Please select an action choice");
 		return false;
 	}
+	
+	@FXML
+	private void handleRemoveSlideTextField() {
+
+	}
+	
+	
+	
 }
