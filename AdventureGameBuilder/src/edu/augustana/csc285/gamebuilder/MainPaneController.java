@@ -293,16 +293,20 @@ public class MainPaneController {
 		}
 	}
 
-	@FXML
-	private void handleRemoveSlideTextField() {
 
-	}
-
-	private boolean aceSelected() {
-		if (ace.aceSelected()) {
+	private boolean aceSelected(){
+		if(ace.aceSelected()){
 			return true;
 		} else
 			new Alert(AlertType.ERROR, "Please select an action choice");
 		return false;
 	}
+	
+	@FXML
+	private void handleRemoveSlideTextField() {
+
+	}
+	
+	
+	
 }
