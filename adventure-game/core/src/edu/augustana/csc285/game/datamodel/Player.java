@@ -3,15 +3,18 @@ import java.util.*;
 
 public class Player {
 
+	public static final int MALE = 0;
+	public static final int FEMALE = 1;
+	
 	private String name;
-	private boolean male;
+	private int gender;
 	private TreeMap<String, Integer> stats;
 	private TreeMap<String, Integer> inventory;
 
 	// constructor
 	public Player(String name) {
 		this.name = name;
-		male = true;
+		gender = MALE;
 		stats = new TreeMap<String, Integer>();
 		inventory = new TreeMap<String, Integer>();
 	}
@@ -27,12 +30,12 @@ public class Player {
 		this.name = name;
 	}
 	
-	public boolean isMale() {
-		return male;
+	public int getGender() {
+		return gender;
 	}
 
-	public void setMale(boolean male) {
-		this.male = male;
+	public void setGender(int gender) {
+		this.gender = gender;
 	}
 
 	// returns the player stat value stored at a given key s
