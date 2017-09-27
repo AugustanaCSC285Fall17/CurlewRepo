@@ -171,6 +171,21 @@
           "visible": false
         }
       ]
+    },
+    {
+      "title": "Inventory",
+      "imageFileName": "facts.png",
+      "gameText": "",
+      "urlText": "dieUrl",
+      "slideType" : 1,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Back",
+          "destinationSlideIndex": 11,
+          "visible": false
+        }
+      ]
     }
   ]
 }

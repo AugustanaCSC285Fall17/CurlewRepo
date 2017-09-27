@@ -25,6 +25,9 @@ public class SlideScreen implements Screen {
 	public static final int NORMAL_SLIDE = 0;
 	public static final int HISTORICAL_POP_UP = 1;
 	
+	public static final int INVENTORY_SLIDE_INDEX = 11;
+	public static final int GAME_OVER_SLIDE_INDEX = -1;
+	
 	private AdventureGame game;
 	private Table table;
 	private GameData mainGameData;
@@ -132,15 +135,10 @@ public class SlideScreen implements Screen {
 			TextButton newButton = new TextButton(currentChoiceText, game.skin);
 			
 			newButton.addListener(new ClickListener(){
-				
+					
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
-					if (currentChoice.getDestinationSlideIndex() == -1)
-						Gdx.app.exit();
-					else
-						mainGameData.setCurrentSlideIndex(currentChoice.getDestinationSlideIndex());
-					
-
+					mainGameData.setCurrentSlideIndex(currentChoice.getDestinationSlideIndex());
 					initialize();
 				}
 			});
@@ -158,11 +156,11 @@ public class SlideScreen implements Screen {
 		table.padLeft(40);
 		
 		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
-			table.add(buttons.get(i)).width(260).padTop(10);
+			table.add(buttons.get(i)).width(260).padTop(5);
 			table.row();
 		}
 		
-		table.padTop(250 + title.getHeight());
+		table.padTop(260 + title.getHeight());
 		
 		// Add actors
 		game.stage.addActor(title);
