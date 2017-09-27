@@ -118,9 +118,12 @@ public class MainPaneController {
 
 	@FXML
 	private void handleShowSlideAtTextField() {
-		slideAtTextIndex = Integer.parseInt(showSlideAtTextField.getText());
-		if (isIndexASlide(slideAtTextIndex)) {
-			new Alert(AlertType.INFORMATION, data.getSlide(slideAtTextIndex).toString()).showAndWait();
+		String input = showSlideAtTextField.getText();
+		if (isInputInt(input)) {
+			slideAtTextIndex = Integer.parseInt(input);
+			if (isIndexASlide(slideAtTextIndex)) {
+				new Alert(AlertType.INFORMATION, data.getSlide(slideAtTextIndex).toString()).showAndWait();
+			}
 		}
 	}
 
@@ -253,7 +256,7 @@ public class MainPaneController {
 
 	@FXML
 	private void handleSelectActionChoiceTextField() {
-		if (this.slideListIsNotEmpty()) {
+		if (slideListIsNotEmpty()) {
 			if (isInputInt(selectActionChoiceTextField.getText())) {
 				int index = Integer.parseInt(selectActionChoiceTextField.getText());
 				if (isIndexAnActionChoice(index)) {
@@ -273,8 +276,8 @@ public class MainPaneController {
 
 	@FXML
 	private void handleAceChoiceSubmitButton() {
-		if(aceSelected())
-		ace.setChoiceText(aceChoiceSubmitButton.getText());
+		if (aceSelected())
+			ace.setChoiceText(aceChoiceSubmitButton.getText());
 	}
 
 	@FXML
@@ -294,12 +297,12 @@ public class MainPaneController {
 	private void handleRemoveSlideTextField() {
 
 	}
-	
-	private boolean aceSelected(){
-		if(ace.aceSelected()){
+
+	private boolean aceSelected() {
+		if (ace.aceSelected()) {
 			return true;
-		}else
-		new Alert(AlertType.ERROR, "Please select an action choice");
+		} else
+			new Alert(AlertType.ERROR, "Please select an action choice");
 		return false;
 	}
 }
