@@ -17,7 +17,7 @@ import com.google.gson.JsonParser;
  */
 public class GameData {
 	private List<Slide> slides;
-	private int currentSlideIndex = 0;
+	private int currentSlideIndex;
 
 	public GameData() { // needed for GSon
 		slides = new ArrayList<Slide>();

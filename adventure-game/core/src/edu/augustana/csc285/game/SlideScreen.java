@@ -40,7 +40,7 @@ public class SlideScreen implements Screen {
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
 		mainGameData = GameData.fromJSONFile("assets/GameData/SwedishImmigrant.json");
-		
+		mainGameData.setCurrentSlideIndex(11);
 		initialize();
 		
 		Gdx.input.setInputProcessor(game.stage);
