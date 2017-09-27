@@ -17,6 +17,7 @@ public class Slide {
 	public Slide() {
 		this.title = "NewSlide";
 		this.imageFileName = "";
+		this.slideType = 0;
 		this.actionChoices = new ArrayList<>();
 		
 	}
