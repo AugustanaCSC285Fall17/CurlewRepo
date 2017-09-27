@@ -5,6 +5,10 @@ public class Player {
 
 	public static final int MALE = 0;
 	public static final int FEMALE = 1;
+	public static final int GAY = 2;
+	public static final int LESBIAN = 3;
+	public static final int TRANSGENDER = 4;
+	public static final int BISEXUAL = 5;
 	
 	private String name;
 	private int gender;
