@@ -50,8 +50,11 @@ public class Player {
 	}
 
 	// returns the player inventory value stored at a given key s
-	public int getInventory(String s) {
-		return inventory.get(s);
+	public int getItemQuantity(String s) {
+		if (inventory.containsKey(s))
+			return inventory.get(s);
+		else
+			return 0;
 	}
 
 	// changes the player stat value stored at a given key
@@ -60,7 +63,7 @@ public class Player {
 	}
 
 	// changes the player inventory value stored at a given key
-	public void setInventory(String s, int value) {
+	public void addItem(String s, int value) {
 		inventory.put(s, value);
 	}
 	

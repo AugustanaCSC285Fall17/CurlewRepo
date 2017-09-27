@@ -21,7 +21,7 @@ public class GameDataTester{
 		gd.addSlide(s1);
 		gd.addSlide(s2);
 		
-		gd.getPlayer().setInventory("Bible", 0);
+		gd.getPlayer().addItem("Bible", 0);
 		System.out.println(s0);
 		
 		String serializedJSONText = gd.toJSON();
@@ -37,7 +37,7 @@ public class GameDataTester{
 		
 		System.out.println(gd.getSlide(0).getActionChoices().get(1).getChoiceText());
 		System.out.println(gd.getSlide(0).getActionChoices().get(1).getDestinationSlideIndex());
-		System.out.println("Bible: " + gd.getPlayer().getInventory("Bible"));
+		System.out.println("Bible: " + gd.getPlayer().getItemQuantity("Bible"));
 		System.out.println(gd.toJSON());
 	}
 
