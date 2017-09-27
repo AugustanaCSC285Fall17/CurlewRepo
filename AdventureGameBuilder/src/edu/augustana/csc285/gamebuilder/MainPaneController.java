@@ -11,11 +11,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 
 import javax.imageio.ImageIO;
 
@@ -35,6 +37,7 @@ public class MainPaneController {
 	
 	@FXML
 	private Button saveButton;
+	@FXML Button saveAsButton;
 
 	// Slide Editor Fields
 	private SlideEditor se = new SlideEditor(data);
@@ -85,7 +88,21 @@ public class MainPaneController {
 	@FXML
 	private void handleSaveButton(){
 		data.save();
+	}
 	
+	//http://code.makery.ch/blog/javafx-dialogs-official/
+	@FXML
+	private void handleSaveAsButton(){
+		TextInputDialog dialog = new TextInputDialog("Save As");
+		dialog.setTitle("Save As");
+		dialog.setContentText("Please enter desired name:");
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()){
+		    data.saveAs(result.get());
+		}else{
+			new Alert(AlertType.ERROR, "File not saved");
+		}
+		
 	}
 
 	public void setStageAndSetupListeners(Stage primaryStage) {
