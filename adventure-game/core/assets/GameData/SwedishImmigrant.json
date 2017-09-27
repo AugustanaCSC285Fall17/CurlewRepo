@@ -177,7 +177,7 @@
       "imageFileName": "facts.png",
       "gameText": "",
       "urlText": "dieUrl",
-      "slideType" : 1,
+      "slideType" : 2,
       "gameOver": false,
       "actionChoices": [
         {
@@ -202,5 +202,25 @@
         }
       ]
     }
-  ]
+  ],
+  "player": {
+    "name": "Minh!!",
+    "male": true,
+    "stats": {},
+    "inventory": {
+      "John Deere letter": 0,
+      "Illinois letter": 0,
+      "Washington letter": 0,
+      "Minnesota letter": 0,
+      "Official Paper": 0,
+      "Forged Paper": 0,
+      "Bible": 0,
+      "Family heirloom": 0,
+      "Sewing materials": 0,
+      "Medicine": 0,
+      "Cured Meat": 0,
+      "Ticket": 0
+    }
+  },
+  "currentSlideIndex": 0
 }

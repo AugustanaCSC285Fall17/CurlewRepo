@@ -24,6 +24,7 @@ import edu.augustana.csc285.game.datamodel.Slide;
 public class SlideScreen implements Screen {
 	public static final int NORMAL_SLIDE = 0;
 	public static final int HISTORICAL_POP_UP = 1;
+	public static final int INVENTORY_SLIDE = 2;
 	
 	public static final int INVENTORY_SLIDE_INDEX = 11;
 	public static final int GAME_OVER_SLIDE_INDEX = -1;
@@ -114,9 +115,12 @@ public class SlideScreen implements Screen {
 		gameText = new Label(currentSlide.getGameText(), game.skin);
 		gameText.setWrap(true);
 		
-		int gameTextWidth = 280;
-		if (currentSlide.getSlideType() == HISTORICAL_POP_UP)
+		int gameTextWidth = 0;
+		if (currentSlide.getSlideType() == NORMAL_SLIDE)
+			gameTextWidth = 280;
+		else if (currentSlide.getSlideType() == HISTORICAL_POP_UP)
 			gameTextWidth = 550;
+		
 		gameText.setWidth(gameTextWidth);
 		gameText.setAlignment(Align.topLeft);
 
