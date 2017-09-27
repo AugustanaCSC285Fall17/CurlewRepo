@@ -205,7 +205,7 @@
   ],
   "player": {
     "name": "Minh!!",
-    "male": true,
+    "gender": 0,
     "stats": {},
     "inventory": {
       "John Deere letter": 0,
