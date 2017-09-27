@@ -9,6 +9,8 @@ public class Player {
 	public static final int LESBIAN = 3;
 	public static final int TRANSGENDER = 4;
 	public static final int BISEXUAL = 5;
+	public static final int QUESTIONING = 6;
+	public static final int OTHER = 7;
 	
 	private String name;
 	private int gender;
