@@ -270,9 +270,11 @@ public class MainPaneController {
 
 	@FXML
 	private void handleShowAceInfoButton() {
+		if(wasAceSelected()){
 		new Alert(AlertType.INFORMATION,
 				data.getSlide(se.getCurrentSlide()).getActionChoicesAt(ace.currentActionChoiceIndex).toString())
 						.showAndWait();
+		}
 	}
 
 	@FXML
