@@ -298,7 +298,7 @@ public class MainPaneController {
 		if(ace.aceSelected()){
 			return true;
 		} else
-			new Alert(AlertType.ERROR, "Please select an action choice");
+			new Alert(AlertType.ERROR, "Please select an action choice").showAndWait();
 		return false;
 	}
 	
