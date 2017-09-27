@@ -160,7 +160,7 @@ public class SlideScreen implements Screen {
 			table.row();
 		}
 		
-		table.padTop(260 + title.getHeight());
+		table.padTop(250 + title.getHeight());
 		
 		// Add actors
 		game.stage.addActor(title);
