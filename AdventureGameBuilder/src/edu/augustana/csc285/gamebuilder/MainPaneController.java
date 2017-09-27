@@ -103,17 +103,18 @@ public class MainPaneController {
 	}
 
 	private boolean isIndexAnActionChoice(int index) {
-		if (!slideListIsNotEmpty()) {
+		if (!wasSlideSelected()) {
 			return false;
-		} else {
-			if (aceListIsNotEmpty()) {
-				if (index < 0 || index > data.getSlide(se.getCurrentSlide()).getActionChoiceListSize() - 1) {
-					new Alert(AlertType.ERROR, "There is no Action Choice at this index").showAndWait();
-					return false;
-				}
-			}
 		}
-		return true;
+		if (aceListIsNotEmpty()) {
+			if (index < 0 || index > data.getSlide(se.getCurrentSlide()).getActionChoiceListSize() - 1) {
+				new Alert(AlertType.ERROR, "There is no Action Choice at this index").showAndWait();
+				return false;
+			}
+			return true;
+		}
+		return false;
+
 	}
 
 	@FXML
@@ -212,7 +213,7 @@ public class MainPaneController {
 			return false;
 		}
 		if (data.getSlide(se.getCurrentSlide()).getActionChoiceListSize() == 0) {
-			new Alert(AlertType.INFORMATION, "There are no slides in the list").showAndWait();
+			new Alert(AlertType.INFORMATION, "There are no actionChoices in the list").showAndWait();
 			return false;
 		}
 		return true;
@@ -303,7 +304,7 @@ public class MainPaneController {
 
 	@FXML
 	private void handleRemoveSlideButton() {
-		if(this.wasSlideSelected()){
+		if (this.wasSlideSelected()) {
 			se.removeSlide();
 			currentSlideLabel.setText("N/A");
 			currentSlideLabel1.setText("N/A");
