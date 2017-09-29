@@ -19,6 +19,14 @@ import com.google.gson.JsonParser;
  * game.
  */
 public class GameData {
+	public static final int NORMAL_SLIDE = 0;
+	public static final int HISTORICAL_POP_UP = 1;
+	public static final int INVENTORY_SLIDE = 2;
+	
+	private int startSlideIndex;
+	private int inventorySlideIndex;
+	private int gameOverSlideIndex;
+	
 	private List<Slide> slides;
 	private Player player;
 	private int currentSlideIndex;
@@ -27,6 +35,9 @@ public class GameData {
 	public GameData() { // needed for GSon
 		slides = new ArrayList<Slide>();
 		player = new Player("Minh!!");
+		startSlideIndex = 0;
+		inventorySlideIndex = 1;
+		gameOverSlideIndex = 2;
 	}
 
 	public Slide getSlide(int index) {
@@ -81,6 +92,30 @@ public class GameData {
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
+	public int getStartSlideIndex() {
+		return startSlideIndex;
+	}
+
+	public void setStartSlideIndex(int startSlideIndex) {
+		this.startSlideIndex = startSlideIndex;
+	}
+
+	public int getInventorySlideIndex() {
+		return inventorySlideIndex;
+	}
+
+	public void setInventorySlideIndex(int inventorySlideIndex) {
+		this.inventorySlideIndex = inventorySlideIndex;
+	}
+
+	public int getGameOverSlideIndex() {
+		return gameOverSlideIndex;
+	}
+
+	public void setGameOverSlideIndex(int gameOverSlideIndex) {
+		this.gameOverSlideIndex = gameOverSlideIndex;
+	}
+
 
 	/**
 	 * @return a serialized JSON-format string that represents this GameData

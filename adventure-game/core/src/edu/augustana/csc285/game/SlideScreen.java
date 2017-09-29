@@ -22,12 +22,6 @@ import edu.augustana.csc285.game.datamodel.GameData;
 import edu.augustana.csc285.game.datamodel.Slide;
 
 public class SlideScreen implements Screen {
-	public static final int NORMAL_SLIDE = 0;
-	public static final int HISTORICAL_POP_UP = 1;
-	public static final int INVENTORY_SLIDE = 2;
-	
-	public static final int INVENTORY_SLIDE_INDEX = 11;
-	public static final int GAME_OVER_SLIDE_INDEX = -1;
 	
 	private AdventureGame game;
 	private Table table;
@@ -41,7 +35,8 @@ public class SlideScreen implements Screen {
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
 		mainGameData = GameData.fromJSONFile("assets/GameData/SwedishImmigrant.json");
-		mainGameData.setCurrentSlideIndex(11);
+		mainGameData.setCurrentSlideIndex(mainGameData.getStartSlideIndex());
+		
 		initialize();
 		
 		Gdx.input.setInputProcessor(game.stage);
@@ -92,7 +87,6 @@ public class SlideScreen implements Screen {
 	
 	// Initialize slide elements
 	private void initialize() {
-		
 		// Clear the stage before changing slide
 		game.stage.clear();
 		
@@ -102,36 +96,35 @@ public class SlideScreen implements Screen {
 		// Get the current slide object to initialize buttons & text etc.
 		currentSlide = mainGameData.getSlide(mainGameData.getCurrentSlideIndex());
 		
-		// Initialize title text
-		title = new Label(currentSlide.getTitle(), game.skin, "title");
-		title.setWrap(true);
-		title.setWidth(350);
-		title.pack();
-		title.setWidth(350);
-		title.setPosition(40, Gdx.graphics.getHeight() - title.getHeight() - 20);
-		title.setAlignment(Align.left);
+		// Initialize title
+		createTitle();
 		
-		// Initialize game text
-		gameText = new Label(currentSlide.getGameText(), game.skin);
-		gameText.setWrap(true);
+		// Initialize game text & scroll panel on top of it
+		createGameTextWithScrollPane();
 		
-		int gameTextWidth = 0;
-		if (currentSlide.getSlideType() == NORMAL_SLIDE)
-			gameTextWidth = 280;
-		else if (currentSlide.getSlideType() == HISTORICAL_POP_UP)
-			gameTextWidth = 550;
-		
-		gameText.setWidth(gameTextWidth);
-		gameText.setAlignment(Align.topLeft);
-
-	    scrollPane = new ScrollPane(gameText, game.skin);
-	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 250, gameTextWidth, 220);
-	    scrollPane.layout();
-	    scrollPane.setTouchable(Touchable.enabled);
-		
+	    // print out title height for debugging
 	    System.err.println(title.getHeight());
 	    
-		// Loop & create buttons
+	    // Initialize choice buttons
+		createChoiceButtons();
+		
+		// initialize table
+		createTable();
+		
+		// Add actors
+		game.stage.addActor(title);
+		game.stage.addActor(table);
+		game.stage.addActor(scrollPane);
+		
+		// Set the background
+		float size = Gdx.graphics.getHeight();
+		game.batch = new SpriteBatch();
+		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/" + currentSlide.getImageFileName())));
+		game.sprite.setPosition(Gdx.graphics.getWidth() - size, 0);
+		game.sprite.setSize(size, size);
+	}
+	
+	private void createChoiceButtons() {
 		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
 			ActionChoice currentChoice = currentSlide.getActionChoicesAt(i);
 			String currentChoiceText = currentChoice.getChoiceText();
@@ -149,8 +142,9 @@ public class SlideScreen implements Screen {
 			buttons.add(newButton);
 			
 		}
-		
-		// Initialize table & add buttons to table
+	}
+	
+	private void createTable() {
 		table = new Table();
 		table.setWidth(Gdx.graphics.getWidth());
 		table.align(Align.topLeft);
@@ -165,18 +159,35 @@ public class SlideScreen implements Screen {
 		}
 		
 		table.padTop(250 + title.getHeight());
+	}
+	
+	private void createGameTextWithScrollPane() {
+		gameText = new Label(currentSlide.getGameText(), game.skin);
+		gameText.setWrap(true);
 		
-		// Add actors
-		game.stage.addActor(title);
-		game.stage.addActor(table);
-		game.stage.addActor(scrollPane);
+		int gameTextWidth = 0;
+		if (currentSlide.getSlideType() == GameData.NORMAL_SLIDE)
+			gameTextWidth = 280;
+		else if (currentSlide.getSlideType() == GameData.HISTORICAL_POP_UP)
+			gameTextWidth = 550;
 		
-		// Set the background
-		float size = Gdx.graphics.getHeight();
-		game.batch = new SpriteBatch();
-		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/" + currentSlide.getImageFileName())));
-		game.sprite.setPosition(Gdx.graphics.getWidth() - size, 0);
-		game.sprite.setSize(size, size);
+		gameText.setWidth(gameTextWidth);
+		gameText.setAlignment(Align.topLeft);
+		
+	    scrollPane = new ScrollPane(gameText, game.skin);
+	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 250, gameTextWidth, 220);
+	    scrollPane.layout();
+	    scrollPane.setTouchable(Touchable.enabled);
+	}
+	
+	private void createTitle() {
+		title = new Label(currentSlide.getTitle(), game.skin, "title");
+		title.setWrap(true);
+		title.setWidth(350);
+		title.pack();
+		title.setWidth(350);
+		title.setPosition(40, Gdx.graphics.getHeight() - title.getHeight() - 20);
+		title.setAlignment(Align.left);
 	}
 
 }
