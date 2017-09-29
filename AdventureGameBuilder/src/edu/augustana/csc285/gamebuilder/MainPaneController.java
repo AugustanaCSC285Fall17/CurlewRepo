@@ -309,7 +309,7 @@ public class MainPaneController {
 	@FXML
 	private void handleAceChoiceSubmitButton() {
 		if (wasAcSelected())
-			ace.setChoiceText(aceChoiceSubmitButton.getText());
+			ace.setChoiceText(aceChoiceTextArea.getText());
 	}
 
 	@FXML
