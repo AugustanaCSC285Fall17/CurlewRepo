@@ -23,12 +23,6 @@ import edu.augustana.csc285.game.datamodel.GameData;
 import edu.augustana.csc285.game.datamodel.Slide;
 
 public class SlideScreen implements Screen {
-	public static final int NORMAL_SLIDE = 0;
-	public static final int HISTORICAL_POP_UP = 1;
-	public static final int INVENTORY_SLIDE = 2;
-	
-	public static final int INVENTORY_SLIDE_INDEX = 11;
-	public static final int GAME_OVER_SLIDE_INDEX = -1;
 	
 	private AdventureGame game;
 	private Table table;
@@ -42,9 +36,9 @@ public class SlideScreen implements Screen {
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
 		
-		mainGameData = GameData.fromJSONFile("assets/GameData/SampleGame.json");
-
-		mainGameData = GameData.fromJSONFile("assets/GameData/SwedishImmigrant.json");
+		//mainGameData = GameData.fromJSONFile(Gdx.files.internal("assets/GameData/SampleGame.json"));
+		mainGameData = GameData.fromJSONFile(Gdx.files.internal("assets/GameData/SwedishImmigrant.json").file());
+		
 		mainGameData.setCurrentSlideIndex(11);
 		initialize();
 		
@@ -120,9 +114,9 @@ public class SlideScreen implements Screen {
 		gameText.setWrap(true);
 		
 		int gameTextWidth = 0;
-		if (currentSlide.getSlideType() == NORMAL_SLIDE)
+		if (currentSlide.getSlideType() == GameData.NORMAL_SLIDE)
 			gameTextWidth = 280;
-		else if (currentSlide.getSlideType() == HISTORICAL_POP_UP)
+		else if (currentSlide.getSlideType() == GameData.HISTORICAL_POP_UP)
 			gameTextWidth = 550;
 		
 		gameText.setWidth(gameTextWidth);

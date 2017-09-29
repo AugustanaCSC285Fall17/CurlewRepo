@@ -114,7 +114,7 @@ public class MainPaneController {
 	private void handleLoadButton() throws IOException{
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Chose a file to load");
-		this.data=GameData.load(fileChooser.showOpenDialog(mainWindow));
+		this.data=GameData.fromJSONFile(fileChooser.showOpenDialog(mainWindow));
 	}
 
 	public void setStageAndSetupListeners(Stage primaryStage) {

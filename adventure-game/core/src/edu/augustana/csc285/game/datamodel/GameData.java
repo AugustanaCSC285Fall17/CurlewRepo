@@ -24,6 +24,7 @@ public class GameData {
 	public static final int NORMAL_SLIDE = 0;
 	public static final int HISTORICAL_POP_UP = 1;
 	public static final int INVENTORY_SLIDE = 2;
+	public static final int LETTER_SLIDE = 3;
 
 	private int startSlideIndex;
 	private int inventorySlideIndex;
@@ -136,15 +137,15 @@ public class GameData {
 
 	/**
 	 * 
-	 * @param fileAddress
+	 * @param file
 	 *            the address of the JSON file
 	 * @return a GamaData object, which is created from deserializing the JSON
 	 *         data imported from the file.
 	 */
-	public static GameData fromJSONFile(String fileAddress) {
+	public static GameData fromJSONFile(File file) {
 		JsonParser parser = new JsonParser();
 		try {
-			Object obj = parser.parse(new FileReader(Gdx.files.internal(fileAddress).file()));
+			Object obj = parser.parse(new FileReader(file));
 
 			JsonObject jsonData = (JsonObject) obj;
 
@@ -173,39 +174,5 @@ public class GameData {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-	}
-
-	//https://www.caveofprogramming.com/java/java-file-reading-and-writing-files-in-java.html
-	public static GameData load(File inFile) throws FileNotFoundException{
-
-		 String line = null;
-		 String toLoad = "";
-		 
-        try {
-            // FileReader reads text files in the default encoding.
-            FileReader fileReader = 
-                new FileReader(inFile);
-
-            // Always wrap FileReader in BufferedReader.
-            BufferedReader bufferedReader = 
-                new BufferedReader(fileReader);
-
-            while((line = bufferedReader.readLine()) != null) {
-             //   System.out.println(line);
-            	toLoad+=line;
-            } 
-            bufferedReader.close(); 
-        }
-        catch(FileNotFoundException ex) {
-                     
-        }
-        catch(IOException ex) {
-          
-        }
-       GameData newGame= fromJSON(toLoad);
-       return newGame;
-
-	
 	}
 }
