@@ -2,7 +2,7 @@ package edu.augustana.csc285.game.datamodel;
 
 import java.util.ArrayList;
 
-public class ActionChoice implements Feasible {
+public class ActionChoice {//implements Feasible 
 	private String choiceText = "";
 	private int destinationSlideIndex = -1;
 	private boolean visible;
