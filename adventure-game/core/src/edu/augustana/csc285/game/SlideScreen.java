@@ -162,7 +162,8 @@ public class SlideScreen implements Screen {
 		int gameTextWidth = 0;
 		if (currentSlide.getSlideType() == GameData.NORMAL_SLIDE)
 			gameTextWidth = 280;
-		else if (currentSlide.getSlideType() == GameData.HISTORICAL_POP_UP)
+		else if (currentSlide.getSlideType() == GameData.HISTORICAL_POP_UP 
+				|| currentSlide.getSlideType() == GameData.INVENTORY_SLIDE)
 			gameTextWidth = 550;
 		
 		gameText.setWidth(gameTextWidth);
