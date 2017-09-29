@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class ActionChoice implements Feasible {
 	private String choiceText = "";
 	private int destinationSlideIndex = -1;
-	private boolean visable;
+	private boolean visible;
 	private String rejText;
 	private ArrayList<Feasible> feasibilityReq;
 	private ArrayList<Effect> effectList;
@@ -17,7 +17,7 @@ public class ActionChoice implements Feasible {
 		this.rejText = rejText;
 		feasibilityReq = new ArrayList<Feasible>();
 		effectList = new ArrayList<Effect>();
-		visable = true;
+		visible = true;
 
 	}
 
@@ -49,7 +49,7 @@ public class ActionChoice implements Feasible {
 
 	// test if the option is visable and return true or false
 	public boolean isVisible() {
-		return visable;
+		return visible;
 	}
 
 	// Get the effect that the option cost and return it
@@ -73,7 +73,7 @@ public class ActionChoice implements Feasible {
 	}
 
 	public String toString() {
-		return "choiceText: " + choiceText + " | destinationSlideIndex: " + destinationSlideIndex;
+		return "choiceText: " + choiceText + "\ndestinationSlideIndex: " + destinationSlideIndex;
 	}
 
 	

@@ -17,10 +17,12 @@ import com.google.gson.JsonParser;
  */
 public class GameData {
 	private List<Slide> slides;
-	private int currentSlideIndex = 0;
+	private Player player;
+	private int currentSlideIndex;
 
 	public GameData() { // needed for GSon
 		slides = new ArrayList<Slide>();
+		player = new Player("Minh!!");
 	}
 
 	public Slide getSlide(int index) {
@@ -64,6 +66,14 @@ public class GameData {
 	
 	public void setCurrentSlideIndex(int slide) {
 		currentSlideIndex = slide;
+	}
+
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 
 	/**

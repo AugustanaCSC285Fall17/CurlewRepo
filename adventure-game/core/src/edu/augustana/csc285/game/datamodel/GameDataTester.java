@@ -5,22 +5,23 @@ public class GameDataTester{
 	public static void main(String[] args) {
 		GameData gd = new GameData();
 
-		Slide s0 = new Slide("Room 0", "Slide1.png", "Wellcome to the new Room", "www.google.com");
+		Slide s0 = new Slide("Room 0", "Slide1.png", "Wellcome to the new Room", 0, "www.google.com");
 
-		Slide s3 = new Slide("Room 0", "slide_000.png", "text0", "url0");
+		Slide s3 = new Slide("Room 0", "slide_000.png", "text0", 0, "url0");
 
 		s0.getActionChoices().add(new ActionChoice("go to room 1", 1));
 		s0.getActionChoices().add(new ActionChoice("go to room 2", 2));
-		Slide s1 = new Slide("Room 1", "slide_001.png", "text1", "url1");
+		Slide s1 = new Slide("Room 1", "slide_001.png", "text1", 0, "url1");
 		s1.getActionChoices().add(new ActionChoice("die", -1));
 		s1.getActionChoices().add(new ActionChoice("go to room 2", 2));
-		Slide s2 = new Slide("Room 2", "slide_002.png", "text2", "url2");
+		Slide s2 = new Slide("Room 2", "slide_002.png", "text2", 0, "url2");
 		s2.getActionChoices().add(new ActionChoice("go back to room 0", 0));
 		
 		gd.addSlide(s0);
 		gd.addSlide(s1);
 		gd.addSlide(s2);
 		
+		gd.getPlayer().setInventory("Bible", 0);
 		System.out.println(s0);
 		
 		String serializedJSONText = gd.toJSON();
@@ -36,6 +37,8 @@ public class GameDataTester{
 		
 		System.out.println(gd.getSlide(0).getActionChoices().get(1).getChoiceText());
 		System.out.println(gd.getSlide(0).getActionChoices().get(1).getDestinationSlideIndex());
+		System.out.println("Bible: " + gd.getPlayer().getInventory("Bible"));
+		System.out.println(gd.toJSON());
 	}
 
 }

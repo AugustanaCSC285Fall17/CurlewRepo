@@ -1,0 +1,226 @@
+
+
+{
+  "slides": [
+    {
+      "title": "Choose Your Character",
+      "imageFileName": "image4.jpg",
+      "gameText": "It’s the 1880s in Sweden. The opportunities in America, such as cheap land and a stable economy, make migration attractive to many Europeans who face problems related to overpopulation. Millions have migrated from their homelands for a new life. You now wish to join them. \nWho are you?",
+      "urlText": "www.google.com",
+      "slideType" : 0,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Anders Bengtsson",
+          "destinationSlideIndex": 1,
+          "visible": false
+        },
+        {
+          "choiceText": "Lovisa Eriksdotter",
+          "destinationSlideIndex": 2,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "Anders Bengtsson",
+      "imageFileName": "image2.jpg",
+      "gameText": "You are an 18 year-old male from Mellby Parish, Småland. You are the youngest of 4 brothers and will not have any farmland to work. There are too many men in your family and not enough farmland. Additionally, the crop failures of 1867-1868 hit your family farm hard. You would also like to avoid Swedish military conscription. You are coming to America to own your own farmland or find a good job.",
+      "urlText": "url1",
+      "slideType" : 0,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Continue",
+          "destinationSlideIndex": 3,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "Lovisa Eriksdotter",
+      "imageFileName": "image3.jpg",
+      "gameText": "You are an 18 year-old female maid from Stockholm. You dislike your job as maid and can’t seem to find a better one because there is too much competition (population has been booming in the city and countryside). You decide to seek better employment in America.",
+      "urlText": "url2",
+      "slideType" : 0,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Continue",
+          "destinationSlideIndex": 3,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "Historical Pop-Up: Swedish Names",
+      "imageFileName": "facts.png",
+      "gameText": "Sweden followed a patronymic naming system until the late 19th-century. For example, Anders Bengtsson was so named because he was Anders, the son of Bengt. His son might be named Nils Andersson. A daughter could be Britta Andersdotter (dotter = daughter). Exceptions to this include nobility and clergy. Priests would often combine Greek or Roman endings -ander or -ius to names of parishes to form new names (for example, Eric Norelius).",
+      "urlText": "dieUrl",
+      "slideType" : 1,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Continue",
+          "destinationSlideIndex": 4,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "You’ve received a letter from America.",
+      "imageFileName": "image9.jpg",
+      "gameText": "Receiving letters from those who journeyed to America prompted many of your family friends to pursue their own journey over. Life must be treating them well in America— economic opportunities, building their own legacy and family. The American Dream is a strong pull for Swedes, yourself included.\nChoose a letter to read:",
+      "urlText": "dieUrl",
+      "slideType" : 0,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "John Deere letter",
+          "destinationSlideIndex": 5,
+          "visible": false
+        },
+        {
+          "choiceText": "Illinois letter",
+          "destinationSlideIndex": 6,
+          "visible": false
+        },
+        {
+          "choiceText": "Washington letter",
+          "destinationSlideIndex": 7,
+          "visible": false
+        },
+        {
+          "choiceText": "Minnesota letter",
+          "destinationSlideIndex": 8,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "John Deere letter",
+      "imageFileName": "image5.jpg",
+      "gameText": "To Whom It May Concern,\n\nWe hope you find this letter in good spirits. On behalf of the John Deere Company, we thank you for meeting with us concerning about jobs within our factories. We are pleased to inform you you have been recruited for a position at the Moline factory site. We are looking forward to seeing you again and have safe travels. Please bring along this notarized letter with you to our recruitment office.\n\nGod speed,\n\nFrom the Office of John Deere, President of John Deere Co.",
+      "urlText": "dieUrl",
+      "slideType" : 0,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Continue",
+          "destinationSlideIndex": 9,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "Illinois letter",
+      "imageFileName": "image7.jpg",
+      "gameText": "Dear Cousin,\n\nMay God find you well, dear friend! God is good and God is plentiful. He has shown me the way to a brighter future here in America. My journey has led myself and my travelling companions to a quaint town in the state of Illinois called Moline. It may be quaint now but we are fortunate to have factories and farming jobs available for the people. I have friends all over Illinois including Rockford and Chicago! We stay in touch through correspondence and the occasional social visit when we can. My piece of advice for you, should you make the journey, is to find peace with yourself and our loving God. For He is the way and will guide you! The Christian faith has given me hope and salvation along my journey. My fellow companions and myself attend the Lutheran service held by a pastor who is also from Sweden. It is wonderful to have familiarity in a strange place. Services are something to look forward to as it brings us closer to our Maker and builds a strong sense of community. I pray for all the success in the world for you as you make your own journey. \n\nLovingly,\n\nErika Leiffson",
+      "urlText": "dieUrl",
+      "slideType" : 0,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Continue",
+          "destinationSlideIndex": 9,
+          "visible": false
+        }    
+      ]
+    },
+    {
+      "title": "Washington letter",
+      "imageFileName": "image8.jpg",
+      "gameText": "Dear Cousin,\n\nI have been blessed to have found a place I can call home. My journeys were long, and at times I had felt grief for leaving my beautiful Sweden. I remember so clearly how it felt to be a stranger in a strange place. Only having a small trunk and broken English left me apprehensive of my surroundings. I am thankful that I have experienced no ill wills on my passage to America. I had heard some of my kin had travelled to the far west of this vast country, in a place called Washington state. My family settled near Tacoma and are now prosperous farmers and fishermen! I decided to try my hand for this place. I took the Walla Walla railroad instead of the Northern Pacific, as it was the cheaper option. I was taken to Seattle and found a boardinghouse for Swedes. Within a month I had found employment as a maid to one of the founding families. They treat me well despite some language barrier, but I am becoming more proficient and feel more confident in my new home.\n\nI do wish you well and hope someday to meet you again in my new home! Give my love to my family and friends!\n\nLinnea Parsson",
+      "urlText": "dieUrl",
+      "slideType" : 0,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Continue",
+          "destinationSlideIndex": 9,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "Minnesota letter",
+      "imageFileName": "image8.jpg",
+      "gameText": "Dear Cousin,\n\nI am content to report that I have found steady employment as my own master. I had arrived only two months in St. Paul, working odds and ends in the town when I noticed an advertisement of purchasable land not far from my lodgings. Land is so cheap here in America! I saved enough to buy my own lot and have begun to till and grind the land. My hope is to grow peas and potatoes and sell them at market. Let us pray for a good harvest this next season!\n\nLife has treated me well. The journey is hard on everyone, harder for others. My companion on the trip to America arrived well but I have received word that he has fallen into poverty. He was swindled by a false recruiter at the docks. He is struggling to find employment in the city but, God willing, I hope he will find something soon!\n\nAs you make the journey, make sure to bring plenty of food. They treat you well on the ships and trains but the journey alone can make one homesick. A little piece of home can appease the qualms of the stomach and might make you a friend or two!\n\nGodspeed dear cousin! \n\nArvid Lothbrok",
+      "urlText": "dieUrl",
+      "slideType" : 0,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Continue",
+          "destinationSlideIndex": 9,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "Historical Pop-Up: the Pull of America",
+      "imageFileName": "facts.png",
+      "gameText": "Immigrants were inspired to move to America not only by “push” factors that pushed them to leave their country of origin, but by “pull” factors that suggested the United States would offer great opportunities. Many immigrants found out about these opportunities from family and friends, then they often followed those family and friends to places where they had already become established--a process called chain migration. Letters from the U.S.  to Sweden provided lots of advice about the long journey as well as information about opportunities in their new American homes and sometimes encouragement to join them. Other immigrants were recruited in Sweden to go straight to particular jobs in the United States. John Deere, in Moline, Illinois, was well known for recruiting Swedes for its growing factory operation.",
+      "urlText": "dieUrl",
+      "slideType" : 1,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Continue",
+          "destinationSlideIndex": 10,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "Inventory",
+      "imageFileName": "facts.png",
+      "gameText": "",
+      "urlText": "dieUrl",
+      "slideType" : 2,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Back",
+          "destinationSlideIndex": 11,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "Historical Pop-Up: Swedish Immigration",
+      "imageFileName": "facts.png",
+      "gameText": "Between 1850 and 1930, over 1.3 million Swedes immigrated to the United States. At the same time, over 50 million Europeans left Europe. Several factors \"pushed\" Swedes to leave their homeland while others \"pulled\" them to America. Population growth in Sweden led to less available land for farming and crop failure in the late 1860s put pressure on the agrarian society. That, paired with the availability of cheap land for farming and the Homestead Act of 1862 in the United States, caused many Swedes to seek a new life in America. Once Swedish immigrants found themselves here, they wrote letters back home describing their experiences, often in overly positive terms. These so-called \"America letters\" proved important in establishing migration channels for new immigrants to come and join their family and friends in America. Religious and political reasons played a much smaller role for the move to America, although it was critical in some cases.\n\nThis Trans-Atlantic mass exodus was one of the major events in Swedish history during the last two centuries. This immense network of contacts established across the Atlantic has influenced the ways in which Swedish society then and now is oriented towards the United States.",
+	  "urlText": "dieUrl",
+      "slideType" : 1,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Continue",
+          "destinationSlideIndex": 0,
+          "visible": false
+        }
+      ]
+    }
+  ],
+  "player": {
+    "name": "Minh!!",
+    "male": true,
+    "stats": {},
+    "inventory": {
+      "John Deere letter": 0,
+      "Illinois letter": 0,
+      "Washington letter": 0,
+      "Minnesota letter": 0,
+      "Official Paper": 0,
+      "Forged Paper": 0,
+      "Bible": 0,
+      "Family heirloom": 0,
+      "Sewing materials": 0,
+      "Medicine": 0,
+      "Cured Meat": 0,
+      "Ticket": 0
+    }
+  },
+  "currentSlideIndex": 0
+}

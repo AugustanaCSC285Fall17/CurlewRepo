@@ -1,4 +1,5 @@
-//used this cite to help with converting text to int https://stackoverflow.com/questions/5585779/how-to-convert-a-string-to-an-int-in-java
+//used this cite to help with converting text to int 
+//https://stackoverflow.com/questions/5585779/how-to-convert-a-string-to-an-int-in-java
 package edu.augustana.csc285.gamebuilder;
 
 import javafx.application.Platform;
@@ -50,9 +51,11 @@ public class MainPaneController {
 	private Button addActionChoiceButton;
 	@FXML
 	private Button showSlideInfoButton;
+	@FXML
+	private TextField removeSlideTextField;
 
 	// ActionChoiceEditor Fields
-	private ActionChoiceEditor ace = new ActionChoiceEditor();
+	private ActionChoiceEditor ace = new ActionChoiceEditor(data, se);
 	@FXML
 	private TextField selectSlideNumberTextField1;
 	@FXML
@@ -61,6 +64,14 @@ public class MainPaneController {
 	private TextField selectActionChoiceTextField;
 	@FXML
 	private Label currentACLabel;
+	@FXML
+	private Button showAceInfoButton;
+	@FXML
+	private TextArea aceChoiceTextArea;
+	@FXML
+	private Button aceChoiceSubmitButton;
+	@FXML
+	private TextField aceSetDestinationSlideIndexField;
 
 	// JavaFX initialize method, called after this Pane is created.
 	@FXML
@@ -92,7 +103,7 @@ public class MainPaneController {
 	}
 
 	private boolean isIndexAnActionChoice(int index) {
-		if (slideListIsNotEmpty()) {
+		if (!slideListIsNotEmpty()) {
 			return false;
 		} else {
 			if (aceListIsNotEmpty()) {
@@ -209,11 +220,11 @@ public class MainPaneController {
 		if (wasSlideSelected()) {
 			FileChooser fileChooser = new FileChooser();
 			fileChooser.setTitle("Chose a Slide image");
-			// try{
-			// se.setSlideImage(fileChooser.showOpenDialog(mainWindow));
-			// }catch(IOException e){
-			// new Alert(AlertType.ERROR, "There was a problem").showAndWait();
-			// }
+			try {
+				se.setSlideImage(fileChooser.showOpenDialog(mainWindow));
+			} catch (IOException e) {
+				new Alert(AlertType.ERROR, "There was a problem").showAndWait();
+			}
 		}
 	}
 
@@ -253,4 +264,42 @@ public class MainPaneController {
 		}
 	}
 
+	@FXML
+	private void handleShowAceInfoButton() {
+		new Alert(AlertType.INFORMATION,
+				data.getSlide(se.getCurrentSlide()).getActionChoicesAt(ace.currentActionChoiceIndex).toString())
+						.showAndWait();
+	}
+
+	@FXML
+	private void handleAceChoiceSubmitButton() {
+		if(aceSelected())
+		ace.setChoiceText(aceChoiceSubmitButton.getText());
+	}
+
+	@FXML
+	private void handleAceSetDestinationSlideIndexField() {
+		if (aceSelected()) {
+			String input = aceSetDestinationSlideIndexField.getText();
+			if (isInputInt(input)) {
+				int index = Integer.parseInt(input);
+				if (isIndexASlide(index)) {
+					ace.setDestinationSlideIndex(index);
+				}
+			}
+		}
+	}
+
+	@FXML
+	private void handleRemoveSlideTextField() {
+
+	}
+	
+	private boolean aceSelected(){
+		if(ace.aceSelected()){
+			return true;
+		}else
+		new Alert(AlertType.ERROR, "Please select an action choice");
+		return false;
+	}
 }

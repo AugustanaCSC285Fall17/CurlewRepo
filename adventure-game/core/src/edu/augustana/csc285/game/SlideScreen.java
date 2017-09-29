@@ -9,11 +9,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
@@ -22,21 +22,29 @@ import edu.augustana.csc285.game.datamodel.GameData;
 import edu.augustana.csc285.game.datamodel.Slide;
 
 public class SlideScreen implements Screen {
+	public static final int NORMAL_SLIDE = 0;
+	public static final int HISTORICAL_POP_UP = 1;
+	public static final int INVENTORY_SLIDE = 2;
+	
+	public static final int INVENTORY_SLIDE_INDEX = 11;
+	public static final int GAME_OVER_SLIDE_INDEX = -1;
+	
 	private AdventureGame game;
-
 	private Table table;
 	private GameData mainGameData;
-	
+	private Label title;
 	private Label gameText;
 	private ArrayList<TextButton> buttons;
-	
 	private Slide currentSlide;
+	private ScrollPane scrollPane;
 	
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
 		
 		mainGameData = GameData.fromJSONFile("assets/GameData/SampleGame.json");
-		
+
+		mainGameData = GameData.fromJSONFile("assets/GameData/SwedishImmigrant.json");
+		mainGameData.setCurrentSlideIndex(11);
 		initialize();
 		
 		Gdx.input.setInputProcessor(game.stage);
@@ -44,6 +52,7 @@ public class SlideScreen implements Screen {
 	
 	@Override
 	public void render (float delta) {
+		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		game.batch.begin();
@@ -96,11 +105,35 @@ public class SlideScreen implements Screen {
 		// Get the current slide object to initialize buttons & text etc.
 		currentSlide = mainGameData.getSlide(mainGameData.getCurrentSlideIndex());
 		
+		// Initialize title text
+		title = new Label(currentSlide.getTitle(), game.skin, "title");
+		title.setWrap(true);
+		title.setWidth(350);
+		title.pack();
+		title.setWidth(350);
+		title.setPosition(40, Gdx.graphics.getHeight() - title.getHeight() - 20);
+		title.setAlignment(Align.left);
+		
 		// Initialize game text
 		gameText = new Label(currentSlide.getGameText(), game.skin);
-		gameText.setBounds(30, 2 * game.GAME_SCREEN_HEIGHT / 4, game.GAME_SCREEN_WIDTH - 30 * 2, game.GAME_SCREEN_HEIGHT / 4);
-		gameText.setAlignment(Align.center|Align.top);
+		gameText.setWrap(true);
 		
+		int gameTextWidth = 0;
+		if (currentSlide.getSlideType() == NORMAL_SLIDE)
+			gameTextWidth = 280;
+		else if (currentSlide.getSlideType() == HISTORICAL_POP_UP)
+			gameTextWidth = 550;
+		
+		gameText.setWidth(gameTextWidth);
+		gameText.setAlignment(Align.topLeft);
+
+	    scrollPane = new ScrollPane(gameText, game.skin);
+	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 250, gameTextWidth, 220);
+	    scrollPane.layout();
+	    scrollPane.setTouchable(Touchable.enabled);
+		
+	    System.err.println(title.getHeight());
+	    
 		// Loop & create buttons
 		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
 			ActionChoice currentChoice = currentSlide.getActionChoicesAt(i);
@@ -109,17 +142,10 @@ public class SlideScreen implements Screen {
 			TextButton newButton = new TextButton(currentChoiceText, game.skin);
 			
 			newButton.addListener(new ClickListener(){
-				
+					
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
-					System.out.println("CLICKED " + currentChoice.toString());
-					if (currentChoice.getDestinationSlideIndex() == -1)
-						Gdx.app.exit();
-					else
-						mainGameData.setCurrentSlideIndex(currentChoice.getDestinationSlideIndex());
-					
-					System.out.println(currentSlide.toString());
-
+					mainGameData.setCurrentSlideIndex(currentChoice.getDestinationSlideIndex());
 					initialize();
 				}
 			});
@@ -129,30 +155,31 @@ public class SlideScreen implements Screen {
 		
 		// Initialize table & add buttons to table
 		table = new Table();
-		table.setWidth(game.stage.getWidth());
+		table.setWidth(Gdx.graphics.getWidth());
 		table.align(Align.topLeft);
 		
 		table.setPosition(0, game.stage.getHeight());
 
 		table.padLeft(40);
-		table.padTop(350);
-
 		
 		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
-			table.add(buttons.get(i)).width(300).padBottom(20);
+			table.add(buttons.get(i)).width(260).padTop(5);
 			table.row();
 		}
 		
-		// Add gameText to stage
-		game.stage.addActor(gameText);
+		table.padTop(250 + title.getHeight());
 		
-		// Add table to stage
+		// Add actors
+		game.stage.addActor(title);
 		game.stage.addActor(table);
+		game.stage.addActor(scrollPane);
 		
 		// Set the background
+		float size = Gdx.graphics.getHeight();
 		game.batch = new SpriteBatch();
 		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/" + currentSlide.getImageFileName())));
-		game.sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		game.sprite.setPosition(Gdx.graphics.getWidth() - size, 0);
+		game.sprite.setSize(size, size);
 	}
 
 }
