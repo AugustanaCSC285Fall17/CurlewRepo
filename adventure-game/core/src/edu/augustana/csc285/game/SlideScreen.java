@@ -96,20 +96,14 @@ public class SlideScreen implements Screen {
 		// Get the current slide object to initialize buttons & text etc.
 		currentSlide = mainGameData.getSlide(mainGameData.getCurrentSlideIndex());
 		
-		// Initialize title
+		// Initialize slide elements
 		createTitle();
-		
-		// Initialize game text & scroll panel on top of it
 		createGameTextWithScrollPane();
+		createChoiceButtons();
+		createTable();
 		
 	    // print out title height for debugging
 	    System.err.println(title.getHeight());
-	    
-	    // Initialize choice buttons
-		createChoiceButtons();
-		
-		// initialize table
-		createTable();
 		
 		// Add actors
 		game.stage.addActor(title);
