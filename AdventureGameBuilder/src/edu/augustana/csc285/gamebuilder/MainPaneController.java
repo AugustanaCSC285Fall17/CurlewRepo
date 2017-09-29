@@ -114,7 +114,12 @@ public class MainPaneController {
 	private void handleLoadButton() throws IOException{
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Chose a file to load");
-		this.data=GameData.load(fileChooser.showOpenDialog(mainWindow));
+		File inFile = fileChooser.showOpenDialog(mainWindow);
+		if(inFile==null){
+			
+		}else{
+		this.data=GameData.load(inFile);
+		}
 	}
 
 	public void setStageAndSetupListeners(Stage primaryStage) {
@@ -263,7 +268,12 @@ public class MainPaneController {
 			FileChooser fileChooser = new FileChooser();
 			fileChooser.setTitle("Chose a Slide image");
 			try {
-				se.setSlideImage(fileChooser.showOpenDialog(mainWindow));
+				File inFile = fileChooser.showOpenDialog(mainWindow);
+				if(inFile == null){
+					
+				}else{
+				se.setSlideImage(inFile);
+				}
 			} catch (IOException e) {
 				new Alert(AlertType.ERROR, "There was a problem").showAndWait();
 			}
