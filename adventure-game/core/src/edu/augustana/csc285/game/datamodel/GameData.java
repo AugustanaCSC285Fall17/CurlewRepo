@@ -1,5 +1,7 @@
+
 package edu.augustana.csc285.game.datamodel;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -22,15 +24,15 @@ public class GameData {
 	public static final int NORMAL_SLIDE = 0;
 	public static final int HISTORICAL_POP_UP = 1;
 	public static final int INVENTORY_SLIDE = 2;
-	
+
 	private int startSlideIndex;
 	private int inventorySlideIndex;
 	private int gameOverSlideIndex;
-	
+
 	private List<Slide> slides;
 	private Player player;
 	private int currentSlideIndex;
-	public String saveName="SavedFile";
+	public String saveName = "SavedFile";
 
 	public GameData() { // needed for GSon
 		slides = new ArrayList<Slide>();
@@ -48,13 +50,12 @@ public class GameData {
 		slides.add(slide);
 	}
 
-
 	public void removeSlide(int index) {
-		
-		//loops through every slide
+
+		// loops through every slide
 		for (int currentSlide = 0; currentSlide < slides.size(); currentSlide++) {
 			List<ActionChoice> choices = slides.get(currentSlide).getActionChoices();
-			//loops through every choice
+			// loops through every choice
 			for (int currentActionChoice = 0; currentActionChoice < choices.size(); currentActionChoice++) {
 
 				// for every action choice if the destination slide index is
@@ -71,16 +72,14 @@ public class GameData {
 		slides.remove(index);
 	}
 
-
-
-	public int getSlideListSize(){
+	public int getSlideListSize() {
 		return slides.size();
 	}
-	
+
 	public int getCurrentSlideIndex() {
 		return currentSlideIndex;
 	}
-	
+
 	public void setCurrentSlideIndex(int slide) {
 		currentSlideIndex = slide;
 	}
@@ -92,6 +91,7 @@ public class GameData {
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
+
 	public int getStartSlideIndex() {
 		return startSlideIndex;
 	}
@@ -116,7 +116,6 @@ public class GameData {
 		this.gameOverSlideIndex = gameOverSlideIndex;
 	}
 
-
 	/**
 	 * @return a serialized JSON-format string that represents this GameData
 	 *         object
@@ -134,44 +133,79 @@ public class GameData {
 		Gson gson = new GsonBuilder().create();
 		return gson.fromJson(jsonData, GameData.class);
 	}
-	
+
 	/**
 	 * 
-	 * @param fileAddress the address of the JSON file
+	 * @param fileAddress
+	 *            the address of the JSON file
 	 * @return a GamaData object, which is created from deserializing the JSON
-	 * 		   data imported from the file.
+	 *         data imported from the file.
 	 */
 	public static GameData fromJSONFile(String fileAddress) {
 		JsonParser parser = new JsonParser();
 		try {
 			Object obj = parser.parse(new FileReader(Gdx.files.internal(fileAddress).file()));
-			
+
 			JsonObject jsonData = (JsonObject) obj;
-			
+
 			return fromJSON(jsonData.toString());
-			
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
-	public void saveAs(String saveName){
-		this.saveName=saveName;
+
+	public void saveAs(String saveName) {
+		this.saveName = saveName;
 		save();
 	}
 
 	public void save() {
 		String toSave = toJSON();
-		String path = "assets/GameData/"+saveName+".json";
+		String path = "assets/GameData/" + saveName + ".json";
 		try {
 			FileWriter writer = new FileWriter(path);
 			writer.write(toSave);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
+	}
+
+	//https://www.caveofprogramming.com/java/java-file-reading-and-writing-files-in-java.html
+	public static GameData load(File inFile) throws FileNotFoundException{
+
+		 String line = null;
+		 String toLoad = "";
+		 
+        try {
+            // FileReader reads text files in the default encoding.
+            FileReader fileReader = 
+                new FileReader(inFile);
+
+            // Always wrap FileReader in BufferedReader.
+            BufferedReader bufferedReader = 
+                new BufferedReader(fileReader);
+
+            while((line = bufferedReader.readLine()) != null) {
+             //   System.out.println(line);
+            	toLoad+=line;
+            } 
+            bufferedReader.close(); 
+        }
+        catch(FileNotFoundException ex) {
+                     
+        }
+        catch(IOException ex) {
+          
+        }
+       GameData newGame= fromJSON(toLoad);
+       return newGame;
+
+	
 	}
 }

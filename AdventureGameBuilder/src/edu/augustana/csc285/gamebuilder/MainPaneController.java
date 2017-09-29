@@ -38,7 +38,9 @@ public class MainPaneController {
 	@FXML
 	private Button saveButton;
 	@FXML
-	Button saveAsButton;
+	private Button saveAsButton;
+	@FXML 
+	private Button loadButton;
 
 	// Slide Editor Fields
 	private SlideEditor se = new SlideEditor(data);
@@ -106,6 +108,13 @@ public class MainPaneController {
 			new Alert(AlertType.ERROR, "File not saved");
 		}
 
+	}
+	
+	@FXML
+	private void handleLoadButton() throws IOException{
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Chose a file to load");
+		this.data=GameData.load(fileChooser.showOpenDialog(mainWindow));
 	}
 
 	public void setStageAndSetupListeners(Stage primaryStage) {

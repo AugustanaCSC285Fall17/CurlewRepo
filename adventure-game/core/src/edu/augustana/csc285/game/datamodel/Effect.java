@@ -11,5 +11,7 @@ public interface Effect {
 
 	// abstract method that set any effect on player takes an int
 	public abstract void setEfect(int size);
+	
+	//
 
 }
