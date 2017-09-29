@@ -9,9 +9,9 @@ public class ActionChoiceEditor {
 
 	public ActionChoiceEditor(GameData data, SlideEditor se) {
 		currentActionChoiceIndex = -1;
-		this.data=data;
-		this.se=se;
-		
+		this.data = data;
+		this.se = se;
+
 	}
 
 	public int getCurrentActionChoiceIndex() {
@@ -21,19 +21,26 @@ public class ActionChoiceEditor {
 	public void setCurrentActionChoiceIndex(int currentActionChoiceIndex) {
 		this.currentActionChoiceIndex = currentActionChoiceIndex;
 	}
-	
-	public void setDestinationSlideIndex(int index){
-		data.getSlide(se.getCurrentSlide()).getActionChoicesAt(currentActionChoiceIndex).setDestinationSlideIndex(index);
+
+	public void setDestinationSlideIndex(int index) {
+		data.getSlide(se.getCurrentSlide()).getActionChoicesAt(currentActionChoiceIndex)
+				.setDestinationSlideIndex(index);
 	}
-	public void setChoiceText(String text){
+
+	public void setChoiceText(String text) {
 		data.getSlide(se.getCurrentSlide()).getActionChoicesAt(currentActionChoiceIndex).setChoiceText(text);
 	}
-	
-	public boolean aceSelected(){
-		if(currentActionChoiceIndex==-1){
+
+	public boolean aceSelected() {
+		if (currentActionChoiceIndex == -1) {
 			return false;
-		}else{
+		} else {
 			return true;
 		}
+	}
+
+	public void remove() {
+		data.getSlide(se.getCurrentSlide()).removeAc(currentActionChoiceIndex);
+		currentActionChoiceIndex = -1;
 	}
 }

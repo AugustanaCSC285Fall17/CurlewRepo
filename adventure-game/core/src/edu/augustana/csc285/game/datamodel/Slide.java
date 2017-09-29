@@ -115,4 +115,8 @@ public class Slide {
 		return "The title is "+title + "\nThe image file name is: "+imageFileName+"\nThe gameText is: "+gameText+"\nThe slide type is: "+slideType+"\nThe action Choices are: \n" +s;
 	}
 
+	public void removeAc(int index) {
+		actionChoices.remove(index);	
+	}
+
 }

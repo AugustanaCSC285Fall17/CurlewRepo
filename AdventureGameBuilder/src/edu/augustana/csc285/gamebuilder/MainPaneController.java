@@ -34,10 +34,11 @@ public class MainPaneController {
 	private GameData data = new GameData();
 	private int slideAtTextIndex = 0;
 	private Stage mainWindow;
-	
+
 	@FXML
 	private Button saveButton;
-	@FXML Button saveAsButton;
+	@FXML
+	Button saveAsButton;
 
 	// Slide Editor Fields
 	private SlideEditor se = new SlideEditor(data);
@@ -78,31 +79,33 @@ public class MainPaneController {
 	private Button aceChoiceSubmitButton;
 	@FXML
 	private TextField aceSetDestinationSlideIndexField;
+	@FXML
+	private Button removeAcButton;
 
 	// JavaFX initialize method, called after this Pane is created.
 	@FXML
 	private void initialize() {
 		// Slide slide = new Slide();
 	}
-	
+
 	@FXML
-	private void handleSaveButton(){
+	private void handleSaveButton() {
 		data.save();
 	}
-	
-	//http://code.makery.ch/blog/javafx-dialogs-official/
+
+	// http://code.makery.ch/blog/javafx-dialogs-official/
 	@FXML
-	private void handleSaveAsButton(){
+	private void handleSaveAsButton() {
 		TextInputDialog dialog = new TextInputDialog("Save As");
 		dialog.setTitle("Save As");
 		dialog.setContentText("Please enter desired name:");
 		Optional<String> result = dialog.showAndWait();
-		if (result.isPresent()){
-		    data.saveAs(result.get());
-		}else{
+		if (result.isPresent()) {
+			data.saveAs(result.get());
+		} else {
 			new Alert(AlertType.ERROR, "File not saved");
 		}
-		
+
 	}
 
 	public void setStageAndSetupListeners(Stage primaryStage) {
@@ -296,22 +299,22 @@ public class MainPaneController {
 
 	@FXML
 	private void handleShowAceInfoButton() {
-		if(wasAceSelected()){
-		new Alert(AlertType.INFORMATION,
-				data.getSlide(se.getCurrentSlide()).getActionChoicesAt(ace.currentActionChoiceIndex).toString())
-						.showAndWait();
+		if (wasAcSelected()) {
+			new Alert(AlertType.INFORMATION,
+					data.getSlide(se.getCurrentSlide()).getActionChoicesAt(ace.currentActionChoiceIndex).toString())
+							.showAndWait();
 		}
 	}
 
 	@FXML
 	private void handleAceChoiceSubmitButton() {
-		if (wasAceSelected())
+		if (wasAcSelected())
 			ace.setChoiceText(aceChoiceSubmitButton.getText());
 	}
 
 	@FXML
 	private void handleAceSetDestinationSlideIndexField() {
-		if (wasAceSelected()) {
+		if (wasAcSelected()) {
 			String input = aceSetDestinationSlideIndexField.getText();
 			if (isInputInt(input)) {
 				int index = Integer.parseInt(input);
@@ -322,7 +325,7 @@ public class MainPaneController {
 		}
 	}
 
-	private boolean wasAceSelected() {
+	private boolean wasAcSelected() {
 		if (ace.aceSelected()) {
 			return true;
 		} else
@@ -343,6 +346,17 @@ public class MainPaneController {
 			changeTitleTextField.clear();
 		}
 
+	}
+
+	@FXML
+	private void handleRemoveAcButton() {
+		if (this.wasAcSelected()) {
+			ace.remove();
+			this.currentACLabel.setText("N/A");
+			selectActionChoiceTextField.clear();
+			aceChoiceTextArea.clear();
+			aceSetDestinationSlideIndexField.clear();
+		}
 	}
 
 }
