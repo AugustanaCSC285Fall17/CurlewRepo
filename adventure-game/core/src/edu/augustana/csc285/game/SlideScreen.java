@@ -1,3 +1,4 @@
+
 package edu.augustana.csc285.game;
 
 import java.util.ArrayList;
@@ -182,4 +183,74 @@ public class SlideScreen implements Screen {
 		game.sprite.setSize(size, size);
 	}
 
+	
+
+	
+	private void createChoiceButtons() {
+		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
+			ActionChoice currentChoice = currentSlide.getActionChoicesAt(i);
+			String currentChoiceText = currentChoice.getChoiceText();
+			
+			TextButton newButton = new TextButton(currentChoiceText, game.skin);
+			
+			newButton.addListener(new ClickListener(){
+					
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					mainGameData.setCurrentSlideIndex(currentChoice.getDestinationSlideIndex());
+					initialize();
+				}
+			});
+			buttons.add(newButton);
+			
+		}
+	}
+	
+	private void createTable() {
+		table = new Table();
+		table.setWidth(Gdx.graphics.getWidth());
+		table.align(Align.topLeft);
+		
+		table.setPosition(0, game.stage.getHeight());
+
+		table.padLeft(40);
+		
+		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
+			table.add(buttons.get(i)).width(260).padTop(5);
+			table.row();
+		}
+		
+		table.padTop(250 + title.getHeight());
+	}
+	
+	private void createGameTextWithScrollPane() {
+		gameText = new Label(currentSlide.getGameText(), game.skin);
+		gameText.setWrap(true);
+		
+		int gameTextWidth = 0;
+		if (currentSlide.getSlideType() == GameData.NORMAL_SLIDE)
+			gameTextWidth = 280;
+		else if (currentSlide.getSlideType() == GameData.HISTORICAL_POP_UP)
+			gameTextWidth = 550;
+		
+		gameText.setWidth(gameTextWidth);
+		gameText.setAlignment(Align.topLeft);
+		
+	    scrollPane = new ScrollPane(gameText, game.skin);
+	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 250, gameTextWidth, 220);
+	    scrollPane.layout();
+	    scrollPane.setTouchable(Touchable.enabled);
+	}
+	
+	private void createTitle() {
+		title = new Label(currentSlide.getTitle(), game.skin, "title");
+		title.setWrap(true);
+		title.setWidth(350);
+		title.pack();
+		title.setWidth(350);
+		title.setPosition(40, Gdx.graphics.getHeight() - title.getHeight() - 20);
+		title.setAlignment(Align.left);
+	}
+
 }
+

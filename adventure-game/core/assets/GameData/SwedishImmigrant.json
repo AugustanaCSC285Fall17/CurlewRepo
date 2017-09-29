@@ -1,6 +1,9 @@
 
 
 {
+  "startSlideIndex": 11,
+  "inventorySlideIndex": 10,
+  "gameOverSlideIndex": -1,
   "slides": [
     {
       "title": "Choose Your Character",
@@ -205,7 +208,7 @@
   ],
   "player": {
     "name": "Minh!!",
-    "male": true,
+    "gender": 0,
     "stats": {},
     "inventory": {
       "John Deere letter": 0,

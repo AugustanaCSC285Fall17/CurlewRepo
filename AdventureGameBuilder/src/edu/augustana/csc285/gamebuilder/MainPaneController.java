@@ -11,11 +11,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 
 import javax.imageio.ImageIO;
 
@@ -32,6 +34,11 @@ public class MainPaneController {
 	private GameData data = new GameData();
 	private int slideAtTextIndex = 0;
 	private Stage mainWindow;
+
+	@FXML
+	private Button saveButton;
+	@FXML
+	Button saveAsButton;
 
 	// Slide Editor Fields
 	private SlideEditor se = new SlideEditor(data);
@@ -52,7 +59,7 @@ public class MainPaneController {
 	@FXML
 	private Button showSlideInfoButton;
 	@FXML
-	private TextField removeSlideTextField;
+	private Button removeSlideButton;
 
 	// ActionChoiceEditor Fields
 	private ActionChoiceEditor ace = new ActionChoiceEditor(data, se);
@@ -72,11 +79,33 @@ public class MainPaneController {
 	private Button aceChoiceSubmitButton;
 	@FXML
 	private TextField aceSetDestinationSlideIndexField;
+	@FXML
+	private Button removeAcButton;
 
 	// JavaFX initialize method, called after this Pane is created.
 	@FXML
 	private void initialize() {
 		// Slide slide = new Slide();
+	}
+
+	@FXML
+	private void handleSaveButton() {
+		data.save();
+	}
+
+	// http://code.makery.ch/blog/javafx-dialogs-official/
+	@FXML
+	private void handleSaveAsButton() {
+		TextInputDialog dialog = new TextInputDialog("Save As");
+		dialog.setTitle("Save As");
+		dialog.setContentText("Please enter desired name:");
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()) {
+			data.saveAs(result.get());
+		} else {
+			new Alert(AlertType.ERROR, "File not saved");
+		}
+
 	}
 
 	public void setStageAndSetupListeners(Stage primaryStage) {
@@ -103,24 +132,28 @@ public class MainPaneController {
 	}
 
 	private boolean isIndexAnActionChoice(int index) {
-		if (!slideListIsNotEmpty()) {
+		if (!wasSlideSelected()) {
 			return false;
-		} else {
-			if (aceListIsNotEmpty()) {
-				if (index < 0 || index > data.getSlide(se.getCurrentSlide()).getActionChoiceListSize() - 1) {
-					new Alert(AlertType.ERROR, "There is no Action Choice at this index").showAndWait();
-					return false;
-				}
-			}
 		}
-		return true;
+		if (aceListIsNotEmpty()) {
+			if (index < 0 || index > data.getSlide(se.getCurrentSlide()).getActionChoiceListSize() - 1) {
+				new Alert(AlertType.ERROR, "There is no Action Choice at this index").showAndWait();
+				return false;
+			}
+			return true;
+		}
+		return false;
+
 	}
 
 	@FXML
 	private void handleShowSlideAtTextField() {
-		slideAtTextIndex = Integer.parseInt(showSlideAtTextField.getText());
-		if (isIndexASlide(slideAtTextIndex)) {
-			new Alert(AlertType.INFORMATION, data.getSlide(slideAtTextIndex).toString()).showAndWait();
+		String input = showSlideAtTextField.getText();
+		if (isInputInt(input)) {
+			slideAtTextIndex = Integer.parseInt(input);
+			if (isIndexASlide(slideAtTextIndex)) {
+				new Alert(AlertType.INFORMATION, data.getSlide(slideAtTextIndex).toString()).showAndWait();
+			}
 		}
 	}
 
@@ -209,7 +242,7 @@ public class MainPaneController {
 			return false;
 		}
 		if (data.getSlide(se.getCurrentSlide()).getActionChoiceListSize() == 0) {
-			new Alert(AlertType.INFORMATION, "There are no slides in the list").showAndWait();
+			new Alert(AlertType.INFORMATION, "There are no actionChoices in the list").showAndWait();
 			return false;
 		}
 		return true;
@@ -236,7 +269,7 @@ public class MainPaneController {
 	}
 
 	private boolean wasSlideSelected() {
-		if (se.getCurrentSlide() == -1) {
+		if (!se.wasSlideSelected()) {
 			new Alert(AlertType.ERROR, "Please select a slide first").showAndWait();
 			return false;
 		}
@@ -253,7 +286,7 @@ public class MainPaneController {
 
 	@FXML
 	private void handleSelectActionChoiceTextField() {
-		if (this.slideListIsNotEmpty()) {
+		if (this.wasSlideSelected()) {
 			if (isInputInt(selectActionChoiceTextField.getText())) {
 				int index = Integer.parseInt(selectActionChoiceTextField.getText());
 				if (isIndexAnActionChoice(index)) {
@@ -266,20 +299,22 @@ public class MainPaneController {
 
 	@FXML
 	private void handleShowAceInfoButton() {
-		new Alert(AlertType.INFORMATION,
-				data.getSlide(se.getCurrentSlide()).getActionChoicesAt(ace.currentActionChoiceIndex).toString())
-						.showAndWait();
+		if (wasAcSelected()) {
+			new Alert(AlertType.INFORMATION,
+					data.getSlide(se.getCurrentSlide()).getActionChoicesAt(ace.currentActionChoiceIndex).toString())
+							.showAndWait();
+		}
 	}
 
 	@FXML
 	private void handleAceChoiceSubmitButton() {
-		if(aceSelected())
-		ace.setChoiceText(aceChoiceSubmitButton.getText());
+		if (wasAcSelected())
+			ace.setChoiceText(aceChoiceTextArea.getText());
 	}
 
 	@FXML
 	private void handleAceSetDestinationSlideIndexField() {
-		if (aceSelected()) {
+		if (wasAcSelected()) {
 			String input = aceSetDestinationSlideIndexField.getText();
 			if (isInputInt(input)) {
 				int index = Integer.parseInt(input);
@@ -290,16 +325,38 @@ public class MainPaneController {
 		}
 	}
 
-	@FXML
-	private void handleRemoveSlideTextField() {
-
-	}
-	
-	private boolean aceSelected(){
-		if(ace.aceSelected()){
+	private boolean wasAcSelected() {
+		if (ace.aceSelected()) {
 			return true;
-		}else
-		new Alert(AlertType.ERROR, "Please select an action choice");
+		} else
+			new Alert(AlertType.ERROR, "Please select an action choice").showAndWait();
 		return false;
 	}
+
+	@FXML
+	private void handleRemoveSlideButton() {
+		if (this.wasSlideSelected()) {
+			se.removeSlide();
+			currentSlideLabel.setText("N/A");
+			currentSlideLabel1.setText("N/A");
+			se.setCurrentSlide(-1);
+			selectSlideNumberTextField.clear();
+			selectActionChoiceTextField.clear();
+			setGameTextArea.clear();
+			changeTitleTextField.clear();
+		}
+
+	}
+
+	@FXML
+	private void handleRemoveAcButton() {
+		if (this.wasAcSelected()) {
+			ace.remove();
+			this.currentACLabel.setText("N/A");
+			selectActionChoiceTextField.clear();
+			aceChoiceTextArea.clear();
+			aceSetDestinationSlideIndexField.clear();
+		}
+	}
+
 }

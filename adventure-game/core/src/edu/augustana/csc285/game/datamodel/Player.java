@@ -3,15 +3,24 @@ import java.util.*;
 
 public class Player {
 
+	public static final int MALE = 0;
+	public static final int FEMALE = 1;
+	public static final int GAY = 2;
+	public static final int LESBIAN = 3;
+	public static final int TRANSGENDER = 4;
+	public static final int BISEXUAL = 5;
+	public static final int QUESTIONING = 6;
+	public static final int OTHER = 7;
+	
 	private String name;
-	private boolean male;
+	private int gender;
 	private TreeMap<String, Integer> stats;
 	private TreeMap<String, Integer> inventory;
 
 	// constructor
 	public Player(String name) {
 		this.name = name;
-		male = true;
+		gender = MALE;
 		stats = new TreeMap<String, Integer>();
 		inventory = new TreeMap<String, Integer>();
 	}
@@ -27,12 +36,12 @@ public class Player {
 		this.name = name;
 	}
 	
-	public boolean isMale() {
-		return male;
+	public int getGender() {
+		return gender;
 	}
 
-	public void setMale(boolean male) {
-		this.male = male;
+	public void setGender(int gender) {
+		this.gender = gender;
 	}
 
 	// returns the player stat value stored at a given key s
@@ -41,8 +50,11 @@ public class Player {
 	}
 
 	// returns the player inventory value stored at a given key s
-	public int getInventory(String s) {
-		return inventory.get(s);
+	public int getItemQuantity(String s) {
+		if (inventory.containsKey(s))
+			return inventory.get(s);
+		else
+			return 0;
 	}
 
 	// changes the player stat value stored at a given key
@@ -51,7 +63,7 @@ public class Player {
 	}
 
 	// changes the player inventory value stored at a given key
-	public void setInventory(String s, int value) {
+	public void addItem(String s, int value) {
 		inventory.put(s, value);
 	}
 	

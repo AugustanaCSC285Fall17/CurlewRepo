@@ -50,8 +50,20 @@ public class SlideEditor {
 	// as a reference
 	public void setSlideImage(File slideImageIn) throws IOException {
 
-		String path = "assets/slideImages/SlideImageNumber" + currentSlideIndex + ".jpg";
-		Files.copy(slideImageIn.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);
+		String path = "assets/slideImages/"+ slideImageIn.getName();
+		Files.copy(slideImageIn.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);		
 		data.getSlide(currentSlideIndex).setImageFileName(path);
+	}
+
+	public boolean wasSlideSelected() {
+		if (currentSlideIndex == -1) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public void removeSlide() {
+		data.removeSlide(currentSlideIndex);
 	}
 }

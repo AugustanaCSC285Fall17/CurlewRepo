@@ -49,6 +49,8 @@
                         <TextField fx:id="showSlideAtTextField" layoutX="177.0" layoutY="112.0" onAction="#handleShowSlideAtTextField" prefHeight="31.0" prefWidth="73.0" />
                               <Button fx:id="showSlideListButton" layoutX="37.0" layoutY="184.0" mnemonicParsing="false" onAction="#handleShowSlideListButton" text="Show Slide List" />
                               <Label layoutX="46.0" layoutY="117.0" text="Show Slide info at.." />
+                              <Button fx:id="saveButton" layoutX="37.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="25.0" prefWidth="157.0" text="Save" />
+                              <Button fx:id="saveAsButton" layoutX="297.0" layoutY="197.0" mnemonicParsing="false" onAction="#handleSaveAsButton" text="SaveAs" />
                      </children>
                   </AnchorPane>
                      </children>
@@ -72,8 +74,7 @@
                         <Button fx:id="submitButton" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
                         <Button fx:id="addActionChoiceButton" layoutX="234.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleAddActionChoiceButton" text="Add Action Choice " />
                         <Button fx:id="showSlideInfoButton" layoutX="233.0" layoutY="204.0" mnemonicParsing="false" onAction="#handleShowSlideInfoButton" text="Show Slide Info" />
-                        <Label layoutX="234.0" layoutY="245.0" text="Remove Slide at Index:" />
-                        <TextField fx:id="removeSlideTextField" layoutX="390.0" layoutY="240.0" onAction="#handleRemoveSlideTextField" prefHeight="11.0" prefWidth="57.0" />
+                        <Button fx:id="removeSlideButton" layoutX="234.0" layoutY="241.0" mnemonicParsing="false" onAction="#handleRemoveSlideButton" text="Remove Current Slide" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -95,6 +96,7 @@
                         <Button fx:id="aceChoiceSubmitButton" layoutX="61.0" layoutY="284.0" mnemonicParsing="false" onAction="#handleAceChoiceSubmitButton" text="Submit" />
                         <TextField fx:id="aceSetDestinationSlideIndexField" layoutX="425.0" layoutY="111.0" onAction="#handleAceSetDestinationSlideIndexField" prefHeight="31.0" prefWidth="54.0" />
                         <Label layoutX="234.0" layoutY="116.0" text="Set Destination Slide Index:" />
+                        <Button fx:id="removeAcButton" layoutX="273.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleRemoveAcButton" text="Remove Current Action Choice" />
                      </children>
                   </AnchorPane>
               </content>
