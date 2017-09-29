@@ -1,3 +1,4 @@
+
 package edu.augustana.csc285.game;
 
 import java.util.ArrayList;
@@ -22,6 +23,12 @@ import edu.augustana.csc285.game.datamodel.GameData;
 import edu.augustana.csc285.game.datamodel.Slide;
 
 public class SlideScreen implements Screen {
+	public static final int NORMAL_SLIDE = 0;
+	public static final int HISTORICAL_POP_UP = 1;
+	public static final int INVENTORY_SLIDE = 2;
+	
+	public static final int INVENTORY_SLIDE_INDEX = 11;
+	public static final int GAME_OVER_SLIDE_INDEX = -1;
 	
 	private AdventureGame game;
 	private Table table;
@@ -34,9 +41,11 @@ public class SlideScreen implements Screen {
 	
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
-		mainGameData = GameData.fromJSONFile("assets/GameData/SwedishImmigrant.json");
-		mainGameData.setCurrentSlideIndex(mainGameData.getStartSlideIndex());
 		
+		mainGameData = GameData.fromJSONFile("assets/GameData/SampleGame.json");
+
+		mainGameData = GameData.fromJSONFile("assets/GameData/SwedishImmigrant.json");
+		mainGameData.setCurrentSlideIndex(11);
 		initialize();
 		
 		Gdx.input.setInputProcessor(game.stage);
@@ -87,6 +96,7 @@ public class SlideScreen implements Screen {
 	
 	// Initialize slide elements
 	private void initialize() {
+		
 		// Clear the stage before changing slide
 		game.stage.clear();
 		
@@ -96,14 +106,69 @@ public class SlideScreen implements Screen {
 		// Get the current slide object to initialize buttons & text etc.
 		currentSlide = mainGameData.getSlide(mainGameData.getCurrentSlideIndex());
 		
-		// Initialize slide elements
-		createTitle();
-		createGameTextWithScrollPane();
-		createChoiceButtons();
-		createTable();
+		// Initialize title text
+		title = new Label(currentSlide.getTitle(), game.skin, "title");
+		title.setWrap(true);
+		title.setWidth(350);
+		title.pack();
+		title.setWidth(350);
+		title.setPosition(40, Gdx.graphics.getHeight() - title.getHeight() - 20);
+		title.setAlignment(Align.left);
 		
-	    // print out title height for debugging
+		// Initialize game text
+		gameText = new Label(currentSlide.getGameText(), game.skin);
+		gameText.setWrap(true);
+		
+		int gameTextWidth = 0;
+		if (currentSlide.getSlideType() == NORMAL_SLIDE)
+			gameTextWidth = 280;
+		else if (currentSlide.getSlideType() == HISTORICAL_POP_UP)
+			gameTextWidth = 550;
+		
+		gameText.setWidth(gameTextWidth);
+		gameText.setAlignment(Align.topLeft);
+
+	    scrollPane = new ScrollPane(gameText, game.skin);
+	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 250, gameTextWidth, 220);
+	    scrollPane.layout();
+	    scrollPane.setTouchable(Touchable.enabled);
+		
 	    System.err.println(title.getHeight());
+	    
+		// Loop & create buttons
+		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
+			ActionChoice currentChoice = currentSlide.getActionChoicesAt(i);
+			String currentChoiceText = currentChoice.getChoiceText();
+			
+			TextButton newButton = new TextButton(currentChoiceText, game.skin);
+			
+			newButton.addListener(new ClickListener(){
+					
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					mainGameData.setCurrentSlideIndex(currentChoice.getDestinationSlideIndex());
+					initialize();
+				}
+			});
+			buttons.add(newButton);
+			
+		}
+		
+		// Initialize table & add buttons to table
+		table = new Table();
+		table.setWidth(Gdx.graphics.getWidth());
+		table.align(Align.topLeft);
+		
+		table.setPosition(0, game.stage.getHeight());
+
+		table.padLeft(40);
+		
+		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
+			table.add(buttons.get(i)).width(260).padTop(5);
+			table.row();
+		}
+		
+		table.padTop(250 + title.getHeight());
 		
 		// Add actors
 		game.stage.addActor(title);
@@ -117,6 +182,9 @@ public class SlideScreen implements Screen {
 		game.sprite.setPosition(Gdx.graphics.getWidth() - size, 0);
 		game.sprite.setSize(size, size);
 	}
+
+	
+
 	
 	private void createChoiceButtons() {
 		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
@@ -185,3 +253,4 @@ public class SlideScreen implements Screen {
 	}
 
 }
+
