@@ -48,6 +48,11 @@ public class Player {
 	public int getStat(String s) {
 		return stats.get(s);
 	}
+	
+	public TreeMap<String, Integer> getInventory() {
+		return inventory;
+		
+	}
 
 	// returns the player inventory value stored at a given key s
 	public int getItemQuantity(String s) {

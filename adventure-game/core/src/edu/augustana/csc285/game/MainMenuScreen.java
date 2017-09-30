@@ -57,7 +57,7 @@ public class MainMenuScreen implements Screen {
 		startButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				dispose();
+				game.stage.clear();
 				game.setScreen(new SlideScreen(game));
 			}
 		});
@@ -107,7 +107,7 @@ public class MainMenuScreen implements Screen {
 		backButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				dispose();
+				game.stage.clear();
 				initializeMain();
 			}
 		});
@@ -184,7 +184,6 @@ public class MainMenuScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		game.stage.clear();
 	}
 }
 

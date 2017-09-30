@@ -134,11 +134,10 @@ public class GameData {
 		Gson gson = new GsonBuilder().create();
 		return gson.fromJson(jsonData, GameData.class);
 	}
-
+	
 	/**
 	 * 
-	 * @param file
-	 *            the address of the JSON file
+	 * @param file the address of the JSON file
 	 * @return a GamaData object, which is created from deserializing the JSON
 	 *         data imported from the file.
 	 */

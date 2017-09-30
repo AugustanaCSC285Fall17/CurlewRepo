@@ -30,7 +30,7 @@
       "imageFileName": "image2.jpg",
       "gameText": "You are an 18 year-old male from Mellby Parish, Småland. You are the youngest of 4 brothers and will not have any farmland to work. There are too many men in your family and not enough farmland. Additionally, the crop failures of 1867-1868 hit your family farm hard. You would also like to avoid Swedish military conscription. You are coming to America to own your own farmland or find a good job.",
       "urlText": "url1",
-      "slideType" : 0,
+      "slideType" : 3,
       "gameOver": false,
       "actionChoices": [
         {
@@ -45,7 +45,7 @@
       "imageFileName": "image3.jpg",
       "gameText": "You are an 18 year-old female maid from Stockholm. You dislike your job as maid and can’t seem to find a better one because there is too much competition (population has been booming in the city and countryside). You decide to seek better employment in America.",
       "urlText": "url2",
-      "slideType" : 0,
+      "slideType" : 3,
       "gameOver": false,
       "actionChoices": [
         {
@@ -105,7 +105,7 @@
       "imageFileName": "image5.jpg",
       "gameText": "To Whom It May Concern,\n\nWe hope you find this letter in good spirits. On behalf of the John Deere Company, we thank you for meeting with us concerning about jobs within our factories. We are pleased to inform you you have been recruited for a position at the Moline factory site. We are looking forward to seeing you again and have safe travels. Please bring along this notarized letter with you to our recruitment office.\n\nGod speed,\n\nFrom the Office of John Deere, President of John Deere Co.",
       "urlText": "dieUrl",
-      "slideType" : 0,
+      "slideType" : 3,
       "gameOver": false,
       "actionChoices": [
         {
@@ -120,7 +120,7 @@
       "imageFileName": "image7.jpg",
       "gameText": "Dear Cousin,\n\nMay God find you well, dear friend! God is good and God is plentiful. He has shown me the way to a brighter future here in America. My journey has led myself and my travelling companions to a quaint town in the state of Illinois called Moline. It may be quaint now but we are fortunate to have factories and farming jobs available for the people. I have friends all over Illinois including Rockford and Chicago! We stay in touch through correspondence and the occasional social visit when we can. My piece of advice for you, should you make the journey, is to find peace with yourself and our loving God. For He is the way and will guide you! The Christian faith has given me hope and salvation along my journey. My fellow companions and myself attend the Lutheran service held by a pastor who is also from Sweden. It is wonderful to have familiarity in a strange place. Services are something to look forward to as it brings us closer to our Maker and builds a strong sense of community. I pray for all the success in the world for you as you make your own journey. \n\nLovingly,\n\nErika Leiffson",
       "urlText": "dieUrl",
-      "slideType" : 0,
+      "slideType" : 3,
       "gameOver": false,
       "actionChoices": [
         {
@@ -135,7 +135,7 @@
       "imageFileName": "image8.jpg",
       "gameText": "Dear Cousin,\n\nI have been blessed to have found a place I can call home. My journeys were long, and at times I had felt grief for leaving my beautiful Sweden. I remember so clearly how it felt to be a stranger in a strange place. Only having a small trunk and broken English left me apprehensive of my surroundings. I am thankful that I have experienced no ill wills on my passage to America. I had heard some of my kin had travelled to the far west of this vast country, in a place called Washington state. My family settled near Tacoma and are now prosperous farmers and fishermen! I decided to try my hand for this place. I took the Walla Walla railroad instead of the Northern Pacific, as it was the cheaper option. I was taken to Seattle and found a boardinghouse for Swedes. Within a month I had found employment as a maid to one of the founding families. They treat me well despite some language barrier, but I am becoming more proficient and feel more confident in my new home.\n\nI do wish you well and hope someday to meet you again in my new home! Give my love to my family and friends!\n\nLinnea Parsson",
       "urlText": "dieUrl",
-      "slideType" : 0,
+      "slideType" : 3,
       "gameOver": false,
       "actionChoices": [
         {
@@ -150,7 +150,7 @@
       "imageFileName": "image8.jpg",
       "gameText": "Dear Cousin,\n\nI am content to report that I have found steady employment as my own master. I had arrived only two months in St. Paul, working odds and ends in the town when I noticed an advertisement of purchasable land not far from my lodgings. Land is so cheap here in America! I saved enough to buy my own lot and have begun to till and grind the land. My hope is to grow peas and potatoes and sell them at market. Let us pray for a good harvest this next season!\n\nLife has treated me well. The journey is hard on everyone, harder for others. My companion on the trip to America arrived well but I have received word that he has fallen into poverty. He was swindled by a false recruiter at the docks. He is struggling to find employment in the city but, God willing, I hope he will find something soon!\n\nAs you make the journey, make sure to bring plenty of food. They treat you well on the ships and trains but the journey alone can make one homesick. A little piece of home can appease the qualms of the stomach and might make you a friend or two!\n\nGodspeed dear cousin! \n\nArvid Lothbrok",
       "urlText": "dieUrl",
-      "slideType" : 0,
+      "slideType" : 3,
       "gameOver": false,
       "actionChoices": [
         {
@@ -210,14 +210,15 @@
     "name": "Minh!!",
     "gender": 0,
     "stats": {},
+    "itemNum": 3;
     "inventory": {
-      "John Deere letter": 0,
+      "John Deere letter": 1,
       "Illinois letter": 0,
       "Washington letter": 0,
       "Minnesota letter": 0,
       "Official Paper": 0,
-      "Forged Paper": 0,
-      "Bible": 0,
+      "Forged Paper": 1,
+      "Bible": 1,
       "Family heirloom": 0,
       "Sewing materials": 0,
       "Medicine": 0,

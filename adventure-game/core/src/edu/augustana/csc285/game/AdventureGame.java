@@ -36,6 +36,9 @@ public class AdventureGame extends Game {
 	}
 	
 	public void dispose() {
+		skin.dispose();
+		stage.dispose();
+		batch.dispose();
 	}
 	
 }
