@@ -1,0 +1,14 @@
+{
+  "startSlideIndex": 0,
+  "inventorySlideIndex": 1,
+  "gameOverSlideIndex": 2,
+  "slides": [],
+  "player": {
+    "name": "Minh!!",
+    "gender": 0,
+    "stats": {},
+    "inventory": {}
+  },
+  "currentSlideIndex": 0,
+  "saveName": "SavedFile"
+}

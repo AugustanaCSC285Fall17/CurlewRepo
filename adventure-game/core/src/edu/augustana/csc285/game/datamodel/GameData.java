@@ -183,6 +183,7 @@ public class GameData {
 		try {
 			FileWriter writer = new FileWriter(path);
 			writer.write(toSave);
+			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
