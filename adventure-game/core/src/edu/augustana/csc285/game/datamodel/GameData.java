@@ -46,6 +46,18 @@ public class GameData {
 	public Slide getSlide(int index) {
 		return slides.get(index);
 	}
+	
+	public Slide getInventorySlide() {
+		return slides.get(inventorySlideIndex);
+	}
+	
+	public Slide getStartSlide() {
+		return slides.get(startSlideIndex);
+	}
+	
+	public Slide getGameOverSlide() {
+		return slides.get(gameOverSlideIndex);
+	}
 
 	public void addSlide(Slide slide) {
 		slides.add(slide);

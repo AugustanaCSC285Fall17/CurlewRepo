@@ -38,6 +38,7 @@ public class SlideScreen implements Screen {
 	private Table itemTable;
 	private Label title;
 	private Label gameText;
+	private TextButton inventoryButton;
 	private ArrayList<TextButton> buttons;
 	private ScrollPane scrollPane;
 	
@@ -74,12 +75,31 @@ public class SlideScreen implements Screen {
 		buttons = new ArrayList<TextButton>();
 		currentSlide = mainGameData.getSlide(mainGameData.getCurrentSlideIndex());
 		
+		if (currentSlide.getSlideType() != GameData.INVENTORY_SLIDE) {
+			inventoryButton = new TextButton("Inventory", game.skin);
+			inventoryButton.setPosition(Gdx.graphics.getWidth() - inventoryButton.getWidth() - 20,
+					Gdx.graphics.getHeight() - inventoryButton.getHeight() - 20);
+			inventoryButton.addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					// set the destination of the back button of inventory to
+					// the last slide
+					mainGameData.getInventorySlide().getActionChoicesAt(0)
+							.setDestinationSlideIndex(mainGameData.getCurrentSlideIndex());
+					mainGameData.setCurrentSlideIndex(mainGameData.getInventorySlideIndex());
+					initialize();
+				}
+			});
+			game.stage.addActor(inventoryButton);
+		}
+		
 		// initialize slide contents
 		createTitle();
 		if (currentSlide.getSlideType() == GameData.INVENTORY_SLIDE)
 			createItemTable();
 		else
 			createGameText();
+		
 		createChoiceButtons();
 		createTable();
 		
@@ -107,7 +127,7 @@ public class SlideScreen implements Screen {
 			String currentChoiceText = currentChoice.getChoiceText();
 			
 			TextButton newButton = new TextButton(currentChoiceText, game.skin);
-			
+			newButton.getLabel().setWrap(true);
 			newButton.addListener(new ClickListener(){
 					
 				@Override

@@ -170,7 +170,7 @@
       "actionChoices": [
         {
           "choiceText": "Continue",
-          "destinationSlideIndex": 10,
+          "destinationSlideIndex": 12,
           "visible": false
         }
       ]
@@ -204,6 +204,41 @@
           "visible": false
         }
       ]
+    },
+    {
+      "title": "Travel Papers",
+      "imageFileName": "image9.jpg",
+      "gameText": "To start your journey, you need a few provisions. The first and foremost being your papers. You have $70 USD worth of Kronor (Swedish money)  right now. Do you:",
+      "urlText": "dieUrl",
+      "slideType" : 0,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Buy official papers from your home parish ($20)",
+          "destinationSlideIndex": 13,
+          "visible": false
+        },
+        {
+          "choiceText": "Buy forged papers ($10)",
+          "destinationSlideIndex": 13,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "Historical Pop-Up: Getting Papers for Travel",
+      "imageFileName": "facts.jpg",
+      "gameText": "Immigrants from Sweden usually  gained needed papers for travel from their Parish. Tickets were costly; $30 USD in 1880 is the equivalent of $775 USD in 2017. Forging papers was not typical for immigrants; however, one letter, translated by the Swenson Center and sent to a Mr. Hjalmar Andersson, mentions that Swedish men were drafted in the military when they turned 18. In order for these men to migrate, they needed to find alternative ways to seek passage and documentation, so the letter writer suggests pursuing a forgery. ",
+      "urlText": "dieUrl",
+      "slideType" : 1,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Continue",
+          "destinationSlideIndex": 14,
+          "visible": false
+        }
+      ]
     }
   ],
   "player": {
@@ -213,17 +248,17 @@
     "itemNum": 3;
     "inventory": {
       "John Deere letter": 1,
-      "Illinois letter": 0,
-      "Washington letter": 0,
-      "Minnesota letter": 0,
-      "Official Paper": 0,
+      "Illinois letter": 1,
+      "Washington letter": 1,
+      "Minnesota letter": 1,
+      "Official Paper": 1,
       "Forged Paper": 1,
       "Bible": 1,
-      "Family heirloom": 0,
-      "Sewing materials": 0,
-      "Medicine": 0,
-      "Cured Meat": 0,
-      "Ticket": 0
+      "Family heirloom": 1,
+      "Sewing materials": 1,
+      "Medicine": 11,
+      "Cured Meat": 1,
+      "Ticket": 1
     }
   },
   "currentSlideIndex": 0
