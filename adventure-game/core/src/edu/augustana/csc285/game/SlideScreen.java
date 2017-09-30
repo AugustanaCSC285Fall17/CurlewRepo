@@ -149,8 +149,9 @@ public class SlideScreen implements Screen {
 		int gameTextWidth = 280;
 		
 		if (currentSlide.getSlideType() == GameData.HISTORICAL_POP_UP 
-				|| currentSlide.getSlideType() == GameData.INVENTORY_SLIDE)
-			gameTextWidth = 550;
+				|| currentSlide.getSlideType() == GameData.INVENTORY_SLIDE
+				|| currentSlide.getSlideType() == GameData.MANY_BUTTONS_SLIDE)
+			gameTextWidth = 600;
 		
 		gameText.setWidth(gameTextWidth);
 		gameText.setAlignment(Align.topLeft);
@@ -191,6 +192,8 @@ public class SlideScreen implements Screen {
 		int gameTextHeight = 300;
 		if (currentSlide.getSlideType() == GameData.NORMAL_SLIDE)
 			gameTextHeight = 220;
+		else if (currentSlide.getSlideType() == GameData.MANY_BUTTONS_SLIDE)
+			gameTextHeight = 170;
 	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 30 - gameTextHeight, gameTextWidth, gameTextHeight);
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);
@@ -198,7 +201,9 @@ public class SlideScreen implements Screen {
 	
 	private void createTitle() {
 		title = new Label(currentSlide.getTitle(), game.skin, "title");
-		title.setWrap(true);
+		if (currentSlide.getSlideType() == GameData.LETTER_SLIDE
+				|| currentSlide.getSlideType() == GameData.NORMAL_SLIDE)
+			title.setWrap(true);
 		title.setWidth(350);
 		title.pack();
 		title.setWidth(350);
@@ -223,6 +228,8 @@ public class SlideScreen implements Screen {
 		int tableHeight = 350;
 		if (currentSlide.getSlideType() == GameData.NORMAL_SLIDE)
 			tableHeight = 250;
+		else if (currentSlide.getSlideType() == GameData.MANY_BUTTONS_SLIDE)
+			tableHeight = 200;
 		table.padTop(tableHeight + title.getHeight());
 	}
 

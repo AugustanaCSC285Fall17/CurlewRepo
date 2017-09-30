@@ -8,7 +8,7 @@
     {
       "title": "Choose Your Character",
       "imageFileName": "image4.jpg",
-      "gameText": "It’s the 1880s in Sweden. The opportunities in America, such as cheap land and a stable economy, make migration attractive to many Europeans who face problems related to overpopulation. Millions have migrated from their homelands for a new life. You now wish to join them. \nWho are you?",
+      "gameText": "It's the 1880s in Sweden. The opportunities in America, such as cheap land and a stable economy, make migration attractive to many Europeans who face problems related to overpopulation. Millions have migrated from their homelands for a new life. You now wish to join them. \nWho are you?",
       "urlText": "www.google.com",
       "slideType" : 0,
       "gameOver": false,
@@ -43,7 +43,7 @@
     {
       "title": "Lovisa Eriksdotter",
       "imageFileName": "image3.jpg",
-      "gameText": "You are an 18 year-old female maid from Stockholm. You dislike your job as maid and can’t seem to find a better one because there is too much competition (population has been booming in the city and countryside). You decide to seek better employment in America.",
+      "gameText": "You are an 18 year-old female maid from Stockholm. You dislike your job as maid and can't seem to find a better one because there is too much competition (population has been booming in the city and countryside). You decide to seek better employment in America.",
       "urlText": "url2",
       "slideType" : 3,
       "gameOver": false,
@@ -71,7 +71,7 @@
       ]
     },
     {
-      "title": "You’ve received a letter from America.",
+      "title": "You've received a letter from America.",
       "imageFileName": "image9.jpg",
       "gameText": "Receiving letters from those who journeyed to America prompted many of your family friends to pursue their own journey over. Life must be treating them well in America— economic opportunities, building their own legacy and family. The American Dream is a strong pull for Swedes, yourself included.\nChoose a letter to read:",
       "urlText": "dieUrl",
@@ -227,7 +227,7 @@
     },
     {
       "title": "Historical Pop-Up: Getting Papers for Travel",
-      "imageFileName": "facts.jpg",
+      "imageFileName": "facts.png",
       "gameText": "Immigrants from Sweden usually  gained needed papers for travel from their Parish. Tickets were costly; $30 USD in 1880 is the equivalent of $775 USD in 2017. Forging papers was not typical for immigrants; however, one letter, translated by the Swenson Center and sent to a Mr. Hjalmar Andersson, mentions that Swedish men were drafted in the military when they turned 18. In order for these men to migrate, they needed to find alternative ways to seek passage and documentation, so the letter writer suggests pursuing a forgery. ",
       "urlText": "dieUrl",
       "slideType" : 1,
@@ -236,6 +236,241 @@
         {
           "choiceText": "Continue",
           "destinationSlideIndex": 14,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "Choose your Inventory items",
+      "imageFileName": "facts.png",
+      "gameText": "Excellent. You are the first in your family to take on this journey. They are counting on your success in America. Your family has pooled enough money for passage, thankfully. You cannot take too much with you, so you must choose carefully which items to bring. Some items are more useful than others but even the smallest, trivial item can lead to unexpected use. Remember, you already have some money left after purchasing papers.\nChose one item",
+      "urlText": "dieUrl",
+      "slideType" : 4,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Bible",
+          "destinationSlideIndex": 15,
+          "visible": false
+        },
+        {
+          "choiceText": "Family heirloom",
+          "destinationSlideIndex": 15,
+          "visible": false
+        },
+        {
+          "choiceText": "Sewing materials",
+          "destinationSlideIndex": 15,
+          "visible": false
+        },
+        {
+          "choiceText": "Medicine",
+          "destinationSlideIndex": 15,
+          "visible": false
+        },
+        {
+          "choiceText": "Cured Meat",
+          "destinationSlideIndex": 15,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "Choose another Inventory items",
+      "imageFileName": "facts.png",
+      "gameText": "Excellent. You are the first in your family to take on this journey. They are counting on your success in America. Your family has pooled enough money for passage, thankfully. You cannot take too much with you, so you must choose carefully which items to bring. Some items are more useful than others but even the smallest, trivial item can lead to unexpected use. \n\nChoose one item",
+	  "urlText": "dieUrl",
+      "slideType" : 4,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Bible",
+          "destinationSlideIndex": 16,
+          "visible": false
+        },
+        {
+          "choiceText": "Family heirloom",
+          "destinationSlideIndex": 16,
+          "visible": false
+        },
+        {
+          "choiceText": "Sewing materials",
+          "destinationSlideIndex": 16,
+          "visible": false
+        },
+        {
+          "choiceText": "Medicine",
+          "destinationSlideIndex": 16,
+          "visible": false
+        },
+        {
+          "choiceText": "Cured Meat",
+          "destinationSlideIndex": 16,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "Choose your final Inventory item",
+      "imageFileName": "facts.png",
+      "gameText": "Excellent. You are the first in your family to take on this journey. They are counting on your success in America. Your family has pooled enough money for passage, thankfully. You cannot take too much with you, so you must choose carefully which items to bring. Some items are more useful than others but even the smallest, trivial item can lead to unexpected use. \n\nChoose one item",
+	  "urlText": "dieUrl",
+      "slideType" : 4,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Bible",
+          "destinationSlideIndex": 17,
+          "visible": false
+        },
+        {
+          "choiceText": "Family heirloom",
+          "destinationSlideIndex": 17,
+          "visible": false
+        },
+        {
+          "choiceText": "Sewing materials",
+          "destinationSlideIndex": 17,
+          "visible": false
+        },
+        {
+          "choiceText": "Medicine",
+          "destinationSlideIndex": 17,
+          "visible": false
+        },
+        {
+          "choiceText": "Cured Meat",
+          "destinationSlideIndex": 17,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "Historical Pop-Up: Inventory",
+      "imageFileName": "facts.png",
+      "gameText": "Many immigrants sold much of what they owned both in order to pay for the immense travel fees. Others planned to start over in America and so liquidated all their assets.",
+      "urlText": "dieUrl",
+      "slideType" : 1,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Continue",
+          "destinationSlideIndex": 18,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "Transport to Gothenburg",
+      "imageFileName": "image12.jpg",
+      "gameText": "You take a wagon to the port city of Gothenburg. You walk along Sillgatan or “Herring Street” where there were many emigrant agents, hotels, shops, and taverns. Here you wait to board a ship to England.",
+      "urlText": "dieUrl",
+      "slideType" : 0,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Continue",
+          "destinationSlideIndex": 19,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "Historical Pop-Up: Gothenburg Port",
+      "imageFileName": "facts.png",
+      "gameText": "Over a million Swedish immigrants left through the port of Gothenburg in southwest Sweden. Many American genealogists believe their ancestors lived in Gothenburg, when really this was just the port they left through. Provinces of Sweden including Småland, Västergötland, Dalsland, Värmland, and Öland saw large numbers emigrate. ",
+      "urlText": "dieUrl",
+      "slideType" : 1,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Continue",
+          "destinationSlideIndex": 20,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "Historical Pop-Up: The Travel Route",
+      "imageFileName": "facts.png",
+      "gameText": "After the American Civil War, big steamship companies like the White Star Line organized emigrant travel. For Swedes, this often meant traveling to Gothenburg, taking a ship to Hull, England, crossing England by train, and taking a steamliner from Liverpool to New York. After World War I, the Swedish American Line was established with a direct route from Gothenburg to New York and Swedish immigrants no longer had to travel through England.",
+      "urlText": "dieUrl",
+      "slideType" : 1,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Continue",
+          "destinationSlideIndex": 21,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "Gothenburg Port",
+      "imageFileName": "image11.jpg",
+      "gameText": "You have arrived at Gothenburg port. The port of Gothenburg promises good sailing today. You need to find the ticket agent for the White Star Line.",
+      "urlText": "dieUrl",
+      "slideType" : 0,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Go left",
+          "destinationSlideIndex": 22,
+          "visible": false
+        },
+        {
+          "choiceText": "Go straight to ship",
+          "destinationSlideIndex": 21,
+          "visible": false
+        },
+        {
+          "choiceText": "Go right",
+          "destinationSlideIndex": 21,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "Market",
+      "imageFileName": "image14.jpg",
+      "gameText": "You see a market at the end of the lane. Do you wish to shop here?",
+      "urlText": "dieUrl",
+      "slideType" : 0,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Yes",
+          "destinationSlideIndex": 23,
+          "visible": false
+        },
+        {
+          "choiceText": "No (go back to port)",
+          "destinationSlideIndex": 21,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "Shop",
+      "imageFileName": "image14.jpg",
+      "gameText": "You're in the shop. What would you like to do?",
+      "urlText": "dieUrl",
+      "slideType" : 0,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "Buy",
+          "destinationSlideIndex": 23,
+          "visible": false
+        },
+        {
+          "choiceText": "Sell",
+          "destinationSlideIndex": 23,
+          "visible": false
+        },
+        {
+          "choiceText": "Leave",
+          "destinationSlideIndex": 21,
           "visible": false
         }
       ]

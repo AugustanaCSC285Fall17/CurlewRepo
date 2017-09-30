@@ -25,6 +25,7 @@ public class GameData {
 	public static final int HISTORICAL_POP_UP = 1;
 	public static final int INVENTORY_SLIDE = 2;
 	public static final int LETTER_SLIDE = 3;
+	public static final int MANY_BUTTONS_SLIDE = 4;
 
 	private int startSlideIndex;
 	private int inventorySlideIndex;
