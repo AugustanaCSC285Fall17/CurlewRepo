@@ -179,10 +179,12 @@ public class GameData {
 
 	public void save() {
 		String toSave = toJSON();
+		System.out.print(toSave);
 		String path = "assets/GameData/" + saveName + ".json";
 		try {
 			FileWriter writer = new FileWriter(path);
 			writer.write(toSave);
+			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

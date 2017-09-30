@@ -1,0 +1,78 @@
+{
+  "startSlideIndex": 0,
+  "inventorySlideIndex": 1,
+  "gameOverSlideIndex": 2,
+  "slides": [
+    {
+      "title": "NewSlide",
+      "imageFileName": "",
+      "slideType": 0,
+      "gameOver": false,
+      "actionChoices": []
+    },
+    {
+      "title": "NewSlide",
+      "imageFileName": "",
+      "slideType": 0,
+      "gameOver": false,
+      "actionChoices": []
+    },
+    {
+      "title": "Poop",
+      "imageFileName": "",
+      "slideType": 0,
+      "gameOver": false,
+      "actionChoices": [
+        {
+          "choiceText": "",
+          "destinationSlideIndex": -1,
+          "visible": false
+        },
+        {
+          "choiceText": "",
+          "destinationSlideIndex": -1,
+          "visible": false
+        },
+        {
+          "choiceText": "",
+          "destinationSlideIndex": -1,
+          "visible": false
+        },
+        {
+          "choiceText": "FDMIOjfpdai",
+          "destinationSlideIndex": 4,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "title": "NewSlide",
+      "imageFileName": "",
+      "slideType": 0,
+      "gameOver": false,
+      "actionChoices": []
+    },
+    {
+      "title": "NewSlide",
+      "imageFileName": "",
+      "slideType": 0,
+      "gameOver": false,
+      "actionChoices": []
+    },
+    {
+      "title": "NewSlide",
+      "imageFileName": "",
+      "slideType": 0,
+      "gameOver": false,
+      "actionChoices": []
+    }
+  ],
+  "player": {
+    "name": "Minh!!",
+    "gender": 0,
+    "stats": {},
+    "inventory": {}
+  },
+  "currentSlideIndex": 0,
+  "saveName": "SavedFile"
+}

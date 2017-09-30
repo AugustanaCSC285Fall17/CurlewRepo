@@ -119,6 +119,8 @@ public class MainPaneController {
 		
 		} else{
 			this.data=GameData.fromJSONFile(inFile);
+			se = new SlideEditor(data);
+			ace = new ActionChoiceEditor(data, se);
 		}
 	}
 
