@@ -20,12 +20,10 @@ import com.badlogic.gdx.utils.JsonValue;
 public class GameData {
 	public static final int NORMAL_SLIDE = 0;
 	public static final int HISTORICAL_POP_UP = 1;
-	public static final int INVENTORY_SLIDE = 2;
 	public static final int LETTER_SLIDE = 3;
 	public static final int MANY_BUTTONS_SLIDE = 4;
 
 	private int startSlideIndex;
-	private int inventorySlideIndex;
 	private int gameOverSlideIndex;
 
 	private List<Slide> slides;
@@ -37,16 +35,11 @@ public class GameData {
 		slides = new ArrayList<Slide>();
 		player = new Player("Minh!!");
 		startSlideIndex = 0;
-		inventorySlideIndex = 1;
 		gameOverSlideIndex = 2;
 	}
 
 	public Slide getSlide(int index) {
 		return slides.get(index);
-	}
-	
-	public Slide getInventorySlide() {
-		return slides.get(inventorySlideIndex);
 	}
 	
 	public Slide getStartSlide() {
@@ -109,14 +102,6 @@ public class GameData {
 
 	public void setStartSlideIndex(int startSlideIndex) {
 		this.startSlideIndex = startSlideIndex;
-	}
-
-	public int getInventorySlideIndex() {
-		return inventorySlideIndex;
-	}
-
-	public void setInventorySlideIndex(int inventorySlideIndex) {
-		this.inventorySlideIndex = inventorySlideIndex;
 	}
 
 	public int getGameOverSlideIndex() {

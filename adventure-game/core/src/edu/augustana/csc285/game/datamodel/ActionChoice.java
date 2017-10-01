@@ -11,12 +11,20 @@ public class ActionChoice {//implements Feasible
 	private ArrayList<Effect> effectList;
 
 	public ActionChoice() {
+		this("", new ArrayList<Feasible>(), new ArrayList<Effect>());
+		visible = true;
+	}
+	
+	public ActionChoice(String choiceText, int destinationSlideIndex) {
+		this("", new ArrayList<Feasible>(), new ArrayList<Effect>());
+		this.choiceText = choiceText;
+		this.destinationSlideIndex = destinationSlideIndex;
 	}
 
 	public ActionChoice(String rejText, ArrayList<Feasible> feasibilityReq, ArrayList<Effect> effectList) {
 		this.rejText = rejText;
-		feasibilityReq = new ArrayList<Feasible>();
-		effectList = new ArrayList<Effect>();
+		this.feasibilityReq = feasibilityReq;
+		this.effectList = effectList;
 		visible = true;
 
 	}
@@ -37,10 +45,6 @@ public class ActionChoice {//implements Feasible
 		this.destinationSlideIndex = destinationSlideIndex;
 	}
 
-	public ActionChoice(String choiceText, int destinationSlideIndex) {
-		this.choiceText = choiceText;
-		this.destinationSlideIndex = destinationSlideIndex;
-	}
 
 
 	public void getReq(int requirement) {

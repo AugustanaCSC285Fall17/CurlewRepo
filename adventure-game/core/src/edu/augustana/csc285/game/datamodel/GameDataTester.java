@@ -11,6 +11,7 @@ public class GameDataTester{
 
 		s0.getActionChoices().add(new ActionChoice("go to room 1", 1));
 		s0.getActionChoices().add(new ActionChoice("go to room 2", 2));
+		s0.getActionChoicesAt(0).addEffect(new InventoryEffect(69, "Bible"));
 		Slide s1 = new Slide("Room 1", "slide_001.png", "text1", 0, "url1");
 		s1.getActionChoices().add(new ActionChoice("die", -1));
 		s1.getActionChoices().add(new ActionChoice("go to room 2", 2));
@@ -22,22 +23,7 @@ public class GameDataTester{
 		gd.addSlide(s2);
 		
 		gd.getPlayer().addItem("Bible", 0);
-		System.out.println(s0);
 		
-		String serializedJSONText = gd.toJSON();
-		System.out.println(serializedJSONText);
-		
-		GameData gdRecreated = GameData.fromJSON(serializedJSONText);
-		System.out.println("Slide 0 has this image: ");
-		System.out.println(gdRecreated.getSlide(0).getImageFileName());
-		
-		System.out.println(gd.getSlide(1).getActionChoices().get(1).getChoiceText());
-		System.out.println(gd.getSlide(1).getActionChoices().get(1).getDestinationSlideIndex());
-		gd.removeSlide(0);
-		
-		System.out.println(gd.getSlide(0).getActionChoices().get(1).getChoiceText());
-		System.out.println(gd.getSlide(0).getActionChoices().get(1).getDestinationSlideIndex());
-		System.out.println("Bible: " + gd.getPlayer().getItemQuantity("Bible"));
 		System.out.println(gd.toJSON());
 	}
 

@@ -81,22 +81,50 @@
         {
           "choiceText": "John Deere letter",
           "destinationSlideIndex": 5,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "John Deere letter"
+			  }
+		  ]
         },
         {
           "choiceText": "Illinois letter",
           "destinationSlideIndex": 6,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Illinois letter"
+			  }
+		  ]
         },
         {
           "choiceText": "Washington letter",
           "destinationSlideIndex": 7,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Washington letter"
+			  }
+		  ]
         },
         {
           "choiceText": "Minnesota letter",
           "destinationSlideIndex": 8,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Minnesota letter"
+			  }
+		  ]
         }
       ]
     },
@@ -216,12 +244,26 @@
         {
           "choiceText": "Buy official papers from your home parish ($20)",
           "destinationSlideIndex": 13,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Official Paper"
+			  }
+		  ]
         },
         {
           "choiceText": "Buy forged papers ($10)",
           "destinationSlideIndex": 13,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Forged Paper"
+			  }
+		  ]
         }
       ]
     },
@@ -251,27 +293,62 @@
         {
           "choiceText": "Bible",
           "destinationSlideIndex": 15,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Bible"
+			  }
+		  ]
         },
         {
           "choiceText": "Family heirloom",
           "destinationSlideIndex": 15,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Family heirloom"
+			  }
+		  ]
         },
         {
           "choiceText": "Sewing materials",
           "destinationSlideIndex": 15,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Sewing materials"
+			  }
+		  ]
         },
         {
           "choiceText": "Medicine",
           "destinationSlideIndex": 15,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Medicine"
+			  }
+		  ]
         },
         {
           "choiceText": "Cured Meat",
           "destinationSlideIndex": 15,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Cured Meat"
+			  }
+		  ]
         }
       ]
     },
@@ -286,27 +363,62 @@
         {
           "choiceText": "Bible",
           "destinationSlideIndex": 16,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Bible"
+			  }
+		  ]
         },
         {
           "choiceText": "Family heirloom",
           "destinationSlideIndex": 16,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Family heirloom"
+			  }
+		  ]
         },
         {
           "choiceText": "Sewing materials",
           "destinationSlideIndex": 16,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Sewing materials"
+			  }
+		  ]
         },
         {
           "choiceText": "Medicine",
           "destinationSlideIndex": 16,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Medicine"
+			  }
+		  ]
         },
         {
           "choiceText": "Cured Meat",
           "destinationSlideIndex": 16,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Cured Meat"
+			  }
+		  ]
         }
       ]
     },
@@ -321,28 +433,63 @@
         {
           "choiceText": "Bible",
           "destinationSlideIndex": 17,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Bible"
+			  }
+		  ]
         },
         {
           "choiceText": "Family heirloom",
           "destinationSlideIndex": 17,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Family heirloom"
+			  }
+		  ]
         },
         {
           "choiceText": "Sewing materials",
           "destinationSlideIndex": 17,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Sewing materials"
+			  }
+		  ]
         },
         {
           "choiceText": "Medicine",
           "destinationSlideIndex": 17,
-          "visible": false
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Medicine"
+			  }
+		  ]
         },
         {
           "choiceText": "Cured Meat",
           "destinationSlideIndex": 17,
-          "visible": false
-        }
+          "visible": false,
+          "effectList": [
+			  {
+				  class: edu.augustana.csc285.game.datamodel.InventoryEffect,
+				  effectSize: 1,
+			  	  itemName: "Cured Meat"
+			  }
+		  ]
+		}
       ]
     },
     {
@@ -481,18 +628,18 @@
     "gender": 0,
     "stats": {},
     "inventory": {
-      "John Deere letter": 1,
-      "Illinois letter": 1,
-      "Washington letter": 1,
-      "Minnesota letter": 1,
-      "Official Paper": 1,
-      "Forged Paper": 1,
-      "Bible": 1,
-      "Family heirloom": 1,
-      "Sewing materials": 1,
-      "Medicine": 11,
-      "Cured Meat": 1,
-      "Ticket": 1
+      "John Deere letter": 0,
+      "Illinois letter": 0,
+      "Washington letter": 0,
+      "Minnesota letter": 0,
+      "Official Paper": 0,
+      "Forged Paper": 0,
+      "Bible": 0,
+      "Family heirloom": 0,
+      "Sewing materials": 0,
+      "Medicine": 0,
+      "Cured Meat": 0,
+      "Ticket": 0
     }
   },
   "currentSlideIndex": 0

@@ -1,6 +1,5 @@
 {
-startSlideIndex: 11
-inventorySlideIndex: 10
+startSlideIndex: 10
 gameOverSlideIndex: -1
 slides: [
 	{
@@ -572,4 +571,5 @@ player: {
 		Washington letter: 0
 	}
 }
+saveName: SwedishImmigrantTest
 }
