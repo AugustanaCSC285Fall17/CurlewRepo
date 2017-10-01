@@ -72,7 +72,7 @@ public class InventoryScreen implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
-				game.setScreen(new PauseScreen(game, curSlide));
+				game.setScreen(new PauseScreen(game, curSlide, player));
 			}
 		});
 		game.stage.addActor(pauseButton);

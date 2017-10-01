@@ -27,7 +27,7 @@ import edu.augustana.csc285.game.datamodel.Slide;
 public class SlideScreen implements Screen {
 	
 	private AdventureGame game;
-	private GameData data;
+	private GameData data = GameData.fromJSONFile(Gdx.files.internal("assets/GameData/SwedishImmigrantv2.json").file());;
 	private Slide curSlide;
 	private Player player;
 	
@@ -41,9 +41,6 @@ public class SlideScreen implements Screen {
 	
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
-		
-		//data = GameData.fromJSONFile(Gdx.files.internal("assets/GameData/SampleGame.json").file());
-		data = GameData.fromJSONFile(Gdx.files.internal("assets/GameData/SwedishImmigrantv2.json").file());
 		player = data.getPlayer();
 		
 		data.setCurrentSlideIndex(data.getStartSlideIndex());
@@ -52,26 +49,9 @@ public class SlideScreen implements Screen {
 		Gdx.input.setInputProcessor(game.stage);
 	}
 	
-	// for remembering the screen
-	public SlideScreen(final AdventureGame game, int curSlide) {
-		this.game = game;
-		
-		//mainGameData = GameData.fromJSONFile(Gdx.files.internal("assets/GameData/SampleGame.json"));
-		data = GameData.fromJSONFile(Gdx.files.internal("assets/GameData/SwedishImmigrantTest.json").file());
-		player = data.getPlayer();
-		
-		data.setCurrentSlideIndex(curSlide);
-		initialize();
-		
-		Gdx.input.setInputProcessor(game.stage);
-	}
-	
 	// for reserving the right player data from inventory slide
 	public SlideScreen(final AdventureGame game, int curSlide, Player player) {
 		this.game = game;
-		
-		//mainGameData = GameData.fromJSONFile(Gdx.files.internal("assets/GameData/SampleGame.json"));
-		data = GameData.fromJSONFile(Gdx.files.internal("assets/GameData/SwedishImmigrantTest.json").file());
 		this.player = player;
 		
 		data.setCurrentSlideIndex(curSlide);
@@ -108,7 +88,7 @@ public class SlideScreen implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
-				game.setScreen(new PauseScreen(game, data.getCurrentSlideIndex()));
+				game.setScreen(new PauseScreen(game, data.getCurrentSlideIndex(), player));
 			}
 		});
 		game.stage.addActor(pauseButton);

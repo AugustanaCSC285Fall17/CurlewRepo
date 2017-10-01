@@ -13,9 +13,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
+import edu.augustana.csc285.game.datamodel.Player;
+
 public class PauseScreen implements Screen {
 
 	private final AdventureGame game;
+	private Player player;
 	
 	private Table table;
 	private TextButton resumeButton;
@@ -27,8 +30,9 @@ public class PauseScreen implements Screen {
 	
 	private int curSlide;
 	
-	public PauseScreen(final AdventureGame game, int curSlide) {
+	public PauseScreen(final AdventureGame game, int curSlide, Player player) {
 		this.game = game; 
+		this.player = player;
 		this.curSlide = curSlide;
 		initializeMain();		
 		
@@ -44,7 +48,7 @@ public class PauseScreen implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
-				game.setScreen(new SlideScreen(game, curSlide));
+				game.setScreen(new SlideScreen(game, curSlide, player));
 			}
 		});
 		
