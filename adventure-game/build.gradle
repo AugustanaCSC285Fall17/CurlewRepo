@@ -72,8 +72,6 @@ project(":core") {
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-		// https://mvnrepository.com/artifact/com.google.code.gson/gson
-		compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
         
     }
 }

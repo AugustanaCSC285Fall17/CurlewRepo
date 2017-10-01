@@ -18,6 +18,13 @@ public class Player {
 	private TreeMap<String, Integer> inventory;
 
 	// constructor
+	public Player() {
+		this.name = "MinhJackSteveMax";
+		gender = MALE;
+		stats = new TreeMap<String, Integer>();
+		inventory = new TreeMap<String, Integer>();
+	}
+
 	public Player(String name) {
 		this.name = name;
 		gender = MALE;

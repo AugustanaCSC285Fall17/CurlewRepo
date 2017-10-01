@@ -117,9 +117,6 @@ public class SlideScreen implements Screen {
 		
 		createChoiceButtons();
 		createTable();
-		
-		// TODO: delete this afterwards, print out for debugging
-	    System.err.println(title.getHeight());
 	    
 		
 		// Add actors
@@ -180,13 +177,18 @@ public class SlideScreen implements Screen {
 		itemTable.setWidth(550);
 		itemTable.align(Align.topLeft);
 		
+		@SuppressWarnings("rawtypes")
 		Set set = player.getInventory().entrySet();
+		
+		@SuppressWarnings("rawtypes")
 		Iterator it = set.iterator();
 		
 		int itemAdded = 0;
 		
 		while(it.hasNext()) {
+			@SuppressWarnings("rawtypes")
 			Map.Entry me = (Map.Entry)it.next();
+			
 			if ((int)me.getValue() != 0) {
 				Image itemImage = new Image(new Texture(Gdx.files.internal("assets/art/icons/" + me.getKey() + ".png")));
 				Label item = new Label((int)me.getValue() + "x " + (String)me.getKey(), game.skin);
@@ -257,27 +259,22 @@ public class SlideScreen implements Screen {
 	
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
