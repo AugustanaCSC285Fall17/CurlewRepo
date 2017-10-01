@@ -30,8 +30,8 @@ import edu.augustana.csc285.game.datamodel.Slide;
 public class SlideScreen implements Screen {
 	
 	private AdventureGame game;
-	private GameData mainGameData;
-	private Slide currentSlide;
+	private GameData data;
+	private Slide curSlide;
 	private Player player;
 	
 	private Table table;
@@ -39,6 +39,7 @@ public class SlideScreen implements Screen {
 	private Label title;
 	private Label gameText;
 	private TextButton inventoryButton;
+	private TextButton pauseButton;
 	private ArrayList<TextButton> buttons;
 	private ScrollPane scrollPane;
 	
@@ -46,10 +47,10 @@ public class SlideScreen implements Screen {
 		this.game = game;
 		
 		//mainGameData = GameData.fromJSONFile(Gdx.files.internal("assets/GameData/SampleGame.json"));
-		mainGameData = GameData.fromJSONFile(Gdx.files.internal("assets/GameData/SwedishImmigrant.json").file());
-		player = mainGameData.getPlayer();
+		data = GameData.fromJSONFile(Gdx.files.internal("assets/GameData/SwedishImmigrant.json").file());
+		player = data.getPlayer();
 		
-		mainGameData.setCurrentSlideIndex(11);
+		data.setCurrentSlideIndex(data.getStartSlideIndex());
 		initialize();
 		
 		Gdx.input.setInputProcessor(game.stage);
@@ -73,20 +74,34 @@ public class SlideScreen implements Screen {
 		game.stage.clear();
 		
 		buttons = new ArrayList<TextButton>();
-		currentSlide = mainGameData.getSlide(mainGameData.getCurrentSlideIndex());
+		curSlide = data.getSlide(data.getCurrentSlideIndex());
 		
-		if (currentSlide.getSlideType() != GameData.INVENTORY_SLIDE) {
+		pauseButton = new TextButton("Pause", game.skin);
+		pauseButton.setWidth(100);
+		pauseButton.setPosition(Gdx.graphics.getWidth() - pauseButton.getWidth() - 20,
+				Gdx.graphics.getHeight() - pauseButton.getHeight() - 20);
+		pauseButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.stage.clear();
+				game.setScreen(new PauseScreen(game));
+			}
+		});
+		game.stage.addActor(pauseButton);
+		
+		if (curSlide.getSlideType() != GameData.INVENTORY_SLIDE) {
 			inventoryButton = new TextButton("Inventory", game.skin);
+			inventoryButton.setWidth(100);
 			inventoryButton.setPosition(Gdx.graphics.getWidth() - inventoryButton.getWidth() - 20,
-					Gdx.graphics.getHeight() - inventoryButton.getHeight() - 20);
+					Gdx.graphics.getHeight() - inventoryButton.getHeight() - 50);
 			inventoryButton.addListener(new ClickListener() {
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
 					// set the destination of the back button of inventory to
 					// the last slide
-					mainGameData.getInventorySlide().getActionChoicesAt(0)
-							.setDestinationSlideIndex(mainGameData.getCurrentSlideIndex());
-					mainGameData.setCurrentSlideIndex(mainGameData.getInventorySlideIndex());
+					data.getInventorySlide().getActionChoicesAt(0)
+							.setDestinationSlideIndex(data.getCurrentSlideIndex());
+					data.setCurrentSlideIndex(data.getInventorySlideIndex());
 					initialize();
 				}
 			});
@@ -95,7 +110,7 @@ public class SlideScreen implements Screen {
 		
 		// initialize slide contents
 		createTitle();
-		if (currentSlide.getSlideType() == GameData.INVENTORY_SLIDE)
+		if (curSlide.getSlideType() == GameData.INVENTORY_SLIDE)
 			createItemTable();
 		else
 			createGameText();
@@ -115,15 +130,15 @@ public class SlideScreen implements Screen {
 		// Set the background
 		float size = Gdx.graphics.getHeight();
 		game.batch = new SpriteBatch();
-		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/" + currentSlide.getImageFileName())));
+		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())));
 		game.sprite.setPosition(Gdx.graphics.getWidth() - size, 0);
 		game.sprite.setSize(size, size);
 	}
 
 	
 	private void createChoiceButtons() {
-		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
-			ActionChoice currentChoice = currentSlide.getActionChoicesAt(i);
+		for (int i = 0; i < curSlide.getActionChoices().size(); i++) {
+			ActionChoice currentChoice = curSlide.getActionChoicesAt(i);
 			String currentChoiceText = currentChoice.getChoiceText();
 			
 			TextButton newButton = new TextButton(currentChoiceText, game.skin);
@@ -132,7 +147,7 @@ public class SlideScreen implements Screen {
 					
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
-					mainGameData.setCurrentSlideIndex(currentChoice.getDestinationSlideIndex());
+					data.setCurrentSlideIndex(currentChoice.getDestinationSlideIndex());
 					initialize();
 				}
 			});
@@ -142,15 +157,15 @@ public class SlideScreen implements Screen {
 	}
 	
 	private void createGameText() {
-		gameText = new Label(currentSlide.getGameText(), game.skin);
+		gameText = new Label(curSlide.getGameText(), game.skin);
 		gameText.setWrap(true);
 		
 		// for normal slide
 		int gameTextWidth = 280;
 		
-		if (currentSlide.getSlideType() == GameData.HISTORICAL_POP_UP 
-				|| currentSlide.getSlideType() == GameData.INVENTORY_SLIDE
-				|| currentSlide.getSlideType() == GameData.MANY_BUTTONS_SLIDE)
+		if (curSlide.getSlideType() == GameData.HISTORICAL_POP_UP 
+				|| curSlide.getSlideType() == GameData.INVENTORY_SLIDE
+				|| curSlide.getSlideType() == GameData.MANY_BUTTONS_SLIDE)
 			gameTextWidth = 600;
 		
 		gameText.setWidth(gameTextWidth);
@@ -168,6 +183,8 @@ public class SlideScreen implements Screen {
 		Set set = player.getInventory().entrySet();
 		Iterator it = set.iterator();
 		
+		int itemAdded = 0;
+		
 		while(it.hasNext()) {
 			Map.Entry me = (Map.Entry)it.next();
 			if ((int)me.getValue() != 0) {
@@ -176,7 +193,11 @@ public class SlideScreen implements Screen {
 				item.setAlignment(Align.topLeft);
 				itemTable.add(itemImage).size(80, 80);
 				itemTable.add(item).align(Align.left);
-				itemTable.row().padTop(20);
+				if (itemAdded % 2 == 0)
+					itemTable.add().pad(20);
+				else
+					itemTable.row().padTop(20);
+				itemAdded++;
 			}
 		}
 		
@@ -184,15 +205,15 @@ public class SlideScreen implements Screen {
 	}
 	
 	private void createScrollPane(int gameTextWidth) {
-		if(currentSlide.getSlideType() == GameData.INVENTORY_SLIDE)
+		if(curSlide.getSlideType() == GameData.INVENTORY_SLIDE)
 			scrollPane = new ScrollPane(itemTable, game.skin);
 		else
 			scrollPane = new ScrollPane(gameText, game.skin);
 		
 		int gameTextHeight = 300;
-		if (currentSlide.getSlideType() == GameData.NORMAL_SLIDE)
+		if (curSlide.getSlideType() == GameData.NORMAL_SLIDE)
 			gameTextHeight = 220;
-		else if (currentSlide.getSlideType() == GameData.MANY_BUTTONS_SLIDE)
+		else if (curSlide.getSlideType() == GameData.MANY_BUTTONS_SLIDE)
 			gameTextHeight = 170;
 	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 30 - gameTextHeight, gameTextWidth, gameTextHeight);
 	    scrollPane.layout();
@@ -200,9 +221,9 @@ public class SlideScreen implements Screen {
 	}
 	
 	private void createTitle() {
-		title = new Label(currentSlide.getTitle(), game.skin, "title");
-		if (currentSlide.getSlideType() == GameData.LETTER_SLIDE
-				|| currentSlide.getSlideType() == GameData.NORMAL_SLIDE)
+		title = new Label(curSlide.getTitle(), game.skin, "title");
+		if (curSlide.getSlideType() == GameData.LETTER_SLIDE
+				|| curSlide.getSlideType() == GameData.NORMAL_SLIDE)
 			title.setWrap(true);
 		title.setWidth(350);
 		title.pack();
@@ -220,15 +241,15 @@ public class SlideScreen implements Screen {
 
 		table.padLeft(40);
 		
-		for (int i = 0; i < currentSlide.getActionChoices().size(); i++) {
+		for (int i = 0; i < curSlide.getActionChoices().size(); i++) {
 			table.add(buttons.get(i)).width(260).padTop(5);
 			table.row();
 		}
 		
 		int tableHeight = 350;
-		if (currentSlide.getSlideType() == GameData.NORMAL_SLIDE)
+		if (curSlide.getSlideType() == GameData.NORMAL_SLIDE)
 			tableHeight = 250;
-		else if (currentSlide.getSlideType() == GameData.MANY_BUTTONS_SLIDE)
+		else if (curSlide.getSlideType() == GameData.MANY_BUTTONS_SLIDE)
 			tableHeight = 200;
 		table.padTop(tableHeight + title.getHeight());
 	}
