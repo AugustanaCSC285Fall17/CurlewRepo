@@ -2,13 +2,12 @@
 package edu.augustana.csc285.game.datamodel;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
@@ -138,11 +137,8 @@ public class GameData {
 		JsonReader reader = new JsonReader();
 		try {
 
-			JsonValue jsonData = reader.parse(new FileReader(file));
+			JsonValue jsonData = reader.parse(new FileHandle(file));
 			return fromJSON(jsonData.toString());
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
