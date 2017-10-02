@@ -8,7 +8,7 @@ public class PlayerEffect {
 		
 	}
 	
-	private PlayerEffect(Gender newGender){
+	public PlayerEffect(Gender newGender){
 		this.newGender = newGender;
 	}
 	
