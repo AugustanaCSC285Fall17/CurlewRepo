@@ -11,7 +11,11 @@ public class InventoryCondiction {
 	}
 	
 	private InventoryCondiction(String itemName, int itemNumber, RelationOperator op){
-		
+		this.itemName = itemName;
+		this.itemNumber = itemNumber;
+		this.op = op;
 	}
+	
+	
 
 }
