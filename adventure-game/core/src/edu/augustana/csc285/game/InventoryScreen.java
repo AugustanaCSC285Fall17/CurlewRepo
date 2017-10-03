@@ -143,6 +143,10 @@ public class InventoryScreen implements Screen {
 			}
 		}
 		
+		if (itemAdded == 0) {
+			itemTable.add(new Label("You have no items in your inventory.", game.skin));
+		}
+		
 		createScrollPane(550);
 	}
 	

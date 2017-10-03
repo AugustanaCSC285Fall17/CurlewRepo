@@ -27,7 +27,7 @@ import edu.augustana.csc285.game.datamodel.Slide;
 public class SlideScreen implements Screen {
 	
 	private AdventureGame game;
-	private GameData data = GameData.fromJSON(Gdx.files.internal("assets/GameData/SwedishImmigrantv2.json").toString());;
+	private GameData data = GameData.fromJSON(Gdx.files.internal("assets/data/SwedishImmigrantv2.json").readString());
 	private Slide curSlide;
 	private Player player;
 	
