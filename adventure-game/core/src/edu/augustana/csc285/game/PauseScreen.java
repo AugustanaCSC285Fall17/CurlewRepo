@@ -23,6 +23,7 @@ public class PauseScreen implements Screen {
 	private Table table;
 	private TextButton resumeButton;
 	private TextButton settingsButton;
+	private TextButton mainMenuButton;
 	private TextButton quitButton;
 	private TextButton backButton;
 	private Label introText;
@@ -61,6 +62,15 @@ public class PauseScreen implements Screen {
 			}
 		}); 
 		
+		mainMenuButton = new TextButton("Main Menu", game.skin);
+		mainMenuButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.stage.clear();
+				game.setScreen(new MainMenuScreen(game));
+			}
+		}); 
+		
 		quitButton = new TextButton("Quit Game", game.skin);
 		quitButton.addListener(new ClickListener() {
 			@Override
@@ -80,6 +90,8 @@ public class PauseScreen implements Screen {
 		table.add(resumeButton).padTop(5);
 		table.row();
 		table.add(settingsButton).padTop(5);
+		table.row();
+		table.add(mainMenuButton).padTop(5);
 		table.row();
 		table.add(quitButton).padTop(5);
 		game.stage.addActor(table);
