@@ -23,7 +23,7 @@ slides: [
 	{
 		title: Anders Bengtsson
 		imageFileName: image2.jpg
-		gameText: "You are an 18 year-old male from Mellby Parish, Småland. You are the youngest of 4 brothers and will not have any farmland to work. There are too many men in your family and not enough farmland. Additionally, the crop failures of 1867-1868 hit your family farm hard. You would also like to avoid Swedish military conscription. You are coming to America to own your own farmland or find a good job."
+		gameText: "You are an 18 year-old male from Mellby Parish, Smaland. You are the youngest of 4 brothers and will not have any farmland to work. There are too many men in your family and not enough farmland. Additionally, the crop failures of 1867-1868 hit your family farm hard. You would also like to avoid Swedish military conscription. You are coming to America to own your own farmland or find a good job."
 		urlText: url1
 		slideType: 3
 		actionChoices: [
@@ -65,7 +65,7 @@ slides: [
 	{
 		title: You've received a letter from America.
 		imageFileName: image9.jpg
-		gameText: "Receiving letters from those who journeyed to America prompted many of your family friends to pursue their own journey over. Life must be treating them well in America— economic opportunities, building their own legacy and family. The American Dream is a strong pull for Swedes, yourself included.\nChoose a letter to read:"
+		gameText: "Receiving letters from those who journeyed to America prompted many of your family friends to pursue their own journey over. Life must be treating them well in America - economic opportunities, building their own legacy and family. The American Dream is a strong pull for Swedes, yourself included.\nChoose a letter to read:"
 		urlText: dieUrl
 		actionChoices: [
 			{
@@ -173,7 +173,7 @@ slides: [
 	{
 		title: Historical Pop-Up: the Pull of America
 		imageFileName: facts.png
-		gameText: "Immigrants were inspired to move to America not only by “push” factors that pushed them to leave their country of origin, but by “pull” factors that suggested the United States would offer great opportunities. Many immigrants found out about these opportunities from family and friends, then they often followed those family and friends to places where they had already become established--a process called chain migration. Letters from the U.S.  to Sweden provided lots of advice about the long journey as well as information about opportunities in their new American homes and sometimes encouragement to join them. Other immigrants were recruited in Sweden to go straight to particular jobs in the United States. John Deere, in Moline, Illinois, was well known for recruiting Swedes for its growing factory operation."
+		gameText: "Immigrants were inspired to move to America not only by \"push\" factors that pushed them to leave their country of origin, but by \"pull\" factors that suggested the United States would offer great opportunities. Many immigrants found out about these opportunities from family and friends, then they often followed those family and friends to places where they had already become established--a process called chain migration. Letters from the U.S.  to Sweden provided lots of advice about the long journey as well as information about opportunities in their new American homes and sometimes encouragement to join them. Other immigrants were recruited in Sweden to go straight to particular jobs in the United States. John Deere, in Moline, Illinois, was well known for recruiting Swedes for its growing factory operation."
 		urlText: dieUrl
 		slideType: 1
 		actionChoices: [
@@ -451,7 +451,7 @@ slides: [
 	{
 		title: Transport to Gothenburg
 		imageFileName: image12.jpg
-		gameText: "You take a wagon to the port city of Gothenburg. You walk along Sillgatan or “Herring Street” where there were many emigrant agents, hotels, shops, and taverns. Here you wait to board a ship to England."
+		gameText: "You take a wagon to the port city of Gothenburg. You walk along Sillgatan or \"Herring Street\" where there were many emigrant agents, hotels, shops, and taverns. Here you wait to board a ship to England."
 		urlText: dieUrl
 		actionChoices: [
 			{
@@ -464,7 +464,7 @@ slides: [
 	{
 		title: Historical Pop-Up: Gothenburg Port
 		imageFileName: facts.png
-		gameText: "Over a million Swedish immigrants left through the port of Gothenburg in southwest Sweden. Many American genealogists believe their ancestors lived in Gothenburg, when really this was just the port they left through. Provinces of Sweden including Småland, Västergötland, Dalsland, Värmland, and Öland saw large numbers emigrate. "
+		gameText: "Over a million Swedish immigrants left through the port of Gothenburg in southwest Sweden. Many American genealogists believe their ancestors lived in Gothenburg, when really this was just the port they left through. Provinces of Sweden including Smaland, Vastergotland, Dalsland, Varmland, and Oland saw large numbers emigrate. "
 		urlText: dieUrl
 		slideType: 1
 		actionChoices: [
