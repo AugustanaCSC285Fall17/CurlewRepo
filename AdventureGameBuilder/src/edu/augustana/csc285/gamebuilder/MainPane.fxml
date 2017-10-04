@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.csc285.gamebuilder.MainPaneController">
+<BorderPane prefHeight="400.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.csc285.gamebuilder.MainPaneController">
    <top>
 <MenuBar BorderPane.alignment="CENTER">
   <menus>
@@ -52,6 +52,7 @@
                               <Button fx:id="saveButton" layoutX="37.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="25.0" prefWidth="157.0" text="Save" />
                               <Button fx:id="saveAsButton" layoutX="306.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleSaveAsButton" text="SaveAs" />
                               <Button fx:id="loadButton" layoutX="91.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleLoadButton" text="Load" />
+                              <Button fx:id="startPreviewButton" layoutX="324.0" layoutY="106.0" mnemonicParsing="false" onAction="#handleStartPreviewButton" text="Start Preview" />
                      </children>
                   </AnchorPane>
                      </children>

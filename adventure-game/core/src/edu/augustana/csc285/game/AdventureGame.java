@@ -2,6 +2,7 @@ package edu.augustana.csc285.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -14,7 +15,9 @@ public class AdventureGame extends Game {
 	public static final int GAME_SCREEN_WIDTH = 800;
 	public static final int GAME_SCREEN_HEIGHT = 480;
 
-	GameData data;
+	public static GameData data;
+
+	public Music bgMusic;
 	Stage stage;
 	Skin skin;
 	
@@ -28,8 +31,10 @@ public class AdventureGame extends Game {
 		stage = new Stage(new ScreenViewport());
 		data = GameData.fromJSON(Gdx.files.internal("assets/data/SwedishImmigrantv2.json").readString());
 		
-//		bgMusic.play();
-//		bgMusic.setLooping(true);
+		bgMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Si_la_Rigueur.mp3"));
+		bgMusic.setLooping(true);
+		bgMusic.play();
+		
 		
 		Gdx.input.setInputProcessor(stage);
 		
