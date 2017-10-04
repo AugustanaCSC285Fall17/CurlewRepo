@@ -67,6 +67,7 @@ slides: [
 		imageFileName: image9.jpg
 		gameText: "Receiving letters from those who journeyed to America prompted many of your family friends to pursue their own journey over. Life must be treating them well in America - economic opportunities, building their own legacy and family. The American Dream is a strong pull for Swedes, yourself included.\nChoose a letter to read:"
 		urlText: dieUrl
+		slideType: 0
 		actionChoices: [
 			{
 				choiceText: John Deere letter
@@ -213,6 +214,11 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
 						itemName: Official Paper
 					}
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Coin
+						effectSize: -20
+					}
 				]
 			}
 			{
@@ -223,6 +229,11 @@ slides: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
 						itemName: Forged Paper
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Coin
+						effectSize: -10
 					}
 				]
 			}
@@ -494,6 +505,7 @@ slides: [
 		imageFileName: image11.jpg
 		gameText: You have arrived at Gothenburg port. The port of Gothenburg promises good sailing today. You need to find the ticket agent for the White Star Line.
 		urlText: dieUrl
+		slideType: 0
 		actionChoices: [
 			{
 				choiceText: Go left
@@ -502,7 +514,7 @@ slides: [
 			}
 			{
 				choiceText: Go straight to ship
-				destinationSlideIndex: 20
+				destinationSlideIndex: 29
 				visible: false
 			}
 			{
@@ -517,6 +529,7 @@ slides: [
 		imageFileName: image14.jpg
 		gameText: You see a market at the end of the lane. Do you wish to shop here?
 		urlText: dieUrl
+		slideType: 0
 		actionChoices: [
 			{
 				choiceText: Yes
@@ -535,20 +548,336 @@ slides: [
 		imageFileName: image14.jpg
 		gameText: You're in the shop. What would you like to do?
 		urlText: dieUrl
+		slideType: 0
 		actionChoices: [
 			{
 				choiceText: Buy
-				destinationSlideIndex: 22
+				destinationSlideIndex: 23
 				visible: false
 			}
 			{
 				choiceText: Sell
-				destinationSlideIndex: 22
+				destinationSlideIndex: 26
 				visible: false
 			}
 			{
 				choiceText: Leave
 				destinationSlideIndex: 20
+				visible: false
+			}
+		]
+	}
+	{
+		title: Buy
+		imageFileName: facts.png
+		gameText: What would you like to buy?
+		urlText: dieUrl
+		slideType: 4
+		actionChoices: [
+			{
+				choiceText: Bible
+				destinationSlideIndex: 24
+				visible: false
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Bible
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Coin
+						effectSize: -20
+					}
+				]
+			}
+			{
+				choiceText: Family heirloom
+				destinationSlideIndex: 24
+				visible: false
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Family heirloom
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Coin
+						effectSize: -20
+					}
+				]
+			}
+			{
+				choiceText: Sewing materials
+				destinationSlideIndex: 24
+				visible: false
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Sewing materials
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Coin
+						effectSize: -20
+					}
+				]
+			}
+			{
+				choiceText: Medicine
+				destinationSlideIndex: 24
+				visible: false
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Medicine
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Coin
+						effectSize: -20
+					}
+				]
+			}
+			{
+				choiceText: Cured Meat
+				destinationSlideIndex: 24
+				visible: false
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Cured Meat
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Coin
+						effectSize: -20
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Thank you for your purchase!
+		imageFileName: facts.png
+		gameText: Do you want to do anything else?
+		urlText: dieUrl
+		slideType: 1
+		actionChoices: [
+			{
+				choiceText: Buy another item
+				destinationSlideIndex: 22
+				visible: false
+			}
+			{
+				choiceText: Exit shop
+				destinationSlideIndex: 25
+				visible: false
+			}
+		]
+	}
+	{
+		title: Thank you for your purchase!
+		imageFileName: facts.png
+		gameText: "The shopkeeper is grateful to sell another item and hands it to you. You're sure will help you on the long journey ahead. You wrap it, put it into your luggage, and head back to into the street."
+		urlText: dieUrl
+		slideType: 1
+		actionChoices: [
+			{
+				choiceText: Go to the street
+				destinationSlideIndex: 20
+				visible: false
+			}
+		]
+	}
+	{
+		title: Choose one item to sell
+		imageFileName: facts.png
+		gameText: What would you like to sell?
+		urlText: dieUrl
+		slideType: 4
+		actionChoices: [
+			{
+				choiceText: Bible
+				destinationSlideIndex: 27
+				visible: false
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Bible
+						effectSize: -1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Coin
+						effectSize: 20
+					}
+				]
+			}
+			{
+				choiceText: Family heirloom
+				destinationSlideIndex: 27
+				visible: false
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Family heirloom
+						effectSize: -1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Coin
+						effectSize: 20
+					}
+				]
+			}
+			{
+				choiceText: Sewing materials
+				destinationSlideIndex: 27
+				visible: false
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Sewing materials
+						effectSize: -1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Coin
+						effectSize: 20
+					}
+				]
+			}
+			{
+				choiceText: Medicine
+				destinationSlideIndex: 27
+				visible: false
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Medicine
+						effectSize: -1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Coin
+						effectSize: 20
+					}
+				]
+			}
+			{
+				choiceText: Cured Meat
+				destinationSlideIndex: 27
+				visible: false
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Cured Meat
+						effectSize: -1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Coin
+						effectSize: 20
+					}
+				]
+			}
+		]
+	}
+	{
+		title: You sold an item
+		imageFileName: facts.png
+		gameText: Do you want to do anything else?
+		urlText: dieUrl
+		slideType: 1
+		actionChoices: [
+			{
+				choiceText: Sell another item
+				destinationSlideIndex: 22
+				visible: false
+			}
+			{
+				choiceText: Exit shop
+				destinationSlideIndex: 28
+				visible: false
+			}
+		]
+	}
+	{
+		title: Just what we needed for the store
+		imageFileName: facts.png
+		gameText: Do you want to sell anything else?
+		urlText: dieUrl
+		slideType: 1
+		actionChoices: [
+			{
+				choiceText: Continue to the street
+				destinationSlideIndex: 20
+				visible: false
+			}
+		]
+	}
+	{
+		title: Go Straight To Ship
+		imageFileName: image15.jpg
+		gameText: "Inspection After passing initial health inspection, the ticketmaster asks for your papers. Do you have your ticket?"
+		urlText: dieUrl
+		slideType: 0
+		actionChoices: [
+			{
+				choiceText: Yes
+				destinationSlideIndex: 30
+				visible: false
+			}
+			{
+				choiceText: No
+				destinationSlideIndex: 31
+				visible: false
+			}
+		]
+	}
+	{
+		title: Board Ship for Hull
+		imageFileName: image13.jpg
+		gameText: "\"Seems to be in order. Proceed.\" You board the ship for Hull, England."
+		urlText: dieUrl
+		slideType: 0
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 30
+				visible: false
+			}
+		]
+	}
+	{
+		title: No Ticket
+		imageFileName: facts.png
+		gameText: "\"No ticket? What are you doing here?? Go back and get a ticket. Next!\" You head back"
+		urlText: dieUrl
+		slideType: 0
+		actionChoices: [
+			{
+				choiceText: Head back
+				destinationSlideIndex: 20
+				visible: false
+			}
+		]
+	}
+	{
+		title: You Found the Ticket Agent
+		imageFileName: image15.jpg
+		gameText: "Ticket agent: \"What can I do for you?\""
+		urlText: dieUrl
+		slideType: 0
+		actionChoices: [
+			{
+				choiceText: Pay for transport to Hull
+				destinationSlideIndex: 32
+				visible: false
+			}
+			{
+				choiceText: Pay for transport to Hull with connection to Liverpool and ship passage
+				destinationSlideIndex: 32
 				visible: false
 			}
 		]
@@ -569,6 +898,7 @@ player: {
 		Sewing materials: 0
 		Ticket: 0
 		Washington letter: 0
+		Coin: 1000
 	}
 }
 saveName: SwedishImmigrantTest

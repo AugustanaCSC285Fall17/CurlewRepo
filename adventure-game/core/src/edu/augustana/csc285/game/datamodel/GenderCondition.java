@@ -1,14 +1,14 @@
 package edu.augustana.csc285.game.datamodel;
 
-public class GenderCondiction{
+public class GenderCondition{
 	
 	private Gender genderToCheck;
 	
-	private GenderCondiction(){
+	private GenderCondition(){
 		
 	}
 	
-	public GenderCondiction(Gender genderToCheck){
+	public GenderCondition(Gender genderToCheck){
 		
 	}
 	
