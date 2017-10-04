@@ -917,7 +917,6 @@ slides: [
 		imageFileName: image15.jpg
 		gameText: "Inspection After passing initial health inspection, the ticketmaster asks for your papers. Do you have your ticket?"
 		urlText: dieUrl
-		slideType: 0
 		actionChoices: [
 			{
 				choiceText: Yes
@@ -947,7 +946,6 @@ slides: [
 		imageFileName: image13.jpg
 		gameText: "\"Seems to be in order. Proceed.\" You board the ship for Hull, England."
 		urlText: dieUrl
-		slideType: 0
 		actionChoices: [
 			{
 				choiceText: Continue
@@ -961,7 +959,6 @@ slides: [
 		imageFileName: facts.png
 		gameText: "\"No ticket? What are you doing here?? Go back and get a ticket. Next!\" You head back"
 		urlText: dieUrl
-		slideType: 0
 		actionChoices: [
 			{
 				choiceText: Head back
@@ -975,11 +972,10 @@ slides: [
 		imageFileName: image15.jpg
 		gameText: Ticket agent: "What can I do for you?"
 		urlText: dieUrl
-		slideType: 0
 		actionChoices: [
 			{
 				choiceText: Pay for transport to Hull
-				destinationSlideIndex: 32
+				destinationSlideIndex: 33
 				visible: false
 				effectList: [
 					{
@@ -995,7 +991,7 @@ slides: [
 			}
 			{
 				choiceText: Pay for transport to Hull with connection to Liverpool and ship passage
-				destinationSlideIndex: 32
+				destinationSlideIndex: 34
 				visible: false
 				effectList: [
 					{
@@ -1039,6 +1035,33 @@ slides: [
 			}
 		]
 	}
+	{
+		title: Historical Pop-Up: Buying Tickets
+		imageFileName: facts.png
+		gameText: "Tickets were usually purchased from a Swedish emigration agent who booked their passage all the way from Gothenburg to the emigrant�s destination city in America (such as Chicago or Lindsborg, Kansas). Companies with strong economic interests in emigrants (like railroad companies or manufacturers like John Deere) were eager to attract new workers to their areas.\n"
+		slideType: 1
+		actionChoices: [
+			{
+				choiceText: Proceed to ship
+				destinationSlideIndex: 36
+			}
+		]
+	}
+	{
+		title: "Arrive in Hull, England"
+		imageFileName: image19.jpg
+		gameText: "After a relatively smooth journey, you make it to Hull, England� a thriving port and the next step in your journey. In order to proceed, you need to buy passage to Liverpool."
+		actionChoices: [
+			{
+				choiceText: Go left
+			}
+			{
+				choiceText: Go forward
+			}
+			{}
+		]
+	}
+	{}
 ]
 player: {
 	name: Minh!!

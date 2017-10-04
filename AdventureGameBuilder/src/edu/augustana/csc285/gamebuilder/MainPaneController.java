@@ -51,6 +51,8 @@ public class MainPaneController {
 	@FXML
 	private TextField changeTitleTextField;
 	@FXML
+	private TextField changeSlideTypeTextField;
+	@FXML
 	private TextArea setGameTextArea;
 	@FXML
 	private Button submitButton;
@@ -303,6 +305,12 @@ public class MainPaneController {
 		if (slideListIsNotEmpty() && wasSlideSelected()) {
 			new Alert(AlertType.INFORMATION, data.getSlide(se.getCurrentSlide()).toString()).showAndWait();
 		}
+	}
+	
+	@FXML
+	private void handleChangeSlideTypeTextField() {
+		String input = changeSlideTypeTextField.getText();
+		se.setSlideType(Integer.parseInt(input));
 	}
 	
 	//checks to see if the user entered a slide index before editing other fields

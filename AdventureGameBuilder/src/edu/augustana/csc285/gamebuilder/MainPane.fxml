@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.csc285.gamebuilder.MainPaneController">
+<BorderPane prefHeight="400.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.csc285.gamebuilder.MainPaneController">
    <top>
 <MenuBar BorderPane.alignment="CENTER">
   <menus>
@@ -76,6 +76,8 @@
                         <Button fx:id="addActionChoiceButton" layoutX="234.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleAddActionChoiceButton" text="Add Action Choice " />
                         <Button fx:id="showSlideInfoButton" layoutX="233.0" layoutY="204.0" mnemonicParsing="false" onAction="#handleShowSlideInfoButton" text="Show Slide Info" />
                         <Button fx:id="removeSlideButton" layoutX="234.0" layoutY="241.0" mnemonicParsing="false" onAction="#handleRemoveSlideButton" text="Remove Current Slide" />
+                        <Label layoutX="269.0" layoutY="289.0" text="Set Slide Type:" />
+                        <TextField fx:id="changeSlideTypeTextField" layoutX="380.0" layoutY="284.0" onAction="#handleChangeSlideTypeTextField" prefHeight="31.0" prefWidth="58.0" />
                      </children></AnchorPane>
             </content>
           </Tab>

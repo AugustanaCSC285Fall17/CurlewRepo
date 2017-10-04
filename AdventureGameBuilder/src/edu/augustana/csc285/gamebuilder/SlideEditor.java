@@ -35,7 +35,6 @@ public class SlideEditor {
 	//changes the title of the slide to the passed in string
 	public void changeTitle(String title) {
 		data.getSlide(currentSlideIndex).setTitle(title);
-
 	}
 
 	//changes the game text to the passed in string
@@ -46,6 +45,10 @@ public class SlideEditor {
 	public void addActionChoice() {
 		data.getSlide(currentSlideIndex).addActionChoice();
 
+	}
+	
+	public void setSlideType(int slideType) {
+		data.getSlide(currentSlideIndex).setSlideType(slideType);
 	}
 
 	// https://stackoverflow.com/questions/16433915/how-to-copy-file-from-one-location-to-another-location
