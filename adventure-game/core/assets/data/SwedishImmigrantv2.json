@@ -930,7 +930,7 @@ slides: [
 							class: edu.augustana.csc285.game.datamodel.RelationOperator
 							value: GREATER_THAN
 						}
-						qtyToCompare: 1
+						qtyToCompare: 0
 					}
 				]
 			}
@@ -949,7 +949,7 @@ slides: [
 		actionChoices: [
 			{
 				choiceText: Continue
-				destinationSlideIndex: 30
+				destinationSlideIndex: 36
 				visible: false
 			}
 		]
@@ -972,6 +972,7 @@ slides: [
 		imageFileName: image15.jpg
 		gameText: Ticket agent: "What can I do for you?"
 		urlText: dieUrl
+		slideType: 0
 		actionChoices: [
 			{
 				choiceText: Pay for transport to Hull
@@ -980,11 +981,11 @@ slides: [
 				effectList: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Ticket to Hull
+						itemName: Ticket To Hull
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						effectSize: 60
+						effectSize: -60
 						itemName: Coin
 					}
 				]
@@ -996,15 +997,15 @@ slides: [
 				effectList: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Ticket to Hull
+						itemName: Ticket To Hull
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Ticket to America
+						itemName: Ticket To America
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						effectSize: 120
+						effectSize: -120
 						itemName: Coin
 					}
 				]
@@ -1038,27 +1039,94 @@ slides: [
 	{
 		title: Historical Pop-Up: Buying Tickets
 		imageFileName: facts.png
-		gameText: "Tickets were usually purchased from a Swedish emigration agent who booked their passage all the way from Gothenburg to the emigrant�s destination city in America (such as Chicago or Lindsborg, Kansas). Companies with strong economic interests in emigrants (like railroad companies or manufacturers like John Deere) were eager to attract new workers to their areas.\n"
+		gameText: "Tickets were usually purchased from a Swedish emigration agent who booked their passage all the way from Gothenburg to the emigrant?s destination city in America (such as Chicago or Lindsborg, Kansas). Companies with strong economic interests in emigrants (like railroad companies or manufacturers like John Deere) were eager to attract new workers to their areas.\n"
 		slideType: 1
 		actionChoices: [
 			{
 				choiceText: Proceed to ship
-				destinationSlideIndex: 36
+				destinationSlideIndex: 20
 			}
 		]
 	}
 	{
 		title: "Arrive in Hull, England"
 		imageFileName: image19.jpg
-		gameText: "After a relatively smooth journey, you make it to Hull, England� a thriving port and the next step in your journey. In order to proceed, you need to buy passage to Liverpool."
+		gameText: "After a relatively smooth journey, you make it to Hull, England - a thriving port and the next step in your journey. In order to proceed, you need to buy passage to Liverpool."
+		slideType: 0
 		actionChoices: [
 			{
 				choiceText: Go left
+				destinationSlideIndex: 37
 			}
 			{
-				choiceText: Go forward
+				choiceText: Go right
+				destinationSlideIndex: 38
 			}
-			{}
+			{
+				choiceText: Go foward
+				destinationSlideIndex: 39
+			}
+		]
+	}
+	{
+		title: You Found the Ticket Agent
+		imageFileName: image17.jpg
+		gameText: Ticket agent: "Welcome to Hull. What are you looking for?"
+		slideType: 0
+		actionChoices: [
+			{
+				choiceText: Buy train ticket to Liverpool Stockyards and passage to America
+				visible: true
+				destinationSlideIndex: 36
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Ticket To America
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						effectSize: -80
+						itemName: Coin
+					}
+				]
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryCondition
+						itemName: Ticket To America
+						op: {
+							class: edu.augustana.csc285.game.datamodel.RelationOperator
+							value: EQUAL
+						}
+						qtyToCompare: 0
+					}
+				]
+			}
+			{
+				choiceText: I have a ticket to America.
+				destinationSlideIndex: 36
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryCondition
+						itemName: Ticket To America
+						op: {
+							class: edu.augustana.csc285.game.datamodel.RelationOperator
+							value: GREATER_THAN
+						}
+						qtyToCompare: 0
+					}
+				]
+			}		]
+	}
+	{
+		title: Nothing to see
+		imageFileName: facts.png
+		gameText: You find nothing of interest.
+		slideType: 1
+		actionChoices: [
+			{
+				choiceText: Go back
+				destinationSlideIndex: 36
+			}
 		]
 	}
 	{}

@@ -11,7 +11,7 @@ public class Slide {
 	private String urlText;
 	private int slideType;
 	private boolean gameOver;
-	private List<ActionChoice> actionChoices;
+	private ArrayList<ActionChoice> actionChoices;
 
 	//DON'T TOUCH IT
 	public Slide() {
@@ -49,7 +49,7 @@ public class Slide {
 		this.imageFileName = imageFileName;
 	}
 	
-	public List<ActionChoice> getActionChoices() {
+	public ArrayList<ActionChoice> getActionChoices() {
 		return actionChoices;
 	}
 	
@@ -84,7 +84,7 @@ public class Slide {
 		return gameOver;
 	}
 
-	public void setActionChoices(List<ActionChoice> actionChoices) {
+	public void setActionChoices(ArrayList<ActionChoice> actionChoices) {
 		this.actionChoices = actionChoices;
 	}
 	

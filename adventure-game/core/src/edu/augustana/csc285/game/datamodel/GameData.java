@@ -25,7 +25,7 @@ public class GameData {
 	private int startSlideIndex;
 	private int gameOverSlideIndex;
 
-	private List<Slide> slides;
+	private ArrayList<Slide> slides;
 	private Player player;
 	private int currentSlideIndex;
 	public String saveName = "SavedFile";
@@ -37,9 +37,9 @@ public class GameData {
 		gameOverSlideIndex = 2;
 	}
 	
-	public List<ActionChoice> getVisibleChoicesForCurrentSlide() {
-		List<ActionChoice> allChoices = slides.get(currentSlideIndex).getActionChoices();
-		List<ActionChoice> visibleChoices = new ArrayList<ActionChoice>();
+	public ArrayList<ActionChoice> getVisibleChoicesForCurrentSlide() {
+		ArrayList<ActionChoice> allChoices = slides.get(currentSlideIndex).getActionChoices();
+		ArrayList<ActionChoice> visibleChoices = new ArrayList<ActionChoice>();
 		for (ActionChoice choice : allChoices) {
 			boolean choiceVisible = true;
 			for (Condition cond : choice.getVisibilityCond()) {
