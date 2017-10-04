@@ -925,8 +925,8 @@ slides: [
 				effectList: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						effectSize: -1
 						itemName: Ticket To Hull
+						effectSize: -1
 					}
 				]
 				visibilityCond: [
@@ -989,6 +989,7 @@ slides: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
 						itemName: Ticket To Hull
+						effectSize: 1
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
@@ -1196,13 +1197,6 @@ slides: [
 			{
 				choiceText: Present your paper
 				destinationSlideIndex: 42
-				effectList: [
-					{
-						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						effectSize: -1
-						itemName: Forged Paper
-					}
-				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
@@ -1218,13 +1212,6 @@ slides: [
 			{
 				choiceText: Present your paper
 				destinationSlideIndex: 45
-				effectList: [
-					{
-						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						effectSize: -1
-						itemName: Official Paper
-					}
-				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
@@ -1248,10 +1235,24 @@ slides: [
 			{
 				choiceText: Bribe him
 				destinationSlideIndex: 43
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						effectSize: -1
+						itemName: Forged Paper
+					}
+				]
 			}
 			{
 				choiceText: Don't bribe him
 				destinationSlideIndex: 44
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						effectSize: -1
+						itemName: Forged Paper
+					}
+				]
 			}
 		]
 	}
@@ -1286,6 +1287,13 @@ slides: [
 			{
 				choiceText: Board boat
 				destinationSlideIndex: 47
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						effectSize: -1
+						itemName: Official Paper
+					}
+				]
 			}
 		]
 	}

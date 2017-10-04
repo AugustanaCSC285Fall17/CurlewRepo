@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -32,7 +31,6 @@ public class SlideScreen implements Screen {
 	private Slide curSlide;
 	private Player player = data.getPlayer();
 	
-//	private Music bgMusic = Gdx.audio.newMusic(Gdx.files.internal("music/bg.mp3"));
 	private Table table;
 	private Label title;
 	private Label gameText;

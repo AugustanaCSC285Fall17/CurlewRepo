@@ -2,8 +2,7 @@ package edu.augustana.csc285.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture.TextureFilter;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -20,10 +19,14 @@ public class AdventureGame extends Game {
 	SpriteBatch batch;
 	Sprite sprite;
 	
+	//Music bgMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Si_la_Rigueur.mp3"));
+	
 	public void create() {
 		skin = new Skin(Gdx.files.internal("skins/uiskin.json"));
 		stage = new Stage(new ScreenViewport());
 		
+//		bgMusic.play();
+//		bgMusic.setLooping(true);
 		
 		Gdx.input.setInputProcessor(stage);
 		
