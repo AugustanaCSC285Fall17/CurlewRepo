@@ -25,16 +25,16 @@ import edu.augustana.csc285.game.datamodel.*;
 
 public class MainPaneController {
 
+	private GameData data = new GameData();
+	private int slideAtTextIndex = 0;
 	@FXML
 	private TextField showSlideAtTextField;
 	@FXML
 	private Button addSlideButton;
 	@FXML
 	private Button showSlideListButton;
-	private GameData data = new GameData();
-	private int slideAtTextIndex = 0;
+	
 	private Stage mainWindow;
-
 	@FXML
 	private Button saveButton;
 	@FXML
@@ -89,7 +89,7 @@ public class MainPaneController {
 	private void initialize() {
 		// Slide slide = new Slide();
 	}
-
+	//saves the data entered in the builder
 	@FXML
 	private void handleSaveButton() {
 		data.save();
@@ -109,7 +109,7 @@ public class MainPaneController {
 		}
 
 	}
-	
+	//loads previously saved data
 	@FXML
 	private void handleLoadButton() throws IOException{
 		FileChooser fileChooser = new FileChooser();
@@ -128,7 +128,7 @@ public class MainPaneController {
 		mainWindow = primaryStage;
 
 	}
-
+	//checks to see if the input is an integer
 	private boolean isInputInt(String s) {
 		try {
 			int i = Integer.parseInt(s);
@@ -138,7 +138,8 @@ public class MainPaneController {
 			return false;
 		}
 	}
-
+	//checks to see if an entered index is valid, returns true if it 
+	//is valid and false if not
 	private boolean isIndexASlide(int index) {
 		if (index < 0 || index > data.getSlideListSize() - 1) {
 			new Alert(AlertType.ERROR, "There is no slide at this index").showAndWait();
@@ -146,7 +147,8 @@ public class MainPaneController {
 		}
 		return true;
 	}
-
+	//checks to see if the entered index is valid, returns true if it is valid
+	//and false if not
 	private boolean isIndexAnActionChoice(int index) {
 		if (!wasSlideSelected()) {
 			return false;
@@ -162,6 +164,7 @@ public class MainPaneController {
 
 	}
 
+	//outputs the information of a specific slide in an alert message
 	@FXML
 	private void handleShowSlideAtTextField() {
 		String input = showSlideAtTextField.getText();
@@ -173,13 +176,14 @@ public class MainPaneController {
 		}
 	}
 
+	//adds a new slide to the end of the slide list in GameData class
 	@FXML
 	private void handleAddSlideButton() {
 		data.addSlide(new Slide());
 	}
 
+	//outputs the list of slides and their titles in an alert message
 	@FXML
-
 	private void handleShowSlideListButton() {
 		String s = "";
 		if (slideListIsNotEmpty()) {
@@ -190,27 +194,34 @@ public class MainPaneController {
 		}
 	}
 
+	//closes the game builder
 	@FXML
 	private void handleMenuFileClose() {
 		// TODO: eventually offer option to save before closing?
 		Platform.exit();
 	}
 
+	//does nothing now, but could display a help message or about message
 	@FXML
 	private void handleMenuHelpAbout() {
 		new Alert(AlertType.INFORMATION, "Placeholder for about screen").showAndWait();
 	}
 
+	//calls the changeCurrentSlide method and passes in the text 
+	//that was put into the selectSlideNumberTextField
 	@FXML
 	private void handleSelectSlideNumberTextField() {
 		changeCurrentSlide(selectSlideNumberTextField.getText());
 	}
-
+	//calls the changeCurrentSlide method and passes in the text 
+	//that was put into the selectSlideNumberTextField1
 	@FXML
 	private void handleSelectSlideNumberTextField1() {
 		changeCurrentSlide(selectSlideNumberTextField1.getText());
 	}
 
+	//changes the current slide label on both the slide editor tab 
+	//and also the action choice editor tab
 	private void changeCurrentSlide(String input) {
 		if (isInputInt(input)) {
 			int index = Integer.parseInt(input);
@@ -222,13 +233,16 @@ public class MainPaneController {
 		}
 	}
 
+	//changes the title of the slide at the specified index by calling 
+	//the slide editor class
 	@FXML
 	private void handleChangeTitleTextField() {
 		if (slideListIsNotEmpty() && wasSlideSelected()) {
 			se.changeTitle(changeTitleTextField.getText());
 		}
 	}
-
+	//sets the game text of the slide that is entered into the 
+	//setGameTextArea text area
 	@FXML
 	private void handleSubmitButton() {
 		if (slideListIsNotEmpty() && wasSlideSelected()) {
@@ -236,15 +250,16 @@ public class MainPaneController {
 		}
 	}
 
-	// have slide index be a field as an int
-	// set choice text also!!!!!
+	// adds an action choice to the end of the action choice list by calling on the 
+	//slide editor class
 	@FXML
 	private void handleAddActionChoiceButton() {
 		if (wasSlideSelected()) {
 			se.addActionChoice();
 		}
 	}
-
+	//checks to see if the slide list is empty, returns true if it is not empty and 
+	//false otherwise
 	private boolean slideListIsNotEmpty() {
 		if (data.getSlideListSize() == 0) {
 			new Alert(AlertType.INFORMATION, "There are no slides in the list").showAndWait();
@@ -252,7 +267,8 @@ public class MainPaneController {
 		}
 		return true;
 	}
-
+	//checks to see if the action choice list is empty, returns true if it is not empty and 
+	//false otherwise
 	private boolean aceListIsNotEmpty() {
 		if (!slideListIsNotEmpty()) {
 			return false;
@@ -263,7 +279,7 @@ public class MainPaneController {
 		}
 		return true;
 	}
-
+	//sets the image of the slide by calling on the slide editor class
 	@FXML
 	private void handleSelectSlideImageButton() {
 		if (wasSlideSelected()) {
@@ -281,14 +297,15 @@ public class MainPaneController {
 			}
 		}
 	}
-
+	//outputs the information of a slide in a alert message
 	@FXML
 	private void handleShowSlideInfoButton() {
 		if (slideListIsNotEmpty() && wasSlideSelected()) {
 			new Alert(AlertType.INFORMATION, data.getSlide(se.getCurrentSlide()).toString()).showAndWait();
 		}
 	}
-
+	
+	//checks to see if the user entered a slide index before editing other fields
 	private boolean wasSlideSelected() {
 		if (!se.wasSlideSelected()) {
 			new Alert(AlertType.ERROR, "Please select a slide first").showAndWait();
@@ -297,6 +314,7 @@ public class MainPaneController {
 		return true;
 	}
 
+	//checks to see if the user entered a action choice index before editing other fields
 	private boolean wasActionChoiceSelected() {
 		if (ace.getCurrentActionChoiceIndex() == -1) {
 			new Alert(AlertType.ERROR, "Please select an action choice first").showAndWait();
@@ -305,6 +323,8 @@ public class MainPaneController {
 		return true;
 	}
 
+	//takes the input of the text field, changes the label to match, and also changes
+	//the current index to match
 	@FXML
 	private void handleSelectActionChoiceTextField() {
 		if (this.wasSlideSelected()) {
@@ -318,6 +338,7 @@ public class MainPaneController {
 		}
 	}
 
+	//displays information about the action choice in an alert message
 	@FXML
 	private void handleShowAceInfoButton() {
 		if (wasAcSelected()) {
@@ -327,12 +348,14 @@ public class MainPaneController {
 		}
 	}
 
+	//changes the action choice text by calling on the ActionChoiceEditor class
 	@FXML
 	private void handleAceChoiceSubmitButton() {
 		if (wasAcSelected())
 			ace.setChoiceText(aceChoiceTextArea.getText());
 	}
 
+	//sets the destination slide index of an action choice
 	@FXML
 	private void handleAceSetDestinationSlideIndexField() {
 		if (wasAcSelected()) {
@@ -345,7 +368,7 @@ public class MainPaneController {
 			}
 		}
 	}
-
+	//checks to see if the user selected an action choice index
 	private boolean wasAcSelected() {
 		if (ace.aceSelected()) {
 			return true;
@@ -354,6 +377,7 @@ public class MainPaneController {
 		return false;
 	}
 
+	//removes the slide that is currently being edited
 	@FXML
 	private void handleRemoveSlideButton() {
 		if (this.wasSlideSelected()) {
@@ -369,6 +393,7 @@ public class MainPaneController {
 
 	}
 
+	//removes the action choice that is currently being edited
 	@FXML
 	private void handleRemoveAcButton() {
 		if (this.wasAcSelected()) {
