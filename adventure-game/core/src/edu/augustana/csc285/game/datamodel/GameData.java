@@ -186,7 +186,7 @@ public class GameData {
 
 	public void save() {
 		String toSave = toJSON();
-		String path = "assets/GameData/" + saveName + ".json";
+		String path = "assets/data/" + saveName + ".json";
 		try {
 			FileWriter writer = new FileWriter(path);
 			writer.write(toSave);

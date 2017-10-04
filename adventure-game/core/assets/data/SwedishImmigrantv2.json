@@ -67,7 +67,6 @@ slides: [
 		imageFileName: image9.jpg
 		gameText: "Receiving letters from those who journeyed to America prompted many of your family friends to pursue their own journey over. Life must be treating them well in America - economic opportunities, building their own legacy and family. The American Dream is a strong pull for Swedes, yourself included.\nChoose a letter to read:"
 		urlText: dieUrl
-		slideType: 0
 		actionChoices: [
 			{
 				choiceText: John Deere letter
@@ -216,8 +215,8 @@ slides: [
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Coin
 						effectSize: -20
+						itemName: Coin
 					}
 				]
 			}
@@ -232,8 +231,8 @@ slides: [
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Coin
 						effectSize: -10
+						itemName: Coin
 					}
 				]
 			}
@@ -328,18 +327,20 @@ slides: [
 				choiceText: Bible
 				destinationSlideIndex: 15
 				visible: false
-				effectList: [
-					{
-						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Bible
-					}
-				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Bible
-						op: EQUAL
-						qtyToCompare: 0
+						op: {
+							class: edu.augustana.csc285.game.datamodel.RelationOperator
+							value: EQUAL
+						}
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Bible
 					}
 				]
 			}
@@ -347,18 +348,20 @@ slides: [
 				choiceText: Family heirloom
 				destinationSlideIndex: 15
 				visible: false
-				effectList: [
-					{
-						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Family heirloom
-					}
-				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Family heirloom
-						op: EQUAL
-						qtyToCompare: 0
+						op: {
+							class: edu.augustana.csc285.game.datamodel.RelationOperator
+							value: EQUAL
+						}
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Family heirloom
 					}
 				]
 			}
@@ -366,18 +369,20 @@ slides: [
 				choiceText: Sewing materials
 				destinationSlideIndex: 15
 				visible: false
-				effectList: [
-					{
-						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Sewing materials
-					}
-				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Sewing materials
-						op: EQUAL
-						qtyToCompare: 0
+						op: {
+							class: edu.augustana.csc285.game.datamodel.RelationOperator
+							value: EQUAL
+						}
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Sewing materials
 					}
 				]
 			}
@@ -385,18 +390,20 @@ slides: [
 				choiceText: Medicine
 				destinationSlideIndex: 15
 				visible: false
-				effectList: [
-					{
-						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Medicine
-					}
-				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Medicine
-						op: EQUAL
-						qtyToCompare: 0
+						op: {
+							class: edu.augustana.csc285.game.datamodel.RelationOperator
+							value: EQUAL
+						}
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Medicine
 					}
 				]
 			}
@@ -404,18 +411,20 @@ slides: [
 				choiceText: Cured Meat
 				destinationSlideIndex: 15
 				visible: false
-				effectList: [
-					{
-						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Cured Meat
-					}
-				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Cured Meat
-						op: EQUAL
-						qtyToCompare: 0
+						op: {
+							class: edu.augustana.csc285.game.datamodel.RelationOperator
+							value: EQUAL
+						}
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Cured Meat
 					}
 				]
 			}
@@ -432,18 +441,20 @@ slides: [
 				choiceText: Bible
 				destinationSlideIndex: 16
 				visible: false
-				effectList: [
-					{
-						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Bible
-					}
-				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Bible
-						op: EQUAL
-						qtyToCompare: 0
+						op: {
+							class: edu.augustana.csc285.game.datamodel.RelationOperator
+							value: EQUAL
+						}
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Bible
 					}
 				]
 			}
@@ -451,18 +462,20 @@ slides: [
 				choiceText: Family heirloom
 				destinationSlideIndex: 16
 				visible: false
-				effectList: [
-					{
-						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Family heirloom
-					}
-				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Family heirloom
-						op: EQUAL
-						qtyToCompare: 0
+						op: {
+							class: edu.augustana.csc285.game.datamodel.RelationOperator
+							value: EQUAL
+						}
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Family heirloom
 					}
 				]
 			}
@@ -470,18 +483,20 @@ slides: [
 				choiceText: Sewing materials
 				destinationSlideIndex: 16
 				visible: false
-				effectList: [
-					{
-						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Sewing materials
-					}
-				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Sewing materials
-						op: EQUAL
-						qtyToCompare: 0
+						op: {
+							class: edu.augustana.csc285.game.datamodel.RelationOperator
+							value: EQUAL
+						}
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Sewing materials
 					}
 				]
 			}
@@ -489,18 +504,20 @@ slides: [
 				choiceText: Medicine
 				destinationSlideIndex: 16
 				visible: false
-				effectList: [
-					{
-						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Medicine
-					}
-				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Medicine
-						op: EQUAL
-						qtyToCompare: 0
+						op: {
+							class: edu.augustana.csc285.game.datamodel.RelationOperator
+							value: EQUAL
+						}
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Medicine
 					}
 				]
 			}
@@ -508,18 +525,20 @@ slides: [
 				choiceText: Cured Meat
 				destinationSlideIndex: 16
 				visible: false
-				effectList: [
-					{
-						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Cured Meat
-					}
-				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Cured Meat
-						op: EQUAL
-						qtyToCompare: 0
+						op: {
+							class: edu.augustana.csc285.game.datamodel.RelationOperator
+							value: EQUAL
+						}
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Cured Meat
 					}
 				]
 			}
@@ -585,7 +604,6 @@ slides: [
 		imageFileName: image11.jpg
 		gameText: You have arrived at Gothenburg port. The port of Gothenburg promises good sailing today. You need to find the ticket agent for the White Star Line.
 		urlText: dieUrl
-		slideType: 0
 		actionChoices: [
 			{
 				choiceText: Go left
@@ -599,7 +617,7 @@ slides: [
 			}
 			{
 				choiceText: Go right
-				destinationSlideIndex: 20
+				destinationSlideIndex: 32
 				visible: false
 			}
 		]
@@ -609,7 +627,6 @@ slides: [
 		imageFileName: image14.jpg
 		gameText: You see a market at the end of the lane. Do you wish to shop here?
 		urlText: dieUrl
-		slideType: 0
 		actionChoices: [
 			{
 				choiceText: Yes
@@ -628,7 +645,6 @@ slides: [
 		imageFileName: image14.jpg
 		gameText: You're in the shop. What would you like to do?
 		urlText: dieUrl
-		slideType: 0
 		actionChoices: [
 			{
 				choiceText: Buy
@@ -665,8 +681,8 @@ slides: [
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Coin
 						effectSize: -20
+						itemName: Coin
 					}
 				]
 			}
@@ -681,8 +697,8 @@ slides: [
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Coin
 						effectSize: -20
+						itemName: Coin
 					}
 				]
 			}
@@ -697,8 +713,8 @@ slides: [
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Coin
 						effectSize: -20
+						itemName: Coin
 					}
 				]
 			}
@@ -713,8 +729,8 @@ slides: [
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Coin
 						effectSize: -20
+						itemName: Coin
 					}
 				]
 			}
@@ -729,8 +745,8 @@ slides: [
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Coin
 						effectSize: -20
+						itemName: Coin
 					}
 				]
 			}
@@ -783,13 +799,13 @@ slides: [
 				effectList: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Bible
 						effectSize: -1
+						itemName: Bible
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Coin
 						effectSize: 20
+						itemName: Coin
 					}
 				]
 			}
@@ -800,13 +816,13 @@ slides: [
 				effectList: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Family heirloom
 						effectSize: -1
+						itemName: Family heirloom
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Coin
 						effectSize: 20
+						itemName: Coin
 					}
 				]
 			}
@@ -817,13 +833,13 @@ slides: [
 				effectList: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Sewing materials
 						effectSize: -1
+						itemName: Sewing materials
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Coin
 						effectSize: 20
+						itemName: Coin
 					}
 				]
 			}
@@ -834,13 +850,13 @@ slides: [
 				effectList: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Medicine
 						effectSize: -1
+						itemName: Medicine
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Coin
 						effectSize: 20
+						itemName: Coin
 					}
 				]
 			}
@@ -851,13 +867,13 @@ slides: [
 				effectList: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Cured Meat
 						effectSize: -1
+						itemName: Cured Meat
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
-						itemName: Coin
 						effectSize: 20
+						itemName: Coin
 					}
 				]
 			}
@@ -910,8 +926,11 @@ slides: [
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
-						itemName: Ticket
-						op: GREATER_THAN
+						itemName: Ticket To Hull
+						op: {
+							class: edu.augustana.csc285.game.datamodel.RelationOperator
+							value: GREATER_THAN
+						}
 						qtyToCompare: 1
 					}
 				]
@@ -954,7 +973,7 @@ slides: [
 	{
 		title: You Found the Ticket Agent
 		imageFileName: image15.jpg
-		gameText: "Ticket agent: \"What can I do for you?\""
+		gameText: Ticket agent: "What can I do for you?"
 		urlText: dieUrl
 		slideType: 0
 		actionChoices: [
@@ -962,11 +981,61 @@ slides: [
 				choiceText: Pay for transport to Hull
 				destinationSlideIndex: 32
 				visible: false
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Ticket to Hull
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						effectSize: 60
+						itemName: Coin
+					}
+				]
 			}
 			{
 				choiceText: Pay for transport to Hull with connection to Liverpool and ship passage
 				destinationSlideIndex: 32
 				visible: false
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Ticket to Hull
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						itemName: Ticket to America
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						effectSize: 120
+						itemName: Coin
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Pay for ticket to Hull
+		imageFileName: facts.png
+		gameText: You have gained one ticket.
+		slideType: 1
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 35
+			}
+		]
+	}
+	{
+		title: Pay for ticket to Hull with connection to Liverpool
+		imageFileName: facts.png
+		gameText: You have gained one ticket to Hull and another ticket to America.
+		slideType: 1
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 35
 			}
 		]
 	}
@@ -975,6 +1044,7 @@ player: {
 	name: Minh!!
 	inventory: {
 		Bible: 0
+		Coin: 1000
 		Cured Meat: 0
 		Family heirloom: 0
 		Forged Paper: 0
@@ -984,10 +1054,10 @@ player: {
 		Minnesota letter: 0
 		Official Paper: 0
 		Sewing materials: 0
-		Ticket: 0
+		Ticket To America: 0
+		Ticket To Hull: 0
 		Washington letter: 0
-		Coin: 1000
 	}
 }
-saveName: SwedishImmigrantTest
+saveName: SwedishImmigrantv2
 }
