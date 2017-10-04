@@ -11,7 +11,7 @@ public class GameDataTester{
 
 		s0.getActionChoices().add(new ActionChoice("go to room 1", 1));
 		s0.getActionChoices().add(new ActionChoice("go to room 2", 2));
-		s0.getActionChoicesAt(0).addEffect(new InventoryEffect(69, "Bible"));
+		s0.getActionChoicesAt(0).addEffect(new InventoryEffect("Bible", 69));
 		Slide s1 = new Slide("Room 1", "slide_001.png", "text1", 0, "url1");
 		s1.getActionChoices().add(new ActionChoice("die", -1));
 		s1.getActionChoices().add(new ActionChoice("go to room 2", 2));

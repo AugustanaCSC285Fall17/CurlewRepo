@@ -27,9 +27,7 @@ import edu.augustana.csc285.game.datamodel.Slide;
 public class SlideScreen implements Screen {
 	
 	private AdventureGame game;
-	private GameData data = GameData.fromJSON(Gdx.files.internal("assets/data/SwedishImmigrantv2.json").readString());
 	private Slide curSlide;
-	private Player player = data.getPlayer();
 	
 	private Table table;
 	private Label title;
@@ -41,19 +39,17 @@ public class SlideScreen implements Screen {
 	
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
-		
-		data.setCurrentSlideIndex(data.getStartSlideIndex());
+		game.data.setCurrentSlideIndex(game.data.getStartSlideIndex());
 		initialize();
 		
 		Gdx.input.setInputProcessor(game.stage);
 	}
 	
 	// for reserving the right player data from inventory slide
-	public SlideScreen(final AdventureGame game, int curSlide, Player player) {
+	public SlideScreen(final AdventureGame game, int curSlide) {
 		this.game = game;
-		this.player = player;
 		
-		data.setCurrentSlideIndex(curSlide);
+		game.data.setCurrentSlideIndex(curSlide);
 		initialize();
 		
 		Gdx.input.setInputProcessor(game.stage);
@@ -77,7 +73,7 @@ public class SlideScreen implements Screen {
 		game.stage.clear();
 		
 		buttons = new ArrayList<TextButton>();
-		curSlide = data.getSlide(data.getCurrentSlideIndex());
+		curSlide = game.data.getSlide(game.data.getCurrentSlideIndex());
 		
 		pauseButton = new TextButton("Pause", game.skin);
 		pauseButton.setWidth(100);
@@ -87,7 +83,7 @@ public class SlideScreen implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
-				game.setScreen(new PauseScreen(game, data.getCurrentSlideIndex(), player));
+				game.setScreen(new PauseScreen(game, game.data.getCurrentSlideIndex()));
 			}
 		});
 		game.stage.addActor(pauseButton);
@@ -102,7 +98,7 @@ public class SlideScreen implements Screen {
 				// set the destination of the back button of inventory to
 				// the last slide
 				game.stage.clear();
-				game.setScreen(new InventoryScreen(game, data.getCurrentSlideIndex(), player));
+				game.setScreen(new InventoryScreen(game, game.data.getCurrentSlideIndex()));
 			}
 		});
 		game.stage.addActor(inventoryButton);
@@ -130,7 +126,7 @@ public class SlideScreen implements Screen {
 
 	
 	private void createChoiceButtons() {
-		List<ActionChoice> curChoices = data.getVisibleChoicesForCurrentSlide();
+		List<ActionChoice> curChoices = game.data.getVisibleChoicesForCurrentSlide();
 		for (ActionChoice curChoice : curChoices) {
 			String curChoiceText = curChoice.getChoiceText();
 			
@@ -144,7 +140,7 @@ public class SlideScreen implements Screen {
 						game.stage.clear();
 						game.setScreen(new MainMenuScreen(game));
 					} else {
-						data.attemptChoice(curChoice);
+						game.data.attemptChoice(curChoice);
 						initialize();
 					}
 				}
@@ -206,7 +202,7 @@ public class SlideScreen implements Screen {
 
 		table.padLeft(40);
 		
-		for (int i = 0; i < data.getVisibleChoicesForCurrentSlide().size(); i++) {
+		for (int i = 0; i < game.data.getVisibleChoicesForCurrentSlide().size(); i++) {
 			table.add(buttons.get(i)).width(260).padTop(5);
 			table.row();
 		}

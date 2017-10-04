@@ -6,21 +6,19 @@ public class Player {
 	private String name;
 	private Gender gender;
 	private TreeMap<String, Integer> stats;
-	private TreeMap<String, Integer> inventory;
+	private TreeMap<String, Integer> inventory = new TreeMap<String, Integer>();;
 
 	// constructor
 	public Player() {
 		this.name = "MinhJackSteveMax";
 		gender = Gender.MALE;
 		stats = new TreeMap<String, Integer>();
-		inventory = new TreeMap<String, Integer>();
 	}
 
 	public Player(String name) {
 		this.name = name;
 		gender = Gender.MALE;
 		stats = new TreeMap<String, Integer>();
-		inventory = new TreeMap<String, Integer>();
 	}
 
 

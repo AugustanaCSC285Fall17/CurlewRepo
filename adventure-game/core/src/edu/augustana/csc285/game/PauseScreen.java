@@ -18,7 +18,6 @@ import edu.augustana.csc285.game.datamodel.Player;
 public class PauseScreen implements Screen {
 
 	private final AdventureGame game;
-	private Player player;
 	
 	private Table table;
 	private TextButton resumeButton;
@@ -31,9 +30,8 @@ public class PauseScreen implements Screen {
 	
 	private int curSlide;
 	
-	public PauseScreen(final AdventureGame game, int curSlide, Player player) {
+	public PauseScreen(final AdventureGame game, int curSlide) {
 		this.game = game; 
-		this.player = player;
 		this.curSlide = curSlide;
 		initializeMain();		
 		
@@ -49,7 +47,7 @@ public class PauseScreen implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
-				game.setScreen(new SlideScreen(game, curSlide, player));
+				game.setScreen(new SlideScreen(game, curSlide));
 			}
 		});
 		

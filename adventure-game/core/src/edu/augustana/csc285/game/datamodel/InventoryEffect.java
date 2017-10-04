@@ -10,7 +10,7 @@ public class InventoryEffect implements Effect {
 		itemName = "";
 	}
 	
-	public InventoryEffect(int effectSize, String itemName) {
+	public InventoryEffect(String itemName, int effectSize) {
 		this.effectSize = effectSize;
 		this.itemName = itemName;
 	}

@@ -26,7 +26,6 @@ import edu.augustana.csc285.game.datamodel.Player;
 public class InventoryScreen implements Screen {
 	
 	private AdventureGame game;
-	private Player player;
 	
 	private Table table;
 	private Table itemTable;
@@ -37,11 +36,10 @@ public class InventoryScreen implements Screen {
 	
 	private int curSlide;
 	
-	public InventoryScreen(final AdventureGame game, int curSlide, Player player) {
+	public InventoryScreen(final AdventureGame game, int curSlide) {
 		this.game = game;
 		this.curSlide = curSlide;
 		
-		this.player = player;
 		initialize();
 		
 		Gdx.input.setInputProcessor(game.stage);
@@ -72,7 +70,7 @@ public class InventoryScreen implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
-				game.setScreen(new PauseScreen(game, curSlide, player));
+				game.setScreen(new PauseScreen(game, curSlide));
 			}
 		});
 		game.stage.addActor(pauseButton);
@@ -107,7 +105,7 @@ public class InventoryScreen implements Screen {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				game.setScreen(new SlideScreen(game, curSlide, player));
+				game.setScreen(new SlideScreen(game, curSlide));
 			}
 		});
 	}
@@ -118,7 +116,7 @@ public class InventoryScreen implements Screen {
 		itemTable.align(Align.topLeft);
 		
 		@SuppressWarnings("rawtypes")
-		Set set = player.getInventory().entrySet();
+		Set set = game.data.getPlayer().getInventory().entrySet();
 		
 		@SuppressWarnings("rawtypes")
 		Iterator it = set.iterator();
