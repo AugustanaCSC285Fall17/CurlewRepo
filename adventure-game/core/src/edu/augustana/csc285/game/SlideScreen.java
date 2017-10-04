@@ -141,8 +141,13 @@ public class SlideScreen implements Screen {
 					
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
-					data.attemptChoice(curChoice);
-					initialize();
+					if (curChoice.getDestinationSlideIndex() == -1) {
+						game.stage.clear();
+						game.setScreen(new MainMenuScreen(game));
+					} else {
+						data.attemptChoice(curChoice);
+						initialize();
+					}
 				}
 			});
 			buttons.add(newButton);

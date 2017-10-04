@@ -922,6 +922,13 @@ slides: [
 				choiceText: Yes
 				destinationSlideIndex: 30
 				visible: false
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						effectSize: -1
+						itemName: Ticket To Hull
+					}
+				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
@@ -1115,7 +1122,8 @@ slides: [
 						qtyToCompare: 0
 					}
 				]
-			}		]
+			}
+		]
 	}
 	{
 		title: Nothing to see
@@ -1129,7 +1137,193 @@ slides: [
 			}
 		]
 	}
-	{}
+	{
+		title: Train to Liverpool
+		imageFileName: image18.jpg
+		gameText: A sign above you says Liverpool station. A ticketmaster is inspecting tickets in front out you.\n\nBoard Liverpool train
+		slideType: 0
+		actionChoices: [
+			{
+				choiceText: Have ticket. Proceed.
+				destinationSlideIndex: 40
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						effectSize: -1
+						itemName: Ticket To America
+					}
+				]
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryCondition
+						itemName: Ticket To America
+						op: {
+							class: edu.augustana.csc285.game.datamodel.RelationOperator
+							value: GREATER_THAN
+						}
+						qtyToCompare: 0
+					}
+				]
+			}
+			{
+				choiceText: Don't have ticket. Go back.
+				destinationSlideIndex: 36
+			}
+		]
+	}
+	{
+		title: "Arrive in Liverpool, England"
+		imageFileName: image21.jpg
+		gameText: "Made it to Liverpool: The journey to Liverpool went well. Aside from the uncomfortable seating on the train and the occasional strange looks from the English, you feel more confident about your travels. Liverpool is known as a waypoint for immigrants seeking passage to America."
+		slideType: 0
+		actionChoices: [
+			{
+				choiceText: Go left
+				destinationSlideIndex: 41
+			}
+			{
+				choiceText: Go right
+				destinationSlideIndex: 46
+			}
+		]
+	}
+	{
+		title: You Found the Inspection Line
+		imageFileName: facts.png
+		gameText: "Inspection: You encounter the ticketmaster inspecting the passengers. You present him your ticket. He nods and gestures for your papers."
+		slideType: 0
+		actionChoices: [
+			{
+				choiceText: Present your paper
+				destinationSlideIndex: 42
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						effectSize: -1
+						itemName: Forged Paper
+					}
+				]
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryCondition
+						itemName: Forged Paper
+						op: {
+							class: edu.augustana.csc285.game.datamodel.RelationOperator
+							value: GREATER_THAN
+						}
+						qtyToCompare: 0
+					}
+				]
+			}
+			{
+				choiceText: Present your paper
+				destinationSlideIndex: 45
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryEffect
+						effectSize: -1
+						itemName: Official Paper
+					}
+				]
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryCondition
+						itemName: Official Paper
+						op: {
+							class: edu.augustana.csc285.game.datamodel.RelationOperator
+							value: GREATER_THAN
+						}
+						qtyToCompare: 0
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Forged Papers
+		imageFileName: facts.png
+		gameText: "You present your papers and hope they will pay off. You start to become nervous as he eyes them. Perhaps you can silence his questioning glance..."
+		slideType: 0
+		actionChoices: [
+			{
+				choiceText: Bribe him
+				destinationSlideIndex: 43
+			}
+			{
+				choiceText: Don't bribe him
+				destinationSlideIndex: 44
+			}
+		]
+	}
+	{
+		title: Bribe him
+		imageFileName: image20.jpg
+		gameText: "He makes a gesture for his superior officer to come over. The superior officer glances at the papers and murmurs instructions to his subordinate. The superior officer makes some sharp remarks to you and hands you over to the police for forgery and bribing an officer. You are immediately put in prison for your crimes and are stripped of all your belongings. You must now wait to serve your sentence before you attempt to make it to America."
+		slideType: 0
+		actionChoices: [
+			{
+				choiceText: Go back to the beginning
+			}
+		]
+	}
+	{
+		title: "Don't bribe him"
+		imageFileName: image20.jpg
+		gameText: "He makes a gesture for his superior officer to come over. The superior officer glances at the papers and murmurs instructions to his subordinate. The superior officer makes some sharp remarks to you and hands you over to the police for forgery. You are immediately deported and put on a watch list for travelling in England. Your hopes of making it to America are squandered and now must live the rest of your days finding work in Sweden."
+		slideType: 0
+		actionChoices: [
+			{
+				choiceText: Go back to the beginning
+			}
+		]
+	}
+	{
+		title: Present your papers
+		imageFileName: image27.jpg
+		gameText: "You present your papers. You start to become nervous as he eyes them. He makes a gesture for his superior officer to come over. The superior officer glances at the papers and murmurs instructions to his subordinate. The superior officer nods his head and presents you with a stamped ticket and papers. Happy to have made it thus far, you proceed onto the boat."
+		slideType: 0
+		actionChoices: [
+			{
+				choiceText: Board boat
+				destinationSlideIndex: 47
+			}
+		]
+	}
+	{
+		title: Yuck!
+		imageFileName: facts.png
+		gameText: "The narrow walkway smells like old fish and urine. This is not a nice place. You should go back!"
+		slideType: 0
+		actionChoices: [
+			{
+				choiceText: Go back
+				destinationSlideIndex: 40
+			}
+		]
+	}
+	{
+		title: Historical Pop-Up: Taking a Boat to America
+		imageFileName: facts.png
+		gameText: "Making friends along the journey, especially with crewmen, would have been advantageous. Some immigrants expressed discomfort with their new surroundings. One immigrant, Swen Magnus Swensson, remembers how the food and coffee served onboard were bland and unappealing. Some of the passengers would bribe the crew for more food and helped out in the kitchens to receive an extra serving or barter for different items."
+		slideType: 1
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 48
+			}
+		]
+	}
+	{
+		title: Demo over!
+		imageFileName: facts.png
+		gameText: "Thank you for viewing this demo!"
+		slideType: 0
+		actionChoices: [
+			{
+				choiceText: Go back to main menu
+			}
+		]
+	}
 ]
 player: {
 	name: Minh!!
