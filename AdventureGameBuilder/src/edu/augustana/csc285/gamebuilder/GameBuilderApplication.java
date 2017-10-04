@@ -30,7 +30,7 @@ public class GameBuilderApplication extends Application {
 	}
 
 	public static void main(String[] args) {
-	//	launch(args); 
-		PreviewPaneApp.main(args);
+		launch(args); 
+	//	PreviewPaneApp.main(args);
 	}
 }
