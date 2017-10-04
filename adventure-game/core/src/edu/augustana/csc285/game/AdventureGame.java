@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 public class AdventureGame extends Game {
 	public static final int GAME_SCREEN_WIDTH = 800;
 	public static final int GAME_SCREEN_HEIGHT = 480;
+	public Music bgMusic;
 	
 	Stage stage;
 	Skin skin;
@@ -25,8 +26,10 @@ public class AdventureGame extends Game {
 		skin = new Skin(Gdx.files.internal("skins/uiskin.json"));
 		stage = new Stage(new ScreenViewport());
 		
-//		bgMusic.play();
-//		bgMusic.setLooping(true);
+		bgMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Si_la_Rigueur.mp3"));
+		bgMusic.setLooping(true);
+		bgMusic.play();
+		
 		
 		Gdx.input.setInputProcessor(stage);
 		
