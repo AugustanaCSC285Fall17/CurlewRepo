@@ -2,32 +2,23 @@ package edu.augustana.csc285.game.datamodel;
 import java.util.*;
 
 public class Player {
-
-	public static final int MALE = 0;
-	public static final int FEMALE = 1;
-	public static final int GAY = 2;
-	public static final int LESBIAN = 3;
-	public static final int TRANSGENDER = 4;
-	public static final int BISEXUAL = 5;
-	public static final int QUESTIONING = 6;
-	public static final int OTHER = 7;
 	
 	private String name;
-	private int gender;
+	private Gender gender;
 	private TreeMap<String, Integer> stats;
 	private TreeMap<String, Integer> inventory;
 
 	// constructor
 	public Player() {
 		this.name = "MinhJackSteveMax";
-		gender = MALE;
+		gender = Gender.MALE;
 		stats = new TreeMap<String, Integer>();
 		inventory = new TreeMap<String, Integer>();
 	}
 
 	public Player(String name) {
 		this.name = name;
-		gender = MALE;
+		gender = Gender.MALE;
 		stats = new TreeMap<String, Integer>();
 		inventory = new TreeMap<String, Integer>();
 	}
@@ -43,11 +34,11 @@ public class Player {
 		this.name = name;
 	}
 	
-	public int getGender() {
+	public Gender getGender() {
 		return gender;
 	}
 
-	public void setGender(int gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 

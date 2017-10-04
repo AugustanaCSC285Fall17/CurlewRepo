@@ -334,6 +334,14 @@ slides: [
 						itemName: Bible
 					}
 				]
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryCondition
+						itemName: Bible
+						op: EQUAL
+						qtyToCompare: 0
+					}
+				]
 			}
 			{
 				choiceText: Family heirloom
@@ -343,6 +351,14 @@ slides: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
 						itemName: Family heirloom
+					}
+				]
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryCondition
+						itemName: Family heirloom
+						op: EQUAL
+						qtyToCompare: 0
 					}
 				]
 			}
@@ -356,6 +372,14 @@ slides: [
 						itemName: Sewing materials
 					}
 				]
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryCondition
+						itemName: Sewing materials
+						op: EQUAL
+						qtyToCompare: 0
+					}
+				]
 			}
 			{
 				choiceText: Medicine
@@ -367,6 +391,14 @@ slides: [
 						itemName: Medicine
 					}
 				]
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryCondition
+						itemName: Medicine
+						op: EQUAL
+						qtyToCompare: 0
+					}
+				]
 			}
 			{
 				choiceText: Cured Meat
@@ -376,6 +408,14 @@ slides: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
 						itemName: Cured Meat
+					}
+				]
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryCondition
+						itemName: Cured Meat
+						op: EQUAL
+						qtyToCompare: 0
 					}
 				]
 			}
@@ -398,6 +438,14 @@ slides: [
 						itemName: Bible
 					}
 				]
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryCondition
+						itemName: Bible
+						op: EQUAL
+						qtyToCompare: 0
+					}
+				]
 			}
 			{
 				choiceText: Family heirloom
@@ -407,6 +455,14 @@ slides: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
 						itemName: Family heirloom
+					}
+				]
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryCondition
+						itemName: Family heirloom
+						op: EQUAL
+						qtyToCompare: 0
 					}
 				]
 			}
@@ -420,6 +476,14 @@ slides: [
 						itemName: Sewing materials
 					}
 				]
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryCondition
+						itemName: Sewing materials
+						op: EQUAL
+						qtyToCompare: 0
+					}
+				]
 			}
 			{
 				choiceText: Medicine
@@ -431,6 +495,14 @@ slides: [
 						itemName: Medicine
 					}
 				]
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryCondition
+						itemName: Medicine
+						op: EQUAL
+						qtyToCompare: 0
+					}
+				]
 			}
 			{
 				choiceText: Cured Meat
@@ -440,6 +512,14 @@ slides: [
 					{
 						class: edu.augustana.csc285.game.datamodel.InventoryEffect
 						itemName: Cured Meat
+					}
+				]
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryCondition
+						itemName: Cured Meat
+						op: EQUAL
+						qtyToCompare: 0
 					}
 				]
 			}
@@ -827,6 +907,14 @@ slides: [
 				choiceText: Yes
 				destinationSlideIndex: 30
 				visible: false
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.InventoryCondition
+						itemName: Ticket
+						op: GREATER_THAN
+						qtyToCompare: 1
+					}
+				]
 			}
 			{
 				choiceText: No

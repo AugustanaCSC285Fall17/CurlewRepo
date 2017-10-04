@@ -36,6 +36,39 @@ public class GameData {
 		startSlideIndex = 0;
 		gameOverSlideIndex = 2;
 	}
+	
+	public List<ActionChoice> getVisibleChoicesForCurrentSlide() {
+		List<ActionChoice> allChoices = slides.get(currentSlideIndex).getActionChoices();
+		List<ActionChoice> visibleChoices = new ArrayList<ActionChoice>();
+		for (ActionChoice choice : allChoices) {
+			boolean choiceVisible = true;
+			for (Condition cond : choice.getVisibilityCond()) {
+				if (!cond.evaluate(player)) {
+					choiceVisible = false;
+					break;
+				}
+			}
+			if (choiceVisible)
+				visibleChoices.add(choice);
+		}
+		return visibleChoices;
+	}
+	
+
+	public String attemptChoice(ActionChoice choice) {
+		for (Condition cond : choice.getFeasibilityCond()) {
+			if (!cond.evaluate(player)) {
+				return choice.getRejText();
+			}
+		}
+		
+		for (Effect e : choice.getEffect()) {
+			e.applyEffect(player);
+		}
+		currentSlideIndex = choice.getDestinationSlideIndex();
+		return "";
+	}
+
 
 	public Slide getSlide(int index) {
 		return slides.get(index);

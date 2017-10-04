@@ -1,22 +1,21 @@
 package edu.augustana.csc285.game.datamodel;
 
-public class GenderCondition{
+public class GenderCondition implements Condition {
 	
 	private Gender genderToCheck;
 	
-	private GenderCondition(){
-		
+	@SuppressWarnings("unused")
+	public GenderCondition(){
 	}
 	
 	public GenderCondition(Gender genderToCheck){
-		
+		this.genderToCheck = genderToCheck;
 	}
 	
 	
-	//should implement Gender enum and override method and should reuturn a boolean but to avoid 
-	//error i use int now
-	public int evaluate(Player p){
-		return p.getGender();
+	@Override
+	public boolean evaluate(Player p){
+		return p.getGender() == genderToCheck;
 	}
 	
 

@@ -2,6 +2,7 @@
 package edu.augustana.csc285.game;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -19,7 +20,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
 import edu.augustana.csc285.game.datamodel.ActionChoice;
-import edu.augustana.csc285.game.datamodel.Effect;
 import edu.augustana.csc285.game.datamodel.GameData;
 import edu.augustana.csc285.game.datamodel.Player;
 import edu.augustana.csc285.game.datamodel.Slide;
@@ -131,8 +131,8 @@ public class SlideScreen implements Screen {
 
 	
 	private void createChoiceButtons() {
-		for (int i = 0; i < curSlide.getActionChoices().size(); i++) {
-			ActionChoice curChoice = curSlide.getActionChoicesAt(i);
+		List<ActionChoice> curChoices = data.getVisibleChoicesForCurrentSlide();
+		for (ActionChoice curChoice : curChoices) {
 			String curChoiceText = curChoice.getChoiceText();
 			
 			TextButton newButton = new TextButton(curChoiceText, game.skin);
@@ -141,12 +141,7 @@ public class SlideScreen implements Screen {
 					
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
-					if (!curChoice.getEffect().isEmpty()) {
-						for (Effect effect: curChoice.getEffect()) {
-							effect.applyEffect(player);
-						}
-					}
-					data.setCurrentSlideIndex(curChoice.getDestinationSlideIndex());
+					data.attemptChoice(curChoice);
 					initialize();
 				}
 			});
@@ -207,7 +202,7 @@ public class SlideScreen implements Screen {
 
 		table.padLeft(40);
 		
-		for (int i = 0; i < curSlide.getActionChoices().size(); i++) {
+		for (int i = 0; i < data.getVisibleChoicesForCurrentSlide().size(); i++) {
 			table.add(buttons.get(i)).width(260).padTop(5);
 			table.row();
 		}

@@ -7,7 +7,8 @@ public class ActionChoice {//implements Feasible
 	private int destinationSlideIndex = -1;
 	private boolean visible;
 	private String rejText;
-	private ArrayList<Feasible> feasibilityReq;
+	private ArrayList<Condition> feasibilityCond = new ArrayList<>();
+	private ArrayList<Condition> visibilityCond = new ArrayList<>();
 	private ArrayList<Effect> effectList;
 
 	public ActionChoice() {
@@ -22,13 +23,11 @@ public class ActionChoice {//implements Feasible
 	}
 
 	public ActionChoice(String rejText, ArrayList<Feasible> feasibilityReq, ArrayList<Effect> effectList) {
-		this.rejText = rejText;
-		this.feasibilityReq = feasibilityReq;
+		this.setRejText(rejText);
 		this.effectList = effectList;
 		visible = true;
-
 	}
-
+	
 	public String getChoiceText() {
 		return choiceText;
 	}
@@ -44,8 +43,6 @@ public class ActionChoice {//implements Feasible
 	public void setDestinationSlideIndex(int destinationSlideIndex) {
 		this.destinationSlideIndex = destinationSlideIndex;
 	}
-
-
 
 	public void getReq(int requirement) {
 
@@ -76,8 +73,24 @@ public class ActionChoice {//implements Feasible
 
 	}
 
+	public ArrayList<Condition> getFeasibilityCond() {
+		return feasibilityCond;
+	}
+
+	public ArrayList<Condition> getVisibilityCond() {
+		return visibilityCond;
+	}
+
 	public String toString() {
 		return "choiceText: " + choiceText + "\ndestinationSlideIndex: " + destinationSlideIndex;
+	}
+
+	public String getRejText() {
+		return rejText;
+	}
+
+	public void setRejText(String rejText) {
+		this.rejText = rejText;
 	}
 
 	

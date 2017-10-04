@@ -4,7 +4,7 @@ public class PlayerEffect {
 	
 	private Gender newGender;
 	
-	private PlayerEffect(){
+	public PlayerEffect(){
 		
 	}
 	
