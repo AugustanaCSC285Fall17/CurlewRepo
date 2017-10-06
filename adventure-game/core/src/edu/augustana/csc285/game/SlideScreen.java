@@ -34,6 +34,7 @@ public class SlideScreen implements Screen {
 	private Label gameText;
 	private TextButton inventoryButton;
 	private TextButton pauseButton;
+	private TextButton muteButton;
 	private ArrayList<TextButton> buttons;
 	private ScrollPane scrollPane;
 	
@@ -102,6 +103,26 @@ public class SlideScreen implements Screen {
 			}
 		});
 		game.stage.addActor(inventoryButton);
+		
+		muteButton = new TextButton("Mute", game.skin);
+		if (!game.bgMusic.isPlaying())
+			muteButton.setText("Unmute");
+		muteButton.setWidth(100);
+		muteButton.setPosition(Gdx.graphics.getWidth() - inventoryButton.getWidth() - 20,
+				Gdx.graphics.getHeight() - inventoryButton.getHeight() - 80);
+		muteButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				if (game.bgMusic.isPlaying()) {
+					game.bgMusic.pause();
+					muteButton.setText("Unmute");
+				} else {
+					game.bgMusic.play();
+					muteButton.setText("Mute");
+				}
+			}
+		});
+		game.stage.addActor(muteButton);
 
 		// initialize slide contents
 		createTitle();

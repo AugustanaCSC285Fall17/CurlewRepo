@@ -128,7 +128,7 @@ public class InventoryScreen implements Screen {
 			Map.Entry me = (Map.Entry)it.next();
 			
 			if ((int)me.getValue() != 0) {
-				Image itemImage = new Image(new Texture(Gdx.files.internal("assets/art/icons/" + me.getKey() + ".png")));
+				Image itemImage = new Image(new Texture(Gdx.files.internal("art/icons/" + me.getKey() + ".png")));
 				Label item = new Label((int)me.getValue() + "x " + (String)me.getKey(), game.skin);
 				item.setAlignment(Align.topLeft);
 				itemTable.add(itemImage).size(80, 80);
