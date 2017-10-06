@@ -1,7 +1,6 @@
 package edu.augustana.csc285.game.datamodel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class Slide {

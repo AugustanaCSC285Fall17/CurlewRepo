@@ -332,8 +332,7 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Bible
 						op: {
-							class: edu.augustana.csc285.game.datamodel.RelationOperator
-							value: EQUAL
+							opcode: ==
 						}
 					}
 				]
@@ -353,8 +352,7 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Family heirloom
 						op: {
-							class: edu.augustana.csc285.game.datamodel.RelationOperator
-							value: EQUAL
+							opcode: ==
 						}
 					}
 				]
@@ -374,8 +372,7 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Sewing materials
 						op: {
-							class: edu.augustana.csc285.game.datamodel.RelationOperator
-							value: EQUAL
+							opcode: ==
 						}
 					}
 				]
@@ -395,8 +392,7 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Medicine
 						op: {
-							class: edu.augustana.csc285.game.datamodel.RelationOperator
-							value: EQUAL
+							opcode: ==
 						}
 					}
 				]
@@ -416,8 +412,9 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Cured Meat
 						op: {
-							class: edu.augustana.csc285.game.datamodel.RelationOperator
-							value: EQUAL
+							
+							
+							opcode: ==
 						}
 					}
 				]
@@ -446,8 +443,9 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Bible
 						op: {
-							class: edu.augustana.csc285.game.datamodel.RelationOperator
-							value: EQUAL
+							
+							
+							opcode: ==
 						}
 					}
 				]
@@ -467,8 +465,9 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Family heirloom
 						op: {
-							class: edu.augustana.csc285.game.datamodel.RelationOperator
-							value: EQUAL
+							
+							
+							opcode: ==
 						}
 					}
 				]
@@ -488,8 +487,9 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Sewing materials
 						op: {
-							class: edu.augustana.csc285.game.datamodel.RelationOperator
-							value: EQUAL
+							
+							
+							opcode: ==
 						}
 					}
 				]
@@ -509,8 +509,9 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Medicine
 						op: {
-							class: edu.augustana.csc285.game.datamodel.RelationOperator
-							value: EQUAL
+							
+							
+							opcode: ==
 						}
 					}
 				]
@@ -530,8 +531,9 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Cured Meat
 						op: {
-							class: edu.augustana.csc285.game.datamodel.RelationOperator
-							value: EQUAL
+							
+							
+							opcode: ==
 						}
 					}
 				]
@@ -934,8 +936,9 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Ticket To Hull
 						op: {
-							class: edu.augustana.csc285.game.datamodel.RelationOperator
-							value: GREATER_THAN
+							
+							
+							opcode: >
 						}
 						qtyToCompare: 0
 					}
@@ -1101,8 +1104,9 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Ticket To America
 						op: {
-							class: edu.augustana.csc285.game.datamodel.RelationOperator
-							value: EQUAL
+							
+							
+							opcode: ==
 						}
 						qtyToCompare: 0
 					}
@@ -1116,8 +1120,9 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Ticket To America
 						op: {
-							class: edu.augustana.csc285.game.datamodel.RelationOperator
-							value: GREATER_THAN
+							
+							
+							opcode: >
 						}
 						qtyToCompare: 0
 					}
@@ -1158,8 +1163,9 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Ticket To America
 						op: {
-							class: edu.augustana.csc285.game.datamodel.RelationOperator
-							value: GREATER_THAN
+							
+							
+							opcode: >
 						}
 						qtyToCompare: 0
 					}
@@ -1208,8 +1214,9 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Forged Paper
 						op: {
-							class: edu.augustana.csc285.game.datamodel.RelationOperator
-							value: GREATER_THAN
+							
+							
+							opcode: >
 						}
 						qtyToCompare: 0
 					}
@@ -1230,8 +1237,9 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.InventoryCondition
 						itemName: Official Paper
 						op: {
-							class: edu.augustana.csc285.game.datamodel.RelationOperator
-							value: GREATER_THAN
+							
+							
+							opcode: >
 						}
 						qtyToCompare: 0
 					}
@@ -1343,6 +1351,4 @@ player: {
 		Ticket To Hull: 0
 		Washington letter: 0
 	}
-}
-saveName: SwedishImmigrantv2
 }

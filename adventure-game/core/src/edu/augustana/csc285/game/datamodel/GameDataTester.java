@@ -17,7 +17,7 @@ public class GameDataTester{
 		s1.getActionChoices().add(new ActionChoice("go to room 2", 2));
 		Slide s2 = new Slide("Room 2", "slide_002.png", "text2", 0, "url2");
 		s2.getActionChoices().add(new ActionChoice("go back to room 0", 0));
-		s2.getActionChoicesAt(0).getVisibilityCond().add(new InventoryCondition("emus", RelationOperator.GREATER_THAN, 1));
+		s2.getActionChoicesAt(0).getVisibilityCond().add(new InventoryCondition("emus", RelationalOperator.GREATER_THAN, 1));
 		
 		gd.addSlide(s0);
 		gd.addSlide(s1);
