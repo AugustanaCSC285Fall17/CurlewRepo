@@ -1,5 +1,6 @@
 package edu.augustana.csc285.game.datamodel;
-import java.util.*;
+
+import java.util.TreeMap;
 
 public class Player {
 	

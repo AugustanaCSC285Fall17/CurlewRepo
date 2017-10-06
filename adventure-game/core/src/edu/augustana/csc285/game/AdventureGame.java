@@ -29,7 +29,7 @@ public class AdventureGame extends Game {
 	public void create() {
 		skin = new Skin(Gdx.files.internal("skins/uiskin.json"));
 		stage = new Stage(new ScreenViewport());
-		data = GameData.fromJSON(Gdx.files.internal("assets/data/SwedishImmigrantv2.json").readString());
+		data = GameData.fromJSON(Gdx.files.internal("data/SwedishImmigrantv2.json").readString());
 		
 		bgMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Si_la_Rigueur.mp3"));
 		bgMusic.setLooping(true);
