@@ -6,7 +6,8 @@
 
 	<inherits name='AdventureGame' />
 	<entry-point class='edu.augustana.csc285.game.client.HtmlLauncher' />
- 	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
- 	<set-configuration-property name="gdx.assetpath" value="../core/assets" />
- 	<extend-configuration-property name="gdx.reflect.include" value="edu.augustana.csc285.game.datamodel" />
+	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
+	<set-configuration-property name="gdx.assetpath" value="../core/assets" />
+	<extend-configuration-property name="gdx.reflect.include" value="java.util.TreeMap" /> 
+	<extend-configuration-property name="gdx.reflect.include" value="edu.augustana.csc285.game.datamodel"/>
 </module>
