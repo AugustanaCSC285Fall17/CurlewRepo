@@ -208,7 +208,7 @@ public class MainPaneController {
 	@FXML
 	private void handleAddSlideButton() {
 		data.addSlide(new Slide());
-		//pController.update();
+		pController.update();
 	}
 
 	// outputs the list of slides and their titles in an alert message
@@ -280,6 +280,8 @@ public class MainPaneController {
 		if (slideListIsNotEmpty() && wasSlideSelected()) {
 			se.setGameText(setGameTextArea.getText());
 		}
+		pController.update();
+
 	}
 
 	// adds an action choice to the end of the action choice list by calling on
@@ -334,6 +336,9 @@ public class MainPaneController {
 				new Alert(AlertType.ERROR, "There was a problem").showAndWait();
 			}
 		}
+		
+		pController.update();
+
 	}
 
 	// outputs the information of a slide in a alert message
@@ -439,6 +444,9 @@ public class MainPaneController {
 			setGameTextArea.clear();
 			changeTitleTextField.clear();
 		}
+		
+		pController.update();
+
 
 	}
 
