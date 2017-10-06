@@ -202,4 +202,8 @@ public class GameData {
 		}
 		
 	}
+	
+	public String printSlideInfo (){
+		return slides.toString();
+	}
 }

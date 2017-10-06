@@ -11,10 +11,9 @@ public class PreviewPaneController {
 	@FXML
 	private Text slideInfoText;
 	private GameData data;
-	
+
 	@FXML
 	private void initialize() {
-		
 	}
 
 	public void setData(GameData data) {
@@ -29,13 +28,12 @@ public class PreviewPaneController {
 	public void print() {
 		System.out.println(3);
 	}
-	
-	public void update(){
+
+	public void update() {
 		updateSlideInfoText();
 	}
 
 	private void updateSlideInfoText() {
-		slideInfoText.setText(data.toString());
+		slideInfoText.setText(data.printSlideInfo());
 	}
-		
 }

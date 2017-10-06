@@ -41,6 +41,7 @@ public class GameBuilderApplication extends Application {
         
         controller.setStageAndSetupListeners(primaryStage, data);
         controller.setPcontroler(pController);
+        pController.setData(data);
         
         primaryStage.setTitle("Curlew's Game Builder");
         primaryStage.setScene(scene);
