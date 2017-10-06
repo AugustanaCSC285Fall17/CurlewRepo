@@ -19,6 +19,8 @@ public class GameBuilderApplication extends Application {
         Parent root = (Parent)loader.load();
         Scene scene = new Scene(root);
     
+
+        
         MainPaneController controller = (MainPaneController)loader.getController();
         controller.setStageAndSetupListeners(primaryStage); // or what you want to do
         
@@ -26,11 +28,20 @@ public class GameBuilderApplication extends Application {
         primaryStage.setTitle("Curlew's Game Builder");
         primaryStage.setScene(scene);
         primaryStage.show();       
-
+        
+        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("PreviewPane.fxml"));
+     //   Parent root2 = (Parent) loader.load();
+        Scene scene2 = new Scene(loader2.load());
+        
+        Stage stage2 = new Stage();
+        stage2.setTitle("Game Builder Info");
+        stage2.setScene(scene2);
+        stage2.show();
+        
 	}
 
 	public static void main(String[] args) {
 		launch(args); 
-	//	PreviewPaneApp.main(args);
+		//PreviewPaneApp.main(args);
 	}
 }
