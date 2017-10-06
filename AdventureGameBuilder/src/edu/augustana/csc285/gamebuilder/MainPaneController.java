@@ -27,7 +27,7 @@ import javax.imageio.ImageIO;
 import edu.augustana.csc285.game.datamodel.*;
 
 public class MainPaneController {
-
+	
 	private GameData data = new GameData();
 	private int slideAtTextIndex = 0;
 	@FXML
@@ -38,6 +38,10 @@ public class MainPaneController {
 	private Button showSlideListButton;
 
 	private Stage mainWindow;
+	private Stage secondWindow;
+	private PreviewPaneController pController;
+	
+	
 	@FXML
 	private Button saveButton;
 	@FXML
@@ -94,7 +98,7 @@ public class MainPaneController {
 	// JavaFX initialize method, called after this Pane is created.
 	@FXML
 	private void initialize() {
-		// Slide slide = new Slide();
+		
 	}
 
 	// saves the data entered in the builder
@@ -133,9 +137,13 @@ public class MainPaneController {
 		}
 	}
 
-	public void setStageAndSetupListeners(Stage primaryStage) {
+	public void setStageAndSetupListeners(Stage primaryStage, GameData data) {
 		mainWindow = primaryStage;
-
+		this.data = data;
+	}
+	
+	public void setPcontroler(PreviewPaneController pController){
+		this.pController = pController;
 	}
 
 	// checks to see if the input is an integer
@@ -441,5 +449,4 @@ public class MainPaneController {
 			aceSetDestinationSlideIndexField.clear();
 		}
 	}
-
 }

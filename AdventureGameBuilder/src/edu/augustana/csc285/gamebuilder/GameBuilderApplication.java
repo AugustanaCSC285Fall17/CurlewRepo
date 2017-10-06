@@ -2,6 +2,7 @@ package edu.augustana.csc285.gamebuilder;
 
 import java.io.IOException;
 
+import edu.augustana.csc285.game.datamodel.GameData;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,27 +23,35 @@ public class GameBuilderApplication extends Application {
 
         
         MainPaneController controller = (MainPaneController)loader.getController();
-        controller.setStageAndSetupListeners(primaryStage); 
+         
+       
         
-        
-        primaryStage.setTitle("Curlew's Game Builder");
-        primaryStage.setScene(scene);
-        primaryStage.show();       
-        
-        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("PreviewPane.fxml"));
-        Scene scene2 = new Scene(loader2.load());
+       
+       FXMLLoader loader2 = new FXMLLoader(getClass().getResource("PreviewPane.fxml"));
+       Parent root2 = (Parent) loader2.load();
+       Scene scene2 = new Scene(root2);
         
         
         
         Stage stage2 = new Stage();
         
         PreviewPaneController pController = (PreviewPaneController)loader2.getController();
-        controller.setStageAndSetupListeners(stage2);
+        
+        GameData data = new GameData();
+        
+        controller.setStageAndSetupListeners(primaryStage, data);
+        controller.setPcontroler(pController);
+        
+        primaryStage.setTitle("Curlew's Game Builder");
+        primaryStage.setScene(scene);
+        primaryStage.show();       
         
         stage2.setTitle("Game Builder Info");
         stage2.setX(stage2.getX()-200);
         stage2.setScene(scene2);
         stage2.show();
+        
+       // controller.setSecondController(pController);
         
 	}
 
