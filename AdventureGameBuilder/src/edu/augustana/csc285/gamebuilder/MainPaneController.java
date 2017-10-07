@@ -27,8 +27,8 @@ import javax.imageio.ImageIO;
 import edu.augustana.csc285.game.datamodel.*;
 
 public class MainPaneController {
-
-	private GameData data = new GameData();
+	
+	private GameData data;
 	private int slideAtTextIndex = 0;
 	@FXML
 	private TextField showSlideAtTextField;
@@ -38,6 +38,10 @@ public class MainPaneController {
 	private Button showSlideListButton;
 
 	private Stage mainWindow;
+	private Stage secondWindow;
+	private PreviewPaneController pController;
+	
+	
 	@FXML
 	private Button saveButton;
 	@FXML
@@ -48,7 +52,7 @@ public class MainPaneController {
 	private Button startPreviewButton;
 
 	// Slide Editor Fields
-	private SlideEditor se = new SlideEditor(data);
+	private SlideEditor se;
 	@FXML
 	private TextField selectSlideNumberTextField;
 	@FXML
@@ -94,7 +98,7 @@ public class MainPaneController {
 	// JavaFX initialize method, called after this Pane is created.
 	@FXML
 	private void initialize() {
-		// Slide slide = new Slide();
+		
 	}
 
 	// saves the data entered in the builder
@@ -133,9 +137,14 @@ public class MainPaneController {
 		}
 	}
 
-	public void setStageAndSetupListeners(Stage primaryStage) {
+	public void setStageAndSetupListeners(Stage primaryStage, GameData data) {
 		mainWindow = primaryStage;
-
+		this.data = data;
+		se = new SlideEditor(data);
+	}
+	
+	public void setPcontroler(PreviewPaneController pController){
+		this.pController = pController;
 	}
 
 	// checks to see if the input is an integer
@@ -192,12 +201,14 @@ public class MainPaneController {
 				new Alert(AlertType.INFORMATION, data.getSlide(slideAtTextIndex).toString()).showAndWait();
 			}
 		}
+		pController.update();
 	}
 
 	// adds a new slide to the end of the slide list in GameData class
 	@FXML
 	private void handleAddSlideButton() {
 		data.addSlide(new Slide());
+		pController.update();
 	}
 
 	// outputs the list of slides and their titles in an alert message
@@ -259,6 +270,7 @@ public class MainPaneController {
 		if (slideListIsNotEmpty() && wasSlideSelected()) {
 			se.changeTitle(changeTitleTextField.getText());
 		}
+		pController.update();
 	}
 
 	// sets the game text of the slide that is entered into the
@@ -268,6 +280,8 @@ public class MainPaneController {
 		if (slideListIsNotEmpty() && wasSlideSelected()) {
 			se.setGameText(setGameTextArea.getText());
 		}
+		pController.update();
+
 	}
 
 	// adds an action choice to the end of the action choice list by calling on
@@ -322,6 +336,9 @@ public class MainPaneController {
 				new Alert(AlertType.ERROR, "There was a problem").showAndWait();
 			}
 		}
+		
+		pController.update();
+
 	}
 
 	// outputs the information of a slide in a alert message
@@ -427,6 +444,9 @@ public class MainPaneController {
 			setGameTextArea.clear();
 			changeTitleTextField.clear();
 		}
+		
+		pController.update();
+
 
 	}
 
@@ -441,5 +461,4 @@ public class MainPaneController {
 			aceSetDestinationSlideIndexField.clear();
 		}
 	}
-
 }
