@@ -155,7 +155,7 @@ public class GameData {
 	 *         object
 	 */
 	public String toJSON() {
-		return new Json().prettyPrint(this);
+		return new Json().toJson(this);
 	}
 
 	/**

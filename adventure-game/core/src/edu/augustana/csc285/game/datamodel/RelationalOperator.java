@@ -10,7 +10,6 @@ public class RelationalOperator {
 	
 	private String opcode;
 		
-	@SuppressWarnings("unused") // needed for Json deserialization!
 	public RelationalOperator() {		
 	}
 	private RelationalOperator(String opcode) {

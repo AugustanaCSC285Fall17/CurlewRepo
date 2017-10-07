@@ -5,7 +5,7 @@ public class GameDataTester{
 	public static void main(String[] args) {
 		GameData gd = new GameData();
 
-		Slide s0 = new Slide("Room 0", "Slide1.png", "Wellcome to the new Room", 0, "www.google.com");
+		Slide s0 = new Slide("Room 0", "Slide1.png", "Welcome to the new Room", 0, "www.google.com");
 
 		Slide s3 = new Slide("Room 0", "slide_000.png", "text0", 0, "url0");
 
