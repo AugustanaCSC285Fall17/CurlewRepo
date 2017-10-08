@@ -196,6 +196,10 @@ public class GameData {
 	}
 	
 	public String printSlideInfo (){
-		return slides.toString();
+		String s = "";
+		for (Slide slide: slides){
+			s+=slide.toString()+ "\n\n";
+		}
+		return s;
 	}
 }

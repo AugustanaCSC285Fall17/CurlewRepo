@@ -35,7 +35,7 @@ import edu.augustana.csc285.game.datamodel.*;
 public class PreviewPaneController {
 
 	@FXML
-	private Label slideInfoText;
+	private Text slideInfoText;
 	private GameData data;
 	
 
@@ -45,7 +45,6 @@ public class PreviewPaneController {
 
 	public void setData(GameData data) {
 		this.data = data;
-		System.out.println(1);
 	}
 
 	public void setStageAndSetupListeners(Stage primaryStage, GameData data) {
@@ -62,5 +61,11 @@ public class PreviewPaneController {
 
 	private void updateSlideInfoText() {
 		slideInfoText.setText(data.printSlideInfo());
+	}
+
+	public void updateData(GameData data2) {
+		this.data = data2;
+		System.out.println(1);
+		update();
 	}
 }

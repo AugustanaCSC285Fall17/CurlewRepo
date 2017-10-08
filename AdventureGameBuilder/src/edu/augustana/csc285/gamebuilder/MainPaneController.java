@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -60,8 +61,6 @@ public class MainPaneController {
 	@FXML
 	private TextField changeTitleTextField;
 	@FXML
-	private TextField changeSlideTypeTextField;
-	@FXML
 	private TextArea setGameTextArea;
 	@FXML
 	private Button submitButton;
@@ -73,6 +72,8 @@ public class MainPaneController {
 	private Button showSlideInfoButton;
 	@FXML
 	private Button removeSlideButton;
+	@FXML
+	private ChoiceBox setSlideTypeChoiceBox;
 
 	// ActionChoiceEditor Fields
 	private ActionChoiceEditor ace = new ActionChoiceEditor(data, se);
@@ -134,6 +135,7 @@ public class MainPaneController {
 			this.data = GameData.fromJSONFile(inFile);
 			se = new SlideEditor(data);
 			ace = new ActionChoiceEditor(data, se);
+			pController.updateData(data);
 		}
 	}
 
@@ -350,11 +352,7 @@ public class MainPaneController {
 		}
 	}
 
-	@FXML
-	private void handleChangeSlideTypeTextField() {
-		String input = changeSlideTypeTextField.getText();
-		se.setSlideType(Integer.parseInt(input));
-	}
+	
 
 	// checks to see if the user entered a slide index before editing other
 	// fields
