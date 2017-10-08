@@ -200,6 +200,7 @@ public class SlideScreen implements Screen {
 	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 30 - gameTextHeight, gameTextWidth, gameTextHeight);
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);
+	    scrollPane.setFadeScrollBars(false);;
 	}
 	
 	private void createTitle() {

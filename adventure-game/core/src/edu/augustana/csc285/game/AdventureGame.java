@@ -18,11 +18,11 @@ public class AdventureGame extends Game {
 	public GameData data;
 
 	public Music bgMusic;
-	Stage stage;
-	Skin skin;
+	public Stage stage;
+	public Skin skin;
 	
-	SpriteBatch batch;
-	Sprite sprite;
+	public SpriteBatch batch;
+	public Sprite sprite;
 	
 	//Music bgMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Si_la_Rigueur.mp3"));
 	

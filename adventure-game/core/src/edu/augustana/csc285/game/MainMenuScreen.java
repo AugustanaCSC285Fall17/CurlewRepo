@@ -146,7 +146,7 @@ public class MainMenuScreen implements Screen {
 		
 		Texture logoTexture = new Texture(Gdx.files.internal("art/LogoStroked.png"));
 		logo = new Sprite(logoTexture);
-		logo.setPosition(200, Gdx.graphics.getHeight() - 200);
+		logo.setPosition((Gdx.graphics.getWidth() - 400) / 2, Gdx.graphics.getHeight() - 200);
 		logo.setSize(400, (float) (logoTexture.getHeight() * 400.0 / logoTexture.getWidth()));
 		
 		Texture swansonLogoTexture = new Texture(Gdx.files.internal("slideImages/image1.png"));
