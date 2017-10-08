@@ -80,7 +80,7 @@ public class MainPaneController {
 	private ChoiceBox setSlideTypeChoiceBox;
 
 	// ActionChoiceEditor Fields
-	private ActionChoiceEditor ace = new ActionChoiceEditor(data, se);
+	private ActionChoiceEditor ace;
 	@FXML
 	private TextField selectSlideNumberTextField1;
 	@FXML
@@ -141,7 +141,6 @@ public class MainPaneController {
 		} else {
 			this.data = GameData.fromJSONFile(inFile);
 			se = new SlideEditor(data);
-			ace = new ActionChoiceEditor(data, se);
 			pController.updateData(data);
 			clearSlideEditor();
 		}
@@ -251,10 +250,7 @@ public class MainPaneController {
 	@FXML
 	private void handleSelectSlideNumberTextField() {
 		changeCurrentSlide(selectSlideNumberTextField.getText());
-		Slide slide = data.getSlide(se.getCurrentSlide());
-		changeTitleTextField.setText(slide.getTitle());
-		setGameTextArea.setText(slide.getGameText());
-		setSlideTypeChoiceBox.setValue(slide.getSlideType());
+		
 		
 	}
 
@@ -274,6 +270,11 @@ public class MainPaneController {
 				se.setCurrentSlide(index);
 				currentSlideLabel.setText(Integer.toString(index));
 				currentSlideLabel1.setText(Integer.toString(index));
+				
+				Slide slide = data.getSlide(se.getCurrentSlide());
+				changeTitleTextField.setText(slide.getTitle());
+				setGameTextArea.setText(slide.getGameText());
+				setSlideTypeChoiceBox.setValue(slide.getSlideType());
 			}
 		}
 	}
@@ -388,8 +389,12 @@ public class MainPaneController {
 			if (isInputInt(selectActionChoiceTextField.getText())) {
 				int index = Integer.parseInt(selectActionChoiceTextField.getText());
 				if (isIndexAnActionChoice(index)) {
+					ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide()), se);
+					System.out.println(2);
 					ace.setCurrentActionChoiceIndex(index);
+					System.out.println(3);
 					currentACLabel.setText(Integer.toString(index));
+					System.out.println(4);
 				}
 			}
 		}
@@ -408,23 +413,32 @@ public class MainPaneController {
 	// changes the action choice text by calling on the ActionChoiceEditor class
 	@FXML
 	private void handleAceChoiceSubmitButton() {
+		String input = aceSetDestinationSlideIndexField.getText();
 		if (wasAcSelected())
+			if(isInputInt(input)){
+				int index = Integer.parseInt(input);
+				if (isIndexASlide(index)) {
 			ace.setChoiceText(aceChoiceTextArea.getText());
+			ace.setDestinationSlideIndex(index);
+			pController.update();
+				}
+			}
 	}
 
 	// sets the destination slide index of an action choice
-	@FXML
-	private void handleAceSetDestinationSlideIndexField() {
-		if (wasAcSelected()) {
-			String input = aceSetDestinationSlideIndexField.getText();
-			if (isInputInt(input)) {
-				int index = Integer.parseInt(input);
-				if (isIndexASlide(index)) {
-					ace.setDestinationSlideIndex(index);
-				}
-			}
-		}
-	}
+	//TODO remove
+//	@FXML
+//	private void handleAceSetDestinationSlideIndexField() {
+//		if (wasAcSelected()) {
+//			String input = aceSetDestinationSlideIndexField.getText();
+//			if (isInputInt(input)) {
+//				int index = Integer.parseInt(input);
+//				if (isIndexASlide(index)) {
+//					ace.setDestinationSlideIndex(index);
+//				}
+//			}
+//		}
+//	}
 
 	// checks to see if the user selected an action choice index
 	private boolean wasAcSelected() {
@@ -465,5 +479,6 @@ public class MainPaneController {
 			aceChoiceTextArea.clear();
 			aceSetDestinationSlideIndexField.clear();
 		}
+		pController.update();
 	}
 }
