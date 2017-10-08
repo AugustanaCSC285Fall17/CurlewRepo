@@ -2,13 +2,15 @@ package edu.augustana.csc285.game.datamodel;
 
 import java.util.ArrayList;
 
+import edu.augustana.csc285.game.SlideType;
+
 
 public class Slide {
 	private String title;
 	private String imageFileName;
 	private String gameText; 
 	private String urlText;
-	private int slideType;
+	private SlideType slideType;
 	private boolean gameOver;
 	private ArrayList<ActionChoice> actionChoices;
 
@@ -16,13 +18,13 @@ public class Slide {
 	public Slide() {
 		this.title = "NewSlide";
 		this.imageFileName = "";
-		this.slideType = 0;
+		this.slideType = SlideType.NORMAL;
 		this.actionChoices = new ArrayList<>();
 		
 	}
 
 	public Slide(String title, String imageFileName, String gameText
-			    , int slideType, String urlText) {
+			    , SlideType slideType, String urlText) {
 		this.gameText = gameText;
 		this.title = title;
 		this.imageFileName = imageFileName;
@@ -70,11 +72,11 @@ public class Slide {
 		return urlText;
 	}
 
-	public int getSlideType() {
+	public SlideType getSlideType() {
 		return slideType;
 	}
 
-	public void setSlideType(int slideType) {
+	public void setSlideType(SlideType slideType) {
 		this.slideType = slideType;
 	}
 

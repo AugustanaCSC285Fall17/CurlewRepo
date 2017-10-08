@@ -25,7 +25,7 @@
       "imageFileName": "image2.jpg",
       "gameText": "You are an 18 year-old male from Mellby Parish, Småland. You are the youngest of 4 brothers and will not have any farmland to work. There are too many men in your family and not enough farmland. Additionally, the crop failures of 1867-1868 hit your family farm hard. You would also like to avoid Swedish military conscription. You are coming to America to own your own farmland or find a good job.",
       "urlText": "url1",
-      "slideType": 3,
+      "slideType": LETTER,
       "actionChoices": [
         {
           "choiceText": "Continue",
@@ -39,7 +39,7 @@
       "imageFileName": "image3.jpg",
       "gameText": "You are an 18 year-old female maid from Stockholm. You dislike your job as maid and can't seem to find a better one because there is too much competition (population has been booming in the city and countryside). You decide to seek better employment in America.",
       "urlText": "url2",
-      "slideType": 3,
+      "slideType": LETTER,
       "actionChoices": [
         {
           "choiceText": "Continue",
@@ -53,7 +53,7 @@
       "imageFileName": "facts.png",
       "gameText": "Sweden followed a patronymic naming system until the late 19th-century. For example, Anders Bengtsson was so named because he was Anders, the son of Bengt. His son might be named Nils Andersson. A daughter could be Britta Andersdotter (dotter = daughter). Exceptions to this include nobility and clergy. Priests would often combine Greek or Roman endings -ander or -ius to names of parishes to form new names (for example, Eric Norelius).",
       "urlText": "dieUrl",
-      "slideType": 1,
+      "slideType": HISTORICAL,
       "actionChoices": [
         {
           "choiceText": "Continue",
@@ -119,7 +119,7 @@
       "imageFileName": "image5.jpg",
       "gameText": "To Whom It May Concern,\n\nWe hope you find this letter in good spirits. On behalf of the John Deere Company, we thank you for meeting with us concerning about jobs within our factories. We are pleased to inform you you have been recruited for a position at the Moline factory site. We are looking forward to seeing you again and have safe travels. Please bring along this notarized letter with you to our recruitment office.\n\nGod speed,\n\nFrom the Office of John Deere, President of John Deere Co.",
       "urlText": "dieUrl",
-      "slideType": 3,
+      "slideType": LETTER,
       "actionChoices": [
         {
           "choiceText": "Continue",
@@ -133,7 +133,7 @@
       "imageFileName": "image7.jpg",
       "gameText": "Dear Cousin,\n\nMay God find you well, dear friend! God is good and God is plentiful. He has shown me the way to a brighter future here in America. My journey has led myself and my travelling companions to a quaint town in the state of Illinois called Moline. It may be quaint now but we are fortunate to have factories and farming jobs available for the people. I have friends all over Illinois including Rockford and Chicago! We stay in touch through correspondence and the occasional social visit when we can. My piece of advice for you, should you make the journey, is to find peace with yourself and our loving God. For He is the way and will guide you! The Christian faith has given me hope and salvation along my journey. My fellow companions and myself attend the Lutheran service held by a pastor who is also from Sweden. It is wonderful to have familiarity in a strange place. Services are something to look forward to as it brings us closer to our Maker and builds a strong sense of community. I pray for all the success in the world for you as you make your own journey. \n\nLovingly,\n\nErika Leiffson",
       "urlText": "dieUrl",
-      "slideType": 3,
+      "slideType": LETTER,
       "actionChoices": [
         {
           "choiceText": "Continue",
@@ -147,7 +147,7 @@
       "imageFileName": "image8.jpg",
       "gameText": "Dear Cousin,\n\nI have been blessed to have found a place I can call home. My journeys were long, and at times I had felt grief for leaving my beautiful Sweden. I remember so clearly how it felt to be a stranger in a strange place. Only having a small trunk and broken English left me apprehensive of my surroundings. I am thankful that I have experienced no ill wills on my passage to America. I had heard some of my kin had travelled to the far west of this vast country, in a place called Washington state. My family settled near Tacoma and are now prosperous farmers and fishermen! I decided to try my hand for this place. I took the Walla Walla railroad instead of the Northern Pacific, as it was the cheaper option. I was taken to Seattle and found a boardinghouse for Swedes. Within a month I had found employment as a maid to one of the founding families. They treat me well despite some language barrier, but I am becoming more proficient and feel more confident in my new home.\n\nI do wish you well and hope someday to meet you again in my new home! Give my love to my family and friends!\n\nLinnea Parsson",
       "urlText": "dieUrl",
-      "slideType": 3,
+      "slideType": LETTER,
       "actionChoices": [
         {
           "choiceText": "Continue",
@@ -161,7 +161,7 @@
       "imageFileName": "image8.jpg",
       "gameText": "Dear Cousin,\n\nI am content to report that I have found steady employment as my own master. I had arrived only two months in St. Paul, working odds and ends in the town when I noticed an advertisement of purchasable land not far from my lodgings. Land is so cheap here in America! I saved enough to buy my own lot and have begun to till and grind the land. My hope is to grow peas and potatoes and sell them at market. Let us pray for a good harvest this next season!\n\nLife has treated me well. The journey is hard on everyone, harder for others. My companion on the trip to America arrived well but I have received word that he has fallen into poverty. He was swindled by a false recruiter at the docks. He is struggling to find employment in the city but, God willing, I hope he will find something soon!\n\nAs you make the journey, make sure to bring plenty of food. They treat you well on the ships and trains but the journey alone can make one homesick. A little piece of home can appease the qualms of the stomach and might make you a friend or two!\n\nGodspeed dear cousin! \n\nArvid Lothbrok",
       "urlText": "dieUrl",
-      "slideType": 3,
+      "slideType": LETTER,
       "actionChoices": [
         {
           "choiceText": "Continue",
@@ -175,7 +175,7 @@
       "imageFileName": "facts.png",
       "gameText": "Immigrants were inspired to move to America not only by \"push\" factors that pushed them to leave their country of origin, but by \"pull\" factors that suggested the United States would offer great opportunities. Many immigrants found out about these opportunities from family and friends, then they often followed those family and friends to places where they had already become established--a process called chain migration. Letters from the U.S.  to Sweden provided lots of advice about the long journey as well as information about opportunities in their new American homes and sometimes encouragement to join them. Other immigrants were recruited in Sweden to go straight to particular jobs in the United States. John Deere, in Moline, Illinois, was well known for recruiting Swedes for its growing factory operation.",
       "urlText": "dieUrl",
-      "slideType": 1,
+      "slideType": HISTORICAL,
       "actionChoices": [
         {
           "choiceText": "Continue",
@@ -189,7 +189,7 @@
       "imageFileName": "facts.png",
       "gameText": "Between 1850 and 1930, over 1.3 million Swedes immigrated to the United States. At the same time, over 50 million Europeans left Europe. Several factors \"pushed\" Swedes to leave their homeland while others \"pulled\" them to America. Population growth in Sweden led to less available land for farming and crop failure in the late 1860s put pressure on the agrarian society. That, paired with the availability of cheap land for farming and the Homestead Act of 1862 in the United States, caused many Swedes to seek a new life in America. Once Swedish immigrants found themselves here, they wrote letters back home describing their experiences, often in overly positive terms. These so-called \"America letters\" proved important in establishing migration channels for new immigrants to come and join their family and friends in America. Religious and political reasons played a much smaller role for the move to America, although it was critical in some cases.\n\nThis Trans-Atlantic mass exodus was one of the major events in Swedish history during the last two centuries. This immense network of contacts established across the Atlantic has influenced the ways in which Swedish society then and now is oriented towards the United States.",
       "urlText": "dieUrl",
-      "slideType": 1,
+      "slideType": HISTORICAL,
       "actionChoices": [
         {
           "choiceText": "Continue",
@@ -243,7 +243,7 @@
       "imageFileName": "facts.png",
       "gameText": "Immigrants from Sweden usually  gained needed papers for travel from their Parish. Tickets were costly; $30 USD in 1880 is the equivalent of $775 USD in 2017. Forging papers was not typical for immigrants; however, one letter, translated by the Swenson Center and sent to a Mr. Hjalmar Andersson, mentions that Swedish men were drafted in the military when they turned 18. In order for these men to migrate, they needed to find alternative ways to seek passage and documentation, so the letter writer suggests pursuing a forgery. ",
       "urlText": "dieUrl",
-      "slideType": 1,
+      "slideType": HISTORICAL,
       "actionChoices": [
         {
           "choiceText": "Continue",
@@ -257,7 +257,7 @@
       "imageFileName": "facts.png",
       "gameText": "Excellent. You are the first in your family to take on this journey. They are counting on your success in America. Your family has pooled enough money for passage, thankfully. You cannot take too much with you, so you must choose carefully which items to bring. Some items are more useful than others but even the smallest, trivial item can lead to unexpected use. Remember, you already have some money left after purchasing papers.\nChose one item",
       "urlText": "dieUrl",
-      "slideType": 4,
+      "slideType": MANY_BUTTONS,
       "actionChoices": [
         {
           "choiceText": "Bible",
@@ -321,7 +321,7 @@
       "imageFileName": "facts.png",
       "gameText": "Excellent. You are the first in your family to take on this journey. They are counting on your success in America. Your family has pooled enough money for passage, thankfully. You cannot take too much with you, so you must choose carefully which items to bring. Some items are more useful than others but even the smallest, trivial item can lead to unexpected use. \n\nChoose one item",
       "urlText": "dieUrl",
-      "slideType": 4,
+      "slideType": MANY_BUTTONS,
       "actionChoices": [
         {
           "choiceText": "Bible",
@@ -430,7 +430,7 @@
       "imageFileName": "facts.png",
       "gameText": "Excellent. You are the first in your family to take on this journey. They are counting on your success in America. Your family has pooled enough money for passage, thankfully. You cannot take too much with you, so you must choose carefully which items to bring. Some items are more useful than others but even the smallest, trivial item can lead to unexpected use. \n\nChoose one item",
       "urlText": "dieUrl",
-      "slideType": 4,
+      "slideType": MANY_BUTTONS,
       "actionChoices": [
         {
           "choiceText": "Bible",
@@ -539,7 +539,7 @@
       "imageFileName": "facts.png",
       "gameText": "Many immigrants sold much of what they owned both in order to pay for the immense travel fees. Others planned to start over in America and so liquidated all their assets.",
       "urlText": "dieUrl",
-      "slideType": 1,
+      "slideType": HISTORICAL,
       "actionChoices": [
         {
           "choiceText": "Continue",
@@ -566,7 +566,7 @@
       "imageFileName": "facts.png",
       "gameText": "Over a million Swedish immigrants left through the port of Gothenburg in southwest Sweden. Many American genealogists believe their ancestors lived in Gothenburg, when really this was just the port they left through. Provinces of Sweden including Småland, Västergötland, Dalsland, Värmland, and Öland saw large numbers emigrate.",
       "urlText": "dieUrl",
-      "slideType": 1,
+      "slideType": HISTORICAL,
       "actionChoices": [
         {
           "choiceText": "Continue",
@@ -580,7 +580,7 @@
       "imageFileName": "facts.png",
       "gameText": "After the American Civil War, big steamship companies like the White Star Line organized emigrant travel. For Swedes, this often meant traveling to Gothenburg, taking a ship to Hull, England, crossing England by train, and taking a steamliner from Liverpool to New York. After World War I, the Swedish American Line was established with a direct route from Gothenburg to New York and Swedish immigrants no longer had to travel through England.",
       "urlText": "dieUrl",
-      "slideType": 1,
+      "slideType": HISTORICAL,
       "actionChoices": [
         {
           "choiceText": "Continue",
@@ -658,7 +658,7 @@
       "imageFileName": "facts.png",
       "gameText": "What would you like to buy?",
       "urlText": "dieUrl",
-      "slideType": 4,
+      "slideType": MANY_BUTTONS,
       "actionChoices": [
         {
           "choiceText": "Bible",
@@ -747,7 +747,7 @@
       "imageFileName": "facts.png",
       "gameText": "Do you want to do anything else?",
       "urlText": "dieUrl",
-      "slideType": 1,
+      "slideType": HISTORICAL,
       "actionChoices": [
         {
           "choiceText": "Buy another item",
@@ -766,7 +766,7 @@
       "imageFileName": "facts.png",
       "gameText": "The shopkeeper is grateful to sell another item and hands it to you. You're sure will help you on the long journey ahead. You wrap it, put it into your luggage, and head back to into the street.",
       "urlText": "dieUrl",
-      "slideType": 1,
+      "slideType": HISTORICAL,
       "actionChoices": [
         {
           "choiceText": "Go to the street",
@@ -780,7 +780,7 @@
       "imageFileName": "facts.png",
       "gameText": "What would you like to sell?",
       "urlText": "dieUrl",
-      "slideType": 4,
+      "slideType": MANY_BUTTONS,
       "actionChoices": [
         {
           "choiceText": "Bible",
@@ -874,7 +874,7 @@
       "imageFileName": "facts.png",
       "gameText": "Do you want to do anything else?",
       "urlText": "dieUrl",
-      "slideType": 1,
+      "slideType": HISTORICAL,
       "actionChoices": [
         {
           "choiceText": "Sell another item",
@@ -893,7 +893,7 @@
       "imageFileName": "facts.png",
       "gameText": "Do you want to sell anything else?",
       "urlText": "dieUrl",
-      "slideType": 1,
+      "slideType": HISTORICAL,
       "actionChoices": [
         {
           "choiceText": "Continue to the street",
@@ -968,7 +968,7 @@
       "imageFileName": "image15.jpg",
       "gameText": "Ticket agent: \"What can I do for you?\"",
       "urlText": "dieUrl",
-      "slideType": 0,
+      "slideType": NORMAL,
       "actionChoices": [
         {
           "choiceText": "Pay for transport to Hull",
@@ -1012,7 +1012,7 @@
       "title": "Pay for ticket to Hull",
       "imageFileName": "facts.png",
       "gameText": "You have gained one ticket.",
-      "slideType": 1,
+      "slideType": HISTORICAL,
       "actionChoices": [
         {
           "choiceText": "Continue",
@@ -1024,7 +1024,7 @@
       "title": "Pay for ticket to Hull with connection to Liverpool",
       "imageFileName": "facts.png",
       "gameText": "You have gained one ticket to Hull and another ticket to America.",
-      "slideType": 1,
+      "slideType": HISTORICAL,
       "actionChoices": [
         {
           "choiceText": "Continue",
@@ -1036,7 +1036,7 @@
       "title": "Historical Pop-Up: Buying Tickets",
       "imageFileName": "facts.png",
       "gameText": "Tickets were usually purchased from a Swedish emigration agent who booked their passage all the way from Gothenburg to the emigrant?s destination city in America (such as Chicago or Lindsborg, Kansas). Companies with strong economic interests in emigrants (like railroad companies or manufacturers like John Deere) were eager to attract new workers to their areas.\n",
-      "slideType": 1,
+      "slideType": HISTORICAL,
       "actionChoices": [
         {
           "choiceText": "Proceed to ship",
@@ -1048,7 +1048,7 @@
       "title": "Arrive in Hull, England",
       "imageFileName": "image19.jpg",
       "gameText": "After a relatively smooth journey, you make it to Hull, England - a thriving port and the next step in your journey. In order to proceed, you need to buy passage to Liverpool.",
-      "slideType": 0,
+      "slideType": NORMAL,
       "actionChoices": [
         {
           "choiceText": "Go left",
@@ -1068,7 +1068,7 @@
       "title": "You Found the Ticket Agent",
       "imageFileName": "image17.jpg",
       "gameText": "Ticket agent: \"Welcome to Hull. What are you looking for?\"",
-      "slideType": 0,
+      "slideType": NORMAL,
       "actionChoices": [
         {
           "choiceText": "Buy train ticket to Liverpool Stockyards and passage to America",
@@ -1116,7 +1116,7 @@
       "title": "Nothing to see",
       "imageFileName": "facts.png",
       "gameText": "You find nothing of interest.",
-      "slideType": 1,
+      "slideType": HISTORICAL,
       "actionChoices": [
         {
           "choiceText": "Go back",
@@ -1128,7 +1128,7 @@
       "title": "Train to Liverpool",
       "imageFileName": "image18.jpg",
       "gameText": "A sign above you says Liverpool station. A ticketmaster is inspecting tickets in front out you.\\n\\nBoard Liverpool train",
-      "slideType": 0,
+      "slideType": NORMAL,
       "actionChoices": [
         {
           "choiceText": "Have ticket. Proceed.",
@@ -1161,7 +1161,7 @@
       "title": "Arrive in Liverpool, England",
       "imageFileName": "image21.jpg",
       "gameText": "Made it to Liverpool: The journey to Liverpool went well. Aside from the uncomfortable seating on the train and the occasional strange looks from the English, you feel more confident about your travels. Liverpool is known as a waypoint for immigrants seeking passage to America.",
-      "slideType": 0,
+      "slideType": NORMAL,
       "actionChoices": [
         {
           "choiceText": "Go left",
@@ -1177,7 +1177,7 @@
       "title": "You Found the Inspection Line",
       "imageFileName": "facts.png",
       "gameText": "Inspection: You encounter the ticketmaster inspecting the passengers. You present him your ticket. He nods and gestures for your papers.",
-      "slideType": 0,
+      "slideType": NORMAL,
       "actionChoices": [
         {
           "choiceText": "Present your paper",
@@ -1227,7 +1227,7 @@
       "title": "Forged Papers",
       "imageFileName": "facts.png",
       "gameText": "You present your papers and hope they will pay off. You start to become nervous as he eyes them. Perhaps you can silence his questioning glance...",
-      "slideType": 0,
+      "slideType": NORMAL,
       "actionChoices": [
         {
           "choiceText": "Bribe him",
@@ -1243,7 +1243,7 @@
       "title": "Bribe him",
       "imageFileName": "image20.jpg",
       "gameText": "He makes a gesture for his superior officer to come over. The superior officer glances at the papers and murmurs instructions to his subordinate. The superior officer makes some sharp remarks to you and hands you over to the police for forgery and bribing an officer. You are immediately put in prison for your crimes and are stripped of all your belongings. You must now wait to serve your sentence before you attempt to make it to America.",
-      "slideType": 0,
+      "slideType": NORMAL,
       "actionChoices": [
         {
           "choiceText": "Go back to the beginning"
@@ -1254,7 +1254,7 @@
       "title": "Don't bribe him",
       "imageFileName": "image20.jpg",
       "gameText": "He makes a gesture for his superior officer to come over. The superior officer glances at the papers and murmurs instructions to his subordinate. The superior officer makes some sharp remarks to you and hands you over to the police for forgery. You are immediately deported and put on a watch list for travelling in England. Your hopes of making it to America are squandered and now must live the rest of your days finding work in Sweden.",
-      "slideType": 0,
+      "slideType": NORMAL,
       "actionChoices": [
         {
           "choiceText": "Go back to the beginning"
@@ -1265,7 +1265,7 @@
       "title": "Present your papers",
       "imageFileName": "image27.jpg",
       "gameText": "You present your papers. You start to become nervous as he eyes them. He makes a gesture for his superior officer to come over. The superior officer glances at the papers and murmurs instructions to his subordinate. The superior officer nods his head and presents you with a stamped ticket and papers. Happy to have made it thus far, you proceed onto the boat.",
-      "slideType": 0,
+      "slideType": NORMAL,
       "actionChoices": [
         {
           "choiceText": "Board boat",
@@ -1277,7 +1277,7 @@
       "title": "Yuck!",
       "imageFileName": "facts.png",
       "gameText": "The narrow walkway smells like old fish and urine. This is not a nice place. You should go back!",
-      "slideType": 0,
+      "slideType": NORMAL,
       "actionChoices": [
         {
           "choiceText": "Go back",
@@ -1289,7 +1289,7 @@
       "title": "Historical Pop-Up: Taking a Boat to America",
       "imageFileName": "facts.png",
       "gameText": "Making friends along the journey, especially with crewmen, would have been advantageous. Some immigrants expressed discomfort with their new surroundings. One immigrant, Swen Magnus Swensson, remembers how the food and coffee served onboard were bland and unappealing. Some of the passengers would bribe the crew for more food and helped out in the kitchens to receive an extra serving or barter for different items.",
-      "slideType": 1,
+      "slideType": HISTORICAL,
       "actionChoices": [
         {
           "choiceText": "Continue",
@@ -1301,7 +1301,7 @@
       "title": "Demo over!",
       "imageFileName": "facts.png",
       "gameText": "Thank you for viewing this demo!",
-      "slideType": 0,
+      "slideType": NORMAL,
       "actionChoices": [
         {
           "choiceText": "Go back to main menu"

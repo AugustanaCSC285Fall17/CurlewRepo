@@ -20,8 +20,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
 import edu.augustana.csc285.game.datamodel.ActionChoice;
-import edu.augustana.csc285.game.datamodel.GameData;
-import edu.augustana.csc285.game.datamodel.Player;
 import edu.augustana.csc285.game.datamodel.Slide;
 
 public class SlideScreen implements Screen {
@@ -178,8 +176,8 @@ public class SlideScreen implements Screen {
 		// for normal slide
 		int gameTextWidth = 280;
 		
-		if (curSlide.getSlideType() == GameData.HISTORICAL_POP_UP 
-				|| curSlide.getSlideType() == GameData.MANY_BUTTONS_SLIDE)
+		if (curSlide.getSlideType() == SlideType.HISTORICAL
+				|| curSlide.getSlideType() == SlideType.MANY_BUTTONS)
 			gameTextWidth = 600;
 		
 		gameText.setWidth(gameTextWidth);
@@ -193,20 +191,20 @@ public class SlideScreen implements Screen {
 		scrollPane = new ScrollPane(gameText, game.skin);
 		
 		int gameTextHeight = 300;
-		if (curSlide.getSlideType() == GameData.NORMAL_SLIDE)
+		if (curSlide.getSlideType() == SlideType.NORMAL)
 			gameTextHeight = 220;
-		else if (curSlide.getSlideType() == GameData.MANY_BUTTONS_SLIDE)
+		else if (curSlide.getSlideType() == SlideType.MANY_BUTTONS)
 			gameTextHeight = 170;
 	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 30 - gameTextHeight, gameTextWidth, gameTextHeight);
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);
-	    scrollPane.setFadeScrollBars(false);;
+	    scrollPane.setFadeScrollBars(false);
 	}
 	
 	private void createTitle() {
 		title = new Label(curSlide.getTitle(), game.skin, "title");
-		if (curSlide.getSlideType() == GameData.LETTER_SLIDE
-				|| curSlide.getSlideType() == GameData.NORMAL_SLIDE)
+		if (curSlide.getSlideType() == SlideType.LETTER
+				|| curSlide.getSlideType() == SlideType.NORMAL)
 			title.setWrap(true);
 		title.setWidth(350);
 		title.pack();
@@ -230,9 +228,9 @@ public class SlideScreen implements Screen {
 		}
 		
 		int tableHeight = 350;
-		if (curSlide.getSlideType() == GameData.NORMAL_SLIDE)
+		if (curSlide.getSlideType() == SlideType.NORMAL)
 			tableHeight = 250;
-		else if (curSlide.getSlideType() == GameData.MANY_BUTTONS_SLIDE)
+		else if (curSlide.getSlideType() == SlideType.MANY_BUTTONS)
 			tableHeight = 200;
 		table.padTop(tableHeight + title.getHeight());
 	}

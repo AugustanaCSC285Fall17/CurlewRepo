@@ -5,11 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
 
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Json;
@@ -21,10 +17,6 @@ import com.badlogic.gdx.utils.JsonValue;
  * game.
  */
 public class GameData {
-	public static final int NORMAL_SLIDE = 0;
-	public static final int HISTORICAL_POP_UP = 1;
-	public static final int LETTER_SLIDE = 3;
-	public static final int MANY_BUTTONS_SLIDE = 4;
 
 	private int startSlideIndex;
 	private int gameOverSlideIndex;
@@ -155,7 +147,7 @@ public class GameData {
 	 *         object
 	 */
 	public String toJSON() {
-		return new Json().toJson(this);
+		return new Json().prettyPrint(this);
 	}
 
 	/**
