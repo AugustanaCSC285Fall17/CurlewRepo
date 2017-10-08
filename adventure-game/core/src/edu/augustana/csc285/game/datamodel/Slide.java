@@ -20,6 +20,7 @@ public class Slide {
 		this.imageFileName = "";
 		this.slideType = SlideType.NORMAL;
 		this.actionChoices = new ArrayList<>();
+		this.gameText = "";
 		
 	}
 

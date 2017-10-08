@@ -3,7 +3,8 @@
 package edu.augustana.csc285.gamebuilder;
 
 import javafx.application.Platform;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,10 +22,13 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Optional;
 
 import javax.imageio.ImageIO;
 
+import edu.augustana.csc285.game.SlideType;
 import edu.augustana.csc285.game.datamodel.*;
 
 public class MainPaneController {
@@ -99,7 +103,10 @@ public class MainPaneController {
 	// JavaFX initialize method, called after this Pane is created.
 	@FXML
 	private void initialize() {
-		
+	//	ArrayList<String> list = new ArrayList<String>();
+		ArrayList<SlideType> list = new ArrayList<SlideType>(Arrays.asList(SlideType.values()));
+		ObservableList<SlideType> observableList = FXCollections.observableList(list);
+		setSlideTypeChoiceBox.setItems(observableList);
 	}
 
 	// saves the data entered in the builder
@@ -136,6 +143,7 @@ public class MainPaneController {
 			se = new SlideEditor(data);
 			ace = new ActionChoiceEditor(data, se);
 			pController.updateData(data);
+			clearSlideEditor();
 		}
 	}
 
@@ -243,6 +251,11 @@ public class MainPaneController {
 	@FXML
 	private void handleSelectSlideNumberTextField() {
 		changeCurrentSlide(selectSlideNumberTextField.getText());
+		Slide slide = data.getSlide(se.getCurrentSlide());
+		changeTitleTextField.setText(slide.getTitle());
+		setGameTextArea.setText(slide.getGameText());
+		setSlideTypeChoiceBox.setValue(slide.getSlideType());
+		
 	}
 
 	// calls the changeCurrentSlide method and passes in the text
@@ -265,22 +278,14 @@ public class MainPaneController {
 		}
 	}
 
-	// changes the title of the slide at the specified index by calling
-	// the slide editor class
-	@FXML
-	private void handleChangeTitleTextField() {
-		if (slideListIsNotEmpty() && wasSlideSelected()) {
-			se.changeTitle(changeTitleTextField.getText());
-		}
-		pController.update();
-	}
-
 	// sets the game text of the slide that is entered into the
 	// setGameTextArea text area
 	@FXML
 	private void handleSubmitButton() {
 		if (slideListIsNotEmpty() && wasSlideSelected()) {
 			se.setGameText(setGameTextArea.getText());
+			se.setSlideType((SlideType) setSlideTypeChoiceBox.getValue());
+			se.changeTitle(changeTitleTextField.getText());
 		}
 		pController.update();
 
@@ -435,18 +440,19 @@ public class MainPaneController {
 	private void handleRemoveSlideButton() {
 		if (this.wasSlideSelected()) {
 			se.removeSlide();
-			currentSlideLabel.setText("N/A");
-			currentSlideLabel1.setText("N/A");
-			se.setCurrentSlide(-1);
-			selectSlideNumberTextField.clear();
-			selectActionChoiceTextField.clear();
-			setGameTextArea.clear();
-			changeTitleTextField.clear();
-		}
-		
+			clearSlideEditor();
+		}		
 		pController.update();
-
-
+	}
+	
+	private void clearSlideEditor(){
+		currentSlideLabel.setText("N/A");
+		currentSlideLabel1.setText("N/A");
+		se.setCurrentSlide(-1);
+		selectSlideNumberTextField.clear();
+		selectActionChoiceTextField.clear();
+		setGameTextArea.clear();
+		changeTitleTextField.clear();
 	}
 
 	// removes the action choice that is currently being edited

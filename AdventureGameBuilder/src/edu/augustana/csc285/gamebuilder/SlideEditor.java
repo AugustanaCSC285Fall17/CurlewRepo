@@ -73,5 +73,6 @@ public class SlideEditor {
 	//removes a slide from the slide list by calling on the GameData class's removeSlide method
 	public void removeSlide() {
 		data.removeSlide(currentSlideIndex);
+		setCurrentSlide(-1);
 	}
 }

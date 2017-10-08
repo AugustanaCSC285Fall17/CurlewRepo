@@ -65,7 +65,6 @@ public class PreviewPaneController {
 
 	public void updateData(GameData data2) {
 		this.data = data2;
-		System.out.println(1);
 		update();
 	}
 }
