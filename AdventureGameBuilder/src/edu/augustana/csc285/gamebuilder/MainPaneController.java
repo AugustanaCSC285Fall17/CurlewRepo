@@ -292,6 +292,7 @@ public class MainPaneController {
 		if (wasSlideSelected()) {
 			se.addActionChoice();
 		}
+		pController.update();
 	}
 
 	// checks to see if the slide list is empty, returns true if it is not empty
