@@ -36,12 +36,7 @@ public class MainPaneController {
 	private GameData data;
 	private int slideAtTextIndex = 0;
 	@FXML
-	private TextField showSlideAtTextField;
-	@FXML
 	private Button addSlideButton;
-	@FXML
-	private Button showSlideListButton;
-
 	private Stage mainWindow;
 	private Stage secondWindow;
 	private PreviewPaneController pController;
@@ -103,7 +98,6 @@ public class MainPaneController {
 	// JavaFX initialize method, called after this Pane is created.
 	@FXML
 	private void initialize() {
-	//	ArrayList<String> list = new ArrayList<String>();
 		ArrayList<SlideType> list = new ArrayList<SlideType>(Arrays.asList(SlideType.values()));
 		ObservableList<SlideType> observableList = FXCollections.observableList(list);
 		setSlideTypeChoiceBox.setItems(observableList);
@@ -200,18 +194,6 @@ public class MainPaneController {
 
 	}
 
-	// outputs the information of a specific slide in an alert message
-	@FXML
-	private void handleShowSlideAtTextField() {
-		String input = showSlideAtTextField.getText();
-		if (isInputInt(input)) {
-			slideAtTextIndex = Integer.parseInt(input);
-			if (isIndexASlide(slideAtTextIndex)) {
-				new Alert(AlertType.INFORMATION, data.getSlide(slideAtTextIndex).toString()).showAndWait();
-			}
-		}
-		pController.update();
-	}
 
 	// adds a new slide to the end of the slide list in GameData class
 	@FXML
@@ -219,19 +201,7 @@ public class MainPaneController {
 		data.addSlide(new Slide());
 		pController.update();
 	}
-
-	// outputs the list of slides and their titles in an alert message
-	@FXML
-	private void handleShowSlideListButton() {
-		String s = "";
-		if (slideListIsNotEmpty()) {
-			for (int i = 0; i < data.getSlideListSize(); i++) {
-				s += "Slide " + i + " is " + data.getSlide(i).getTitle() + "\n";
-			}
-			new Alert(AlertType.INFORMATION, s).showAndWait();
-		}
-	}
-
+	
 	// closes the game builder
 	@FXML
 	private void handleMenuFileClose() {
@@ -390,11 +360,11 @@ public class MainPaneController {
 				int index = Integer.parseInt(selectActionChoiceTextField.getText());
 				if (isIndexAnActionChoice(index)) {
 					ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide()), se);
-					System.out.println(2);
 					ace.setCurrentActionChoiceIndex(index);
-					System.out.println(3);
 					currentACLabel.setText(Integer.toString(index));
-					System.out.println(4);
+					
+					aceChoiceTextArea.setText(data.getSlide(se.getCurrentSlide()).getActionChoicesAt(index).getChoiceText());
+					aceSetDestinationSlideIndexField.setText(Integer.toString(data.getSlide(se.getCurrentSlide()).getActionChoicesAt(index).getDestinationSlideIndex()));
 				}
 			}
 		}
