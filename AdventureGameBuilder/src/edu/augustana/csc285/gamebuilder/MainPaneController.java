@@ -98,7 +98,6 @@ public class MainPaneController {
 	// JavaFX initialize method, called after this Pane is created.
 	@FXML
 	private void initialize() {
-	//	ArrayList<String> list = new ArrayList<String>();
 		ArrayList<SlideType> list = new ArrayList<SlideType>(Arrays.asList(SlideType.values()));
 		ObservableList<SlideType> observableList = FXCollections.observableList(list);
 		setSlideTypeChoiceBox.setItems(observableList);
