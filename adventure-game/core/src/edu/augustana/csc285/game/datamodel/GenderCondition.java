@@ -4,7 +4,6 @@ public class GenderCondition implements Condition {
 	
 	private Gender genderToCheck;
 	
-	@SuppressWarnings("unused")
 	public GenderCondition(){
 	}
 	

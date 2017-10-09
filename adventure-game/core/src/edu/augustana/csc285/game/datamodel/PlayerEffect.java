@@ -1,6 +1,6 @@
 package edu.augustana.csc285.game.datamodel;
 
-public class PlayerEffect {
+public class PlayerEffect implements Effect {
 	
 	private Gender newGender;
 	
@@ -14,5 +14,17 @@ public class PlayerEffect {
 	
 	public Gender getGender(){
 		return newGender;
+	}
+
+	@Override
+	public void applyEffect(Player p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setEfect(int size) {
+		// TODO Auto-generated method stub
+		
 	}
 }
