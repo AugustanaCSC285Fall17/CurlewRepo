@@ -51,9 +51,6 @@ public class PreviewPaneController {
 		this.data = data;
 	}
 
-	public void print() {
-		System.out.println(3);
-	}
 
 	public void update() {
 		updateSlideInfoText();
