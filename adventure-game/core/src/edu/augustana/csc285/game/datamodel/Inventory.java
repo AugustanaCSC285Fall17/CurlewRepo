@@ -30,6 +30,11 @@ public class Inventory {
 	}
 
 	public void setItemQty(int itemQty) {
-		this.itemQty = itemQty;
+		if(itemQty < 0){
+			this.itemQty = 0;
+		}else{
+			this.itemQty = itemQty;
+		}
+		
 	}
 }
