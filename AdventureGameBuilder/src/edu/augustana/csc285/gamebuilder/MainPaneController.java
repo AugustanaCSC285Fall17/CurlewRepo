@@ -392,6 +392,9 @@ public class MainPaneController {
 					ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide()), se);
 					ace.setCurrentActionChoiceIndex(index);
 					currentACLabel.setText(Integer.toString(index));
+					
+					aceChoiceTextArea.setText(data.getSlide(se.getCurrentSlide()).getActionChoicesAt(index).getChoiceText());
+					aceSetDestinationSlideIndexField.setText(Integer.toString(data.getSlide(se.getCurrentSlide()).getActionChoicesAt(index).getDestinationSlideIndex()));
 				}
 			}
 		}
