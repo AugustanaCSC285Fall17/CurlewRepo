@@ -390,11 +390,8 @@ public class MainPaneController {
 				int index = Integer.parseInt(selectActionChoiceTextField.getText());
 				if (isIndexAnActionChoice(index)) {
 					ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide()), se);
-					System.out.println(2);
 					ace.setCurrentActionChoiceIndex(index);
-					System.out.println(3);
 					currentACLabel.setText(Integer.toString(index));
-					System.out.println(4);
 				}
 			}
 		}

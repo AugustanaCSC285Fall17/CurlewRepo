@@ -14,8 +14,6 @@ public class ActionChoiceEditor {
 		currentActionChoiceIndex = -1;
 		this.slide = slide;
 		this.se = se;
-
-		System.out.println("Constructer");
 	}
 
 	//getter method for currentActionChoiceIndex returns int
