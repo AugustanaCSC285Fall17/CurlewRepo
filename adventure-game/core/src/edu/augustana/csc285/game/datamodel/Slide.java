@@ -20,6 +20,7 @@ public class Slide {
 		this.imageFileName = "";
 		this.slideType = SlideType.NORMAL;
 		this.actionChoices = new ArrayList<>();
+		this.gameText = "";
 		
 	}
 
@@ -110,10 +111,10 @@ public class Slide {
 			s = "There are no choices on this slide";
 		} else{
 		for(int i = 0; i < actionChoices.size(); i++){
-			s+= "Action Choice "+i+": "+actionChoices.get(i).toString()+"\n";
+			s+= "Action Choice "+i+":\n"+actionChoices.get(i).toString()+"\n";
 		}
 		}
-		return "The title is "+title + "\nThe image file name is: "+imageFileName+"\nThe gameText is: "+gameText+"\nThe slide type is: "+slideType+"\nThe action Choices are: \n" +s + "\n\n";
+		return "The title is "+title + "\nThe image file name is: "+imageFileName+"\nThe gameText is: "+gameText+"\nThe slide type is: "+slideType+"\nThe action Choices are: \n" +s;
 	}
 
 	public void removeAc(int index) {

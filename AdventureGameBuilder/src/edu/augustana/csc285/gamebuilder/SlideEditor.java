@@ -12,6 +12,7 @@ import java.nio.file.StandardCopyOption;
 
 import javax.imageio.ImageIO;
 
+import edu.augustana.csc285.game.SlideType;
 import edu.augustana.csc285.game.datamodel.*;
 
 public class SlideEditor {
@@ -47,7 +48,7 @@ public class SlideEditor {
 
 	}
 	
-	public void setSlideType(int slideType) {
+	public void setSlideType(SlideType slideType) {
 		data.getSlide(currentSlideIndex).setSlideType(slideType);
 	}
 
@@ -72,5 +73,6 @@ public class SlideEditor {
 	//removes a slide from the slide list by calling on the GameData class's removeSlide method
 	public void removeSlide() {
 		data.removeSlide(currentSlideIndex);
+		setCurrentSlide(-1);
 	}
 }

@@ -13,7 +13,7 @@ public class GenderChangeEffect implements Effect {
 	
 	@Override
 	public void applyEffect(Player p) {
-		p.setGender(newGender);;
+		p.setGender(newGender);
 	}
 
 	@Override

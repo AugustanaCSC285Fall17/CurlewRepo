@@ -68,7 +68,12 @@ public class SlideScreen implements Screen {
 		game.stage.draw();
 	}
 	
-	// Initialize slide elements
+	/*
+	 *  Initialize slide elements, including:
+	 *  	- setting buttons: pause, inventory, mute
+	 *  	- create the stage.
+	 */
+	
 	private void initialize() {
 		game.stage.clear();
 		
