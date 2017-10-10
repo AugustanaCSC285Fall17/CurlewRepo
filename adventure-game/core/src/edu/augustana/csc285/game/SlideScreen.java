@@ -30,6 +30,7 @@ public class SlideScreen implements Screen {
 	private Table table;
 	private Label title;
 	private Label gameText;
+	
 	private TextButton inventoryButton;
 	private TextButton pauseButton;
 	private TextButton muteButton;
@@ -74,6 +75,30 @@ public class SlideScreen implements Screen {
 		buttons = new ArrayList<TextButton>();
 		curSlide = game.data.getSlide(game.data.getCurrentSlideIndex());
 		
+		createFunctionButtons();
+
+		// initialize slide contents
+		createTitle();
+		createGameText();
+		
+		createChoiceButtons();
+		createTable();
+	    
+		
+		// Add actors
+		game.stage.addActor(title);
+		game.stage.addActor(table);
+		game.stage.addActor(scrollPane);
+		
+		// Set the background
+		float size = Gdx.graphics.getHeight();
+		game.batch = new SpriteBatch();
+		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())));
+		game.sprite.setPosition(Gdx.graphics.getWidth() - size, 0);
+		game.sprite.setSize(size, size);
+	}
+
+	private void createFunctionButtons() {
 		pauseButton = new TextButton("Pause", game.skin);
 		pauseButton.setWidth(100);
 		pauseButton.setPosition(Gdx.graphics.getWidth() - pauseButton.getWidth() - 20,
@@ -121,28 +146,7 @@ public class SlideScreen implements Screen {
 			}
 		});
 		game.stage.addActor(muteButton);
-
-		// initialize slide contents
-		createTitle();
-		createGameText();
-		
-		createChoiceButtons();
-		createTable();
-	    
-		
-		// Add actors
-		game.stage.addActor(title);
-		game.stage.addActor(table);
-		game.stage.addActor(scrollPane);
-		
-		// Set the background
-		float size = Gdx.graphics.getHeight();
-		game.batch = new SpriteBatch();
-		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())));
-		game.sprite.setPosition(Gdx.graphics.getWidth() - size, 0);
-		game.sprite.setSize(size, size);
 	}
-
 	
 	private void createChoiceButtons() {
 		List<ActionChoice> curChoices = game.data.getVisibleChoicesForCurrentSlide();

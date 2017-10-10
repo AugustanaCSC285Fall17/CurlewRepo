@@ -48,10 +48,7 @@ public class GameData {
 				visibleChoices.add(choice);
 		}
 		return visibleChoices;
-	}
-
-	
-	
+	}	
 
 	public String attemptChoice(ActionChoice choice) {
 		for (Condition cond : choice.getFeasibilityCond()) {
