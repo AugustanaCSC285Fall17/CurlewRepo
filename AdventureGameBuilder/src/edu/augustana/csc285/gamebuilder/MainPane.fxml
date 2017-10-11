@@ -85,7 +85,6 @@
                         <Label layoutX="220.0" layoutY="21.0" text="Current Slide:" />
                         <Label fx:id="currentSlideLabel1" layoutX="316.0" layoutY="21.0" text="N/A" />
                         <Label layoutX="15.0" layoutY="57.0" text="Select Action Choice Index:" />
-                        <TextField fx:id="selectActionChoiceTextField" layoutX="202.0" layoutY="52.0" onAction="#handleSelectActionChoiceTextField" prefHeight="31.0" prefWidth="64.0" />
                         <Label layoutX="269.0" layoutY="57.0" text="Current Action Choice:" />
                         <Label fx:id="currentACLabel" layoutX="425.0" layoutY="57.0" text="N/A" />
                         <Button fx:id="showAceInfoButton" layoutX="382.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleShowAceInfoButton" text="Show ace Info" />
@@ -96,6 +95,7 @@
                         <Button fx:id="removeAcButton" layoutX="218.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleRemoveAcButton" text="Remove Current Action Choice" />
                         <Line endX="430.0" layoutX="99.0" layoutY="100.0" startX="-100.0" />
                         <TextField fx:id="aceSetDestinationSlideIndexField" layoutX="412.0" layoutY="126.0" prefHeight="29.0" prefWidth="81.0" />
+                        <ChoiceBox fx:id="selectActionChoiceIndexChoiceBox" layoutX="162.0" layoutY="53.0" prefHeight="22.0" prefWidth="48.0" />
                      </children>
                   </AnchorPane>
               </content>

@@ -76,8 +76,6 @@ public class MainPaneController {
 	@FXML
 	private Label currentSlideLabel1;
 	@FXML
-	private TextField selectActionChoiceTextField;
-	@FXML
 	private Label currentACLabel;
 	@FXML
 	private Button showAceInfoButton;
@@ -89,29 +87,15 @@ public class MainPaneController {
 	private TextField aceSetDestinationSlideIndexField;
 	@FXML
 	private Button removeAcButton;
+	@FXML
+	private ChoiceBox<Integer> selectActionChoiceIndexChoiceBox;
 
 	// Starter Methods
 
 	// JavaFX initialize method, called after this Pane is created.
 	@FXML
 	private void initialize() {
-		createSlideTypeMenu();
-		      
-		//selectSlideNumberChoiceBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Integer>());
-		
-//		selectSlideNumberChoiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Integer>() {
-//
-//			@Override
-//			public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
-//				
-//				
-//			}
-//		});
-		selectSlideNumberChoiceBox.getSelectionModel().selectedItemProperty().addListener(
-				(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue)  
-				  -> { changeCurrentSlide(newValue); } );
-
-		
+		createSlideTypeMenu();	
 	}
 
 	/**
@@ -124,6 +108,16 @@ public class MainPaneController {
 		mainWindow = primaryStage;
 		this.data = data;
 		se = new SlideEditor(data);
+		
+		selectSlideNumberChoiceBox.getSelectionModel().selectedItemProperty().addListener(
+				(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue)  
+				  -> { if(newValue!=null){ 
+					  changeCurrentSlide(newValue); }} );
+		
+		selectActionChoiceIndexChoiceBox.getSelectionModel().selectedItemProperty().addListener(
+				(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue)  
+				  -> {if(newValue!=null){ 
+					  changeActionChoice(newValue); }} );
 	}
 
 	/**
@@ -136,28 +130,6 @@ public class MainPaneController {
 		this.pController = pController;
 	}
 
-	// Data Methods
-
-	/**
-	 * changes the current slide for both slide editor and action choice editor
-	 * 
-	 * @param input
-	 */
-	private void changeCurrentSlide(String input) {
-		if (isInputInt(input)) {
-			int index = Integer.parseInt(input);
-			if (isIndexASlide(index)) {
-				se.setCurrentSlide(index);
-				currentSlideLabel.setText(Integer.toString(index));
-				currentSlideLabel1.setText(Integer.toString(index));
-				Slide slide = data.getSlide(se.getCurrentSlide());
-				changeTitleTextField.setText(slide.getTitle());
-				setGameTextArea.setText(slide.getGameText());
-				setSlideTypeChoiceBox.setValue(slide.getSlideType());
-			}
-		}
-	}
-	
 	private void changeCurrentSlide(int index) {
 				se.setCurrentSlide(index);
 				currentSlideLabel.setText(Integer.toString(index));
@@ -409,9 +381,9 @@ public class MainPaneController {
 		if (this.wasSlideSelected()) {
 			se.removeSlide();
 			clearSlideEditor();
-			updateSlideNumberChoiceBox();
 		}
 		pController.update();
+		updateSlideNumberChoiceBox();
 		
 	}
 
@@ -422,8 +394,7 @@ public class MainPaneController {
 		currentSlideLabel.setText("N/A");
 		currentSlideLabel1.setText("N/A");
 		se.setCurrentSlide(-1);
-		updateSlideNumberChoiceBox();
-		selectActionChoiceTextField.clear();
+		updateActionChoiceNumberChoiceBox();
 		setGameTextArea.clear();
 		changeTitleTextField.clear();
 	}
@@ -450,27 +421,18 @@ public class MainPaneController {
 			se.addActionChoice();
 		}
 		pController.update();
+		this.updateActionChoiceNumberChoiceBox();
 	}
 
-	/**
-	 * takes the input of the text field, changes the label to match, and also
-	 * changes the current index to match
-	 */
-	@FXML
-	private void handleSelectActionChoiceTextField() {
-		if (this.wasSlideSelected()) {
-			if (isInputInt(selectActionChoiceTextField.getText())) {
-				int index = Integer.parseInt(selectActionChoiceTextField.getText());
-				if (isIndexAnActionChoice(index)) {
-					ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide()), se);
-					ace.setCurrentActionChoiceIndex(index);
-					currentACLabel.setText(Integer.toString(index));
-					ActionChoice choice = data.getSlide(se.getCurrentSlide()).getActionChoicesAt(index);
-					aceChoiceTextArea.setText(choice.getChoiceText());
-					aceSetDestinationSlideIndexField.setText(Integer.toString(choice.getDestinationSlideIndex()));
-				}
-			}
-		}
+
+		
+	public void changeActionChoice(int index){
+		ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide()), se);
+		ace.setCurrentActionChoiceIndex(index);
+		currentACLabel.setText(Integer.toString(index));
+		ActionChoice choice = data.getSlide(se.getCurrentSlide()).getActionChoicesAt(index);
+		aceChoiceTextArea.setText(choice.getChoiceText());
+		aceSetDestinationSlideIndexField.setText(Integer.toString(choice.getDestinationSlideIndex()));
 	}
 
 	/**
@@ -494,9 +456,8 @@ public class MainPaneController {
 	 * sets Action Choice editor to default
 	 */
 	private void clearACE() {
-		ace.remove();
 		this.currentACLabel.setText("N/A");
-		selectActionChoiceTextField.clear();
+		this.updateActionChoiceNumberChoiceBox();
 		aceChoiceTextArea.clear();
 		aceSetDestinationSlideIndexField.clear();
 	}
@@ -508,7 +469,9 @@ public class MainPaneController {
 	private void handleRemoveAcButton() {
 		if (this.wasAcSelected()) {
 			clearACE();
+			ace.remove();
 			pController.update();
+			updateActionChoiceNumberChoiceBox();
 		}
 	}
 
@@ -521,6 +484,17 @@ public class MainPaneController {
 			ActionChoice choice = data.getSlide(se.getCurrentSlide()).getActionChoicesAt(ace.currentActionChoiceIndex);
 			new Alert(AlertType.INFORMATION, choice.toString()).showAndWait();
 		}
+	}
+	
+	public void updateActionChoiceNumberChoiceBox(){
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		if(se.getCurrentSlide()!=-1){
+		for(int i = 0; i < data.getSlide(se.getCurrentSlide()).getActionChoiceListSize(); i++){
+			list.add(i);
+		}
+		}
+		ObservableList<Integer> observableList = FXCollections.observableList(list);
+		selectActionChoiceIndexChoiceBox.setItems(observableList);
 	}
 
 	// File Menu Methods
