@@ -103,9 +103,10 @@ public class SlideScreen implements Screen {
 		game.sprite.setSize(size, size);
 	}
 
+	public static final int BUTTON_WIDTH = 100;
 	private void createFunctionButtons() {
 		pauseButton = new TextButton("Pause", game.skin);
-		pauseButton.setWidth(100);
+		pauseButton.setWidth(BUTTON_WIDTH);
 		pauseButton.setPosition(Gdx.graphics.getWidth() - pauseButton.getWidth() - 20,
 				Gdx.graphics.getHeight() - pauseButton.getHeight() - 20);
 		pauseButton.addListener(new ClickListener() {
@@ -118,7 +119,7 @@ public class SlideScreen implements Screen {
 		game.stage.addActor(pauseButton);
 		
 		inventoryButton = new TextButton("Inventory", game.skin);
-		inventoryButton.setWidth(100);
+		inventoryButton.setWidth(BUTTON_WIDTH);
 		inventoryButton.setPosition(Gdx.graphics.getWidth() - inventoryButton.getWidth() - 20,
 				Gdx.graphics.getHeight() - inventoryButton.getHeight() - 50);
 		inventoryButton.addListener(new ClickListener() {
@@ -135,7 +136,7 @@ public class SlideScreen implements Screen {
 		muteButton = new TextButton("Mute", game.skin);
 		if (!game.bgMusic.isPlaying())
 			muteButton.setText("Unmute");
-		muteButton.setWidth(100);
+		muteButton.setWidth(BUTTON_WIDTH);
 		muteButton.setPosition(Gdx.graphics.getWidth() - inventoryButton.getWidth() - 20,
 				Gdx.graphics.getHeight() - inventoryButton.getHeight() - 80);
 		muteButton.addListener(new ClickListener() {
@@ -178,6 +179,18 @@ public class SlideScreen implements Screen {
 		}
 	}
 	
+	private void createTitle() {
+		title = new Label(curSlide.getTitle(), game.skin, "title");
+		if (curSlide.getSlideType() == SlideType.LETTER
+				|| curSlide.getSlideType() == SlideType.NORMAL)
+			title.setWrap(true);
+		title.setWidth(350);
+		title.pack();
+		title.setWidth(350);
+		title.setPosition(40, Gdx.graphics.getHeight() - title.getHeight() - 20);
+		title.setAlignment(Align.left);
+	}
+	
 	private void createGameText() {
 		gameText = new Label(curSlide.getGameText(), game.skin);
 		gameText.setWrap(true);
@@ -194,32 +207,6 @@ public class SlideScreen implements Screen {
 		
 		createScrollPane(gameTextWidth);
 	
-	}
-	
-	private void createScrollPane(int gameTextWidth) {
-		scrollPane = new ScrollPane(gameText, game.skin);
-		
-		int gameTextHeight = 300;
-		if (curSlide.getSlideType() == SlideType.NORMAL)
-			gameTextHeight = 220;
-		else if (curSlide.getSlideType() == SlideType.MANY_BUTTONS)
-			gameTextHeight = 170;
-	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 30 - gameTextHeight, gameTextWidth, gameTextHeight);
-	    scrollPane.layout();
-	    scrollPane.setTouchable(Touchable.enabled);
-	    scrollPane.setFadeScrollBars(false);
-	}
-	
-	private void createTitle() {
-		title = new Label(curSlide.getTitle(), game.skin, "title");
-		if (curSlide.getSlideType() == SlideType.LETTER
-				|| curSlide.getSlideType() == SlideType.NORMAL)
-			title.setWrap(true);
-		title.setWidth(350);
-		title.pack();
-		title.setWidth(350);
-		title.setPosition(40, Gdx.graphics.getHeight() - title.getHeight() - 20);
-		title.setAlignment(Align.left);
 	}
 	
 	private void createTable() {
@@ -242,6 +229,20 @@ public class SlideScreen implements Screen {
 		else if (curSlide.getSlideType() == SlideType.MANY_BUTTONS)
 			tableHeight = 200;
 		table.padTop(tableHeight + title.getHeight());
+	}
+	
+	private void createScrollPane(int gameTextWidth) {
+		scrollPane = new ScrollPane(gameText, game.skin);
+		
+		int gameTextHeight = 300;
+		if (curSlide.getSlideType() == SlideType.NORMAL)
+			gameTextHeight = 220;
+		else if (curSlide.getSlideType() == SlideType.MANY_BUTTONS)
+			gameTextHeight = 170;
+	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 30 - gameTextHeight, gameTextWidth, gameTextHeight);
+	    scrollPane.layout();
+	    scrollPane.setTouchable(Touchable.enabled);
+	    scrollPane.setFadeScrollBars(false);
 	}
 
 	
