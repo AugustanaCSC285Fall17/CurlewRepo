@@ -251,10 +251,14 @@ public class MainPaneController {
 	 * @return
 	 */
 	private boolean wasAcSelected() {
-		if (ace.aceSelected()) {
-			return true;
-		} else
-			new Alert(AlertType.ERROR, "Please select an action choice").showAndWait();
+		if (ace != null) {
+			if (ace.aceSelected()) {
+				return true;
+			} else
+				new Alert(AlertType.ERROR, "Please select an action choice").showAndWait();
+			return false;
+		}
+		new Alert(AlertType.ERROR, "Please select an action choice").showAndWait();
 		return false;
 	}
 

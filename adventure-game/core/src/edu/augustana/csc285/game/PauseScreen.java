@@ -1,3 +1,4 @@
+
 package edu.augustana.csc285.game;
 
 import com.badlogic.gdx.Gdx;
@@ -8,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -16,6 +18,7 @@ import com.badlogic.gdx.utils.Align;
 public class PauseScreen implements Screen {
 
 	private final AdventureGame game;
+	private static final String MUSIC_VOLUME = "volume";
 	
 	private Table table;
 	private TextButton resumeButton;
@@ -27,6 +30,7 @@ public class PauseScreen implements Screen {
 	private Sprite swansonLogo;
 	
 	private int curSlide;
+	
 	
 	public PauseScreen(final AdventureGame game, int curSlide) {
 		this.game = game; 
@@ -99,6 +103,8 @@ public class PauseScreen implements Screen {
 		initializeTable();
 		backButton = new TextButton("Back", game.skin);
 		backButton.addListener(new ClickListener(){
+		
+		private Slider volumeSlider = new Slider(0f, 1f, 0.1f, false, game.skin);
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
@@ -106,7 +112,7 @@ public class PauseScreen implements Screen {
 			}
 		});
 		
-		String text = "Settings goes here...\nSetting 1\nSetting 2\n Setting 3";
+		String text = MUSIC_VOLUME;
 		
 		introText = new Label(text, game.skin, "title");
 		introText.setWrap(true);

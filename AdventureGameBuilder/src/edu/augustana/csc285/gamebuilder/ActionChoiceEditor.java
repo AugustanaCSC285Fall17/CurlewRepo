@@ -1,12 +1,16 @@
 package edu.augustana.csc285.gamebuilder;
 
+import java.util.ArrayList;
+
 import edu.augustana.csc285.game.datamodel.GameData;
+import edu.augustana.csc285.game.datamodel.InventoryEffect;
 import edu.augustana.csc285.game.datamodel.Slide;
 
 public class ActionChoiceEditor {
 	public int currentActionChoiceIndex;
 	private Slide slide;
 	private SlideEditor se;
+	private ArrayList<InventoryEffect> effects;
 	
 //constructor accepts a Game Data object and a Slide Editor Object
 //and sets the currentActionChoiceIndex equal to -1
@@ -45,5 +49,21 @@ public class ActionChoiceEditor {
 	public void remove() {
 		slide.removeAc(currentActionChoiceIndex);
 		currentActionChoiceIndex = -1;
+	}
+	
+	public void addInventoryEffect(String itemName, int effectSize){
+		effects.add(new InventoryEffect(itemName, effectSize));
+	}
+	
+	public void removeInventoryEffect(int index){
+		effects.remove(index);
+	}
+	
+	public void changeEffectSize(int effectSize, int index){
+		effects.get(index).setEffectSize(effectSize);
+	}
+	
+	public void changeEffectName(String effectName, int index){
+		effects.get(index).setItemName(effectName);
 	}
 }
