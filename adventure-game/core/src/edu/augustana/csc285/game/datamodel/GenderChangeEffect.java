@@ -19,7 +19,11 @@ public class GenderChangeEffect implements Effect {
 	@Override
 	public void setEffectSize(int size) {
 		// TODO Auto-generated method stub
-		
+	}
+	
+	@Override
+	public String toString() {
+		return "Gender change to: " + newGender;
 	}
 
 }

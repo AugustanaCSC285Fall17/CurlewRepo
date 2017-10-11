@@ -1,10 +1,6 @@
 
 package edu.augustana.csc285.game;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;

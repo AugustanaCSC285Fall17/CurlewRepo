@@ -19,12 +19,18 @@ public class InventoryEffect implements Effect {
 		this.itemName = itemName;
 	}
 	
+	@Override
 	public void applyEffect(Player p) {
 		p.addInventory(itemName, effectSize);
 	}
 
+	@Override
 	public void setEffectSize(int effectSize) {
 		this.effectSize = effectSize;
 	}
 
+	@Override
+	public String toString() {
+		return "Inventory change: (ItemName : " + itemName + ", effectSize: " + effectSize;
+	}
 }

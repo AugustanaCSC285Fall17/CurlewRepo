@@ -82,7 +82,11 @@ public class ActionChoice {//implements Feasible
 	}
 
 	public String toString() {
-		return "choiceText: " + choiceText + "\ndestinationSlideIndex: " + destinationSlideIndex;
+		String s = "choiceText: " + choiceText + "\ndestinationSlideIndex: " + destinationSlideIndex;
+		for (Effect effect : effectList) {
+			s += "\t" + effect.toString() + "\n";
+		}
+		return s;
 	}
 
 	public String getRejText() {
