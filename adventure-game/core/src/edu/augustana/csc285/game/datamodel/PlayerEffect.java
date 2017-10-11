@@ -23,7 +23,7 @@ public class PlayerEffect implements Effect {
 	}
 
 	@Override
-	public void setEfect(int size) {
+	public void setEffectSize(int size) {
 		// TODO Auto-generated method stub
 		
 	}

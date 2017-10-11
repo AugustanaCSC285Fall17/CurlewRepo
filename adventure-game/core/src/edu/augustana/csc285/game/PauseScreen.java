@@ -29,12 +29,9 @@ public class PauseScreen implements Screen {
 	private Label introText;
 	private Sprite swansonLogo;
 	
-	private int curSlide;
 	
-	
-	public PauseScreen(final AdventureGame game, int curSlide) {
+	public PauseScreen(final AdventureGame game) {
 		this.game = game; 
-		this.curSlide = curSlide;
 		initializeMain();		
 		
 		Gdx.input.setInputProcessor(game.stage);
@@ -49,7 +46,7 @@ public class PauseScreen implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
-				game.setScreen(new SlideScreen(game, curSlide));
+				game.setScreen(new SlideScreen(game));
 			}
 		});
 		
@@ -161,10 +158,6 @@ public class PauseScreen implements Screen {
 		swansonLogo = new Sprite(swansonLogoTexture);
 		swansonLogo.setPosition(40, 10);
 		swansonLogo.setSize(400, (float) (swansonLogoTexture.getHeight() * 400.0 / swansonLogoTexture.getWidth()));
-	}
-	
-	public int getCurSlide() {
-		return curSlide;
 	}
 
 	@Override

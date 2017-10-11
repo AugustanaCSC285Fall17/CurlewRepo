@@ -34,22 +34,11 @@ public class SlideScreen implements Screen {
 	private TextButton inventoryButton;
 	private TextButton pauseButton;
 	private TextButton muteButton;
-	private ArrayList<TextButton> buttons;
+	private ArrayList<TextButton> choiceButtons;
 	private ScrollPane scrollPane;
 	
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
-		game.data.setCurrentSlideIndex(game.data.getStartSlideIndex());
-		initialize();
-		
-		Gdx.input.setInputProcessor(game.stage);
-	}
-	
-	// for reserving the right player data from inventory slide
-	public SlideScreen(final AdventureGame game, int curSlide) {
-		this.game = game;
-		
-		game.data.setCurrentSlideIndex(curSlide);
 		initialize();
 		
 		Gdx.input.setInputProcessor(game.stage);
@@ -77,7 +66,7 @@ public class SlideScreen implements Screen {
 	private void initialize() {
 		game.stage.clear();
 		
-		buttons = new ArrayList<TextButton>();
+		choiceButtons = new ArrayList<TextButton>();
 		curSlide = game.data.getSlide(game.data.getCurrentSlideIndex());
 		
 		createFunctionButtons();
@@ -113,7 +102,7 @@ public class SlideScreen implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
-				game.setScreen(new PauseScreen(game, game.data.getCurrentSlideIndex()));
+				game.setScreen(new PauseScreen(game));
 			}
 		});
 		game.stage.addActor(pauseButton);
@@ -128,31 +117,37 @@ public class SlideScreen implements Screen {
 				// set the destination of the back button of inventory to
 				// the last slide
 				game.stage.clear();
-				game.setScreen(new InventoryScreen(game, game.data.getCurrentSlideIndex()));
+				game.setScreen(new InventoryScreen(game));
 			}
 		});
 		game.stage.addActor(inventoryButton);
 		
 		muteButton = new TextButton("Mute", game.skin);
-		if (!game.bgMusic.isPlaying())
+		if (!game.bgMusic.isPlaying()) {
 			muteButton.setText("Unmute");
+		}
 		muteButton.setWidth(BUTTON_WIDTH);
 		muteButton.setPosition(Gdx.graphics.getWidth() - inventoryButton.getWidth() - 20,
 				Gdx.graphics.getHeight() - inventoryButton.getHeight() - 80);
 		muteButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				if (game.bgMusic.isPlaying()) {
-					game.bgMusic.pause();
-					muteButton.setText("Unmute");
-				} else {
-					game.bgMusic.play();
-					muteButton.setText("Mute");
-				}
+				toggleMusic();
 			}
 		});
 		game.stage.addActor(muteButton);
 	}
+	
+	private void toggleMusic() {
+		if (game.bgMusic.isPlaying()) {
+			game.bgMusic.pause();
+			muteButton.setText("Unmute");
+		} else {
+			game.bgMusic.play();
+			muteButton.setText("Mute");
+		}
+	}
+
 	
 	private void createChoiceButtons() {
 		List<ActionChoice> curChoices = game.data.getVisibleChoicesForCurrentSlide();
@@ -174,7 +169,7 @@ public class SlideScreen implements Screen {
 					}
 				}
 			});
-			buttons.add(newButton);
+			choiceButtons.add(newButton);
 			
 		}
 	}
@@ -182,8 +177,9 @@ public class SlideScreen implements Screen {
 	private void createTitle() {
 		title = new Label(curSlide.getTitle(), game.skin, "title");
 		if (curSlide.getSlideType() == SlideType.LETTER
-				|| curSlide.getSlideType() == SlideType.NORMAL)
+				|| curSlide.getSlideType() == SlideType.NORMAL) {
 			title.setWrap(true);
+		}
 		title.setWidth(350);
 		title.pack();
 		title.setWidth(350);
@@ -199,9 +195,9 @@ public class SlideScreen implements Screen {
 		int gameTextWidth = 280;
 		
 		if (curSlide.getSlideType() == SlideType.HISTORICAL
-				|| curSlide.getSlideType() == SlideType.MANY_BUTTONS)
+				|| curSlide.getSlideType() == SlideType.MANY_BUTTONS) {
 			gameTextWidth = 600;
-		
+		}
 		gameText.setWidth(gameTextWidth);
 		gameText.setAlignment(Align.topLeft);
 		
@@ -219,7 +215,7 @@ public class SlideScreen implements Screen {
 		table.padLeft(40);
 		
 		for (int i = 0; i < game.data.getVisibleChoicesForCurrentSlide().size(); i++) {
-			table.add(buttons.get(i)).width(260).padTop(5);
+			table.add(choiceButtons.get(i)).width(260).padTop(5);
 			table.row();
 		}
 		

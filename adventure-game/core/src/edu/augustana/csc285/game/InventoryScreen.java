@@ -34,11 +34,8 @@ public class InventoryScreen implements Screen {
 	private TextButton backButton;
 	private ScrollPane scrollPane;
 	
-	private int curSlide;
-	
-	public InventoryScreen(final AdventureGame game, int curSlide) {
+	public InventoryScreen(final AdventureGame game) {
 		this.game = game;
-		this.curSlide = curSlide;
 		
 		initialize();
 		
@@ -70,7 +67,7 @@ public class InventoryScreen implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
-				game.setScreen(new PauseScreen(game, curSlide));
+				game.setScreen(new PauseScreen(game));
 			}
 		});
 		game.stage.addActor(pauseButton);
@@ -105,7 +102,7 @@ public class InventoryScreen implements Screen {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				game.setScreen(new SlideScreen(game, curSlide));
+				game.setScreen(new SlideScreen(game));
 			}
 		});
 	}
@@ -172,10 +169,6 @@ public class InventoryScreen implements Screen {
 		
 		int tableHeight = 350;
 		table.padTop(tableHeight + title.getHeight());
-	}
-
-	public int getCurSlide() {
-		return curSlide;
 	}
 	
 	@Override

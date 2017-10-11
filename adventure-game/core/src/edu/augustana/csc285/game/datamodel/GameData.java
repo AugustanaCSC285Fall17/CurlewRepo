@@ -19,7 +19,6 @@ import com.badlogic.gdx.utils.JsonValue;
 public class GameData {
 
 	private int startSlideIndex;
-	private int gameOverSlideIndex;
 
 	private ArrayList<Slide> slides;
 	private Player player;
@@ -29,8 +28,7 @@ public class GameData {
 	public GameData() { // needed for GSon
 		slides = new ArrayList<Slide>();
 		player = new Player("Minh!!");
-		startSlideIndex = 0;
-		gameOverSlideIndex = 2;
+		currentSlideIndex = startSlideIndex;
 	}
 	
 	public ArrayList<ActionChoice> getVisibleChoicesForCurrentSlide() {
@@ -73,10 +71,6 @@ public class GameData {
 		return slides.get(startSlideIndex);
 	}
 	
-	public Slide getGameOverSlide() {
-		return slides.get(gameOverSlideIndex);
-	}
-
 	public void addSlide(Slide slide) {
 		slides.add(slide);
 	}
@@ -110,11 +104,7 @@ public class GameData {
 	public int getCurrentSlideIndex() {
 		return currentSlideIndex;
 	}
-
-	public void setCurrentSlideIndex(int slide) {
-		currentSlideIndex = slide;
-	}
-
+	
 	public Player getPlayer() {
 		return player;
 	}
@@ -131,14 +121,6 @@ public class GameData {
 		this.startSlideIndex = startSlideIndex;
 	}
 
-	public int getGameOverSlideIndex() {
-		return gameOverSlideIndex;
-	}
-
-	public void setGameOverSlideIndex(int gameOverSlideIndex) {
-		this.gameOverSlideIndex = gameOverSlideIndex;
-	}
-
 	/**
 	 * @return a serialized JSON-format string that represents this GameData
 	 *         object
@@ -152,7 +134,9 @@ public class GameData {
 	 *         data provided.
 	 */
 	public static GameData fromJSON(String jsonData) {
-		return new Json().fromJson(GameData.class,jsonData);
+		GameData data = new Json().fromJson(GameData.class,jsonData);
+		data.currentSlideIndex = data.startSlideIndex;
+		return data;
 	}
 	
 	/**
