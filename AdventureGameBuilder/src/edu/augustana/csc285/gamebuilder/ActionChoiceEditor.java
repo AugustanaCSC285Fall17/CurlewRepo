@@ -46,4 +46,8 @@ public class ActionChoiceEditor {
 		slide.removeAc(currentActionChoiceIndex);
 		currentActionChoiceIndex = -1;
 	}
+	
+	public void addInventoryEffect(){
+		
+	}
 }
