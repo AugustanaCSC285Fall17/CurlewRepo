@@ -3,6 +3,8 @@
 package edu.augustana.csc285.gamebuilder;
 
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -51,8 +53,6 @@ public class MainPaneController {
 	// Slide Editor Fields
 	private SlideEditor se;
 	@FXML
-	private TextField selectSlideNumberTextField;
-	@FXML
 	private Label currentSlideLabel;
 	@FXML
 	private TextField changeTitleTextField;
@@ -68,15 +68,13 @@ public class MainPaneController {
 	private Button removeSlideButton;
 	@FXML
 	private ChoiceBox<SlideType> setSlideTypeChoiceBox;
+	@FXML
+	private ChoiceBox<Integer> selectSlideNumberChoiceBox;
 
 	// ActionChoiceEditor Fields
 	private ActionChoiceEditor ace;
 	@FXML
-	private TextField selectSlideNumberTextField1;
-	@FXML
 	private Label currentSlideLabel1;
-	@FXML
-	private TextField selectActionChoiceTextField;
 	@FXML
 	private Label currentACLabel;
 	@FXML
@@ -89,13 +87,15 @@ public class MainPaneController {
 	private TextField aceSetDestinationSlideIndexField;
 	@FXML
 	private Button removeAcButton;
+	@FXML
+	private ChoiceBox<Integer> selectActionChoiceIndexChoiceBox;
 
 	// Starter Methods
 
 	// JavaFX initialize method, called after this Pane is created.
 	@FXML
 	private void initialize() {
-		createSlideTypeMenu();
+		createSlideTypeMenu();	
 	}
 
 	/**
@@ -108,6 +108,16 @@ public class MainPaneController {
 		mainWindow = primaryStage;
 		this.data = data;
 		se = new SlideEditor(data);
+		
+		selectSlideNumberChoiceBox.getSelectionModel().selectedItemProperty().addListener(
+				(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue)  
+				  -> { if(newValue!=null){ 
+					  changeCurrentSlide(newValue); }} );
+		
+		selectActionChoiceIndexChoiceBox.getSelectionModel().selectedItemProperty().addListener(
+				(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue)  
+				  -> {if(newValue!=null){ 
+					  changeActionChoice(newValue); }} );
 	}
 
 	/**
@@ -120,17 +130,7 @@ public class MainPaneController {
 		this.pController = pController;
 	}
 
-	// Data Methods
-
-	/**
-	 * changes the current slide for both slide editor and action choice editor
-	 * 
-	 * @param input
-	 */
-	private void changeCurrentSlide(String input) {
-		if (isInputInt(input)) {
-			int index = Integer.parseInt(input);
-			if (isIndexASlide(index)) {
+	private void changeCurrentSlide(int index) {
 				se.setCurrentSlide(index);
 				currentSlideLabel.setText(Integer.toString(index));
 				currentSlideLabel1.setText(Integer.toString(index));
@@ -138,9 +138,10 @@ public class MainPaneController {
 				changeTitleTextField.setText(slide.getTitle());
 				setGameTextArea.setText(slide.getGameText());
 				setSlideTypeChoiceBox.setValue(slide.getSlideType());
-			}
-		}
+			
+		
 	}
+	
 
 	// Checks
 
@@ -322,6 +323,7 @@ public class MainPaneController {
 	private void handleAddSlideButton() {
 		data.addSlide(new Slide());
 		pController.update();
+		updateSlideNumberChoiceBox();
 	}
 
 	// SE methods
@@ -335,14 +337,6 @@ public class MainPaneController {
 		setSlideTypeChoiceBox.setItems(observableList);
 	}
 
-	/**
-	 * calls the changeCurrentSlide method and passes in the text that was put
-	 * into the selectSlideNumberTextField In Slide Editor
-	 */
-	@FXML
-	private void handleSelectSlideNumberTextField() {
-		changeCurrentSlide(selectSlideNumberTextField.getText());
-	}
 
 	/**
 	 * Handles collecting all data from user on the slide editor tab
@@ -389,6 +383,8 @@ public class MainPaneController {
 			clearSlideEditor();
 		}
 		pController.update();
+		updateSlideNumberChoiceBox();
+		
 	}
 
 	/**
@@ -398,23 +394,22 @@ public class MainPaneController {
 		currentSlideLabel.setText("N/A");
 		currentSlideLabel1.setText("N/A");
 		se.setCurrentSlide(-1);
-		selectSlideNumberTextField.clear();
-		selectActionChoiceTextField.clear();
+		updateActionChoiceNumberChoiceBox();
 		setGameTextArea.clear();
 		changeTitleTextField.clear();
+	}
+	
+	private void updateSlideNumberChoiceBox() {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for(int i = 0; i < data.getSlideListSize(); i++){
+			list.add(i);
+		}
+		ObservableList<Integer> observableList = FXCollections.observableList(list);
+		selectSlideNumberChoiceBox.setItems(observableList);
 	}
 
 	// ACE methods
 
-	/**
-	 * calls the changeCurrentSlide method and passes in the text that was put
-	 * into the selectSlideNumberTextField1 functionality the same as equivalent
-	 * method in slide editor
-	 */
-	@FXML
-	private void handleSelectSlideNumberTextField1() {
-		changeCurrentSlide(selectSlideNumberTextField1.getText());
-	}
 
 	/**
 	 * adds an action choice to the end of the action choice list by calling on
@@ -426,27 +421,18 @@ public class MainPaneController {
 			se.addActionChoice();
 		}
 		pController.update();
+		this.updateActionChoiceNumberChoiceBox();
 	}
 
-	/**
-	 * takes the input of the text field, changes the label to match, and also
-	 * changes the current index to match
-	 */
-	@FXML
-	private void handleSelectActionChoiceTextField() {
-		if (this.wasSlideSelected()) {
-			if (isInputInt(selectActionChoiceTextField.getText())) {
-				int index = Integer.parseInt(selectActionChoiceTextField.getText());
-				if (isIndexAnActionChoice(index)) {
-					ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide()), se);
-					ace.setCurrentActionChoiceIndex(index);
-					currentACLabel.setText(Integer.toString(index));
-					ActionChoice choice = data.getSlide(se.getCurrentSlide()).getActionChoicesAt(index);
-					aceChoiceTextArea.setText(choice.getChoiceText());
-					aceSetDestinationSlideIndexField.setText(Integer.toString(choice.getDestinationSlideIndex()));
-				}
-			}
-		}
+
+		
+	public void changeActionChoice(int index){
+		ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide()), se);
+		ace.setCurrentActionChoiceIndex(index);
+		currentACLabel.setText(Integer.toString(index));
+		ActionChoice choice = data.getSlide(se.getCurrentSlide()).getActionChoicesAt(index);
+		aceChoiceTextArea.setText(choice.getChoiceText());
+		aceSetDestinationSlideIndexField.setText(Integer.toString(choice.getDestinationSlideIndex()));
 	}
 
 	/**
@@ -470,9 +456,8 @@ public class MainPaneController {
 	 * sets Action Choice editor to default
 	 */
 	private void clearACE() {
-		ace.remove();
 		this.currentACLabel.setText("N/A");
-		selectActionChoiceTextField.clear();
+		this.updateActionChoiceNumberChoiceBox();
 		aceChoiceTextArea.clear();
 		aceSetDestinationSlideIndexField.clear();
 	}
@@ -484,7 +469,9 @@ public class MainPaneController {
 	private void handleRemoveAcButton() {
 		if (this.wasAcSelected()) {
 			clearACE();
+			ace.remove();
 			pController.update();
+			updateActionChoiceNumberChoiceBox();
 		}
 	}
 
@@ -497,6 +484,17 @@ public class MainPaneController {
 			ActionChoice choice = data.getSlide(se.getCurrentSlide()).getActionChoicesAt(ace.currentActionChoiceIndex);
 			new Alert(AlertType.INFORMATION, choice.toString()).showAndWait();
 		}
+	}
+	
+	public void updateActionChoiceNumberChoiceBox(){
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		if(se.getCurrentSlide()!=-1){
+		for(int i = 0; i < data.getSlide(se.getCurrentSlide()).getActionChoiceListSize(); i++){
+			list.add(i);
+		}
+		}
+		ObservableList<Integer> observableList = FXCollections.observableList(list);
+		selectActionChoiceIndexChoiceBox.setItems(observableList);
 	}
 
 	// File Menu Methods
