@@ -21,6 +21,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
+import edu.augustana.csc285.game.datamodel.Inventory;
+
 public class InventoryScreen implements Screen {
 	
 	private AdventureGame game;
@@ -113,24 +115,16 @@ public class InventoryScreen implements Screen {
 		itemTable.setWidth(550);
 		itemTable.align(Align.topLeft);
 		
-		@SuppressWarnings("rawtypes")
-		Set set = game.data.getPlayer().getInventory().entrySet();
-		
-		@SuppressWarnings("rawtypes")
-		Iterator it = set.iterator();
-		
 		int itemAdded = 0;
-		
-		while(it.hasNext()) {
-			@SuppressWarnings("rawtypes")
-			Map.Entry me = (Map.Entry)it.next();
+
+		for (Inventory item : game.data.getPlayer().getInventory()) {
 			
-			if ((int)me.getValue() != 0) {
-				Image itemImage = new Image(new Texture(Gdx.files.internal("art/icons/" + me.getKey() + ".png")));
-				Label item = new Label((int)me.getValue() + "x " + (String)me.getKey(), game.skin);
-				item.setAlignment(Align.topLeft);
+			if (item.getItemQty() != 0) {
+				Image itemImage = new Image(new Texture(Gdx.files.internal("art/icons/" + item.getImageAddress())));
+				Label itemLabel = new Label(item.getItemQty() + "x " + item.getItemName(), game.skin);
+				itemLabel.setAlignment(Align.topLeft);
 				itemTable.add(itemImage).size(80, 80);
-				itemTable.add(item).align(Align.left);
+				itemTable.add(itemLabel).align(Align.left);
 				if (itemAdded % 2 == 0)
 					itemTable.add().pad(20);
 				else

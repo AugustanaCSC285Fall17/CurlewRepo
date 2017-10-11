@@ -1,5 +1,6 @@
 package edu.augustana.csc285.game.datamodel;
 
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class Player {
@@ -7,7 +8,7 @@ public class Player {
 	private String name;
 	private Gender gender;
 	private TreeMap<String, Integer> stats;
-	private TreeMap<String, Integer> inventory = new TreeMap<String, Integer>();;
+	private ArrayList<Inventory> inventory = new ArrayList<Inventory>();
 
 	// constructor
 	public Player() {
@@ -46,47 +47,51 @@ public class Player {
 		return stats.get(s);
 	}
 	
-	public TreeMap<String, Integer> getInventory() {
+	public ArrayList<Inventory> getInventory() {
 		return inventory;
 		
 	}
 
 	// returns the player inventory value stored at a given key s
-	public int getItemQuantity(String s) {
-		if (inventory.containsKey(s))
-			return inventory.get(s);
-		else
-			return 0;
+	public int getItemQuantity(String name) {
+		for (Inventory item : inventory) {
+			if (item.getItemName().equals(name)) {
+				return item.getItemQty();
+			}
+		}
+		return 0;
 	}
 
 	// changes the player stat value stored at a given key
-	public void setStat(String s, int value) {
-		stats.put(s, value);
+	public void setStat(String name, int value) {
+		stats.put(name, value);
 	}
 
 	// changes the player inventory value stored at a given key
-	public void addItem(String s, int value) {
-		inventory.put(s, value);
+	public void addItem(String name, int value) {
+		inventory.add(new Inventory(name, value));
 	}
 	
 	// adds the player stat value stored at a given key
-	public void addStat(String s, int value) {
-		stats.put(s, value + stats.get(s));
+	public void addStat(String name, int value) {
+		stats.put(name, value + stats.get(name));
 	}
 
 	// adds the player inventory value stored at a given key
-	public void addInventory(String s, int value) {
-		inventory.put(s, value + inventory.get(s));
+	public void addInventory(String name, int value) {
+		for (Inventory item : inventory) {
+			if (item.getItemName().equals(name)) {
+				int newQty = item.getItemQty() + value;
+				if (newQty < 0)
+					newQty = 0;
+				item.setItemQty(newQty);
+			}
+		}
 	}
 	
 	// subtracts the player stat value stored at a given key
-	public void subtractStat(String s, int value) {
-		stats.put(s, stats.get(s) - value);
-	}
-
-	// subtracts the player inventory value stored at a given key
-	public void subtractInventory(String s, int value) {
-		inventory.put(s, inventory.get(s) - value);
+	public void subtractStat(String name, int value) {
+		stats.put(name, stats.get(name) - value);
 	}
 
 }

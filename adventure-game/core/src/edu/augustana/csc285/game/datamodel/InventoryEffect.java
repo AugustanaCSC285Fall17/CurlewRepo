@@ -17,11 +17,7 @@ public class InventoryEffect implements Effect {
 	
 	@Override
 	public void applyEffect(Player p) {
-		int modifiedQuan = p.getItemQuantity(itemName) + effectSize;
-		if (modifiedQuan < 0)
-			modifiedQuan = 0;
-		
-		p.getInventory().put(itemName, modifiedQuan);
+		p.addInventory(itemName, effectSize);
 	}
 
 	@Override
