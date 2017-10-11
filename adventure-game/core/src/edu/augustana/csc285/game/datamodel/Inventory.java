@@ -9,6 +9,9 @@ public class Inventory {
 	public Inventory() {
 	}
 	
+	public Inventory(String itemName, int itemQty) {
+	}
+	
 	public String getItemName() {
 		return itemName;
 	}
@@ -30,11 +33,10 @@ public class Inventory {
 	}
 
 	public void setItemQty(int itemQty) {
-		if(itemQty < 0){
+		if(itemQty < 0)
 			this.itemQty = 0;
-		}else{
+		else
 			this.itemQty = itemQty;
-		}
 		
 	}
 }

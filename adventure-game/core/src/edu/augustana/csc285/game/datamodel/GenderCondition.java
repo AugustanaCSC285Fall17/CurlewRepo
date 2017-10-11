@@ -16,6 +16,4 @@ public class GenderCondition implements Condition {
 	public boolean evaluate(Player p){
 		return p.getGender() == genderToCheck;
 	}
-	
-
 }

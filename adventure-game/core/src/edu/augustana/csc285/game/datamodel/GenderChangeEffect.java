@@ -19,7 +19,6 @@ public class GenderChangeEffect implements Effect {
 	@Override
 	public void setEfect(int size) {
 		// TODO Auto-generated method stub
-		
 	}
 
 }

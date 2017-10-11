@@ -12,11 +12,23 @@
           "choiceText": "Anders Bengtsson",
           "destinationSlideIndex": 1,
           "visible": false
+          "effectList": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.GenderChangeEffect",
+              "newGender": MALE
+            }
+          ]
         },
         {
           "choiceText": "Lovisa Eriksdotter",
           "destinationSlideIndex": 2,
           "visible": false
+          "effectList": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.GenderChangeEffect",
+              "newGender": FEMALE
+            }
+          ]
         }
       ]
     },
@@ -72,6 +84,12 @@
           "choiceText": "John Deere letter",
           "destinationSlideIndex": 5,
           "visible": false,
+          "visibilityCond": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.GenderCondition",
+              "genderToCheck": MALE
+            }
+          ],
           "effectList": [
             {
               "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
@@ -83,6 +101,12 @@
           "choiceText": "Illinois letter",
           "destinationSlideIndex": 6,
           "visible": false,
+          "visibilityCond": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.GenderCondition",
+              "genderToCheck": FEMALE
+            }
+          ],
           "effectList": [
             {
               "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
@@ -94,6 +118,12 @@
           "choiceText": "Washington letter",
           "destinationSlideIndex": 7,
           "visible": false,
+          "visibilityCond": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.GenderCondition",
+              "genderToCheck": FEMALE
+            }
+          ],
           "effectList": [
             {
               "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
@@ -105,6 +135,12 @@
           "choiceText": "Minnesota letter",
           "destinationSlideIndex": 8,
           "visible": false,
+          "visibilityCond": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.GenderCondition",
+              "genderToCheck": MALE
+            }
+          ],
           "effectList": [
             {
               "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
@@ -1311,21 +1347,78 @@
   ],
   "player": {
     "name": "Minh!!",
-    "inventory": {
-      "Bible": 0,
-      "Coin": 1000,
-      "Cured Meat": 0,
-      "Family heirloom": 0,
-      "Forged Paper": 0,
-      "Illinois letter": 0,
-      "John Deere letter": 0,
-      "Medicine": 0,
-      "Minnesota letter": 0,
-      "Official Paper": 0,
-      "Sewing materials": 0,
-      "Ticket To America": 0,
-      "Ticket To Hull": 0,
-      "Washington letter": 0
-    }
+    "gender": UNKNOWN,
+    "inventory": [
+      {
+        "itemName": "Bible",
+        "imageAddress": "bible.png",
+        "itemQty": 0
+      },
+      {
+        "itemName": "Coin"
+        "imageAddress": "coin.png",
+        "itemQty": 1000
+      },
+      {
+        "itemName": "Cured Meat",
+        "imageAddress": "curedmeat.png",
+        "itemQty": 0
+      },
+      {
+        "itemName": "Family heirloom",
+        "imageAddress": "heirloom.png",
+        "itemQty": 0
+      },
+      {
+        "itemName": "Forged Paper",
+        "imageAddress": "forged.png",
+        "itemQty": 0
+      },
+      {
+        "itemName": "Illinois letter",
+        "imageAddress": "illinois.png",
+        "itemQty": 0
+      },
+      {
+        "itemName": "John Deere letter",
+        "imageAddress": "johndeere.png",
+        "itemQty": 0
+      },
+      {
+        "itemName": "Medicine",
+        "imageAddress": "medicine.png",
+        "itemQty": 0
+      },
+      {  
+        "itemName": "Minnesota letter",
+        "imageAddress": "minnesota.png",
+        "itemQty": 0
+      },
+      {  
+        "itemName": "Official Paper",
+        "imageAddress": "official.png",
+        "itemQty": 0
+      },
+      {  
+        "itemName": "Sewing materials",
+        "imageAddress": "sewing.png",
+        "itemQty": 0
+      },
+      {  
+        "itemName": "Ticket To America",
+        "imageAddress": "ticketAmerica.png",
+        "itemQty": 0
+      },
+      {  
+        "itemName": "Ticket To Hull",
+        "imageAddress": "tickethull.png",
+        "itemQty": 0
+      },
+      {  
+        "itemName": "Washington letter",
+        "imageAddress": "washington.png",
+        "itemQty": 0
+      }
+    ]
   }
 }

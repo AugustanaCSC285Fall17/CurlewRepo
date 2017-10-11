@@ -15,19 +15,16 @@ public class InventoryEffect implements Effect {
 		this.itemName = itemName;
 	}
 	
-	@Override
+	public void setItemName(String itemName){
+		this.itemName = itemName;
+	}
+	
 	public void applyEffect(Player p) {
-		int modifiedQuan = p.getItemQuantity(itemName) + effectSize;
-		if (modifiedQuan < 0)
-			modifiedQuan = 0;
-		
-		p.getInventory().put(itemName, modifiedQuan);
+		p.addInventory(itemName, effectSize);
 	}
 
-	@Override
-	public void setEfect(int size) {
-		// TODO Auto-generated method stub
-		
+	public void setEffectSize(int effectSize) {
+		this.effectSize = effectSize;
 	}
 
 }
