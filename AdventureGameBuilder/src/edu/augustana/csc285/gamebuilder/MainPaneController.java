@@ -3,6 +3,8 @@
 package edu.augustana.csc285.gamebuilder;
 
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -51,8 +53,6 @@ public class MainPaneController {
 	// Slide Editor Fields
 	private SlideEditor se;
 	@FXML
-	private TextField selectSlideNumberTextField;
-	@FXML
 	private Label currentSlideLabel;
 	@FXML
 	private TextField changeTitleTextField;
@@ -68,11 +68,11 @@ public class MainPaneController {
 	private Button removeSlideButton;
 	@FXML
 	private ChoiceBox<SlideType> setSlideTypeChoiceBox;
+	@FXML
+	private ChoiceBox<Integer> selectSlideNumberChoiceBox;
 
 	// ActionChoiceEditor Fields
 	private ActionChoiceEditor ace;
-	@FXML
-	private TextField selectSlideNumberTextField1;
 	@FXML
 	private Label currentSlideLabel1;
 	@FXML
@@ -96,6 +96,22 @@ public class MainPaneController {
 	@FXML
 	private void initialize() {
 		createSlideTypeMenu();
+		      
+		//selectSlideNumberChoiceBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Integer>());
+		
+//		selectSlideNumberChoiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Integer>() {
+//
+//			@Override
+//			public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
+//				
+//				
+//			}
+//		});
+		selectSlideNumberChoiceBox.getSelectionModel().selectedItemProperty().addListener(
+				(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue)  
+				  -> { changeCurrentSlide(newValue); } );
+
+		
 	}
 
 	/**
@@ -141,6 +157,19 @@ public class MainPaneController {
 			}
 		}
 	}
+	
+	private void changeCurrentSlide(int index) {
+				se.setCurrentSlide(index);
+				currentSlideLabel.setText(Integer.toString(index));
+				currentSlideLabel1.setText(Integer.toString(index));
+				Slide slide = data.getSlide(se.getCurrentSlide());
+				changeTitleTextField.setText(slide.getTitle());
+				setGameTextArea.setText(slide.getGameText());
+				setSlideTypeChoiceBox.setValue(slide.getSlideType());
+			
+		
+	}
+	
 
 	// Checks
 
@@ -322,6 +351,7 @@ public class MainPaneController {
 	private void handleAddSlideButton() {
 		data.addSlide(new Slide());
 		pController.update();
+		updateSlideNumberChoiceBox();
 	}
 
 	// SE methods
@@ -335,14 +365,6 @@ public class MainPaneController {
 		setSlideTypeChoiceBox.setItems(observableList);
 	}
 
-	/**
-	 * calls the changeCurrentSlide method and passes in the text that was put
-	 * into the selectSlideNumberTextField In Slide Editor
-	 */
-	@FXML
-	private void handleSelectSlideNumberTextField() {
-		changeCurrentSlide(selectSlideNumberTextField.getText());
-	}
 
 	/**
 	 * Handles collecting all data from user on the slide editor tab
@@ -387,8 +409,10 @@ public class MainPaneController {
 		if (this.wasSlideSelected()) {
 			se.removeSlide();
 			clearSlideEditor();
+			updateSlideNumberChoiceBox();
 		}
 		pController.update();
+		
 	}
 
 	/**
@@ -398,23 +422,23 @@ public class MainPaneController {
 		currentSlideLabel.setText("N/A");
 		currentSlideLabel1.setText("N/A");
 		se.setCurrentSlide(-1);
-		selectSlideNumberTextField.clear();
+		updateSlideNumberChoiceBox();
 		selectActionChoiceTextField.clear();
 		setGameTextArea.clear();
 		changeTitleTextField.clear();
 	}
+	
+	private void updateSlideNumberChoiceBox() {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for(int i = 0; i < data.getSlideListSize(); i++){
+			list.add(i);
+		}
+		ObservableList<Integer> observableList = FXCollections.observableList(list);
+		selectSlideNumberChoiceBox.setItems(observableList);
+	}
 
 	// ACE methods
 
-	/**
-	 * calls the changeCurrentSlide method and passes in the text that was put
-	 * into the selectSlideNumberTextField1 functionality the same as equivalent
-	 * method in slide editor
-	 */
-	@FXML
-	private void handleSelectSlideNumberTextField1() {
-		changeCurrentSlide(selectSlideNumberTextField1.getText());
-	}
 
 	/**
 	 * adds an action choice to the end of the action choice list by calling on
