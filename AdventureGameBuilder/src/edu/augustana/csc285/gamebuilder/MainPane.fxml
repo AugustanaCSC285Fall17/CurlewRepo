@@ -50,7 +50,6 @@
                               <Button fx:id="saveButton" layoutX="37.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="25.0" prefWidth="157.0" text="Save" />
                               <Button fx:id="saveAsButton" layoutX="306.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleSaveAsButton" text="SaveAs" />
                               <Button fx:id="loadButton" layoutX="91.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleLoadButton" text="Load" />
-                              <Button fx:id="startPreviewButton" layoutX="324.0" layoutY="106.0" mnemonicParsing="false" onAction="#handleStartPreviewButton" text="Start Preview" />
                      </children>
                   </AnchorPane>
                      </children>
@@ -72,7 +71,6 @@
                         <TextArea fx:id="setGameTextArea" layoutX="14.0" layoutY="156.0" prefHeight="110.0" prefWidth="214.0" />
                         <Button fx:id="submitButton" layoutX="226.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
                         <Button fx:id="addActionChoiceButton" layoutX="234.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleAddActionChoiceButton" text="Add Action Choice " />
-                        <Button fx:id="showSlideInfoButton" layoutX="398.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleShowSlideInfoButton" text="Show Slide Info" />
                         <Button fx:id="removeSlideButton" layoutX="226.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleRemoveSlideButton" text="Remove Current Slide" />
                         <Label layoutX="247.0" layoutY="245.0" text="Set Slide Type:" />
                         <ChoiceBox fx:id="setSlideTypeChoiceBox" layoutX="344.0" layoutY="240.0" prefWidth="150.0" />
