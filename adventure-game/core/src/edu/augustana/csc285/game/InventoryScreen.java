@@ -1,4 +1,4 @@
-
+	
 package edu.augustana.csc285.game;
 
 import com.badlogic.gdx.Gdx;
@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
@@ -26,7 +27,7 @@ public class InventoryScreen implements Screen {
 	private Table table;
 	private Table itemTable;
 	private Label title;
-	private TextButton pauseButton;
+	private Button pauseButton;
 	private TextButton backButton;
 	private ScrollPane scrollPane;
 	
@@ -54,11 +55,14 @@ public class InventoryScreen implements Screen {
 	// Initialize slide elements
 	private void initialize() {
 		game.stage.clear();
-		
-		pauseButton = new TextButton("Pause", game.skin);
-		pauseButton.setWidth(100);
-		pauseButton.setPosition(Gdx.graphics.getWidth() - pauseButton.getWidth() - 20,
-				Gdx.graphics.getHeight() - pauseButton.getHeight() - 20);
+
+		Image pauseImg = new Image(new Texture(Gdx.files.internal("art/icons/pauseSMALL.png")));
+		pauseButton = new Button(game.skin);
+		pauseButton.add(pauseImg);
+		pauseButton.setWidth(40);
+		pauseButton.setHeight(40);
+		pauseButton.setPosition(Gdx.graphics.getWidth() - pauseButton.getWidth() - 10,
+				Gdx.graphics.getHeight() - pauseButton.getHeight() - 10);
 		pauseButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {

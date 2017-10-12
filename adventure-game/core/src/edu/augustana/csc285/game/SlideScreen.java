@@ -10,13 +10,19 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 
 import edu.augustana.csc285.game.datamodel.ActionChoice;
@@ -30,10 +36,10 @@ public class SlideScreen implements Screen {
 	private Table table;
 	private Label title;
 	private Label gameText;
-	
-	private TextButton inventoryButton;
-	private TextButton pauseButton;
-	private TextButton muteButton;
+
+	private Button pauseButton;
+	private Button inventoryButton;
+	private Button muteButton;
 	private ArrayList<TextButton> choiceButtons;
 	private ScrollPane scrollPane;
 	
@@ -92,12 +98,15 @@ public class SlideScreen implements Screen {
 		game.sprite.setSize(size, size);
 	}
 
-	public static final int BUTTON_WIDTH = 100;
+	public static final int BUTTON_WIDTH = 40;
 	private void createFunctionButtons() {
-		pauseButton = new TextButton("Pause", game.skin);
+		Image pauseImg = new Image(new Texture(Gdx.files.internal("art/icons/pauseSMALL.png")));
+		pauseButton = new Button(game.skin);
+		pauseButton.add(pauseImg);
 		pauseButton.setWidth(BUTTON_WIDTH);
-		pauseButton.setPosition(Gdx.graphics.getWidth() - pauseButton.getWidth() - 20,
-				Gdx.graphics.getHeight() - pauseButton.getHeight() - 20);
+		pauseButton.setHeight(BUTTON_WIDTH);
+		pauseButton.setPosition(Gdx.graphics.getWidth() - pauseButton.getWidth() - 10,
+				Gdx.graphics.getHeight() - pauseButton.getHeight() - 10);
 		pauseButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -107,9 +116,12 @@ public class SlideScreen implements Screen {
 		});
 		game.stage.addActor(pauseButton);
 		
-		inventoryButton = new TextButton("Inventory", game.skin);
+		Image invenImg = new Image(new Texture(Gdx.files.internal("art/icons/inventorySMALL.png")));
+		inventoryButton = new Button(game.skin);
+		inventoryButton.add(invenImg);
 		inventoryButton.setWidth(BUTTON_WIDTH);
-		inventoryButton.setPosition(Gdx.graphics.getWidth() - inventoryButton.getWidth() - 20,
+		inventoryButton.setHeight(BUTTON_WIDTH);
+		inventoryButton.setPosition(Gdx.graphics.getWidth() - inventoryButton.getWidth() - 10,
 				Gdx.graphics.getHeight() - inventoryButton.getHeight() - 50);
 		inventoryButton.addListener(new ClickListener() {
 			@Override
@@ -122,29 +134,36 @@ public class SlideScreen implements Screen {
 		});
 		game.stage.addActor(inventoryButton);
 		
-		muteButton = new TextButton("Mute", game.skin);
+		Image muteImg = new Image(new Texture(Gdx.files.internal("art/icons/muteSMALL.png")));
+		Image unmuteImg = new Image(new Texture(Gdx.files.internal("art/icons/unmuteSMALL.png")));
+		muteButton = new Button(game.skin);
+		muteButton.add(muteImg);
 		if (!game.bgMusic.isPlaying()) {
-			muteButton.setText("Unmute");
+			muteButton.removeActor(muteImg);
+			muteButton.add(unmuteImg);
 		}
 		muteButton.setWidth(BUTTON_WIDTH);
-		muteButton.setPosition(Gdx.graphics.getWidth() - inventoryButton.getWidth() - 20,
-				Gdx.graphics.getHeight() - inventoryButton.getHeight() - 80);
+		muteButton.setHeight(BUTTON_WIDTH);
+		muteButton.setPosition(Gdx.graphics.getWidth() - inventoryButton.getWidth() - 10,
+				Gdx.graphics.getHeight() - inventoryButton.getHeight() - 90);
 		muteButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				toggleMusic();
+				toggleMusic(muteImg, unmuteImg);
 			}
 		});
 		game.stage.addActor(muteButton);
 	}
 	
-	private void toggleMusic() {
+	private void toggleMusic(Image muteImg, Image unmuteImg) {
 		if (game.bgMusic.isPlaying()) {
 			game.bgMusic.pause();
-			muteButton.setText("Unmute");
+			muteButton.removeActor(muteImg);
+			muteButton.add(unmuteImg);
 		} else {
 			game.bgMusic.play();
-			muteButton.setText("Mute");
+			muteButton.removeActor(unmuteImg);
+			muteButton.add(muteImg);
 		}
 	}
 
