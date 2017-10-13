@@ -54,6 +54,7 @@ public class ActionChoiceEditor {
 	
 	public void addItemEffect(Item item, int effectSize){
 		slide.getActionChoicesAt(currentActionChoiceIndex).addEffect(new ItemEffect (item,effectSize));
+		System.out.println("Editor " + item.getItemName());
 	}
 	
 	public void removeInventoryEffect(int index){
@@ -64,7 +65,4 @@ public class ActionChoiceEditor {
 		slide.getActionChoicesAt(currentActionChoiceIndex).setEffectSize(effectSize, index);
 	}
 	
-	public void changeEffectName(String effectName, int index){
-		slide.getActionChoicesAt(currentActionChoiceIndex).setEffectName(effectName, index);
-	}
 }
