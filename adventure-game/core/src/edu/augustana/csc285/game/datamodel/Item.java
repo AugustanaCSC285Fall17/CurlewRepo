@@ -49,6 +49,6 @@ public class Item {
 	}
 
 	public String toString() {
-		return "Item Name: " + itemName + "\nItem Quantity: " + itemQty + "\nItem Image Address: " + imageAddress + "\n";
+		return itemName;
 	}
 }

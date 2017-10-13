@@ -105,9 +105,10 @@ public class Player {
 	public String toString(){
 		String s = "";
 		s+= "Name: "+name+"\nGender: "+ gender.toString() + "\n";
-		//s+= printStats();
+		s+= printStats();
 		for (int i = 0; i < inventory.size(); i++){
-			s+=inventory.get(i).toString();
+			Item item = inventory.get(i);
+			s+= "Item Name: " + item.toString() + "\nItem Quantity: " + item.getItemQty()+  "\nItem Image Address: " + item.getImageAddress() + "\n";
 		}
 		return s;
 		
