@@ -8,7 +8,7 @@ public class Player {
 	private String name;
 	private Gender gender;
 	private TreeMap<String, Integer> stats;
-	private ArrayList<Inventory> inventory = new ArrayList<Inventory>();
+	private ArrayList<Item> inventory = new ArrayList<Item>();
 
 	// constructor
 	public Player() {
@@ -47,14 +47,14 @@ public class Player {
 		return stats.get(s);
 	}
 	
-	public ArrayList<Inventory> getInventory() {
+	public ArrayList<Item> getInventory() {
 		return inventory;
 		
 	}
 
 	// returns the player inventory value stored at a given key s
 	public int getItemQuantity(String name) {
-		for (Inventory item : inventory) {
+		for (Item item : inventory) {
 			if (item.getItemName().equals(name)) {
 				return item.getItemQty();
 			}
@@ -69,7 +69,7 @@ public class Player {
 
 	// changes the player inventory value stored at a given key
 	public void addItem(String name, int value) {
-		inventory.add(new Inventory(name, value));
+		inventory.add(new Item(name, value));
 	}
 	
 	// adds the player stat value stored at a given key
@@ -79,7 +79,7 @@ public class Player {
 
 	// adds the player inventory value stored at a given key
 	public void addInventory(String name, int value) {
-		for (Inventory item : inventory) {
+		for (Item item : inventory) {
 			if (item.getItemName().equals(name)) {
 				int newQty = item.getItemQty() + value;
 				if (newQty < 0)

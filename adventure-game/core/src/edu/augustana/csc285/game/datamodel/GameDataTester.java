@@ -13,13 +13,13 @@ public class GameDataTester{
 
 		s0.getActionChoices().add(new ActionChoice("go to room 1", 1));
 		s0.getActionChoices().add(new ActionChoice("go to room 2", 2));
-		s0.getActionChoicesAt(0).addEffect(new InventoryEffect("Bible", 69));
+		s0.getActionChoicesAt(0).addEffect(new ItemEffect("Bible", 69));
 		Slide s1 = new Slide("Room 1", "slide_001.png", "text1", SlideType.HISTORICAL, "url1");
 		s1.getActionChoices().add(new ActionChoice("die", -1));
 		s1.getActionChoices().add(new ActionChoice("go to room 2", 2));
 		Slide s2 = new Slide("Room 2", "slide_002.png", "text2", SlideType.MANY_BUTTONS, "url2");
 		s2.getActionChoices().add(new ActionChoice("go back to room 0", 0));
-		s2.getActionChoicesAt(0).getVisibilityCond().add(new InventoryCondition("emus", RelationalOperator.GREATER_THAN, 1));
+		s2.getActionChoicesAt(0).getVisibilityCond().add(new ItemCondition("emus", RelationalOperator.GREATER_THAN, 1));
 		
 		gd.addSlide(s0);
 		gd.addSlide(s1);

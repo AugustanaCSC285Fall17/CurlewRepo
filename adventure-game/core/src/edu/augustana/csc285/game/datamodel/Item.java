@@ -1,15 +1,15 @@
 package edu.augustana.csc285.game.datamodel;
 
-public class Inventory {
+public class Item {
 
 	private String itemName;
 	private String imageAddress;
 	private int itemQty;
 	
-	public Inventory() {
+	public Item() {
 	}
 	
-	public Inventory(String itemName, int itemQty) {
+	public Item(String itemName, int itemQty) {
 	}
 	
 	public String getItemName() {

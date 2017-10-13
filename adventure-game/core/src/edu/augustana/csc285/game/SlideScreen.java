@@ -10,19 +10,15 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 
 import edu.augustana.csc285.game.datamodel.ActionChoice;
@@ -94,7 +90,11 @@ public class SlideScreen implements Screen {
 		float size = Gdx.graphics.getHeight();
 		game.batch = new SpriteBatch();
 		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())));
-		game.sprite.setPosition(Gdx.graphics.getWidth() - size, 0);
+		if (curSlide.getImageFileName().equals("facts.png")) {
+			game.sprite.setPosition(Gdx.graphics.getWidth() - size, 0);
+		} else {
+			game.sprite.setPosition(Gdx.graphics.getWidth() - size - 40, 0);
+		}
 		game.sprite.setSize(size, size);
 	}
 
@@ -199,9 +199,9 @@ public class SlideScreen implements Screen {
 				|| curSlide.getSlideType() == SlideType.NORMAL) {
 			title.setWrap(true);
 		}
-		title.setWidth(350);
+		title.setWidth(400);
 		title.pack();
-		title.setWidth(350);
+		title.setWidth(400);
 		title.setPosition(40, Gdx.graphics.getHeight() - title.getHeight() - 20);
 		title.setAlignment(Align.left);
 	}
@@ -211,11 +211,11 @@ public class SlideScreen implements Screen {
 		gameText.setWrap(true);
 		
 		// for normal slide
-		int gameTextWidth = 280;
+		int gameTextWidth = 400;
 		
 		if (curSlide.getSlideType() == SlideType.HISTORICAL
 				|| curSlide.getSlideType() == SlideType.MANY_BUTTONS) {
-			gameTextWidth = 600;
+			gameTextWidth = 700;
 		}
 		gameText.setWidth(gameTextWidth);
 		gameText.setAlignment(Align.topLeft);
@@ -234,26 +234,26 @@ public class SlideScreen implements Screen {
 		table.padLeft(40);
 		
 		for (int i = 0; i < game.data.getVisibleChoicesForCurrentSlide().size(); i++) {
-			table.add(choiceButtons.get(i)).width(260).padTop(5);
+			table.add(choiceButtons.get(i)).width(400).padTop(5);
 			table.row();
 		}
 		
-		int tableHeight = 350;
+		int tableHeight = 450;
 		if (curSlide.getSlideType() == SlideType.NORMAL)
-			tableHeight = 250;
+			tableHeight = 350;
 		else if (curSlide.getSlideType() == SlideType.MANY_BUTTONS)
-			tableHeight = 200;
+			tableHeight = 300;
 		table.padTop(tableHeight + title.getHeight());
 	}
 	
 	private void createScrollPane(int gameTextWidth) {
 		scrollPane = new ScrollPane(gameText, game.skin);
 		
-		int gameTextHeight = 300;
+		int gameTextHeight = 400;
 		if (curSlide.getSlideType() == SlideType.NORMAL)
-			gameTextHeight = 220;
+			gameTextHeight = 320;
 		else if (curSlide.getSlideType() == SlideType.MANY_BUTTONS)
-			gameTextHeight = 170;
+			gameTextHeight = 270;
 	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 30 - gameTextHeight, gameTextWidth, gameTextHeight);
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);

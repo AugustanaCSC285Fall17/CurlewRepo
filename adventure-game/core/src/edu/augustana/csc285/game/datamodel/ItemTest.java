@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class InventoryTest {
-	public Inventory apple = new Inventory();
+public class ItemTest {
+	public Item apple = new Item();
 	
 
 	@Test

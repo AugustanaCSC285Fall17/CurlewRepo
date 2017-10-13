@@ -1,15 +1,15 @@
 package edu.augustana.csc285.game.datamodel;
 
-public class InventoryCondition implements Condition {
+public class ItemCondition implements Condition {
 	
 	private String itemName;
 	private RelationalOperator op;
 	private int qtyToCompare;
 	
-	public InventoryCondition(){
+	public ItemCondition(){
 	}
 	
-	public InventoryCondition(String itemName, RelationalOperator op, int qtyToCompare){
+	public ItemCondition(String itemName, RelationalOperator op, int qtyToCompare){
 		this.itemName = itemName;
 		this.qtyToCompare = qtyToCompare;
 		this.op = op;

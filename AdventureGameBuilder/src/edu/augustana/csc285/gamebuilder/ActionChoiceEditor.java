@@ -3,14 +3,14 @@ package edu.augustana.csc285.gamebuilder;
 import java.util.ArrayList;
 
 import edu.augustana.csc285.game.datamodel.GameData;
-import edu.augustana.csc285.game.datamodel.InventoryEffect;
+import edu.augustana.csc285.game.datamodel.ItemEffect;
 import edu.augustana.csc285.game.datamodel.Slide;
 
 public class ActionChoiceEditor {
 	public int currentActionChoiceIndex;
 	private Slide slide;
 	private SlideEditor se;
-	private ArrayList<InventoryEffect> effects;
+	private ArrayList<ItemEffect> effects;
 	
 //constructor accepts a Game Data object and a Slide Editor Object
 //and sets the currentActionChoiceIndex equal to -1
@@ -52,7 +52,7 @@ public class ActionChoiceEditor {
 	}
 	
 	public void addInventoryEffect(String itemName, int effectSize){
-		effects.add(new InventoryEffect(itemName, effectSize));
+		effects.add(new ItemEffect(itemName, effectSize));
 	}
 	
 	public void removeInventoryEffect(int index){

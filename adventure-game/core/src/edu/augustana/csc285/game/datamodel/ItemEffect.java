@@ -1,16 +1,16 @@
 package edu.augustana.csc285.game.datamodel;
 
-public class InventoryEffect implements Effect {
+public class ItemEffect implements Effect {
 
 	int effectSize;
 	String itemName;
 	
-	public InventoryEffect() {
+	public ItemEffect() {
 		effectSize = 1;
 		itemName = "";
 	}
 	
-	public InventoryEffect(String itemName, int effectSize) {
+	public ItemEffect(String itemName, int effectSize) {
 		this.effectSize = effectSize;
 		this.itemName = itemName;
 	}
