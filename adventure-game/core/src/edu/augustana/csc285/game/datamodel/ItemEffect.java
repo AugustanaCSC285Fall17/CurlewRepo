@@ -4,15 +4,16 @@ public class ItemEffect implements Effect {
 
 	int effectSize;
 	String itemName;
+	Item item;
 	
 	public ItemEffect() {
 		effectSize = 1;
 		itemName = "";
 	}
 	
-	public ItemEffect(String itemName, int effectSize) {
+	public ItemEffect(Item item, int effectSize) {
 		this.effectSize = effectSize;
-		this.itemName = itemName;
+		this.item = item;
 	}
 	
 	public void setEffectName(String itemName){

@@ -15,6 +15,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -26,6 +27,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import javax.imageio.ImageIO;
@@ -95,9 +97,9 @@ public class MainPaneController {
 	private Button addEffectButton;
 	@FXML
 	private TextField itemNameTextField;
-	
-	//Misc Editor Fields
-	
+
+	// Misc Editor Fields
+
 	@FXML
 	private Button addInventoryButton;
 
@@ -110,8 +112,6 @@ public class MainPaneController {
 		createEffectChoiceBox();
 	}
 
-	
-
 	/**
 	 * Part of Constructor
 	 * 
@@ -122,16 +122,20 @@ public class MainPaneController {
 		mainWindow = primaryStage;
 		this.data = data;
 		se = new SlideEditor(data);
-		
-		selectSlideNumberChoiceBox.getSelectionModel().selectedItemProperty().addListener(
-				(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue)  
-				  -> { if(newValue!=null){ 
-					  changeCurrentSlide(newValue); }} );
-		
-		selectActionChoiceIndexChoiceBox.getSelectionModel().selectedItemProperty().addListener(
-				(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue)  
-				  -> {if(newValue!=null){ 
-					  changeActionChoice(newValue); }} );
+
+		selectSlideNumberChoiceBox.getSelectionModel().selectedItemProperty()
+				.addListener((ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) -> {
+					if (newValue != null) {
+						changeCurrentSlide(newValue);
+					}
+				});
+
+		selectActionChoiceIndexChoiceBox.getSelectionModel().selectedItemProperty()
+				.addListener((ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) -> {
+					if (newValue != null) {
+						changeActionChoice(newValue);
+					}
+				});
 	}
 
 	/**
@@ -145,17 +149,15 @@ public class MainPaneController {
 	}
 
 	private void changeCurrentSlide(int index) {
-				se.setCurrentSlide(index);
-				currentSlideLabel.setText(Integer.toString(index));
-				currentSlideLabel1.setText(Integer.toString(index));
-				Slide slide = data.getSlide(se.getCurrentSlide());
-				changeTitleTextField.setText(slide.getTitle());
-				setGameTextArea.setText(slide.getGameText());
-				setSlideTypeChoiceBox.setValue(slide.getSlideType());
-			
-		
+		se.setCurrentSlide(index);
+		currentSlideLabel.setText(Integer.toString(index));
+		currentSlideLabel1.setText(Integer.toString(index));
+		Slide slide = data.getSlide(se.getCurrentSlide());
+		changeTitleTextField.setText(slide.getTitle());
+		setGameTextArea.setText(slide.getGameText());
+		setSlideTypeChoiceBox.setValue(slide.getSlideType());
+
 	}
-	
 
 	// Checks
 
@@ -351,7 +353,6 @@ public class MainPaneController {
 		setSlideTypeChoiceBox.setItems(observableList);
 	}
 
-
 	/**
 	 * Handles collecting all data from user on the slide editor tab
 	 */
@@ -398,7 +399,7 @@ public class MainPaneController {
 		}
 		pController.update();
 		updateSlideNumberChoiceBox();
-		
+
 	}
 
 	/**
@@ -412,10 +413,10 @@ public class MainPaneController {
 		setGameTextArea.clear();
 		changeTitleTextField.clear();
 	}
-	
+
 	private void updateSlideNumberChoiceBox() {
 		ArrayList<Integer> list = new ArrayList<Integer>();
-		for(int i = 0; i < data.getSlideListSize(); i++){
+		for (int i = 0; i < data.getSlideListSize(); i++) {
 			list.add(i);
 		}
 		ObservableList<Integer> observableList = FXCollections.observableList(list);
@@ -423,7 +424,6 @@ public class MainPaneController {
 	}
 
 	// ACE methods
-
 
 	/**
 	 * adds an action choice to the end of the action choice list by calling on
@@ -438,9 +438,7 @@ public class MainPaneController {
 		this.updateActionChoiceNumberChoiceBox();
 	}
 
-
-		
-	public void changeActionChoice(int index){
+	public void changeActionChoice(int index) {
 		ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide()), se);
 		ace.setCurrentActionChoiceIndex(index);
 		currentACLabel.setText(Integer.toString(index));
@@ -499,13 +497,13 @@ public class MainPaneController {
 			new Alert(AlertType.INFORMATION, choice.toString()).showAndWait();
 		}
 	}
-	
-	public void updateActionChoiceNumberChoiceBox(){
+
+	public void updateActionChoiceNumberChoiceBox() {
 		ArrayList<Integer> list = new ArrayList<Integer>();
-		if(se.getCurrentSlide()!=-1){
-		for(int i = 0; i < data.getSlide(se.getCurrentSlide()).getActionChoiceListSize(); i++){
-			list.add(i);
-		}
+		if (se.getCurrentSlide() != -1) {
+			for (int i = 0; i < data.getSlide(se.getCurrentSlide()).getActionChoiceListSize(); i++) {
+				list.add(i);
+			}
 		}
 		ObservableList<Integer> observableList = FXCollections.observableList(list);
 		selectActionChoiceIndexChoiceBox.setItems(observableList);
@@ -516,31 +514,53 @@ public class MainPaneController {
 		list.add("Gender Effect");
 		list.add("Inventory Effect");
 		ObservableList<String> observableList = FXCollections.observableList(list);
-		effectChiceBox.setItems(observableList);	
+		effectChiceBox.setItems(observableList);
 	}
-	
+
 	@FXML
-	private void handleAddEffect(){
-		if(this.wasAcSelected()){
-		if(effectChiceBox.getValue()==null){
-			new Alert(AlertType.ERROR, "Please Select an Effect Type").showAndWait();
+	private void handleAddEffect() {
+		if (this.wasAcSelected()) {
+			if (effectChiceBox.getValue() == null) {
+				new Alert(AlertType.ERROR, "Please Select an Effect Type").showAndWait();
+			
+			}else if (effectChiceBox.getValue().equals("Inventory Effect")) {
+			if (data.getPlayer().getInventory().size()==0){
+				new Alert(AlertType.ERROR, "There is nothing in the inventroy").showAndWait();
+			}else{
+					ChoiceDialog<Item> choice = new ChoiceDialog<Item>(null, data.getPlayer().getInventory());
+					choice.setTitle("New Effect Specs");
+					choice.setContentText("Select an item");
+					Optional<Item> itemChoiceOptional = choice.showAndWait();
+
+					try {
+						Item itemChoice = itemChoiceOptional.get();
+
+						TextInputDialog dialog = new TextInputDialog();
+						dialog.setTitle("New Effect Specs");
+						dialog.setHeaderText("Enter Effect Number");
+						dialog.setContentText("Use positive numbers for adding and negitive numbers for subtracting");
+						Optional<String> effectChoiceSizeOptional = dialog.showAndWait();
+
+						int effectChoiceSize = Integer.parseInt(effectChoiceSizeOptional.get());
+						
+						ace.addItemEffect(itemChoice, effectChoiceSize);
+					} catch (NumberFormatException e) {
+						new Alert(AlertType.ERROR, "Was not a number; Effect not added").showAndWait();
+					} catch (NoSuchElementException e1) {
+
+					}
+				}
+			}
 		}
-		if(effectChiceBox.getValue().equals("Inventory Effect")){
-			TextInputDialog diolog = new TextInputDialog();
-			diolog.setTitle("New Effect Specs");
-			diolog.setContentText("Enter the item name");
-			Optional<String> result = diolog.showAndWait();
-			System.out.print(result.get());
-			//TODO Catch no such element exception
-			//TODO add inventory editor, make this a choiceBox instead
-			//TODO genderChangeEffect
-		}
-		}
-	//	alert.setTitle(");
+			// TODO Catch no such element exception
+			// TODO add inventory editor, make this a choiceBox instead
+			// TODO genderChangeEffect
+		pController.update();
+		// alert.setTitle(");
 	}
-	
-	//Misc Editor Methods
-	public void handleAddInventoryButton(){
+
+	// Misc Editor Methods
+	public void handleAddInventoryButton() {
 		data.getPlayer().getInventory().add(new Item(itemNameTextField.getText()));
 		pController.update();
 	}

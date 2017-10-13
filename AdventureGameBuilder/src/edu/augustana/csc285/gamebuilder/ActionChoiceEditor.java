@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import edu.augustana.csc285.game.datamodel.GameData;
 import edu.augustana.csc285.game.datamodel.InventoryEffect;
+import edu.augustana.csc285.game.datamodel.Item;
 import edu.augustana.csc285.game.datamodel.ItemEffect;
 import edu.augustana.csc285.game.datamodel.Slide;
 
@@ -51,8 +52,8 @@ public class ActionChoiceEditor {
 		currentActionChoiceIndex = -1;
 	}
 	
-	public void addInventoryEffect(String itemName, int effectSize){
-		slide.getActionChoicesAt(currentActionChoiceIndex).addEffect(new InventoryEffect (itemName,effectSize));
+	public void addItemEffect(Item item, int effectSize){
+		slide.getActionChoicesAt(currentActionChoiceIndex).addEffect(new ItemEffect (item,effectSize));
 	}
 	
 	public void removeInventoryEffect(int index){
