@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import edu.augustana.csc285.game.datamodel.GameData;
 import edu.augustana.csc285.game.datamodel.InventoryEffect;
+import edu.augustana.csc285.game.datamodel.ItemEffect;
 import edu.augustana.csc285.game.datamodel.Slide;
 
 public class ActionChoiceEditor {

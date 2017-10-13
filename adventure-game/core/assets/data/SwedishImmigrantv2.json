@@ -91,7 +91,7 @@
           ],
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "John Deere letter"
             }
           ]
@@ -108,7 +108,7 @@
           ],
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Illinois letter"
             }
           ]
@@ -125,7 +125,7 @@
           ],
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Washington letter"
             }
           ]
@@ -142,7 +142,7 @@
           ],
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Minnesota letter"
             }
           ]
@@ -245,11 +245,11 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Official Paper"
             },
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -20,
               "itemName": "Coin"
             }
@@ -261,11 +261,11 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Forged Paper"
             },
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -10,
               "itemName": "Coin"
             }
@@ -300,7 +300,7 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Bible"
             }
           ]
@@ -311,7 +311,7 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Family heirloom"
             }
           ]
@@ -322,7 +322,7 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Sewing materials"
             }
           ]
@@ -333,7 +333,7 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Medicine"
             }
           ]
@@ -344,7 +344,7 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Cured Meat"
             }
           ]
@@ -364,7 +364,7 @@
           "visible": false,
           "visibilityCond": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryCondition",
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "itemName": "Bible",
               "op": {
                 "opcode": "=="
@@ -373,7 +373,7 @@
           ],
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Bible"
             }
           ]
@@ -384,7 +384,7 @@
           "visible": false,
           "visibilityCond": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryCondition",
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "itemName": "Family heirloom",
               "op": {
                 "opcode": "=="
@@ -393,7 +393,7 @@
           ],
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Family heirloom"
             }
           ]
@@ -404,7 +404,7 @@
           "visible": false,
           "visibilityCond": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryCondition",
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "itemName": "Sewing materials",
               "op": {
                 "opcode": "=="
@@ -413,7 +413,7 @@
           ],
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Sewing materials"
             }
           ]
@@ -424,7 +424,7 @@
           "visible": false,
           "visibilityCond": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryCondition",
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "itemName": "Medicine",
               "op": {
                 "opcode": "=="
@@ -433,7 +433,7 @@
           ],
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Medicine"
             }
           ]
@@ -444,7 +444,7 @@
           "visible": false,
           "visibilityCond": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryCondition",
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "itemName": "Cured Meat",
               "op": {
                 "opcode": "=="
@@ -453,7 +453,7 @@
           ],
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Cured Meat"
             }
           ]
@@ -473,7 +473,7 @@
           "visible": false,
           "visibilityCond": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryCondition",
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "itemName": "Bible",
               "op": {
                 "opcode": "=="
@@ -482,7 +482,7 @@
           ],
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Bible"
             }
           ]
@@ -493,7 +493,7 @@
           "visible": false,
           "visibilityCond": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryCondition",
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "itemName": "Family heirloom",
               "op": {
                 "opcode": "=="
@@ -502,7 +502,7 @@
           ],
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Family heirloom"
             }
           ]
@@ -513,7 +513,7 @@
           "visible": false,
           "visibilityCond": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryCondition",
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "itemName": "Sewing materials",
               "op": {
                 "opcode": "=="
@@ -522,7 +522,7 @@
           ],
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Sewing materials"
             }
           ]
@@ -533,7 +533,7 @@
           "visible": false,
           "visibilityCond": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryCondition",
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "itemName": "Medicine",
               "op": {
                 "opcode": "=="
@@ -542,7 +542,7 @@
           ],
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Medicine"
             }
           ]
@@ -553,7 +553,7 @@
           "visible": false,
           "visibilityCond": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryCondition",
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "itemName": "Cured Meat",
               "op": {
                 "opcode": "=="
@@ -562,7 +562,7 @@
           ],
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Cured Meat"
             }
           ]
@@ -701,11 +701,11 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Bible"
             },
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -20,
               "itemName": "Coin"
             }
@@ -717,11 +717,11 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Family heirloom"
             },
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -20,
               "itemName": "Coin"
             }
@@ -733,11 +733,11 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Sewing materials"
             },
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -20,
               "itemName": "Coin"
             }
@@ -749,11 +749,11 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Medicine"
             },
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -20,
               "itemName": "Coin"
             }
@@ -765,11 +765,11 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Cured Meat"
             },
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -20,
               "itemName": "Coin"
             }
@@ -823,12 +823,12 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -1,
               "itemName": "Bible"
             },
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": 20,
               "itemName": "Coin"
             }
@@ -840,12 +840,12 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -1,
               "itemName": "Family heirloom"
             },
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": 20,
               "itemName": "Coin"
             }
@@ -857,12 +857,12 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -1,
               "itemName": "Sewing materials"
             },
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": 20,
               "itemName": "Coin"
             }
@@ -874,12 +874,12 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -1,
               "itemName": "Medicine"
             },
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": 20,
               "itemName": "Coin"
             }
@@ -891,12 +891,12 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -1,
               "itemName": "Cured Meat"
             },
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": 20,
               "itemName": "Coin"
             }
@@ -949,14 +949,14 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Ticket To Hull",
               "effectSize": -1
             }
           ],
           "visibilityCond": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryCondition",
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "itemName": "Ticket To Hull",
               "op": {
                 "opcode": ">"
@@ -1011,11 +1011,11 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Ticket To Hull"
             },
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -60,
               "itemName": "Coin"
             }
@@ -1027,15 +1027,15 @@
           "visible": false,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Ticket To Hull"
             },
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Ticket To America"
             },
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -120,
               "itemName": "Coin"
             }
@@ -1111,18 +1111,18 @@
           "destinationSlideIndex": 36,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "itemName": "Ticket To America"
             },
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -80,
               "itemName": "Coin"
             }
           ],
           "visibilityCond": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryCondition",
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "itemName": "Ticket To America",
               "op": {
                 "opcode": "=="
@@ -1136,7 +1136,7 @@
           "destinationSlideIndex": 36,
           "visibilityCond": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryCondition",
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "itemName": "Ticket To America",
               "op": {
                 "opcode": ">"
@@ -1170,14 +1170,14 @@
           "destinationSlideIndex": 40,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -1,
               "itemName": "Ticket To America"
             }
           ],
           "visibilityCond": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryCondition",
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "itemName": "Ticket To America",
               "op": {
                 "opcode": ">"
@@ -1219,14 +1219,14 @@
           "destinationSlideIndex": 42,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -1,
               "itemName": "Forged Paper"
             }
           ],
           "visibilityCond": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryCondition",
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "itemName": "Forged Paper",
               "op": {
                 "opcode": ">"
@@ -1240,14 +1240,14 @@
           "destinationSlideIndex": 45,
           "effectList": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryEffect",
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -1,
               "itemName": "Official Paper"
             }
           ],
           "visibilityCond": [
             {
-              "class": "edu.augustana.csc285.game.datamodel.InventoryCondition",
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "itemName": "Official Paper",
               "op": {
                 "opcode": ">"

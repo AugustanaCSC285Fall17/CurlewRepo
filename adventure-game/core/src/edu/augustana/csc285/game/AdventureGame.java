@@ -12,8 +12,8 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import edu.augustana.csc285.game.datamodel.GameData;
 
 public class AdventureGame extends Game {
-	public static final int GAME_SCREEN_WIDTH = 800;
-	public static final int GAME_SCREEN_HEIGHT = 480;
+	public static final int GAME_SCREEN_WIDTH = 1280;
+	public static final int GAME_SCREEN_HEIGHT = 720;
 
 	public GameData data;
 

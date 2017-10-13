@@ -1,36 +1,33 @@
 package edu.augustana.csc285.game.datamodel;
 
 public class InventoryEffect implements Effect {
+	
+	private String effectName;
+	private int effectSize;
+	
+	public InventoryEffect(){}
 
-	int effectSize;
-	String itemName;
-	
-	public InventoryEffect() {
-		effectSize = 1;
-		itemName = "";
-	}
-	
-	public InventoryEffect(String itemName, int effectSize) {
+	public InventoryEffect(String effectName, int effectSize) {
+		this.effectName = effectName;
 		this.effectSize = effectSize;
-		this.itemName = itemName;
 	}
-	
-	public void setEffectName(String itemName){
-		this.itemName = itemName;
-	}
-	
+
 	@Override
 	public void applyEffect(Player p) {
-		p.addInventory(itemName, effectSize);
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
-	public void setEffectSize(int effectSize) {
-		this.effectSize = effectSize;
+	public void setEffectSize(int size) {
+		effectSize = size;
+
 	}
 
 	@Override
-	public String toString() {
-		return "Inventory change: (ItemName : " + itemName + ", effectSize: " + effectSize;
+	public void setEffectName(String name) {
+		effectName = name;
+
 	}
+
 }

@@ -18,7 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
-import edu.augustana.csc285.game.datamodel.Inventory;
+import edu.augustana.csc285.game.datamodel.Item;
 
 public class InventoryScreen implements Screen {
 	
@@ -114,7 +114,7 @@ public class InventoryScreen implements Screen {
 		
 		int itemAdded = 0;
 
-		for (Inventory item : game.data.getPlayer().getInventory()) {
+		for (Item item : game.data.getPlayer().getInventory()) {
 			
 			if (item.getItemQty() != 0) {
 				Image itemImage = new Image(new Texture(Gdx.files.internal("art/icons/" + item.getImageAddress())));

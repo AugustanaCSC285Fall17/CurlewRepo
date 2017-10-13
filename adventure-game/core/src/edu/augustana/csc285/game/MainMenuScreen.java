@@ -72,23 +72,23 @@ public class MainMenuScreen implements Screen {
 			}
 		});
 		
-		String intro = "You are a young Swedish immigrant to America in 1880. "
-				+ "You have made the tough decision to leave your family and life in Sweden behind. "
+		String intro = "You are a young Swedish immigrant to America in 1880.\n"
+				+ "You have made the tough decision to leave your family and life in Sweden behind.\n"
 				+ "Will you survive and prosper in America?";
 		
 		introText = new Label(intro, game.skin);
 		introText.setWrap(true);
-		introText.setWidth(600);
+		introText.setWidth(800);
 		introText.setAlignment(Align.center|Align.top);
 		
-		table.padTop(210);
-		table.add(introText).width(600f);;
+		table.padTop(300);
+		table.add(introText).width(800f);
 		table.row();
-		table.add(startButton).padTop(5);
+		table.add(startButton).padTop(30).width(300);
 		table.row();
-		table.add(aboutButton).padTop(5);
+		table.add(aboutButton).padTop(10).width(300);
 		table.row();
-		table.add(quitButton).padTop(5);
+		table.add(quitButton).padTop(10).width(300);
 		game.stage.addActor(table);
 		
 		drawBackgroundAndLogo();
@@ -108,17 +108,17 @@ public class MainMenuScreen implements Screen {
 		String intro = "Game designed by Dr. Forrest Stonedahl's Software Development CSC 285 students and "
 				+ "Dr. Brian Leech's history students Abigail Buchanan, Brooks Fielder, and Katie Laschanzky "
 				+ "for the for the Swenson Swedish Immigration Research Center at Augustana College in Rock Island, "
-				+ "Illinois, 2017. ";
+				+ "Illinois, 2017.\n\nGame by Team Curlew: Jack Carnell, Steve Jia, Minh Ta, and Maxwell McComb";
 		
 		introText = new Label(intro, game.skin);
 		introText.setWrap(true);
-		introText.setWidth(600);
+		introText.setWidth(800);
 		introText.setAlignment(Align.center|Align.top);
 		
-		table.padTop(210);
-		table.add(introText).width(600f);;
+		table.padTop(300);
+		table.add(introText).width(800f);
 		table.row();
-		table.add(backButton).padTop(5);
+		table.add(backButton).padTop(30).width(300);
 		
 		drawBackgroundAndLogo();
 	}
@@ -145,14 +145,16 @@ public class MainMenuScreen implements Screen {
 		game.sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
 		Texture logoTexture = new Texture(Gdx.files.internal("art/LogoStroked.png"));
+		int logoWidth = 500;
+		float logoHeight = (float) (logoTexture.getHeight() * logoWidth * 1.0 / logoTexture.getWidth());
 		logo = new Sprite(logoTexture);
-		logo.setPosition((Gdx.graphics.getWidth() - 400) / 2, Gdx.graphics.getHeight() - 200);
-		logo.setSize(400, (float) (logoTexture.getHeight() * 400.0 / logoTexture.getWidth()));
+		logo.setPosition((Gdx.graphics.getWidth() - logoWidth) / 2, Gdx.graphics.getHeight() - logoHeight - 50);
+		logo.setSize(logoWidth, logoHeight);
 		
 		Texture swansonLogoTexture = new Texture(Gdx.files.internal("slideImages/image1.png"));
 		swansonLogo = new Sprite(swansonLogoTexture);
 		swansonLogo.setPosition(40, 10);
-		swansonLogo.setSize(400, (float) (swansonLogoTexture.getHeight() * 400.0 / swansonLogoTexture.getWidth()));
+		swansonLogo.setSize(logoWidth, (float) (swansonLogoTexture.getHeight() * logoWidth * 1.0 / swansonLogoTexture.getWidth()));
 	}
 
 	@Override
