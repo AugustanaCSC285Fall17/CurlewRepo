@@ -21,7 +21,7 @@ public class GameOverScreen implements Screen {
 	private TextButton startButton;
 	private TextButton aboutButton;
 	private TextButton quitButton;
-	private TextButton backButton;
+	private TextButton mainMenuButton;
 	private Label introText;
 	private Sprite logo;
 	private Sprite swansonLogo;
@@ -46,11 +46,21 @@ public class GameOverScreen implements Screen {
 		
 		initializeTable();
 		
-		startButton = new TextButton("Restart Game", game.skin);
+		mainMenuButton = new TextButton("Main Menu", game.skin);
+		mainMenuButton.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.stage.clear();
+				game.setScreen(new MainMenuScreen(game));
+			}
+		});
+		
+		startButton = new TextButton("Play Again", game.skin);
 		startButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
+				game.restartGame();
 				game.setScreen(new SlideScreen(game));
 			}
 		});
@@ -77,7 +87,9 @@ public class GameOverScreen implements Screen {
 		table.padTop(300);
 		table.add(introText).width(800f);
 		table.row();
-		table.add(startButton).padTop(30).width(300);
+		table.add(mainMenuButton).padTop(30).width(300);
+		table.row();
+		table.add(startButton).padTop(10).width(300);
 		table.row();
 		table.add(aboutButton).padTop(10).width(300);
 		table.row();

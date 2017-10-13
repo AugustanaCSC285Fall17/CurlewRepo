@@ -1279,6 +1279,7 @@
       "imageFileName": "image20.jpg",
       "gameText": "He makes a gesture for his superior officer to come over. The superior officer glances at the papers and murmurs instructions to his subordinate. The superior officer makes some sharp remarks to you and hands you over to the police for forgery and bribing an officer. You are immediately put in prison for your crimes and are stripped of all your belongings. You must now wait to serve your sentence before you attempt to make it to America.",
       "slideType": NORMAL,
+      "gameOver": true,
       "actionChoices": [
         {
           "choiceText": "Go back to the beginning"
@@ -1290,6 +1291,7 @@
       "imageFileName": "image20.jpg",
       "gameText": "He makes a gesture for his superior officer to come over. The superior officer glances at the papers and murmurs instructions to his subordinate. The superior officer makes some sharp remarks to you and hands you over to the police for forgery. You are immediately deported and put on a watch list for travelling in England. Your hopes of making it to America are squandered and now must live the rest of your days finding work in Sweden.",
       "slideType": NORMAL,
+      "gameOver": true,
       "actionChoices": [
         {
           "choiceText": "Go back to the beginning"
@@ -1337,6 +1339,7 @@
       "imageFileName": "facts.png",
       "gameText": "Thank you for viewing this demo!",
       "slideType": NORMAL,
+      "gameOver": true,
       "actionChoices": [
         {
           "choiceText": "Go back to main menu"

@@ -40,6 +40,11 @@ public class AdventureGame extends Game {
 		
 		this.setScreen(new MainMenuScreen(this));
 	}
+	
+	public void restartGame() {
+		data = GameData.fromJSON(Gdx.files.internal("data/SwedishImmigrantv2.json").readString("UTF-8"));
+		
+	}
 
 	public void render() {
 		
