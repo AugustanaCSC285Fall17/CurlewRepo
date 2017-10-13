@@ -21,7 +21,7 @@ public class Slide {
 		this.slideType = SlideType.NORMAL;
 		this.actionChoices = new ArrayList<>();
 		this.gameText = "";
-		
+		gameOver = false;
 	}
 
 	public Slide(String title, String imageFileName, String gameText

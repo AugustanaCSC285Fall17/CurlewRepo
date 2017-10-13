@@ -9,7 +9,15 @@ public class Item {
 	public Item() {
 	}
 	
-	public Item(String itemName, int itemQty) {
+	public Item(String itemName) {
+		this.itemName = itemName;
+		this.itemQty = 0;
+		
+	}
+	
+	public Item(String itemName, int itemQty){
+		this.itemName = itemName;
+		this.itemQty = itemQty;
 	}
 	
 	public String getItemName() {

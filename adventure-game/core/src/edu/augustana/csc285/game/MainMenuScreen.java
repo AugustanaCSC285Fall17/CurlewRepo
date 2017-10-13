@@ -51,6 +51,7 @@ public class MainMenuScreen implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
+				game.restartGame();
 				game.setScreen(new SlideScreen(game));
 			}
 		});

@@ -96,6 +96,18 @@
                         <Line endX="430.0" layoutX="99.0" layoutY="100.0" startX="-100.0" />
                         <TextField fx:id="aceSetDestinationSlideIndexField" layoutX="412.0" layoutY="126.0" prefHeight="29.0" prefWidth="81.0" />
                         <ChoiceBox fx:id="selectActionChoiceIndexChoiceBox" layoutX="162.0" layoutY="53.0" prefHeight="22.0" prefWidth="48.0" />
+                        <Button fx:id="addEffectButton" layoutX="220.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleAddEffect" text="AddEffect" />
+                        <ChoiceBox fx:id="effectChiceBox" layoutX="307.0" layoutY="214.0" prefWidth="150.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Misc Editor">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="addInventoryButton" layoutX="29.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleAddInventoryButton" text="Add Inventory" />
+                        <TextField fx:id="itemNameTextField" layoutX="139.0" layoutY="30.0" />
                      </children>
                   </AnchorPane>
               </content>

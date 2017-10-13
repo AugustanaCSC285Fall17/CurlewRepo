@@ -89,14 +89,28 @@ public class MainPaneController {
 	private Button removeAcButton;
 	@FXML
 	private ChoiceBox<Integer> selectActionChoiceIndexChoiceBox;
+	@FXML
+	private ChoiceBox<String> effectChiceBox;
+	@FXML
+	private Button addEffectButton;
+	@FXML
+	private TextField itemNameTextField;
+	
+	//Misc Editor Fields
+	
+	@FXML
+	private Button addInventoryButton;
 
 	// Starter Methods
 
 	// JavaFX initialize method, called after this Pane is created.
 	@FXML
 	private void initialize() {
-		createSlideTypeMenu();	
+		createSlideTypeMenu();
+		createEffectChoiceBox();
 	}
+
+	
 
 	/**
 	 * Part of Constructor
@@ -497,6 +511,39 @@ public class MainPaneController {
 		selectActionChoiceIndexChoiceBox.setItems(observableList);
 	}
 
+	private void createEffectChoiceBox() {
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("Gender Effect");
+		list.add("Inventory Effect");
+		ObservableList<String> observableList = FXCollections.observableList(list);
+		effectChiceBox.setItems(observableList);	
+	}
+	
+	@FXML
+	private void handleAddEffect(){
+		if(this.wasAcSelected()){
+		if(effectChiceBox.getValue()==null){
+			new Alert(AlertType.ERROR, "Please Select an Effect Type").showAndWait();
+		}
+		if(effectChiceBox.getValue().equals("Inventory Effect")){
+			TextInputDialog diolog = new TextInputDialog();
+			diolog.setTitle("New Effect Specs");
+			diolog.setContentText("Enter the item name");
+			Optional<String> result = diolog.showAndWait();
+			System.out.print(result.get());
+			//TODO Catch no such element exception
+			//TODO add inventory editor, make this a choiceBox instead
+			//TODO genderChangeEffect
+		}
+		}
+	//	alert.setTitle(");
+	}
+	
+	//Misc Editor Methods
+	public void handleAddInventoryButton(){
+		data.getPlayer().getInventory().add(new Item(itemNameTextField.getText()));
+		pController.update();
+	}
 	// File Menu Methods
 
 	// closes the game builder
