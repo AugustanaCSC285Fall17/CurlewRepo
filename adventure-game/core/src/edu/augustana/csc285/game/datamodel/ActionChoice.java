@@ -67,6 +67,16 @@ public class ActionChoice {//implements Feasible
 	public void removeEffect(int index) {
 		effectList.remove(index);
 	}
+	
+	//changes the effect name
+	public void setEffectName(String newEffectName, int index){
+		effectList.get(index).setEffectName(newEffectName);
+	}
+	
+	//changes the effect size
+	public void setEffectSize(int newEffectSize, int index){
+		effectList.get(index).setEffectSize(newEffectSize);
+	}
 
 	// check if the option will be fersible
 	public void isFeasible(ArrayList<Feasible> feasibilityReq) {

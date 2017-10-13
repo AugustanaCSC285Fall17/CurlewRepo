@@ -21,6 +21,10 @@ public class GenderChangeEffect implements Effect {
 		// TODO Auto-generated method stub
 	}
 	
+	public void setEffectName(String name){
+		//TODO 
+	}
+	
 	@Override
 	public String toString() {
 		return "Gender change to: " + newGender;

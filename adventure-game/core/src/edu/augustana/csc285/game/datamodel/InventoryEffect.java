@@ -15,7 +15,7 @@ public class InventoryEffect implements Effect {
 		this.itemName = itemName;
 	}
 	
-	public void setItemName(String itemName){
+	public void setEffectName(String itemName){
 		this.itemName = itemName;
 	}
 	

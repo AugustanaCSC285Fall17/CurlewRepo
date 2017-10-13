@@ -10,7 +10,6 @@ public class ActionChoiceEditor {
 	public int currentActionChoiceIndex;
 	private Slide slide;
 	private SlideEditor se;
-	private ArrayList<InventoryEffect> effects;
 	
 //constructor accepts a Game Data object and a Slide Editor Object
 //and sets the currentActionChoiceIndex equal to -1
@@ -52,18 +51,18 @@ public class ActionChoiceEditor {
 	}
 	
 	public void addInventoryEffect(String itemName, int effectSize){
-		effects.add(new InventoryEffect(itemName, effectSize));
+		slide.getActionChoicesAt(currentActionChoiceIndex).addEffect(new InventoryEffect (itemName,effectSize));
 	}
 	
 	public void removeInventoryEffect(int index){
-		effects.remove(index);
+		slide.getActionChoicesAt(currentActionChoiceIndex).removeEffect(index);
 	}
 	
 	public void changeEffectSize(int effectSize, int index){
-		effects.get(index).setEffectSize(effectSize);
+		slide.getActionChoicesAt(currentActionChoiceIndex).setEffectSize(effectSize, index);
 	}
 	
 	public void changeEffectName(String effectName, int index){
-		effects.get(index).setItemName(effectName);
+		slide.getActionChoicesAt(currentActionChoiceIndex).setEffectName(effectName, index);
 	}
 }

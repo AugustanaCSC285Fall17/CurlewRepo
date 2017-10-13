@@ -9,6 +9,8 @@ public interface Effect {
 	// abstract method that set any effect on player takes an int
 	public abstract void setEffectSize(int size);
 	
+	public abstract void setEffectName(String name);
+	
 	// returns a toString method
 	public abstract String toString();
 

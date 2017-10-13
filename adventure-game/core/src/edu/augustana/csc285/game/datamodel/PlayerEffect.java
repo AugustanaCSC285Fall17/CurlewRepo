@@ -27,4 +27,8 @@ public class PlayerEffect implements Effect {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void setEffectName(String name){
+		//TODO 
+	}
 }
