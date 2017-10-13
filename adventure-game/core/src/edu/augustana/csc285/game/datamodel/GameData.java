@@ -178,6 +178,7 @@ public class GameData {
 	
 	public String printSlideInfo (){
 		String s = "";
+		s+= player.toString();
 		for (int i = 0; i < slides.size(); i++){
 			s+= "Slide Number: " + i + "\n" +slides.get(i).toString()+ "\n\n";
 		}

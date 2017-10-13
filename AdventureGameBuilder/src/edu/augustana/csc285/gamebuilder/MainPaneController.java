@@ -93,6 +93,13 @@ public class MainPaneController {
 	private ChoiceBox<String> effectChiceBox;
 	@FXML
 	private Button addEffectButton;
+	@FXML
+	private TextField itemNameTextField;
+	
+	//Misc Editor Fields
+	
+	@FXML
+	private Button addInventoryButton;
 
 	// Starter Methods
 
@@ -530,6 +537,12 @@ public class MainPaneController {
 		}
 		}
 	//	alert.setTitle(");
+	}
+	
+	//Misc Editor Methods
+	public void handleAddInventoryButton(){
+		data.getPlayer().getInventory().add(new Item(itemNameTextField.getText()));
+		pController.update();
 	}
 	// File Menu Methods
 

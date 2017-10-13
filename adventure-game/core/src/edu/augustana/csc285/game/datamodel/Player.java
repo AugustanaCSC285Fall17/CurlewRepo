@@ -93,5 +93,14 @@ public class Player {
 	public void subtractStat(String name, int value) {
 		stats.put(name, stats.get(name) - value);
 	}
+	
+	public String toString(){
+		String s = "";
+		s+= "Name: "+name+"\nGender: "+gender.toString();
+		s+=stats.toString();
+		s+=inventory.toString();
+		return s;
+		
+	}
 
 }

@@ -102,6 +102,16 @@
                   </AnchorPane>
               </content>
             </Tab>
+            <Tab text="Misc Editor">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="addInventoryButton" layoutX="29.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleAddInventoryButton" text="Add Inventory" />
+                        <TextField fx:id="itemNameTextField" layoutX="139.0" layoutY="30.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
    </center>
