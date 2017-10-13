@@ -94,11 +94,21 @@ public class Player {
 		stats.put(name, stats.get(name) - value);
 	}
 	
+	public String printStats (){
+		String s ="";
+		for (String key : stats.keySet()) {
+		    s+=("Stat: " + key + " Value: " + stats.get(key) + "\n");
+		}
+		return s;
+	}
+	
 	public String toString(){
 		String s = "";
-		s+= "Name: "+name+"\nGender: "+gender.toString();
-		s+=stats.toString();
-		s+=inventory.toString();
+		s+= "Name: "+name+"\nGender: "+ gender.toString() + "\n";
+		//s+= printStats();
+		for (int i = 0; i < inventory.size(); i++){
+			s+=inventory.get(i).toString();
+		}
 		return s;
 		
 	}

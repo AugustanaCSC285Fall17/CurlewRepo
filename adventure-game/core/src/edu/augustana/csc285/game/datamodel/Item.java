@@ -5,21 +5,21 @@ public class Item {
 	private String itemName;
 	private String imageAddress;
 	private int itemQty;
-	
+
 	public Item() {
 	}
-	
+
 	public Item(String itemName) {
 		this.itemName = itemName;
 		this.itemQty = 0;
-		
+
 	}
-	
-	public Item(String itemName, int itemQty){
+
+	public Item(String itemName, int itemQty) {
 		this.itemName = itemName;
 		this.itemQty = itemQty;
 	}
-	
+
 	public String getItemName() {
 		return itemName;
 	}
@@ -41,10 +41,14 @@ public class Item {
 	}
 
 	public void setItemQty(int itemQty) {
-		if(itemQty < 0)
+		if (itemQty < 0)
 			this.itemQty = 0;
 		else
 			this.itemQty = itemQty;
-		
+
+	}
+
+	public String toString() {
+		return "Item Name: " + itemName + "\nItem Quantity: " + itemQty + "\nItem Image Address: " + imageAddress + "\n";
 	}
 }
