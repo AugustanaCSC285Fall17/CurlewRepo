@@ -32,6 +32,6 @@ public class ItemEffect implements Effect {
 
 	@Override
 	public String toString() {
-		return "Inventory change: (ItemName : " + itemName + ", effectSize: " + effectSize;
+		return "Item change: (ItemName : " + itemName + ", effectSize: " + effectSize;
 	}
 }
