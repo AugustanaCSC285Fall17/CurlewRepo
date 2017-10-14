@@ -109,6 +109,7 @@ public class Player {
 		for (int i = 0; i < inventory.size(); i++){
 			Item item = inventory.get(i);
 			s+= "Item Name: " + item.toString() + "\nItem Quantity: " + item.getItemQty()+  "\nItem Image Address: " + item.getImageAddress() + "\n";
+			s+= "Visibility: "+ item.getIsVisible();
 		}
 		return s;
 		

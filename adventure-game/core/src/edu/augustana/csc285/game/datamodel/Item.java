@@ -5,6 +5,7 @@ public class Item {
 	private String itemName;
 	private String imageAddress;
 	private int itemQty;
+	private Boolean isVisible;
 
 	public Item() {
 	}
@@ -12,9 +13,23 @@ public class Item {
 	public Item(String itemName) {
 		this.itemName = itemName;
 		this.itemQty = 0;
+		isVisible=true;
 
 	}
 
+	//used by game builder, isVisible should always be false
+	public Item(String itemName, Boolean isVisible){
+		this.itemName = itemName;
+		this.isVisible = isVisible;
+		imageAddress = null;
+	}
+	
+	//used by game builder, isVisible should alwas be true
+	public Item(String itemName, Boolean isVisible, String imageAddress){
+		this.itemName = itemName;
+		this.isVisible = isVisible;
+		this.imageAddress = imageAddress;
+	}
 	public Item(String itemName, int itemQty) {
 		this.itemName = itemName;
 		this.itemQty = itemQty;
@@ -50,5 +65,13 @@ public class Item {
 
 	public String toString() {
 		return itemName;
+	}
+
+	public Boolean getIsVisible() {
+		return isVisible;
+	}
+
+	public void setIsVisible(Boolean isVisible) {
+		this.isVisible = isVisible;
 	}
 }

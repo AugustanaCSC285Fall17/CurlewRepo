@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Label;
@@ -25,6 +26,8 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
@@ -95,8 +98,7 @@ public class MainPaneController {
 	private ChoiceBox<String> effectChiceBox;
 	@FXML
 	private Button addEffectButton;
-	@FXML
-	private TextField itemNameTextField;
+
 
 	// Misc Editor Fields
 
@@ -517,6 +519,7 @@ public class MainPaneController {
 		effectChiceBox.setItems(observableList);
 	}
 
+	//TODO change to result.isPresent
 	@FXML
 	private void handleAddEffect() {
 		if (this.wasAcSelected()) {
@@ -547,6 +550,7 @@ public class MainPaneController {
 					} catch (NumberFormatException e) {
 						new Alert(AlertType.ERROR, "Was not a number; Effect not added").showAndWait();
 					} catch (NoSuchElementException e1) {
+						new Alert(AlertType.ERROR, "Effect not added").showAndWait();
 
 					}
 				}
@@ -560,8 +564,57 @@ public class MainPaneController {
 	}
 
 	// Misc Editor Methods
+	
+	//provides a series of dialoges to get info on new item
+	//TODO: allow exit to cancel item
 	public void handleAddInventoryButton() {
-		data.getPlayer().getInventory().add(new Item(itemNameTextField.getText()));
+		TextInputDialog nameDialog = new TextInputDialog();
+		nameDialog.setContentText("Enter the name of the Item");
+		Optional<String> nameOptional = nameDialog.showAndWait();
+		if (nameOptional.isPresent()){
+			String name = nameOptional.get();
+			
+			Alert visibleAlert = new Alert(AlertType.CONFIRMATION);
+			visibleAlert.setContentText("Should this item be visible to the player?");
+			ButtonType buttonTypeOne = new ButtonType("Yes");
+			ButtonType buttonTypeTwo = new ButtonType("No");
+			
+			visibleAlert.getButtonTypes().setAll(buttonTypeOne,buttonTypeTwo);
+			Optional<ButtonType> visibleOptional = visibleAlert.showAndWait();
+			Boolean visible;
+			if(visibleOptional.get()==buttonTypeTwo){
+				visible = false;
+				data.getPlayer().getInventory().add(new Item(name, visible));
+					
+			}else if (visibleOptional.get()==buttonTypeOne){
+				visible = true; 
+				
+				
+				FileChooser fileChooser = new FileChooser();
+				fileChooser.setTitle("Chose an image for the item");
+				File inFile = fileChooser.showOpenDialog(mainWindow);
+				if (inFile != null) {
+					String path = "assets/"+ inFile.getName();
+					try {
+						Files.copy(inFile.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);
+						
+						data.getPlayer().getInventory().add(new Item(name, visible, path));
+						
+					} catch (IOException e) {
+						//should never happen, checked before, needed for compile
+						e.printStackTrace();
+					}		
+				
+				} else {
+					new Alert(AlertType.ERROR, "No image was selected, item not created");
+				}
+			}else{
+				new Alert(AlertType.ERROR, "Item not created");
+			}
+		
+		}else{
+			new Alert (AlertType.ERROR, "No name was entered");
+		}
 		pController.update();
 	}
 	// File Menu Methods
