@@ -104,6 +104,9 @@ public class MainPaneController {
 
 	@FXML
 	private Button addInventoryButton;
+	
+	@FXML
+	private Button removeInventoryButton;
 
 	// Starter Methods
 
@@ -566,7 +569,7 @@ public class MainPaneController {
 	// Misc Editor Methods
 	
 	//provides a series of dialoges to get info on new item
-	//TODO: allow exit to cancel item
+	//TODO: allow exit to cancel item, also alert messages not displayed
 	public void handleAddInventoryButton() {
 		TextInputDialog nameDialog = new TextInputDialog();
 		nameDialog.setContentText("Enter the name of the Item");
@@ -616,6 +619,17 @@ public class MainPaneController {
 			new Alert (AlertType.ERROR, "No name was entered");
 		}
 		pController.update();
+	}
+	
+	@FXML
+	public void handleRemoveInventoryButton(){
+		ChoiceDialog<Item> dialog = new ChoiceDialog<Item>(null, data.getPlayer().getInventory());
+		dialog.setContentText("Which item shoucl be removed?");
+		Optional<Item> itemOptional = dialog.showAndWait();
+		if(itemOptional.isPresent()){
+			data.getPlayer().getInventory().remove(itemOptional.get());
+			pController.update();
+		}
 	}
 	// File Menu Methods
 
