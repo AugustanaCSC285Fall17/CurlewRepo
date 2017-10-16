@@ -12,7 +12,6 @@ import java.nio.file.StandardCopyOption;
 
 import javax.imageio.ImageIO;
 
-import edu.augustana.csc285.game.SlideType;
 import edu.augustana.csc285.game.datamodel.*;
 
 public class SlideEditor {

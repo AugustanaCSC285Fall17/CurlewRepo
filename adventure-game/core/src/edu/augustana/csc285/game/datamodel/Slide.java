@@ -2,8 +2,6 @@ package edu.augustana.csc285.game.datamodel;
 
 import java.util.ArrayList;
 
-import edu.augustana.csc285.game.SlideType;
-
 
 public class Slide {
 	private String title;

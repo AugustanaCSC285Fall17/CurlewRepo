@@ -1,6 +1,15 @@
-package edu.augustana.csc285.game.datamodel;
+package edu.augustana.csc285.game.desktop;
 
-import edu.augustana.csc285.game.SlideType;
+import java.util.ArrayList;
+
+import edu.augustana.csc285.game.datamodel.ActionChoice;
+import edu.augustana.csc285.game.datamodel.GameData;
+import edu.augustana.csc285.game.datamodel.Item;
+import edu.augustana.csc285.game.datamodel.ItemCondition;
+import edu.augustana.csc285.game.datamodel.ItemEffect;
+import edu.augustana.csc285.game.datamodel.RelationalOperator;
+import edu.augustana.csc285.game.datamodel.Slide;
+import edu.augustana.csc285.game.datamodel.SlideType;
 
 public class GameDataTester{
 	
@@ -11,9 +20,10 @@ public class GameDataTester{
 
 		Slide s3 = new Slide("Room 0", "slide_000.png", "text0", SlideType.NORMAL, "url0");
 
+		gd.getPlayer().addItem("Bible", 0);
 		s0.getActionChoices().add(new ActionChoice("go to room 1", 1));
 		s0.getActionChoices().add(new ActionChoice("go to room 2", 2));
-		s0.getActionChoicesAt(0).addEffect(new ItemEffect("Bible", 69));
+		s0.getActionChoicesAt(0).addEffect(new ItemEffect(gd.getPlayer().getInventory().get(0), 1));
 		Slide s1 = new Slide("Room 1", "slide_001.png", "text1", SlideType.HISTORICAL, "url1");
 		s1.getActionChoices().add(new ActionChoice("die", -1));
 		s1.getActionChoices().add(new ActionChoice("go to room 2", 2));
@@ -25,7 +35,6 @@ public class GameDataTester{
 		gd.addSlide(s1);
 		gd.addSlide(s2);
 		
-		gd.getPlayer().addItem("Bible", 0);
 		
 		System.out.println(gd.toJSON());
 	}

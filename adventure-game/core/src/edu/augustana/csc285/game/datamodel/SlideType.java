@@ -1,4 +1,4 @@
-package edu.augustana.csc285.game;
+package edu.augustana.csc285.game.datamodel;
 
 public enum SlideType {
 	NORMAL,

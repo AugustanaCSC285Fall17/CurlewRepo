@@ -1,9 +1,11 @@
-package edu.augustana.csc285.game.datamodel;
+package edu.augustana.csc285.game.desktop;
 
 import static org.junit.Assert.*;
 
 
 import org.junit.Test;
+
+import edu.augustana.csc285.game.datamodel.Item;
 
 public class ItemTest {
 	public Item apple = new Item();

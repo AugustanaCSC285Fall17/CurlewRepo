@@ -3,7 +3,6 @@ package edu.augustana.csc285.game.datamodel;
 public class ItemEffect implements Effect {
 
 	int effectSize;
-	
 	Item item;
 	
 	public ItemEffect() {

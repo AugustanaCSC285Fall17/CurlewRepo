@@ -35,7 +35,6 @@ import java.util.Optional;
 
 import javax.imageio.ImageIO;
 
-import edu.augustana.csc285.game.SlideType;
 import edu.augustana.csc285.game.datamodel.*;
 
 public class MainPaneController {

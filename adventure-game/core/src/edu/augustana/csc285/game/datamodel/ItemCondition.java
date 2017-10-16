@@ -2,7 +2,7 @@ package edu.augustana.csc285.game.datamodel;
 
 public class ItemCondition implements Condition {
 	
-	private String itemName;
+	private String item;
 	private RelationalOperator op;
 	private int qtyToCompare;
 	
@@ -10,14 +10,14 @@ public class ItemCondition implements Condition {
 	}
 	
 	public ItemCondition(String itemName, RelationalOperator op, int qtyToCompare){
-		this.itemName = itemName;
+		this.item = itemName;
 		this.qtyToCompare = qtyToCompare;
 		this.op = op;
 	}
 
 	@Override
 	public boolean evaluate(Player p) {
-		return op.apply(p.getItemQuantity(itemName), qtyToCompare);
+		return op.apply(p.getItemQuantity(item), qtyToCompare);
 	}
 	
 	

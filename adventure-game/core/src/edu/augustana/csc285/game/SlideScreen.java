@@ -23,6 +23,7 @@ import com.badlogic.gdx.utils.Align;
 
 import edu.augustana.csc285.game.datamodel.ActionChoice;
 import edu.augustana.csc285.game.datamodel.Slide;
+import edu.augustana.csc285.game.datamodel.SlideType;
 
 public class SlideScreen implements Screen {
 	
