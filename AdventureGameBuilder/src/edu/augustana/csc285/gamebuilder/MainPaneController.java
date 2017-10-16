@@ -99,6 +99,8 @@ public class MainPaneController {
 	private ChoiceBox<String> effectChiceBox;
 	@FXML
 	private Button addEffectButton;
+	@FXML
+	private Button removeEffectButton;
 
 	// Misc Editor Fields
 
@@ -592,15 +594,17 @@ public class MainPaneController {
 				}
 			}
 		}
-
-		// TODO genderChangeEffect
 		pController.update();
-		// alert.setTitle(");
 	}
 
+	@FXML
+	public void handleRemoveEffectButton(){
+		
+	}
 	// Misc Editor Methods
 
 	// provides a series of dialoges to get info on new item
+	@FXML
 	public void handleAddInventoryButton() {
 		TextInputDialog nameDialog = new TextInputDialog();
 		nameDialog.setContentText("Enter the name of the Item");
