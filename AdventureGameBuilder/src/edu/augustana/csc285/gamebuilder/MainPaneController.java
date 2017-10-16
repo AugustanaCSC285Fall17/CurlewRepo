@@ -530,7 +530,8 @@ public class MainPaneController {
 				new Alert(AlertType.ERROR, "Please Select an Effect Type").showAndWait();
 
 			} else if (effectChiceBox.getValue().equals("Inventory Effect")) {
-				if (data.getPlayer().getInventory().size() == 0) {
+				
+				if (data.getPlayer().getInventory().size() == 0) {//TODO move this check to ace
 					new Alert(AlertType.ERROR, "There is nothing in the inventroy").showAndWait();
 				} else {
 					ChoiceDialog<Item> choice = new ChoiceDialog<Item>(null, data.getPlayer().getInventory());
@@ -541,6 +542,9 @@ public class MainPaneController {
 					try {
 						Item itemChoice = itemChoiceOptional.get();
 
+						if (ace.hasItemEffect(itemChoice)){
+							new Alert(AlertType.ERROR, "There is already an effect with that item").showAndWait();
+						}else{
 						TextInputDialog dialog = new TextInputDialog();
 						dialog.setTitle("New Effect Specs");
 						dialog.setHeaderText("Enter Effect Number");
@@ -550,6 +554,7 @@ public class MainPaneController {
 						int effectChoiceSize = Integer.parseInt(effectChoiceSizeOptional.get());
 
 						ace.addItemEffect(itemChoice, effectChoiceSize);
+						}
 					} catch (NumberFormatException e) {
 						new Alert(AlertType.ERROR, "Was not a number; Effect not added").showAndWait();
 					} catch (NoSuchElementException e1) {

@@ -116,4 +116,15 @@ public class ActionChoice {// implements Feasible
 		return false;
 	}
 
+	public boolean hasItemEffect(Item itemChoice) {
+		for(int i = 0; i < effectList.size(); i++){
+			if(effectList.get(i) instanceof ItemEffect){
+				if(effectList.get(i).equals(new ItemEffect(itemChoice,0))){
+				return true;
+				}
+			}
+		}
+		return false;
+	}
+
 }

@@ -2,10 +2,22 @@ package edu.augustana.csc285.game.datamodel;
 
 public class ItemEffect implements Effect {
 
-	int effectSize;
+	private int effectSize;
 	
-	Item item;
+	private Item item;
 	
+	public Item getItem() {
+		return item;
+	}
+
+	public void setItem(Item item) {
+		this.item = item;
+	}
+
+	public int getEffectSize() {
+		return effectSize;
+	}
+
 	public ItemEffect() {
 		effectSize = 1;
 	}
@@ -34,5 +46,18 @@ public class ItemEffect implements Effect {
 	@Override
 	public String toString() {
 		return "Item change: (ItemName : " + item.getItemName() + ", effectSize: " + effectSize;
+	}
+	
+	@Override
+	public boolean equals(Object o){
+		if(o instanceof ItemEffect){
+			ItemEffect e = (ItemEffect) o;
+			if(e.getItem().equals(this.getItem())){
+				return true;
+			}
+			return false;
+		}else{
+			return false;
+		}
 	}
 }

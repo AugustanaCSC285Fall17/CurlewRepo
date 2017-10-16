@@ -74,4 +74,18 @@ public class Item {
 	public void setIsVisible(Boolean isVisible) {
 		this.isVisible = isVisible;
 	}
+	
+	@Override
+	public boolean equals(Object o){
+		if(o instanceof Item){
+			Item i = (Item) o;
+			if(i.getItemName().equals(((Item) o).getItemName())){
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
 }

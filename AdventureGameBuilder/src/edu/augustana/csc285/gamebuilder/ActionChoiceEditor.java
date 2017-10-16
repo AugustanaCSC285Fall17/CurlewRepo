@@ -73,4 +73,9 @@ public class ActionChoiceEditor {
 	public boolean hasGenderEffect() {
 		return(slide.getActionChoicesAt(currentActionChoiceIndex).hasGenderEffect());
 	}
+
+	public boolean hasItemEffect(Item itemChoice) {
+		// TODO Auto-generated method stub
+		return slide.getActionChoicesAt(currentActionChoiceIndex).hasItemEffect(itemChoice);
+	}
 }
