@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ChoiceDialog;
@@ -97,13 +98,14 @@ public class MainPaneController {
 	private ChoiceBox<String> effectChiceBox;
 	@FXML
 	private Button addEffectButton;
-
+	@FXML
+	private Button removeEffectButton;
 
 	// Misc Editor Fields
 
 	@FXML
 	private Button addInventoryButton;
-	
+
 	@FXML
 	private Button removeInventoryButton;
 
@@ -515,23 +517,24 @@ public class MainPaneController {
 
 	private void createEffectChoiceBox() {
 		ArrayList<String> list = new ArrayList<String>();
-		list.add("Gender Effect");
+		list.add("Gender Change Effect");
 		list.add("Inventory Effect");
 		ObservableList<String> observableList = FXCollections.observableList(list);
 		effectChiceBox.setItems(observableList);
 	}
 
-	//TODO change to result.isPresent
+	// TODO change to result.isPresent
 	@FXML
 	private void handleAddEffect() {
 		if (this.wasAcSelected()) {
 			if (effectChiceBox.getValue() == null) {
 				new Alert(AlertType.ERROR, "Please Select an Effect Type").showAndWait();
-			
-			}else if (effectChiceBox.getValue().equals("Inventory Effect")) {
-			if (data.getPlayer().getInventory().size()==0){
-				new Alert(AlertType.ERROR, "There is nothing in the inventroy").showAndWait();
-			}else{
+
+			} else if (effectChiceBox.getValue().equals("Inventory Effect")) {
+				
+				if (data.getPlayer().getInventory().size() == 0) {//TODO move this check to ace
+					new Alert(AlertType.ERROR, "There is nothing in the inventroy").showAndWait();
+				} else {
 					ChoiceDialog<Item> choice = new ChoiceDialog<Item>(null, data.getPlayer().getInventory());
 					choice.setTitle("New Effect Specs");
 					choice.setContentText("Select an item");
@@ -540,6 +543,9 @@ public class MainPaneController {
 					try {
 						Item itemChoice = itemChoiceOptional.get();
 
+						if (ace.hasItemEffect(itemChoice)){
+							new Alert(AlertType.ERROR, "There is already an effect with that item").showAndWait();
+						}else{
 						TextInputDialog dialog = new TextInputDialog();
 						dialog.setTitle("New Effect Specs");
 						dialog.setHeaderText("Enter Effect Number");
@@ -547,8 +553,9 @@ public class MainPaneController {
 						Optional<String> effectChoiceSizeOptional = dialog.showAndWait();
 
 						int effectChoiceSize = Integer.parseInt(effectChoiceSizeOptional.get());
-						
+
 						ace.addItemEffect(itemChoice, effectChoiceSize);
+						}
 					} catch (NumberFormatException e) {
 						new Alert(AlertType.ERROR, "Was not a number; Effect not added").showAndWait();
 					} catch (NoSuchElementException e1) {
@@ -556,76 +563,105 @@ public class MainPaneController {
 
 					}
 				}
+			} else if (effectChiceBox.getValue().equals("Gender Change Effect")) {
+				if (ace.hasGenderEffect()) {
+					new Alert(AlertType.ERROR, "There is already a gender change effect for this action choice").showAndWait();
+				} else {
+					Alert genderAlert = new Alert(AlertType.CONFIRMATION);
+					genderAlert.setContentText("Which gender should the player be changed to?");
+
+					// As of now only supports binary gender, as that is all
+					// that is
+					// required by history students and I don't want to confuse
+					// them
+					// if they use the builder
+					ButtonType maleButton = new ButtonType("Male");
+					ButtonType femaleButton = new ButtonType("Female");
+					ButtonType cancelButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+					genderAlert.getButtonTypes().setAll(maleButton, femaleButton, cancelButton);
+
+					genderAlert.setTitle("New Effect Specs");
+
+					Optional<ButtonType> genderOptional = genderAlert.showAndWait();
+					if (genderOptional.get().equals(maleButton)) {
+						ace.addGenderChangeEffect(Gender.MALE);
+					} else if (genderOptional.get().equals(femaleButton)) {
+						ace.addGenderChangeEffect(Gender.FEMALE);
+					} else {
+						new Alert(AlertType.ERROR, "New Effect Canceled");
+					}
+				}
 			}
 		}
-			// TODO Catch no such element exception
-			// TODO add inventory editor, make this a choiceBox instead
-			// TODO genderChangeEffect
 		pController.update();
-		// alert.setTitle(");
 	}
 
+	@FXML
+	public void handleRemoveEffectButton(){
+		
+	}
 	// Misc Editor Methods
-	
-	//provides a series of dialoges to get info on new item
-	//TODO: allow exit to cancel item, also alert messages not displayed
+
+	// provides a series of dialoges to get info on new item
+	@FXML
 	public void handleAddInventoryButton() {
 		TextInputDialog nameDialog = new TextInputDialog();
 		nameDialog.setContentText("Enter the name of the Item");
 		Optional<String> nameOptional = nameDialog.showAndWait();
-		if (nameOptional.isPresent()){
+		if (nameOptional.isPresent()) {
 			String name = nameOptional.get();
-			
+
 			Alert visibleAlert = new Alert(AlertType.CONFIRMATION);
 			visibleAlert.setContentText("Should this item be visible to the player?");
-			ButtonType buttonTypeOne = new ButtonType("Yes");
-			ButtonType buttonTypeTwo = new ButtonType("No");
-			
-			visibleAlert.getButtonTypes().setAll(buttonTypeOne,buttonTypeTwo);
+			ButtonType yesButton = new ButtonType("Yes");
+			ButtonType noButton = new ButtonType("No");
+			ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+
+			visibleAlert.getButtonTypes().setAll(yesButton, noButton, buttonTypeCancel);
 			Optional<ButtonType> visibleOptional = visibleAlert.showAndWait();
 			Boolean visible;
-			if(visibleOptional.get()==buttonTypeTwo){
+			if (visibleOptional.get() == noButton) {
 				visible = false;
 				data.getPlayer().getInventory().add(new Item(name, visible));
-					
-			}else if (visibleOptional.get()==buttonTypeOne){
-				visible = true; 
-				
-				
+
+			} else if (visibleOptional.get() == yesButton) {
+				visible = true;
+
 				FileChooser fileChooser = new FileChooser();
 				fileChooser.setTitle("Chose an image for the item");
 				File inFile = fileChooser.showOpenDialog(mainWindow);
 				if (inFile != null) {
-					String path = "assets/"+ inFile.getName();
+					String path = "assets/" + inFile.getName();
 					try {
 						Files.copy(inFile.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);
-						
+
 						data.getPlayer().getInventory().add(new Item(name, visible, path));
-						
+
 					} catch (IOException e) {
-						//should never happen, checked before, needed for compile
+						// should never happen, checked before, needed for
+						// compile
 						e.printStackTrace();
-					}		
-				
+					}
+
 				} else {
-					new Alert(AlertType.ERROR, "No image was selected, item not created");
+					new Alert(AlertType.ERROR, "No image was selected, item not created").showAndWait();
 				}
-			}else{
-				new Alert(AlertType.ERROR, "Item not created");
+			} else {
+				new Alert(AlertType.ERROR, "Item not created").showAndWait();
 			}
-		
-		}else{
-			new Alert (AlertType.ERROR, "No name was entered");
+
+		} else {
+			new Alert(AlertType.ERROR, "No name was entered").showAndWait();
 		}
 		pController.update();
 	}
-	
+
 	@FXML
-	public void handleRemoveInventoryButton(){
+	public void handleRemoveInventoryButton() {
 		ChoiceDialog<Item> dialog = new ChoiceDialog<Item>(null, data.getPlayer().getInventory());
 		dialog.setContentText("Which item shoucl be removed?");
 		Optional<Item> itemOptional = dialog.showAndWait();
-		if(itemOptional.isPresent()){
+		if (itemOptional.isPresent()) {
 			data.getPlayer().getInventory().remove(itemOptional.get());
 			pController.update();
 		}

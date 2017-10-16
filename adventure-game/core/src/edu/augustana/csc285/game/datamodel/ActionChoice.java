@@ -2,7 +2,7 @@ package edu.augustana.csc285.game.datamodel;
 
 import java.util.ArrayList;
 
-public class ActionChoice {//implements Feasible 
+public class ActionChoice {// implements Feasible
 	private String choiceText = "";
 	private int destinationSlideIndex = -1;
 	private boolean visible;
@@ -15,7 +15,7 @@ public class ActionChoice {//implements Feasible
 		this("", new ArrayList<Feasible>(), new ArrayList<Effect>());
 		visible = true;
 	}
-	
+
 	public ActionChoice(String choiceText, int destinationSlideIndex) {
 		this("", new ArrayList<Feasible>(), new ArrayList<Effect>());
 		this.choiceText = choiceText;
@@ -27,7 +27,7 @@ public class ActionChoice {//implements Feasible
 		this.effectList = effectList;
 		visible = true;
 	}
-	
+
 	public String getChoiceText() {
 		return choiceText;
 	}
@@ -67,14 +67,14 @@ public class ActionChoice {//implements Feasible
 	public void removeEffect(int index) {
 		effectList.remove(index);
 	}
-	
-	//changes the effect name
-	public void setEffectName(String newEffectName, int index){
+
+	// changes the effect name
+	public void setEffectName(String newEffectName, int index) {
 		effectList.get(index).setEffectName(newEffectName);
 	}
-	
-	//changes the effect size
-	public void setEffectSize(int newEffectSize, int index){
+
+	// changes the effect size
+	public void setEffectSize(int newEffectSize, int index) {
 		effectList.get(index).setEffectSize(newEffectSize);
 	}
 
@@ -94,7 +94,7 @@ public class ActionChoice {//implements Feasible
 	public String toString() {
 		String s = "choiceText: " + choiceText + "\ndestinationSlideIndex: " + destinationSlideIndex;
 		for (Effect effect : effectList) {
-			s += "\n" + effect.toString() + "\n"; //TODO make look pretty
+			s += "\n" + effect.toString() + "\n"; // TODO make look pretty
 		}
 		return s;
 	}
@@ -107,6 +107,24 @@ public class ActionChoice {//implements Feasible
 		this.rejText = rejText;
 	}
 
-	
+	public boolean hasGenderEffect() {
+		for(int i = 0; i < effectList.size(); i++){
+			if(effectList.get(i) instanceof GenderChangeEffect){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean hasItemEffect(Item itemChoice) {
+		for(int i = 0; i < effectList.size(); i++){
+			if(effectList.get(i) instanceof ItemEffect){
+				if(effectList.get(i).equals(new ItemEffect(itemChoice,0))){
+				return true;
+				}
+			}
+		}
+		return false;
+	}
 
 }
