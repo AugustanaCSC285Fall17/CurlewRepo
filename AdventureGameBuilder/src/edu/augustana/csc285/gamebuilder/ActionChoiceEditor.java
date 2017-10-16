@@ -3,6 +3,8 @@ package edu.augustana.csc285.gamebuilder;
 import java.util.ArrayList;
 
 import edu.augustana.csc285.game.datamodel.GameData;
+import edu.augustana.csc285.game.datamodel.Gender;
+import edu.augustana.csc285.game.datamodel.GenderChangeEffect;
 import edu.augustana.csc285.game.datamodel.InventoryEffect;
 import edu.augustana.csc285.game.datamodel.Item;
 import edu.augustana.csc285.game.datamodel.ItemEffect;
@@ -54,7 +56,6 @@ public class ActionChoiceEditor {
 	
 	public void addItemEffect(Item item, int effectSize){
 		slide.getActionChoicesAt(currentActionChoiceIndex).addEffect(new ItemEffect (item,effectSize));
-		System.out.println("Editor " + item.getItemName());
 	}
 	
 	public void removeInventoryEffect(int index){
@@ -65,4 +66,7 @@ public class ActionChoiceEditor {
 		slide.getActionChoicesAt(currentActionChoiceIndex).setEffectSize(effectSize, index);
 	}
 	
+	public void addGenderChangeEffect(Gender gender){
+		slide.getActionChoicesAt(currentActionChoiceIndex).addEffect(new GenderChangeEffect(gender));
+	}
 }
