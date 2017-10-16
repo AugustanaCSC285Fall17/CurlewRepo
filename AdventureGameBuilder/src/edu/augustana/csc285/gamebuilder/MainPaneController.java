@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ChoiceDialog;
@@ -580,8 +581,9 @@ public class MainPaneController {
 			visibleAlert.setContentText("Should this item be visible to the player?");
 			ButtonType buttonTypeOne = new ButtonType("Yes");
 			ButtonType buttonTypeTwo = new ButtonType("No");
+			ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
 			
-			visibleAlert.getButtonTypes().setAll(buttonTypeOne,buttonTypeTwo);
+			visibleAlert.getButtonTypes().setAll(buttonTypeOne,buttonTypeTwo, buttonTypeCancel);
 			Optional<ButtonType> visibleOptional = visibleAlert.showAndWait();
 			Boolean visible;
 			if(visibleOptional.get()==buttonTypeTwo){
@@ -608,14 +610,14 @@ public class MainPaneController {
 					}		
 				
 				} else {
-					new Alert(AlertType.ERROR, "No image was selected, item not created");
+					new Alert(AlertType.ERROR, "No image was selected, item not created").showAndWait();
 				}
 			}else{
-				new Alert(AlertType.ERROR, "Item not created");
+				new Alert(AlertType.ERROR, "Item not created").showAndWait();
 			}
 		
 		}else{
-			new Alert (AlertType.ERROR, "No name was entered");
+			new Alert (AlertType.ERROR, "No name was entered").showAndWait();
 		}
 		pController.update();
 	}
