@@ -559,8 +559,7 @@ public class MainPaneController {
 				}
 			}
 		}
-			// TODO Catch no such element exception
-			// TODO add inventory editor, make this a choiceBox instead
+			
 			// TODO genderChangeEffect
 		pController.update();
 		// alert.setTitle(");
