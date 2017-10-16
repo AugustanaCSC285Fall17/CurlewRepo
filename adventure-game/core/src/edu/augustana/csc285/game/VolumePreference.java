@@ -9,6 +9,9 @@ public class VolumePreference {
 	private static final String MUSIC_ENABLED = "music enabled";
 	private static final String PREF_NAME = "gameVolumeControl";
 	
+	public VolumePreference(){
+		
+	}
 	protected Preferences getPrefs(){
 		return Gdx.app.getPreferences(PREF_NAME);
 	}

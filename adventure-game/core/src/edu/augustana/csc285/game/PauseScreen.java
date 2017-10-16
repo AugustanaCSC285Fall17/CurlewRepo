@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Slider;
@@ -15,10 +17,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
-public class PauseScreen implements Screen {
+public class PauseScreen implements Screen{
 
 	private final AdventureGame game;
-	private static final String MUSIC_VOLUME = "volume";
+	//private VolumePreference parent;
 	
 	private Table table;
 	private TextButton resumeButton;
@@ -28,6 +30,8 @@ public class PauseScreen implements Screen {
 	private TextButton backButton;
 	private Label introText;
 	private Sprite swansonLogo;
+	private Slider volumeSlider;
+	private Label musicVolumeLabel;
 	
 	
 	public PauseScreen(final AdventureGame game) {
@@ -101,23 +105,42 @@ public class PauseScreen implements Screen {
 		backButton = new TextButton("Back", game.skin);
 		backButton.addListener(new ClickListener(){
 		
-		private Slider volumeSlider = new Slider(0f, 1f, 0.1f, false, game.skin);
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
 				initializeMain();
 			}
 		});
+		//parent = new VolumePreference();
+		volumeSlider = new Slider(0f, 1f, 0.1f, false, game.skin);
 		
-		String text = MUSIC_VOLUME;
+		//System.err.println(parent.getMusicVolume());
+		volumeSlider.setValue(game.bgMusic.getVolume());
+		volumeSlider.addListener(new EventListener(){
+
+			@Override
+			public boolean handle(Event event) {
+				game.bgMusic.setVolume(volumeSlider.getValue());
+				System.out.println(volumeSlider.getValue());
+				return false;
+			}
+			
+		});
+		
+		String text = "Setting";
+		String volumeText = "Volume";
 		
 		introText = new Label(text, game.skin, "title");
 		introText.setWrap(true);
 		introText.setWidth(600);
 		introText.setAlignment(Align.center|Align.top);
 		
+		musicVolumeLabel = new Label(volumeText, game.skin);
+		
 		table.padTop(100);
 		table.add(introText).width(600f);;
+		table.add(musicVolumeLabel);
+		table.add(volumeSlider);
 		table.row();
 		table.add(backButton).padTop(5);
 		
