@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import edu.augustana.csc285.game.datamodel.GameData;
 import edu.augustana.csc285.game.datamodel.Gender;
 import edu.augustana.csc285.game.datamodel.GenderChangeEffect;
-import edu.augustana.csc285.game.datamodel.InventoryEffect;
 import edu.augustana.csc285.game.datamodel.Item;
 import edu.augustana.csc285.game.datamodel.ItemEffect;
 import edu.augustana.csc285.game.datamodel.Slide;

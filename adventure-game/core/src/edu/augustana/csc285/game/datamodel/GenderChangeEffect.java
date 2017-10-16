@@ -18,16 +18,20 @@ public class GenderChangeEffect implements Effect {
 
 	@Override
 	public void setEffectSize(int size) {
-		// TODO Auto-generated method stub
+		// TODO Don't know if we even need it in this class but is an abstract method
 	}
 	
 	public void setEffectName(String name){
-		//TODO 
+		//TODO Don't know if we even need it in this class but is an abstract method
+	}
+	
+	public String printEffectInfo(){
+		return "Gender change to: " + newGender;
 	}
 	
 	@Override
 	public String toString() {
-		return "Gender change to: " + newGender;
+		return newGender + "";
 	}
 
 }

@@ -44,10 +44,15 @@ public class ItemEffect implements Effect {
 	public void setEffectSize(int effectSize) {
 		this.effectSize = effectSize;
 	}
+	
+	@Override
+	public String printEffectInfo(){
+		return "Item Change: Item Name : " + item.getItemName() + ", Effect Size: " + effectSize;
+	}
 
 	@Override
 	public String toString() {
-		return "Item change: (ItemName : " + item.getItemName() + ", effectSize: " + effectSize;
+		return item.getItemName();
 	}
 	
 	@Override
