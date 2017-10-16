@@ -558,28 +558,33 @@ public class MainPaneController {
 					}
 				}
 			} else if (effectChiceBox.getValue().equals("Gender Change Effect")) {
-				Alert genderAlert = new Alert(AlertType.CONFIRMATION);
-				genderAlert.setContentText("Which gender should the player be changed to?");
+				if (ace.hasGenderEffect()) {
+					new Alert(AlertType.ERROR, "There is already a gender change effect for this action choice").showAndWait();
+				} else {
+					Alert genderAlert = new Alert(AlertType.CONFIRMATION);
+					genderAlert.setContentText("Which gender should the player be changed to?");
 
-				// As of now only supports binary gender, as that is all that is
-				// required by history students and I don't want to confuse them
-				// if they use the builder
-				ButtonType maleButton = new ButtonType("Male");
-				ButtonType femaleButton = new ButtonType("Female");
-				ButtonType cancelButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);	
-				genderAlert.getButtonTypes().setAll(maleButton, femaleButton, cancelButton);
-				
-				genderAlert.setTitle("New Effect Specs");
-				
-				Optional genderOptional = genderAlert.showAndWait();
-				if(genderOptional.get().equals(maleButton)){
-					ace.addGenderChangeEffect(Gender.MALE);
-				}else if (genderOptional.get().equals(femaleButton)){
-					ace.addGenderChangeEffect(Gender.FEMALE);
-				}else{
-					new Alert(AlertType.ERROR, "New Effect Canceled");
+					// As of now only supports binary gender, as that is all
+					// that is
+					// required by history students and I don't want to confuse
+					// them
+					// if they use the builder
+					ButtonType maleButton = new ButtonType("Male");
+					ButtonType femaleButton = new ButtonType("Female");
+					ButtonType cancelButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+					genderAlert.getButtonTypes().setAll(maleButton, femaleButton, cancelButton);
+
+					genderAlert.setTitle("New Effect Specs");
+
+					Optional<ButtonType> genderOptional = genderAlert.showAndWait();
+					if (genderOptional.get().equals(maleButton)) {
+						ace.addGenderChangeEffect(Gender.MALE);
+					} else if (genderOptional.get().equals(femaleButton)) {
+						ace.addGenderChangeEffect(Gender.FEMALE);
+					} else {
+						new Alert(AlertType.ERROR, "New Effect Canceled");
+					}
 				}
-
 			}
 		}
 

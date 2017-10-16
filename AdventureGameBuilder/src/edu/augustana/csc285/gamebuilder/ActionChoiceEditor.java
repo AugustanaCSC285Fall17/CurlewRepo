@@ -69,4 +69,8 @@ public class ActionChoiceEditor {
 	public void addGenderChangeEffect(Gender gender){
 		slide.getActionChoicesAt(currentActionChoiceIndex).addEffect(new GenderChangeEffect(gender));
 	}
+
+	public boolean hasGenderEffect() {
+		return(slide.getActionChoicesAt(currentActionChoiceIndex).hasGenderEffect());
+	}
 }
