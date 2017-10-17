@@ -46,6 +46,16 @@ public class GameData {
 				visibleChoices.add(choice);
 		}
 		return visibleChoices;
+	}
+	
+	public ArrayList<Item> getCurrentVisibleItems() {
+		ArrayList<Item> allItems = player.getInventory();
+		ArrayList<Item> visibleItems = new ArrayList<Item>();
+		for (Item item : allItems) {
+			if (item.isVisible() && item.getItemQty() != 0)
+				visibleItems.add(item);
+		}
+		return visibleItems;
 	}	
 
 	public String attemptChoice(ActionChoice choice) {

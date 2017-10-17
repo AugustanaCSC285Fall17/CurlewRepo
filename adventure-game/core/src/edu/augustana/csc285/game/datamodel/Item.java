@@ -13,7 +13,7 @@ public class Item {
 	public Item(String itemName) {
 		this.itemName = itemName;
 		this.itemQty = 0;
-		visible=true;
+		visible = true;
 
 	}
 
@@ -67,7 +67,7 @@ public class Item {
 		return itemName;
 	}
 
-	public Boolean getIsVisible() {
+	public boolean isVisible() {
 		return visible;
 	}
 

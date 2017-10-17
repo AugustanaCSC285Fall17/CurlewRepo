@@ -18,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
+import edu.augustana.csc285.game.datamodel.Gender;
 import edu.augustana.csc285.game.datamodel.Item;
 
 public class InventoryScreen implements Screen {
@@ -26,7 +27,10 @@ public class InventoryScreen implements Screen {
 	
 	private Table table;
 	private Table itemTable;
+	private Table statsTable;
+	private Label statsLabel;
 	private Label title;
+	private Label statsTitle;
 	private Button pauseButton;
 	private TextButton backButton;
 	private ScrollPane scrollPane;
@@ -76,6 +80,7 @@ public class InventoryScreen implements Screen {
 		// initialize slide contents
 		createTitle();
 		createItemTable();
+		createPlayerStats();
 		
 		createBackButton();
 		createTable();
@@ -85,6 +90,7 @@ public class InventoryScreen implements Screen {
 		game.stage.addActor(title);
 		game.stage.addActor(table);
 		game.stage.addActor(scrollPane);
+		game.stage.addActor(statsTable);
 		
 		// Set the background
 		float size = Gdx.graphics.getHeight();
@@ -94,47 +100,43 @@ public class InventoryScreen implements Screen {
 		game.sprite.setSize(size, size);
 	}
 
-	
-	private void createBackButton() {
-		backButton = new TextButton("Back", game.skin);
-		backButton.getLabel().setWrap(true);
-		backButton.addListener(new ClickListener() {
-
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				game.setScreen(new SlideScreen(game));
-			}
-		});
+	private void createTitle() {
+		title = new Label("Inventory", game.skin, "title");
+		title.setWidth(350);
+		title.pack();
+		title.setWidth(350);
+		title.setPosition(40, Gdx.graphics.getHeight() - title.getHeight() - 20);
+		title.setAlignment(Align.left);
 	}
 	
 	private void createItemTable() {
+		
+		int gameTextWidth = 700;
+		
 		itemTable = new Table();
-		itemTable.setWidth(550);
+		itemTable.setWidth(gameTextWidth);
 		itemTable.align(Align.topLeft);
 		
 		int itemAdded = 0;
 
-		for (Item item : game.data.getPlayer().getInventory()) {
-			
-			if (item.getItemQty() != 0) {
-				Image itemImage = new Image(new Texture(Gdx.files.internal("art/icons/" + item.getImageAddress())));
-				Label itemLabel = new Label(item.getItemQty() + "x " + item.getItemName(), game.skin);
-				itemLabel.setAlignment(Align.topLeft);
-				itemTable.add(itemImage).size(80, 80);
-				itemTable.add(itemLabel).align(Align.left);
-				if (itemAdded % 2 == 0)
-					itemTable.add().pad(20);
-				else
-					itemTable.row().padTop(20);
-				itemAdded++;
-			}
+		for (Item item : game.data.getCurrentVisibleItems()) {
+			Image itemImage = new Image(new Texture(Gdx.files.internal("art/icons/" + item.getImageAddress())));
+			Label itemLabel = new Label(item.getItemQty() + "x " + item.getItemName(), game.skin);
+			itemLabel.setAlignment(Align.topLeft);
+			itemTable.add(itemImage).size(80, 80);
+			itemTable.add(itemLabel).align(Align.left);
+			if (itemAdded % 2 == 0)
+				itemTable.add().pad(20);
+			else
+				itemTable.row().padTop(20);
+			itemAdded++;
 		}
 		
 		if (itemAdded == 0) {
 			itemTable.add(new Label("You have no items in your inventory.", game.skin));
 		}
 		
-		createScrollPane(550);
+		createScrollPane(gameTextWidth);
 	}
 	
 	private void createScrollPane(int gameTextWidth) {
@@ -147,26 +149,59 @@ public class InventoryScreen implements Screen {
 	    scrollPane.setTouchable(Touchable.enabled);
 	}
 	
-	private void createTitle() {
-		title = new Label("Inventory", game.skin, "title");
-		title.setWidth(350);
-		title.pack();
-		title.setWidth(350);
-		title.setPosition(40, Gdx.graphics.getHeight() - title.getHeight() - 20);
-		title.setAlignment(Align.left);
+	private void createPlayerStats() {
+		
+		
+		statsTitle = new Label("Player Status", game.skin, "title");
+		statsTitle.setAlignment(Align.center);
+		
+		statsLabel = new Label("Name: " + game.data.getPlayer().getName()
+				+ "\nGender: " + game.data.getPlayer().getGender().toString(), game.skin);
+		statsLabel.setAlignment(Align.topLeft);
+
+		statsTable = new Table();
+		statsTable.setWidth(Gdx.graphics.getWidth());
+		statsTable.align(Align.topLeft);
+		statsTable.setPosition(0, game.stage.getHeight());
+		statsTable.padTop(20);
+		statsTable.padLeft(760);
+
+		Image avatar;
+		if (game.data.getPlayer().getGender() == Gender.UNKNOWN) 
+			avatar = new Image(new Texture(Gdx.files.internal("art/icons/unknown.jpg")));
+		else if (game.data.getPlayer().getGender() == Gender.MALE) 
+			avatar = new Image(new Texture(Gdx.files.internal("art/icons/male.jpg")));
+		else
+			avatar = new Image(new Texture(Gdx.files.internal("art/icons/female.jpg")));
+		
+		statsTable.add(statsTitle).width(260);
+		statsTable.row();
+		statsTable.add(avatar).size(150, 150).padTop(20);
+		statsTable.row();
+		statsTable.add(statsLabel).padTop(20);
+
+	}
+
+	private void createBackButton() {
+		backButton = new TextButton("Back", game.skin);
+		backButton.getLabel().setWrap(true);
+		backButton.addListener(new ClickListener() {
+
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.setScreen(new SlideScreen(game));
+			}
+		});
 	}
 	
 	private void createTable() {
 		table = new Table();
 		table.setWidth(Gdx.graphics.getWidth());
 		table.align(Align.topLeft);
-		
 		table.setPosition(0, game.stage.getHeight());
-
 		table.padLeft(40);
-		
 		table.add(backButton).width(260).padTop(5);
-		
+
 		int tableHeight = 350;
 		table.padTop(tableHeight + title.getHeight());
 	}

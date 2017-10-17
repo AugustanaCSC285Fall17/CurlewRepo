@@ -15,6 +15,10 @@
             {
               "class": "edu.augustana.csc285.game.datamodel.GenderChangeEffect",
               "newGender": "MALE"
+            },
+            {
+              "class": "edu.augustana.csc285.game.datamodel.NameChangeEffect",
+              "newName": "Anders Bengtsson"
             }
           ]
         },
@@ -26,6 +30,10 @@
             {
               "class": "edu.augustana.csc285.game.datamodel.GenderChangeEffect",
               "newGender": "FEMALE"
+            },
+            {
+              "class": "edu.augustana.csc285.game.datamodel.NameChangeEffect",
+              "newName": "Lovisa Eriksdotter"
             }
           ]
         }
@@ -112,7 +120,7 @@
             {
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "item": {
-                "itemName": "Illinois letter",
+                "itemName": "Illinois letter"
                 
               }
             }
@@ -906,14 +914,14 @@
       ]
     },
     {
-      "title": "Thank you for your purchase!",
+      "title": "You bought one item.",
       "imageFileName": "facts.png",
-      "gameText": "Do you want to do anything else?",
+      "gameText": "Do you want to stay at the shop?",
       "urlText": "dieUrl",
       "slideType": "HISTORICAL",
       "actionChoices": [
         {
-          "choiceText": "Buy another item",
+          "choiceText": "Stay",
           "destinationSlideIndex": 22,
           "visible": false
         },
@@ -927,7 +935,7 @@
     {
       "title": "Thank you for your purchase!",
       "imageFileName": "facts.png",
-      "gameText": "The shopkeeper is grateful to sell another item and hands it to you. You're sure will help you on the long journey ahead. You wrap it, put it into your luggage, and head back to into the street.",
+      "gameText": "The shopkeeper is grateful to sell another item and hands it to you. You’re sure it will help you on the long journey ahead. You wrap it, put it into your luggage, and head back to the street.",
       "urlText": "dieUrl",
       "slideType": "HISTORICAL",
       "actionChoices": [
@@ -941,7 +949,7 @@
     {
       "title": "Choose one item to sell",
       "imageFileName": "facts.png",
-      "gameText": "What would you like to sell?",
+      "gameText": "The shop seller will purchase any of your items for 15 Kronor.",
       "urlText": "dieUrl",
       "slideType": "MANY_BUTTONS",
       "actionChoices": [
@@ -966,6 +974,19 @@
                 
               }
             }
+          ],
+          "visibilityCond": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
+              "item": {
+                "itemName": "Bible",
+                
+              },
+              "op": {
+                "opcode": ">"
+              },
+              "qtyToCompare": 0
+            }
           ]
         },
         {
@@ -988,6 +1009,19 @@
                 "itemName": "Coin",
                 
               }
+            }
+          ],
+          "visibilityCond": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
+              "item": {
+                "itemName": "Family heirloom",
+                
+              },
+              "op": {
+                "opcode": ">"
+              },
+              "qtyToCompare": 0
             }
           ]
         },
@@ -1012,6 +1046,19 @@
                 
               }
             }
+          ],
+          "visibilityCond": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
+              "item": {
+                "itemName": "Sewing materials",
+                
+              },
+              "op": {
+                "opcode": ">"
+              },
+              "qtyToCompare": 0
+            }
           ]
         },
         {
@@ -1034,6 +1081,19 @@
                 "itemName": "Coin",
                 
               }
+            }
+          ],
+          "visibilityCond": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
+              "item": {
+                "itemName": "Medicine",
+                
+              },
+              "op": {
+                "opcode": ">"
+              },
+              "qtyToCompare": 0
             }
           ]
         },
@@ -1058,6 +1118,19 @@
                 
               }
             }
+          ],
+          "visibilityCond": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
+              "item": {
+                "itemName": "Cured Meat",
+                
+              },
+              "op": {
+                "opcode": ">"
+              },
+              "qtyToCompare": 0
+            }
           ]
         }
       ]
@@ -1065,12 +1138,12 @@
     {
       "title": "You sold an item",
       "imageFileName": "facts.png",
-      "gameText": "Do you want to do anything else?",
+      "gameText": "Do you want to stay at the shop?",
       "urlText": "dieUrl",
       "slideType": "HISTORICAL",
       "actionChoices": [
         {
-          "choiceText": "Sell another item",
+          "choiceText": "Stay",
           "destinationSlideIndex": 22,
           "visible": false
         },
@@ -1084,7 +1157,7 @@
     {
       "title": "Just what we needed for the store",
       "imageFileName": "facts.png",
-      "gameText": "Do you want to sell anything else?",
+      "gameText": "The shopkeeper pays you for your item. You’re happy to have a bit more cash on hand for the journey ahead. It may come in handy. You head back into the street.",
       "urlText": "dieUrl",
       "slideType": "HISTORICAL",
       "actionChoices": [
@@ -1190,6 +1263,19 @@
               }
             }
           ]
+          "visibilityCond": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
+              "item": {
+                "itemName": "Ticket To Hull",
+                
+              },
+              "op": {
+                "opcode": "=="
+              },
+              "qtyToCompare": 0
+            }
+          ]
         },
         {
           "choiceText": "Pay for transport to Hull with connection to Liverpool and ship passage",
@@ -1219,13 +1305,42 @@
               }
             }
           ]
+          "visibilityCond": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
+              "item": {
+                "itemName": "Ticket To Hull",
+                
+              },
+              "op": {
+                "opcode": "=="
+              },
+              "qtyToCompare": 0
+            },
+            {
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
+              "item": {
+                "itemName": "Ticket To America",
+                
+              },
+              "op": {
+                "opcode": "=="
+              },
+              "qtyToCompare": 0
+            }
+          ]
+        }
+        {
+          "choiceText": "\"No, thank you!\"",
+          "destinationSlideIndex": 20,
+          "visible": false,
         }
       ]
     },
     {
       "title": "Pay for ticket to Hull",
       "imageFileName": "facts.png",
-      "gameText": "You have gained one ticket.",
+      "gameText": "You put the ticket into your pocket.",
       "slideType": "HISTORICAL",
       "actionChoices": [
         {
@@ -1237,7 +1352,7 @@
     {
       "title": "Pay for ticket to Hull with connection to Liverpool",
       "imageFileName": "facts.png",
-      "gameText": "You have gained one ticket to Hull and another ticket to America.",
+      "gameText": "You put both tickets into your pocket. ",
       "slideType": "HISTORICAL",
       "actionChoices": [
         {
@@ -1557,77 +1672,97 @@
     }
   ],
   "player": {
-    "name": "Minh!!",
+    "name": "UNKNOWN",
     "gender": "UNKNOWN",
     "inventory": [
       {
+        "itemName": "~emus",
+        "imageAddress": null,
+        "visible": false,
+        "itemQty": 1
+      },
+      {
         "itemName": "Bible",
         "imageAddress": "bible.png",
+        "visible": true,
         "itemQty": 0
       },
       {
         "itemName": "Coin",
         "imageAddress": "coin.png",
+        "visible": true,
         "itemQty": 1000
       },
       {
         "itemName": "Cured Meat",
         "imageAddress": "curedmeat.png",
+        "visible": true,
         "itemQty": 0
       },
       {
         "itemName": "Family heirloom",
         "imageAddress": "heirloom.png",
+        "visible": true,
         "itemQty": 0
       },
       {
         "itemName": "Forged Paper",
         "imageAddress": "forged.png",
+        "visible": true,
         "itemQty": 0
       },
       {
         "itemName": "Illinois letter",
         "imageAddress": "illinois.png",
+        "visible": true,
         "itemQty": 0
       },
       {
         "itemName": "John Deere letter",
         "imageAddress": "johndeere.png",
+        "visible": true,
         "itemQty": 0
       },
       {
         "itemName": "Medicine",
         "imageAddress": "medicine.png",
+        "visible": true,
         "itemQty": 0
       },
       {
         "itemName": "Minnesota letter",
         "imageAddress": "minnesota.png",
+        "visible": true,
         "itemQty": 0
       },
       {
         "itemName": "Official Paper",
         "imageAddress": "official.png",
+        "visible": true,
         "itemQty": 0
       },
       {
         "itemName": "Sewing materials",
         "imageAddress": "sewing.png",
+        "visible": true,
         "itemQty": 0
       },
       {
         "itemName": "Ticket To America",
         "imageAddress": "ticketAmerica.png",
+        "visible": true,
         "itemQty": 0
       },
       {
         "itemName": "Ticket To Hull",
         "imageAddress": "tickethull.png",
+        "visible": true,
         "itemQty": 0
       },
       {
         "itemName": "Washington letter",
         "imageAddress": "washington.png",
+        "visible": true,
         "itemQty": 0
       }
     ]
