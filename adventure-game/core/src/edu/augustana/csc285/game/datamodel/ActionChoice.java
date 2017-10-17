@@ -94,7 +94,7 @@ public class ActionChoice {// implements Feasible
 	public String toString() {
 		String s = "choiceText: " + choiceText + "\ndestinationSlideIndex: " + destinationSlideIndex;
 		for (Effect effect : effectList) {
-			s += "\n" + effect.toString() + "\n"; // TODO make look pretty
+			s += "\n" + effect.printEffectInfo(); // TODO make look pretty
 		}
 		return s;
 	}
