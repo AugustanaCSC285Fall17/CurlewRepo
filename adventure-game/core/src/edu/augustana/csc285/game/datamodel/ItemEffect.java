@@ -2,11 +2,16 @@ package edu.augustana.csc285.game.datamodel;
 
 public class ItemEffect implements Effect {
 
-
+	private Item item;
 	private int effectSize;
 	
-	private Item item;
 
+	public ItemEffect(Item item, int effectSize) {
+		System.out.print("Effect "+item.getItemName());
+		this.effectSize = effectSize;
+		this.item = new Item(item.getItemName());
+		System.out.println("Effect2 "+this.item.getItemName());
+	}
 	
 	public Item getItem() {
 		return item;
@@ -24,12 +29,6 @@ public class ItemEffect implements Effect {
 		effectSize = 1;
 	}
 	
-	public ItemEffect(Item item, int effectSize) {
-		System.out.print("Effect "+item.getItemName());
-		this.effectSize = effectSize;
-		this.item = new Item(item.getItemName());
-		System.out.println("Effect2 "+this.item.getItemName());
-	}
 	
 	public void setEffectName(String itemName){
 		item.setItemName(itemName);
