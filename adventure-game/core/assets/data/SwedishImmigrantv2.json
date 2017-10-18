@@ -1752,13 +1752,13 @@
       },
       {
         "itemName": "Bible",
-        "imageAddress": "bible.png",
+        "imageAddress": "biblebook.png",
         "visible": true,
         "itemQty": 0
       },
       {
         "itemName": "Coin",
-        "imageAddress": "coin.png",
+        "imageAddress": "coincash.png",
         "visible": true,
         "itemQty": 100
       },
