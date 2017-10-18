@@ -1,5 +1,6 @@
 //used this cite to help with converting text to int 
 //https://stackoverflow.com/questions/5585779/how-to-convert-a-string-to-an-int-in-java
+//http://code.makery.ch/blog/javafx-dialogs-official/
 package edu.augustana.csc285.gamebuilder;
 
 import javafx.application.Platform;
@@ -518,7 +519,8 @@ public class MainPaneController {
 	private void createEffectChoiceBox() {
 		ArrayList<String> list = new ArrayList<String>();
 		list.add("Gender Change Effect");
-		list.add("Inventory Effect");
+		list.add("Item Effect");
+		list.add("Name Change Effect");
 		ObservableList<String> observableList = FXCollections.observableList(list);
 		effectChiceBox.setItems(observableList);
 	}
@@ -530,7 +532,7 @@ public class MainPaneController {
 			if (effectChiceBox.getValue() == null) {
 				new Alert(AlertType.ERROR, "Please Select an Effect Type").showAndWait();
 
-			} else if (effectChiceBox.getValue().equals("Inventory Effect")) {
+			} else if (effectChiceBox.getValue().equals("Item Effect")) {
 				
 				if (data.getPlayer().getInventory().size() == 0) {//TODO move this check to ace
 					new Alert(AlertType.ERROR, "There is nothing in the inventroy").showAndWait();
@@ -588,7 +590,24 @@ public class MainPaneController {
 					} else if (genderOptional.get().equals(femaleButton)) {
 						ace.addGenderChangeEffect(Gender.FEMALE);
 					} else {
-						new Alert(AlertType.ERROR, "New Effect Canceled");
+						new Alert(AlertType.ERROR, "New Effect Canceled.");
+					}
+				}
+			} else if (effectChiceBox.getValue().equals("Name Change Effect")){
+				if(ace.hasNameChangeEffect()){
+					new Alert(AlertType.ERROR, "There is already a name change effect for this action choice.").showAndWait();
+				}else{
+					TextInputDialog nameDialog = new TextInputDialog();
+					nameDialog.setContentText("Enter the new name.");
+					nameDialog.setTitle("New Effect Specs");
+					
+					Optional<String> nameOptional = nameDialog.showAndWait();
+					
+					if(nameOptional.isPresent()){
+						String name = nameOptional.get();
+						ace.addNameChangeEffect(name);
+					}else{
+						new Alert(AlertType.ERROR, "New Effect Canceled.").showAndWait();
 					}
 				}
 			}
@@ -598,6 +617,17 @@ public class MainPaneController {
 
 	@FXML
 	public void handleRemoveEffectButton(){
+		ArrayList<Effect> effects= ace.getEffects();
+		ChoiceDialog<Effect> effectDialog = new ChoiceDialog<Effect>(null, effects);
+		effectDialog.setContentText("Which effect will be removed?");
+		Optional<Effect> effectOptional = effectDialog.showAndWait();
+		
+		if(effectOptional.isPresent()){
+			ace.removeEffect(effectOptional.get());
+		}else{
+			new Alert(AlertType.ERROR, "Effect not removed");
+		}
+		pController.update();
 		
 	}
 	// Misc Editor Methods

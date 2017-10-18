@@ -1,13 +1,8 @@
 package edu.augustana.csc285.gamebuilder;
 
 import java.util.ArrayList;
+import edu.augustana.csc285.game.datamodel.*;
 
-import edu.augustana.csc285.game.datamodel.GameData;
-import edu.augustana.csc285.game.datamodel.Gender;
-import edu.augustana.csc285.game.datamodel.GenderChangeEffect;
-import edu.augustana.csc285.game.datamodel.Item;
-import edu.augustana.csc285.game.datamodel.ItemEffect;
-import edu.augustana.csc285.game.datamodel.Slide;
 
 public class ActionChoiceEditor {
 	public int currentActionChoiceIndex;
@@ -57,8 +52,8 @@ public class ActionChoiceEditor {
 		slide.getActionChoicesAt(currentActionChoiceIndex).addEffect(new ItemEffect (item,effectSize));
 	}
 	
-	public void removeInventoryEffect(int index){
-		slide.getActionChoicesAt(currentActionChoiceIndex).removeEffect(index);
+	public void removeEffect(Effect effect){
+		slide.getActionChoicesAt(currentActionChoiceIndex).removeEffect(effect);
 	}
 	
 	public void changeEffectSize(int effectSize, int index){
@@ -74,7 +69,19 @@ public class ActionChoiceEditor {
 	}
 
 	public boolean hasItemEffect(Item itemChoice) {
-		// TODO Auto-generated method stub
 		return slide.getActionChoicesAt(currentActionChoiceIndex).hasItemEffect(itemChoice);
+	}
+
+	public boolean hasNameChangeEffect() {
+		return slide.getActionChoicesAt(currentActionChoiceIndex).hasNameChangeEffect();
+	}
+
+	public void addNameChangeEffect(String name) {
+		slide.getActionChoicesAt(currentActionChoiceIndex).addEffect(new NameChangeEffect(name));
+		
+	}
+
+	public ArrayList<Effect> getEffects() {
+		return slide.getActionChoicesAt(currentActionChoiceIndex).getEffect();
 	}
 }
