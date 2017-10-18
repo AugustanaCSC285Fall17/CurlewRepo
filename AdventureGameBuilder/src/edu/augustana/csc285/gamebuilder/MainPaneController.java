@@ -712,13 +712,47 @@ public class MainPaneController {
 
 	@FXML
 	public void handleRemoveInventoryButton() {
-		ChoiceDialog<Item> dialog = new ChoiceDialog<Item>(null, data.getPlayer().getInventory());
-		dialog.setContentText("Which item shoucl be removed?");
-		Optional<Item> itemOptional = dialog.showAndWait();
-		if (itemOptional.isPresent()) {
-			data.getPlayer().getInventory().remove(itemOptional.get());
-			pController.update();
+		ArrayList<Item> inventory = data.getPlayer().getInventory();
+
+		ArrayList<Integer> itemIndices = new ArrayList<Integer>();
+
+		Alert itemInfo = new Alert(AlertType.INFORMATION);
+
+		String s = "";
+		for (int i = 0; i < inventory.size(); i++) {
+			itemIndices.add(i);
+			s += "Item " + inventory.get(i).toString() + " has index " + i + "\n";
 		}
+		itemInfo.setContentText(s);
+		ChoiceDialog<Integer> effectDialog = new ChoiceDialog<Integer>(null, itemIndices);
+		effectDialog.setContentText("Which effect will be removed? Consult alert for refference");
+
+		itemInfo.setX(90);
+		itemInfo.setY(150);
+		itemInfo.show();
+		Optional<Integer> itemOptional = effectDialog.showAndWait();
+		itemInfo.close();
+
+		if (itemOptional.isPresent()) {
+			//ace.removeEffect(itemOptional.get());
+			int i = itemOptional.get();
+			data.getPlayer().getInventory().remove(i);
+		} else {
+			new Alert(AlertType.ERROR, "Effect not removed");
+		}
+	
+	pController.update();
+		
+		
+		
+		
+//		ChoiceDialog<Item> dialog = new ChoiceDialog<Item>(null, data.getPlayer().getInventory());
+//		dialog.setContentText("Which item should be removed?");
+//		Optional<Item> itemOptional = dialog.showAndWait();
+//		if (itemOptional.isPresent()) {
+//			data.getPlayer().getInventory().remove(itemOptional.get());
+//			pController.update();
+//		}
 	}
 	// File Menu Methods
 
