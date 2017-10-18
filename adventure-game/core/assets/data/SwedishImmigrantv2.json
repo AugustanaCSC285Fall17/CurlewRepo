@@ -805,6 +805,7 @@
           "choiceText": "Bible",
           "destinationSlideIndex": 24,
           "visible": false,
+          "rejText": "Insufficient funds.\nYou need 20 coins to buy this item.",
           "effectList": [
             {
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
@@ -821,12 +822,26 @@
                 
               }
             }
+          ],
+          "feasibilityCond": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
+              "item": {
+                "itemName": "Coin",
+                
+              },
+              "op": {
+                "opcode": ">="
+              },
+              "qtyToCompare": 20
+            }
           ]
         },
         {
           "choiceText": "Family heirloom",
           "destinationSlideIndex": 24,
           "visible": false,
+          "rejText": "Insufficient funds.\nYou need 20 coins to buy this item.",
           "effectList": [
             {
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
@@ -840,8 +855,20 @@
               "effectSize": -20,
               "item": {
                 "itemName": "Coin",
-                
               }
+            }
+          ],
+          "feasibilityCond": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
+              "item": {
+                "itemName": "Coin",
+                
+              },
+              "op": {
+                "opcode": ">="
+              },
+              "qtyToCompare": 20
             }
           ]
         },
@@ -849,6 +876,7 @@
           "choiceText": "Sewing materials",
           "destinationSlideIndex": 24,
           "visible": false,
+          "rejText": "Insufficient funds.\nYou need 20 coins to buy this item.",
           "effectList": [
             {
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
@@ -865,12 +893,26 @@
                 
               }
             }
+          ],
+          "feasibilityCond": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
+              "item": {
+                "itemName": "Coin",
+                
+              },
+              "op": {
+                "opcode": ">="
+              },
+              "qtyToCompare": 20
+            }
           ]
         },
         {
           "choiceText": "Medicine",
           "destinationSlideIndex": 24,
           "visible": false,
+          "rejText": "Insufficient funds.\nYou need 20 coins to buy this item.",
           "effectList": [
             {
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
@@ -887,12 +929,26 @@
                 
               }
             }
+          ],
+          "feasibilityCond": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
+              "item": {
+                "itemName": "Coin",
+                
+              },
+              "op": {
+                "opcode": ">="
+              },
+              "qtyToCompare": 20
+            }
           ]
         },
         {
           "choiceText": "Cured Meat",
           "destinationSlideIndex": 24,
           "visible": false,
+          "rejText": "Insufficient funds.\nYou need 20 coins to buy this item.",
           "effectList": [
             {
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
@@ -908,6 +964,19 @@
                 "itemName": "Coin",
                 
               }
+            }
+          ],
+          "feasibilityCond": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
+              "item": {
+                "itemName": "Coin",
+                
+              },
+              "op": {
+                "opcode": ">="
+              },
+              "qtyToCompare": 20
             }
           ]
         }
@@ -1691,7 +1760,7 @@
         "itemName": "Coin",
         "imageAddress": "coin.png",
         "visible": true,
-        "itemQty": 1000
+        "itemQty": 100
       },
       {
         "itemName": "Cured Meat",
