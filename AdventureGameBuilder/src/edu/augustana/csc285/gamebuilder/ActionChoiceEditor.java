@@ -52,8 +52,8 @@ public class ActionChoiceEditor {
 		slide.getActionChoicesAt(currentActionChoiceIndex).addEffect(new ItemEffect (item,effectSize));
 	}
 	
-	public void removeEffect(Effect effect){
-		slide.getActionChoicesAt(currentActionChoiceIndex).removeEffect(effect);
+	public void removeEffect(Integer integer){
+		slide.getActionChoicesAt(currentActionChoiceIndex).removeEffect(integer);
 	}
 	
 	public void changeEffectSize(int effectSize, int index){
