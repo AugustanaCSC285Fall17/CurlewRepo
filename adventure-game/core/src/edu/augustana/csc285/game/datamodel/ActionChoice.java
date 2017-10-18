@@ -54,6 +54,7 @@ public class ActionChoice {// implements Feasible
 	}
 
 	// Get the effect that the option cost and return it
+	//TODO change to get Effects
 	public ArrayList<Effect> getEffect() {
 		return effectList;
 	}
@@ -64,8 +65,8 @@ public class ActionChoice {// implements Feasible
 	}
 
 	// remove effect
-	public void removeEffect(int index) {
-		effectList.remove(index);
+	public void removeEffect(Effect effect) {
+		effectList.remove(effect);
 	}
 
 	// changes the effect name
@@ -122,6 +123,15 @@ public class ActionChoice {// implements Feasible
 				if(effectList.get(i).equals(new ItemEffect(itemChoice,0))){
 				return true;
 				}
+			}
+		}
+		return false;
+	}
+
+	public boolean hasNameChangeEffect() {
+		for(int i = 0; i < effectList.size(); i++){
+			if(effectList.get(i) instanceof NameChangeEffect){
+				return true;
 			}
 		}
 		return false;
