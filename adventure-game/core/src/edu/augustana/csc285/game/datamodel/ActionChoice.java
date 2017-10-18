@@ -65,7 +65,7 @@ public class ActionChoice {// implements Feasible
 	}
 
 	// remove effect
-	public void removeEffect(Integer integer) {
+	public void removeEffect(int integer) {
 		effectList.remove(integer);
 	}
 

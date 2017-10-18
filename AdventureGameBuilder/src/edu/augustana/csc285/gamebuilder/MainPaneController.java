@@ -633,7 +633,7 @@ public class MainPaneController {
 			String s = "";
 			for (int i = 0; i < effects.size(); i++) {
 				effectIndices.add(i);
-				s += "Effect " + effects.get(i).toString() + " has index " + i;
+				s += "Effect " + effects.get(i).toString() + " has index " + i + "\n";
 			}
 			effectInfo.setContentText(s);
 			ChoiceDialog<Integer> effectDialog = new ChoiceDialog<Integer>(null, effectIndices);
@@ -643,10 +643,10 @@ public class MainPaneController {
 			effectInfo.setY(150);
 			effectInfo.show();
 			Optional<Integer> effectOptional = effectDialog.showAndWait();
+			effectInfo.close();
 
 			if (effectOptional.isPresent()) {
 				ace.removeEffect(effectOptional.get());
-				System.out.println(1);
 			} else {
 				new Alert(AlertType.ERROR, "Effect not removed");
 			}

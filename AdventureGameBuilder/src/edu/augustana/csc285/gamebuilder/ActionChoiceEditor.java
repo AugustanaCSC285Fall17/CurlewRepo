@@ -52,7 +52,7 @@ public class ActionChoiceEditor {
 		slide.getActionChoicesAt(currentActionChoiceIndex).addEffect(new ItemEffect (item,effectSize));
 	}
 	
-	public void removeEffect(Integer integer){
+	public void removeEffect(int integer){
 		slide.getActionChoicesAt(currentActionChoiceIndex).removeEffect(integer);
 	}
 	
