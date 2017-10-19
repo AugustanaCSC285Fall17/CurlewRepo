@@ -105,10 +105,10 @@ public class MainPaneController {
 	// Misc Editor Fields
 
 	@FXML
-	private Button addInventoryButton;
+	private Button addItemButton;
 
 	@FXML
-	private Button removeInventoryButton;
+	private Button removeItemButton;
 
 	// Starter Methods
 
@@ -625,7 +625,7 @@ public class MainPaneController {
 		if(effectOptional.isPresent()){
 			ace.removeEffect(effectOptional.get());
 		}else{
-			new Alert(AlertType.ERROR, "Effect not removed");
+			new Alert(AlertType.ERROR, "Effect not removed").showAndWait();
 		}
 		pController.update();
 		
@@ -634,7 +634,7 @@ public class MainPaneController {
 
 	// provides a series of dialoges to get info on new item
 	@FXML
-	public void handleAddInventoryButton() {
+	public void handleAddItemButton() {
 		TextInputDialog nameDialog = new TextInputDialog();
 		nameDialog.setContentText("Enter the name of the Item");
 		Optional<String> nameOptional = nameDialog.showAndWait();
@@ -687,13 +687,20 @@ public class MainPaneController {
 	}
 
 	@FXML
-	public void handleRemoveInventoryButton() {
+	public void handleRemoveItemButton() {
 		ChoiceDialog<Item> dialog = new ChoiceDialog<Item>(null, data.getPlayer().getInventory());
 		dialog.setContentText("Which item shoucl be removed?");
 		Optional<Item> itemOptional = dialog.showAndWait();
 		if (itemOptional.isPresent()) {
+			if(data.itemUsed(itemOptional.get())){
+				System.out.println(2);
+				//TODO finish this, works so far but other issues make this less important right now
+			}else{
 			data.getPlayer().getInventory().remove(itemOptional.get());
 			pController.update();
+			}
+		}else{
+			new Alert(AlertType.ERROR, "Item not removed").showAndWait();
 		}
 	}
 	// File Menu Methods
