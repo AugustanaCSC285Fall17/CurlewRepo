@@ -105,10 +105,10 @@ public class MainPaneController {
 	// Misc Editor Fields
 
 	@FXML
-	private Button addInventoryButton;
+	private Button addItemButton;
 
 	@FXML
-	private Button removeInventoryButton;
+	private Button removeItemButton;
 
 	// Starter Methods
 
@@ -621,6 +621,7 @@ public class MainPaneController {
 	}
 
 	@FXML
+
 	public void handleRemoveEffectButton() {
 		if (this.wasAcSelected()) {
 			ArrayList<Effect> effects = ace.getEffects();
@@ -657,7 +658,7 @@ public class MainPaneController {
 
 	// provides a series of dialoges to get info on new item
 	@FXML
-	public void handleAddInventoryButton() {
+	public void handleAddItemButton() {
 		TextInputDialog nameDialog = new TextInputDialog();
 		nameDialog.setContentText("Enter the name of the Item");
 		Optional<String> nameOptional = nameDialog.showAndWait();
@@ -710,7 +711,7 @@ public class MainPaneController {
 	}
 
 	@FXML
-	public void handleRemoveInventoryButton() {
+	public void handleRemoveItemButton() {
 		ArrayList<Item> inventory = data.getPlayer().getInventory();
 
 		ArrayList<Integer> itemIndices = new ArrayList<Integer>();
@@ -733,6 +734,12 @@ public class MainPaneController {
 		itemInfo.close();
 
 		if (itemOptional.isPresent()) {
+		//	if(data.itemUsed(itemOptional.get())){
+		//		System.out.println(2);
+				//TODO finish this, works so far but other issues make this less important right now
+				
+		//	}else{
+		
 			//ace.removeEffect(itemOptional.get());
 			int i = itemOptional.get();
 			data.getPlayer().getInventory().remove(i);

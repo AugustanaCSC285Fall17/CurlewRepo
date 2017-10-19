@@ -194,4 +194,15 @@ public class GameData {
 		}
 		return s;
 	}
+
+	public boolean itemUsed(Item item) {
+		for(Slide slide: slides){
+			for(ActionChoice choice: slide.getActionChoices()){
+				if(choice.hasItemEffect(item)){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }
