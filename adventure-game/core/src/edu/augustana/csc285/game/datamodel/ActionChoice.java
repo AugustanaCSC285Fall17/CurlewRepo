@@ -68,6 +68,10 @@ public class ActionChoice {// implements Feasible
 	public void removeEffect(int integer) {
 		effectList.remove(integer);
 	}
+	
+	public void removeEffect(Effect e) {
+		effectList.remove(e);	
+	}
 
 	// changes the effect name
 	public void setEffectName(String newEffectName, int index) {
@@ -136,5 +140,7 @@ public class ActionChoice {// implements Feasible
 		}
 		return false;
 	}
+
+	
 
 }

@@ -540,15 +540,33 @@ public class MainPaneController {
 																	// ace
 					new Alert(AlertType.ERROR, "There is nothing in the inventroy").showAndWait();
 				} else {
-					ChoiceDialog<Item> choice = new ChoiceDialog<Item>(null, data.getPlayer().getInventory());
-					choice.setTitle("New Effect Specs");
-					choice.setContentText("Select an item");
-					Optional<Item> itemChoiceOptional = choice.showAndWait();
+					
+					ArrayList<Item> inventory = data.getPlayer().getInventory();
 
+					ArrayList<Integer> itemIndices = new ArrayList<Integer>();
+
+					Alert itemInfo = new Alert(AlertType.INFORMATION);
+
+					String s = "";
+					for (int i = 0; i < inventory.size(); i++) {
+						itemIndices.add(i);
+						s += "Item " + inventory.get(i).toString() + " has index " + i + "\n";
+					}
+					itemInfo.setContentText(s);
+					ChoiceDialog<Integer> effectDialog = new ChoiceDialog<Integer>(null, itemIndices);
+					effectDialog.setContentText("Which item will be affected? Consult alert for refference");
+
+					itemInfo.setX(90);
+					itemInfo.setY(150);
+					itemInfo.show();
+					Optional<Integer> itemOptional = effectDialog.showAndWait();
+					itemInfo.close();
+
+					//TODO change to itemOptional.isPresent
 					try {
-						Item itemChoice = itemChoiceOptional.get();
+						int itemChoice = itemOptional.get();
 
-						if (ace.hasItemEffect(itemChoice)) {
+						if (ace.hasItemEffect(inventory.get(itemChoice))) {
 							new Alert(AlertType.ERROR, "There is already an effect with that item").showAndWait();
 						} else {
 							TextInputDialog dialog = new TextInputDialog();
@@ -560,7 +578,7 @@ public class MainPaneController {
 
 							int effectChoiceSize = Integer.parseInt(effectChoiceSizeOptional.get());
 
-							ace.addItemEffect(itemChoice, effectChoiceSize);
+							ace.addItemEffect(inventory.get(itemChoice), effectChoiceSize);
 						}
 					} catch (NumberFormatException e) {
 						new Alert(AlertType.ERROR, "Was not a number; Effect not added").showAndWait();
@@ -712,6 +730,7 @@ public class MainPaneController {
 	}
 
 	@FXML
+	//TODO change to strings instead of ints?
 	public void handleRemoveItemButton() {
 		ArrayList<Item> inventory = data.getPlayer().getInventory();
 
@@ -726,7 +745,7 @@ public class MainPaneController {
 		}
 		itemInfo.setContentText(s);
 		ChoiceDialog<Integer> effectDialog = new ChoiceDialog<Integer>(null, itemIndices);
-		effectDialog.setContentText("Which effect will be removed? Consult alert for refference");
+		effectDialog.setContentText("Which item will be removed? Consult alert for refference");
 
 		itemInfo.setX(90);
 		itemInfo.setY(150);
@@ -735,31 +754,23 @@ public class MainPaneController {
 		itemInfo.close();
 
 		if (itemOptional.isPresent()) {
-		//	if(data.itemUsed(itemOptional.get())){
-		//		System.out.println(2);
-				//TODO finish this, works so far but other issues make this less important right now
-				
-		//	}else{
-		
-			//ace.removeEffect(itemOptional.get());
 			int i = itemOptional.get();
+			if(data.itemUsed(inventory.get(itemOptional.get()))){
+				Optional<ButtonType> inUseResponse = new Alert(AlertType.CONFIRMATION, "This item is in use. Removing it remove all effects and conditions using this item. Are you sure?").showAndWait();				
+				//TODO support conditions removal
+				
+				if(inUseResponse.get()==ButtonType.OK){
+					data.removeItem(inventory.get(itemOptional.get()));
+				}
+			}else{
+			
 			data.getPlayer().getInventory().remove(i);
+			}
 		} else {
-			new Alert(AlertType.ERROR, "Effect not removed");
+			new Alert(AlertType.ERROR, "Item not removed");
 		}
-	
 	pController.update();
 		
-		
-		
-		
-//		ChoiceDialog<Item> dialog = new ChoiceDialog<Item>(null, data.getPlayer().getInventory());
-//		dialog.setContentText("Which item should be removed?");
-//		Optional<Item> itemOptional = dialog.showAndWait();
-//		if (itemOptional.isPresent()) {
-//			data.getPlayer().getInventory().remove(itemOptional.get());
-//			pController.update();
-//		}
 	}
 	// File Menu Methods
 

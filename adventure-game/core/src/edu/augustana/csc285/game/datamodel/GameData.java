@@ -205,4 +205,20 @@ public class GameData {
 		}
 		return false;
 	}
+
+	public void removeItem(Item item) {
+		for(Slide s : slides){
+			for(ActionChoice ac : s.getActionChoices()){
+				for(Effect e : ac.getEffect()){
+					if(e instanceof ItemEffect){
+						ItemEffect iE = (ItemEffect) e;
+						if (iE.getItem().equals(item)){
+							ac.removeEffect(e);
+						}
+					}
+				}
+			}
+		}
+		
+	}
 }
