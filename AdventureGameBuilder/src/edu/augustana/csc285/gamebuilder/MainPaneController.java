@@ -540,6 +540,7 @@ public class MainPaneController {
 																	// ace
 					new Alert(AlertType.ERROR, "There is nothing in the inventroy").showAndWait();
 				} else {
+
 					
 					ArrayList<Item> inventory = data.getPlayer().getInventory();
 
@@ -563,6 +564,7 @@ public class MainPaneController {
 					itemInfo.close();
 
 					//TODO change to itemOptional.isPresent
+
 					try {
 						int itemChoice = itemOptional.get();
 
