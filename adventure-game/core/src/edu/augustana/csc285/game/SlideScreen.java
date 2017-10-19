@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
@@ -39,6 +40,8 @@ public class SlideScreen implements Screen {
 	private Button muteButton;
 	private ArrayList<TextButton> choiceButtons;
 	private ScrollPane scrollPane;
+
+	private Dialog rejectDialog;
 	
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
@@ -184,8 +187,17 @@ public class SlideScreen implements Screen {
 						game.stage.clear();
 						game.setScreen(new GameOverScreen(game));
 					} else {
-						game.data.attemptChoice(curChoice);
-						initialize();
+						String rejText = game.data.attemptChoice(curChoice);
+						if (rejText.equals("")) {
+							initialize();
+						} else {
+							rejectDialog = new Dialog("", game.skin);
+							rejectDialog.button("Ok");
+							rejectDialog.text(rejText);
+							rejectDialog.setWidth(700);
+							rejectDialog.setPosition(300, 300);
+							game.stage.addActor(rejectDialog);
+						}
 					}
 				}
 			});
