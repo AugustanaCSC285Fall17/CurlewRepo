@@ -14,5 +14,4 @@ public interface Effect {
 	public abstract String printEffectInfo();
 	// returns a toString method
 	public abstract String toString();
-
 }

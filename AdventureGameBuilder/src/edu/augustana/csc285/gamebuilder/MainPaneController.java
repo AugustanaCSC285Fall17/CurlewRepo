@@ -544,7 +544,6 @@ public class MainPaneController {
 					choice.setTitle("New Effect Specs");
 					choice.setContentText("Select an item");
 					Optional<Item> itemChoiceOptional = choice.showAndWait();
-
 					try {
 						Item itemChoice = itemChoiceOptional.get();
 
