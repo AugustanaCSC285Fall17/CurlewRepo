@@ -39,17 +39,17 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                  <AnchorPane layoutY="-15.0" prefHeight="359.0" prefWidth="529.0">
+                  <AnchorPane layoutY="-24.0" prefHeight="359.0" prefWidth="529.0">
                      <children>
                         <Label layoutX="156.0" layoutY="24.0" text="Curlew Game Builder">
                            <font>
                               <Font name="System Bold" size="21.0" />
                            </font>
                         </Label>
-                        <Button fx:id="addSlideButton" layoutX="55.0" layoutY="82.0" mnemonicParsing="false" onAction="#handleAddSlideButton" prefHeight="49.0" prefWidth="122.0" text="Add Slide" />
-                              <Button fx:id="saveButton" layoutX="37.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="25.0" prefWidth="157.0" text="Save" />
-                              <Button fx:id="saveAsButton" layoutX="306.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleSaveAsButton" text="SaveAs" />
-                              <Button fx:id="loadButton" layoutX="91.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleLoadButton" text="Load" />
+                        <Button fx:id="addSlideButton" layoutX="166.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleAddSlideButton" prefHeight="101.0" prefWidth="189.0" text="Add Slide" />
+                              <Button fx:id="saveButton" layoutX="226.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="31.0" prefWidth="68.0" text="Save" />
+                              <Button fx:id="saveAsButton" layoutX="297.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleSaveAsButton" prefHeight="31.0" prefWidth="70.0" text="SaveAs" />
+                              <Button fx:id="loadButton" layoutX="166.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleLoadButton" text="Load" />
                      </children>
                   </AnchorPane>
                      </children>
@@ -74,7 +74,7 @@
                         <Label layoutX="247.0" layoutY="245.0" text="Set Slide Type:" />
                         <ChoiceBox fx:id="setSlideTypeChoiceBox" layoutX="344.0" layoutY="240.0" prefWidth="150.0" />
                         <TextField fx:id="changeTitleTextField" layoutX="111.0" layoutY="88.0" prefHeight="31.0" prefWidth="342.0" />
-                        <ChoiceBox fx:id="selectSlideNumberChoiceBox" layoutX="142.0" layoutY="25.0" prefHeight="22.0" prefWidth="47.0" />
+                        <ChoiceBox fx:id="selectSlideNumberChoiceBox" layoutX="166.0" layoutY="24.0" prefHeight="22.0" prefWidth="47.0" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -95,10 +95,10 @@
                         <Button fx:id="removeAcButton" layoutX="218.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleRemoveAcButton" text="Remove Current Action Choice" />
                         <Line endX="430.0" layoutX="99.0" layoutY="100.0" startX="-100.0" />
                         <TextField fx:id="aceSetDestinationSlideIndexField" layoutX="412.0" layoutY="126.0" prefHeight="29.0" prefWidth="81.0" />
-                        <ChoiceBox fx:id="selectActionChoiceIndexChoiceBox" layoutX="162.0" layoutY="53.0" prefHeight="22.0" prefWidth="48.0" />
+                        <ChoiceBox fx:id="selectActionChoiceIndexChoiceBox" layoutX="194.0" layoutY="52.0" prefHeight="22.0" prefWidth="48.0" />
                         <Button fx:id="addEffectButton" layoutX="220.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleAddEffect" text="AddEffect" />
                         <ChoiceBox fx:id="effectChiceBox" layoutX="307.0" layoutY="214.0" prefWidth="150.0" />
-                        <Button fx:id="removeEffectButton" layoutX="232.0" layoutY="248.0" mnemonicParsing="false" onAction="#handleRemoveEffectButton" text="Remove Effect" />
+                        <Button fx:id="removeEffectButton" layoutX="220.0" layoutY="245.0" mnemonicParsing="false" onAction="#handleRemoveEffectButton" text="Remove Effect" />
                      </children>
                   </AnchorPane>
               </content>
