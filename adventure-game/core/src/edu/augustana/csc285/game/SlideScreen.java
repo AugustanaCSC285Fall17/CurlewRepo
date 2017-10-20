@@ -199,7 +199,7 @@ public class SlideScreen implements Screen {
 							game.stage.addActor(rejectDialog);
 						}
 					}
-				}
+				}	
 			});
 			choiceButtons.add(newButton);
 			

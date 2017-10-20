@@ -4,5 +4,6 @@ public enum SlideType {
 	NORMAL,
 	HISTORICAL,
 	MANY_BUTTONS,
-	LETTER
+	LETTER,
+	SHOP
 }

@@ -27,7 +27,7 @@ public class GameData {
 
 	public GameData() { // needed for GSon
 		slides = new ArrayList<Slide>();
-		player = new Player("Minh!!");
+		player = new Player("Curlew!!");
 		currentSlideIndex = startSlideIndex;
 	}
 	

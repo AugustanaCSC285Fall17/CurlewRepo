@@ -274,7 +274,7 @@
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -20,
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
                 
               }
             }
@@ -296,7 +296,7 @@
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -10,
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
                 
               }
             }
@@ -805,7 +805,7 @@
           "choiceText": "Bible",
           "destinationSlideIndex": 24,
           "visible": false,
-          "rejText": "Insufficient funds.\nYou need 20 coins to buy this item.",
+          "rejText": "Insufficient funds.\nYou need 20 Kronor to buy this item.",
           "effectList": [
             {
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
@@ -818,7 +818,7 @@
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -20,
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
                 
               }
             }
@@ -827,7 +827,7 @@
             {
               "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
                 
               },
               "op": {
@@ -841,7 +841,7 @@
           "choiceText": "Family heirloom",
           "destinationSlideIndex": 24,
           "visible": false,
-          "rejText": "Insufficient funds.\nYou need 20 coins to buy this item.",
+          "rejText": "Insufficient funds.\nYou need 20 Kronor to buy this item.",
           "effectList": [
             {
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
@@ -854,7 +854,7 @@
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -20,
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
               }
             }
           ],
@@ -862,7 +862,7 @@
             {
               "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
                 
               },
               "op": {
@@ -876,7 +876,7 @@
           "choiceText": "Sewing materials",
           "destinationSlideIndex": 24,
           "visible": false,
-          "rejText": "Insufficient funds.\nYou need 20 coins to buy this item.",
+          "rejText": "Insufficient funds.\nYou need 20 Kronor to buy this item.",
           "effectList": [
             {
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
@@ -889,7 +889,7 @@
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -20,
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
                 
               }
             }
@@ -898,7 +898,7 @@
             {
               "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
                 
               },
               "op": {
@@ -912,7 +912,7 @@
           "choiceText": "Medicine",
           "destinationSlideIndex": 24,
           "visible": false,
-          "rejText": "Insufficient funds.\nYou need 20 coins to buy this item.",
+          "rejText": "Insufficient funds.\nYou need 20 Kronor to buy this item.",
           "effectList": [
             {
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
@@ -925,7 +925,7 @@
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -20,
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
                 
               }
             }
@@ -934,7 +934,7 @@
             {
               "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
                 
               },
               "op": {
@@ -948,7 +948,7 @@
           "choiceText": "Cured Meat",
           "destinationSlideIndex": 24,
           "visible": false,
-          "rejText": "Insufficient funds.\nYou need 20 coins to buy this item.",
+          "rejText": "Insufficient funds.\nYou need 20 Kronor to buy this item.",
           "effectList": [
             {
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
@@ -961,7 +961,7 @@
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -20,
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
                 
               }
             }
@@ -970,7 +970,7 @@
             {
               "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
                 
               },
               "op": {
@@ -1039,7 +1039,7 @@
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": 20,
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
                 
               }
             }
@@ -1075,7 +1075,7 @@
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": 20,
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
                 
               }
             }
@@ -1111,7 +1111,7 @@
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": 20,
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
                 
               }
             }
@@ -1147,7 +1147,7 @@
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": 20,
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
                 
               }
             }
@@ -1183,7 +1183,7 @@
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": 20,
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
                 
               }
             }
@@ -1327,7 +1327,7 @@
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -60,
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
                 
               }
             }
@@ -1369,7 +1369,7 @@
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -120,
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
                 
               }
             }
@@ -1484,7 +1484,7 @@
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "effectSize": -80,
               "item": {
-                "itemName": "Coin",
+                "itemName": "Kronor",
                 
               }
             }
@@ -1757,7 +1757,7 @@
         "itemQty": 0
       },
       {
-        "itemName": "Coin",
+        "itemName": "Kronor",
         "imageAddress": "coincash.png",
         "visible": true,
         "itemQty": 100
@@ -1794,7 +1794,7 @@
       },
       {
         "itemName": "Medicine",
-        "imageAddress": "medicine.png",
+        "imageAddress": "medicinebottle.png",
         "visible": true,
         "itemQty": 0
       },
