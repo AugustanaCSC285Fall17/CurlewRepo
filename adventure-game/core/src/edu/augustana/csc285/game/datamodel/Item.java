@@ -79,7 +79,7 @@ public class Item {
 	public boolean equals(Object o){
 		if(o instanceof Item){
 			Item i = (Item) o;
-			if(i.getItemName().equals(((Item) o).getItemName())){
+			if(i.getItemName().equals(itemName)){
 				return true;
 			}else{
 				return false;

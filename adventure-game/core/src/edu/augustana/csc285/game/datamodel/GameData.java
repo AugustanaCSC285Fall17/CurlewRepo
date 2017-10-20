@@ -209,16 +209,22 @@ public class GameData {
 	public void removeItem(Item item) {
 		for(Slide s : slides){
 			for(ActionChoice ac : s.getActionChoices()){
-				for(Effect e : ac.getEffect()){
-					if(e instanceof ItemEffect){
-						ItemEffect iE = (ItemEffect) e;
+				//for(Effect e : ac.getEffect()){
+				for(int i = 0; i < ac.getEffect().size(); i++){
+					//if(e instanceof ItemEffect){
+					if(ac.getEffect().get(i) instanceof ItemEffect){
+						//ItemEffect iE = (ItemEffect) e;
+						ItemEffect iE = (ItemEffect) ac.getEffect().get(i);
 						if (iE.getItem().equals(item)){
-							ac.removeEffect(e);
+							//ac.removeEffect(e);
+							ac.removeEffect(ac.getEffect().get(i));
 						}
 					}
 				}
 			}
 		}
 		
+		player.getInventory().remove(item);
+
 	}
 }
