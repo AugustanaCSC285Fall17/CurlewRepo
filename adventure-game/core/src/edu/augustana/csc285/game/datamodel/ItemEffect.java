@@ -7,10 +7,8 @@ public class ItemEffect implements Effect {
 	
 
 	public ItemEffect(Item item, int effectSize) {
-		System.out.print("Effect "+item.getItemName());
 		this.effectSize = effectSize;
 		this.item = new Item(item.getItemName());
-		System.out.println("Effect2 "+this.item.getItemName());
 	}
 	
 	public Item getItem() {
@@ -59,6 +57,9 @@ public class ItemEffect implements Effect {
 		if(o instanceof ItemEffect){
 			ItemEffect e = (ItemEffect) o;
 			if(e.getItem().equals(this.getItem())){
+				System.out.println("Effect:");
+				System.out.println(e.getItem());
+				System.out.println(this.getItem());
 				return true;
 			}
 			return false;
