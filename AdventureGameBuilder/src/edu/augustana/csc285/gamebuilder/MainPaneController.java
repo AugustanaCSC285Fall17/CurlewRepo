@@ -584,14 +584,9 @@ public class MainPaneController {
 						if (ace.hasItemEffect(inventory.get(itemChoice))) {
 							new Alert(AlertType.ERROR, "There is already an effect with that item").showAndWait();
 						} else {
-							TextInputDialog dialog = new TextInputDialog();
-							dialog.setTitle("New Effect Specs");
-							dialog.setHeaderText("Enter Effect Number");
-							dialog.setContentText(
-									"Use positive numbers for adding and negitive numbers for subtracting");
-							Optional<String> effectChoiceSizeOptional = dialog.showAndWait();
-
-							int effectChoiceSize = Integer.parseInt(effectChoiceSizeOptional.get());
+//////////*************************************///////////////////////////////
+							//method for this is below. Check to see if this is what we want
+							int effectChoiceSize = getChoiceSize("Effect");
 
 							ace.addItemEffect(inventory.get(itemChoice), effectChoiceSize);
 						}
@@ -652,6 +647,16 @@ public class MainPaneController {
 			}
 		}
 		pController.update();
+	}
+	// ***** abstracted method from above ^^^^
+	public int getChoiceSize(String EorC){
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("New" + EorC+ "Specs");
+		dialog.setHeaderText("Enter" + EorC + "Number");
+		dialog.setContentText(
+				"Use positive numbers for adding and negitive numbers for subtracting");
+		Optional<String> choiceSizeOptional = dialog.showAndWait();
+		return Integer.parseInt(choiceSizeOptional.get());
 	}
 
 	@FXML
@@ -828,7 +833,7 @@ public class MainPaneController {
 			}else if (conditionChoiceBox.getValue().equals("Item Condition")&&wasTypeSelected){
 							
 				//TODO: abstract the select an item section of remove item and use it here 
-				//TODO: abstract the number of items section of add effect and use it here
+				//TODO:  <Possibly done? dont know if I did what you want> abstract the number of items section of add effect and use it here
 				//TODO get relational operater from user, either using buttons via confirmationdialog or by using the 
 				//choice dialog (will need to work with ints or strings probably maybe not?????
 				//TODO: write and call ace.addItemCondition, make sure to pass in conditionType
