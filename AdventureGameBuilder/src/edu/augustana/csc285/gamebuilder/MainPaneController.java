@@ -101,6 +101,10 @@ public class MainPaneController {
 	private Button addEffectButton;
 	@FXML
 	private Button removeEffectButton;
+	@FXML
+	private ChoiceBox<String> conditionChoiceBox;
+	@FXML
+	private Button addConditionButton;
 
 	// Misc Editor Fields
 
@@ -117,6 +121,7 @@ public class MainPaneController {
 	private void initialize() {
 		createSlideTypeMenu();
 		createEffectChoiceBox();
+		createConditionChoiceBox();
 	}
 
 	/**
@@ -525,6 +530,14 @@ public class MainPaneController {
 		effectChiceBox.setItems(observableList);
 	}
 
+	private void createConditionChoiceBox(){
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("Gender Condition");
+		list.add("Item Condition");
+		ObservableList<String> observableList = FXCollections.observableList(list);
+		conditionChoiceBox.setItems(observableList);
+
+	}
 	// TODO change to result.isPresent
 	@FXML
 	private void handleAddEffect() {
@@ -773,6 +786,58 @@ public class MainPaneController {
 		}
 	pController.update();
 		
+	}
+	
+	@FXML
+	public void handleAddConditionButton(){
+		if(wasAcSelected()&&conditionChoiceBox.getValue()!= null){
+			Alert conditionAlert = new Alert(AlertType.CONFIRMATION);
+			conditionAlert.setContentText("Should this be a visibility or feasibility condition");
+			ButtonType visibleButton = new ButtonType("Visibility");
+			ButtonType feasibilityButton = new ButtonType("Feasibility");
+			
+			conditionAlert.getButtonTypes().setAll(visibleButton, feasibilityButton, ButtonType.CANCEL);
+			Optional<ButtonType> conditionTypeOptional = conditionAlert.showAndWait();
+			
+			Boolean wasTypeSelected = true;
+			int conditionType = -1;
+			if(conditionTypeOptional.get()==visibleButton){
+				conditionType = ActionChoice.VISIBILITY;
+			}else if (conditionTypeOptional.get()==feasibilityButton){
+				conditionType = ActionChoice.FEASIBILITY;
+			}else{
+				wasTypeSelected = false;
+			}
+			
+			if(conditionChoiceBox.getValue().equals("Gender Condition")&&wasTypeSelected){
+				Alert genderAlert = new Alert(AlertType.CONFIRMATION);
+				
+				ButtonType maleButton = new ButtonType("Male");
+				ButtonType femaleButton = new ButtonType("Female");
+				//TODO once again only support binary gender for time reasons
+				
+				genderAlert.getButtonTypes().setAll(maleButton, femaleButton, ButtonType.CANCEL);
+				
+				Optional<ButtonType> genderOptional = genderAlert.showAndWait();
+				
+				if(genderOptional.get()==maleButton){
+					ace.addGenderCondition(Gender.MALE, conditionType);
+				}else if(genderOptional.get() == femaleButton){
+					ace.addGenderCondition(Gender.FEMALE, conditionType);
+				}
+			}else if (conditionChoiceBox.getValue().equals("Item Condition")&&wasTypeSelected){
+							
+				//TODO: abstract the select an item section of remove item and use it here 
+				//TODO: abstract the number of items section of add effect and use it here
+				//TODO get relational operater from user, either using buttons via confirmationdialog or by using the 
+				//choice dialog (will need to work with ints or strings probably maybe not?????
+				//TODO: write and call ace.addItemCondition, make sure to pass in conditionType
+				
+				//TODO change remove item in gameData to also remove all item conditions of that item 
+				
+				//TODO add toPrints to conditions and implement in ActionChoice toString
+			}
+		}
 	}
 	// File Menu Methods
 

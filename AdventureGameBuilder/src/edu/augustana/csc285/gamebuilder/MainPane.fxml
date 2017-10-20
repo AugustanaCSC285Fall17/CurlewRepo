@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.csc285.gamebuilder.MainPaneController">
+<BorderPane prefHeight="400.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.csc285.gamebuilder.MainPaneController">
    <top>
 <MenuBar BorderPane.alignment="CENTER">
   <menus>
@@ -39,7 +39,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                  <AnchorPane layoutY="-24.0" prefHeight="359.0" prefWidth="529.0">
+                  <AnchorPane layoutY="7.0" prefHeight="328.0" prefWidth="529.0">
                      <children>
                         <Label layoutX="156.0" layoutY="24.0" text="Curlew Game Builder">
                            <font>
@@ -90,15 +90,18 @@
                         <Button fx:id="showAceInfoButton" layoutX="382.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleShowAceInfoButton" text="Show ace Info" />
                         <Label layoutX="35.0" layoutY="117.0" text="Set Choice Text" />
                         <TextArea fx:id="aceChoiceTextArea" layoutX="12.0" layoutY="141.0" prefHeight="145.0" prefWidth="186.0" />
-                        <Button fx:id="aceChoiceSubmitButton" layoutX="231.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleAceChoiceSubmitButton" text="Submit" />
+                        <Button fx:id="aceChoiceSubmitButton" layoutX="111.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleAceChoiceSubmitButton" text="Submit" />
                         <Label layoutX="202.0" layoutY="128.0" text="Set Destination Slide Index:" />
                         <Button fx:id="removeAcButton" layoutX="218.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleRemoveAcButton" text="Remove Current Action Choice" />
                         <Line endX="430.0" layoutX="99.0" layoutY="100.0" startX="-100.0" />
                         <TextField fx:id="aceSetDestinationSlideIndexField" layoutX="412.0" layoutY="126.0" prefHeight="29.0" prefWidth="81.0" />
                         <ChoiceBox fx:id="selectActionChoiceIndexChoiceBox" layoutX="194.0" layoutY="52.0" prefHeight="22.0" prefWidth="48.0" />
-                        <Button fx:id="addEffectButton" layoutX="220.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleAddEffect" text="AddEffect" />
-                        <ChoiceBox fx:id="effectChiceBox" layoutX="307.0" layoutY="214.0" prefWidth="150.0" />
-                        <Button fx:id="removeEffectButton" layoutX="220.0" layoutY="245.0" mnemonicParsing="false" onAction="#handleRemoveEffectButton" text="Remove Effect" />
+                        <Button fx:id="addEffectButton" layoutX="222.0" layoutY="203.0" mnemonicParsing="false" onAction="#handleAddEffect" text="AddEffect" />
+                        <ChoiceBox fx:id="effectChiceBox" layoutX="304.0" layoutY="203.0" prefWidth="150.0" />
+                        <Button fx:id="removeEffectButton" layoutX="210.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleRemoveEffectButton" text="Remove Effect" />
+                        <Button fx:id="addConditionButton" layoutX="212.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleAddConditionButton" text="Add Condition" />
+                        <ChoiceBox fx:id="conditionChoiceBox" layoutX="316.0" layoutY="275.0" prefWidth="150.0" />
+                        <Button layoutX="229.0" layoutY="312.0" mnemonicParsing="false" text="Remove Condition" />
                      </children>
                   </AnchorPane>
               </content>

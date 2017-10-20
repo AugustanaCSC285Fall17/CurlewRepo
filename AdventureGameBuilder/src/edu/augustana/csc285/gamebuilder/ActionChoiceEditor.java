@@ -84,4 +84,8 @@ public class ActionChoiceEditor {
 	public ArrayList<Effect> getEffects() {
 		return slide.getActionChoicesAt(currentActionChoiceIndex).getEffect();
 	}
+
+	public void addGenderCondition(Gender gender, int conditionType) {
+		slide.getActionChoicesAt(currentActionChoiceIndex).addCondition(new GenderCondition(gender), conditionType);		
+	}
 }
