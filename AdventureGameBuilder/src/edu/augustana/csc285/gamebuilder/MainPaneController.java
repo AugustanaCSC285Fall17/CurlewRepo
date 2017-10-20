@@ -105,10 +105,10 @@ public class MainPaneController {
 	// Misc Editor Fields
 
 	@FXML
-	private Button addInventoryButton;
+	private Button addItemButton;
 
 	@FXML
-	private Button removeInventoryButton;
+	private Button removeItemButton;
 
 	// Starter Methods
 
@@ -533,30 +533,54 @@ public class MainPaneController {
 				new Alert(AlertType.ERROR, "Please Select an Effect Type").showAndWait();
 
 			} else if (effectChiceBox.getValue().equals("Item Effect")) {
-				
-				if (data.getPlayer().getInventory().size() == 0) {//TODO move this check to ace
+
+				if (data.getPlayer().getInventory().size() == 0) {// TODO move
+																	// this
+																	// check to
+																	// ace
 					new Alert(AlertType.ERROR, "There is nothing in the inventroy").showAndWait();
 				} else {
-					ChoiceDialog<Item> choice = new ChoiceDialog<Item>(null, data.getPlayer().getInventory());
-					choice.setTitle("New Effect Specs");
-					choice.setContentText("Select an item");
-					Optional<Item> itemChoiceOptional = choice.showAndWait();
+
+					
+					ArrayList<Item> inventory = data.getPlayer().getInventory();
+
+					ArrayList<Integer> itemIndices = new ArrayList<Integer>();
+
+					Alert itemInfo = new Alert(AlertType.INFORMATION);
+
+					String s = "";
+					for (int i = 0; i < inventory.size(); i++) {
+						itemIndices.add(i);
+						s += "Item " + inventory.get(i).toString() + " has index " + i + "\n";
+					}
+					itemInfo.setContentText(s);
+					ChoiceDialog<Integer> effectDialog = new ChoiceDialog<Integer>(null, itemIndices);
+					effectDialog.setContentText("Which item will be affected? Consult alert for refference");
+
+					itemInfo.setX(90);
+					itemInfo.setY(150);
+					itemInfo.show();
+					Optional<Integer> itemOptional = effectDialog.showAndWait();
+					itemInfo.close();
+
+					//TODO change to itemOptional.isPresent
 
 					try {
-						Item itemChoice = itemChoiceOptional.get();
+						int itemChoice = itemOptional.get();
 
-						if (ace.hasItemEffect(itemChoice)){
+						if (ace.hasItemEffect(inventory.get(itemChoice))) {
 							new Alert(AlertType.ERROR, "There is already an effect with that item").showAndWait();
-						}else{
-						TextInputDialog dialog = new TextInputDialog();
-						dialog.setTitle("New Effect Specs");
-						dialog.setHeaderText("Enter Effect Number");
-						dialog.setContentText("Use positive numbers for adding and negitive numbers for subtracting");
-						Optional<String> effectChoiceSizeOptional = dialog.showAndWait();
+						} else {
+							TextInputDialog dialog = new TextInputDialog();
+							dialog.setTitle("New Effect Specs");
+							dialog.setHeaderText("Enter Effect Number");
+							dialog.setContentText(
+									"Use positive numbers for adding and negitive numbers for subtracting");
+							Optional<String> effectChoiceSizeOptional = dialog.showAndWait();
 
-						int effectChoiceSize = Integer.parseInt(effectChoiceSizeOptional.get());
+							int effectChoiceSize = Integer.parseInt(effectChoiceSizeOptional.get());
 
-						ace.addItemEffect(itemChoice, effectChoiceSize);
+							ace.addItemEffect(inventory.get(itemChoice), effectChoiceSize);
 						}
 					} catch (NumberFormatException e) {
 						new Alert(AlertType.ERROR, "Was not a number; Effect not added").showAndWait();
@@ -567,7 +591,8 @@ public class MainPaneController {
 				}
 			} else if (effectChiceBox.getValue().equals("Gender Change Effect")) {
 				if (ace.hasGenderEffect()) {
-					new Alert(AlertType.ERROR, "There is already a gender change effect for this action choice").showAndWait();
+					new Alert(AlertType.ERROR, "There is already a gender change effect for this action choice")
+							.showAndWait();
 				} else {
 					Alert genderAlert = new Alert(AlertType.CONFIRMATION);
 					genderAlert.setContentText("Which gender should the player be changed to?");
@@ -593,20 +618,21 @@ public class MainPaneController {
 						new Alert(AlertType.ERROR, "New Effect Canceled.");
 					}
 				}
-			} else if (effectChiceBox.getValue().equals("Name Change Effect")){
-				if(ace.hasNameChangeEffect()){
-					new Alert(AlertType.ERROR, "There is already a name change effect for this action choice.").showAndWait();
-				}else{
+			} else if (effectChiceBox.getValue().equals("Name Change Effect")) {
+				if (ace.hasNameChangeEffect()) {
+					new Alert(AlertType.ERROR, "There is already a name change effect for this action choice.")
+							.showAndWait();
+				} else {
 					TextInputDialog nameDialog = new TextInputDialog();
 					nameDialog.setContentText("Enter the new name.");
 					nameDialog.setTitle("New Effect Specs");
-					
+
 					Optional<String> nameOptional = nameDialog.showAndWait();
-					
-					if(nameOptional.isPresent()){
+
+					if (nameOptional.isPresent()) {
 						String name = nameOptional.get();
 						ace.addNameChangeEffect(name);
-					}else{
+					} else {
 						new Alert(AlertType.ERROR, "New Effect Canceled.").showAndWait();
 					}
 				}
@@ -616,25 +642,44 @@ public class MainPaneController {
 	}
 
 	@FXML
-	public void handleRemoveEffectButton(){
-		ArrayList<Effect> effects= ace.getEffects();
-		ChoiceDialog<Effect> effectDialog = new ChoiceDialog<Effect>(null, effects);
-		effectDialog.setContentText("Which effect will be removed?");
-		Optional<Effect> effectOptional = effectDialog.showAndWait();
-		
-		if(effectOptional.isPresent()){
-			ace.removeEffect(effectOptional.get());
-		}else{
-			new Alert(AlertType.ERROR, "Effect not removed");
+
+	public void handleRemoveEffectButton() {
+		if (this.wasAcSelected()) {
+			ArrayList<Effect> effects = ace.getEffects();
+
+			ArrayList<Integer> effectIndices = new ArrayList<Integer>();
+
+			Alert effectInfo = new Alert(AlertType.INFORMATION);
+
+			String s = "";
+			for (int i = 0; i < effects.size(); i++) {
+				effectIndices.add(i);
+				s += "Effect " + effects.get(i).toString() + " has index " + i + "\n";
+			}
+			effectInfo.setContentText(s);
+			ChoiceDialog<Integer> effectDialog = new ChoiceDialog<Integer>(null, effectIndices);
+			effectDialog.setContentText("Which effect will be removed? Consult alert for refference");
+
+			effectInfo.setX(90);
+			effectInfo.setY(150);
+			effectInfo.show();
+			Optional<Integer> effectOptional = effectDialog.showAndWait();
+			effectInfo.close();
+
+			if (effectOptional.isPresent()) {
+				ace.removeEffect(effectOptional.get());
+			} else {
+				new Alert(AlertType.ERROR, "Effect not removed");
+			}
 		}
 		pController.update();
-		
+
 	}
 	// Misc Editor Methods
 
 	// provides a series of dialoges to get info on new item
 	@FXML
-	public void handleAddInventoryButton() {
+	public void handleAddItemButton() {
 		TextInputDialog nameDialog = new TextInputDialog();
 		nameDialog.setContentText("Enter the name of the Item");
 		Optional<String> nameOptional = nameDialog.showAndWait();
@@ -687,14 +732,47 @@ public class MainPaneController {
 	}
 
 	@FXML
-	public void handleRemoveInventoryButton() {
-		ChoiceDialog<Item> dialog = new ChoiceDialog<Item>(null, data.getPlayer().getInventory());
-		dialog.setContentText("Which item shoucl be removed?");
-		Optional<Item> itemOptional = dialog.showAndWait();
-		if (itemOptional.isPresent()) {
-			data.getPlayer().getInventory().remove(itemOptional.get());
-			pController.update();
+	//TODO change to strings instead of ints?
+	public void handleRemoveItemButton() {
+		ArrayList<Item> inventory = data.getPlayer().getInventory();
+
+		ArrayList<Integer> itemIndices = new ArrayList<Integer>();
+
+		Alert itemInfo = new Alert(AlertType.INFORMATION);
+
+		String s = "";
+		for (int i = 0; i < inventory.size(); i++) {
+			itemIndices.add(i);
+			s += "Item " + inventory.get(i).toString() + " has index " + i + "\n";
 		}
+		itemInfo.setContentText(s);
+		ChoiceDialog<Integer> effectDialog = new ChoiceDialog<Integer>(null, itemIndices);
+		effectDialog.setContentText("Which item will be removed? Consult alert for refference");
+
+		itemInfo.setX(90);
+		itemInfo.setY(150);
+		itemInfo.show();
+		Optional<Integer> itemOptional = effectDialog.showAndWait();
+		itemInfo.close();
+
+		if (itemOptional.isPresent()) {
+			int i = itemOptional.get();
+			if(data.itemUsed(inventory.get(itemOptional.get()))){
+				Optional<ButtonType> inUseResponse = new Alert(AlertType.CONFIRMATION, "This item is in use. Removing it remove all effects and conditions using this item. Are you sure?").showAndWait();				
+				//TODO support conditions removal
+				
+				if(inUseResponse.get()==ButtonType.OK){
+					data.removeItem(inventory.get(itemOptional.get()));
+				}
+			}else{
+			
+			data.getPlayer().getInventory().remove(i);
+			}
+		} else {
+			new Alert(AlertType.ERROR, "Item not removed");
+		}
+	pController.update();
+		
 	}
 	// File Menu Methods
 

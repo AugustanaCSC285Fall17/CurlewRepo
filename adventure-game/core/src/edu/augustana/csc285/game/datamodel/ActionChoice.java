@@ -65,8 +65,12 @@ public class ActionChoice {// implements Feasible
 	}
 
 	// remove effect
-	public void removeEffect(Effect effect) {
-		effectList.remove(effect);
+	public void removeEffect(int integer) {
+		effectList.remove(integer);
+	}
+	
+	public void removeEffect(Effect e) {
+		effectList.remove(e);	
 	}
 
 	// changes the effect name
@@ -120,7 +124,8 @@ public class ActionChoice {// implements Feasible
 	public boolean hasItemEffect(Item itemChoice) {
 		for(int i = 0; i < effectList.size(); i++){
 			if(effectList.get(i) instanceof ItemEffect){
-				if(effectList.get(i).equals(new ItemEffect(itemChoice,0))){
+				ItemEffect ie = (ItemEffect) effectList.get(i);
+				if(ie.equals(new ItemEffect(itemChoice, 0))){
 				return true;
 				}
 			}
@@ -136,5 +141,7 @@ public class ActionChoice {// implements Feasible
 		}
 		return false;
 	}
+
+	
 
 }
