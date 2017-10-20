@@ -80,9 +80,6 @@ public class Item {
 		if(o instanceof Item){
 			Item i = (Item) o;
 			if(i.getItemName().equals(itemName)){
-				System.out.println("Item:");
-				System.out.println(i.getItemName());
-				System.out.println(((Item) o).getItemName());
 				return true;
 			}else{
 				return false;

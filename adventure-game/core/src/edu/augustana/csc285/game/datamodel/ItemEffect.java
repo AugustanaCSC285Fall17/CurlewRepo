@@ -57,9 +57,6 @@ public class ItemEffect implements Effect {
 		if(o instanceof ItemEffect){
 			ItemEffect e = (ItemEffect) o;
 			if(e.getItem().equals(this.getItem())){
-				System.out.println("Effect:");
-				System.out.println(e.getItem());
-				System.out.println(this.getItem());
 				return true;
 			}
 			return false;
