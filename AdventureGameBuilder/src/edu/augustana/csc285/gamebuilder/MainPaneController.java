@@ -588,10 +588,11 @@ public class MainPaneController {
 							//method for this is below. Check to see if this is what we want
 							int effectChoiceSize = getChoiceSize("Effect");
 
+							
 							ace.addItemEffect(inventory.get(itemChoice), effectChoiceSize);
 						}
-					} catch (NumberFormatException e) {
-						new Alert(AlertType.ERROR, "Was not a number; Effect not added").showAndWait();
+					} catch (NumberFormatException e){
+						new Alert(AlertType.ERROR, "Must be a number").showAndWait();
 					} catch (NoSuchElementException e1) {
 						new Alert(AlertType.ERROR, "Effect not added").showAndWait();
 
@@ -649,7 +650,7 @@ public class MainPaneController {
 		pController.update();
 	}
 	// ***** abstracted method from above ^^^^
-	public int getChoiceSize(String EorC){
+	public int getChoiceSize(String EorC) throws NumberFormatException {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("New" + EorC+ "Specs");
 		dialog.setHeaderText("Enter" + EorC + "Number");
