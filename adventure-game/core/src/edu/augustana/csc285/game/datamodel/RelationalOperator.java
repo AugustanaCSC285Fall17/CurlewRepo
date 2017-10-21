@@ -27,4 +27,21 @@ public class RelationalOperator {
 	 }
 }
 
+	public String toString(){
+		if(opcode.equals("==")){
+			return "Equal";
+		}else if (opcode.equals(">")){
+			return "Greater than";
+		}else if (opcode.equals(">=")){
+			return "Greater than or equal";
+		}else if (opcode.equals("<")){
+			return "Less than";
+		}else if (opcode.equals("<=")){
+			return "Less than or equal";
+		}else if (opcode.equals("!=")){
+			return "Not equal";
+		}else{
+			return "Unknown relation";
+		}
+	}
 }

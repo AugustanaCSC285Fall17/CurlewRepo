@@ -25,6 +25,11 @@ public class ItemCondition implements Condition {
 	public boolean evaluate(Player p) {
 		return op.apply(p.getItemQuantity(item.getItemName()), qtyToCompare);
 	}
+
+	@Override
+	public String printEffectInfo() {
+		return "Item Condition; Item "+item+"; How to check: "+op+" Check amount: "+qtyToCompare;
+	}
 	
 	
 	

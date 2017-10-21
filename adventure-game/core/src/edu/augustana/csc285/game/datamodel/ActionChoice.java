@@ -101,7 +101,15 @@ public class ActionChoice {// implements Feasible
 	public String toString() {
 		String s = "choiceText: " + choiceText + "\ndestinationSlideIndex: " + destinationSlideIndex;
 		for (Effect effect : effectList) {
-			s += "\n" + effect.printEffectInfo(); // TODO make look pretty
+			s += "\n" + effect.printEffectInfo();
+		}
+		
+		for (Condition condition : feasibilityCond) {
+			s += "\nFeasibility " + condition.printEffectInfo(); 
+		}
+		
+		for (Condition condition : this.visibilityCond) {
+			s += "\nVisibility " + condition.printEffectInfo(); 
 		}
 		return s;
 	}
