@@ -659,6 +659,31 @@ public class MainPaneController {
 		Optional<String> choiceSizeOptional = dialog.showAndWait();
 		return Integer.parseInt(choiceSizeOptional.get());
 	}
+	
+	public Optional<Integer> getItemFromUser(){
+		ArrayList<Item> inventory = data.getPlayer().getInventory();
+
+		ArrayList<Integer> itemIndices = new ArrayList<Integer>();
+
+		Alert itemInfo = new Alert(AlertType.INFORMATION);
+
+		String s = "";
+		for (int i = 0; i < inventory.size(); i++) {
+			itemIndices.add(i);
+			s += "Item " + inventory.get(i).toString() + " has index " + i + "\n";
+		}
+		itemInfo.setContentText(s);
+		ChoiceDialog<Integer> effectDialog = new ChoiceDialog<Integer>(null, itemIndices);
+		effectDialog.setContentText("Which item will be removed? Consult alert for refference");
+
+		itemInfo.setX(90);
+		itemInfo.setY(150);
+		itemInfo.show();
+		Optional<Integer> itemOptional = effectDialog.showAndWait();
+		itemInfo.close();
+		
+		return itemOptional;
+	}
 
 	@FXML
 
@@ -754,25 +779,7 @@ public class MainPaneController {
 	//TODO change to strings instead of ints?
 	public void handleRemoveItemButton() {
 		ArrayList<Item> inventory = data.getPlayer().getInventory();
-
-		ArrayList<Integer> itemIndices = new ArrayList<Integer>();
-
-		Alert itemInfo = new Alert(AlertType.INFORMATION);
-
-		String s = "";
-		for (int i = 0; i < inventory.size(); i++) {
-			itemIndices.add(i);
-			s += "Item " + inventory.get(i).toString() + " has index " + i + "\n";
-		}
-		itemInfo.setContentText(s);
-		ChoiceDialog<Integer> effectDialog = new ChoiceDialog<Integer>(null, itemIndices);
-		effectDialog.setContentText("Which item will be removed? Consult alert for refference");
-
-		itemInfo.setX(90);
-		itemInfo.setY(150);
-		itemInfo.show();
-		Optional<Integer> itemOptional = effectDialog.showAndWait();
-		itemInfo.close();
+		Optional<Integer> itemOptional = getItemFromUser();
 
 		if (itemOptional.isPresent()) {
 			int i = itemOptional.get();
@@ -832,7 +839,16 @@ public class MainPaneController {
 					ace.addGenderCondition(Gender.FEMALE, conditionType);
 				}
 			}else if (conditionChoiceBox.getValue().equals("Item Condition")&&wasTypeSelected){
-							
+				Optional<Integer> itemOptional = getItemFromUser();
+				if (itemOptional.isPresent()) {
+					int i = itemOptional.get();
+				
+				try{			
+				int choiceSize = getChoiceSize("Condition");
+				} catch (NumberFormatException e){
+					new Alert(AlertType.ERROR, "Must be a number").showAndWait();
+				}
+				}
 				//TODO: abstract the select an item section of remove item and use it here 
 				//TODO:  <Possibly done? dont know if I did what you want> abstract the number of items section of add effect and use it here
 				//TODO get relational operater from user, either using buttons via confirmationdialog or by using the 
