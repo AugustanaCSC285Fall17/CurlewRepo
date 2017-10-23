@@ -341,6 +341,8 @@ public class MainPaneController {
 			pController.updateData(data);
 			clearSlideEditor();
 			clearACE();
+			this.updateSlideNumberChoiceBox();
+			this.updateActionChoiceNumberChoiceBox(); //This doesn't work for some reason
 		}
 	}
 
