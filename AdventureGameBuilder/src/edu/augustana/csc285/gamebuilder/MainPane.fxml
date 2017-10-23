@@ -89,20 +89,21 @@
                         <Label layoutX="269.0" layoutY="57.0" text="Current Action Choice:" />
                         <Label fx:id="currentACLabel" layoutX="425.0" layoutY="57.0" text="N/A" />
                         <Button fx:id="showAceInfoButton" layoutX="382.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleShowAceInfoButton" text="Show ace Info" />
-                        <Label layoutX="35.0" layoutY="117.0" text="Set Choice Text" />
+                        <Label layoutX="54.0" layoutY="117.0" text="Set Choice Text" />
                         <TextArea fx:id="aceChoiceTextArea" layoutX="12.0" layoutY="141.0" prefHeight="145.0" prefWidth="186.0" />
-                        <Button fx:id="aceChoiceSubmitButton" layoutX="35.0" layoutY="291.0" mnemonicParsing="false" onAction="#handleAceChoiceSubmitButton" text="Submit" />
-                        <Label layoutX="202.0" layoutY="128.0" text="Set Destination Slide Index:" />
-                        <Button fx:id="removeAcButton" layoutX="218.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleRemoveAcButton" text="Remove Current Action Choice" />
+                        <Button fx:id="aceChoiceSubmitButton" layoutX="71.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleAceChoiceSubmitButton" text="Submit" />
+                        <Label layoutX="253.0" layoutY="117.0" text="Set Destination Slide Index:" />
+                        <Button fx:id="removeAcButton" layoutX="291.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleRemoveAcButton" text="Remove Current Action Choice" />
                         <Line endX="430.0" layoutX="99.0" layoutY="100.0" startX="-100.0" />
-                        <TextField fx:id="aceSetDestinationSlideIndexField" layoutX="412.0" layoutY="126.0" prefHeight="29.0" prefWidth="81.0" />
-                        <ChoiceBox fx:id="selectActionChoiceIndexChoiceBox" layoutX="194.0" layoutY="52.0" prefHeight="22.0" prefWidth="48.0" />
-                        <Button fx:id="addEffectButton" layoutX="222.0" layoutY="203.0" mnemonicParsing="false" onAction="#handleAddEffect" text="AddEffect" />
-                        <ChoiceBox fx:id="effectChiceBox" layoutX="304.0" layoutY="203.0" prefWidth="150.0" />
-                        <Button fx:id="removeEffectButton" layoutX="210.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleRemoveEffectButton" text="Remove Effect" />
-                        <Button fx:id="addConditionButton" layoutX="212.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleAddConditionButton" text="Add Condition" />
-                        <ChoiceBox fx:id="conditionChoiceBox" layoutX="316.0" layoutY="275.0" prefWidth="150.0" />
-                        <Button fx:id="removeConditionButton" layoutX="229.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleRemoveConditionButton" text="Remove Condition" />
+                        <TextField fx:id="aceSetDestinationSlideIndexField" layoutX="439.0" layoutY="112.0" prefHeight="29.0" prefWidth="81.0" />
+                        <ChoiceBox fx:id="selectActionChoiceIndexChoiceBox" layoutX="196.0" layoutY="52.0" prefHeight="22.0" prefWidth="48.0" />
+                        <Button fx:id="addEffectButton" layoutX="233.0" layoutY="188.0" mnemonicParsing="false" onAction="#handleAddEffect" text="AddEffect" />
+                        <ChoiceBox fx:id="effectChiceBox" layoutX="358.0" layoutY="188.0" prefWidth="150.0" />
+                        <Button fx:id="removeEffectButton" layoutX="244.0" layoutY="227.0" mnemonicParsing="false" onAction="#handleRemoveEffectButton" text="Remove Effect" />
+                        <Button fx:id="addConditionButton" layoutX="233.0" layoutY="271.0" mnemonicParsing="false" onAction="#handleAddConditionButton" text="Add Condition" />
+                        <ChoiceBox fx:id="conditionChoiceBox" layoutX="358.0" layoutY="271.0" prefWidth="150.0" />
+                        <Button fx:id="removeConditionButton" layoutX="245.0" layoutY="308.0" mnemonicParsing="false" onAction="#handleRemoveConditionButton" text="Remove Condition" />
+                        <Line endY="228.0" layoutX="215.0" layoutY="138.0" startY="-38.0" />
                      </children>
                   </AnchorPane>
               </content>
@@ -112,7 +113,8 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="addIItemButton" layoutX="29.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleAddItemButton" text="Add Item" />
-                        <Button fx:id="removeItemButton" layoutX="29.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleRemoveItemButton" text="Remove Item" />
+                        <Button fx:id="removeItemButton" layoutX="29.0" layoutY="68.0" mnemonicParsing="false" onAction="#handleRemoveItemButton" text="Remove Item" />
+                        <Button layoutX="265.0" layoutY="30.0" mnemonicParsing="false" text="Remove Image" />
                      </children>
                   </AnchorPane>
               </content>
