@@ -512,10 +512,7 @@ public class MainPaneController {
 		}
 	}
 	
-	@FXML
-	private void handleRemoveConditionButton(){
-		
-	}
+	
 
 	public void updateActionChoiceNumberChoiceBox() {
 		ArrayList<Integer> list = new ArrayList<Integer>();
@@ -731,6 +728,8 @@ public class MainPaneController {
 		pController.update();
 
 	}
+	
+	
 	// Misc Editor Methods
 
 	// provides a series of dialoges to get info on new item
@@ -820,22 +819,10 @@ public class MainPaneController {
 																			// is
 																			// empty
 						&& data.getPlayer().getInventory().size() == 0)) {
-					Alert conditionAlert = new Alert(AlertType.CONFIRMATION);
-					conditionAlert.setContentText("Should this be a visibility or feasibility condition");
-					ButtonType visibleButton = new ButtonType("Visibility");
-					ButtonType feasibilityButton = new ButtonType("Feasibility");
-
-					conditionAlert.getButtonTypes().setAll(visibleButton, feasibilityButton, ButtonType.CANCEL);
-					Optional<ButtonType> conditionTypeOptional = conditionAlert.showAndWait();
-
+					int conditionType = this.getConditionType();
 					Boolean wasTypeSelected = true;
-					int conditionType = -1;
-					if (conditionTypeOptional.get() == visibleButton) {
-						conditionType = ActionChoice.VISIBILITY;
-					} else if (conditionTypeOptional.get() == feasibilityButton) {
-						conditionType = ActionChoice.FEASIBILITY;
-					} else {
-						wasTypeSelected = false;
+					if(conditionType==-1){
+						wasTypeSelected=false;
 					}
 
 					if (conditionChoiceBox.getValue().equals("Gender Condition") && wasTypeSelected) {
@@ -920,6 +907,58 @@ public class MainPaneController {
 			}
 		}
 		pController.update();
+	}
+	
+	private int getConditionType(){
+		Alert conditionAlert = new Alert(AlertType.CONFIRMATION);
+		conditionAlert.setContentText("Should this be a visibility or feasibility condition");
+		ButtonType visibleButton = new ButtonType("Visibility");
+		ButtonType feasibilityButton = new ButtonType("Feasibility");
+
+		conditionAlert.getButtonTypes().setAll(visibleButton, feasibilityButton, ButtonType.CANCEL);
+		Optional<ButtonType> conditionTypeOptional = conditionAlert.showAndWait();
+
+		int conditionType = -1;
+		if (conditionTypeOptional.get() == visibleButton) {
+			conditionType = ActionChoice.VISIBILITY;
+		} else if (conditionTypeOptional.get() == feasibilityButton) {
+			conditionType = ActionChoice.FEASIBILITY;
+		}
+			return conditionType;
+	}
+	@FXML
+	private void handleRemoveConditionButton(){
+//		if (this.wasAcSelected()) {
+//			
+//			Alert conditionAlert = new Alert(AlertType.CONFIRMATION);
+//			conditionAlert.setContentText("Should this be a visibility or feasibility condition");
+//			ButtonType visibleButton = new ButtonType("Visibility");
+//			ButtonType feasibilityButton = new ButtonType("Feasibility");
+//
+//			conditionAlert.getButtonTypes().setAll(visibleButton, feasibilityButton, ButtonType.CANCEL);
+//			Optional<ButtonType> conditionTypeOptional = conditionAlert.showAndWait();
+//
+//			Boolean wasTypeSelected = true;
+//			
+//			
+//			
+//			ArrayList<Effect> conditions = ace.getConditions();
+//
+//			ArrayList<Integer> effectIndices = new ArrayList<Integer>();
+//
+//			Alert effectInfo = new Alert(AlertType.INFORMATION);
+//
+//			String s = "";
+//			for (int i = 0; i < effects.size(); i++) {
+//				effectIndices.add(i);
+//				s += "Effect " + effects.get(i).toString() + " has index " + i + "\n";
+//			}
+//			effectInfo.setContentText(s);
+//			ChoiceDialog<Integer> effectDialog = new ChoiceDialog<Integer>(null, effectIndices);
+//			effectDialog.setContentText("Which effect will be removed? Consult alert for refference");
+//		
+//		}
+//		pController.update();
 	}
 	// File Menu Methods
 
