@@ -92,4 +92,11 @@ public class ActionChoiceEditor {
 	public void addItemCondition(Item item, RelationalOperator ro, int choiceSize, int conditionType) {
 		slide.getActionChoicesAt(currentActionChoiceIndex).addCondition(new ItemCondition(item, ro, choiceSize), conditionType);	
 	}
+
+	public ArrayList<Condition> getFConditions() {
+		return slide.getActionChoicesAt(currentActionChoiceIndex).getFeasibilityCond();
+	}
+	public ArrayList<Condition> getVConditions() {
+		return slide.getActionChoicesAt(currentActionChoiceIndex).getVisibilityCond();
+	}
 }
