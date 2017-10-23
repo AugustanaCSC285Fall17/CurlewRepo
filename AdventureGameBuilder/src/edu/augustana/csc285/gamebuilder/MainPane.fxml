@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.csc285.gamebuilder.MainPaneController">
+<BorderPane prefHeight="432.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.csc285.gamebuilder.MainPaneController">
    <top>
 <MenuBar BorderPane.alignment="CENTER">
   <menus>
@@ -63,24 +63,25 @@
                         <Label layoutX="24.0" layoutY="29.0" text="Select Slide Number: " />
                         <Label layoutX="289.0" layoutY="29.0" text="Current Slide:" />
                         <Label fx:id="currentSlideLabel" layoutX="405.0" layoutY="29.0" text="N/A" />
-                        <Label layoutX="14.0" layoutY="93.0" text="Set Slide Title" />
+                        <Label layoutX="24.0" layoutY="83.0" text="Set Slide Title" />
                         <Line endX="440.0" layoutX="95.0" layoutY="71.0" startX="-100.0" AnchorPane.bottomAnchor="257.5" AnchorPane.leftAnchor="-5.5" AnchorPane.rightAnchor="333.5" AnchorPane.topAnchor="70.5" />
-                        <Label layoutX="14.0" layoutY="130.0" text="Set Slide Game Text" />                 
-                        <Button fx:id="selectSlideImageButton" layoutX="232.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleSelectSlideImageButton" text="Select a Slide Image" />
-                        <TextArea fx:id="setGameTextArea" layoutX="14.0" layoutY="156.0" prefHeight="110.0" prefWidth="214.0" />
-                        <Button fx:id="submitButton" layoutX="226.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
-                        <Button fx:id="addActionChoiceButton" layoutX="234.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleAddActionChoiceButton" text="Add Action Choice " />
-                        <Button fx:id="removeSlideButton" layoutX="226.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleRemoveSlideButton" text="Remove Current Slide" />
-                        <Label layoutX="247.0" layoutY="245.0" text="Set Slide Type:" />
-                        <ChoiceBox fx:id="setSlideTypeChoiceBox" layoutX="344.0" layoutY="240.0" prefWidth="150.0" />
-                        <TextField fx:id="changeTitleTextField" layoutX="111.0" layoutY="88.0" prefHeight="31.0" prefWidth="342.0" />
+                        <Label layoutX="24.0" layoutY="115.0" text="Set Slide Game Text" />                 
+                        <Button fx:id="selectSlideImageButton" layoutX="113.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleSelectSlideImageButton" text="Select a Slide Image" />
+                        <TextArea fx:id="setGameTextArea" layoutX="158.0" layoutY="115.0" prefHeight="110.0" prefWidth="214.0" />
+                        <Button fx:id="submitButton" layoutX="232.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
+                        <Button fx:id="addActionChoiceButton" layoutX="321.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleAddActionChoiceButton" text="Add Action Choice " />
+                        <Button fx:id="removeSlideButton" layoutX="323.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleRemoveSlideButton" text="Remove Current Slide" />
+                        <Label layoutX="11.0" layoutY="284.0" text="Set Slide Type:" />
+                        <ChoiceBox fx:id="setSlideTypeChoiceBox" layoutX="115.0" layoutY="279.0" prefWidth="150.0" />
+                        <TextField fx:id="changeTitleTextField" layoutX="118.0" layoutY="78.0" prefHeight="31.0" prefWidth="342.0" />
                         <ChoiceBox fx:id="selectSlideNumberChoiceBox" layoutX="166.0" layoutY="24.0" prefHeight="22.0" prefWidth="47.0" />
+                        <Line endX="438.0" layoutX="94.0" layoutY="267.0" startX="-100.0" />
                      </children></AnchorPane>
             </content>
           </Tab>
             <Tab text="Action Choice Editor">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="362.0" prefWidth="529.0">
                      <children>
                         <Label layoutX="220.0" layoutY="21.0" text="Current Slide:" />
                         <Label fx:id="currentSlideLabel1" layoutX="316.0" layoutY="21.0" text="N/A" />
@@ -90,7 +91,7 @@
                         <Button fx:id="showAceInfoButton" layoutX="382.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleShowAceInfoButton" text="Show ace Info" />
                         <Label layoutX="35.0" layoutY="117.0" text="Set Choice Text" />
                         <TextArea fx:id="aceChoiceTextArea" layoutX="12.0" layoutY="141.0" prefHeight="145.0" prefWidth="186.0" />
-                        <Button fx:id="aceChoiceSubmitButton" layoutX="111.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleAceChoiceSubmitButton" text="Submit" />
+                        <Button fx:id="aceChoiceSubmitButton" layoutX="35.0" layoutY="291.0" mnemonicParsing="false" onAction="#handleAceChoiceSubmitButton" text="Submit" />
                         <Label layoutX="202.0" layoutY="128.0" text="Set Destination Slide Index:" />
                         <Button fx:id="removeAcButton" layoutX="218.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleRemoveAcButton" text="Remove Current Action Choice" />
                         <Line endX="430.0" layoutX="99.0" layoutY="100.0" startX="-100.0" />
@@ -101,7 +102,7 @@
                         <Button fx:id="removeEffectButton" layoutX="210.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleRemoveEffectButton" text="Remove Effect" />
                         <Button fx:id="addConditionButton" layoutX="212.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleAddConditionButton" text="Add Condition" />
                         <ChoiceBox fx:id="conditionChoiceBox" layoutX="316.0" layoutY="275.0" prefWidth="150.0" />
-                        <Button layoutX="229.0" layoutY="312.0" mnemonicParsing="false" text="Remove Condition" />
+                        <Button fx:id="removeConditionButton" layoutX="229.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleRemoveConditionButton" text="Remove Condition" />
                      </children>
                   </AnchorPane>
               </content>

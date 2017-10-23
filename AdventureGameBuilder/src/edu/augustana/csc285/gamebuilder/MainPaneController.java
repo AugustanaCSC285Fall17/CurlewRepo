@@ -105,6 +105,8 @@ public class MainPaneController {
 	private ChoiceBox<String> conditionChoiceBox;
 	@FXML
 	private Button addConditionButton;
+	@FXML
+	private Button removeConditionButton;
 
 	// Misc Editor Fields
 
@@ -508,6 +510,11 @@ public class MainPaneController {
 			ActionChoice choice = data.getSlide(se.getCurrentSlide()).getActionChoicesAt(ace.currentActionChoiceIndex);
 			new Alert(AlertType.INFORMATION, choice.toString()).showAndWait();
 		}
+	}
+	
+	@FXML
+	private void handleRemoveConditionButton(){
+		
 	}
 
 	public void updateActionChoiceNumberChoiceBox() {
