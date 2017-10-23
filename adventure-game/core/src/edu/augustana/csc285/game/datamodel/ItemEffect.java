@@ -56,7 +56,7 @@ public class ItemEffect implements Effect {
 	public boolean equals(Object o){
 		if(o instanceof ItemEffect){
 			ItemEffect e = (ItemEffect) o;
-			if(e.getItem().equals(this.getItem())){
+			if(e.getItem().equals(this.getItem()) && e.getEffectSize() == effectSize){
 				return true;
 			}
 			return false;

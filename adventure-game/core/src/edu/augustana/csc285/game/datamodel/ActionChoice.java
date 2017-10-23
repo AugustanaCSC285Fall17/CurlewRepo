@@ -3,6 +3,8 @@ package edu.augustana.csc285.game.datamodel;
 import java.util.ArrayList;
 
 public class ActionChoice {// implements Feasible
+	public static final int FEASIBILITY = 0;
+	public static final int VISIBILITY = 1;
 	private String choiceText = "";
 	private int destinationSlideIndex = -1;
 	private boolean visible;
@@ -54,7 +56,7 @@ public class ActionChoice {// implements Feasible
 	}
 
 	// Get the effect that the option cost and return it
-	//TODO change to get Effects
+	// TODO change to get Effects
 	public ArrayList<Effect> getEffect() {
 		return effectList;
 	}
@@ -68,9 +70,9 @@ public class ActionChoice {// implements Feasible
 	public void removeEffect(int integer) {
 		effectList.remove(integer);
 	}
-	
+
 	public void removeEffect(Effect e) {
-		effectList.remove(e);	
+		effectList.remove(e);
 	}
 
 	// changes the effect name
@@ -99,7 +101,15 @@ public class ActionChoice {// implements Feasible
 	public String toString() {
 		String s = "choiceText: " + choiceText + "\ndestinationSlideIndex: " + destinationSlideIndex;
 		for (Effect effect : effectList) {
-			s += "\n" + effect.printEffectInfo(); // TODO make look pretty
+			s += "\n" + effect.printEffectInfo();
+		}
+		
+		for (Condition condition : feasibilityCond) {
+			s += "\nFeasibility " + condition.printEffectInfo(); 
+		}
+		
+		for (Condition condition : this.visibilityCond) {
+			s += "\nVisibility " + condition.printEffectInfo(); 
 		}
 		return s;
 	}
@@ -113,8 +123,8 @@ public class ActionChoice {// implements Feasible
 	}
 
 	public boolean hasGenderEffect() {
-		for(int i = 0; i < effectList.size(); i++){
-			if(effectList.get(i) instanceof GenderChangeEffect){
+		for (int i = 0; i < effectList.size(); i++) {
+			if (effectList.get(i) instanceof GenderChangeEffect) {
 				return true;
 			}
 		}
@@ -122,11 +132,11 @@ public class ActionChoice {// implements Feasible
 	}
 
 	public boolean hasItemEffect(Item itemChoice) {
-		for(int i = 0; i < effectList.size(); i++){
-			if(effectList.get(i) instanceof ItemEffect){
+		for (int i = 0; i < effectList.size(); i++) {
+			if (effectList.get(i) instanceof ItemEffect) {
 				ItemEffect ie = (ItemEffect) effectList.get(i);
-				if(ie.equals(new ItemEffect(itemChoice, 0))){
-				return true;
+				if (ie.equals(new ItemEffect(itemChoice, 0))) {
+					return true;
 				}
 			}
 		}
@@ -134,14 +144,27 @@ public class ActionChoice {// implements Feasible
 	}
 
 	public boolean hasNameChangeEffect() {
-		for(int i = 0; i < effectList.size(); i++){
-			if(effectList.get(i) instanceof NameChangeEffect){
+		for (int i = 0; i < effectList.size(); i++) {
+			if (effectList.get(i) instanceof NameChangeEffect) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	
+	/**
+	 * 
+	 * @param condition: the condition you want added
+	 * @param conditionChoice: if the condition is a feasibility or visibility condition
+	 */
+	public void addCondition(Condition condition, int conditionChoice) {
+		if (conditionChoice == FEASIBILITY) {
+			feasibilityCond.add(condition);
+		} else if (conditionChoice == VISIBILITY) {
+			visibilityCond.add(condition);
+		}else{
+			throw new IllegalArgumentException("Must enter valid condition choice");
+		}
+	}
 
 }

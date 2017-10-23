@@ -101,6 +101,10 @@ public class MainPaneController {
 	private Button addEffectButton;
 	@FXML
 	private Button removeEffectButton;
+	@FXML
+	private ChoiceBox<String> conditionChoiceBox;
+	@FXML
+	private Button addConditionButton;
 
 	// Misc Editor Fields
 
@@ -117,6 +121,7 @@ public class MainPaneController {
 	private void initialize() {
 		createSlideTypeMenu();
 		createEffectChoiceBox();
+		createConditionChoiceBox();
 	}
 
 	/**
@@ -525,6 +530,15 @@ public class MainPaneController {
 		effectChiceBox.setItems(observableList);
 	}
 
+	private void createConditionChoiceBox() {
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("Gender Condition");
+		list.add("Item Condition");
+		ObservableList<String> observableList = FXCollections.observableList(list);
+		conditionChoiceBox.setItems(observableList);
+
+	}
+
 	// TODO change to result.isPresent
 	@FXML
 	private void handleAddEffect() {
@@ -541,7 +555,6 @@ public class MainPaneController {
 					new Alert(AlertType.ERROR, "There is nothing in the inventroy").showAndWait();
 				} else {
 
-					
 					ArrayList<Item> inventory = data.getPlayer().getInventory();
 
 					ArrayList<Integer> itemIndices = new ArrayList<Integer>();
@@ -563,7 +576,7 @@ public class MainPaneController {
 					Optional<Integer> itemOptional = effectDialog.showAndWait();
 					itemInfo.close();
 
-					//TODO change to itemOptional.isPresent
+					// TODO change to itemOptional.isPresent
 
 					try {
 						int itemChoice = itemOptional.get();
@@ -571,19 +584,15 @@ public class MainPaneController {
 						if (ace.hasItemEffect(inventory.get(itemChoice))) {
 							new Alert(AlertType.ERROR, "There is already an effect with that item").showAndWait();
 						} else {
-							TextInputDialog dialog = new TextInputDialog();
-							dialog.setTitle("New Effect Specs");
-							dialog.setHeaderText("Enter Effect Number");
-							dialog.setContentText(
-									"Use positive numbers for adding and negitive numbers for subtracting");
-							Optional<String> effectChoiceSizeOptional = dialog.showAndWait();
-
-							int effectChoiceSize = Integer.parseInt(effectChoiceSizeOptional.get());
+							////////// *************************************///////////////////////////////
+							// method for this is below. Check to see if this is
+							////////// what we want
+							int effectChoiceSize = getChoiceSize("Effect");
 
 							ace.addItemEffect(inventory.get(itemChoice), effectChoiceSize);
 						}
 					} catch (NumberFormatException e) {
-						new Alert(AlertType.ERROR, "Was not a number; Effect not added").showAndWait();
+						new Alert(AlertType.ERROR, "Must be a number").showAndWait();
 					} catch (NoSuchElementException e1) {
 						new Alert(AlertType.ERROR, "Effect not added").showAndWait();
 
@@ -639,6 +648,46 @@ public class MainPaneController {
 			}
 		}
 		pController.update();
+	}
+
+	// ***** abstracted method from above ^^^^
+	public int getChoiceSize(String EorC) throws NumberFormatException, NoSuchElementException {
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("New" + EorC + "Specs");
+		dialog.setHeaderText("Enter" + EorC + "Number");
+		dialog.setContentText("Use positive numbers for adding and negitive numbers for subtracting");
+		Optional<String> choiceSizeOptional = dialog.showAndWait();
+		return Integer.parseInt(choiceSizeOptional.get());
+	}
+
+	public Item getItemFromUser() {
+		ArrayList<Item> inventory = data.getPlayer().getInventory();
+
+		ArrayList<Integer> itemIndices = new ArrayList<Integer>();
+
+		Alert itemInfo = new Alert(AlertType.INFORMATION);
+
+		String s = "";
+		for (int i = 0; i < inventory.size(); i++) {
+			itemIndices.add(i);
+			s += "Item " + inventory.get(i).toString() + " has index " + i + "\n";
+		}
+		itemInfo.setContentText(s);
+		ChoiceDialog<Integer> effectDialog = new ChoiceDialog<Integer>(null, itemIndices);
+		effectDialog.setContentText("Which item? Consult alert for refference");
+
+		itemInfo.setX(90);
+		itemInfo.setY(150);
+		itemInfo.show();
+		Optional<Integer> itemOptional = effectDialog.showAndWait();
+		itemInfo.close();
+
+		if (itemOptional.isPresent()) {
+			int i = itemOptional.get();
+			return inventory.get(i);
+		}
+		new Alert(AlertType.ERROR, "Action not completed");
+		return null;
 	}
 
 	@FXML
@@ -732,47 +781,138 @@ public class MainPaneController {
 	}
 
 	@FXML
-	//TODO change to strings instead of ints?
+	// TODO change to strings instead of ints?
 	public void handleRemoveItemButton() {
 		ArrayList<Item> inventory = data.getPlayer().getInventory();
+		Item item = getItemFromUser();
 
-		ArrayList<Integer> itemIndices = new ArrayList<Integer>();
+		if (data.itemUsed(item)) {
+			Optional<ButtonType> inUseResponse = new Alert(AlertType.CONFIRMATION,
+					"This item is in use. Removing it remove all effects and conditions using this item. Are you sure?")
+							.showAndWait();
+			// TODO support conditions removal
 
-		Alert itemInfo = new Alert(AlertType.INFORMATION);
-
-		String s = "";
-		for (int i = 0; i < inventory.size(); i++) {
-			itemIndices.add(i);
-			s += "Item " + inventory.get(i).toString() + " has index " + i + "\n";
-		}
-		itemInfo.setContentText(s);
-		ChoiceDialog<Integer> effectDialog = new ChoiceDialog<Integer>(null, itemIndices);
-		effectDialog.setContentText("Which item will be removed? Consult alert for refference");
-
-		itemInfo.setX(90);
-		itemInfo.setY(150);
-		itemInfo.show();
-		Optional<Integer> itemOptional = effectDialog.showAndWait();
-		itemInfo.close();
-
-		if (itemOptional.isPresent()) {
-			int i = itemOptional.get();
-			if(data.itemUsed(inventory.get(itemOptional.get()))){
-				Optional<ButtonType> inUseResponse = new Alert(AlertType.CONFIRMATION, "This item is in use. Removing it remove all effects and conditions using this item. Are you sure?").showAndWait();				
-				//TODO support conditions removal
-				
-				if(inUseResponse.get()==ButtonType.OK){
-					data.removeItem(inventory.get(itemOptional.get()));
-				}
-			}else{
-			
-			data.getPlayer().getInventory().remove(i);
+			if (inUseResponse.get() == ButtonType.OK) {
+				data.removeItem(item);
 			}
 		} else {
-			new Alert(AlertType.ERROR, "Item not removed");
+
+			data.getPlayer().getInventory().remove(item);
 		}
-	pController.update();
-		
+		pController.update();
+
+	}
+
+	@FXML
+	public void handleAddConditionButton() {
+		if (wasAcSelected()) {
+			if (conditionChoiceBox.getValue() != null) {
+				if (!(conditionChoiceBox.getValue().equals("Item Condition")// checks
+																			// if
+																			// inventory
+																			// is
+																			// empty
+						&& data.getPlayer().getInventory().size() == 0)) {
+					Alert conditionAlert = new Alert(AlertType.CONFIRMATION);
+					conditionAlert.setContentText("Should this be a visibility or feasibility condition");
+					ButtonType visibleButton = new ButtonType("Visibility");
+					ButtonType feasibilityButton = new ButtonType("Feasibility");
+
+					conditionAlert.getButtonTypes().setAll(visibleButton, feasibilityButton, ButtonType.CANCEL);
+					Optional<ButtonType> conditionTypeOptional = conditionAlert.showAndWait();
+
+					Boolean wasTypeSelected = true;
+					int conditionType = -1;
+					if (conditionTypeOptional.get() == visibleButton) {
+						conditionType = ActionChoice.VISIBILITY;
+					} else if (conditionTypeOptional.get() == feasibilityButton) {
+						conditionType = ActionChoice.FEASIBILITY;
+					} else {
+						wasTypeSelected = false;
+					}
+
+					if (conditionChoiceBox.getValue().equals("Gender Condition") && wasTypeSelected) {
+						Alert genderAlert = new Alert(AlertType.CONFIRMATION);
+						genderAlert.setContentText("Should male or female be checked?");
+
+						ButtonType maleButton = new ButtonType("Male");
+						ButtonType femaleButton = new ButtonType("Female");
+						// TODO once again only support binary gender for time
+						// reasons
+
+						genderAlert.getButtonTypes().setAll(maleButton, femaleButton, ButtonType.CANCEL);
+
+						Optional<ButtonType> genderOptional = genderAlert.showAndWait();
+
+						if (genderOptional.get() == maleButton) {
+							ace.addGenderCondition(Gender.MALE, conditionType);
+						} else if (genderOptional.get() == femaleButton) {
+							ace.addGenderCondition(Gender.FEMALE, conditionType);
+						}
+					} else if (conditionChoiceBox.getValue().equals("Item Condition") && wasTypeSelected) {
+						Item item = getItemFromUser();
+						if (item != null) {
+
+							try {
+								int choiceSize = getChoiceSize("Condition");
+
+								ArrayList<String> roList = new ArrayList<String>();
+								roList.add("Less Than");
+								roList.add("Less Than or Equal");
+								roList.add("Greater Than");
+								roList.add("Greater Than or Equal");
+								roList.add("Equal");
+								roList.add("Not Equal");
+
+								ChoiceDialog<String> roDialog = new ChoiceDialog<String>(null, roList);
+								Optional<String> roOptional = roDialog.showAndWait();
+
+								if (roOptional.isPresent()) {
+									RelationalOperator ro = null;
+									if (roOptional.get().equals("Less Than")) {
+										ro = RelationalOperator.LESS_THAN;
+									} else if (roOptional.get().equals("Less Than or Equal")) {
+										ro = RelationalOperator.LESS_THAN_OR_EQUAL;
+									} else if (roOptional.get().equals("Greater Than")) {
+										ro = RelationalOperator.GREATER_THAN;
+									} else if (roOptional.get().equals("Greater Than or Equal")) {
+										ro = RelationalOperator.GREATER_THAN_OR_EQUAL;
+									} else if (roOptional.get().equals("Equal")) {
+										ro = RelationalOperator.EQUAL;
+									} else if (roOptional.get().equals("Not Equal")) {
+										ro = RelationalOperator.NOT_EQUAL;
+									}
+									ace.addItemCondition(item, ro, choiceSize, conditionType);
+
+								}
+								// if(roOptional.isPresent())
+
+							} catch (NumberFormatException e) {
+								new Alert(AlertType.ERROR, "Must be a number").showAndWait();
+							} catch(NoSuchElementException e){
+								new Alert(AlertType.ERROR, "No number sumbited").showAndWait();
+							}
+						}else{
+							new Alert(AlertType.ERROR, "No item selected").showAndWait();
+						}
+					}
+				} else {
+					new Alert(AlertType.ERROR, "Nothing in inventory").showAndWait();
+				}
+
+				// TODO set up so only one condition can be applied (where
+				// applicable)
+
+				// TODO change remove item in gameData to also remove all item
+				// conditions of that item
+
+				// TODO change default slide index to 0 so doesn't break;
+				//TODO fix file path of that image thing that I didn't know where to put before
+			} else {
+				new Alert(AlertType.ERROR, "Please select a condition").showAndWait();
+			}
+		}
+		pController.update();
 	}
 	// File Menu Methods
 

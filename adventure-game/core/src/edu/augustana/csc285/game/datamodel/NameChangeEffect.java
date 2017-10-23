@@ -25,6 +25,10 @@ public class NameChangeEffect implements Effect {
 		//TODO Don't know if we even need it in this class but is an abstract method
 	}
 	
+	public int getEffectSize(){
+		return 0;
+	}
+	
 	public String printEffectInfo(){
 		return "Name change to: " + newName;
 	}

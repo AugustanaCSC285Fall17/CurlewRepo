@@ -10,8 +10,12 @@ public interface Effect {
 	public abstract void setEffectSize(int size);
 	//abstract method that sets the effect name
 	public abstract void setEffectName(String name);
+	//abstract get method for effectSize field
+	public abstract int getEffectSize();
 	//abstract method that returns a string with the basic info of the effect
 	public abstract String printEffectInfo();
+	//abstract override method of the equals method
+	//public abstract boolean equals(Effect effect);
 	// returns a toString method
 	public abstract String toString();
 }
