@@ -141,6 +141,7 @@ public class MainPaneController {
 				.addListener((ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) -> {
 					if (newValue != null) {
 						changeCurrentSlide(newValue);
+						this.updateActionChoiceNumberChoiceBox();
 					}
 				});
 
