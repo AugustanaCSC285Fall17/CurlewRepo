@@ -24,7 +24,7 @@
         <MenuItem mnemonicParsing="false" onAction="#handleMenuFileClose" text="Close" />
       </items>
     </Menu>
-    <Menu mnemonicParsing="false" text="Help">
+    <Menu mnemonicParsing="false" text="About">
       <items>
         <MenuItem mnemonicParsing="false" onAction="#handleMenuHelpAbout" text="About" />
       </items>
@@ -93,7 +93,7 @@
                         <TextArea fx:id="aceChoiceTextArea" layoutX="12.0" layoutY="141.0" prefHeight="145.0" prefWidth="186.0" />
                         <Button fx:id="aceChoiceSubmitButton" layoutX="71.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleAceChoiceSubmitButton" text="Submit" />
                         <Label layoutX="253.0" layoutY="117.0" text="Set Destination Slide Index:" />
-                        <Button fx:id="removeAcButton" layoutX="291.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleRemoveAcButton" text="Remove Current Action Choice" />
+                        <Button fx:id="removeAcButton" layoutX="232.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleRemoveAcButton" text="Remove Current Action Choice" />
                         <Line endX="430.0" layoutX="99.0" layoutY="100.0" startX="-100.0" />
                         <TextField fx:id="aceSetDestinationSlideIndexField" layoutX="439.0" layoutY="112.0" prefHeight="29.0" prefWidth="81.0" />
                         <ChoiceBox fx:id="selectActionChoiceIndexChoiceBox" layoutX="196.0" layoutY="52.0" prefHeight="22.0" prefWidth="48.0" />

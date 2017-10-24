@@ -32,16 +32,24 @@ public class SlideEditor {
 	public void setCurrentSlide(int currentRoom) {
 		this.currentSlideIndex = currentRoom;
 	}
-	//changes the title of the slide to the passed in string
+	/**
+	 * changes the title of the slide to the passed in string
+	 * @param title
+	 */
 	public void changeTitle(String title) {
 		data.getSlide(currentSlideIndex).setTitle(title);
 	}
 
-	//changes the game text to the passed in string
+	/**
+	 * changes the game text to the passed in string
+	 * @param text
+	 */
 	public void setGameText(String text) {
 		data.getSlide(currentSlideIndex).setGameText(text);
 	}
-	//adds an action choice to the end of the list
+	/**
+	 * adds an action choice to the end of the list
+	 */
 	public void addActionChoice() {
 		data.getSlide(currentSlideIndex).addActionChoice();
 
@@ -51,8 +59,12 @@ public class SlideEditor {
 		data.getSlide(currentSlideIndex).setSlideType(slideType);
 	}
 
-	// https://stackoverflow.com/questions/16433915/how-to-copy-file-from-one-location-to-another-location
-	// as a reference
+	/**
+	 * https://stackoverflow.com/questions/16433915/how-to-copy-file-from-one-location-to-another-location
+	 *  as a reference
+	 * @param slideImageIn
+	 * @throws IOException
+	 */
 	public void setSlideImage(File slideImageIn) throws IOException {
 
 		String path = "assets/slideImages/"+ slideImageIn.getName();
@@ -60,8 +72,10 @@ public class SlideEditor {
 		data.getSlide(currentSlideIndex).setImageFileName(path);
 	}
 
-	//checks to see if a slide was selected and returns true if one has been selected and 
-	//false if one hasn't been selected
+	/**
+	 * checks to see if a slide was selected and returns true if one has been selected and 
+	*false if one hasn't been selected
+	 */
 	public boolean wasSlideSelected() {
 		if (currentSlideIndex == -1) {
 			return false;
@@ -69,7 +83,9 @@ public class SlideEditor {
 			return true;
 		}
 	}
-	//removes a slide from the slide list by calling on the GameData class's removeSlide method
+	/**
+	 * removes a slide from the slide list by calling on the GameData class's removeSlide method
+	 */
 	public void removeSlide() {
 		data.removeSlide(currentSlideIndex);
 		setCurrentSlide(-1);
