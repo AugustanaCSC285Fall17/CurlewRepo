@@ -460,7 +460,7 @@ public class MainPaneController {
 		ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide()), se);
 		ace.setCurrentActionChoiceIndex(index);
 		currentACLabel.setText(Integer.toString(index));
-		ActionChoice choice = data.getSlide(se.getCurrentSlide()).getActionChoicesAt(index);
+		ActionChoice choice = data.getSlide(se.getCurrentSlide()).getActionChoiceAt(index);
 		aceChoiceTextArea.setText(choice.getChoiceText());
 		aceSetDestinationSlideIndexField.setText(Integer.toString(choice.getDestinationSlideIndex()));
 	}
@@ -511,7 +511,7 @@ public class MainPaneController {
 	@FXML
 	private void handleShowAceInfoButton() {
 		if (wasAcSelected()) {
-			ActionChoice choice = data.getSlide(se.getCurrentSlide()).getActionChoicesAt(ace.currentActionChoiceIndex);
+			ActionChoice choice = data.getSlide(se.getCurrentSlide()).getActionChoiceAt(ace.currentActionChoiceIndex);
 			new Alert(AlertType.INFORMATION, choice.toString()).showAndWait();
 		}
 	}

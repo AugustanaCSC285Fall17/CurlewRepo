@@ -30,12 +30,12 @@ public class ActionChoiceEditor {
 	}
 
 	public void setDestinationSlideIndex(int index) {
-		slide.getActionChoicesAt(currentActionChoiceIndex)
+		slide.getActionChoiceAt(currentActionChoiceIndex)
 				.setDestinationSlideIndex(index);
 	}
 
 	public void setChoiceText(String text) {
-		slide.getActionChoicesAt(currentActionChoiceIndex).setChoiceText(text);
+		slide.getActionChoiceAt(currentActionChoiceIndex).setChoiceText(text);
 	}
 	/**
 	 * 
@@ -61,18 +61,18 @@ public class ActionChoiceEditor {
 	 * @param [effectSize] integer size of the effect
 	 */
 	public void addItemEffect(Item item, int effectSize){
-		slide.getActionChoicesAt(currentActionChoiceIndex).addEffect(new ItemEffect (item,effectSize));
+		slide.getActionChoiceAt(currentActionChoiceIndex).addEffect(new ItemEffect (item,effectSize));
 	}
 	/**
 	 * 
 	 * @param effectIndex 
 	 */
 	public void removeEffect(int effectIndex){
-		slide.getActionChoicesAt(currentActionChoiceIndex).removeEffect(effectIndex);
+		slide.getActionChoiceAt(currentActionChoiceIndex).removeEffect(effectIndex);
 	}
 	
 	public void removeCondition(int conditionIndex, int visOrFeas){
-		slide.getActionChoicesAt(currentActionChoiceIndex).removeCondition(conditionIndex, visOrFeas);
+		slide.getActionChoiceAt(currentActionChoiceIndex).removeCondition(conditionIndex, visOrFeas);
 	}
 	/**
 	 * 
@@ -80,39 +80,39 @@ public class ActionChoiceEditor {
 	 * @param index of the effect
 	 */
 	public void changeEffectSize(int newEffectSize, int index){
-		slide.getActionChoicesAt(currentActionChoiceIndex).setEffectSize(newEffectSize, index);
+		slide.getActionChoiceAt(currentActionChoiceIndex).setEffectSize(newEffectSize, index);
 	}
 	
 	public void addGenderChangeEffect(Gender gender){
-		slide.getActionChoicesAt(currentActionChoiceIndex).addEffect(new GenderChangeEffect(gender));
+		slide.getActionChoiceAt(currentActionChoiceIndex).addEffect(new GenderChangeEffect(gender));
 	}
 	/**
 	 * 
 	 * @return the call of the hasGenderEffect of the current action choice 
 	 */
 	public boolean hasGenderEffect() {
-		return(slide.getActionChoicesAt(currentActionChoiceIndex).hasGenderEffect());
+		return(slide.getActionChoiceAt(currentActionChoiceIndex).hasGenderEffect());
 	}
 	/**
 	 * 
 	 * @return the call of the hasItemEffect of the current action choice 
 	 */
 	public boolean hasItemEffect(Item itemChoice) {
-		return slide.getActionChoicesAt(currentActionChoiceIndex).hasItemEffect(itemChoice);
+		return slide.getActionChoiceAt(currentActionChoiceIndex).hasItemEffect(itemChoice);
 	}
 	/**
 	 * 
 	 * @return the call of the hasNameChangeEffect of the current action choice 
 	 */
 	public boolean hasNameChangeEffect() {
-		return slide.getActionChoicesAt(currentActionChoiceIndex).hasNameChangeEffect();
+		return slide.getActionChoiceAt(currentActionChoiceIndex).hasNameChangeEffect();
 	}
 	/**
 	 * creates a new name change effect by passing in a new name 
 	 * @param [name] the name that the user wants the current name to change to
 	 */
 	public void addNameChangeEffect(String name) {
-		slide.getActionChoicesAt(currentActionChoiceIndex).addEffect(new NameChangeEffect(name));
+		slide.getActionChoiceAt(currentActionChoiceIndex).addEffect(new NameChangeEffect(name));
 		
 	}
 	/**
@@ -120,7 +120,7 @@ public class ActionChoiceEditor {
 	 * @return a list of effects of the current action choice
 	 */
 	public ArrayList<Effect> getEffects() {
-		return slide.getActionChoicesAt(currentActionChoiceIndex).getEffect();
+		return slide.getActionChoiceAt(currentActionChoiceIndex).getEffect();
 	}
 	/**
 	 * 
@@ -128,7 +128,7 @@ public class ActionChoiceEditor {
 	 * @param conditionType a int condition type
 	 */
 	public void addGenderCondition(Gender gender, int conditionType) {
-		slide.getActionChoicesAt(currentActionChoiceIndex).addCondition(new GenderCondition(gender), conditionType);		
+		slide.getActionChoiceAt(currentActionChoiceIndex).addCondition(new GenderCondition(gender), conditionType);		
 	}
 	/**
 	 * creates a new item condition
@@ -138,20 +138,20 @@ public class ActionChoiceEditor {
 	 * @param conditionType
 	 */
 	public void addItemCondition(Item item, RelationalOperator ro, int choiceSize, int conditionType) {
-		slide.getActionChoicesAt(currentActionChoiceIndex).addCondition(new ItemCondition(item, ro, choiceSize), conditionType);	
+		slide.getActionChoiceAt(currentActionChoiceIndex).addCondition(new ItemCondition(item, ro, choiceSize), conditionType);	
 	}
 	/**
 	 * 
 	 * @return the list of feasibilty conditions for a current action choice
 	 */
 	public ArrayList<Condition> getFConditions() {
-		return slide.getActionChoicesAt(currentActionChoiceIndex).getFeasibilityCond();
+		return slide.getActionChoiceAt(currentActionChoiceIndex).getFeasibilityCond();
 	}
 	/**
 	 * 
 	 * @return the list of visibility conditions for a current action choice
 	 */
 	public ArrayList<Condition> getVConditions() {
-		return slide.getActionChoicesAt(currentActionChoiceIndex).getVisibilityCond();
+		return slide.getActionChoiceAt(currentActionChoiceIndex).getVisibilityCond();
 	}
 }

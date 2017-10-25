@@ -53,7 +53,7 @@ public class Slide {
 		return actionChoices;
 	}
 	
-	public ActionChoice getActionChoicesAt(int index) {
+	public ActionChoice getActionChoiceAt(int index) {
 		return actionChoices.get(index);
 	}
 	//new method may change later
