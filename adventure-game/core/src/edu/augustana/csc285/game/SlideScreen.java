@@ -10,6 +10,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -17,6 +19,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -40,6 +43,9 @@ public class SlideScreen implements Screen {
 	private Button muteButton;
 	private ArrayList<TextButton> choiceButtons;
 	private ScrollPane scrollPane;
+	
+	private Slider volumeSlider;
+	private Dialog volumeDialog;
 
 	private Dialog rejectDialog;
 	
@@ -120,6 +126,11 @@ public class SlideScreen implements Screen {
 		});
 		game.stage.addActor(pauseButton);
 		
+		
+		
+		// -------------------- inventory button ----------------------
+		
+		
 		Image invenImg = new Image(new Texture(Gdx.files.internal("art/icons/inventorySMALL.png")));
 		inventoryButton = new Button(game.skin);
 		inventoryButton.add(invenImg);
@@ -138,11 +149,42 @@ public class SlideScreen implements Screen {
 		});
 		game.stage.addActor(inventoryButton);
 		
+		
+
+		//-------------------- volume dialog & slider ------------------
+		volumeSlider = new Slider(0f, 1f, 0.1f, false, game.skin);
+		volumeSlider.setValue(game.bgMusic.getVolume());
+		volumeSlider.addListener(new EventListener(){
+			@Override
+			public boolean handle(Event event) {
+				game.bgMusic.setVolume(volumeSlider.getValue());
+				return false;
+			}
+			
+		});
+		
+		volumeDialog = new Dialog("Set Volume", game.skin);
+		volumeDialog.hide();
+		volumeDialog.add(volumeSlider).align(Align.center);
+		volumeDialog.row();
+		TextButton okButton = new TextButton("OK", game.skin);
+		okButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				volumeDialog.hide();
+			}
+		});
+		volumeDialog.add(okButton).align(Align.center);
+		volumeDialog.setWidth(700);
+		volumeDialog.setPosition(300, 300);
+		game.stage.addActor(volumeDialog);
+		
+		//--------------------- mute button -------------
 		Image muteImg = new Image(new Texture(Gdx.files.internal("art/icons/muteSMALL.png")));
 		Image unmuteImg = new Image(new Texture(Gdx.files.internal("art/icons/unmuteSMALL.png")));
 		muteButton = new Button(game.skin);
 		muteButton.add(muteImg);
-		if (!game.bgMusic.isPlaying()) {
+		if (game.bgMusic.getVolume() != 0) {
 			muteButton.removeActor(muteImg);
 			muteButton.add(unmuteImg);
 		}
@@ -153,22 +195,12 @@ public class SlideScreen implements Screen {
 		muteButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				toggleMusic(muteImg, unmuteImg);
+				
+				volumeDialog.show(game.stage);
+				
 			}
 		});
 		game.stage.addActor(muteButton);
-	}
-	
-	private void toggleMusic(Image muteImg, Image unmuteImg) {
-		if (game.bgMusic.isPlaying()) {
-			game.bgMusic.pause();
-			muteButton.removeActor(muteImg);
-			muteButton.add(unmuteImg);
-		} else {
-			game.bgMusic.play();
-			muteButton.removeActor(unmuteImg);
-			muteButton.add(muteImg);
-		}
 	}
 
 	

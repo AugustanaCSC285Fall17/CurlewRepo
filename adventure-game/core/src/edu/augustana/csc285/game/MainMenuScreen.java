@@ -20,7 +20,7 @@ public class MainMenuScreen implements Screen {
 	private Table table;
 	private TextButton startButton;
 	private TextButton aboutButton;
-	private TextButton quitButton;
+//	private TextButton quitButton;
 	private TextButton backButton;
 	private Label introText;
 	private Sprite logo;
@@ -64,14 +64,14 @@ public class MainMenuScreen implements Screen {
 				initializeAbout();
 			}
 		}); 
-		
-		quitButton = new TextButton("Quit Game", game.skin);
-		quitButton.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				Gdx.app.exit();
-			}
-		});
+//		
+//		quitButton = new TextButton("Quit Game", game.skin);
+//		quitButton.addListener(new ClickListener() {
+//			@Override
+//			public void clicked(InputEvent event, float x, float y) {
+//				Gdx.app.exit();
+//			}
+//		});
 		
 		String intro = "You are a young Swedish immigrant to America in 1880.\n"
 				+ "You have made the tough decision to leave your family and life in Sweden behind.\n"
@@ -88,8 +88,10 @@ public class MainMenuScreen implements Screen {
 		table.add(startButton).padTop(30).width(300);
 		table.row();
 		table.add(aboutButton).padTop(10).width(300);
-		table.row();
-		table.add(quitButton).padTop(10).width(300);
+		
+//		table.row();
+//		table.add(quitButton).padTop(10).width(300);
+		
 		game.stage.addActor(table);
 		
 		drawBackgroundAndLogo();

@@ -978,9 +978,22 @@ public class MainPaneController {
 	// does nothing now, but could display a help message or about message
 	@FXML
 	private void handleMenuHelpAbout() {
-		new Alert(AlertType.INFORMATION,
-				"To use this builder you can start many different ways. \n1. If you have an existing project that has been saved, then you can load it with the load button.  If you would like to start from scratch, then you can add as many slides as you would like. It may also be a good idea to go to the Misc editor tab and add any inventory items you may want.  This will make it easier to add effects and conditions later.\n2. Next go to the slide editor tab.  Here you must select a slide index to edit.  Now you can add a title and game text.  To save your changes press the submit button.  At the bottom of the screen, you can change the slide type, select a slide image, add action choices to a slide, and even remove a slide.\n3. Next go to the action choice editor tab. Select an action choice index that you would like to edit.  Now you can set the choice text and destination slide index, using the submit button to save any changes made.  To add action choices and conditions,  first select a type from the drop down menu and then press the “add” button.")
-						.showAndWait();
+		Alert aboutAlert = new Alert(AlertType.INFORMATION,
+				"To use this builder you can start many different ways."
+				+ "\n1. If you have an existing project that has been saved, then you can load it with the load button. "
+				+ 	"If you would like to start from scratch, then you can add as many slides as you would like. "
+				+ 	"It may also be a good idea to go to the Misc editor tab and add any inventory items you may want.  "
+				+ 	"This will make it easier to add effects and conditions later."
+				+ "\n2. Next go to the slide editor tab.  "
+				+ 	"Here you must select a slide index to edit.  Now you can add a title and game text.  "
+				+ 	"To save your changes press the submit button.  "
+				+ 	"At the bottom of the screen, you can change the slide type, select a slide image, add action choices to a slide, and even remove a slide."
+				+ "\n3. Next go to the action choice editor tab. Select an action choice index that you would like to edit.  "
+				+ 	"Now you can set the choice text and destination slide index, using the submit button to save any changes made.  "
+				+ 	"To add action choices and conditions,  first select a type from the drop down menu and then press the “add” button.");
+		
+		aboutAlert.showAndWait();
+		aboutAlert.setWidth(1000);
 	}
 
 }
