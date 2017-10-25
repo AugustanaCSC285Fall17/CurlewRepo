@@ -105,6 +105,8 @@ public class MainPaneController {
 	private ChoiceBox<String> conditionChoiceBox;
 	@FXML
 	private Button addConditionButton;
+	@FXML
+	private Button removeConditionButton;
 
 	// Misc Editor Fields
 
@@ -139,6 +141,7 @@ public class MainPaneController {
 				.addListener((ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) -> {
 					if (newValue != null) {
 						changeCurrentSlide(newValue);
+						this.updateActionChoiceNumberChoiceBox();
 					}
 				});
 
@@ -339,6 +342,9 @@ public class MainPaneController {
 			pController.updateData(data);
 			clearSlideEditor();
 			clearACE();
+			this.updateSlideNumberChoiceBox();
+			this.updateActionChoiceNumberChoiceBox(); // This doesn't work for
+														// some reason
 		}
 	}
 
@@ -724,6 +730,7 @@ public class MainPaneController {
 		pController.update();
 
 	}
+
 	// Misc Editor Methods
 
 	// provides a series of dialoges to get info on new item
@@ -813,93 +820,80 @@ public class MainPaneController {
 																			// is
 																			// empty
 						&& data.getPlayer().getInventory().size() == 0)) {
-					Alert conditionAlert = new Alert(AlertType.CONFIRMATION);
-					conditionAlert.setContentText("Should this be a visibility or feasibility condition");
-					ButtonType visibleButton = new ButtonType("Visibility");
-					ButtonType feasibilityButton = new ButtonType("Feasibility");
-
-					conditionAlert.getButtonTypes().setAll(visibleButton, feasibilityButton, ButtonType.CANCEL);
-					Optional<ButtonType> conditionTypeOptional = conditionAlert.showAndWait();
-
+					int conditionType = this.getConditionType();
 					Boolean wasTypeSelected = true;
-					int conditionType = -1;
-					if (conditionTypeOptional.get() == visibleButton) {
-						conditionType = ActionChoice.VISIBILITY;
-					} else if (conditionTypeOptional.get() == feasibilityButton) {
-						conditionType = ActionChoice.FEASIBILITY;
-					} else {
-						wasTypeSelected = false;
-					}
+					if (!(conditionType == -1)) {
 
-					if (conditionChoiceBox.getValue().equals("Gender Condition") && wasTypeSelected) {
-						Alert genderAlert = new Alert(AlertType.CONFIRMATION);
-						genderAlert.setContentText("Should male or female be checked?");
+						if (conditionChoiceBox.getValue().equals("Gender Condition") && wasTypeSelected) {
+							Alert genderAlert = new Alert(AlertType.CONFIRMATION);
+							genderAlert.setContentText("Should male or female be checked?");
 
-						ButtonType maleButton = new ButtonType("Male");
-						ButtonType femaleButton = new ButtonType("Female");
-						// TODO once again only support binary gender for time
-						// reasons
+							ButtonType maleButton = new ButtonType("Male");
+							ButtonType femaleButton = new ButtonType("Female");
+							// TODO once again only support binary gender for
+							// time
+							// reasons
 
-						genderAlert.getButtonTypes().setAll(maleButton, femaleButton, ButtonType.CANCEL);
+							genderAlert.getButtonTypes().setAll(maleButton, femaleButton, ButtonType.CANCEL);
 
-						Optional<ButtonType> genderOptional = genderAlert.showAndWait();
+							Optional<ButtonType> genderOptional = genderAlert.showAndWait();
 
-						if (genderOptional.get() == maleButton) {
-							ace.addGenderCondition(Gender.MALE, conditionType);
-						} else if (genderOptional.get() == femaleButton) {
-							ace.addGenderCondition(Gender.FEMALE, conditionType);
-						}
-					} else if (conditionChoiceBox.getValue().equals("Item Condition") && wasTypeSelected) {
-						Item item = getItemFromUser();
-						if (item != null) {
-
-							try {
-								int choiceSize = getChoiceSize("Condition");
-
-								ArrayList<String> roList = new ArrayList<String>();
-								roList.add("Less Than");
-								roList.add("Less Than or Equal");
-								roList.add("Greater Than");
-								roList.add("Greater Than or Equal");
-								roList.add("Equal");
-								roList.add("Not Equal");
-
-								ChoiceDialog<String> roDialog = new ChoiceDialog<String>(null, roList);
-								Optional<String> roOptional = roDialog.showAndWait();
-
-								if (roOptional.isPresent()) {
-									RelationalOperator ro = null;
-									if (roOptional.get().equals("Less Than")) {
-										ro = RelationalOperator.LESS_THAN;
-									} else if (roOptional.get().equals("Less Than or Equal")) {
-										ro = RelationalOperator.LESS_THAN_OR_EQUAL;
-									} else if (roOptional.get().equals("Greater Than")) {
-										ro = RelationalOperator.GREATER_THAN;
-									} else if (roOptional.get().equals("Greater Than or Equal")) {
-										ro = RelationalOperator.GREATER_THAN_OR_EQUAL;
-									} else if (roOptional.get().equals("Equal")) {
-										ro = RelationalOperator.EQUAL;
-									} else if (roOptional.get().equals("Not Equal")) {
-										ro = RelationalOperator.NOT_EQUAL;
-									}
-									ace.addItemCondition(item, ro, choiceSize, conditionType);
-
-								}
-								// if(roOptional.isPresent())
-
-							} catch (NumberFormatException e) {
-								new Alert(AlertType.ERROR, "Must be a number").showAndWait();
-							} catch(NoSuchElementException e){
-								new Alert(AlertType.ERROR, "No number sumbited").showAndWait();
+							if (genderOptional.get() == maleButton) {
+								ace.addGenderCondition(Gender.MALE, conditionType);
+							} else if (genderOptional.get() == femaleButton) {
+								ace.addGenderCondition(Gender.FEMALE, conditionType);
 							}
-						}else{
-							new Alert(AlertType.ERROR, "No item selected").showAndWait();
-						}
-					}
-				} else {
-					new Alert(AlertType.ERROR, "Nothing in inventory").showAndWait();
-				}
+						} else if (conditionChoiceBox.getValue().equals("Item Condition") && wasTypeSelected) {
+							Item item = getItemFromUser();
+							if (item != null) {
 
+								try {
+									int choiceSize = getChoiceSize("Condition");
+
+									ArrayList<String> roList = new ArrayList<String>();
+									roList.add("Less Than");
+									roList.add("Less Than or Equal");
+									roList.add("Greater Than");
+									roList.add("Greater Than or Equal");
+									roList.add("Equal");
+									roList.add("Not Equal");
+
+									ChoiceDialog<String> roDialog = new ChoiceDialog<String>(null, roList);
+									Optional<String> roOptional = roDialog.showAndWait();
+
+									if (roOptional.isPresent()) {
+										RelationalOperator ro = null;
+										if (roOptional.get().equals("Less Than")) {
+											ro = RelationalOperator.LESS_THAN;
+										} else if (roOptional.get().equals("Less Than or Equal")) {
+											ro = RelationalOperator.LESS_THAN_OR_EQUAL;
+										} else if (roOptional.get().equals("Greater Than")) {
+											ro = RelationalOperator.GREATER_THAN;
+										} else if (roOptional.get().equals("Greater Than or Equal")) {
+											ro = RelationalOperator.GREATER_THAN_OR_EQUAL;
+										} else if (roOptional.get().equals("Equal")) {
+											ro = RelationalOperator.EQUAL;
+										} else if (roOptional.get().equals("Not Equal")) {
+											ro = RelationalOperator.NOT_EQUAL;
+										}
+										ace.addItemCondition(item, ro, choiceSize, conditionType);
+
+									}
+									// if(roOptional.isPresent())
+
+								} catch (NumberFormatException e) {
+									new Alert(AlertType.ERROR, "Must be a number").showAndWait();
+								} catch (NoSuchElementException e) {
+									new Alert(AlertType.ERROR, "No number sumbited").showAndWait();
+								}
+							} else {
+								new Alert(AlertType.ERROR, "No item selected").showAndWait();
+							}
+						}
+					} else {
+						new Alert(AlertType.ERROR, "Nothing in inventory").showAndWait();
+					}
+				}
 				// TODO set up so only one condition can be applied (where
 				// applicable)
 
@@ -907,16 +901,74 @@ public class MainPaneController {
 				// conditions of that item
 
 				// TODO change default slide index to 0 so doesn't break;
-				//TODO fix file path of that image thing that I didn't know where to put before
+				// TODO fix file path of that image thing that I didn't know
+				// where to put before
 			} else {
 				new Alert(AlertType.ERROR, "Please select a condition").showAndWait();
+			}
+		} else {
+			new Alert(AlertType.ERROR, "Must have a condition type").showAndWait();
+		}
+		pController.update();
+	}
+
+	private int getConditionType() {
+		Alert conditionAlert = new Alert(AlertType.CONFIRMATION);
+		conditionAlert.setContentText("Should this be a visibility or feasibility condition");
+		ButtonType visibleButton = new ButtonType("Visibility");
+		ButtonType feasibilityButton = new ButtonType("Feasibility");
+
+		conditionAlert.getButtonTypes().setAll(visibleButton, feasibilityButton, ButtonType.CANCEL);
+		Optional<ButtonType> conditionTypeOptional = conditionAlert.showAndWait();
+
+		int conditionType = -1;
+		if (conditionTypeOptional.get() == visibleButton) {
+			conditionType = ActionChoice.VISIBILITY;
+		} else if (conditionTypeOptional.get() == feasibilityButton) {
+			conditionType = ActionChoice.FEASIBILITY;
+		}
+		return conditionType;
+	}
+
+	@FXML
+	private void handleRemoveConditionButton() {
+		if (this.wasAcSelected()) {
+
+			int conditionType = getConditionType();
+
+			if (!(conditionType == -1)) {
+				ArrayList<Condition> conditions = null;
+				if (conditionType == ActionChoice.FEASIBILITY) {
+					conditions = ace.getFConditions();
+				} else if (conditionType == ActionChoice.VISIBILITY) {
+					conditions = ace.getVConditions();
+				}
+
+				ArrayList<Integer> conditionIndices = new ArrayList<Integer>();
+
+				Alert conditionInfo = new Alert(AlertType.INFORMATION);
+
+				String s = "";
+				for (int i = 0; i < conditions.size(); i++) {
+					conditionIndices.add(i);
+					s += "Effect " + conditions.get(i).toString() + " has index " + i + "\n";
+				}
+				conditionInfo.setContentText(s);
+				ChoiceDialog<Integer> conditionDialog = new ChoiceDialog<Integer>(null, conditionIndices);
+				conditionDialog.setContentText("Which effect will be removed? Consult alert for refference");
+
+				Optional<Integer> conditionOptional = conditionDialog.showAndWait();
+			} else {
+				new Alert(AlertType.ERROR, "Must have condition type");
 			}
 		}
 		pController.update();
 	}
 	// File Menu Methods
 
-	// closes the game builder
+	/**
+	 * closes the game builder
+	 */
 	@FXML
 	private void handleMenuFileClose() {
 		// TODO: eventually offer option to save before closing?
@@ -926,7 +978,9 @@ public class MainPaneController {
 	// does nothing now, but could display a help message or about message
 	@FXML
 	private void handleMenuHelpAbout() {
-		new Alert(AlertType.INFORMATION, "Placeholder for about screen").showAndWait();
+		new Alert(AlertType.INFORMATION,
+				"To use this builder you can start many different ways. \n1. If you have an existing project that has been saved, then you can load it with the load button.  If you would like to start from scratch, then you can add as many slides as you would like. It may also be a good idea to go to the Misc editor tab and add any inventory items you may want.  This will make it easier to add effects and conditions later.\n2. Next go to the slide editor tab.  Here you must select a slide index to edit.  Now you can add a title and game text.  To save your changes press the submit button.  At the bottom of the screen, you can change the slide type, select a slide image, add action choices to a slide, and even remove a slide.\n3. Next go to the action choice editor tab. Select an action choice index that you would like to edit.  Now you can set the choice text and destination slide index, using the submit button to save any changes made.  To add action choices and conditions,  first select a type from the drop down menu and then press the “add” button.")
+						.showAndWait();
 	}
 
 }

@@ -30,7 +30,10 @@ public class GameData {
 		player = new Player("Curlew!!");
 		currentSlideIndex = startSlideIndex;
 	}
-	
+	/**
+	 * 
+	 * @return the visible choices for a current slide
+	 */
 	public ArrayList<ActionChoice> getVisibleChoicesForCurrentSlide() {
 		ArrayList<ActionChoice> allChoices = slides.get(currentSlideIndex).getActionChoices();
 		ArrayList<ActionChoice> visibleChoices = new ArrayList<ActionChoice>();
@@ -47,7 +50,10 @@ public class GameData {
 		}
 		return visibleChoices;
 	}
-	
+	/**
+	 * 
+	 * @return the visible items
+	 */
 	public ArrayList<Item> getCurrentVisibleItems() {
 		ArrayList<Item> allItems = player.getInventory();
 		ArrayList<Item> visibleItems = new ArrayList<Item>();
@@ -57,7 +63,11 @@ public class GameData {
 		}
 		return visibleItems;
 	}	
-
+	/**
+	 * 
+	 * @param choice
+	 * @return arbitrarily returns an empty string
+	 */
 	public String attemptChoice(ActionChoice choice) {
 		for (Condition cond : choice.getFeasibilityCond()) {
 			if (!cond.evaluate(player)) {
@@ -80,7 +90,10 @@ public class GameData {
 	public Slide getStartSlide() {
 		return slides.get(startSlideIndex);
 	}
-	
+	/**
+	 * adds a slide
+	 * @param slide
+	 */
 	public void addSlide(Slide slide) {
 		slides.add(slide);
 	}
@@ -172,7 +185,9 @@ public class GameData {
 		this.saveName = saveName;
 		save();
 	}
-
+	/**
+	 * saves the info in the game builder
+	 */
 	public void save() {
 		String toSave = toJSON();
 		String path = "assets/data/" + saveName + ".json";
@@ -185,7 +200,10 @@ public class GameData {
 		}
 		
 	}
-	
+	/**
+	 * 
+	 * @return a string with slide info to be displayed in the preview pane
+	 */
 	public String printSlideInfo (){
 		String s = "";
 		s+= player.toString();
@@ -195,6 +213,11 @@ public class GameData {
 		return s;
 	}
 
+	/**
+	 * 
+	 * @param item
+	 * @return true if the item has an effect attached to it and false if not
+	 */
 	public boolean itemUsed(Item item) {
 		for(Slide slide: slides){
 			for(ActionChoice choice: slide.getActionChoices()){
@@ -206,6 +229,10 @@ public class GameData {
 		return false;
 	}
 
+	/**
+	 * removes an item 
+	 * @param item
+	 */
 	public void removeItem(Item item) {
 		for(Slide s : slides){
 			for(ActionChoice ac : s.getActionChoices()){
