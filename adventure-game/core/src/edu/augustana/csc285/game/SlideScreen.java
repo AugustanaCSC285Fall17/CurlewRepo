@@ -95,6 +95,7 @@ public class SlideScreen implements Screen {
 		game.stage.addActor(title);
 		game.stage.addActor(table);
 		game.stage.addActor(scrollPane);
+		game.stage.addActor(volumeDialog);
 		
 		// Set the background
 		float size = Gdx.graphics.getHeight();
@@ -152,42 +153,40 @@ public class SlideScreen implements Screen {
 		
 
 		//-------------------- volume dialog & slider ------------------
+		
+		// slider
 		volumeSlider = new Slider(0f, 1f, 0.1f, false, game.skin);
 		volumeSlider.setValue(game.bgMusic.getVolume());
 		volumeSlider.addListener(new EventListener(){
 			@Override
 			public boolean handle(Event event) {
-				game.bgMusic.setVolume(volumeSlider.getValue());
+				game.bgMusic.setVolume(volumeSlider.getValue());	
+				updateMute();			
 				return false;
 			}
 			
 		});
 		
+		// dialog
 		volumeDialog = new Dialog("Set Volume", game.skin);
-		volumeDialog.hide();
+		volumeDialog.setVisible(false);
+		volumeDialog.align(Align.center);
 		volumeDialog.add(volumeSlider).align(Align.center);
 		volumeDialog.row();
 		TextButton okButton = new TextButton("OK", game.skin);
 		okButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				volumeDialog.hide();
+				volumeDialog.setVisible(false);
 			}
 		});
 		volumeDialog.add(okButton).align(Align.center);
 		volumeDialog.setWidth(700);
 		volumeDialog.setPosition(300, 300);
-		game.stage.addActor(volumeDialog);
 		
 		//--------------------- mute button -------------
-		Image muteImg = new Image(new Texture(Gdx.files.internal("art/icons/muteSMALL.png")));
-		Image unmuteImg = new Image(new Texture(Gdx.files.internal("art/icons/unmuteSMALL.png")));
 		muteButton = new Button(game.skin);
-		muteButton.add(muteImg);
-		if (game.bgMusic.getVolume() != 0) {
-			muteButton.removeActor(muteImg);
-			muteButton.add(unmuteImg);
-		}
+		updateMute();
 		muteButton.setWidth(BUTTON_WIDTH);
 		muteButton.setHeight(BUTTON_WIDTH);
 		muteButton.setPosition(Gdx.graphics.getWidth() - inventoryButton.getWidth() - 10,
@@ -195,12 +194,23 @@ public class SlideScreen implements Screen {
 		muteButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				
-				volumeDialog.show(game.stage);
-				
+				volumeDialog.setVisible(true);
 			}
 		});
 		game.stage.addActor(muteButton);
+	}
+	
+	private void updateMute() {
+		Image muteImg = new Image(new Texture(Gdx.files.internal("art/icons/muteSMALL.png")));
+		Image unmuteImg = new Image(new Texture(Gdx.files.internal("art/icons/unmuteSMALL.png")));
+		
+		if (game.bgMusic.getVolume() != 0) {
+			muteButton.clear();
+			muteButton.add(unmuteImg);
+		} else {
+			muteButton.clear();
+			muteButton.add(muteImg);
+		}
 	}
 
 	
