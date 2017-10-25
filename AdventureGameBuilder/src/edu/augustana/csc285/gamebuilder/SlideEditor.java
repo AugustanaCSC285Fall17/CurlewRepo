@@ -24,7 +24,7 @@ public class SlideEditor {
 	public SlideEditor(GameData data) {
 		this.currentSlideIndex = -1;
 		this.data = data;
-		currentSlide = data.getSlide(currentSlideIndex);
+		currentSlide = null;
 	}
 	/**
 	 * getter method for the currentSlideIndex

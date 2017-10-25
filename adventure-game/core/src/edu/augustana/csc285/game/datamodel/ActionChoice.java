@@ -83,6 +83,13 @@ public class ActionChoice {// implements Feasible
 		}
 	}
 
+	public void removeCondition(Condition condition, int visOrFeas){
+		if(visOrFeas==this.FEASIBILITY){
+			feasibilityCond.remove(condition);
+		}else if(visOrFeas==this.VISIBILITY){
+			this.visibilityCond.remove(condition);
+		}
+	}
 	// changes the effect name
 	public void setEffectName(String newEffectName, int index) {
 		effectList.get(index).setEffectName(newEffectName);
@@ -143,13 +150,37 @@ public class ActionChoice {// implements Feasible
 		for (int i = 0; i < effectList.size(); i++) {
 			if (effectList.get(i) instanceof ItemEffect) {
 				ItemEffect ie = (ItemEffect) effectList.get(i);
-				if (ie.equals(new ItemEffect(itemChoice, 0))) {
+				if (ie.getItem().equals(itemChoice)) {
 					return true;
 				}
 			}
 		}
 		return false;
 	}
+	
+	public boolean hasItemConditonF(Item item){
+		for (int i = 0; i < feasibilityCond.size(); i++) {
+			if (feasibilityCond.get(i) instanceof ItemCondition) {
+				ItemCondition ie = (ItemCondition) feasibilityCond.get(i);
+				if (ie.getItem().equals(item)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	public boolean hasItemConditonV(Item item){
+		for (int i = 0; i < visibilityCond.size(); i++) {
+			if (visibilityCond.get(i) instanceof ItemCondition) {
+				ItemCondition ie = (ItemCondition) visibilityCond.get(i);
+				if (ie.getItem().equals(item)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 
 	public boolean hasNameChangeEffect() {
 		for (int i = 0; i < effectList.size(); i++) {

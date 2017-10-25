@@ -21,6 +21,30 @@ public class ItemCondition implements Condition {
 		this.qtyToCompare = qtyToCompare;
 	}
 
+	public Item getItem() {
+		return item;
+	}
+
+	public void setItem(Item item) {
+		this.item = item;
+	}
+
+	public RelationalOperator getOp() {
+		return op;
+	}
+
+	public void setOp(RelationalOperator op) {
+		this.op = op;
+	}
+
+	public int getQtyToCompare() {
+		return qtyToCompare;
+	}
+
+	public void setQtyToCompare(int qtyToCompare) {
+		this.qtyToCompare = qtyToCompare;
+	}
+
 	@Override
 	public boolean evaluate(Player p) {
 		return op.apply(p.getItemQuantity(item.getItemName()), qtyToCompare);

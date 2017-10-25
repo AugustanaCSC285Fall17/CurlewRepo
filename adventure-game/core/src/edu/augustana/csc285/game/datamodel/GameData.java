@@ -221,7 +221,7 @@ public class GameData {
 	public boolean itemUsed(Item item) {
 		for(Slide slide: slides){
 			for(ActionChoice choice: slide.getActionChoices()){
-				if(choice.hasItemEffect(item)){
+				if(choice.hasItemEffect(item)||choice.hasItemConditonF(item)||choice.hasItemConditonV(item)){
 					return true;
 				}
 			}
@@ -241,6 +241,22 @@ public class GameData {
 						ItemEffect iE = (ItemEffect) ac.getEffect().get(i);
 						if (iE.getItem().equals(item)){
 							ac.removeEffect(ac.getEffect().get(i));
+						}
+					}
+				}
+				for(int i = 0; i < ac.getFeasibilityCond().size(); i++){
+					if(ac.getFeasibilityCond().get(i) instanceof ItemCondition){
+						ItemCondition ic = (ItemCondition) ac.getFeasibilityCond().get(i);
+						if(ic.getItem().equals(item)){
+							ac.removeCondition(ac.getFeasibilityCond().remove(i), ac.FEASIBILITY);
+						}
+					}
+				}
+				for(int i = 0; i < ac.getVisibilityCond().size(); i++){
+					if(ac.getVisibilityCond().get(i) instanceof ItemCondition){
+						ItemCondition ic = (ItemCondition) ac.getVisibilityCond().get(i);
+						if(ic.getItem().equals(item)){
+							ac.removeCondition(ac.getVisibilityCond().remove(i), ac.FEASIBILITY);
 						}
 					}
 				}

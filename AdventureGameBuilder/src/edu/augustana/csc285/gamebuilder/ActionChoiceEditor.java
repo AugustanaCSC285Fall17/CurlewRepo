@@ -18,7 +18,7 @@ public class ActionChoiceEditor {
 	public ActionChoiceEditor(Slide slide) {
 		currentActionChoiceIndex = -1;
 		this.slide = slide;
-		currentActionChoice = slide.getActionChoiceAt(currentActionChoiceIndex);
+		currentActionChoice = null;
 	}
 
 	public int getCurrentActionChoiceIndex() {
