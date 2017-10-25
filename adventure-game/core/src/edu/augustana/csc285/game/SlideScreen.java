@@ -238,7 +238,7 @@ public class SlideScreen implements Screen {
 	}
 	
 	private void createTable() {
-		table = new Table();
+		table = new Table(game.skin);
 		table.setWidth(Gdx.graphics.getWidth());
 		table.align(Align.topLeft);
 		

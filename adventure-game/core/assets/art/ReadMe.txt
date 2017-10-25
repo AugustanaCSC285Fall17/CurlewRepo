@@ -9,3 +9,4 @@ https://www.polyvore.com/skalny_basket_company_rustic_spool/thing?context_id=305
 https://raduluchian.deviantart.com/art/Small-glass-bottle-PNG-262365240
 http://pngimg.com/imgs/food/meat/
 http://www.libraryofbirmingham.com/ss/Satellite?blobcol=urldata&blobheader=image%2Fjpeg&blobkey=id&blobtable=MungoBlobs&blobwhere=1318276137241&ssbinary=true
+https://www.hagley.org/research/digital-exhibits/almanacs
