@@ -40,7 +40,11 @@ public class SlideEditor {
 	 */
 	public void setCurrentSlide(int currentSlideInd) {
 		this.currentSlideIndex = currentSlideInd;
+		if(currentSlideIndex == -1){
+			currentSlide = null;
+		}else{
 		currentSlide = data.getSlide(currentSlideIndex);
+		}
 	}
 	/**
 	 * changes the title of the slide to the passed in string
@@ -102,5 +106,16 @@ public class SlideEditor {
 	public void removeSlide() {
 		data.removeSlide(currentSlideIndex);
 		setCurrentSlide(-1);
+	}
+	
+	public void removeImage(){
+		data.removeImage(currentSlide.getImageFileName());
+	}
+	public Boolean hasSlide(){
+		if(currentSlide.getImageFileName().equals("")){
+			return false;
+		}else{
+			return true;
+		}
 	}
 }

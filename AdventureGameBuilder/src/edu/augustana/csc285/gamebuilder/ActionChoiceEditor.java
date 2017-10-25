@@ -31,7 +31,11 @@ public class ActionChoiceEditor {
 	 */
 	public void setCurrentActionChoiceIndex(int currentActionChoiceIndex) {
 		this.currentActionChoiceIndex = currentActionChoiceIndex;
+		if(currentActionChoiceIndex==-1){
+			currentActionChoice = null;
+		}else{
 		currentActionChoice = slide.getActionChoiceAt(currentActionChoiceIndex);
+		}
 	}
 
 	public void setDestinationSlideIndex(int index) {

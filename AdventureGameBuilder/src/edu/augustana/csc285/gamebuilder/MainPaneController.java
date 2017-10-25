@@ -412,6 +412,12 @@ public class MainPaneController {
 	@FXML
 	private void handleRemoveSlideButton() {
 		if (this.wasSlideSelected()) {
+			if(se.hasSlide()){
+			Optional<ButtonType> answer = new Alert(AlertType.CONFIRMATION, "Should the image associated with this slide also be removed?").showAndWait();
+			if(answer.get().equals(ButtonType.OK)){
+				se.removeImage();
+			}
+			}
 			se.removeSlide();
 			clearSlideEditor();
 		}
