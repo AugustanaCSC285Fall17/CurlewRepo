@@ -18,58 +18,71 @@ public class SlideEditor {
 
 	private int currentSlideIndex;
 	private GameData data;
+	private Slide currentSlide;
 	
 	//constructor
 	public SlideEditor(GameData data) {
 		this.currentSlideIndex = -1;
 		this.data = data;
+		currentSlide = null;
 	}
-	
+	/**
+	 * getter method for the currentSlideIndex
+	 * @return the currentSlideIndex
+	 */
 	public int getCurrentSlide() {
 		return currentSlideIndex;
 	}
-
-	public void setCurrentSlide(int currentRoom) {
-		this.currentSlideIndex = currentRoom;
+	/**
+	 * sets the current slide index equal to the current slide that is passed in
+	 * also corrects the currentSlide index of the currentSlide field
+	 * @param currentSlideInd the index of the new current slide
+	 */
+	public void setCurrentSlide(int currentSlideInd) {
+		this.currentSlideIndex = currentSlideInd;
+		currentSlide = data.getSlide(currentSlideIndex);
 	}
 	/**
 	 * changes the title of the slide to the passed in string
-	 * @param title
+	 * @param title is the title of the of the slide
 	 */
 	public void changeTitle(String title) {
-		data.getSlide(currentSlideIndex).setTitle(title);
+		currentSlide.setTitle(title);
 	}
 
 	/**
 	 * changes the game text to the passed in string
-	 * @param text
+	 * @param text is the info text that is on each slide
 	 */
 	public void setGameText(String text) {
-		data.getSlide(currentSlideIndex).setGameText(text);
+		currentSlide.setGameText(text);
 	}
 	/**
 	 * adds an action choice to the end of the list
 	 */
 	public void addActionChoice() {
-		data.getSlide(currentSlideIndex).addActionChoice();
+		currentSlide.addActionChoice();
 
 	}
-	
+	/**
+	 * sets the slide type equal to the new slide type that is passed in
+	 * @param slideType new slideType 
+	 */
 	public void setSlideType(SlideType slideType) {
-		data.getSlide(currentSlideIndex).setSlideType(slideType);
+		currentSlide.setSlideType(slideType);
 	}
 
 	/**
 	 * https://stackoverflow.com/questions/16433915/how-to-copy-file-from-one-location-to-another-location
 	 *  as a reference
-	 * @param slideImageIn
-	 * @throws IOException
+	 * @param slideImageIn is a the background image on the slide, should be a jpg
+	 * @throws IOException is an Input or Output error 
 	 */
 	public void setSlideImage(File slideImageIn) throws IOException {
 
 		String path = "assets/slideImages/"+ slideImageIn.getName();
 		Files.copy(slideImageIn.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);		
-		data.getSlide(currentSlideIndex).setImageFileName(path);
+		currentSlide.setImageFileName(path);
 	}
 
 	/**
