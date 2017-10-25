@@ -74,6 +74,14 @@ public class ActionChoice {// implements Feasible
 	public void removeEffect(Effect e) {
 		effectList.remove(e);
 	}
+	
+	public void removeCondition(int index, int visOrFeas){
+		if(visOrFeas==this.FEASIBILITY){
+			feasibilityCond.remove(index);
+		}else if(visOrFeas==this.VISIBILITY){
+			this.visibilityCond.remove(index);
+		}
+	}
 
 	// changes the effect name
 	public void setEffectName(String newEffectName, int index) {

@@ -65,10 +65,14 @@ public class ActionChoiceEditor {
 	}
 	/**
 	 * 
-	 * @param [integer] 
+	 * @param effectIndex 
 	 */
-	public void removeEffect(int integer){
-		slide.getActionChoicesAt(currentActionChoiceIndex).removeEffect(integer);
+	public void removeEffect(int effectIndex){
+		slide.getActionChoicesAt(currentActionChoiceIndex).removeEffect(effectIndex);
+	}
+	
+	public void removeCondition(int conditionIndex, int visOrFeas){
+		slide.getActionChoicesAt(currentActionChoiceIndex).removeCondition(conditionIndex, visOrFeas);
 	}
 	/**
 	 * 

@@ -905,9 +905,7 @@ public class MainPaneController {
 				// where to put before
 			} else {
 				new Alert(AlertType.ERROR, "Please select a condition").showAndWait();
-			}
-		} else {
-			new Alert(AlertType.ERROR, "Must have a condition type").showAndWait();
+			} 
 		}
 		pController.update();
 	}
@@ -951,13 +949,25 @@ public class MainPaneController {
 				String s = "";
 				for (int i = 0; i < conditions.size(); i++) {
 					conditionIndices.add(i);
-					s += "Effect " + conditions.get(i).toString() + " has index " + i + "\n";
+					s += "Condition " + conditions.get(i).printEffectInfo() + " has index " + i + "\n";
 				}
-				conditionInfo.setContentText(s);
+				
 				ChoiceDialog<Integer> conditionDialog = new ChoiceDialog<Integer>(null, conditionIndices);
 				conditionDialog.setContentText("Which effect will be removed? Consult alert for refference");
 
+				conditionInfo.setContentText(s);
+				conditionInfo.setX(200);
+				conditionInfo.show();
+				
 				Optional<Integer> conditionOptional = conditionDialog.showAndWait();
+				conditionInfo.close();
+				
+				if(conditionOptional.isPresent()){
+					int conditionInt = conditionOptional.get();
+					ace.removeCondition(conditionInt, conditionType);
+				}else{
+					new Alert(AlertType.ERROR, "No Condition Selected");
+				}
 			} else {
 				new Alert(AlertType.ERROR, "Must have condition type");
 			}
