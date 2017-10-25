@@ -457,7 +457,7 @@ public class MainPaneController {
 	}
 
 	public void changeActionChoice(int index) {
-		ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide()), se);
+		ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide()));
 		ace.setCurrentActionChoiceIndex(index);
 		currentACLabel.setText(Integer.toString(index));
 		ActionChoice choice = data.getSlide(se.getCurrentSlide()).getActionChoiceAt(index);
