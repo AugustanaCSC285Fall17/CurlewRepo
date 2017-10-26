@@ -115,6 +115,8 @@ public class MainPaneController {
 
 	@FXML
 	private Button removeItemButton;
+	@FXML
+	private Button removeImageButton;
 
 	// Starter Methods
 
@@ -973,6 +975,11 @@ public class MainPaneController {
 			}
 		}
 		pController.update();
+	}
+	
+	@FXML
+	private void handleRemoveImageButton(){
+		
 	}
 	// File Menu Methods
 
