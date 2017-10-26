@@ -24,15 +24,11 @@ public class PauseScreen implements Screen{
 	
 	private Table table;
 	private TextButton resumeButton;
-	private TextButton settingsButton;
 	private TextButton mainMenuButton;
 //	private TextButton quitButton;
-	private TextButton backButton;
 	private Label introText;
 	private Sprite swansonLogo;
 	private Sprite pauseLogo;
-	private Slider volumeSlider;
-	private Label musicVolumeLabel;
 	
 	
 	public PauseScreen(final AdventureGame game) {
@@ -54,15 +50,6 @@ public class PauseScreen implements Screen{
 				game.setScreen(new SlideScreen(game));
 			}
 		});
-		
-		settingsButton = new TextButton("Settings", game.skin);
-		settingsButton.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				game.stage.clear();
-				initializeSetting();
-			}
-		}); 
 		
 		mainMenuButton = new TextButton("Main Menu", game.skin);
 		mainMenuButton.addListener(new ClickListener() {
@@ -87,8 +74,6 @@ public class PauseScreen implements Screen{
 		table.row();
 		table.add(resumeButton).padTop(5).width(300);
 		table.row();
-		table.add(settingsButton).padTop(5).width(300);
-		table.row();
 		table.add(mainMenuButton).padTop(5).width(300);
 //		table.row();
 //		table.add(quitButton).padTop(5);
@@ -96,51 +81,6 @@ public class PauseScreen implements Screen{
 		
 		drawBackground();
 	}
-
-	private void initializeSetting() {
-		initializeTable();
-		backButton = new TextButton("Back", game.skin);
-		backButton.addListener(new ClickListener(){
-		
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				game.stage.clear();
-				initializeMain();
-			}
-		});
-		
-		volumeSlider = new Slider(0f, 1f, 0.1f, false, game.skin);
-		volumeSlider.setValue(game.bgMusic.getVolume());
-		volumeSlider.addListener(new EventListener(){
-
-			@Override
-			public boolean handle(Event event) {
-				game.bgMusic.setVolume(volumeSlider.getValue());
-				return false;
-			}
-			
-		});
-		
-		String text = "Setting";
-		String volumeText = "Volume";
-		
-		introText = new Label(text, game.skin, "title");
-		introText.setWrap(true);
-		introText.setWidth(600);
-		introText.setAlignment(Align.center|Align.top);
-		
-		musicVolumeLabel = new Label(volumeText, game.skin);
-		
-		table.padTop(100);
-		table.add(introText).width(600f);;
-		table.add(musicVolumeLabel);
-		table.add(volumeSlider);
-		table.row();
-		table.add(backButton).padTop(5);
-		
-		drawBackground();
-	}
-
 	
 	private void initializeTable() {
 		table = new Table();
