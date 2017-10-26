@@ -138,7 +138,7 @@ public class SlideScreen implements Screen {
 		inventoryButton.setWidth(BUTTON_WIDTH);
 		inventoryButton.setHeight(BUTTON_WIDTH);
 		inventoryButton.setPosition(Gdx.graphics.getWidth() - inventoryButton.getWidth() - 10,
-				Gdx.graphics.getHeight() - inventoryButton.getHeight() - 50);
+				Gdx.graphics.getHeight() - 2 * inventoryButton.getHeight() - 10);
 		inventoryButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -190,7 +190,7 @@ public class SlideScreen implements Screen {
 		muteButton.setWidth(BUTTON_WIDTH);
 		muteButton.setHeight(BUTTON_WIDTH);
 		muteButton.setPosition(Gdx.graphics.getWidth() - inventoryButton.getWidth() - 10,
-				Gdx.graphics.getHeight() - inventoryButton.getHeight() - 90);
+				Gdx.graphics.getHeight() - 3 * inventoryButton.getHeight() - 10);
 		muteButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {

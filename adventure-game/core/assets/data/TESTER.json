@@ -958,7 +958,7 @@ slides: [
 	{
 		title: Thank you for your purchase!
 		imageFileName: facts.png
-		gameText: "The shopkeeper is grateful to sell another item and hands it to you. You?re sure it will help you on the long journey ahead. You wrap it, put it into your luggage, and head back to the street."
+		gameText: "The shopkeeper is grateful to sell another item and hands it to you. You're sure it will help you on the long journey ahead. You wrap it, put it into your luggage, and head back to the street."
 		urlText: dieUrl
 		slideType: HISTORICAL
 		actionChoices: [
@@ -1160,7 +1160,7 @@ slides: [
 	{
 		title: Just what we needed for the store
 		imageFileName: facts.png
-		gameText: The shopkeeper pays you for your item. You?re happy to have a bit more cash on hand for the journey ahead. It may come in handy. You head back into the street.
+		gameText: The shopkeeper pays you for your item. You're happy to have a bit more cash on hand for the journey ahead. It may come in handy. You head back into the street.
 		urlText: dieUrl
 		slideType: HISTORICAL
 		actionChoices: [
@@ -1242,7 +1242,7 @@ slides: [
 		urlText: dieUrl
 		actionChoices: [
 			{
-				choiceText: Pay for transport to Hull
+				choiceText: Pay for transport to Hull for 60 Kronor
 				destinationSlideIndex: 33
 				visible: false
 				visibilityCond: [
@@ -1273,7 +1273,7 @@ slides: [
 				]
 			}
 			{
-				choiceText: Pay for transport to Hull with connection to Liverpool and ship passage
+				choiceText: Pay for transport to Hull with connection to Liverpool and ship passage for 120 Kronor
 				destinationSlideIndex: 34
 				visible: false
 				visibilityCond: [
@@ -1352,7 +1352,7 @@ slides: [
 	{
 		title: Historical Note: Buying Tickets
 		imageFileName: facts.png
-		gameText: "Tickets were usually purchased from a Swedish emigration agent who booked their passage all the way from Gothenburg to the emigrant?s destination city in America (such as Chicago or Lindsborg, Kansas). Companies with strong economic interests in emigrants (like railroad companies or manufacturers like John Deere) were eager to attract new workers to their areas.\n"
+		gameText: "Tickets were usually purchased from a Swedish emigration agent who booked their passage all the way from Gothenburg to the emigrant's destination city in America (such as Chicago or Lindsborg, Kansas). Companies with strong economic interests in emigrants (like railroad companies or manufacturers like John Deere) were eager to attract new workers to their areas.\n"
 		slideType: HISTORICAL
 		actionChoices: [
 			{
@@ -1386,7 +1386,7 @@ slides: [
 		gameText: Ticket agent: "Welcome to Hull. What are you looking for?"
 		actionChoices: [
 			{
-				choiceText: Buy train ticket to Liverpool Stockyards and passage to America
+				choiceText: Buy train ticket to Liverpool Stockyards and passage to America for 80 Kronor
 				destinationSlideIndex: 36
 				visibilityCond: [
 					{
@@ -1622,10 +1622,9 @@ slides: [
 	}
 	{
 		title: On the Boat to America
-		imageFileName: facts.png
+		imageFileName: image27.jpg
 		gameText: You made it on the boat!
 		slideType: MANY_BUTTONS
-		gameOver: true
 		actionChoices: [
 			{
 				choiceText: "Go left [dining hall]"
@@ -1633,24 +1632,25 @@ slides: [
 			}
 			{
 				choiceText: "Go right [reading room]"
-				destinationSlideIndex: 50
-			}
-			{
-				choiceText: "Go straight [on deck]"
-				destinationSlideIndex: 51
-			}
-			{
-				choiceText: "Go below [social floor]"
 				destinationSlideIndex: 52
 			}
 			{
+				choiceText: "Go straight [on deck]"
+				destinationSlideIndex: 61
+			}
+			{
+				choiceText: "Go below [social floor]"
+				destinationSlideIndex: 64
+			}
+			{
 				choiceText: "Go below [boiler room]"
-				destinationSlideIndex: 53
+				destinationSlideIndex: 70
 			}
 		]
 	}
 	{
 		title: You're in the Dining Room
+		imageFileName: image23.jpg
 		gameText: You meet a lone crew member prepping the dining hall. He stares at you curiously and asks what are you doing here.
 		actionChoices: [
 			{
@@ -1679,7 +1679,8 @@ slides: [
 	}
 	{
 		title: Thanks for the gift
-		gameText: The crew member smiles and and accepts the gift. In return he presents you with an American almanac (+American Almanac in inventory). This might come in handy in the future!
+		imageFileName: facts.png
+		gameText: The crew member smiles and and accepts the gift. In return he presents you with an American almanac. This might come in handy in the future!
 		actionChoices: [
 			{
 				choiceText: Head back to main hallway
@@ -1693,12 +1694,20 @@ slides: [
 						}
 						effectSize: -1
 					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: American Almanac
+							visible: true
+						}
+					}
 				]
 			}
 		]
 	}
 	{
 		title: No more rations for you
+		imageFileName: facts.png
 		gameText: The crew member glances at you strangely and swiftly rejects you before attending to his duties.
 		actionChoices: [
 			{
@@ -1709,6 +1718,7 @@ slides: [
 	}
 	{
 		title: You're in the reading room
+		imageFileName: image25.jpg
 		actionChoices: [
 			{
 				choiceText: Interact with passengers
@@ -1722,6 +1732,7 @@ slides: [
 	}
 	{
 		title: Interact with passengers
+		imageFileName: facts.png
 		gameText: "You spend a while with some of the passengers: exchanging stories, sharing meals, and playing music. However, you are now feeling sick..."
 		actionChoices: [
 			{
@@ -1732,6 +1743,7 @@ slides: [
 	}
 	{
 		title: Historical Note: Illness and Travel
+		imageFileName: facts.png
 		gameText: "One of the dangers of being onboard is being exposed to germs and disease, partly from traveling in close quarters to others. Cramped living spaces, a lack of access to medical care, and the lack of a clean plumbing system were not ideal conditions. If a person did not bring along home remedies, have additional money to pay for nursing services or contracted something prior to boarding, then passengers had to fend for themselves. Combined with seasickness, the journey could be physically exhausting. \n"
 		slideType: HISTORICAL
 		actionChoices: [
@@ -1743,7 +1755,8 @@ slides: [
 	}
 	{
 		title: You fell ill!
-		gameText: You begin to cough uncontrollably. Other passengers stop what they?re doing and look at you. What do you do?
+		imageFileName: facts.png
+		gameText: You begin to cough uncontrollably. Other passengers stop what they're doing and look at you. What do you do?
 		actionChoices: [
 			{
 				choiceText: Take medicine
@@ -1780,6 +1793,7 @@ slides: [
 	}
 	{
 		title: Take Medicine
+		imageFileName: facts.png
 		gameText: All better! Thankfully you brought along some remedies from home.
 		actionChoices: [
 			{
@@ -1790,19 +1804,348 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.ItemEffect
 						item: {
 							itemName: ~quarantine
-							visible: false
 						}
 					}
 				]
 			}
 		]
 	}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
+	{
+		title: Suffer and hope it goes away
+		imageFileName: facts.png
+		gameText: You seem to be getting worse. What do you do?
+		actionChoices: [
+			{
+				choiceText: Pay for a physician/nursing care for 20 Kronor
+				destinationSlideIndex: 58
+				rejText: Insufficient funds.\nYou need 20 Kronor to pay for a physician.
+				feasibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Kronor
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 20
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Kronor
+							visible: true
+						}
+						effectSize: -20
+					}
+				]
+			}
+			{
+				choiceText: "Quarantine yourself from others, lie down and rest"
+				destinationSlideIndex: 59
+			}
+		]
+	}
+	{
+		title: Pay for a physician
+		imageFileName: facts.png
+		gameText: You get better but unfortunately you are quarantined for the rest of your journey. You may have missed seeing your first glimpse from afar of America but at least you are alive and well.
+		gameOver: true
+		actionChoices: [
+			{
+				choiceText: Head to dock
+				destinationSlideIndex: 75
+			}
+		]
+	}
+	{
+		title: Quarantine
+		imageFileName: facts.png
+		gameText: "You denied medical care. Unfortunately, you died before you reached New York."
+		gameOver: true
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 0
+			}
+		]
+	}
+	{
+		title: Read to yourself
+		imageFileName: facts.png
+		gameText: "You spend some time to yourself- exploring the ship, reading the few materials on the ship, reflecting on how far you have come and thinking about the journey still to come."
+		actionChoices: [
+			{
+				choiceText: Head back to main hallway
+				destinationSlideIndex: 48
+			}
+		]
+	}
+	{
+		title: You're on the Deck
+		imageFileName: facts.png
+		gameText: What do you want to do?
+		actionChoices: [
+			{
+				choiceText: Look at the ocean
+				destinationSlideIndex: 62
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Kronor
+							visible: true
+						}
+						effectSize: 20
+					}
+				]
+			}
+			{
+				choiceText: Try to get on the first-class deck
+				destinationSlideIndex: 63
+			}
+		]
+	}
+	{
+		title: Oceanside
+		imageFileName: image24.jpg
+		gameText: "You situate yourself near the railing of the deck. Your face feels the gentle breeze and you can smell the salty air. The sea is roaring with life as you make your way to America. The weather is fair and your spirits lift as you see the sun glisten onto the shining waters. From the corner of your eye, you notice a shiny glimpse beside you. On one of the lounge chairs there are some small coins. You inspect and find $5 or 20 Kronor! How fortunate!"
+		actionChoices: [
+			{
+				choiceText: Head back
+				destinationSlideIndex: 48
+			}
+		]
+	}
+	{
+		title: First class deck
+		imageFileName: image26.jpg
+		gameText: "You notice the gate is wide open to the upper decks. Hoping to sneak a better glimpse of the vast ocean, you climb your way up the steps. Before you could find your balance onto the final step, the first officer rounds the corner and catches you. He gives you a sharp warning and orders you to head back to your deck."
+		actionChoices: [
+			{
+				choiceText: Head back
+				destinationSlideIndex: 48
+			}
+		]
+	}
+	{
+		title: Social Floor
+		imageFileName: image28.jpg
+		gameText: You can hear some lively discussion ahead. However you can also see the entrance to a peaceful cabin room. What do you decide to do?
+		actionChoices: [
+			{
+				choiceText: Head towards the other passengers gathered around
+				destinationSlideIndex: 65
+			}
+			{
+				choiceText: Go into a cozy cabin
+				destinationSlideIndex: 66
+			}
+		]
+	}
+	{
+		title: Chat with other passengers
+		imageFileName: image28.jpg
+		gameText: "You meet and socialize with other passengers, exchanging stories of the journey thus far. You are both excited and scared when the boat docks in New York"
+		actionChoices: [
+			{
+				choiceText: Head back
+				destinationSlideIndex: 48
+			}
+			{
+				choiceText: Go into the Cabin
+				destinationSlideIndex: 66
+			}
+		]
+	}
+	{
+		title: Discuss Scripture
+		imageFileName: image30.jpg
+		gameText: "You encounter a priest reading some psalms and verses to himself. He notices you and begs you to come closer. Interested, you sit beside him and he tells you about the word of God and the inspiration of men like Moses, Noah, and Job- all who were tested on their journeys. Through faith in the Lord, they were triumphant and lived peacefully preaching the word of God."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 67
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Bible
+							imageAddress: biblebook.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 1
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 69
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Bible
+							imageAddress: biblebook.png
+							visible: true
+						}
+						op: {
+							opcode: <
+						}
+						qtyToCompare: 1
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 69
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.GenderCondition
+						genderToCheck: FEMALE
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Scripture
+		imageFileName: image30.jpg
+		gameText: You reflect on his words and feel a sense of belonging with these stories. You hope you too will find success on your journey. Perhaps God has a special plan for you in America.
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 68
+			}
+		]
+	}
+	{
+		title: Historical Note: Religion and Immigration
+		imageFileName: facts.png
+		gameText: "Although dwarfed by economic reasons, another push factor inspiring immigrants to leave Europe was religious persecution. During the 18th century, official laws forbade Swedes from any religion outside of a recognized Lutheran parish. Around 1860, the Church of Sweden relinquished some of the restrictions and allowed Swedes to practice other denominations."
+		slideType: HISTORICAL
+		actionChoices: [
+			{
+				choiceText: Go back
+				destinationSlideIndex: 48
+			}
+		]
+	}
+	{
+		title: Scripture
+		imageFileName: image30.jpg
+		gameText: You reflect on his words and feel a sense of belonging with these stories. You hope you too will find success on your journey.
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 68
+			}
+		]
+	}
+	{
+		title: Go below to the boiler room
+		imageFileName: image29.jpg
+		gameText: "You creep down to the belly of the ship and find a world of coal and fire. Men all around are keeping the boilers running. The squeals and churnings of the machine were matched with the yells of crew men giving out orders. Amidst all the noise, someone notices your presence."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 71
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.GenderCondition
+						genderToCheck: FEMALE
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 72
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.GenderCondition
+						genderToCheck: MALE
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Boiler Room
+		imageFileName: image29.jpg
+		gameText: "You meet a disgruntled boilerman hard at work. He eyes you and starts yelling and pointing for you to get out of there. \nQuickly, you make your way out."
+		actionChoices: [
+			{
+				choiceText: Make your way out
+				destinationSlideIndex: 48
+			}
+		]
+	}
+	{
+		title: Boiler Room
+		imageFileName: image29.jpg
+		gameText: "The boilerman mistakes you for a worker, forces you to work. The boilerman eyes you and makes gestures to pick up a shovel and work. What do you do?"
+		actionChoices: [
+			{
+				choiceText: Say you're a passenger
+				destinationSlideIndex: 73
+			}
+			{
+				choiceText: Don't say anything
+				destinationSlideIndex: 74
+			}
+		]
+	}
+	{
+		title: Say you're a passenger
+		imageFileName: image29.jpg
+		gameText: "You shake your head and try your best to explain you are a passenger. The boilerman yells at you, presumably to get out. You scurry back up."
+		actionChoices: [
+			{
+				choiceText: Scurry back up
+				destinationSlideIndex: 75
+			}
+		]
+	}
+	{
+		title: You cause the boat to sink!
+		imageFileName: image33.jpg
+		gameOver: true
+		gameText: "Confused and afraid, you don’t say anything. He points to a boiler to work on and orders you to shovel the coal into the fire pit. You try to walk away but he pushes you back to the boiler. You hesitantly do as he says. He orders you to fix the gears on the pressure system when you are done. Because of your lack of engineering skills, you fiddle with the gears which causes great amounts of pressure. So much pressure that you cause the boiler to implode. One by one, the boilers catch on fire and cause the room to collapse. The ship sinks into the abyss, lost forever."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 0
+			}
+		]
+	}
+	{
+		title: "Arrived! Castle Garden, New York City"
+		imageFileName: image32.jpg
+		gameText: "Arrived! You've arrived at Castle Garden in New York City. Before 1890, the federal government practiced some oversight of immigration to the U.S., but it largely contracted out the duties. The famous Ellis Island did not open as the country's primary immigration center until 1892. From 1855 to 1890, more than 8 million immigrants who arrived in New York City were instead processed at Castle Garden, America's first official immigration center, by New York state officials."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 76
+			}
+		]
+	}
+	{
+		title: Demo over!
+		imageFileName: facts.png
+		gameOver:true
+		gameText: Thank you for playing through our team's demo!
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 0
+			}
+		]
+	}
 ]
 player: {
 	name: UNKNOWN
