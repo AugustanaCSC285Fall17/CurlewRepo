@@ -76,6 +76,8 @@ public class MainPaneController {
 	private ChoiceBox<SlideType> setSlideTypeChoiceBox;
 	@FXML
 	private ChoiceBox<Integer> selectSlideNumberChoiceBox;
+	@FXML
+	private Button toggleGameOverButton;
 
 	// ActionChoiceEditor Fields
 	private ActionChoiceEditor ace;
@@ -441,6 +443,20 @@ public class MainPaneController {
 		}
 		ObservableList<Integer> observableList = FXCollections.observableList(list);
 		selectSlideNumberChoiceBox.setItems(observableList);
+	}
+	
+	@FXML
+	private void handleToggleGameOverButton(){
+		if(wasSlideSelected()){
+		se.setGameOver(!se.isGameOver());
+		if(se.isGameOver()){
+		new Alert(AlertType.INFORMATION, "This slide is now the game over slide").showAndWait();
+		}
+		else{
+			new Alert(AlertType.INFORMATION, "This slide is no longer the game over slide").showAndWait();
+		}
+		pController.update();
+		}
 	}
 
 	// ACE methods
