@@ -39,8 +39,12 @@ public class SlideEditor {
 	 * @param currentSlideInd the index of the new current slide
 	 */
 	public void setCurrentSlide(int currentSlideInd) {
+		if(currentSlideInd!=-1){
 		this.currentSlideIndex = currentSlideInd;
 		currentSlide = data.getSlide(currentSlideIndex);
+		}else{
+			currentSlide = null;
+		}
 	}
 	/**
 	 * changes the title of the slide to the passed in string
@@ -82,7 +86,8 @@ public class SlideEditor {
 
 		String path = "assets/slideImages/"+ slideImageIn.getName();
 		Files.copy(slideImageIn.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);		
-		currentSlide.setImageFileName(path);
+		//currentSlide.setImageFileName(path);
+		currentSlide.setImageFileName(slideImageIn.getName());
 	}
 
 	/**

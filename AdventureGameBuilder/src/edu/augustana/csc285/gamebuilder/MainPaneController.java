@@ -115,6 +115,8 @@ public class MainPaneController {
 
 	@FXML
 	private Button removeItemButton;
+	@FXML
+	private Button removeImageButton;
 
 	// Starter Methods
 
@@ -766,7 +768,8 @@ public class MainPaneController {
 					try {
 						Files.copy(inFile.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);
 
-						data.getPlayer().getInventory().add(new Item(name, visible, path));
+						//data.getPlayer().getInventory().add(new Item(name, visible, path));
+						data.getPlayer().getInventory().add(new Item(name, visible, inFile.getName()));
 
 					} catch (IOException e) {
 						// should never happen, checked before, needed for
@@ -973,6 +976,11 @@ public class MainPaneController {
 			}
 		}
 		pController.update();
+	}
+	
+	@FXML
+	private void handleRemoveImageButton(){
+		
 	}
 	// File Menu Methods
 
