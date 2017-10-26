@@ -768,7 +768,8 @@ public class MainPaneController {
 					try {
 						Files.copy(inFile.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);
 
-						data.getPlayer().getInventory().add(new Item(name, visible, path));
+						//data.getPlayer().getInventory().add(new Item(name, visible, path));
+						data.getPlayer().getInventory().add(new Item(name, visible, inFile.getName()));
 
 					} catch (IOException e) {
 						// should never happen, checked before, needed for

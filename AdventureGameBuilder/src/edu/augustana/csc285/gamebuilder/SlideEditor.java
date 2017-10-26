@@ -86,7 +86,8 @@ public class SlideEditor {
 
 		String path = "assets/slideImages/"+ slideImageIn.getName();
 		Files.copy(slideImageIn.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);		
-		currentSlide.setImageFileName(path);
+		//currentSlide.setImageFileName(path);
+		currentSlide.setImageFileName(slideImageIn.getName());
 	}
 
 	/**
