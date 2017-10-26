@@ -1697,6 +1697,108 @@ slides: [
 			}
 		]
 	}
+	{
+		title: No more rations for you
+		gameText: The crew member glances at you strangely and swiftly rejects you before attending to his duties.
+		actionChoices: [
+			{
+				choiceText: Leave
+				destinationSlideIndex: 48
+			}
+		]
+	}
+	{
+		title: You're in the reading room
+		actionChoices: [
+			{
+				choiceText: Interact with passengers
+				destinationSlideIndex: 53
+			}
+			{
+				choiceText: Read to yourself
+				destinationSlideIndex: 60
+			}
+		]
+	}
+	{
+		title: Interact with passengers
+		gameText: "You spend a while with some of the passengers: exchanging stories, sharing meals, and playing music. However, you are now feeling sick..."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 54
+			}
+		]
+	}
+	{
+		title: Historical Note: Illness and Travel
+		gameText: "One of the dangers of being onboard is being exposed to germs and disease, partly from traveling in close quarters to others. Cramped living spaces, a lack of access to medical care, and the lack of a clean plumbing system were not ideal conditions. If a person did not bring along home remedies, have additional money to pay for nursing services or contracted something prior to boarding, then passengers had to fend for themselves. Combined with seasickness, the journey could be physically exhausting. \n"
+		slideType: HISTORICAL
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 55
+			}
+		]
+	}
+	{
+		title: You fell ill!
+		gameText: You begin to cough uncontrollably. Other passengers stop what they?re doing and look at you. What do you do?
+		actionChoices: [
+			{
+				choiceText: Take medicine
+				destinationSlideIndex: 56
+				feasibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Medicine
+							imageAddress: medicinebottle.png
+							visible: true
+						}
+						op: {
+							opcode: >
+						}
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Medicine
+							visible: true
+						}
+						effectSize: -1
+					}
+				]
+			}
+			{
+				choiceText: Suffer and hope it goes away
+				destinationSlideIndex: 57
+			}
+		]
+	}
+	{
+		title: Take Medicine
+		gameText: All better! Thankfully you brought along some remedies from home.
+		actionChoices: [
+			{
+				choiceText: Head back
+				destinationSlideIndex: 48
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: ~quarantine
+							visible: false
+						}
+					}
+				]
+			}
+		]
+	}
+	{}
+	{}
 	{}
 	{}
 	{}
@@ -1706,6 +1808,9 @@ player: {
 	name: UNKNOWN
 	gender: UNKNOWN
 	inventory: [
+		{
+			itemName: ~quarantine
+		}
 		{
 			itemName: American Almanac
 			imageAddress: almanac.png
