@@ -16,6 +16,7 @@ public class AdventureGame extends Game {
 	public static final int GAME_SCREEN_HEIGHT = 720;
 
 	public GameData data;
+	public boolean gameStarted = false;
 
 	public Music bgMusic;
 	public Stage stage;

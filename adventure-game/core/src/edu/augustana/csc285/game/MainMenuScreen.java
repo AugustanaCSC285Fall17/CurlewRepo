@@ -18,6 +18,7 @@ public class MainMenuScreen implements Screen {
 	private final AdventureGame game;
 	
 	private Table table;
+	private TextButton resumeButton;
 	private TextButton startButton;
 	private TextButton aboutButton;
 //	private TextButton quitButton;
@@ -46,10 +47,20 @@ public class MainMenuScreen implements Screen {
 		
 		initializeTable();
 		
+		resumeButton = new TextButton("Resume Game", game.skin);
+		resumeButton.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.stage.clear();
+				game.setScreen(new SlideScreen(game));
+			}
+		});
+		
 		startButton = new TextButton("Take the journey", game.skin);
 		startButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				game.gameStarted = true;
 				game.stage.clear();
 				game.restartGame();
 				game.setScreen(new SlideScreen(game));
@@ -83,9 +94,13 @@ public class MainMenuScreen implements Screen {
 		introText.setAlignment(Align.center|Align.top);
 		
 		table.padTop(300);
-		table.add(introText).width(800f);
+		table.add(introText).padBottom(30).width(800f);
 		table.row();
-		table.add(startButton).padTop(30).width(300);
+		if (game.gameStarted) {
+			table.add(resumeButton).padBottom(10).width(300);
+			table.row();
+		}
+		table.add(startButton).width(300);
 		table.row();
 		table.add(aboutButton).padTop(10).width(300);
 		

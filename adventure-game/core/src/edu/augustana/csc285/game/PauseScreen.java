@@ -42,7 +42,7 @@ public class PauseScreen implements Screen{
 		
 		initializeTable();
 		
-		resumeButton = new TextButton("Resume", game.skin);
+		resumeButton = new TextButton("Resume Game", game.skin);
 		resumeButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
