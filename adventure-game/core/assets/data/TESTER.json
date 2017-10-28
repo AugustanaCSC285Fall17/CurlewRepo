@@ -1643,6 +1643,20 @@
         {
           "choiceText": "Go right [reading room]",
           "destinationSlideIndex": 52
+          "rejText": "You probably don't want to get sick again...",
+          "feasibilityCond": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
+              "item": {
+                "itemName": "~went_reading",
+                "visible": false
+              },
+              "op": {
+                "opcode": "<"
+              },
+              "qtyToCompare": 1
+            }
+          ],
         },
         {
           "choiceText": "Go straight [on deck]",
@@ -1747,7 +1761,16 @@
       "actionChoices": [
         {
           "choiceText": "Continue",
-          "destinationSlideIndex": 54
+          "destinationSlideIndex": 54,
+          "effectList": [
+            {
+              "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
+              "item": {
+                "itemName": "~went_reading",
+                "visible": false
+              }
+            }
+          ]
         }
       ]
     },
@@ -1780,8 +1803,9 @@
                 "visible": true
               },
               "op": {
-                "opcode": ">"
-              }
+                "opcode": ">="
+              },
+              "qtyToCompare": 1
             }
           ],
           "effectList": [
@@ -1905,7 +1929,7 @@
             {
               "class": "edu.augustana.csc285.game.datamodel.ItemCondition",
               "item": {
-                "itemName": "~wentdock"
+                "itemName": "~went_deck"
               },
               "op": {
                 "opcode": "<"
@@ -1940,7 +1964,7 @@
             {
               "class": "edu.augustana.csc285.game.datamodel.ItemEffect",
               "item": {
-                "itemName": "~wentdock",
+                "itemName": "~went_deck",
                 "visible": false
               }
             }
@@ -2188,7 +2212,10 @@
         "itemName": "~quarantine"
       },
       {
-        "itemName": "~wentdock"
+        "itemName": "~went_deck"
+      },
+      {
+        "itemName": "~went_reading"
       },
       {
         "itemName": "American Almanac",
