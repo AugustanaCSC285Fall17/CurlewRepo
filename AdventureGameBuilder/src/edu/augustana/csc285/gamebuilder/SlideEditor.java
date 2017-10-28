@@ -108,4 +108,12 @@ public class SlideEditor {
 		data.removeSlide(currentSlideIndex);
 		setCurrentSlide(-1);
 	}
+	
+	public boolean isGameOver(){
+		return currentSlide.isGameOver();
+	}
+	
+	public void setGameOver(boolean gameOver){
+		currentSlide.setGameOver(gameOver);
+	}
 }

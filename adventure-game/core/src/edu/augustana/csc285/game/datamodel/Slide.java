@@ -112,11 +112,15 @@ public class Slide {
 			s+= "Action Choice "+i+":\n"+actionChoices.get(i).toString()+"\n";
 		}
 		}
-		return "The title is "+title + "\nThe image file name is: "+imageFileName+"\nThe gameText is: "+gameText+"\nThe slide type is: "+slideType+"\nThe action Choices are: \n" +s;
+		return "The title is "+title + "\nThe image file name is: "+imageFileName+"\nThe gameText is: "+gameText+"\nThe slide type is: "+slideType+"\nThe action Choices are: \n" +s + "\nGame Over Slide?: " + gameOver;
 	}
 
 	public void removeAc(int index) {
 		actionChoices.remove(index);	
+	}
+	
+	public void setGameOver (boolean isGameOver){
+		gameOver = isGameOver;
 	}
 
 }

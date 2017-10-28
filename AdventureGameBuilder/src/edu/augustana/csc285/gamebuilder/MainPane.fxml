@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="432.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.csc285.gamebuilder.MainPaneController">
+<BorderPane prefHeight="432.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.csc285.gamebuilder.MainPaneController">
    <top>
 <MenuBar BorderPane.alignment="CENTER">
   <menus>
@@ -66,16 +66,17 @@
                         <Label layoutX="24.0" layoutY="83.0" text="Set Slide Title" />
                         <Line endX="440.0" layoutX="95.0" layoutY="71.0" startX="-100.0" AnchorPane.bottomAnchor="257.5" AnchorPane.leftAnchor="-5.5" AnchorPane.rightAnchor="333.5" AnchorPane.topAnchor="70.5" />
                         <Label layoutX="24.0" layoutY="115.0" text="Set Slide Game Text" />                 
-                        <Button fx:id="selectSlideImageButton" layoutX="113.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleSelectSlideImageButton" text="Select a Slide Image" />
+                        <Button fx:id="selectSlideImageButton" layoutX="11.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleSelectSlideImageButton" text="Select a Slide Image" />
                         <TextArea fx:id="setGameTextArea" layoutX="158.0" layoutY="115.0" prefHeight="110.0" prefWidth="214.0" />
                         <Button fx:id="submitButton" layoutX="232.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
-                        <Button fx:id="addActionChoiceButton" layoutX="321.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleAddActionChoiceButton" text="Add Action Choice " />
-                        <Button fx:id="removeSlideButton" layoutX="323.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleRemoveSlideButton" text="Remove Current Slide" />
+                        <Button fx:id="addActionChoiceButton" layoutX="186.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleAddActionChoiceButton" text="Add Action Choice " />
+                        <Button fx:id="removeSlideButton" layoutX="350.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleRemoveSlideButton" text="Remove Current Slide" />
                         <Label layoutX="11.0" layoutY="284.0" text="Set Slide Type:" />
                         <ChoiceBox fx:id="setSlideTypeChoiceBox" layoutX="115.0" layoutY="279.0" prefWidth="150.0" />
                         <TextField fx:id="changeTitleTextField" layoutX="118.0" layoutY="78.0" prefHeight="31.0" prefWidth="342.0" />
                         <ChoiceBox fx:id="selectSlideNumberChoiceBox" layoutX="166.0" layoutY="24.0" prefHeight="22.0" prefWidth="47.0" />
                         <Line endX="438.0" layoutX="94.0" layoutY="267.0" startX="-100.0" />
+                        <Button fx:id="toggleGameOverButton" layoutX="307.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleToggleGameOverButton" text="Toggle Game Over" />
                      </children></AnchorPane>
             </content>
           </Tab>
