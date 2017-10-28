@@ -43,6 +43,8 @@ public class SlideScreen implements Screen {
 	private Button muteButton;
 	private ArrayList<TextButton> choiceButtons;
 	private ScrollPane scrollPane;
+	private Image muteImg = new Image(new Texture(Gdx.files.internal("art/icons/muteSMALL.png")));
+	private Image unmuteImg = new Image(new Texture(Gdx.files.internal("art/icons/unmuteSMALL.png")));
 	
 	private Slider volumeSlider;
 	private Dialog volumeDialog;
@@ -109,7 +111,7 @@ public class SlideScreen implements Screen {
 		game.sprite.setSize(size, size);
 	}
 
-	public static final int BUTTON_WIDTH = 40;
+	public static final int BUTTON_WIDTH = 60;
 	private void createFunctionButtons() {
 		Image pauseImg = new Image(new Texture(Gdx.files.internal("art/icons/pauseSMALL.png")));
 		pauseButton = new Button(game.skin);
@@ -161,32 +163,37 @@ public class SlideScreen implements Screen {
 			@Override
 			public boolean handle(Event event) {
 				game.bgMusic.setVolume(volumeSlider.getValue());	
-				updateMute();			
+				updateMute();
 				return false;
 			}
 			
 		});
 		
 		// dialog
-		volumeDialog = new Dialog("Set Volume", game.skin);
+		volumeDialog = new Dialog("", game.skin);
 		volumeDialog.setVisible(false);
-		volumeDialog.align(Align.center);
-		volumeDialog.add(volumeSlider).align(Align.center);
-		volumeDialog.row();
+		volumeDialog.add(new Label("Volume", game.skin));
+		volumeDialog.add(volumeSlider).align(Align.left);
 		TextButton okButton = new TextButton("OK", game.skin);
 		okButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				volumeDialog.setVisible(false);
+				System.err.println("button clicked!");
 			}
 		});
 		volumeDialog.add(okButton).align(Align.center);
-		volumeDialog.setWidth(700);
-		volumeDialog.setPosition(300, 300);
+		volumeDialog.setWidth(300);
+		volumeDialog.setHeight(80);
+		volumeDialog.setPosition(900, 530);
 		
-		//--------------------- mute button -------------
-		muteButton = new Button(game.skin);
+		//--------------------- mute button --------------------
+		
 		updateMute();
+	}
+	
+	private void updateMute() {
+		muteButton = new Button(game.skin);
 		muteButton.setWidth(BUTTON_WIDTH);
 		muteButton.setHeight(BUTTON_WIDTH);
 		muteButton.setPosition(Gdx.graphics.getWidth() - inventoryButton.getWidth() - 10,
@@ -197,20 +204,12 @@ public class SlideScreen implements Screen {
 				volumeDialog.setVisible(true);
 			}
 		});
-		game.stage.addActor(muteButton);
-	}
-	
-	private void updateMute() {
-		Image muteImg = new Image(new Texture(Gdx.files.internal("art/icons/muteSMALL.png")));
-		Image unmuteImg = new Image(new Texture(Gdx.files.internal("art/icons/unmuteSMALL.png")));
-		
 		if (game.bgMusic.getVolume() != 0) {
-			muteButton.clear();
 			muteButton.add(unmuteImg);
 		} else {
-			muteButton.clear();
 			muteButton.add(muteImg);
 		}
+		game.stage.addActor(muteButton);
 	}
 
 	
@@ -231,7 +230,31 @@ public class SlideScreen implements Screen {
 					} else {
 						String rejText = game.data.attemptChoice(curChoice);
 						if (rejText.equals("")) {
-							initialize();
+//							if (!curChoice.getItemEffects().isEmpty()) {
+//								Dialog inventoryDialog = new Dialog("", game.skin);
+//								String effect = curChoice.getEffectsString();
+//								int height = 80;
+//								for (int i = 0; i < curChoice.getItemEffects().size(); i++) {
+//									height += 40;
+//								}
+//								inventoryDialog.align(Align.bottomLeft);
+//								inventoryDialog.text(effect);
+//								TextButton okButton = new TextButton("OK", game.skin);
+//								okButton.addListener(new ClickListener() {
+//									@Override
+//									public void clicked(InputEvent event, float x, float y) {
+//										inventoryDialog.hide();
+//										initialize();
+//									}
+//								});
+//								inventoryDialog.add(okButton);
+//								inventoryDialog.setPosition(300, 400);
+//								inventoryDialog.setWidth(600);
+//								inventoryDialog.setHeight(height);
+//								game.stage.addActor(inventoryDialog);
+//							} else {
+								initialize();
+//							}
 						} else {
 							rejectDialog = new Dialog("", game.skin);
 							rejectDialog.button("Ok");
@@ -318,6 +341,7 @@ public class SlideScreen implements Screen {
 	
 	@Override
 	public void show() {
+		Gdx.input.setInputProcessor(game.stage);
 	}
 
 	@Override

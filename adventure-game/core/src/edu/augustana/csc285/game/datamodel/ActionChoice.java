@@ -60,6 +60,17 @@ public class ActionChoice {// implements Feasible
 	public ArrayList<Effect> getEffect() {
 		return effectList;
 	}
+	
+	// Get the item effects that the option cost and return it
+	public ArrayList<Effect> getItemEffects() {
+		ArrayList<Effect> itemEffects = new ArrayList<>();
+		for (Effect e : effectList) {
+			if (e instanceof ItemEffect) {
+				itemEffects.add(e);
+			}
+		}
+		return itemEffects;
+	}
 
 	// add new effect to the effectList
 	public void addEffect(Effect newEffect) {
@@ -113,6 +124,22 @@ public class ActionChoice {// implements Feasible
 		return visibilityCond;
 	}
 
+	public String getEffectsString() {
+		String s = "You gained:\n";
+		for (Effect effect : effectList) {
+			if (effect instanceof ItemEffect) {
+				ItemEffect itemEffect = (ItemEffect) effect;
+				String effectSize = "" + itemEffect.getEffectSize();
+				if (itemEffect.getEffectSize() > 0)
+					effectSize = "+" + itemEffect.getEffectSize();
+				
+				s += effectSize + " " + itemEffect.getItem().getItemName() + "\n";
+			}
+		}
+		
+		return s;
+	}
+	
 	public String toString() {
 		String s = "choiceText: " + choiceText + "\ndestinationSlideIndex: " + destinationSlideIndex;
 		for (Effect effect : effectList) {

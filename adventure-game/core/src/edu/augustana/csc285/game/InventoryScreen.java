@@ -63,8 +63,8 @@ public class InventoryScreen implements Screen {
 		Image pauseImg = new Image(new Texture(Gdx.files.internal("art/icons/pauseSMALL.png")));
 		pauseButton = new Button(game.skin);
 		pauseButton.add(pauseImg);
-		pauseButton.setWidth(40);
-		pauseButton.setHeight(40);
+		pauseButton.setWidth(SlideScreen.BUTTON_WIDTH);
+		pauseButton.setHeight(SlideScreen.BUTTON_WIDTH);
 		pauseButton.setPosition(Gdx.graphics.getWidth() - pauseButton.getWidth() - 10,
 				Gdx.graphics.getHeight() - pauseButton.getHeight() - 10);
 		pauseButton.addListener(new ClickListener() {
@@ -147,6 +147,7 @@ public class InventoryScreen implements Screen {
 	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 30 - gameTextHeight, gameTextWidth, gameTextHeight);
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);
+	    scrollPane.setFadeScrollBars(false);
 	}
 	
 	private void createPlayerStats() {
