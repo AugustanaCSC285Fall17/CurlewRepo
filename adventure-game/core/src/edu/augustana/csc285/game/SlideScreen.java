@@ -172,7 +172,7 @@ public class SlideScreen implements Screen {
 		// dialog
 		volumeDialog = new Dialog("", game.skin);
 		volumeDialog.setVisible(false);
-		volumeDialog.add(new Label("Volume", game.skin));
+		volumeDialog.add(new Label("Volume: ", game.skin));
 		volumeDialog.add(volumeSlider).align(Align.left);
 		TextButton okButton = new TextButton("OK", game.skin);
 		okButton.addListener(new ClickListener() {
@@ -182,10 +182,10 @@ public class SlideScreen implements Screen {
 				System.err.println("button clicked!");
 			}
 		});
-		volumeDialog.add(okButton).align(Align.center);
-		volumeDialog.setWidth(300);
-		volumeDialog.setHeight(80);
-		volumeDialog.setPosition(900, 530);
+		volumeDialog.add(okButton);
+		volumeDialog.setWidth(320);
+		volumeDialog.setHeight(70);
+		volumeDialog.setPosition(880, 530);
 		
 		//--------------------- mute button --------------------
 		

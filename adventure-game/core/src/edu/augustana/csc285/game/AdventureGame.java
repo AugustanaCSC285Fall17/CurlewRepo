@@ -32,7 +32,7 @@ public class AdventureGame extends Game {
 		stage = new Stage(new ScreenViewport());
 		data = GameData.fromJSON(Gdx.files.internal("data/TESTER.json").readString());
 		
-		bgMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Si_la_Rigueur.mp3"));
+		bgMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Sonata_con_Allemanda_Courante_Sarabande_Gigue.mp3"));
 		bgMusic.setLooping(true);
 		bgMusic.play();
 		
