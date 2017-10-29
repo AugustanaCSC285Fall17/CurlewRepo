@@ -142,7 +142,7 @@ public class InventoryScreen implements Screen {
 	private void createScrollPane(int gameTextWidth) {
 		scrollPane = new ScrollPane(itemTable, game.skin);
 		
-		int gameTextHeight = 300;
+		int gameTextHeight = 550;
 		
 	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 30 - gameTextHeight, gameTextWidth, gameTextHeight);
 	    scrollPane.layout();
@@ -203,7 +203,7 @@ public class InventoryScreen implements Screen {
 		table.padLeft(40);
 		table.add(backButton).width(260).padTop(5);
 
-		int tableHeight = 350;
+		int tableHeight = 600;
 		table.padTop(tableHeight + title.getHeight());
 	}
 	

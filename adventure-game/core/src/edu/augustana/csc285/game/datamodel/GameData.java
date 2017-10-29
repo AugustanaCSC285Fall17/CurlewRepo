@@ -30,6 +30,7 @@ public class GameData {
 		player = new Player("Curlew!!");
 		currentSlideIndex = startSlideIndex;
 	}
+
 	/**
 	 * 
 	 * @return the visible choices for a current slide
@@ -50,6 +51,7 @@ public class GameData {
 		}
 		return visibleChoices;
 	}
+
 	/**
 	 * 
 	 * @return the visible items
@@ -62,7 +64,8 @@ public class GameData {
 				visibleItems.add(item);
 		}
 		return visibleItems;
-	}	
+	}
+
 	/**
 	 * 
 	 * @param choice
@@ -74,24 +77,27 @@ public class GameData {
 				return choice.getRejText();
 			}
 		}
-		
+
 		for (Effect e : choice.getEffect()) {
 			e.applyEffect(player);
 		}
-		currentSlideIndex = choice.getDestinationSlideIndex();
+		if (choice.getDestinationSlideIndex() != -1) {
+			currentSlideIndex = choice.getDestinationSlideIndex();
+		}
 		return "";
 	}
-
 
 	public Slide getSlide(int index) {
 		return slides.get(index);
 	}
-	
+
 	public Slide getStartSlide() {
 		return slides.get(startSlideIndex);
 	}
+
 	/**
 	 * adds a slide
+	 * 
 	 * @param slide
 	 */
 	public void addSlide(Slide slide) {
@@ -127,7 +133,7 @@ public class GameData {
 	public int getCurrentSlideIndex() {
 		return currentSlideIndex;
 	}
-	
+
 	public Player getPlayer() {
 		return player;
 	}
@@ -145,28 +151,28 @@ public class GameData {
 	}
 
 	/**
-	 * @return a serialized JSON-format string that represents this GameData
-	 *         object
+	 * @return a serialized JSON-format string that represents this GameData object
 	 */
 	public String toJSON() {
 		return new Json().prettyPrint(this);
 	}
 
 	/**
-	 * @return a GameData object, which is created from deserializing the JSON
-	 *         data provided.
+	 * @return a GameData object, which is created from deserializing the JSON data
+	 *         provided.
 	 */
 	public static GameData fromJSON(String jsonData) {
-		GameData data = new Json().fromJson(GameData.class,jsonData);
+		GameData data = new Json().fromJson(GameData.class, jsonData);
 		data.currentSlideIndex = data.startSlideIndex;
 		return data;
 	}
-	
+
 	/**
 	 * 
-	 * @param file the address of the JSON file
-	 * @return a GamaData object, which is created from deserializing the JSON
-	 *         data imported from the file.
+	 * @param file
+	 *            the address of the JSON file
+	 * @return a GamaData object, which is created from deserializing the JSON data
+	 *         imported from the file.
 	 */
 	public static GameData fromJSONFile(File file) {
 		JsonReader reader = new JsonReader();
@@ -185,6 +191,7 @@ public class GameData {
 		this.saveName = saveName;
 		save();
 	}
+
 	/**
 	 * saves the info in the game builder
 	 */
@@ -198,17 +205,18 @@ public class GameData {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
+
 	/**
 	 * 
 	 * @return a string with slide info to be displayed in the preview pane
 	 */
-	public String printSlideInfo (){
+	public String printSlideInfo() {
 		String s = "";
-		s+= player.toString();
-		for (int i = 0; i < slides.size(); i++){
-			s+= "Slide Number: " + i + "\n" +slides.get(i).toString()+ "\n\n";
+		s += player.toString();
+		for (int i = 0; i < slides.size(); i++) {
+			s += "Slide Number: " + i + "\n" + slides.get(i).toString() + "\n\n";
 		}
 		return s;
 	}
@@ -219,9 +227,9 @@ public class GameData {
 	 * @return true if the item has an effect attached to it and false if not
 	 */
 	public boolean itemUsed(Item item) {
-		for(Slide slide: slides){
-			for(ActionChoice choice: slide.getActionChoices()){
-				if(choice.hasItemEffect(item)||choice.hasItemConditonF(item)||choice.hasItemConditonV(item)){
+		for (Slide slide : slides) {
+			for (ActionChoice choice : slide.getActionChoices()) {
+				if (choice.hasItemEffect(item) || choice.hasItemConditonF(item) || choice.hasItemConditonV(item)) {
 					return true;
 				}
 			}
@@ -230,39 +238,40 @@ public class GameData {
 	}
 
 	/**
-	 * removes an item 
+	 * removes an item
+	 * 
 	 * @param item
 	 */
 	public void removeItem(Item item) {
-		for(Slide s : slides){
-			for(ActionChoice ac : s.getActionChoices()){
-				for(int i = 0; i < ac.getEffect().size(); i++){
-					if(ac.getEffect().get(i) instanceof ItemEffect){
+		for (Slide s : slides) {
+			for (ActionChoice ac : s.getActionChoices()) {
+				for (int i = 0; i < ac.getEffect().size(); i++) {
+					if (ac.getEffect().get(i) instanceof ItemEffect) {
 						ItemEffect iE = (ItemEffect) ac.getEffect().get(i);
-						if (iE.getItem().equals(item)){
+						if (iE.getItem().equals(item)) {
 							ac.removeEffect(ac.getEffect().get(i));
 						}
 					}
 				}
-				for(int i = 0; i < ac.getFeasibilityCond().size(); i++){
-					if(ac.getFeasibilityCond().get(i) instanceof ItemCondition){
+				for (int i = 0; i < ac.getFeasibilityCond().size(); i++) {
+					if (ac.getFeasibilityCond().get(i) instanceof ItemCondition) {
 						ItemCondition ic = (ItemCondition) ac.getFeasibilityCond().get(i);
-						if(ic.getItem().equals(item)){
+						if (ic.getItem().equals(item)) {
 							ac.removeCondition(ac.getFeasibilityCond().remove(i), ac.FEASIBILITY);
 						}
 					}
 				}
-				for(int i = 0; i < ac.getVisibilityCond().size(); i++){
-					if(ac.getVisibilityCond().get(i) instanceof ItemCondition){
+				for (int i = 0; i < ac.getVisibilityCond().size(); i++) {
+					if (ac.getVisibilityCond().get(i) instanceof ItemCondition) {
 						ItemCondition ic = (ItemCondition) ac.getVisibilityCond().get(i);
-						if(ic.getItem().equals(item)){
+						if (ic.getItem().equals(item)) {
 							ac.removeCondition(ac.getVisibilityCond().remove(i), ac.FEASIBILITY);
 						}
 					}
 				}
 			}
 		}
-		
+
 		player.getInventory().remove(item);
 
 	}

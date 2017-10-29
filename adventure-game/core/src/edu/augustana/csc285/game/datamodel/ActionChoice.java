@@ -9,6 +9,7 @@ public class ActionChoice {// implements Feasible
 	private int destinationSlideIndex = -1;
 	private boolean visible;
 	private String rejText;
+	
 	private ArrayList<Condition> feasibilityCond = new ArrayList<>();
 	private ArrayList<Condition> visibilityCond = new ArrayList<>();
 	private ArrayList<Effect> effectList;
@@ -115,7 +116,7 @@ public class ActionChoice {// implements Feasible
 	public void isFeasible(ArrayList<Feasible> feasibilityReq) {
 
 	}
-
+	
 	public ArrayList<Condition> getFeasibilityCond() {
 		return feasibilityCond;
 	}

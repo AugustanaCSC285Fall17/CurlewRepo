@@ -229,32 +229,10 @@ public class SlideScreen implements Screen {
 						game.setScreen(new GameOverScreen(game));
 					} else {
 						String rejText = game.data.attemptChoice(curChoice);
-						if (rejText.equals("")) {
-//							if (!curChoice.getItemEffects().isEmpty()) {
-//								Dialog inventoryDialog = new Dialog("", game.skin);
-//								String effect = curChoice.getEffectsString();
-//								int height = 80;
-//								for (int i = 0; i < curChoice.getItemEffects().size(); i++) {
-//									height += 40;
-//								}
-//								inventoryDialog.align(Align.bottomLeft);
-//								inventoryDialog.text(effect);
-//								TextButton okButton = new TextButton("OK", game.skin);
-//								okButton.addListener(new ClickListener() {
-//									@Override
-//									public void clicked(InputEvent event, float x, float y) {
-//										inventoryDialog.hide();
-//										initialize();
-//									}
-//								});
-//								inventoryDialog.add(okButton);
-//								inventoryDialog.setPosition(300, 400);
-//								inventoryDialog.setWidth(600);
-//								inventoryDialog.setHeight(height);
-//								game.stage.addActor(inventoryDialog);
-//							} else {
-								initialize();
-//							}
+						if (curChoice.getDestinationSlideIndex() == -1) {
+							game.setScreen(new ShopScreen(game));
+						} else if (rejText.equals("")) {
+							initialize();
 						} else {
 							rejectDialog = new Dialog("", game.skin);
 							rejectDialog.button("Ok");

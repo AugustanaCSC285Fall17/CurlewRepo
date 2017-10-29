@@ -40,7 +40,7 @@ public class AdventureGame extends Game {
 		Gdx.input.setInputProcessor(stage);
 		
 		// TODO: delete this when done testing
-//		this.setScreen(new GameOverScreen(this));
+//		this.setScreen(new ShopScreen(this));
 		
 		this.setScreen(new MainMenuScreen(this));
 	}
