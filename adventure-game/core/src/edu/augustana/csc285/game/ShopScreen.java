@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
@@ -193,9 +194,18 @@ public class ShopScreen implements Screen {
 
 					@Override
 					public void drop(Source source, Payload payload, float x, float y, int pointer) {
-						game.data.getPlayer().addInventory("Kronor", -item.getBuyPrice());
-						game.data.getPlayer().addInventory(item.getItemName(), 1);
-						redrawItemTable();
+						if (game.data.getPlayer().getItemQuantity("Kronor") < item.getBuyPrice()) {
+							Dialog rejectDialog = new Dialog("", game.skin);
+							rejectDialog.button("Ok");
+							rejectDialog.text("Insufficient funds!");
+							rejectDialog.setWidth(700);
+							rejectDialog.setPosition(300, 300);
+							game.stage.addActor(rejectDialog);
+						} else {
+							game.data.getPlayer().addInventory("Kronor", -item.getBuyPrice());
+							game.data.getPlayer().addInventory(item.getItemName(), 1);
+							redrawItemTable();
+						}
 					}
 				});
 				shopTable.add(itemRow).fill();
