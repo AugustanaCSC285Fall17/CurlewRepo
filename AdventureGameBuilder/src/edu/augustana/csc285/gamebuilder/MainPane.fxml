@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="432.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.csc285.gamebuilder.MainPaneController">
+<BorderPane prefHeight="432.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.csc285.gamebuilder.MainPaneController">
    <top>
 <MenuBar BorderPane.alignment="CENTER">
   <menus>
@@ -115,7 +115,7 @@
                      <children>
                         <Button fx:id="addIItemButton" layoutX="29.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleAddItemButton" text="Add Item" />
                         <Button fx:id="removeItemButton" layoutX="29.0" layoutY="68.0" mnemonicParsing="false" onAction="#handleRemoveItemButton" text="Remove Item" />
-                        <Button fx:id="removeImageButton" layoutX="265.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleRemoveImageButton" text="Remove Image" />
+                        <Button fx:id="changeItemImageButton" layoutX="34.0" layoutY="119.0" mnemonicParsing="false" onAction="#handleChangeItemImageButton" text="Change Item Image" />
                      </children>
                   </AnchorPane>
               </content>

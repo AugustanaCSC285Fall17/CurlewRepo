@@ -117,8 +117,9 @@ public class MainPaneController {
 
 	@FXML
 	private Button removeItemButton;
+
 	@FXML
-	private Button removeImageButton;
+	private Button changeItemImageButton;
 
 	// Starter Methods
 
@@ -444,18 +445,17 @@ public class MainPaneController {
 		ObservableList<Integer> observableList = FXCollections.observableList(list);
 		selectSlideNumberChoiceBox.setItems(observableList);
 	}
-	
+
 	@FXML
-	private void handleToggleGameOverButton(){
-		if(wasSlideSelected()){
-		se.setGameOver(!se.isGameOver());
-		if(se.isGameOver()){
-		new Alert(AlertType.INFORMATION, "This slide is now the game over slide").showAndWait();
-		}
-		else{
-			new Alert(AlertType.INFORMATION, "This slide is no longer the game over slide").showAndWait();
-		}
-		pController.update();
+	private void handleToggleGameOverButton() {
+		if (wasSlideSelected()) {
+			se.setGameOver(!se.isGameOver());
+			if (se.isGameOver()) {
+				new Alert(AlertType.INFORMATION, "This slide is now the game over slide").showAndWait();
+			} else {
+				new Alert(AlertType.INFORMATION, "This slide is no longer the game over slide").showAndWait();
+			}
+			pController.update();
 		}
 	}
 
@@ -776,15 +776,15 @@ public class MainPaneController {
 			} else if (visibleOptional.get() == yesButton) {
 				visible = true;
 
-				FileChooser fileChooser = new FileChooser();
-				fileChooser.setTitle("Chose an image for the item");
-				File inFile = fileChooser.showOpenDialog(mainWindow);
+				File inFile = getItemImageFromUser();
+
 				if (inFile != null) {
 					String path = "assets/art/icons/" + inFile.getName();
 					try {
 						Files.copy(inFile.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);
 
-						//data.getPlayer().getInventory().add(new Item(name, visible, path));
+						// data.getPlayer().getInventory().add(new Item(name,
+						// visible, path));
 						data.getPlayer().getInventory().add(new Item(name, visible, inFile.getName()));
 
 					} catch (IOException e) {
@@ -804,6 +804,12 @@ public class MainPaneController {
 			new Alert(AlertType.ERROR, "No name was entered").showAndWait();
 		}
 		pController.update();
+	}
+
+	private File getItemImageFromUser() {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Chose an image for the item");
+		return fileChooser.showOpenDialog(mainWindow);
 	}
 
 	@FXML
@@ -924,7 +930,7 @@ public class MainPaneController {
 				// where to put before
 			} else {
 				new Alert(AlertType.ERROR, "Please select a condition").showAndWait();
-			} 
+			}
 		}
 		pController.update();
 	}
@@ -970,21 +976,21 @@ public class MainPaneController {
 					conditionIndices.add(i);
 					s += "Condition " + conditions.get(i).printEffectInfo() + " has index " + i + "\n";
 				}
-				
+
 				ChoiceDialog<Integer> conditionDialog = new ChoiceDialog<Integer>(null, conditionIndices);
 				conditionDialog.setContentText("Which effect will be removed? Consult alert for refference");
 
 				conditionInfo.setContentText(s);
 				conditionInfo.setX(200);
 				conditionInfo.show();
-				
+
 				Optional<Integer> conditionOptional = conditionDialog.showAndWait();
 				conditionInfo.close();
-				
-				if(conditionOptional.isPresent()){
+
+				if (conditionOptional.isPresent()) {
 					int conditionInt = conditionOptional.get();
 					ace.removeCondition(conditionInt, conditionType);
-				}else{
+				} else {
 					new Alert(AlertType.ERROR, "No Condition Selected");
 				}
 			} else {
@@ -993,11 +999,28 @@ public class MainPaneController {
 		}
 		pController.update();
 	}
-	
+
 	@FXML
-	private void handleRemoveImageButton(){
-		
+	private void handleChangeItemImageButton() {
+		Item item = getItemFromUser();
+		if (item != null) {
+			File inFile = getItemImageFromUser();
+
+			if (inFile != null) {
+				String path = "assets/art/icons/" + inFile.getName();
+				try {
+					Files.copy(inFile.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);
+					item.setImageAddress(path);
+				} catch (IOException e) {
+					// should never happen, checked before, needed for
+					// compile
+					e.printStackTrace();
+				}
+			}
+		}
+		pController.update();
 	}
+
 	// File Menu Methods
 
 	/**
@@ -1012,20 +1035,19 @@ public class MainPaneController {
 	// does nothing now, but could display a help message or about message
 	@FXML
 	private void handleMenuHelpAbout() {
-		Alert aboutAlert = new Alert(AlertType.INFORMATION,
-				"To use this builder you can start many different ways."
+		Alert aboutAlert = new Alert(AlertType.INFORMATION, "To use this builder you can start many different ways."
 				+ "\n1. If you have an existing project that has been saved, then you can load it with the load button. "
-				+ 	"If you would like to start from scratch, then you can add as many slides as you would like. "
-				+ 	"It may also be a good idea to go to the Misc editor tab and add any inventory items you may want.  "
-				+ 	"This will make it easier to add effects and conditions later."
+				+ "If you would like to start from scratch, then you can add as many slides as you would like. "
+				+ "It may also be a good idea to go to the Misc editor tab and add any inventory items you may want.  "
+				+ "This will make it easier to add effects and conditions later."
 				+ "\n2. Next go to the slide editor tab.  "
-				+ 	"Here you must select a slide index to edit.  Now you can add a title and game text.  "
-				+ 	"To save your changes press the submit button.  "
-				+ 	"At the bottom of the screen, you can change the slide type, select a slide image, add action choices to a slide, and even remove a slide."
+				+ "Here you must select a slide index to edit.  Now you can add a title and game text.  "
+				+ "To save your changes press the submit button.  "
+				+ "At the bottom of the screen, you can change the slide type, select a slide image, add action choices to a slide, and even remove a slide."
 				+ "\n3. Next go to the action choice editor tab. Select an action choice index that you would like to edit.  "
-				+ 	"Now you can set the choice text and destination slide index, using the submit button to save any changes made.  "
-				+ 	"To add action choices and conditions,  first select a type from the drop down menu and then press the “add” button.");
-		
+				+ "Now you can set the choice text and destination slide index, using the submit button to save any changes made.  "
+				+ "To add action choices and conditions,  first select a type from the drop down menu and then press the “add” button.");
+
 		aboutAlert.showAndWait();
 		aboutAlert.setWidth(1000);
 	}
