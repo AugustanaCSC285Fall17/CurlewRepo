@@ -2,8 +2,11 @@
 package edu.augustana.csc285.game.datamodel;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -175,11 +178,16 @@ public class GameData {
 	 *         imported from the file.
 	 */
 	public static GameData fromJSONFile(File file) {
-		JsonReader reader = new JsonReader();
+		//JsonReader reader = new JsonReader();
+		
 		try {
 
-			JsonValue jsonData = reader.parse(new FileHandle(file));
-			return fromJSON(jsonData.toString());
+			String data = new String(Files.readAllBytes(Paths.get(file.getAbsolutePath())));
+			
+			//JsonValue jsonData = reader.parse(new FileHandle(file));
+			
+			System.out.print(data);
+			return fromJSON(data);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
