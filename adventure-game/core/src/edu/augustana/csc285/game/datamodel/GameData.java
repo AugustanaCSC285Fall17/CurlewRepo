@@ -186,7 +186,6 @@ public class GameData {
 			
 			//JsonValue jsonData = reader.parse(new FileHandle(file));
 			
-			System.out.print(data);
 			return fromJSON(data);
 		} catch (Exception e) {
 			e.printStackTrace();
