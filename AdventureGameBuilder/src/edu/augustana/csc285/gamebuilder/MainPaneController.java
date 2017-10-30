@@ -780,7 +780,7 @@ public class MainPaneController {
 				fileChooser.setTitle("Chose an image for the item");
 				File inFile = fileChooser.showOpenDialog(mainWindow);
 				if (inFile != null) {
-					String path = "assets/" + inFile.getName();
+					String path = "assets/art/icons/" + inFile.getName();
 					try {
 						Files.copy(inFile.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);
 
