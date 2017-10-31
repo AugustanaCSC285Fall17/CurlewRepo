@@ -4,9 +4,11 @@ package edu.augustana.csc285.game.datamodel;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -179,22 +181,23 @@ public class GameData {
 		//JsonReader reader = new JsonReader();
 		
 		try {
-			BufferedReader br = new BufferedReader(new InputStreamReader (new FileInputStream(file), "UTF-8"));
-			StringBuilder sb = new StringBuilder();
-			String line = br.readLine();
-
-			while (line != null) {
-				sb.append(line);
-				sb.append("\n");
-				line = br.readLine();
-			}
+//			BufferedReader br = new BufferedReader(new InputStreamReader (new FileInputStream(file), "UTF-8"));
+//			StringBuilder sb = new StringBuilder();
+//			String line = br.readLine();
+//
+//			while (line != null) {
+//				sb.append(line);
+//				sb.append("\n");
+//				line = br.readLine();
+//			}
 			
 			//JsonValue jsonData = reader.parse(new FileHandle(file));
 			
-			return fromJSON(sb.toString());
+			return fromJSON(new String(Files.readAllBytes(file.toPath()), "UTF-8"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		return null;
 	}
 
