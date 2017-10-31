@@ -60,7 +60,7 @@ public class MainMenuScreen implements Screen {
 		startButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				game.gameStarted = true;
+				game.data.setGameStarted(true);
 				game.stage.clear();
 				game.restartGame();
 				game.setScreen(new SlideScreen(game));
@@ -96,7 +96,7 @@ public class MainMenuScreen implements Screen {
 		table.padTop(300);
 		table.add(introText).padBottom(30).width(800f);
 		table.row();
-		if (game.gameStarted) {
+		if (game.data.isGameStarted()) {
 			table.add(resumeButton).padBottom(10).width(300);
 			table.row();
 		}

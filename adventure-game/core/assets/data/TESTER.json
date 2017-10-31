@@ -4,7 +4,7 @@ slides: [
 	{
 		title: Choose Your Character
 		imageFileName: image4.jpg
-		gameText: "It?s the 1880s in Sweden. The opportunities in America, such as cheap land and a stable economy, make migration attractive to many Europeans who face problems related to overpopulation. Millions have migrated from their homelands for a new life. You now wish to join them. \n\nWho are you?"
+		gameText: "It's the 1880s in Sweden. The opportunities in America, such as cheap land and a stable economy, make migration attractive to many Europeans who face problems related to overpopulation. Millions have migrated from their homelands for a new life. You now wish to join them. \n\nWho are you?"
 		urlText: www.google.com
 		actionChoices: [
 			{
@@ -56,7 +56,7 @@ slides: [
 	{
 		title: Anders Bengtsson
 		imageFileName: image2.jpg
-		gameText: "You are an 18 year-old male from Mellby Parish, Sm?land. You are the youngest of 4 brothers and will not have any farmland to work. There are too many men in your family and not enough farmland. Additionally, the crop failures of 1867-1868 hit your family farm hard. You would also like to avoid Swedish military conscription. You are coming to America to own your own farmland or find a good job. "
+		gameText: "You are an 18 year-old male from Mellby Parish, Småland. You are the youngest of 4 brothers and will not have any farmland to work. There are too many men in your family and not enough farmland. Additionally, the crop failures of 1867-1868 hit your family farm hard. You would also like to avoid Swedish military conscription. You are coming to America to own your own farmland or find a good job. "
 		urlText: url1
 		slideType: LETTER
 		actionChoices: [
@@ -70,7 +70,7 @@ slides: [
 	{
 		title: Lovisa Eriksdotter
 		imageFileName: image3.jpg
-		gameText: You are an 18 year-old female maid from Stockholm. You dislike your job as maid and can?t seem to find a better one because there is too much competition (population has been booming in the city and countryside). You decide to seek better employment in America.
+		gameText: You are an 18 year-old female maid from Stockholm. You dislike your job as maid and can't seem to find a better one because there is too much competition (population has been booming in the city and countryside). You decide to seek better employment in America.
 		urlText: url2
 		slideType: LETTER
 		actionChoices: [
@@ -98,7 +98,7 @@ slides: [
 	{
 		title: You've received a letter from America.
 		imageFileName: image9.jpg
-		gameText: "Receiving letters from those who journeyed to America prompted many of your family friends to pursue their own journey over. Life must be treating them well in America? economic opportunities, building their own legacy and family. The American Dream is a strong pull for Swedes, yourself included. \n\nChoose a letter to read:"
+		gameText: "Receiving letters from those who journeyed to America prompted many of your family friends to pursue their own journey over. Life must be treating them well in America- economic opportunities, building their own legacy and family. The American Dream is a strong pull for Swedes, yourself included. \n\nChoose a letter to read:"
 		urlText: dieUrl
 		actionChoices: [
 			{
@@ -260,11 +260,11 @@ slides: [
 	{
 		title: Travel Papers
 		imageFileName: image9.jpg
-		gameText: "To start your journey, you need a few provisions. The first and foremost being your papers. You have $70 USD worth of Kronor (Swedish money)  right now. Do you:"
+		gameText: "To start your journey, you need a few provisions. The first and foremost being your papers. Check your inventory to see how much money you currently have.  Do you:",
 		urlText: dieUrl
 		actionChoices: [
 			{
-				choiceText: Buy official papers from your home parish ($20)
+				choiceText: Buy official papers from your home parish for 80 Kronor
 				destinationSlideIndex: 12
 				visible: false
 				effectList: [
@@ -279,12 +279,12 @@ slides: [
 						item: {
 							itemName: Kronor
 						}
-						effectSize: -20
+						effectSize: -80
 					}
 				]
 			}
 			{
-				choiceText: Buy forged papers ($10)
+				choiceText: Buy forged papers for 40 Kronor
 				destinationSlideIndex: 12
 				visible: false
 				effectList: [
@@ -299,7 +299,7 @@ slides: [
 						item: {
 							itemName: Kronor
 						}
-						effectSize: -10
+						effectSize: -40
 					}
 				]
 			}
@@ -681,7 +681,7 @@ slides: [
 	{
 		title: Historical Note: Gothenburg Port
 		imageFileName: facts.png
-		gameText: "Over a million Swedish immigrants left through the port of Gothenburg in southwest Sweden. Many American genealogists believe their ancestors lived in Gothenburg, when really this was just the port they left through. Provinces of Sweden including Sm?land, V?sterg?tland, Dalsland, V?rmland, and ?land saw large numbers emigrate. "
+		gameText: "Over a million Swedish immigrants left through the port of Gothenburg in southwest Sweden. Many American genealogists believe their ancestors lived in Gothenburg, when really this was just the port they left through. Provinces of Sweden including Småland, Västergötland, Dalsland, Värmland, and Öland saw large numbers emigrate. "
 		urlText: dieUrl
 		slideType: HISTORICAL
 		actionChoices: [
@@ -948,7 +948,7 @@ slides: [
 		slideType: HISTORICAL
 		actionChoices: [
 			{
-				choiceText: Proceed to ship
+				choiceText: Go back to the street
 				destinationSlideIndex: 20
 			}
 		]
@@ -1604,6 +1604,10 @@ slides: [
 						}
 						qtyToCompare: 1
 					}
+					{
+						class: edu.augustana.csc285.game.datamodel.GenderCondition
+						genderToCheck: MALE
+					}
 				]
 			}
 			{
@@ -1765,6 +1769,7 @@ slides: [
 		title: Historical Note: Castle Garden
 		imageFileName: facts.png
 		gameText: "After authorities examined the sanitary conditions of the boat, passengers were brought from their ships on barges to Castle Garden. If medical examiners believed a migrant was likely to become a public charge, either due to disease or a perception of helplessness, then they would be quarantined until officials could arrange for deportation. Each person was individually registered by a clerk, then moved to the next desk, where transportation companies' clerks would determine where the migrant was traveling, lay out maps to view the route ahead, and figure out the price for their next stage of the journey. Immigrants would have their bags checked, pay the requisite costs, and then a steamboat would take them to the starting points for various railroad and steamboat lines."
+		slideType: HISTORICAL
 		actionChoices: [
 			{
 				choiceText: Continue

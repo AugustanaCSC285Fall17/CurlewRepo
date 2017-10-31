@@ -169,7 +169,7 @@ public class ShopScreen implements Screen {
 
 		for (Item item : game.data.getPlayer().getInventory()) {
 			if (item.canBuy()) {
-				Table itemRow = getAnItemRow(item, true);
+				Table itemRow = getItemRow(item, true);
 
 				DragAndDrop dnd = new DragAndDrop();
 				dnd.addSource(new Source(itemRow) {
@@ -250,23 +250,28 @@ public class ShopScreen implements Screen {
 		table.padTop(tableHeight + itemTitle.getHeight());
 	}
 	
-	private Table getAnItemRow(Item item, boolean isShop) {
+	private Table getItemRow(Item item, boolean isShop) {
 		Table itemRow = new Table(game.skin);
 		Image itemImage = new Image(new Texture(Gdx.files.internal("art/icons/" + item.getImageAddress())));
 		Label itemLabel = new Label(item.getItemName(), game.skin);
 		int price = item.getSellPrice();
 		if (isShop) {
 			price = item.getBuyPrice();
+		} else if (!item.canSell()) {
+			price = 0;
 		}
 		
 		Label quantityLabel = new Label("" + item.getItemQty(), game.skin);
 		Label valueLabel = new Label("" + price, game.skin);
+		
+		quantityLabel.setAlignment(Align.center);
+		valueLabel.setAlignment(Align.center);
 		itemRow.add(itemImage).size(80, 80);
 		itemRow.add(itemLabel).padLeft(30).size(150, 30).align(Align.left);
 		if (!isShop) {
-			itemRow.add(quantityLabel).padLeft(55).size(30).align(Align.center);
+			itemRow.add(quantityLabel).padLeft(55).size(30);
 		}
-		itemRow.add(valueLabel).padLeft(60).size(30).align(Align.center);
+		itemRow.add(valueLabel).padLeft(60).size(30);
 		
 		return itemRow;
 	}
@@ -281,8 +286,8 @@ public class ShopScreen implements Screen {
 		// ------------------------------------------------------
 
 		for (Item item : game.data.getCurrentVisibleItems()) {
-			if (item.canSell()) {
-				Table itemRow = getAnItemRow(item, false);
+			if (!item.getItemName().equals("Kronor")) {
+				Table itemRow = getItemRow(item, false);
 
 				DragAndDrop dnd = new DragAndDrop();
 				dnd.addSource(new Source(itemRow) {
@@ -306,9 +311,19 @@ public class ShopScreen implements Screen {
 
 					@Override
 					public void drop(Source source, Payload payload, float x, float y, int pointer) {
-						game.data.getPlayer().addInventory("Kronor", item.getSellPrice());
-						game.data.getPlayer().addInventory(item.getItemName(), -1);
-						redrawItemTable();
+
+						if (!item.canSell()) {
+							Dialog rejectDialog = new Dialog("", game.skin);
+							rejectDialog.button("Ok");
+							rejectDialog.text("You cannot sell " + item.getItemName() + "!");
+							rejectDialog.setWidth(700);
+							rejectDialog.setPosition(300, 300);
+							game.stage.addActor(rejectDialog);
+						} else {
+							game.data.getPlayer().addInventory("Kronor", item.getSellPrice());
+							game.data.getPlayer().addInventory(item.getItemName(), -1);
+							redrawItemTable();
+						}
 					}
 				});
 				itemTable.add(itemRow).fill();

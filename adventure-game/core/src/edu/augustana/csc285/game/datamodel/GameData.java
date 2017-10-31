@@ -24,6 +24,7 @@ public class GameData {
 	private Player player;
 	private int currentSlideIndex;
 	public String saveName = "SavedFile";
+	private boolean gameStarted = false;
 
 	public GameData() { // needed for GSon
 		slides = new ArrayList<Slide>();
@@ -274,5 +275,13 @@ public class GameData {
 
 		player.getInventory().remove(item);
 
+	}
+
+	public boolean isGameStarted() {
+		return gameStarted;
+	}
+
+	public void setGameStarted(boolean gameStarted) {
+		this.gameStarted = gameStarted;
 	}
 }
