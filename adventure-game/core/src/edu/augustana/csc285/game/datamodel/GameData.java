@@ -170,37 +170,6 @@ public class GameData {
 		return data;
 	}
 
-	/**
-	 * 
-	 * @param file
-	 *            the address of the JSON file
-	 * @return a GamaData object, which is created from deserializing the JSON data
-	 *         imported from the file.
-	 */
-	public static GameData fromJSONFile(File file) {
-		//JsonReader reader = new JsonReader();
-		
-		try {
-//			BufferedReader br = new BufferedReader(new InputStreamReader (new FileInputStream(file), "UTF-8"));
-//			StringBuilder sb = new StringBuilder();
-//			String line = br.readLine();
-//
-//			while (line != null) {
-//				sb.append(line);
-//				sb.append("\n");
-//				line = br.readLine();
-//			}
-			
-			//JsonValue jsonData = reader.parse(new FileHandle(file));
-			
-			return fromJSON(new String(Files.readAllBytes(file.toPath()), "UTF-8"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return null;
-	}
-
 	public void saveAs(String saveName) {
 		this.saveName = saveName;
 		save();

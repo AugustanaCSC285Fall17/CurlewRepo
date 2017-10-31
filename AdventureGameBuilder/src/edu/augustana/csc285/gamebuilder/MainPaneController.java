@@ -342,7 +342,7 @@ public class MainPaneController {
 		if (inFile == null) {
 
 		} else {
-			this.data = GameData.fromJSONFile(inFile);
+			this.data = GameBuilderApplication.loadGameDataFromJSONFile(inFile);
 			se = new SlideEditor(data);
 			pController.updateData(data);
 			clearSlideEditor();
