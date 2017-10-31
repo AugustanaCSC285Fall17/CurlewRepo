@@ -205,6 +205,7 @@ public class ShopScreen implements Screen {
 							game.data.getPlayer().addInventory("Kronor", -item.getBuyPrice());
 							game.data.getPlayer().addInventory(item.getItemName(), 1);
 							redrawItemTable();
+							showDialog(item, false);
 						}
 					}
 				});
@@ -314,7 +315,7 @@ public class ShopScreen implements Screen {
 
 						if (!item.canSell()) {
 							Dialog rejectDialog = new Dialog("", game.skin);
-							rejectDialog.button("Ok");
+							rejectDialog.button("OK");
 							rejectDialog.text("You cannot sell " + item.getItemName() + "!");
 							rejectDialog.setWidth(700);
 							rejectDialog.setPosition(300, 300);
@@ -323,6 +324,7 @@ public class ShopScreen implements Screen {
 							game.data.getPlayer().addInventory("Kronor", item.getSellPrice());
 							game.data.getPlayer().addInventory(item.getItemName(), -1);
 							redrawItemTable();
+							showDialog(item, true);
 						}
 					}
 				});
@@ -330,6 +332,21 @@ public class ShopScreen implements Screen {
 				itemTable.row().padTop(10);
 			}
 		}
+	}
+	
+	private void showDialog(Item item, boolean isSelling) {
+		Dialog dialog = new Dialog("", game.skin);
+		dialog.setPosition(300, 300);
+		dialog.setWidth(700);
+		dialog.button("OK");
+		String message;
+		if (isSelling) {
+			message = "You sold " + item.getItemName() + " for " + item.getSellPrice() + " Kronor.";
+		} else {
+			message = "You bought " + item.getItemName() + " for " + item.getBuyPrice() + " Kronor.";
+		}
+		dialog.text(new Label(message, game.skin));
+		game.stage.addActor(dialog);
 	}
 	
 	@Override

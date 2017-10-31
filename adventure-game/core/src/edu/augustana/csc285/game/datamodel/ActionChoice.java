@@ -88,17 +88,17 @@ public class ActionChoice {// implements Feasible
 	}
 	
 	public void removeCondition(int index, int visOrFeas){
-		if(visOrFeas==this.FEASIBILITY){
+		if(visOrFeas== FEASIBILITY){
 			feasibilityCond.remove(index);
-		}else if(visOrFeas==this.VISIBILITY){
+		}else if(visOrFeas== VISIBILITY){
 			this.visibilityCond.remove(index);
 		}
 	}
 
 	public void removeCondition(Condition condition, int visOrFeas){
-		if(visOrFeas==this.FEASIBILITY){
+		if(visOrFeas== FEASIBILITY){
 			feasibilityCond.remove(condition);
-		}else if(visOrFeas==this.VISIBILITY){
+		}else if(visOrFeas== VISIBILITY){
 			this.visibilityCond.remove(condition);
 		}
 	}
