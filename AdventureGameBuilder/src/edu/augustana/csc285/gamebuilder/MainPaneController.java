@@ -126,6 +126,9 @@ public class MainPaneController {
 	private Button additemButtonBlank;
 	@FXML
 	private TextField itemNameTextField;
+	@FXML
+	private ChoiceBox<Item> itemChoiceBox;
+	//private ChoiceBox<String> itemChoiceBox;
 
 	// Starter Methods
 
@@ -355,7 +358,7 @@ public class MainPaneController {
 			clearACE();
 			this.updateSlideNumberChoiceBox();
 			this.updateActionChoiceNumberChoiceBox(); // This doesn't work for
-														// some reason
+			this.updateItemChoiceBox();											// some reason
 		}
 	}
 
@@ -569,6 +572,12 @@ public class MainPaneController {
 
 	}
 
+	private void updateItemChoiceBox(){
+				ObservableList<Item> observableList = FXCollections.observableList(data.getPlayer().getInventory());
+				itemChoiceBox.setItems(observableList);
+		
+	}
+	
 	// TODO change to result.isPresent
 	@FXML
 	private void handleAddEffect() {
@@ -1030,9 +1039,11 @@ public class MainPaneController {
 	@FXML
 	private void handleAdditemButtonBlank(){
 		if(itemNameTextField.getText().equals("")){
-			new Alert(AlertType.ERROR, "Please Enter a name for the item.");
-		}
+			new Alert(AlertType.ERROR, "Please Enter a name for the item.").showAndWait();
+		}else{
 		data.getPlayer().addItem(new Item(itemNameTextField.getText()));
+		}
+		updateItemChoiceBox();
 		pController.update();
 	}
 
