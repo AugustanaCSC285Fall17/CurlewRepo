@@ -114,14 +114,10 @@ public class MainPaneController {
 	// Item Editor Fields
 
 	private ItemEditor ie = new ItemEditor();
-	@FXML
-	private Button addItemButton;
-
+	
 	@FXML
 	private Button removeItemButton;
 
-	@FXML
-	private Button changeItemImageButton;
 
 	@FXML
 	private Button additemButtonBlank;
@@ -802,62 +798,7 @@ public class MainPaneController {
 
 	}
 
-	// Misc Editor Methods
-
-	// provides a series of dialoges to get info on new item
-	@FXML
-	public void handleAddItemButton() {
-		TextInputDialog nameDialog = new TextInputDialog();
-		nameDialog.setContentText("Enter the name of the Item");
-		Optional<String> nameOptional = nameDialog.showAndWait();
-		if (nameOptional.isPresent()) {
-			String name = nameOptional.get();
-
-			Alert visibleAlert = new Alert(AlertType.CONFIRMATION);
-			visibleAlert.setContentText("Should this item be visible to the player?");
-			ButtonType yesButton = new ButtonType("Yes");
-			ButtonType noButton = new ButtonType("No");
-			ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
-
-			visibleAlert.getButtonTypes().setAll(yesButton, noButton, buttonTypeCancel);
-			Optional<ButtonType> visibleOptional = visibleAlert.showAndWait();
-			Boolean visible;
-			if (visibleOptional.get() == noButton) {
-				visible = false;
-				data.getPlayer().addItem(new Item(name, visible));
-
-			} else if (visibleOptional.get() == yesButton) {
-				visible = true;
-
-				File inFile = getItemImageFromUser();
-
-				if (inFile != null) {
-					String path = "assets/art/icons/" + inFile.getName();
-					try {
-						Files.copy(inFile.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);
-
-						// data.getPlayer().getInventory().add(new Item(name,
-						// visible, path));
-						data.getPlayer().addItem(new Item(name, visible, inFile.getName()));
-
-					} catch (IOException e) {
-						// should never happen, checked before, needed for
-						// compile
-						e.printStackTrace();
-					}
-
-				} else {
-					new Alert(AlertType.ERROR, "No image was selected, item not created").showAndWait();
-				}
-			} else {
-				new Alert(AlertType.ERROR, "Item not created").showAndWait();
-			}
-
-		} else {
-			new Alert(AlertType.ERROR, "No name was entered").showAndWait();
-		}
-		pController.update();
-	}
+	// Item Editor Methods
 
 	private File getItemImageFromUser() {
 		FileChooser fileChooser = new FileChooser();
@@ -1059,26 +1000,6 @@ public class MainPaneController {
 		pController.update();
 	}
 
-	@FXML
-	private void handleChangeItemImageButton() {
-		Item item = getItemFromUser();
-		if (item != null) {
-			File inFile = getItemImageFromUser();
-
-			if (inFile != null) {
-				String path = "assets/art/icons/" + inFile.getName();
-				try {
-					Files.copy(inFile.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);
-					item.setImageAddress(path);
-				} catch (IOException e) {
-					// should never happen, checked before, needed for
-					// compile
-					e.printStackTrace();
-				}
-			}
-		}
-		pController.update();
-	}
 
 	@FXML
 	private void handleAdditemButtonBlank() {
