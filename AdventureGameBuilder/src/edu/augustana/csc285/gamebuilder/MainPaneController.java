@@ -17,6 +17,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Label;
@@ -110,25 +111,28 @@ public class MainPaneController {
 	@FXML
 	private Button removeConditionButton;
 
-	// Misc Editor Fields
+	// Item Editor Fields
 
-	ItemEditor ie;
-	@FXML
-	private Button addItemButton;
-
+	private ItemEditor ie = new ItemEditor();
+	
 	@FXML
 	private Button removeItemButton;
 
+
 	@FXML
-	private Button changeItemImageButton;
-	
-	@FXML
-	private Button additemButtonBlank;
+	private Button additemButton;
 	@FXML
 	private TextField itemNameTextField;
 	@FXML
 	private ChoiceBox<Item> itemChoiceBox;
-	//private ChoiceBox<String> itemChoiceBox;
+	@FXML
+	private Label currentItemLabel;
+	@FXML
+	private CheckBox itemVisibleCheckBox;
+	@FXML
+	private Label itemImageLabel;
+	@FXML
+	private Button selectAnItemImageButton;
 
 	// Starter Methods
 
@@ -163,6 +167,12 @@ public class MainPaneController {
 				.addListener((ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) -> {
 					if (newValue != null) {
 						changeActionChoice(newValue);
+					}
+				});
+		itemChoiceBox.getSelectionModel().selectedItemProperty()
+				.addListener((ObservableValue<? extends Item> observable, Item oldItem, Item newItem) -> {
+					if (newItem != null) {
+						changeItem(newItem);
 					}
 				});
 	}
@@ -357,8 +367,8 @@ public class MainPaneController {
 			clearSlideEditor();
 			clearACE();
 			this.updateSlideNumberChoiceBox();
-			this.updateActionChoiceNumberChoiceBox(); // This doesn't work for
-			this.updateItemChoiceBox();											// some reason
+			this.updateActionChoiceNumberChoiceBox();
+			this.updateItemChoiceBox();
 		}
 	}
 
@@ -484,7 +494,26 @@ public class MainPaneController {
 	}
 
 	public void changeActionChoice(int index) {
-		ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide()));
+		ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide())); // TODO
+																			// do
+																			// we
+																			// need
+																			// a
+																			// new
+																			// ace
+																			// here
+																			// or
+																			// can
+																			// we
+																			// set
+																			// it?
+																			// Don't
+																			// want
+																			// a
+																			// bunch
+																			// of
+																			// loose
+																			// objects
 		ace.setCurrentActionChoiceIndex(index);
 		currentACLabel.setText(Integer.toString(index));
 		ActionChoice choice = data.getSlide(se.getCurrentSlide()).getActionChoiceAt(index);
@@ -572,12 +601,17 @@ public class MainPaneController {
 
 	}
 
-	private void updateItemChoiceBox(){
-				ObservableList<Item> observableList = FXCollections.observableList(data.getPlayer().getInventory());
-				itemChoiceBox.setItems(observableList);
-		
+	private void updateItemChoiceBox() {
+
+		ArrayList<Item> list = new ArrayList<Item>();
+		for (Item item : data.getPlayer().getInventory()) {
+			list.add(item);
+		}
+		ObservableList<Item> observableList = FXCollections.observableList(list);
+		itemChoiceBox.setItems(observableList);
+
 	}
-	
+
 	// TODO change to result.isPresent
 	@FXML
 	private void handleAddEffect() {
@@ -764,62 +798,7 @@ public class MainPaneController {
 
 	}
 
-	// Misc Editor Methods
-
-	// provides a series of dialoges to get info on new item
-	@FXML
-	public void handleAddItemButton() {
-		TextInputDialog nameDialog = new TextInputDialog();
-		nameDialog.setContentText("Enter the name of the Item");
-		Optional<String> nameOptional = nameDialog.showAndWait();
-		if (nameOptional.isPresent()) {
-			String name = nameOptional.get();
-
-			Alert visibleAlert = new Alert(AlertType.CONFIRMATION);
-			visibleAlert.setContentText("Should this item be visible to the player?");
-			ButtonType yesButton = new ButtonType("Yes");
-			ButtonType noButton = new ButtonType("No");
-			ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
-
-			visibleAlert.getButtonTypes().setAll(yesButton, noButton, buttonTypeCancel);
-			Optional<ButtonType> visibleOptional = visibleAlert.showAndWait();
-			Boolean visible;
-			if (visibleOptional.get() == noButton) {
-				visible = false;
-				data.getPlayer().addItem(new Item(name, visible));
-
-			} else if (visibleOptional.get() == yesButton) {
-				visible = true;
-
-				File inFile = getItemImageFromUser();
-
-				if (inFile != null) {
-					String path = "assets/art/icons/" + inFile.getName();
-					try {
-						Files.copy(inFile.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);
-
-						// data.getPlayer().getInventory().add(new Item(name,
-						// visible, path));
-						data.getPlayer().addItem(new Item(name, visible, inFile.getName()));
-
-					} catch (IOException e) {
-						// should never happen, checked before, needed for
-						// compile
-						e.printStackTrace();
-					}
-
-				} else {
-					new Alert(AlertType.ERROR, "No image was selected, item not created").showAndWait();
-				}
-			} else {
-				new Alert(AlertType.ERROR, "Item not created").showAndWait();
-			}
-
-		} else {
-			new Alert(AlertType.ERROR, "No name was entered").showAndWait();
-		}
-		pController.update();
-	}
+	// Item Editor Methods
 
 	private File getItemImageFromUser() {
 		FileChooser fileChooser = new FileChooser();
@@ -830,21 +809,27 @@ public class MainPaneController {
 	@FXML
 	// TODO change to strings instead of ints?
 	public void handleRemoveItemButton() {
-		ArrayList<Item> inventory = data.getPlayer().getInventory();
-		Item item = getItemFromUser();
 
-		if (data.itemUsed(item)) {
-			Optional<ButtonType> inUseResponse = new Alert(AlertType.CONFIRMATION,
-					"This item is in use. Removing it remove all effects and conditions using this item. Are you sure?")
-							.showAndWait();
-			// TODO support conditions removal
+		System.out.print(ie.isItemSelected());
+		if (ie.isItemSelected()) {
+			if (data.itemUsed(ie.getCurrentItem())) {
+				Optional<ButtonType> inUseResponse = new Alert(AlertType.CONFIRMATION,
+						"This item is in use. Removing it remove all effects and conditions using this item. Are you sure?")
+								.showAndWait();
+				// TODO support conditions removal
 
-			if (inUseResponse.get() == ButtonType.OK) {
-				data.removeItem(item);
+				if (inUseResponse.get() == ButtonType.OK) {
+					data.removeItem(ie.getCurrentItem());
+					clearie();
+				}
+
+			} else {
+
+				data.getPlayer().getInventory().remove(ie.getCurrentItem());
+				clearie();
 			}
 		} else {
-
-			data.getPlayer().getInventory().remove(item);
+			new Alert(AlertType.ERROR, "No item is selected.").showAndWait();
 		}
 		pController.update();
 
@@ -1015,36 +1000,61 @@ public class MainPaneController {
 		pController.update();
 	}
 
-	@FXML
-	private void handleChangeItemImageButton() {
-		Item item = getItemFromUser();
-		if (item != null) {
-			File inFile = getItemImageFromUser();
 
-			if (inFile != null) {
-				String path = "assets/art/icons/" + inFile.getName();
-				try {
-					Files.copy(inFile.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);
-					item.setImageAddress(path);
-				} catch (IOException e) {
-					// should never happen, checked before, needed for
-					// compile
-					e.printStackTrace();
-				}
-			}
-		}
-		pController.update();
-	}
-	
 	@FXML
-	private void handleAdditemButtonBlank(){
-		if(itemNameTextField.getText().equals("")){
+	private void handleAdditemButton() {
+		if (itemNameTextField.getText().equals("")) {
 			new Alert(AlertType.ERROR, "Please Enter a name for the item.").showAndWait();
-		}else{
-		data.getPlayer().addItem(new Item(itemNameTextField.getText()));
+		} else {
+			data.getPlayer().addItem(new Item(itemNameTextField.getText()));
 		}
 		updateItemChoiceBox();
 		pController.update();
+	}
+
+	private void changeItem(Item item) {
+		ie.setCurrentItem(item);
+		currentItemLabel.setText(item.getItemName());
+		itemVisibleCheckBox.setSelected(item.isVisible());
+		itemImageLabel.setText(item.getImageAddress());
+	}
+
+	@FXML
+	private void handleItemVisibleCheckBox() {
+		if (ie.isItemSelected()) {
+			ie.setVisibility(itemVisibleCheckBox.isSelected());
+			pController.update();
+		}
+	}
+
+	@FXML
+	private void handleSelectAnItemImageButton() {
+		File inFile = getItemImageFromUser();
+
+		if (inFile != null) {
+			String path = "assets/art/icons/" + inFile.getName();
+			try {
+				Files.copy(inFile.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);
+				ie.setImagePath(inFile.getName());
+				itemImageLabel.setText(inFile.getName());
+
+			} catch (IOException e) {
+				// should never happen, checked before, needed for
+				// compile
+				e.printStackTrace();
+			}
+			pController.update();
+		}
+	}
+
+	private void clearie() {
+		ie.setCurrentItem(null);
+		currentItemLabel.setText("No item selected.");
+		itemVisibleCheckBox.setSelected(false);
+		itemImageLabel.setText("No image selected.");
+		updateItemChoiceBox();
+		itemChoiceBox.setValue(null);
+
 	}
 
 	// File Menu Methods
