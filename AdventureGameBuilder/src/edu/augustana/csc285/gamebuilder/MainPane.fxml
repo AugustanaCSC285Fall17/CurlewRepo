@@ -128,7 +128,7 @@
                         <Label fx:id="currentItemLabel" layoutX="107.0" layoutY="121.0" text="no item selected" />
                         <CheckBox fx:id="itemVisibleCheckBox" layoutX="34.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleItemVisibleCheckBox" text="Item Visible" />
                         <Label layoutX="34.0" layoutY="197.0" text="Current Image:" />
-                        <Label layoutX="121.0" layoutY="197.0" text="No Image Selected" />
+                        <Label fx:id="itemImageLabel" layoutX="121.0" layoutY="197.0" text="No Image Selected" />
                         <Button layoutX="268.0" layoutY="193.0" mnemonicParsing="false" text="Select an Image" />
                      </children>
                   </AnchorPane>

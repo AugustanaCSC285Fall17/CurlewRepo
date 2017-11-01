@@ -133,6 +133,7 @@ public class MainPaneController {
 	private Label currentItemLabel;
 	@FXML
 	private CheckBox itemVisibleCheckBox;
+	@FXML private Label itemImageLabel;
 
 	// Starter Methods
 
@@ -1085,6 +1086,7 @@ public class MainPaneController {
 		 ie.setCurrentItem(item);
 		 currentItemLabel.setText(item.getItemName());
 		 itemVisibleCheckBox.setSelected(item.isVisible());
+		 itemImageLabel.setText(item.getImageAddress());
 	}
 	
 	@FXML
