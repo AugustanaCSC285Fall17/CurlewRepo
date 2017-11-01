@@ -115,7 +115,7 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="removeItemButton" layoutX="29.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleRemoveItemButton" text="Remove Item" />
-                        <Button fx:id="additemButtonBlank" layoutX="182.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleAdditemButtonBlank" text="Add New Item" />
+                        <Button fx:id="additemButton" layoutX="182.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleAdditemButton" text="Add New Item" />
                         <TextField fx:id="itemNameTextField" layoutX="364.0" layoutY="19.0" />
                         <Label layoutX="272.0" layoutY="23.0" text="New item name:" />
                         <Label layoutX="170.0" layoutY="290.0" />

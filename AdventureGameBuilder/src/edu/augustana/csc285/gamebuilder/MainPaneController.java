@@ -120,7 +120,7 @@ public class MainPaneController {
 
 
 	@FXML
-	private Button additemButtonBlank;
+	private Button additemButton;
 	@FXML
 	private TextField itemNameTextField;
 	@FXML
@@ -1002,7 +1002,7 @@ public class MainPaneController {
 
 
 	@FXML
-	private void handleAdditemButtonBlank() {
+	private void handleAdditemButton() {
 		if (itemNameTextField.getText().equals("")) {
 			new Alert(AlertType.ERROR, "Please Enter a name for the item.").showAndWait();
 		} else {
