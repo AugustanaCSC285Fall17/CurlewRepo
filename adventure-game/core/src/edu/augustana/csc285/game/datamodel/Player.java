@@ -72,6 +72,10 @@ public class Player {
 		inventory.add(new Item(name, value));
 	}
 	
+	public void addItem(Item item){
+		inventory.add(item);
+	}
+	
 	// adds the player stat value stored at a given key
 	public void addStat(String name, int value) {
 		stats.put(name, value + stats.get(name));

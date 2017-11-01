@@ -112,6 +112,7 @@ public class MainPaneController {
 
 	// Misc Editor Fields
 
+	ItemEditor ie;
 	@FXML
 	private Button addItemButton;
 
@@ -120,6 +121,11 @@ public class MainPaneController {
 
 	@FXML
 	private Button changeItemImageButton;
+	
+	@FXML
+	private Button additemButtonBlank;
+	@FXML
+	private TextField itemNameTextField;
 
 	// Starter Methods
 
@@ -771,7 +777,7 @@ public class MainPaneController {
 			Boolean visible;
 			if (visibleOptional.get() == noButton) {
 				visible = false;
-				data.getPlayer().getInventory().add(new Item(name, visible));
+				data.getPlayer().addItem(new Item(name, visible));
 
 			} else if (visibleOptional.get() == yesButton) {
 				visible = true;
@@ -785,7 +791,7 @@ public class MainPaneController {
 
 						// data.getPlayer().getInventory().add(new Item(name,
 						// visible, path));
-						data.getPlayer().getInventory().add(new Item(name, visible, inFile.getName()));
+						data.getPlayer().addItem(new Item(name, visible, inFile.getName()));
 
 					} catch (IOException e) {
 						// should never happen, checked before, needed for
@@ -1018,6 +1024,15 @@ public class MainPaneController {
 				}
 			}
 		}
+		pController.update();
+	}
+	
+	@FXML
+	private void handleAdditemButtonBlank(){
+		if(itemNameTextField.getText().equals("")){
+			new Alert(AlertType.ERROR, "Please Enter a name for the item.");
+		}
+		data.getPlayer().addItem(new Item(itemNameTextField.getText()));
 		pController.update();
 	}
 

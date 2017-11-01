@@ -109,13 +109,17 @@
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab text="Misc Editor">
+            <Tab text="Inventory Editor">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="addIItemButton" layoutX="29.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleAddItemButton" text="Add Item" />
                         <Button fx:id="removeItemButton" layoutX="29.0" layoutY="68.0" mnemonicParsing="false" onAction="#handleRemoveItemButton" text="Remove Item" />
                         <Button fx:id="changeItemImageButton" layoutX="34.0" layoutY="119.0" mnemonicParsing="false" onAction="#handleChangeItemImageButton" text="Change Item Image" />
+                        <Button fx:id="additemButtonBlank" layoutX="39.0" layoutY="251.0" mnemonicParsing="false" onAction="#handleAdditemButtonBlank" text="Add Item" />
+                        <TextField fx:id="itemNameTextField" layoutX="220.0" layoutY="251.0" />
+                        <Label layoutX="156.0" layoutY="255.0" text="Item name" />
+                        <Label layoutX="170.0" layoutY="290.0" />
                      </children>
                   </AnchorPane>
               </content>
