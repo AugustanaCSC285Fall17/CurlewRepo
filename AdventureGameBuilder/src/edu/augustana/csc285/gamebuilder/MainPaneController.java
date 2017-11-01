@@ -866,21 +866,21 @@ public class MainPaneController {
 	@FXML
 	// TODO change to strings instead of ints?
 	public void handleRemoveItemButton() {
-		ArrayList<Item> inventory = data.getPlayer().getInventory();
-		Item item = getItemFromUser();
 
-		if (data.itemUsed(item)) {
+		if (data.itemUsed(ie.getCurrentItem())) {
 			Optional<ButtonType> inUseResponse = new Alert(AlertType.CONFIRMATION,
 					"This item is in use. Removing it remove all effects and conditions using this item. Are you sure?")
 							.showAndWait();
 			// TODO support conditions removal
 
 			if (inUseResponse.get() == ButtonType.OK) {
-				data.removeItem(item);
+				data.removeItem(ie.getCurrentItem());
+				clearie();
 			}
 		} else {
 
-			data.getPlayer().getInventory().remove(item);
+			data.getPlayer().getInventory().remove(ie.getCurrentItem());
+			clearie();
 		}
 		pController.update();
 
@@ -1116,6 +1116,16 @@ public class MainPaneController {
 			}
 			pController.update();
 		}
+	}
+	
+	private void clearie(){
+		 ie.setCurrentItem(null);
+		 currentItemLabel.setText("No item selected.");
+		 itemVisibleCheckBox.setSelected(false);
+		 itemImageLabel.setText("No image selected.");
+		 updateItemChoiceBox();
+		 itemChoiceBox.setValue(null);
+		 
 	}
 
 	// File Menu Methods

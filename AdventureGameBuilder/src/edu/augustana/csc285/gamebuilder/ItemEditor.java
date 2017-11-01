@@ -12,7 +12,7 @@ public class ItemEditor {
 	public void setCurrentItem(Item item){
 		currentItem = item;
 	}
-	public Item getCurrentItem(Item item){
+	public Item getCurrentItem(){
 		return currentItem;
 	}
 	public Boolean isItemSelected(){
