@@ -179,7 +179,6 @@ public class SlideScreen implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				volumeDialog.setVisible(false);
-				System.err.println("button clicked!");
 			}
 		});
 		volumeDialog.add(okButton);

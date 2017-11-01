@@ -16,7 +16,6 @@ public class AdventureGame extends Game {
 	public static final int GAME_SCREEN_HEIGHT = 720;
 
 	public GameData data;
-	public boolean gameStarted = false;
 
 	public Music bgMusic;
 	public Stage stage;
@@ -30,7 +29,7 @@ public class AdventureGame extends Game {
 	public void create() {
 		skin = new Skin(Gdx.files.internal("skins/uiskin.json"));
 		stage = new Stage(new ScreenViewport());
-		data = GameData.fromJSON(Gdx.files.internal("data/TESTER.json").readString());
+		data = GameData.fromJSON(Gdx.files.internal("data/TESTER.json").readString("UTF-8"));
 		
 		bgMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Sonata_con_Allemanda_Courante_Sarabande_Gigue.mp3"));
 		bgMusic.setLooping(true);
@@ -46,7 +45,7 @@ public class AdventureGame extends Game {
 	}
 	
 	public void restartGame() {
-		data = GameData.fromJSON(Gdx.files.internal("data/TESTER.json").readString());
+		data = GameData.fromJSON(Gdx.files.internal("data/TESTER.json").readString("UTF-8"));
 		
 	}
 

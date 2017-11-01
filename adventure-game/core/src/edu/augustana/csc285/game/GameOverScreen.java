@@ -51,6 +51,7 @@ public class GameOverScreen implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
+				game.data.setGameStarted(false);
 				game.setScreen(new MainMenuScreen(game));
 			}
 		});

@@ -1,19 +1,18 @@
 
 package edu.augustana.csc285.game.datamodel;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.JsonReader;
-import com.badlogic.gdx.utils.JsonValue;
 
 /**
  * This class will represent all of the data needed to load/save an adventure
@@ -27,6 +26,7 @@ public class GameData {
 	private Player player;
 	private int currentSlideIndex;
 	public String saveName = "SavedFile";
+	private boolean gameStarted = false;
 
 	public GameData() { // needed for GSon
 		slides = new ArrayList<Slide>();
@@ -170,30 +170,6 @@ public class GameData {
 		return data;
 	}
 
-	/**
-	 * 
-	 * @param file
-	 *            the address of the JSON file
-	 * @return a GamaData object, which is created from deserializing the JSON data
-	 *         imported from the file.
-	 */
-	public static GameData fromJSONFile(File file) {
-		//JsonReader reader = new JsonReader();
-		
-		try {
-
-			String data = new String(Files.readAllBytes(Paths.get(file.getAbsolutePath())));
-			
-			//JsonValue jsonData = reader.parse(new FileHandle(file));
-			
-			return fromJSON(data);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return null;
-	}
-
 	public void saveAs(String saveName) {
 		this.saveName = saveName;
 		save();
@@ -281,5 +257,13 @@ public class GameData {
 
 		player.getInventory().remove(item);
 
+	}
+
+	public boolean isGameStarted() {
+		return gameStarted;
+	}
+
+	public void setGameStarted(boolean gameStarted) {
+		this.gameStarted = gameStarted;
 	}
 }
