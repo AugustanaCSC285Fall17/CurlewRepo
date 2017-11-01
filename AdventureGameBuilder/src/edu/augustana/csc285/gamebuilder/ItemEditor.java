@@ -25,4 +25,8 @@ public class ItemEditor {
 	public void setVisibility(Boolean visibility){
 		currentItem.setIsVisible(visibility);
 	}
+	
+	public void setImagePath(String path){
+		currentItem.setImageAddress(path);
+	}
 }

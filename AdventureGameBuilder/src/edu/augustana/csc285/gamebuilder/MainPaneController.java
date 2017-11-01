@@ -134,6 +134,7 @@ public class MainPaneController {
 	@FXML
 	private CheckBox itemVisibleCheckBox;
 	@FXML private Label itemImageLabel;
+	@FXML private Button selectAnItemImageButton;
 
 	// Starter Methods
 
@@ -1096,6 +1097,26 @@ public class MainPaneController {
 			pController.update();
 		}
 	}
+	
+	@FXML
+	private void handleSelectAnItemImageButton(){
+		File inFile = getItemImageFromUser();
+
+		if (inFile != null) {
+			String path = "assets/art/icons/" + inFile.getName();
+			try {
+				Files.copy(inFile.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);
+				ie.setImagePath(inFile.getName());
+				itemImageLabel.setText(inFile.getName());
+
+			} catch (IOException e) {
+				// should never happen, checked before, needed for
+				// compile
+				e.printStackTrace();
+			}
+			pController.update();
+		}
+	}
 
 	// File Menu Methods
 
@@ -1107,6 +1128,8 @@ public class MainPaneController {
 		// TODO: eventually offer option to save before closing?
 		Platform.exit();
 	}
+	
+	
 
 	// does nothing now, but could display a help message or about message
 	@FXML
