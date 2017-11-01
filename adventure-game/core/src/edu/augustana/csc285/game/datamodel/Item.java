@@ -3,47 +3,90 @@ package edu.augustana.csc285.game.datamodel;
 public class Item {
 
 	private String itemName;
-	private String imageAddress;
+	private String imageName;
 	private int itemQty;
 	private boolean visible;
 	private int sellPrice;
 	private int buyPrice;
 	private boolean canSell;
 	private boolean canBuy;
-
-	public Item() {
+	
+	/**
+	 * Initialize a newly created Item object that will behaves as a game item with 
+	 * a name, a quantity, and prices. Also, this object has visible, canSell, and
+	 * canBuy fields that determine the corresponding value.
+	 */
+	public Item() {// for JSON
 	}
 
+	/**
+	 * Initialize a newly created Item object that will behaves as a game item with 
+	 * a name, a quantity, and prices. Also, this object has visible, canSell, and
+	 * canBuy fields that determine the corresponding value.
+	 * 
+	 * @param itemName	- name of the item
+	 */
 	public Item(String itemName) {
 		this.itemName = itemName;
 		this.itemQty = 0;
 		visible = true;
 		canSell = false;
 		canBuy = false;
-
 	}
-
-	//used by game builder, isVisible should always be false
+	
+	/**
+	 * Initialize a newly created Item object that will behaves as a game item with 
+	 * a name, a quantity, and prices. Also, this object has visible, canSell, and
+	 * canBuy fields that determine the corresponding value. This constructor is mainly
+	 * used in the GameBuilder.
+	 * 
+	 * @param itemName	- name of the item
+	 * @param isVisible	- true if the item is visible in the player's inventory.
+	 */
 	public Item(String itemName, boolean isVisible){
 		this.itemName = itemName;
 		this.visible = isVisible;
-		imageAddress = null;
+		imageName = null;
 		canSell = false;
 		canBuy = false;
 	}
 	
-	//used by shopScreen
-	public Item(String itemName, boolean isVisible, int itemQty, String imageAddress, int buyPrice, int sellPrice){
+	/**
+	 * Initialize a newly created Item object that will behaves as a game item with 
+	 * a name, a quantity, and prices. Also, this object has visible, canSell, and
+	 * canBuy fields that determine the corresponding value. This constructor is mainly
+	 * used to test the ShopScreen and for the GameBuilder
+	 * 
+	 * @param itemName	- name of the item
+	 * @param isVisible	- true if the item is visible in the player's inventory.
+	 * @param itemQty	- quantity of the item
+	 * @param imageName	- name of the item image, located in assets/art/icons/
+	 * @param buyPrice	- cost to buy the item
+	 * @param sellPrice	- cost to sell the item
+	 * @param canSell	- true if the player can sell the item from their inventory
+	 * @param canBuy	- true if the player can buy the item from the shop
+	 */
+	public Item(String itemName, boolean isVisible, int itemQty, String imageName, int buyPrice, int sellPrice,
+			boolean canSell, boolean canBuy){
 		this.itemName = itemName;
 		this.visible = isVisible;
 		this.itemQty = itemQty;
-		this.imageAddress = imageAddress;
+		this.imageName = imageName;
 		this.buyPrice = buyPrice;
 		this.sellPrice = sellPrice;
-		canSell = false;
-		canBuy = false;
+		this.canSell = canSell;
+		this.canBuy = canBuy;
 	}
 	
+	/**
+	 * Initialize a newly created Item object that will behaves as a game item with 
+	 * a name, a quantity, and prices. Also, this object has visible, canSell, and
+	 * canBuy fields that determine the corresponding value. This constructor is mainly
+	 * used in the ShopScreen
+	 * 
+	 * @param itemName	- name of the item
+	 * @param itemQty	- quantity of the item
+	 */
 	public Item(String itemName, int itemQty) {
 		this.itemName = itemName;
 		this.itemQty = itemQty;
@@ -51,30 +94,56 @@ public class Item {
 		canBuy = false;
 	}
 	
-	public Item(String itemName, boolean isVisible, String imageAddress){
+	/**
+	 * Initialize a newly created Item object that will behaves as a game item with 
+	 * a name, a quantity, and prices. Also, this object has visible, canSell, and
+	 * canBuy fields that determine the corresponding value.
+	 * 
+	 * @param itemName	- name of the item
+	 * @param isVisible	- true if the item is visible in the player's inventory.
+	 * @param imageName	- name of the item image, located in assets/art/icons/
+	 */
+	public Item(String itemName, boolean isVisible, String imageName){
 		this.itemName = itemName;
 		this.visible = isVisible;
-		this.imageAddress = imageAddress;
+		this.imageName = imageName;
 		canSell = false;
 		canBuy = false;
 	}
 
+	/**
+	 * @return name of the item
+	 */
 	public String getItemName() {
 		return itemName;
 	}
 
+	/**
+	 * Set name of the item
+	 * @param itemName - new name of the item
+	 */
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
 
+	/**
+	 * @return name of the item image, located in assets/art/icons/
+	 */
 	public String getImageAddress() {
-		return imageAddress;
+		return imageName;
 	}
 
-	public void setImageAddress(String imageAddress) {
-		this.imageAddress = imageAddress;
+	/**
+	 * Set name of the item image, located in assets/art/icons/
+	 * @param imageName name of the item image, located in assets/art/icons/
+	 */
+	public void setImageAddress(String imageName) {
+		this.imageName = imageName;
 	}
 
+	/**
+	 * @return 
+	 */
 	public int getItemQty() {
 		return itemQty;
 	}
@@ -105,6 +174,14 @@ public class Item {
 	
 	public int getBuyPrice() {
 		return buyPrice;
+	}
+
+	public void setCanSell(boolean canSell) {
+		this.canSell = canSell;
+	}
+	
+	public void setCanBuy(boolean canBuy) {
+		this.canBuy = canBuy;
 	}
 	
 	public boolean canSell() {
