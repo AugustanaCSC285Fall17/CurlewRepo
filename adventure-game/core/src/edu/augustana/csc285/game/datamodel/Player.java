@@ -111,7 +111,7 @@ public class Player {
 		s+= "Name: "+name+"\nGender: "+ gender.toString() + "\n\n";
 		s+= printStats();
 		for (Item item : inventory){
-			s += item.toString();
+			s += item.printInfo();
 		}
 		return s;
 		

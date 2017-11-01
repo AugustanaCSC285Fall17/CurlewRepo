@@ -213,7 +213,11 @@ public class Item extends Observable{
 		}
 	}
 	
-	public String toString() {
+	public String toString(){
+		return itemName;
+	}
+	
+	public String printInfo() {
 		String s = "";
 		s+= "Item Name: " + itemName + "\nItem Quantity: " + itemQty +  "\nItem Image Address: " + imageName;
 		s+= "\nVisibility: "+ visible;
