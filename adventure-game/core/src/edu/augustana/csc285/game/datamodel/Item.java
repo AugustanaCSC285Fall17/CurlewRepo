@@ -34,6 +34,8 @@ public class Item extends Observable{
 		visible = true;
 		canSell = false;
 		canBuy = false;
+		sellPrice = 0;
+		buyPrice = 0;
 	}
 	
 	/**
@@ -158,10 +160,6 @@ public class Item extends Observable{
 
 	}
 
-	public String toString() {
-		return itemName;
-	}
-
 	public boolean isVisible() {
 		return visible;
 	}
@@ -194,6 +192,13 @@ public class Item extends Observable{
 		return canBuy;
 	}
 	
+	public void setSellPrice(int price){
+		sellPrice = price;
+	}
+	
+	public void setBuyPrice(int price){
+		buyPrice = price;
+	}
 	@Override
 	public boolean equals(Object o){
 		if(o instanceof Item){
@@ -206,5 +211,16 @@ public class Item extends Observable{
 		}else{
 			return false;
 		}
+	}
+	
+	public String toString() {
+		String s = "";
+		s+= "Item Name: " + itemName + "\nItem Quantity: " + itemQty +  "\nItem Image Address: " + imageName;
+		s+= "\nVisibility: "+ visible;
+		s+= "\nCan Buy: "+ canBuy;
+		s+= "\nCan Sell: "+ canSell;
+		s+="\n\n";
+		
+		return s;
 	}
 }

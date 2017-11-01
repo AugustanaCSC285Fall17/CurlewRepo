@@ -1257,7 +1257,7 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
 						item: {
 							itemName: Cured Meat
-							imageAddress: curedmeat.png
+							imageName: curedmeat.png
 							visible: true
 						}
 						op: {
@@ -1370,7 +1370,7 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
 						item: {
 							itemName: Medicine
-							imageAddress: medicinebottle.png
+							imageName: medicinebottle.png
 							visible: true
 						}
 						op: {
@@ -1596,7 +1596,7 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
 						item: {
 							itemName: Bible
-							imageAddress: biblebook.png
+							imageName: biblebook.png
 							visible: true
 						}
 						op: {
@@ -1618,7 +1618,7 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
 						item: {
 							itemName: Bible
-							imageAddress: biblebook.png
+							imageName: biblebook.png
 							visible: true
 						}
 						op: {
@@ -1805,12 +1805,12 @@ player: {
 		}
 		{
 			itemName: American Almanac
-			imageAddress: almanac.png
+			imageName: almanac.png
 			visible: true
 		}
 		{
 			itemName: Bible
-			imageAddress: biblebook.png
+			imageName: biblebook.png
 			visible: true
 			sellPrice: 15
 			buyPrice: 20
@@ -1819,12 +1819,12 @@ player: {
 		}
 		{
 			itemName: Kronor
-			imageAddress: coincash.png
+			imageName: coincash.png
 			visible: true
 		}
 		{
 			itemName: Cured Meat
-			imageAddress: curedmeat.png
+			imageName: curedmeat.png
 			visible: true
 			sellPrice: 15
 			buyPrice: 20
@@ -1833,29 +1833,29 @@ player: {
 		}
 		{
 			itemName: Family heirloom
-			imageAddress: heirloom.png
+			imageName: heirloom.png
 			visible: true
 			sellPrice: 15
 			canSell: true
 		}
 		{
 			itemName: Forged Paper
-			imageAddress: forged.png
+			imageName: forged.png
 			visible: true
 		}
 		{
 			itemName: Illinois letter
-			imageAddress: illinois.png
+			imageName: illinois.png
 			visible: true
 		}
 		{
 			itemName: John Deere letter
-			imageAddress: johndeere.png
+			imageName: johndeere.png
 			visible: true
 		}
 		{
 			itemName: Medicine
-			imageAddress: medicinebottle.png
+			imageName: medicinebottle.png
 			visible: true
 			sellPrice: 15
 			buyPrice: 20
@@ -1864,17 +1864,17 @@ player: {
 		}
 		{
 			itemName: Minnesota letter
-			imageAddress: minnesota.png
+			imageName: minnesota.png
 			visible: true
 		}
 		{
 			itemName: Official Paper
-			imageAddress: official.png
+			imageName: official.png
 			visible: true
 		}
 		{
 			itemName: Sewing materials
-			imageAddress: sewing.png
+			imageName: sewing.png
 			visible: true
 			sellPrice: 15
 			buyPrice: 20
@@ -1883,17 +1883,17 @@ player: {
 		}
 		{
 			itemName: Ticket To America
-			imageAddress: ticketamerica.png
+			imageName: ticketamerica.png
 			visible: true
 		}
 		{
 			itemName: Ticket To Hull
-			imageAddress: tickethull.png
+			imageName: tickethull.png
 			visible: true
 		}
 		{
 			itemName: Washington letter
-			imageAddress: washington.png
+			imageName: washington.png
 			visible: true
 		}
 	]

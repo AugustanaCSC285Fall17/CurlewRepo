@@ -29,4 +29,10 @@ public class ItemEditor {
 	public void setImagePath(String path){
 		currentItem.setImageAddress(path);
 	}
+	public void setSellable(boolean selected) {
+		currentItem.setCanSell(selected);
+	}
+	public void setBuyable(boolean selected) {
+		currentItem.setCanBuy(selected);
+	}
 }

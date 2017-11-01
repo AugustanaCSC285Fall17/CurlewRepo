@@ -125,9 +125,17 @@
                         <Label layoutX="34.0" layoutY="121.0" text="Current Item: " />
                         <Label fx:id="currentItemLabel" layoutX="107.0" layoutY="121.0" text="No item selected." />
                         <CheckBox fx:id="itemVisibleCheckBox" layoutX="34.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleItemVisibleCheckBox" text="Item Visible" />
-                        <Label layoutX="34.0" layoutY="197.0" text="Current Image:" />
-                        <Label fx:id="itemImageLabel" layoutX="121.0" layoutY="197.0" text="No image selected." />
-                        <Button fx:id="selectAnItemImageButton" layoutX="268.0" layoutY="193.0" mnemonicParsing="false" onAction="#handleSelectAnItemImageButton" text="Select an Image" />
+                        <Label layoutX="36.0" layoutY="255.0" text="Current Image:" />
+                        <Label fx:id="itemImageLabel" layoutX="136.0" layoutY="255.0" text="No image selected." />
+                        <Button fx:id="selectAnItemImageButton" layoutX="279.0" layoutY="251.0" mnemonicParsing="false" onAction="#handleSelectAnItemImageButton" text="Select an Image" />
+                        <CheckBox fx:id="sellableCheckBox" layoutX="148.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleSellableCheckBox" text="Able to Sell" />
+                        <CheckBox fx:id="buyableCheckBox" layoutX="248.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleBuyableCheckBox" text="Able to Buy" />
+                        <Label layoutX="36.0" layoutY="211.0" text="Current Sell Price:" />
+                        <Label layoutX="181.0" layoutY="211.0" text="Current Buy Price:" />
+                        <Label fx:id="currentSellPriceLabel" layoutX="137.0" layoutY="211.0" text="N/A" />
+                        <Label fx:id="currentBuyPriceLabel" layoutX="290.0" layoutY="211.0" text="N/A" />
+                        <Button layoutX="418.0" layoutY="207.0" mnemonicParsing="false" text="Set Buy Price" />
+                        <Button layoutX="325.0" layoutY="207.0" mnemonicParsing="false" text="Set Sell Price" />
                      </children>
                   </AnchorPane>
               </content>

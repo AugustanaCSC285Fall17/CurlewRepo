@@ -133,6 +133,12 @@ public class MainPaneController {
 	private Label itemImageLabel;
 	@FXML
 	private Button selectAnItemImageButton;
+	@FXML
+	private Label currentSellPriceLabel;
+	@FXML
+	private Label currentBuyPriceLabel;
+	@FXML private CheckBox sellableCheckBox;
+	@FXML private CheckBox buyableCheckBox;
 
 	// Starter Methods
 
@@ -1017,11 +1023,15 @@ public class MainPaneController {
 		currentItemLabel.setText(item.getItemName());
 		itemVisibleCheckBox.setSelected(item.isVisible());
 		itemImageLabel.setText(item.getImageAddress());
+		currentSellPriceLabel.setText(Integer.toString(item.getSellPrice()));
+		currentBuyPriceLabel.setText(Integer.toString(item.getBuyPrice()));
+		buyableCheckBox.setSelected(item.canBuy());
+		sellableCheckBox.setSelected(item.canSell());
 	}
 
 	@FXML
 	private void handleItemVisibleCheckBox() {
-		if (ie.isItemSelected()) {
+		if (isieSelected()) {
 			ie.setVisibility(itemVisibleCheckBox.isSelected());
 			pController.update();
 		}
@@ -1029,6 +1039,7 @@ public class MainPaneController {
 
 	@FXML
 	private void handleSelectAnItemImageButton() {
+		if(isieSelected()){
 		File inFile = getItemImageFromUser();
 
 		if (inFile != null) {
@@ -1045,15 +1056,39 @@ public class MainPaneController {
 			}
 			pController.update();
 		}
+		}
 	}
 
+	@FXML private void handleSellableCheckBox(){
+		if(isieSelected()){
+		ie.setSellable(sellableCheckBox.isSelected());
+		}
+	}
+	
+	@FXML private void handleBuyableCheckBox(){
+		if(ie.isItemSelected()){
+			ie.setBuyable(buyableCheckBox.isSelected());
+		}
+	}
+	private boolean isieSelected(){
+		if(ie.isItemSelected()){
+			return true;
+		}else{
+			new Alert(AlertType.ERROR, "Please Select an Item");
+			return false;
+		}
+	}
 	private void clearie() {
 		ie.setCurrentItem(null);
 		currentItemLabel.setText("No item selected.");
 		itemVisibleCheckBox.setSelected(false);
+		buyableCheckBox.setSelected(false);
+		sellableCheckBox.setSelected(false);
 		itemImageLabel.setText("No image selected.");
 		updateItemChoiceBox();
 		itemChoiceBox.setValue(null);
+		currentSellPriceLabel.setText("N/A");
+		currentBuyPriceLabel.setText("N/A");
 
 	}
 

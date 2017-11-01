@@ -1,11 +1,6 @@
 {
-slides: [
-	{
-		title: "“Smart quotes,”"
-	}
-]
 player: {
 	name: Curlew!!
 }
-saveName: Test
+saveName: test
 }
