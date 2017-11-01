@@ -116,13 +116,15 @@
                         <Button fx:id="addIItemButton" layoutX="29.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleAddItemButton" text="Add Item" />
                         <Button fx:id="removeItemButton" layoutX="29.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleRemoveItemButton" text="Remove Item" />
                         <Button fx:id="changeItemImageButton" layoutX="34.0" layoutY="293.0" mnemonicParsing="false" onAction="#handleChangeItemImageButton" text="Change Item Image" />
-                        <Button fx:id="additemButtonBlank" layoutX="182.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleAdditemButtonBlank" text="Add Item" />
+                        <Button fx:id="additemButtonBlank" layoutX="182.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleAdditemButtonBlank" text="Add New Item" />
                         <TextField fx:id="itemNameTextField" layoutX="364.0" layoutY="19.0" />
-                        <Label layoutX="272.0" layoutY="23.0" text="Item name" />
+                        <Label layoutX="272.0" layoutY="23.0" text="New item name:" />
                         <Label layoutX="170.0" layoutY="290.0" />
                         <Line endX="430.0" layoutX="99.0" layoutY="106.0" startX="-100.0" />
                         <Label layoutX="189.0" layoutY="68.0" text="Select an Item to Edit:" />
                         <ChoiceBox fx:id="itemChoiceBox" layoutX="326.0" layoutY="64.0" prefWidth="150.0" />
+                        <Label layoutX="34.0" layoutY="121.0" text="Current Item: " />
+                        <Label fx:id="currentItemLabel" layoutX="107.0" layoutY="121.0" text="no item selected" />
                      </children>
                   </AnchorPane>
               </content>

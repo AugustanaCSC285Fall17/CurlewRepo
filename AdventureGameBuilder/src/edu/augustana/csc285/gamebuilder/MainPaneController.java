@@ -110,7 +110,7 @@ public class MainPaneController {
 	@FXML
 	private Button removeConditionButton;
 
-	// Misc Editor Fields
+	// Item Editor Fields
 
 	ItemEditor ie;
 	@FXML
@@ -128,7 +128,8 @@ public class MainPaneController {
 	private TextField itemNameTextField;
 	@FXML
 	private ChoiceBox<Item> itemChoiceBox;
-	//private ChoiceBox<String> itemChoiceBox;
+	@FXML
+	private Label currentItemLabel;
 
 	// Starter Methods
 
@@ -165,6 +166,12 @@ public class MainPaneController {
 						changeActionChoice(newValue);
 					}
 				});
+//		itemChoiceBox.getSelectionModel().selectedItemProperty()
+//		.addListener((ObservableValue<? extends Item> observable, Item oldValue, Item newValue) -> {
+//			if (newValue != null) {
+//				changeItem(newValue);
+//			}
+//		});
 	}
 
 	/**
@@ -357,8 +364,8 @@ public class MainPaneController {
 			clearSlideEditor();
 			clearACE();
 			this.updateSlideNumberChoiceBox();
-			this.updateActionChoiceNumberChoiceBox(); // This doesn't work for
-			this.updateItemChoiceBox();											// some reason
+			this.updateActionChoiceNumberChoiceBox();
+			this.updateItemChoiceBox();											
 		}
 	}
 
@@ -484,7 +491,7 @@ public class MainPaneController {
 	}
 
 	public void changeActionChoice(int index) {
-		ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide()));
+		ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide())); //TODO do we need a new ace here or can we set it? Don't want a bunch of loose objects
 		ace.setCurrentActionChoiceIndex(index);
 		currentACLabel.setText(Integer.toString(index));
 		ActionChoice choice = data.getSlide(se.getCurrentSlide()).getActionChoiceAt(index);
@@ -573,8 +580,18 @@ public class MainPaneController {
 	}
 
 	private void updateItemChoiceBox(){
-				ObservableList<Item> observableList = FXCollections.observableList(data.getPlayer().getInventory());
+		
+		ArrayList<Item> list = new ArrayList<Item>();
+		
+		for(Item item : data.getPlayer().getInventory()){
+			list.add(item);
+		}
+		
+		ObservableList<Item> observableList = FXCollections.observableList(list);
+				//ObservableList<Item> observableList = FXCollections.observableList(data.getPlayer().getInventory());
+				System.out.print(observableList);
 				itemChoiceBox.setItems(observableList);
+				
 		
 	}
 	
@@ -1045,6 +1062,11 @@ public class MainPaneController {
 		}
 		updateItemChoiceBox();
 		pController.update();
+	}
+	
+	private void changeItem(Item item){
+	//	ie.setCurrentItem(item);
+		//currentItemLabel.setText(item.getItemName());
 	}
 
 	// File Menu Methods
