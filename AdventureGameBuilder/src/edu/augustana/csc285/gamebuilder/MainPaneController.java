@@ -133,8 +133,10 @@ public class MainPaneController {
 	private Label currentItemLabel;
 	@FXML
 	private CheckBox itemVisibleCheckBox;
-	@FXML private Label itemImageLabel;
-	@FXML private Button selectAnItemImageButton;
+	@FXML
+	private Label itemImageLabel;
+	@FXML
+	private Button selectAnItemImageButton;
 
 	// Starter Methods
 
@@ -867,20 +869,26 @@ public class MainPaneController {
 	// TODO change to strings instead of ints?
 	public void handleRemoveItemButton() {
 
-		if (data.itemUsed(ie.getCurrentItem())) {
-			Optional<ButtonType> inUseResponse = new Alert(AlertType.CONFIRMATION,
-					"This item is in use. Removing it remove all effects and conditions using this item. Are you sure?")
-							.showAndWait();
-			// TODO support conditions removal
+		System.out.print(ie.isItemSelected());
+		if (ie.isItemSelected()) {
+			if (data.itemUsed(ie.getCurrentItem())) {
+				Optional<ButtonType> inUseResponse = new Alert(AlertType.CONFIRMATION,
+						"This item is in use. Removing it remove all effects and conditions using this item. Are you sure?")
+								.showAndWait();
+				// TODO support conditions removal
 
-			if (inUseResponse.get() == ButtonType.OK) {
-				data.removeItem(ie.getCurrentItem());
+				if (inUseResponse.get() == ButtonType.OK) {
+					data.removeItem(ie.getCurrentItem());
+					clearie();
+				}
+
+			} else {
+
+				data.getPlayer().getInventory().remove(ie.getCurrentItem());
 				clearie();
 			}
 		} else {
-
-			data.getPlayer().getInventory().remove(ie.getCurrentItem());
-			clearie();
+			new Alert(AlertType.ERROR, "No item is selected.").showAndWait();
 		}
 		pController.update();
 
@@ -1084,22 +1092,22 @@ public class MainPaneController {
 	}
 
 	private void changeItem(Item item) {
-		 ie.setCurrentItem(item);
-		 currentItemLabel.setText(item.getItemName());
-		 itemVisibleCheckBox.setSelected(item.isVisible());
-		 itemImageLabel.setText(item.getImageAddress());
+		ie.setCurrentItem(item);
+		currentItemLabel.setText(item.getItemName());
+		itemVisibleCheckBox.setSelected(item.isVisible());
+		itemImageLabel.setText(item.getImageAddress());
 	}
-	
+
 	@FXML
-	private void handleItemVisibleCheckBox(){
-		if(ie.isItemSelected()){
+	private void handleItemVisibleCheckBox() {
+		if (ie.isItemSelected()) {
 			ie.setVisibility(itemVisibleCheckBox.isSelected());
 			pController.update();
 		}
 	}
-	
+
 	@FXML
-	private void handleSelectAnItemImageButton(){
+	private void handleSelectAnItemImageButton() {
 		File inFile = getItemImageFromUser();
 
 		if (inFile != null) {
@@ -1117,15 +1125,15 @@ public class MainPaneController {
 			pController.update();
 		}
 	}
-	
-	private void clearie(){
-		 ie.setCurrentItem(null);
-		 currentItemLabel.setText("No item selected.");
-		 itemVisibleCheckBox.setSelected(false);
-		 itemImageLabel.setText("No image selected.");
-		 updateItemChoiceBox();
-		 itemChoiceBox.setValue(null);
-		 
+
+	private void clearie() {
+		ie.setCurrentItem(null);
+		currentItemLabel.setText("No item selected.");
+		itemVisibleCheckBox.setSelected(false);
+		itemImageLabel.setText("No image selected.");
+		updateItemChoiceBox();
+		itemChoiceBox.setValue(null);
+
 	}
 
 	// File Menu Methods
@@ -1138,8 +1146,6 @@ public class MainPaneController {
 		// TODO: eventually offer option to save before closing?
 		Platform.exit();
 	}
-	
-	
 
 	// does nothing now, but could display a help message or about message
 	@FXML
