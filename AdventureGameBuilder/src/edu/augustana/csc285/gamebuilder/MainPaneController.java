@@ -139,6 +139,8 @@ public class MainPaneController {
 	private Label currentBuyPriceLabel;
 	@FXML private CheckBox sellableCheckBox;
 	@FXML private CheckBox buyableCheckBox;
+	@FXML private Button setSellPriceButton;
+	@FXML private Button setBuyPriceButton;
 
 	// Starter Methods
 
@@ -816,8 +818,7 @@ public class MainPaneController {
 	// TODO change to strings instead of ints?
 	public void handleRemoveItemButton() {
 
-		System.out.print(ie.isItemSelected());
-		if (ie.isItemSelected()) {
+		if (isieSelected()) {
 			if (data.itemUsed(ie.getCurrentItem())) {
 				Optional<ButtonType> inUseResponse = new Alert(AlertType.CONFIRMATION,
 						"This item is in use. Removing it remove all effects and conditions using this item. Are you sure?")
@@ -834,8 +835,6 @@ public class MainPaneController {
 				data.getPlayer().getInventory().remove(ie.getCurrentItem());
 				clearie();
 			}
-		} else {
-			new Alert(AlertType.ERROR, "No item is selected.").showAndWait();
 		}
 		pController.update();
 
@@ -1063,18 +1062,20 @@ public class MainPaneController {
 		if(isieSelected()){
 		ie.setSellable(sellableCheckBox.isSelected());
 		}
+		pController.update();
 	}
 	
 	@FXML private void handleBuyableCheckBox(){
 		if(ie.isItemSelected()){
 			ie.setBuyable(buyableCheckBox.isSelected());
 		}
+		pController.update();
 	}
 	private boolean isieSelected(){
 		if(ie.isItemSelected()){
 			return true;
 		}else{
-			new Alert(AlertType.ERROR, "Please Select an Item");
+			new Alert(AlertType.ERROR, "Please select an item").showAndWait();
 			return false;
 		}
 	}
@@ -1091,7 +1092,58 @@ public class MainPaneController {
 		currentBuyPriceLabel.setText("N/A");
 
 	}
+	
+	@FXML
+	private void handleSetSellPriceButton(){
+		if(isieSelected()){
+			if(ie.canSell()){
+			int price = getPriceFromUser();
+			if(price!=-1){
+				ie.setSellPrice(price);
+			}
+			}else{
+				new Alert(AlertType.ERROR, "Item is not sellable").showAndWait();
+			}
+		}
+		pController.update();
+	}
 
+	@FXML
+	private void handleSetBuyPriceButton(){
+		if(isieSelected()){
+			if(ie.canBuy()){
+			int price = getPriceFromUser();
+			if(price!=-1){
+				ie.setBuyPrice(price);
+			}
+			}else{
+				new Alert(AlertType.ERROR, "Item is not buyable").showAndWait();
+			}
+		}
+		pController.update();
+	}
+	private int getPriceFromUser(){
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setContentText("Enter price: ");
+		Optional<String> dialogOptional = dialog.showAndWait();
+		if(dialogOptional.isPresent()){
+			String priceString = dialogOptional.get();
+			if(isInputInt(priceString)){
+				int price =  Integer.parseInt(priceString);
+				if(price <0){
+					new Alert(AlertType.ERROR, "Price can not be negitive").showAndWait();
+					return -1;
+				}else{
+					return price;
+				}
+			}else{
+				return -1;
+			}
+		}else{
+			new Alert(AlertType.ERROR, "No price given.").showAndWait();
+			return -1;
+		}
+	}
 	// File Menu Methods
 
 	/**

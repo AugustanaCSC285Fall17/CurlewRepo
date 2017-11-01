@@ -222,7 +222,9 @@ public class Item extends Observable{
 		s+= "Item Name: " + itemName + "\nItem Quantity: " + itemQty +  "\nItem Image Address: " + imageName;
 		s+= "\nVisibility: "+ visible;
 		s+= "\nCan Buy: "+ canBuy;
+		s+= "\nBuyPrice "+ buyPrice;
 		s+= "\nCan Sell: "+ canSell;
+		s+= "\nSell price: "+ sellPrice;
 		s+="\n\n";
 		
 		return s;

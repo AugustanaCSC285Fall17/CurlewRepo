@@ -134,8 +134,8 @@
                         <Label layoutX="181.0" layoutY="211.0" text="Current Buy Price:" />
                         <Label fx:id="currentSellPriceLabel" layoutX="137.0" layoutY="211.0" text="N/A" />
                         <Label fx:id="currentBuyPriceLabel" layoutX="290.0" layoutY="211.0" text="N/A" />
-                        <Button layoutX="418.0" layoutY="207.0" mnemonicParsing="false" text="Set Buy Price" />
-                        <Button layoutX="325.0" layoutY="207.0" mnemonicParsing="false" text="Set Sell Price" />
+                        <Button fx:id="setBuyPriceButton" layoutX="418.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleSetBuyPriceButton" text="Set Buy Price" />
+                        <Button fx:id="setSellPriceButton" layoutX="325.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleSetSellPriceButton" text="Set Sell Price" />
                      </children>
                   </AnchorPane>
               </content>

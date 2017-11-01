@@ -35,4 +35,16 @@ public class ItemEditor {
 	public void setBuyable(boolean selected) {
 		currentItem.setCanBuy(selected);
 	}
+	public void setSellPrice(int price){
+		currentItem.setSellPrice(price);
+	}
+	public void setBuyPrice(int price){
+		currentItem.setBuyPrice(price);
+	}
+	public Boolean canBuy(){
+		return currentItem.canBuy();
+	}
+	public Boolean canSell(){
+		return currentItem.canSell();
+	}
 }
