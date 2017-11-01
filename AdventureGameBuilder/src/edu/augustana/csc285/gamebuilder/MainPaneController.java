@@ -17,6 +17,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Label;
@@ -112,7 +113,7 @@ public class MainPaneController {
 
 	// Item Editor Fields
 
-	ItemEditor ie;
+	private ItemEditor ie = new ItemEditor();
 	@FXML
 	private Button addItemButton;
 
@@ -121,7 +122,7 @@ public class MainPaneController {
 
 	@FXML
 	private Button changeItemImageButton;
-	
+
 	@FXML
 	private Button additemButtonBlank;
 	@FXML
@@ -130,6 +131,8 @@ public class MainPaneController {
 	private ChoiceBox<Item> itemChoiceBox;
 	@FXML
 	private Label currentItemLabel;
+	@FXML
+	private CheckBox itemVisibleCheckBox;
 
 	// Starter Methods
 
@@ -166,12 +169,12 @@ public class MainPaneController {
 						changeActionChoice(newValue);
 					}
 				});
-//		itemChoiceBox.getSelectionModel().selectedItemProperty()
-//		.addListener((ObservableValue<? extends Item> observable, Item oldValue, Item newValue) -> {
-//			if (newValue != null) {
-//				changeItem(newValue);
-//			}
-//		});
+		itemChoiceBox.getSelectionModel().selectedItemProperty()
+				.addListener((ObservableValue<? extends Item> observable, Item oldItem, Item newItem) -> {
+					if (newItem != null) {
+						changeItem(newItem);
+					}
+				});
 	}
 
 	/**
@@ -365,7 +368,7 @@ public class MainPaneController {
 			clearACE();
 			this.updateSlideNumberChoiceBox();
 			this.updateActionChoiceNumberChoiceBox();
-			this.updateItemChoiceBox();											
+			this.updateItemChoiceBox();
 		}
 	}
 
@@ -491,7 +494,26 @@ public class MainPaneController {
 	}
 
 	public void changeActionChoice(int index) {
-		ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide())); //TODO do we need a new ace here or can we set it? Don't want a bunch of loose objects
+		ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide())); // TODO
+																			// do
+																			// we
+																			// need
+																			// a
+																			// new
+																			// ace
+																			// here
+																			// or
+																			// can
+																			// we
+																			// set
+																			// it?
+																			// Don't
+																			// want
+																			// a
+																			// bunch
+																			// of
+																			// loose
+																			// objects
 		ace.setCurrentActionChoiceIndex(index);
 		currentACLabel.setText(Integer.toString(index));
 		ActionChoice choice = data.getSlide(se.getCurrentSlide()).getActionChoiceAt(index);
@@ -579,22 +601,17 @@ public class MainPaneController {
 
 	}
 
-	private void updateItemChoiceBox(){
-		
+	private void updateItemChoiceBox() {
+
 		ArrayList<Item> list = new ArrayList<Item>();
-		
-		for(Item item : data.getPlayer().getInventory()){
+		for (Item item : data.getPlayer().getInventory()) {
 			list.add(item);
 		}
-		
 		ObservableList<Item> observableList = FXCollections.observableList(list);
-				//ObservableList<Item> observableList = FXCollections.observableList(data.getPlayer().getInventory());
-				System.out.print(observableList);
-				itemChoiceBox.setItems(observableList);
-				
-		
+		itemChoiceBox.setItems(observableList);
+
 	}
-	
+
 	// TODO change to result.isPresent
 	@FXML
 	private void handleAddEffect() {
@@ -1052,21 +1069,30 @@ public class MainPaneController {
 		}
 		pController.update();
 	}
-	
+
 	@FXML
-	private void handleAdditemButtonBlank(){
-		if(itemNameTextField.getText().equals("")){
+	private void handleAdditemButtonBlank() {
+		if (itemNameTextField.getText().equals("")) {
 			new Alert(AlertType.ERROR, "Please Enter a name for the item.").showAndWait();
-		}else{
-		data.getPlayer().addItem(new Item(itemNameTextField.getText()));
+		} else {
+			data.getPlayer().addItem(new Item(itemNameTextField.getText()));
 		}
 		updateItemChoiceBox();
 		pController.update();
 	}
+
+	private void changeItem(Item item) {
+		 ie.setCurrentItem(item);
+		 currentItemLabel.setText(item.getItemName());
+		 itemVisibleCheckBox.setSelected(item.isVisible());
+	}
 	
-	private void changeItem(Item item){
-	//	ie.setCurrentItem(item);
-		//currentItemLabel.setText(item.getItemName());
+	@FXML
+	private void handleItemVisibleCheckBox(){
+		if(ie.isItemSelected()){
+			ie.setVisibility(itemVisibleCheckBox.isSelected());
+			pController.update();
+		}
 	}
 
 	// File Menu Methods
