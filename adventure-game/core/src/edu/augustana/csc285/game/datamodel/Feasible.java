@@ -14,7 +14,7 @@ public interface Feasible {
 	// get the FeasibilityType information and set it
 		public String getFeasibilityType();
 		
-	//
+	
 		public boolean getIsFeasible();
 		
 		public abstract void setFeasibilityType(String feraibilityType);
