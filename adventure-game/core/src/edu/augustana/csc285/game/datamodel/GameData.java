@@ -162,7 +162,10 @@ public class GameData {
 		data.currentSlideIndex = data.startSlideIndex;
 		return data;
 	}
-
+	/**
+	 * saves the progress in the game builder with a save as name by calling the save method below
+	 * @param saveName string that the user wants the data to be saved under
+	 */
 	public void saveAs(String saveName) {
 		this.saveName = saveName;
 		save();

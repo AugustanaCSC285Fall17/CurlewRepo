@@ -14,8 +14,6 @@ public interface Effect {
 	public abstract int getEffectSize();
 	//abstract method that returns a string with the basic info of the effect
 	public abstract String printEffectInfo();
-	//abstract override method of the equals method
-	//public abstract boolean equals(Effect effect);
 	// returns a toString method
 	public abstract String toString();
 }

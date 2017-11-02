@@ -22,7 +22,6 @@ public class GameBuilderApplication extends Application {
         Parent root = (Parent)loader.load();
         Scene scene = new Scene(root);
     
-
         
         MainPaneController controller = (MainPaneController)loader.getController();
          
@@ -45,6 +44,7 @@ public class GameBuilderApplication extends Application {
         controller.setPcontroler(pController);
         pController.setData(data);
         
+       
         primaryStage.setTitle("Curlew's Game Builder");
         primaryStage.setScene(scene);
         primaryStage.show();       
@@ -54,7 +54,8 @@ public class GameBuilderApplication extends Application {
         stage2.setScene(scene2);
         stage2.show();
         
-       // controller.setSecondController(pController);
+        primaryStage.setOnCloseRequest(event -> stage2.close());
+        stage2.setOnCloseRequest(event -> primaryStage.close());
         
 	}
 
