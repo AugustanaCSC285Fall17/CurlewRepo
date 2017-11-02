@@ -13,18 +13,29 @@ public class ActionChoice {// implements Feasible
 	private ArrayList<Condition> feasibilityCond = new ArrayList<>();
 	private ArrayList<Condition> visibilityCond = new ArrayList<>();
 	private ArrayList<Effect> effectList;
-
+	/**
+	 * Constructor with no parameters.  calls the constructor with 3 fields
+	 */
 	public ActionChoice() {
 		this("", new ArrayList<Feasible>(), new ArrayList<Effect>());
 		visible = true;
 	}
-
+	/**
+	 * constructor with 2 parameters
+	 * @param choiceText
+	 * @param destinationSlideIndex
+	 */
 	public ActionChoice(String choiceText, int destinationSlideIndex) {
 		this("", new ArrayList<Feasible>(), new ArrayList<Effect>());
 		this.choiceText = choiceText;
 		this.destinationSlideIndex = destinationSlideIndex;
 	}
-
+	/**
+	 * constructor with 3 parameters, is called by the "smaller" constructors
+	 * @param rejText 
+	 * @param feasibilityReq
+	 * @param effectList
+	 */
 	public ActionChoice(String rejText, ArrayList<Feasible> feasibilityReq, ArrayList<Effect> effectList) {
 		this.setRejText(rejText);
 		this.effectList = effectList;
@@ -47,22 +58,26 @@ public class ActionChoice {// implements Feasible
 		this.destinationSlideIndex = destinationSlideIndex;
 	}
 
-	public void getReq(int requirement) {
-
-	}
-
-	// test if the option is visable and return true or false
+	/**
+	 *  test if the option is visible and return true or false
+	 * @return
+	 */
 	public boolean isVisible() {
 		return visible;
 	}
 
-	// Get the effect that the option cost and return it
-	// TODO change to get Effects
-	public ArrayList<Effect> getEffect() {
+	/**
+	 *  Get the effect list that the option cost and return it
+	 * @return the list of effects
+	 */
+	public ArrayList<Effect> getEffects() {
 		return effectList;
 	}
 	
-	// Get the item effects that the option cost and return it
+	/**
+	 *Get the item effects that the option cost and return it
+	 * @return the list of itemEffects
+	 */
 	public ArrayList<Effect> getItemEffects() {
 		ArrayList<Effect> itemEffects = new ArrayList<>();
 		for (Effect e : effectList) {
@@ -73,14 +88,20 @@ public class ActionChoice {// implements Feasible
 		return itemEffects;
 	}
 
-	// add new effect to the effectList
+	/**
+	 *  add new effect to the effectList
+	 * @param newEffect
+	 */
 	public void addEffect(Effect newEffect) {
 		effectList.add(newEffect);
 	}
 
-	// remove effect
-	public void removeEffect(int integer) {
-		effectList.remove(integer);
+	/**
+	 * remove effect
+	 * @param index
+	 */
+	public void removeEffect(int index) {
+		effectList.remove(index);
 	}
 
 	public void removeEffect(Effect e) {
