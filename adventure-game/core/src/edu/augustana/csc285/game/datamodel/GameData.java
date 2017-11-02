@@ -76,7 +76,7 @@ public class GameData {
 			}
 		}
 
-		for (Effect e : choice.getEffect()) {
+		for (Effect e : choice.getEffects()) {
 			e.applyEffect(player);
 		}
 		if (choice.getDestinationSlideIndex() != -1) {
@@ -223,11 +223,11 @@ public class GameData {
 	public void removeItem(Item item) {
 		for (Slide s : slides) {
 			for (ActionChoice ac : s.getActionChoices()) {
-				for (int i = 0; i < ac.getEffect().size(); i++) {
-					if (ac.getEffect().get(i) instanceof ItemEffect) {
-						ItemEffect iE = (ItemEffect) ac.getEffect().get(i);
+				for (int i = 0; i < ac.getEffects().size(); i++) {
+					if (ac.getEffects().get(i) instanceof ItemEffect) {
+						ItemEffect iE = (ItemEffect) ac.getEffects().get(i);
 						if (iE.getItem().equals(item)) {
-							ac.removeEffect(ac.getEffect().get(i));
+							ac.removeEffect(ac.getEffects().get(i));
 						}
 					}
 				}

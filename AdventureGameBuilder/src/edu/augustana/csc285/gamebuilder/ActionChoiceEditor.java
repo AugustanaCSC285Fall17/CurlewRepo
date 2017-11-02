@@ -130,7 +130,7 @@ public class ActionChoiceEditor {
 	 * @return a list of effects of the current action choice
 	 */
 	public ArrayList<Effect> getEffects() {
-		return currentActionChoice.getEffect();
+		return currentActionChoice.getEffects();
 	}
 	/**
 	 * 
