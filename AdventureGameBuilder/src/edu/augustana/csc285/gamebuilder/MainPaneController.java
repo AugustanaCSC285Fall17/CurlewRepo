@@ -210,21 +210,20 @@ public class MainPaneController {
 
 	}
 
+	/**
+	 * 
+	 * @return whether the game data object has been saved by the user
+	 */
 	public Boolean isSaved() {
 		return saved;
 	}
 
 	// Checks
 
-	/**
-	 * Checks if string is an int, if not displays an error message
-	 * 
-	 * @param s
-	 * @return
-	 */
+	
 	private boolean isInputInt(String s) {
 		try {
-			int i = Integer.parseInt(s);
+			int i = Integer.parseInt(s); //if fails, will trip the try/catch
 			return true;
 		} catch (NumberFormatException e) {
 			new Alert(AlertType.ERROR, "This was not an int.").showAndWait();
@@ -232,13 +231,6 @@ public class MainPaneController {
 		}
 	}
 
-	/**
-	 * checks to see if an entered index is valid, returns true if it is valid
-	 * and false if not
-	 * 
-	 * @param index
-	 * @return
-	 */
 	private boolean isIndexASlide(int index) {
 		if (index < 0 || index > data.getSlideListSize() - 1) {
 			new Alert(AlertType.ERROR, "There is no slide at this index").showAndWait();
@@ -247,67 +239,7 @@ public class MainPaneController {
 		return true;
 	}
 
-	/**
-	 * 
-	 * checks to see if the entered index is valid, returns true if it is valid
-	 * and false if not
-	 * 
-	 * @param index
-	 * @return
-	 */
-	private boolean isIndexAnActionChoice(int index) {
-		if (!wasSlideSelected()) {
-			return false;
-		} else if (aceListIsNotEmpty()) {
-			if (index < 0 || index > data.getSlide(se.getCurrentSlide()).getActionChoiceListSize() - 1) {
-				new Alert(AlertType.ERROR, "There is no Action Choice at this index").showAndWait();
-				return false;
-			}
-			return true;
-		} else { // ace list is empty
-			return false;
-		}
-	}
 
-	/**
-	 * 
-	 * checks to see if the slide list is empty, returns true if it is not empty
-	 * and false otherwise
-	 * 
-	 * @return
-	 */
-	private boolean slideListIsNotEmpty() {
-		if (data.getSlideListSize() == 0) {
-			new Alert(AlertType.INFORMATION, "There are no slides in the list").showAndWait();
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * checks to see if the action choice list is empty, returns true if it is
-	 * not empty and false otherwise
-	 * 
-	 * @return
-	 */
-	private boolean aceListIsNotEmpty() {
-		if (!slideListIsNotEmpty()) {
-			return false;
-		}
-		if (data.getSlide(se.getCurrentSlide()).getActionChoiceListSize() == 0) {
-			new Alert(AlertType.INFORMATION, "There are no actionChoices in the list").showAndWait();
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * 
-	 * checks to see if the user entered a slide index before editing other
-	 * fields
-	 * 
-	 * @return
-	 */
 	private boolean wasSlideSelected() {
 		if (!se.wasSlideSelected()) {
 			new Alert(AlertType.ERROR, "Please select a slide first").showAndWait();
@@ -316,12 +248,6 @@ public class MainPaneController {
 		return true;
 	}
 
-	/**
-	 * returns true if an action choice has been selected, otherwise returns
-	 * false.
-	 * 
-	 * @return
-	 */
 	private boolean wasAcSelected() {
 		if (ace != null) {
 			if (ace.aceSelected()) {
@@ -338,20 +264,14 @@ public class MainPaneController {
 
 	// Save and load methods
 
-	/**
-	 * saves the data entered in the builder to a default or previously selected
-	 * file
-	 */
+
 	@FXML
 	private void handleSaveButton() {
 		data.save();
 		saved = true;
 	}
 
-	/**
-	 * http://code.makery.ch/blog/javafx-dialogs-official/ sets the save file to
-	 * a new name and then saves the data to that file
-	 */
+
 	@FXML
 	private void handleSaveAsButton() {
 		TextInputDialog dialog = new TextInputDialog("");
@@ -366,11 +286,7 @@ public class MainPaneController {
 		}
 	}
 
-	/**
-	 * loads previously saved data from chosen file
-	 * 
-	 * @throws IOException
-	 */
+
 	@FXML
 	private void handleLoadButton() throws IOException {
 		FileChooser fileChooser = new FileChooser();
@@ -394,9 +310,7 @@ public class MainPaneController {
 
 	// Other main tab methods
 
-	/**
-	 * adds a new slide to the end of the slide list in GameData class
-	 */
+
 	@FXML
 	private void handleAddSlideButton() {
 		data.addSlide(new Slide());
@@ -407,18 +321,13 @@ public class MainPaneController {
 
 	// SE methods
 
-	/**
-	 * creates the slide type menu in the slide editor tab
-	 */
 	private void createSlideTypeMenu() {
 		ArrayList<SlideType> list = new ArrayList<SlideType>(Arrays.asList(SlideType.values()));
 		ObservableList<SlideType> observableList = FXCollections.observableList(list);
 		setSlideTypeChoiceBox.setItems(observableList);
 	}
 
-	/**
-	 * Handles collecting all data from user on the slide editor tab
-	 */
+	
 	@FXML
 	private void handleSubmitButton() {
 		if (wasSlideSelected()) {
@@ -430,9 +339,7 @@ public class MainPaneController {
 		pController.update();
 	}
 
-	/**
-	 * sets the image of the slide by calling on the slide editor class
-	 */
+	
 	@FXML
 	private void handleSelectSlideImageButton() {
 		if (wasSlideSelected()) {
@@ -453,9 +360,7 @@ public class MainPaneController {
 		pController.update();
 	}
 
-	/**
-	 * removes the slide that is currently being edited
-	 */
+	
 	@FXML
 	private void handleRemoveSlideButton() {
 		if (this.wasSlideSelected()) {
@@ -468,9 +373,7 @@ public class MainPaneController {
 
 	}
 
-	/**
-	 * sets slide editor tab to default
-	 */
+	
 	private void clearSlideEditor() {
 		currentSlideLabel.setText("N/A");
 		currentSlideLabel1.setText("N/A");
@@ -505,10 +408,7 @@ public class MainPaneController {
 
 	// ACE methods
 
-	/**
-	 * adds an action choice to the end of the action choice list by calling on
-	 * the slide editor class
-	 */
+
 	@FXML
 	private void handleAddActionChoiceButton() {
 		if (wasSlideSelected()) {
@@ -519,27 +419,8 @@ public class MainPaneController {
 		updateActionChoiceNumberChoiceBox();
 	}
 
-	public void changeActionChoice(int index) {
-		ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide())); // TODO
-																			// do
-																			// we
-																			// need
-																			// a
-																			// new
-																			// ace
-																			// here
-																			// or
-																			// can
-																			// we
-																			// set
-																			// it?
-																			// Don't
-																			// want
-																			// a
-																			// bunch
-																			// of
-																			// loose
-																			// objects
+	private void changeActionChoice(int index) {
+		ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide()));
 		ace.setCurrentActionChoiceIndex(index);
 		currentACLabel.setText(Integer.toString(index));
 		ActionChoice choice = data.getSlide(se.getCurrentSlide()).getActionChoiceAt(index);
@@ -547,9 +428,7 @@ public class MainPaneController {
 		aceSetDestinationSlideIndexField.setText(Integer.toString(choice.getDestinationSlideIndex()));
 	}
 
-	/**
-	 * Handles collecting all data from user on the action choice editor tab
-	 */
+
 	@FXML
 	private void handleAceChoiceSubmitButton() {
 		String input = aceSetDestinationSlideIndexField.getText();
@@ -565,9 +444,7 @@ public class MainPaneController {
 			}
 	}
 
-	/**
-	 * sets Action Choice editor to default
-	 */
+	
 	private void clearACE() {
 		this.currentACLabel.setText("N/A");
 		this.updateActionChoiceNumberChoiceBox();
@@ -575,9 +452,7 @@ public class MainPaneController {
 		aceSetDestinationSlideIndexField.clear();
 	}
 
-	/**
-	 * removes the action choice that is currently being edited
-	 */
+	
 	@FXML
 	private void handleRemoveAcButton() {
 		if (this.wasAcSelected()) {
@@ -589,9 +464,7 @@ public class MainPaneController {
 		}
 	}
 
-	/**
-	 * displays information about the action choice in an alert message
-	 */
+	
 	@FXML
 	private void handleShowAceInfoButton() {
 		if (wasAcSelected()) {
@@ -601,7 +474,7 @@ public class MainPaneController {
 		}
 	}
 
-	public void updateActionChoiceNumberChoiceBox() {
+	private void updateActionChoiceNumberChoiceBox() {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		if (se.getCurrentSlide() != -1) {
 			for (int i = 0; i < data.getSlide(se.getCurrentSlide()).getActionChoiceListSize(); i++) {
@@ -684,10 +557,8 @@ public class MainPaneController {
 			new Alert(AlertType.ERROR, "There is nothing in the inventroy").showAndWait();
 		} else {
 			Item item = getItemFromUser();
-			ArrayList<Item> inventory = data.getPlayer().getInventory();
 			if (item != null) {
 				try {
-					Item itemChoice = item;
 					if (ace.hasItemEffect(item)) {
 						new Alert(AlertType.ERROR, "There is already an effect with that item").showAndWait();
 					} else {
@@ -734,7 +605,7 @@ public class MainPaneController {
 		}
 	}
 
-	public int getChoiceSize(String EorC) throws NumberFormatException, NoSuchElementException {
+	private int getChoiceSize(String EorC) throws NumberFormatException, NoSuchElementException {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("New" + EorC + "Specs");
 		dialog.setHeaderText("Enter" + EorC + "Number");
@@ -743,7 +614,7 @@ public class MainPaneController {
 		return Integer.parseInt(choiceSizeOptional.get());
 	}
 
-	public Item getItemFromUser() {
+	private Item getItemFromUser() {
 		ArrayList<Item> inventory = data.getPlayer().getInventory();
 
 		ArrayList<Integer> itemIndices = new ArrayList<Integer>();
@@ -774,15 +645,11 @@ public class MainPaneController {
 	}
 
 	@FXML
-
-	public void handleRemoveEffectButton() {
+	private void handleRemoveEffectButton() {
 		if (this.wasAcSelected()) {
 			ArrayList<Effect> effects = ace.getEffects();
-
 			ArrayList<Integer> effectIndices = new ArrayList<Integer>();
-
 			Alert effectInfo = new Alert(AlertType.INFORMATION);
-
 			String s = "";
 			for (int i = 0; i < effects.size(); i++) {
 				effectIndices.add(i);
@@ -818,9 +685,7 @@ public class MainPaneController {
 	}
 
 	@FXML
-	// TODO change to strings instead of ints?
-	public void handleRemoveItemButton() {
-
+	private void handleRemoveItemButton() {
 		if (isieSelected()) {
 			if (data.itemUsed(ie.getCurrentItem())) {
 				Optional<ButtonType> inUseResponse = new Alert(AlertType.CONFIRMATION,
@@ -832,7 +697,6 @@ public class MainPaneController {
 					clearie();
 					saved = false;
 				}
-
 			} else {
 
 				data.getPlayer().getInventory().remove(ie.getCurrentItem());
@@ -841,11 +705,10 @@ public class MainPaneController {
 			}
 		}
 		pController.update();
-
 	}
 
 	@FXML
-	public void handleAddConditionButton() {
+	private void handleAddConditionButton() {
 		if (wasAcSelected()) {
 			if (conditionChoiceBox.getValue() != null) {
 				if (!(conditionChoiceBox.getValue().equals("Item Condition")
