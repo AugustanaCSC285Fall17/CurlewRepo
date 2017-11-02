@@ -202,8 +202,8 @@ public class ShopScreen implements Screen {
 							rejectDialog.setPosition(300, 300);
 							game.stage.addActor(rejectDialog);
 						} else {
-							game.data.getPlayer().addInventory("Kronor", -item.getBuyPrice());
-							game.data.getPlayer().addInventory(item.getItemName(), 1);
+							game.data.getPlayer().incrementAvailableItem("Kronor", -item.getBuyPrice());
+							game.data.getPlayer().incrementAvailableItem(item.getItemName(), 1);
 							redrawItemTable();
 							showDialog(item, false);
 						}
@@ -321,8 +321,8 @@ public class ShopScreen implements Screen {
 							rejectDialog.setPosition(300, 300);
 							game.stage.addActor(rejectDialog);
 						} else {
-							game.data.getPlayer().addInventory("Kronor", item.getSellPrice());
-							game.data.getPlayer().addInventory(item.getItemName(), -1);
+							game.data.getPlayer().incrementAvailableItem("Kronor", item.getSellPrice());
+							game.data.getPlayer().incrementAvailableItem(item.getItemName(), -1);
 							redrawItemTable();
 							showDialog(item, true);
 						}

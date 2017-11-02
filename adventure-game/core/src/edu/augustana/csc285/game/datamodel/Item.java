@@ -146,24 +146,34 @@ public class Item extends Observable{
 	}
 
 	/**
-	 * @return 
+	 * @return quantity of the item
 	 */
 	public int getItemQty() {
 		return itemQty;
 	}
 
+	/**
+	 * Set quantity of the item
+	 * @param itemQty new quantity of the item
+	 */
 	public void setItemQty(int itemQty) {
 		if (itemQty < 0)
 			this.itemQty = 0;
 		else
 			this.itemQty = itemQty;
-
 	}
 
+	/**
+	 * @return true if the item is visible in the player's inventory.
+	 */
 	public boolean isVisible() {
 		return visible;
 	}
 
+	/**
+	 * Set the visibility of the item in the player's inventory.
+	 * @param isVisible true if the item is visible in the player's inventory.
+	 */
 	public void setIsVisible(boolean isVisible) {
 		this.visible = isVisible;
 	}
@@ -199,6 +209,8 @@ public class Item extends Observable{
 	public void setBuyPrice(int price){
 		buyPrice = price;
 	}
+	
+	
 	@Override
 	public boolean equals(Object o){
 		if(o instanceof Item){
@@ -217,6 +229,9 @@ public class Item extends Observable{
 		return itemName;
 	}
 	
+	/**
+	 * @return a String representative of item qualities
+	 */
 	public String printInfo() {
 		String s = "";
 		s+= "Item Name: " + itemName + "\nItem Quantity: " + itemQty +  "\nItem Image Address: " + imageName;
