@@ -14,6 +14,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
+import edu.augustana.csc285.game.datamodel.SlideType;
+
 public class PauseScreen implements Screen{
 
 	private final AdventureGame game;
@@ -42,7 +44,11 @@ public class PauseScreen implements Screen{
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
-				game.setScreen(new SlideScreen(game));
+				if (game.data.getSlide(game.data.getCurrentSlideIndex()).getSlideType() == SlideType.SHOP) {
+					game.setScreen(new ShopScreen(game, game.data.getCurrentSlideIndex() - 1));
+				} else {
+					game.setScreen(new SlideScreen(game));
+				}
 			}
 		});
 		

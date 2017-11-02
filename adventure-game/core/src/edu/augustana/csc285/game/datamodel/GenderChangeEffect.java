@@ -3,6 +3,9 @@ package edu.augustana.csc285.game.datamodel;
 public class GenderChangeEffect implements Effect {
 
 	private Gender newGender;
+
+	public GenderChangeEffect() {
+	}
 	
 	/**
 	 * creates a new gender by setting an inputed gender 

@@ -748,6 +748,7 @@ slides: [
 		]
 	}
 	{
+		imageFileName: facts.png
 		slideType: SHOP
 	}
 	{

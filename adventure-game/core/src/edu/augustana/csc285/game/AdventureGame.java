@@ -29,15 +29,15 @@ public class AdventureGame extends Game {
 		stage = new Stage(new ScreenViewport());
 		data = GameData.fromJSON(Gdx.files.internal("data/TESTER.json").readString("UTF-8"));
 		
-		bgMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Sonata_con_Allemanda_Courante_Sarabande_Gigue.mp3"));
+		bgMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Triumphant_Return.mp3"));
 		bgMusic.setLooping(true);
 		bgMusic.play();
 		Gdx.input.setInputProcessor(stage);
 		
 		// TODO: delete this when done testing
-		this.setScreen(new CreditsScreen(this));
+//		this.setScreen(new CreditsScreen(this));
 		
-//		this.setScreen(new MainMenuScreen(this));
+		this.setScreen(new MainMenuScreen(this));
 	}
 	
 	public void restartGame() {
