@@ -30,9 +30,7 @@ public class PauseScreen implements Screen{
 	
 	public PauseScreen(final AdventureGame game) {
 		this.game = game; 
-		initializeMain();		
-		
-		Gdx.input.setInputProcessor(game.stage);
+		initializeMain();
 	}
 
 	private void initializeMain() {

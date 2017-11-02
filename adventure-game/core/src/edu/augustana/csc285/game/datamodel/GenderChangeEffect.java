@@ -18,11 +18,11 @@ public class GenderChangeEffect implements Effect {
 
 	@Override
 	public void setEffectSize(int size) {
-		// TODO Don't know if we even need it in this class but is an abstract method
+		// need for abstract methods in other effect classes
 	}
 	
 	public void setEffectName(String name){
-		//TODO Don't know if we even need it in this class but is an abstract method
+		// need for abstract methods in other effect classes
 	}
 	
 	public int getEffectSize(){

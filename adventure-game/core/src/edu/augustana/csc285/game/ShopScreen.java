@@ -23,11 +23,13 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
 import com.badlogic.gdx.utils.Align;
 
+import edu.augustana.csc285.game.datamodel.ActionChoice;
 import edu.augustana.csc285.game.datamodel.Item;
 
 public class ShopScreen implements Screen {
 	
 	private AdventureGame game;
+	private int backIndex;
 	
 	private Table table;
 	private Table itemTable = new Table();
@@ -41,12 +43,10 @@ public class ShopScreen implements Screen {
 	private ScrollPane itemScrollPane;
 	private ScrollPane shopScrollPane;
 	
-	public ShopScreen(final AdventureGame game) {
+	public ShopScreen(final AdventureGame game, int backIndex) {
 		this.game = game;
-		
+		this.backIndex = backIndex;
 		initialize();
-		
-		Gdx.input.setInputProcessor(game.stage);
 	}
 	
 	@Override
@@ -213,11 +213,6 @@ public class ShopScreen implements Screen {
 				shopTable.row().padTop(10);
 			}
 		}
-
-//		if (itemAdded == 0) {
-//			shopTable.add(new Label("You have no items in your inventory.", game.skin));
-//		}
-
 	}
 	
 	private void createBackButton() {
@@ -227,6 +222,7 @@ public class ShopScreen implements Screen {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				game.data.attemptChoice(new ActionChoice("", backIndex));
 				game.setScreen(new SlideScreen(game));
 			}
 		});

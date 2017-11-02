@@ -29,9 +29,7 @@ public class GameOverScreen implements Screen {
 	public GameOverScreen(final AdventureGame game) {
 		this.game = game; 
 		
-		initializeMain();		
-		
-		Gdx.input.setInputProcessor(game.stage);
+		initializeMain();
 	}
 	
 	private void initializeTable() {
