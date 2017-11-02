@@ -30,7 +30,6 @@ public class MainMenuScreen implements Screen {
 	
 	public MainMenuScreen(final AdventureGame game) {
 		this.game = game; 
-		
 		initializeMain();
 	}
 	
@@ -59,9 +58,9 @@ public class MainMenuScreen implements Screen {
 		startButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				game.restartGame();
 				game.data.setGameStarted(true);
 				game.stage.clear();
-				game.restartGame();
 				game.setScreen(new SlideScreen(game));
 			}
 		});
@@ -83,7 +82,7 @@ public class MainMenuScreen implements Screen {
 				game.setScreen(new CreditsScreen(game));
 			}
 		}); 
-//		
+	
 //		quitButton = new TextButton("Quit Game", game.skin);
 //		quitButton.addListener(new ClickListener() {
 //			@Override

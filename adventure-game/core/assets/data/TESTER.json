@@ -1735,7 +1735,7 @@ slides: [
 	{
 		title: You cause the boat to sink!
 		imageFileName: image33.jpg
-		gameText: "Confused and afraid, you don?t say anything. He points to a boiler to work on and orders you to shovel the coal into the fire pit. You try to walk away but he pushes you back to the boiler. You hesitantly do as he says. He orders you to fix the gears on the pressure system when you are done. Because of your lack of engineering skills, you fiddle with the gears which causes great amounts of pressure. So much pressure that you cause the boiler to implode. One by one, the boilers catch on fire and cause the room to collapse. The ship sinks into the abyss, lost forever."
+		gameText: "Confused and afraid, you don't say anything. He points to a boiler to work on and orders you to shovel the coal into the fire pit. You try to walk away but he pushes you back to the boiler. You hesitantly do as he says. He orders you to fix the gears on the pressure system when you are done. Because of your lack of engineering skills, you fiddle with the gears which causes great amounts of pressure. So much pressure that you cause the boiler to implode. One by one, the boilers catch on fire and cause the room to collapse. The ship sinks into the abyss, lost forever."
 		gameOver: true
 		actionChoices: [
 			{

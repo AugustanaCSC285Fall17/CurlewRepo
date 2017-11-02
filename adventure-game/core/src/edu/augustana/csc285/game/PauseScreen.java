@@ -116,7 +116,7 @@ public class PauseScreen implements Screen{
 		Texture swansonLogoTexture = new Texture(Gdx.files.internal("slideImages/image1.png"));
 		swansonLogo = new Sprite(swansonLogoTexture);
 		swansonLogo.setPosition(40, 10);
-		swansonLogo.setSize(400, (float) (swansonLogoTexture.getHeight() * 400.0 / swansonLogoTexture.getWidth()));
+		swansonLogo.setSize(500, (float) (swansonLogoTexture.getHeight() * 500.0 / swansonLogoTexture.getWidth()));
 		
 		Texture logoTexture = new Texture(Gdx.files.internal("art/pausedBlueNoStroke.png"));
 		int logoWidth = 300;

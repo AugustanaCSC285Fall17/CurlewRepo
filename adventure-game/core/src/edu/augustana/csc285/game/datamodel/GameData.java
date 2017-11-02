@@ -1,7 +1,6 @@
 
 package edu.augustana.csc285.game.datamodel;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class GameData {
 	private Player player;
 	private int currentSlideIndex;
 	public String saveName = "SavedFile";
-	private boolean gameStarted = false;
+	private boolean gameStarted;
 
 	public GameData() { // needed for GSon
 		slides = new ArrayList<Slide>();
