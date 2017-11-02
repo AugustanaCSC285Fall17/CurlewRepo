@@ -3,13 +3,19 @@ package edu.augustana.csc285.gamebuilder;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Optional;
 
 import edu.augustana.csc285.game.datamodel.GameData;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class GameBuilderApplication extends Application {
 
@@ -54,8 +60,35 @@ public class GameBuilderApplication extends Application {
         stage2.setScene(scene2);
         stage2.show();
         
-        primaryStage.setOnCloseRequest(event -> stage2.close());
-        stage2.setOnCloseRequest(event -> primaryStage.close());
+     //   primaryStage.setOnCloseRequest(event -> stage2.close());
+     //   stage2.setOnCloseRequest(event -> primaryStage.close());
+        
+
+      
+     
+        EventHandler closeHandler = new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+            	if(controller.isSaved() == false){
+                Optional<ButtonType> response = new Alert(AlertType.CONFIRMATION, "You have not saved. Are you sure you want to exit?").showAndWait();
+                if(response.get().equals(ButtonType.OK)){
+                	primaryStage.close();
+            		stage2.close();
+            		event.consume();
+                }else{
+                	event.consume();
+                }
+            	}else{
+            		primaryStage.close();
+            		stage2.close();
+            		event.consume();
+            	}
+            }
+        	
+        };
+        
+        primaryStage.setOnCloseRequest(closeHandler);
+        stage2.setOnCloseRequest(closeHandler);
         
 	}
 

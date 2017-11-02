@@ -46,6 +46,7 @@ public class MainPaneController {
 	private GameData data;
 	private Stage mainWindow;
 	private PreviewPaneController pController;
+	private Boolean saved = true;
 
 	// main tab fields
 	@FXML
@@ -205,6 +206,10 @@ public class MainPaneController {
 		setSlideTypeChoiceBox.setValue(slide.getSlideType());
 
 	}
+	
+	public Boolean isSaved(){
+		return saved;
+	}
 
 	// Checks
 
@@ -337,6 +342,7 @@ public class MainPaneController {
 	@FXML
 	private void handleSaveButton() {
 		data.save();
+		saved = true;
 	}
 
 	/**
@@ -351,6 +357,7 @@ public class MainPaneController {
 		Optional<String> result = dialog.showAndWait();
 		if (result.isPresent()) {
 			data.saveAs(result.get());
+			saved = true;
 		} else {
 			new Alert(AlertType.ERROR, "File not saved");
 		}
@@ -374,9 +381,11 @@ public class MainPaneController {
 			pController.updateData(data);
 			clearSlideEditor();
 			clearACE();
-			this.updateSlideNumberChoiceBox();
-			this.updateActionChoiceNumberChoiceBox();
-			this.updateItemChoiceBox();
+			updateSlideNumberChoiceBox();
+			updateActionChoiceNumberChoiceBox();
+			updateItemChoiceBox();
+			saved = true;
+			
 		}
 	}
 
@@ -390,6 +399,7 @@ public class MainPaneController {
 		data.addSlide(new Slide());
 		pController.update();
 		updateSlideNumberChoiceBox();
+		saved = false;
 	}
 
 	// SE methods
@@ -412,6 +422,7 @@ public class MainPaneController {
 			se.setGameText(setGameTextArea.getText());
 			se.setSlideType((SlideType) setSlideTypeChoiceBox.getValue());
 			se.changeTitle(changeTitleTextField.getText());
+			saved = false;
 		}
 		pController.update();
 	}
@@ -430,6 +441,7 @@ public class MainPaneController {
 
 				} else {
 					se.setSlideImage(inFile);
+					saved = false;
 				}
 			} catch (IOException e) {
 				new Alert(AlertType.ERROR, "There was a problem").showAndWait();
@@ -446,6 +458,7 @@ public class MainPaneController {
 		if (this.wasSlideSelected()) {
 			se.removeSlide();
 			clearSlideEditor();
+			saved = false;
 		}
 		pController.update();
 		updateSlideNumberChoiceBox();
@@ -482,6 +495,7 @@ public class MainPaneController {
 			} else {
 				new Alert(AlertType.INFORMATION, "This slide is no longer the game over slide").showAndWait();
 			}
+			saved = false;
 			pController.update();
 		}
 	}
@@ -496,9 +510,10 @@ public class MainPaneController {
 	private void handleAddActionChoiceButton() {
 		if (wasSlideSelected()) {
 			se.addActionChoice();
+			saved = false;
 		}
 		pController.update();
-		this.updateActionChoiceNumberChoiceBox();
+		updateActionChoiceNumberChoiceBox();
 	}
 
 	public void changeActionChoice(int index) {
@@ -541,6 +556,7 @@ public class MainPaneController {
 				if (isIndexASlide(index)) {
 					ace.setChoiceText(aceChoiceTextArea.getText());
 					ace.setDestinationSlideIndex(index);
+					saved = false;
 					pController.update();
 				}
 			}
@@ -566,6 +582,7 @@ public class MainPaneController {
 			ace.remove();
 			pController.update();
 			updateActionChoiceNumberChoiceBox();
+			saved = false;
 		}
 	}
 
@@ -577,6 +594,7 @@ public class MainPaneController {
 		if (wasAcSelected()) {
 			ActionChoice choice = data.getSlide(se.getCurrentSlide()).getActionChoiceAt(ace.currentActionChoiceIndex);
 			new Alert(AlertType.INFORMATION, choice.toString()).showAndWait();
+			saved = false;
 		}
 	}
 
@@ -671,6 +689,7 @@ public class MainPaneController {
 							int effectChoiceSize = getChoiceSize("Effect");
 
 							ace.addItemEffect(inventory.get(itemChoice), effectChoiceSize);
+							saved = false;
 						}
 					} catch (NumberFormatException e) {
 						new Alert(AlertType.ERROR, "Must be a number").showAndWait();
@@ -704,6 +723,7 @@ public class MainPaneController {
 						ace.addGenderChangeEffect(Gender.MALE);
 					} else if (genderOptional.get().equals(femaleButton)) {
 						ace.addGenderChangeEffect(Gender.FEMALE);
+						saved=false;
 					} else {
 						new Alert(AlertType.ERROR, "New Effect Canceled.");
 					}
@@ -722,6 +742,7 @@ public class MainPaneController {
 					if (nameOptional.isPresent()) {
 						String name = nameOptional.get();
 						ace.addNameChangeEffect(name);
+						saved = false;
 					} else {
 						new Alert(AlertType.ERROR, "New Effect Canceled.").showAndWait();
 					}
@@ -798,6 +819,7 @@ public class MainPaneController {
 
 			if (effectOptional.isPresent()) {
 				ace.removeEffect(effectOptional.get());
+				saved = false;
 			} else {
 				new Alert(AlertType.ERROR, "Effect not removed");
 			}
@@ -823,17 +845,18 @@ public class MainPaneController {
 				Optional<ButtonType> inUseResponse = new Alert(AlertType.CONFIRMATION,
 						"This item is in use. Removing it remove all effects and conditions using this item. Are you sure?")
 								.showAndWait();
-				// TODO support conditions removal
 
 				if (inUseResponse.get() == ButtonType.OK) {
 					data.removeItem(ie.getCurrentItem());
 					clearie();
+					saved = false;
 				}
 
 			} else {
 
 				data.getPlayer().getInventory().remove(ie.getCurrentItem());
 				clearie();
+				saved = false;
 			}
 		}
 		pController.update();
@@ -860,9 +883,7 @@ public class MainPaneController {
 
 							ButtonType maleButton = new ButtonType("Male");
 							ButtonType femaleButton = new ButtonType("Female");
-							// TODO once again only support binary gender for
-							// time
-							// reasons
+						
 
 							genderAlert.getButtonTypes().setAll(maleButton, femaleButton, ButtonType.CANCEL);
 
@@ -870,8 +891,10 @@ public class MainPaneController {
 
 							if (genderOptional.get() == maleButton) {
 								ace.addGenderCondition(Gender.MALE, conditionType);
+								saved = false;
 							} else if (genderOptional.get() == femaleButton) {
 								ace.addGenderCondition(Gender.FEMALE, conditionType);
+								saved = false;
 							}
 						} else if (conditionChoiceBox.getValue().equals("Item Condition") && wasTypeSelected) {
 							Item item = getItemFromUser();
@@ -907,9 +930,10 @@ public class MainPaneController {
 											ro = RelationalOperator.NOT_EQUAL;
 										}
 										ace.addItemCondition(item, ro, choiceSize, conditionType);
+										saved = false;
 
 									}
-									// if(roOptional.isPresent())
+									
 
 								} catch (NumberFormatException e) {
 									new Alert(AlertType.ERROR, "Must be a number").showAndWait();
@@ -995,6 +1019,7 @@ public class MainPaneController {
 				if (conditionOptional.isPresent()) {
 					int conditionInt = conditionOptional.get();
 					ace.removeCondition(conditionInt, conditionType);
+					saved = false;
 				} else {
 					new Alert(AlertType.ERROR, "No Condition Selected");
 				}
@@ -1012,6 +1037,7 @@ public class MainPaneController {
 			new Alert(AlertType.ERROR, "Please Enter a name for the item.").showAndWait();
 		} else {
 			data.getPlayer().addItem(new Item(itemNameTextField.getText()));
+			saved = false;
 		}
 		updateItemChoiceBox();
 		pController.update();
@@ -1033,6 +1059,7 @@ public class MainPaneController {
 		if (isieSelected()) {
 			ie.setVisibility(itemVisibleCheckBox.isSelected());
 			pController.update();
+			saved = false;
 		}
 	}
 
@@ -1047,6 +1074,7 @@ public class MainPaneController {
 				Files.copy(inFile.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);
 				ie.setImagePath(inFile.getName());
 				itemImageLabel.setText(inFile.getName());
+				saved = false;
 
 			} catch (IOException e) {
 				// should never happen, checked before, needed for
@@ -1061,6 +1089,7 @@ public class MainPaneController {
 	@FXML private void handleSellableCheckBox(){
 		if(isieSelected()){
 		ie.setSellable(sellableCheckBox.isSelected());
+		saved = false;
 		}
 		pController.update();
 	}
@@ -1068,6 +1097,7 @@ public class MainPaneController {
 	@FXML private void handleBuyableCheckBox(){
 		if(ie.isItemSelected()){
 			ie.setBuyable(buyableCheckBox.isSelected());
+			saved = false;
 		}
 		pController.update();
 	}
@@ -1100,6 +1130,7 @@ public class MainPaneController {
 			int price = getPriceFromUser();
 			if(price!=-1){
 				ie.setSellPrice(price);
+				saved = false;
 			}
 			}else{
 				new Alert(AlertType.ERROR, "Item is not sellable").showAndWait();
@@ -1115,6 +1146,7 @@ public class MainPaneController {
 			int price = getPriceFromUser();
 			if(price!=-1){
 				ie.setBuyPrice(price);
+				saved = false;
 			}
 			}else{
 				new Alert(AlertType.ERROR, "Item is not buyable").showAndWait();
@@ -1144,18 +1176,12 @@ public class MainPaneController {
 			return -1;
 		}
 	}
-	// File Menu Methods
+	
 
-	/**
-	 * closes the game builder
-	 */
-	@FXML
-	private void handleMenuFileClose() {
-		// TODO: eventually offer option to save before closing?
-		Platform.exit();
-	}
 
-	// does nothing now, but could display a help message or about message
+	
+
+
 	@FXML
 	private void handleMenuHelpAbout() {
 		Alert aboutAlert = new Alert(AlertType.INFORMATION, "To use this builder you can start many different ways."
@@ -1171,7 +1197,7 @@ public class MainPaneController {
 				+ "Now you can set the choice text and destination slide index, using the submit button to save any changes made.  "
 				+ "To add action choices and conditions,  first select a type from the drop down menu and then press the “add” button.");
 
-		aboutAlert.showAndWait();
+		aboutAlert.show();
 		aboutAlert.setWidth(1000);
 	}
 

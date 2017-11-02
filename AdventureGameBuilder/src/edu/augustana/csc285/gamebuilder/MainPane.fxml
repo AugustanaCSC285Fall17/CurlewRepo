@@ -20,11 +20,6 @@
    <top>
 <MenuBar BorderPane.alignment="CENTER">
   <menus>
-    <Menu mnemonicParsing="false" text="File">
-      <items>
-        <MenuItem mnemonicParsing="false" onAction="#handleMenuFileClose" text="Close" />
-      </items>
-    </Menu>
     <Menu mnemonicParsing="false" text="About">
       <items>
         <MenuItem mnemonicParsing="false" onAction="#handleMenuHelpAbout" text="About" />
