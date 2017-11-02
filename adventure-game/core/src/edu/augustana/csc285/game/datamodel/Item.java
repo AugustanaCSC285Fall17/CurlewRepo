@@ -1,8 +1,6 @@
 package edu.augustana.csc285.game.datamodel;
 
-import java.util.Observable;
-
-public class Item extends Observable{
+public class Item {
 
 	private String itemName;
 	private String imageName;
