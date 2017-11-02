@@ -22,6 +22,7 @@ public class MainMenuScreen implements Screen {
 	private TextButton startButton;
 	private TextButton aboutButton;
 //	private TextButton quitButton;
+	private TextButton creditsButton;
 	private TextButton backButton;
 	private Label introText;
 	private Sprite logo;
@@ -71,6 +72,15 @@ public class MainMenuScreen implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
 				initializeAbout();
+			}
+		}); 
+		
+		creditsButton = new TextButton("Credits", game.skin);
+		creditsButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.stage.clear();
+				game.setScreen(new CreditsScreen(game));
 			}
 		}); 
 //		
@@ -134,7 +144,9 @@ public class MainMenuScreen implements Screen {
 		table.padTop(300);
 		table.add(introText).width(800f);
 		table.row();
-		table.add(backButton).padTop(30).width(300);
+		table.add(creditsButton).padTop(30).width(300);
+		table.row();
+		table.add(backButton).padTop(10).width(300);
 		
 		drawBackgroundAndLogo();
 	}

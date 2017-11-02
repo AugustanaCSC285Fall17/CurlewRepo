@@ -1489,7 +1489,7 @@ slides: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
 						item: {
-							itemName: ~went_deck
+							itemName: ~quarantine
 						}
 						op: {
 							opcode: <
@@ -1524,7 +1524,7 @@ slides: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemEffect
 						item: {
-							itemName: ~went_deck
+							itemName: ~quarantine
 						}
 					}
 				]
@@ -1787,9 +1787,6 @@ player: {
 			itemName: ~quarantine
 		}
 		{
-			itemName: ~went_deck
-		}
-		{
 			itemName: ~went_reading
 		}
 		{
@@ -1829,17 +1826,17 @@ player: {
 		}
 		{
 			itemName: Forged Paper
-			imageName: forged.png
+			imageName: paper.png
 			visible: true
 		}
 		{
 			itemName: Illinois letter
-			imageName: illinois.png
+			imageName: letter.png
 			visible: true
 		}
 		{
 			itemName: John Deere letter
-			imageName: johndeere.png
+			imageName: letter.png
 			visible: true
 		}
 		{
@@ -1853,12 +1850,12 @@ player: {
 		}
 		{
 			itemName: Minnesota letter
-			imageName: minnesota.png
+			imageName: letter.png
 			visible: true
 		}
 		{
 			itemName: Official Paper
-			imageName: official.png
+			imageName: paper.png
 			visible: true
 		}
 		{
@@ -1882,7 +1879,7 @@ player: {
 		}
 		{
 			itemName: Washington letter
-			imageName: washington.png
+			imageName: letter.png
 			visible: true
 		}
 	]
