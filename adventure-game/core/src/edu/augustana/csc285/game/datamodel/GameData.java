@@ -117,9 +117,6 @@ public class GameData {
 				}
 			}
 		}
-		File removeImage = new File(slides.get(index).getImageFileName());
-		removeImage.delete();
-		slides.remove(index);
 	}
 
 	public int getSlideListSize() {
