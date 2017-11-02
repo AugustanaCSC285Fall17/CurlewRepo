@@ -45,7 +45,7 @@
                         <Button fx:id="addSlideButton" layoutX="166.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleAddSlideButton" prefHeight="101.0" prefWidth="189.0" text="Add Slide" />
                               <Button fx:id="saveButton" layoutX="226.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="31.0" prefWidth="68.0" text="Save" />
                               <Button fx:id="saveAsButton" layoutX="297.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleSaveAsButton" prefHeight="31.0" prefWidth="70.0" text="SaveAs" />
-                              <Button fx:id="loadButton" layoutX="166.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleLoadButton" text="Load" />
+                              <Button fx:id="loadButton" layoutX="156.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleLoadButton" prefHeight="25.0" prefWidth="69.0" text="Load" />
                      </children>
                   </AnchorPane>
                      </children>
@@ -100,7 +100,7 @@
                         <Button fx:id="addConditionButton" layoutX="233.0" layoutY="271.0" mnemonicParsing="false" onAction="#handleAddConditionButton" text="Add Condition" />
                         <ChoiceBox fx:id="conditionChoiceBox" layoutX="358.0" layoutY="271.0" prefWidth="150.0" />
                         <Button fx:id="removeConditionButton" layoutX="245.0" layoutY="308.0" mnemonicParsing="false" onAction="#handleRemoveConditionButton" text="Remove Condition" />
-                        <Line endY="262.0" layoutX="215.0" layoutY="138.0" startY="-38.0" />
+                        <Line endY="275.0" layoutX="215.0" layoutY="138.0" startY="-38.0" />
                      </children>
                   </AnchorPane>
               </content>
