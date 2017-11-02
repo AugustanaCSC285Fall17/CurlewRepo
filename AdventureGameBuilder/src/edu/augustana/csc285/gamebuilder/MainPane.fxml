@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="459.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.csc285.gamebuilder.MainPaneController">
+<BorderPane prefHeight="459.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.csc285.gamebuilder.MainPaneController">
    <top>
 <MenuBar BorderPane.alignment="CENTER">
   <menus>
@@ -109,28 +109,28 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="removeItemButton" layoutX="29.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleRemoveItemButton" text="Remove Item" />
-                        <Button fx:id="additemButton" layoutX="182.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleAdditemButton" text="Add New Item" />
-                        <TextField fx:id="itemNameTextField" layoutX="364.0" layoutY="19.0" />
-                        <Label layoutX="272.0" layoutY="23.0" text="New item name:" />
+                        <Button fx:id="removeItemButton" layoutX="14.0" layoutY="64.0" mnemonicParsing="false" onAction="#handleRemoveItemButton" text="Remove Item" />
+                        <Button fx:id="additemButton" layoutX="10.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleAdditemButton" text="Add New Item" />
+                        <TextField fx:id="itemNameTextField" layoutX="279.0" layoutY="19.0" />
+                        <Label layoutX="164.0" layoutY="24.0" text="New item name:" />
                         <Label layoutX="170.0" layoutY="290.0" />
                         <Line endX="430.0" layoutX="99.0" layoutY="106.0" startX="-100.0" />
-                        <Label layoutX="189.0" layoutY="68.0" text="Select an Item to Edit:" />
-                        <ChoiceBox fx:id="itemChoiceBox" layoutX="326.0" layoutY="64.0" prefWidth="150.0" />
+                        <Label layoutX="146.0" layoutY="69.0" text="Select an Item to Edit:" />
+                        <ChoiceBox fx:id="itemChoiceBox" layoutX="317.0" layoutY="64.0" prefWidth="150.0" />
                         <Label layoutX="34.0" layoutY="121.0" text="Current Item: " />
-                        <Label fx:id="currentItemLabel" layoutX="107.0" layoutY="121.0" text="No item selected." />
+                        <Label fx:id="currentItemLabel" layoutX="135.0" layoutY="121.0" text="No item selected." />
                         <CheckBox fx:id="itemVisibleCheckBox" layoutX="34.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleItemVisibleCheckBox" text="Item Visible" />
-                        <Label layoutX="36.0" layoutY="255.0" text="Current Image:" />
-                        <Label fx:id="itemImageLabel" layoutX="136.0" layoutY="255.0" text="No image selected." />
-                        <Button fx:id="selectAnItemImageButton" layoutX="279.0" layoutY="251.0" mnemonicParsing="false" onAction="#handleSelectAnItemImageButton" text="Select an Image" />
+                        <Label layoutX="19.0" layoutY="323.0" text="Current Image:" />
+                        <Label fx:id="itemImageLabel" layoutX="130.0" layoutY="323.0" text="No image selected." />
+                        <Button fx:id="selectAnItemImageButton" layoutX="279.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleSelectAnItemImageButton" text="Select an Image" />
                         <CheckBox fx:id="sellableCheckBox" layoutX="148.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleSellableCheckBox" text="Able to Sell" />
-                        <CheckBox fx:id="buyableCheckBox" layoutX="248.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleBuyableCheckBox" text="Able to Buy" />
-                        <Label layoutX="36.0" layoutY="211.0" text="Current Sell Price:" />
-                        <Label layoutX="181.0" layoutY="211.0" text="Current Buy Price:" />
-                        <Label fx:id="currentSellPriceLabel" layoutX="137.0" layoutY="211.0" text="N/A" />
-                        <Label fx:id="currentBuyPriceLabel" layoutX="290.0" layoutY="211.0" text="N/A" />
-                        <Button fx:id="setBuyPriceButton" layoutX="418.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleSetBuyPriceButton" text="Set Buy Price" />
-                        <Button fx:id="setSellPriceButton" layoutX="325.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleSetSellPriceButton" text="Set Sell Price" />
+                        <CheckBox fx:id="buyableCheckBox" layoutX="265.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleBuyableCheckBox" text="Able to Buy" />
+                        <Label layoutX="21.0" layoutY="194.0" text="Current Sell Price:" />
+                        <Label layoutX="21.0" layoutY="252.0" text="Current Buy Price:" />
+                        <Label fx:id="currentSellPriceLabel" layoutX="151.0" layoutY="194.0" text="N/A" />
+                        <Label fx:id="currentBuyPriceLabel" layoutX="151.0" layoutY="252.0" text="N/A" />
+                        <Button fx:id="setBuyPriceButton" layoutX="193.0" layoutY="247.0" mnemonicParsing="false" onAction="#handleSetBuyPriceButton" text="Set Buy Price" />
+                        <Button fx:id="setSellPriceButton" layoutX="193.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleSetSellPriceButton" text="Set Sell Price" />
                      </children>
                   </AnchorPane>
               </content>
