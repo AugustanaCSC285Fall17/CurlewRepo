@@ -30,9 +30,7 @@ public class MainMenuScreen implements Screen {
 	public MainMenuScreen(final AdventureGame game) {
 		this.game = game; 
 		
-		initializeMain();		
-		
-		Gdx.input.setInputProcessor(game.stage);
+		initializeMain();
 	}
 	
 	private void initializeTable() {

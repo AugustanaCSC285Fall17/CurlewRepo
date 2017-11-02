@@ -39,8 +39,6 @@ public class InventoryScreen implements Screen {
 		this.game = game;
 		
 		initialize();
-		
-		Gdx.input.setInputProcessor(game.stage);
 	}
 	
 	@Override

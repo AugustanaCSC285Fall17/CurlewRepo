@@ -79,9 +79,7 @@ public class GameData {
 		for (Effect e : choice.getEffects()) {
 			e.applyEffect(player);
 		}
-		if (choice.getDestinationSlideIndex() != -1) {
-			currentSlideIndex = choice.getDestinationSlideIndex();
-		}
+		currentSlideIndex = choice.getDestinationSlideIndex();
 		return "";
 	}
 

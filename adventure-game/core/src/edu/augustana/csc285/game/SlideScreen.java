@@ -43,32 +43,13 @@ public class SlideScreen implements Screen {
 	private Button muteButton;
 	private ArrayList<TextButton> choiceButtons;
 	private ScrollPane scrollPane;
-	private Image muteImg = new Image(new Texture(Gdx.files.internal("art/icons/muteSMALL.png")));
-	private Image unmuteImg = new Image(new Texture(Gdx.files.internal("art/icons/unmuteSMALL.png")));
-	
 	private Slider volumeSlider;
 	private Dialog volumeDialog;
-
 	private Dialog rejectDialog;
 	
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
 		initialize();
-		
-		Gdx.input.setInputProcessor(game.stage);
-	}
-	
-	@Override
-	public void render (float delta) {
-		Gdx.gl.glClearColor(1, 1, 1, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
-		game.batch.begin();
-		game.sprite.draw(game.batch);
-		game.batch.end();
-		
-		game.stage.act(Gdx.graphics.getDeltaTime());
-		game.stage.draw();
 	}
 	
 	/*
@@ -76,29 +57,25 @@ public class SlideScreen implements Screen {
 	 *  	- setting buttons: pause, inventory, mute
 	 *  	- create the stage.
 	 */
-	
 	private void initialize() {
 		game.stage.clear();
-		
-		choiceButtons = new ArrayList<TextButton>();
-		curSlide = game.data.getSlide(game.data.getCurrentSlideIndex());
-		
-		createFunctionButtons();
 
 		// initialize slide contents
+		choiceButtons = new ArrayList<TextButton>();
+		curSlide = game.data.getSlide(game.data.getCurrentSlideIndex());
+
+		createFunctionButtons();
 		createTitle();
 		createGameText();
-		
 		createChoiceButtons();
 		createTable();
-	    
-		
+
 		// Add actors
 		game.stage.addActor(title);
 		game.stage.addActor(table);
 		game.stage.addActor(scrollPane);
 		game.stage.addActor(volumeDialog);
-		
+
 		// Set the background
 		float size = Gdx.graphics.getHeight();
 		game.batch = new SpriteBatch();
@@ -109,10 +86,14 @@ public class SlideScreen implements Screen {
 			game.sprite.setPosition(Gdx.graphics.getWidth() - size - 40, 0);
 		}
 		game.sprite.setSize(size, size);
+
 	}
 
 	public static final int BUTTON_WIDTH = 60;
 	private void createFunctionButtons() {
+		
+		// ------------------- pause button ---------------------------
+		
 		Image pauseImg = new Image(new Texture(Gdx.files.internal("art/icons/pauseSMALL.png")));
 		pauseButton = new Button(game.skin);
 		pauseButton.add(pauseImg);
@@ -129,10 +110,7 @@ public class SlideScreen implements Screen {
 		});
 		game.stage.addActor(pauseButton);
 		
-		
-		
 		// -------------------- inventory button ----------------------
-		
 		
 		Image invenImg = new Image(new Texture(Gdx.files.internal("art/icons/inventorySMALL.png")));
 		inventoryButton = new Button(game.skin);
@@ -151,8 +129,6 @@ public class SlideScreen implements Screen {
 			}
 		});
 		game.stage.addActor(inventoryButton);
-		
-		
 
 		//-------------------- volume dialog & slider ------------------
 		
@@ -190,7 +166,9 @@ public class SlideScreen implements Screen {
 		
 		updateMute();
 	}
-	
+
+	private Image muteImg = new Image(new Texture(Gdx.files.internal("art/icons/muteSMALL.png")));
+	private Image unmuteImg = new Image(new Texture(Gdx.files.internal("art/icons/unmuteSMALL.png")));
 	private void updateMute() {
 		muteButton = new Button(game.skin);
 		muteButton.setWidth(BUTTON_WIDTH);
@@ -227,11 +205,14 @@ public class SlideScreen implements Screen {
 						game.stage.clear();
 						game.setScreen(new GameOverScreen(game));
 					} else {
+						int lastSlideIndex = game.data.getCurrentSlideIndex();
 						String rejText = game.data.attemptChoice(curChoice);
-						if (curChoice.getDestinationSlideIndex() == -1) {
-							game.setScreen(new ShopScreen(game));
-						} else if (rejText.equals("")) {
-							initialize();
+						if (rejText.equals("")) {
+							if (game.data.getSlide(game.data.getCurrentSlideIndex()).getSlideType() == SlideType.SHOP) {
+								game.setScreen(new ShopScreen(game, lastSlideIndex));
+							} else {
+								initialize();
+							}
 						} else {
 							rejectDialog = new Dialog("", game.skin);
 							rejectDialog.button("Ok");
@@ -314,11 +295,22 @@ public class SlideScreen implements Screen {
 	    scrollPane.setTouchable(Touchable.enabled);
 	    scrollPane.setFadeScrollBars(false);
 	}
-
+	
+	@Override
+	public void render (float delta) {
+		Gdx.gl.glClearColor(1, 1, 1, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
+		game.batch.begin();
+		game.sprite.draw(game.batch);
+		game.batch.end();
+		
+		game.stage.act(Gdx.graphics.getDeltaTime());
+		game.stage.draw();
+	}
 	
 	@Override
 	public void show() {
-		Gdx.input.setInputProcessor(game.stage);
 	}
 
 	@Override

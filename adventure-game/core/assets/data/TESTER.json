@@ -737,7 +737,7 @@ slides: [
 		actionChoices: [
 			{
 				choiceText: Yes
-				destinationSlideIndex: -1
+				destinationSlideIndex: 22
 				visible: false
 			}
 			{
@@ -748,18 +748,7 @@ slides: [
 		]
 	}
 	{
-		title: Just what we needed for the store
-		imageFileName: facts.png
-		gameText: The shopkeeper pays you for your item. You're happy to have a bit more cash on hand for the journey ahead. It may come in handy. You head back into the street.
-		urlText: dieUrl
-		slideType: HISTORICAL
-		actionChoices: [
-			{
-				choiceText: Continue to the street
-				destinationSlideIndex: 20
-				visible: false
-			}
-		]
+		slideType: SHOP
 	}
 	{
 		title: Go Straight To Ship
