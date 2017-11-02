@@ -638,91 +638,22 @@ public class MainPaneController {
 
 	}
 
-	// TODO change to result.isPresent
+	
 	@FXML
 	private void handleAddEffect() {
 		if (this.wasAcSelected()) {
 			if (effectChiceBox.getValue() == null) {
 				new Alert(AlertType.ERROR, "Please Select an Effect Type").showAndWait();
-
 			} else if (effectChiceBox.getValue().equals("Item Effect")) {
-
-				if (data.getPlayer().getInventory().size() == 0) {// TODO move
-																	// this
-																	// check to
-																	// ace
-					new Alert(AlertType.ERROR, "There is nothing in the inventroy").showAndWait();
-				} else {
-
-					ArrayList<Item> inventory = data.getPlayer().getInventory();
-
-					ArrayList<Integer> itemIndices = new ArrayList<Integer>();
-
-					Alert itemInfo = new Alert(AlertType.INFORMATION);
-
-					String s = "";
-					for (int i = 0; i < inventory.size(); i++) {
-						itemIndices.add(i);
-						s += "Item " + inventory.get(i).toString() + " has index " + i + "\n";
-					}
-					itemInfo.setContentText(s);
-					ChoiceDialog<Integer> effectDialog = new ChoiceDialog<Integer>(null, itemIndices);
-					effectDialog.setContentText("Which item will be affected? Consult alert for refference");
-
-					itemInfo.setX(90);
-					itemInfo.setY(150);
-					itemInfo.show();
-					Optional<Integer> itemOptional = effectDialog.showAndWait();
-					itemInfo.close();
-
-					// TODO change to itemOptional.isPresent
-
-					try {
-						int itemChoice = itemOptional.get();
-
-						if (ace.hasItemEffect(inventory.get(itemChoice))) {
-							new Alert(AlertType.ERROR, "There is already an effect with that item").showAndWait();
-						} else {
-							////////// *************************************///////////////////////////////
-							// method for this is below. Check to see if this is
-							////////// what we want
-							int effectChoiceSize = getChoiceSize("Effect");
-
-							ace.addItemEffect(inventory.get(itemChoice), effectChoiceSize);
-							saved = false;
-						}
-					} catch (NumberFormatException e) {
-						new Alert(AlertType.ERROR, "Must be a number").showAndWait();
-					} catch (NoSuchElementException e1) {
-						new Alert(AlertType.ERROR, "Effect not added").showAndWait();
-
-					}
-				}
+				addItemEffect();
 			} else if (effectChiceBox.getValue().equals("Gender Change Effect")) {
 				if (ace.hasGenderEffect()) {
 					new Alert(AlertType.ERROR, "There is already a gender change effect for this action choice")
 							.showAndWait();
 				} else {
-					Alert genderAlert = new Alert(AlertType.CONFIRMATION);
-					genderAlert.setContentText("Which gender should the player be changed to?");
-
-					// As of now only supports binary gender, as that is all
-					// that is
-					// required by history students and I don't want to confuse
-					// them
-					// if they use the builder
-					ButtonType maleButton = new ButtonType("Male");
-					ButtonType femaleButton = new ButtonType("Female");
-					ButtonType cancelButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
-					genderAlert.getButtonTypes().setAll(maleButton, femaleButton, cancelButton);
-
-					genderAlert.setTitle("New Effect Specs");
-
-					Optional<ButtonType> genderOptional = genderAlert.showAndWait();
-					if (genderOptional.get().equals(maleButton)) {
-						ace.addGenderChangeEffect(Gender.MALE);
-					} else if (genderOptional.get().equals(femaleButton)) {
-						ace.addGenderChangeEffect(Gender.FEMALE);
+					Gender gender = getGenderFromUser();
+					if(gender!= null){
+						ace.addGenderChangeEffect(gender);
 						saved=false;
 					} else {
 						new Alert(AlertType.ERROR, "New Effect Canceled.");
@@ -733,14 +664,8 @@ public class MainPaneController {
 					new Alert(AlertType.ERROR, "There is already a name change effect for this action choice.")
 							.showAndWait();
 				} else {
-					TextInputDialog nameDialog = new TextInputDialog();
-					nameDialog.setContentText("Enter the new name.");
-					nameDialog.setTitle("New Effect Specs");
-
-					Optional<String> nameOptional = nameDialog.showAndWait();
-
-					if (nameOptional.isPresent()) {
-						String name = nameOptional.get();
+					String name = getNameFromUser();
+					if (name!=null) {
 						ace.addNameChangeEffect(name);
 						saved = false;
 					} else {
@@ -752,7 +677,60 @@ public class MainPaneController {
 		pController.update();
 	}
 
-	// ***** abstracted method from above ^^^^
+	private void addItemEffect(){
+		if (data.getPlayer().getInventory().size() == 0) {
+			new Alert(AlertType.ERROR, "There is nothing in the inventroy").showAndWait();
+		} else {
+			Item item = getItemFromUser();
+			ArrayList<Item> inventory = data.getPlayer().getInventory();				
+			if(item!=null){
+				try{
+				Item itemChoice = item;
+				if (ace.hasItemEffect(item)) {
+					new Alert(AlertType.ERROR, "There is already an effect with that item").showAndWait();
+				} else {
+					int effectChoiceSize = getChoiceSize("Effect");
+					ace.addItemEffect(item, effectChoiceSize);
+					saved = false;
+				}
+			} catch (NumberFormatException e) {
+				new Alert(AlertType.ERROR, "Must be a number").showAndWait();
+			} catch (NoSuchElementException e1) {
+				new Alert(AlertType.ERROR, "Effect not added").showAndWait();
+			}
+			}
+		}
+	}
+	
+	private Gender getGenderFromUser(){
+		Alert genderAlert = new Alert(AlertType.CONFIRMATION);
+		genderAlert.setContentText("Which gender should be used?");
+		ButtonType maleButton = new ButtonType("Male");
+		ButtonType femaleButton = new ButtonType("Female");
+		ButtonType cancelButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+		genderAlert.getButtonTypes().setAll(maleButton, femaleButton, cancelButton);
+		genderAlert.setTitle("New Effect Specs");
+		Optional<ButtonType> genderOptional = genderAlert.showAndWait();
+		if(genderOptional.isPresent()){
+			if (genderOptional.get().equals(maleButton)) {
+				return Gender.MALE;
+			} else if (genderOptional.get().equals(femaleButton)) {
+				return Gender.FEMALE;
+			}
+		}
+		return null;
+	}
+	
+	private String getNameFromUser(){
+		TextInputDialog nameDialog = new TextInputDialog();
+		nameDialog.setContentText("Enter the name.");
+		Optional<String> nameOptional = nameDialog.showAndWait();
+		if(nameOptional.isPresent()){
+			return nameOptional.get();
+		}else{
+			return null;
+		}
+	}
 	public int getChoiceSize(String EorC) throws NumberFormatException, NoSuchElementException {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("New" + EorC + "Specs");
