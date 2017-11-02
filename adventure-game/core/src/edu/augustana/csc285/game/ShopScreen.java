@@ -179,7 +179,6 @@ public class ShopScreen implements Screen {
 					public Payload dragStart(InputEvent event, float x, float y, int pointer) {
 						Image itemImage = new Image(
 								new Texture(Gdx.files.internal("art/icons/" + item.getImageAddress())));
-						itemImage.setSize(80, 80);
 						payload.setObject(itemRow);
 						payload.setDragActor(itemImage);
 						return payload;
