@@ -14,7 +14,7 @@ public class Item extends Observable{
 	private boolean canBuy;
 	
 	/**
-	 * Initialize a newly created Item object that will behaves as a game item with 
+	 * Initialize a newly created Item object with 
 	 * a name, a quantity, and prices. Also, this object has visible, canSell, and
 	 * canBuy fields that determine the corresponding value.
 	 */
@@ -22,7 +22,7 @@ public class Item extends Observable{
 	}
 
 	/**
-	 * Initialize a newly created Item object that will behaves as a game item with 
+	 * Initialize a newly created Item object with 
 	 * a name, a quantity, and prices. Also, this object has visible, canSell, and
 	 * canBuy fields that determine the corresponding value.
 	 * 
@@ -39,51 +39,7 @@ public class Item extends Observable{
 	}
 	
 	/**
-	 * Initialize a newly created Item object that will behaves as a game item with 
-	 * a name, a quantity, and prices. Also, this object has visible, canSell, and
-	 * canBuy fields that determine the corresponding value. This constructor is mainly
-	 * used in the GameBuilder.
-	 * 
-	 * @param itemName	- name of the item
-	 * @param isVisible	- true if the item is visible in the player's inventory.
-	 */
-	public Item(String itemName, boolean isVisible){
-		this.itemName = itemName;
-		this.visible = isVisible;
-		imageName = null;
-		canSell = false;
-		canBuy = false;
-	}
-	
-	/**
-	 * Initialize a newly created Item object that will behaves as a game item with 
-	 * a name, a quantity, and prices. Also, this object has visible, canSell, and
-	 * canBuy fields that determine the corresponding value. This constructor is mainly
-	 * used to test the ShopScreen and for the GameBuilder
-	 * 
-	 * @param itemName	- name of the item
-	 * @param isVisible	- true if the item is visible in the player's inventory.
-	 * @param itemQty	- quantity of the item
-	 * @param imageName	- name of the item image, located in assets/art/icons/
-	 * @param buyPrice	- cost to buy the item
-	 * @param sellPrice	- cost to sell the item
-	 * @param canSell	- true if the player can sell the item from their inventory
-	 * @param canBuy	- true if the player can buy the item from the shop
-	 */
-	public Item(String itemName, boolean isVisible, int itemQty, String imageName, int buyPrice, int sellPrice,
-			boolean canSell, boolean canBuy){
-		this.itemName = itemName;
-		this.visible = isVisible;
-		this.itemQty = itemQty;
-		this.imageName = imageName;
-		this.buyPrice = buyPrice;
-		this.sellPrice = sellPrice;
-		this.canSell = canSell;
-		this.canBuy = canBuy;
-	}
-	
-	/**
-	 * Initialize a newly created Item object that will behaves as a game item with 
+	 * Initialize a newly created Item object with 
 	 * a name, a quantity, and prices. Also, this object has visible, canSell, and
 	 * canBuy fields that determine the corresponding value. This constructor is mainly
 	 * used in the ShopScreen
@@ -94,23 +50,6 @@ public class Item extends Observable{
 	public Item(String itemName, int itemQty) {
 		this.itemName = itemName;
 		this.itemQty = itemQty;
-		canSell = false;
-		canBuy = false;
-	}
-	
-	/**
-	 * Initialize a newly created Item object that will behaves as a game item with 
-	 * a name, a quantity, and prices. Also, this object has visible, canSell, and
-	 * canBuy fields that determine the corresponding value.
-	 * 
-	 * @param itemName	- name of the item
-	 * @param isVisible	- true if the item is visible in the player's inventory.
-	 * @param imageName	- name of the item image, located in assets/art/icons/
-	 */
-	public Item(String itemName, boolean isVisible, String imageName){
-		this.itemName = itemName;
-		this.visible = isVisible;
-		this.imageName = imageName;
 		canSell = false;
 		canBuy = false;
 	}

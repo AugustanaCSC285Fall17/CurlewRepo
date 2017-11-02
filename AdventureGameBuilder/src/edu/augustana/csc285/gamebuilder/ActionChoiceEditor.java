@@ -62,7 +62,7 @@ public class ActionChoiceEditor {
 	 * removes the action choice
 	 */
 	public void remove() {
-		slide.removeAc(currentActionChoiceIndex);
+		slide.removeActionChoice(currentActionChoiceIndex);
 		currentActionChoiceIndex = -1;
 	}
 	/**

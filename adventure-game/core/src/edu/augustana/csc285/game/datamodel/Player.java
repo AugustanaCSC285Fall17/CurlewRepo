@@ -11,7 +11,7 @@ public class Player {
 	private ArrayList<Item> inventory = new ArrayList<Item>();
 
 	/**
-	 * Initialize a newly created Player object that will behaves as a player with 
+	 * Initialize a newly created Player object with 
 	 * a name, a gender, a TreeMap of stats, and an inventory of items. This constructor
 	 * is mainly used for the JSON loader.
 	 */
@@ -22,7 +22,7 @@ public class Player {
 	}
 
 	/**
-	 * Initialize a newly created Player object that will behaves as a player with 
+	 * Initialize a newly created Player object with 
 	 * a name, a gender, a TreeMap of stats, and an inventory of items.
 	 * @param name	- player's name
 	 */
@@ -115,6 +115,9 @@ public class Player {
 		stats.put(name, stats.get(name) - value);
 	}
 	
+	/**
+	 * @return a String representative of player's stats
+	 */
 	public String printStats (){
 		String s ="";
 		for (String key : stats.keySet()) {
@@ -122,7 +125,7 @@ public class Player {
 		}
 		return s;
 	}
-	
+
 	public String toString(){
 		String s = "";
 		s+= "Name: "+name+"\nGender: "+ gender.toString() + "\n\n";
