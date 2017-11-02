@@ -9,12 +9,12 @@ public class ActionChoiceEditor {
 	private Slide slide;
 	private ActionChoice currentActionChoice;
 	
-/**
- * constructor accepts a Game Data object and a Slide Editor Object 
- * and sets the currentActionChoiceIndex equal to -1
- * @param slide the slide that the action choice is under
- * @param se the SlideEditor object the the action choice editor refers to
- */
+	/**
+	 * constructor accepts a Game Data object and a Slide Editor Object 
+	 * and sets the currentActionChoiceIndex equal to -1
+	 * @param slide the slide that the action choice is under
+	 * @param se the SlideEditor object the the action choice editor refers to
+	 */
 	public ActionChoiceEditor(Slide slide) {
 		currentActionChoiceIndex = -1;
 		this.slide = slide;
@@ -74,7 +74,7 @@ public class ActionChoiceEditor {
 		currentActionChoice.addEffect(new ItemEffect (item,effectSize));
 	}
 	/**
-	 * 
+	 * removes the effect by calling on the remove method in the action choice class
 	 * @param effectIndex 
 	 */
 	public void removeEffect(int effectIndex){

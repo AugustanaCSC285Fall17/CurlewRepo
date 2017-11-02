@@ -108,11 +108,19 @@ public class SlideEditor {
 		data.removeSlide(currentSlideIndex);
 		setCurrentSlide(-1);
 	}
-	
+	/**
+	 * checks to see if the slide is a game over slide
+	 * @return true if the slide is a game over slide and false if not
+	 */
 	public boolean isGameOver(){
 		return currentSlide.isGameOver();
 	}
-	
+
+	/**
+	 * sets the slide to the game over slide
+	 * @param gameOver a boolean that is true if the slide is supposed to be a game over slide
+	 * and false otherwise
+	 */
 	public void setGameOver(boolean gameOver){
 		currentSlide.setGameOver(gameOver);
 	}

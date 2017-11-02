@@ -115,10 +115,9 @@ public class MainPaneController {
 	// Item Editor Fields
 
 	private ItemEditor ie = new ItemEditor();
-	
+
 	@FXML
 	private Button removeItemButton;
-
 
 	@FXML
 	private Button additemButton;
@@ -138,10 +137,14 @@ public class MainPaneController {
 	private Label currentSellPriceLabel;
 	@FXML
 	private Label currentBuyPriceLabel;
-	@FXML private CheckBox sellableCheckBox;
-	@FXML private CheckBox buyableCheckBox;
-	@FXML private Button setSellPriceButton;
-	@FXML private Button setBuyPriceButton;
+	@FXML
+	private CheckBox sellableCheckBox;
+	@FXML
+	private CheckBox buyableCheckBox;
+	@FXML
+	private Button setSellPriceButton;
+	@FXML
+	private Button setBuyPriceButton;
 
 	// Starter Methods
 
@@ -206,22 +209,21 @@ public class MainPaneController {
 		setSlideTypeChoiceBox.setValue(slide.getSlideType());
 
 	}
-	
-	public Boolean isSaved(){
+
+	/**
+	 * 
+	 * @return whether the game data object has been saved by the user
+	 */
+	public Boolean isSaved() {
 		return saved;
 	}
 
 	// Checks
 
-	/**
-	 * Checks if string is an int, if not displays an error message
-	 * 
-	 * @param s
-	 * @return
-	 */
+	
 	private boolean isInputInt(String s) {
 		try {
-			int i = Integer.parseInt(s);
+			int i = Integer.parseInt(s); //if fails, will trip the try/catch
 			return true;
 		} catch (NumberFormatException e) {
 			new Alert(AlertType.ERROR, "This was not an int.").showAndWait();
@@ -229,13 +231,6 @@ public class MainPaneController {
 		}
 	}
 
-	/**
-	 * checks to see if an entered index is valid, returns true if it is valid
-	 * and false if not
-	 * 
-	 * @param index
-	 * @return
-	 */
 	private boolean isIndexASlide(int index) {
 		if (index < 0 || index > data.getSlideListSize() - 1) {
 			new Alert(AlertType.ERROR, "There is no slide at this index").showAndWait();
@@ -244,67 +239,7 @@ public class MainPaneController {
 		return true;
 	}
 
-	/**
-	 * 
-	 * checks to see if the entered index is valid, returns true if it is valid
-	 * and false if not
-	 * 
-	 * @param index
-	 * @return
-	 */
-	private boolean isIndexAnActionChoice(int index) {
-		if (!wasSlideSelected()) {
-			return false;
-		} else if (aceListIsNotEmpty()) {
-			if (index < 0 || index > data.getSlide(se.getCurrentSlide()).getActionChoiceListSize() - 1) {
-				new Alert(AlertType.ERROR, "There is no Action Choice at this index").showAndWait();
-				return false;
-			}
-			return true;
-		} else { // ace list is empty
-			return false;
-		}
-	}
 
-	/**
-	 * 
-	 * checks to see if the slide list is empty, returns true if it is not empty
-	 * and false otherwise
-	 * 
-	 * @return
-	 */
-	private boolean slideListIsNotEmpty() {
-		if (data.getSlideListSize() == 0) {
-			new Alert(AlertType.INFORMATION, "There are no slides in the list").showAndWait();
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * checks to see if the action choice list is empty, returns true if it is
-	 * not empty and false otherwise
-	 * 
-	 * @return
-	 */
-	private boolean aceListIsNotEmpty() {
-		if (!slideListIsNotEmpty()) {
-			return false;
-		}
-		if (data.getSlide(se.getCurrentSlide()).getActionChoiceListSize() == 0) {
-			new Alert(AlertType.INFORMATION, "There are no actionChoices in the list").showAndWait();
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * 
-	 * checks to see if the user entered a slide index before editing other
-	 * fields
-	 * 
-	 * @return
-	 */
 	private boolean wasSlideSelected() {
 		if (!se.wasSlideSelected()) {
 			new Alert(AlertType.ERROR, "Please select a slide first").showAndWait();
@@ -313,12 +248,6 @@ public class MainPaneController {
 		return true;
 	}
 
-	/**
-	 * returns true if an action choice has been selected, otherwise returns
-	 * false.
-	 * 
-	 * @return
-	 */
 	private boolean wasAcSelected() {
 		if (ace != null) {
 			if (ace.aceSelected()) {
@@ -335,20 +264,14 @@ public class MainPaneController {
 
 	// Save and load methods
 
-	/**
-	 * saves the data entered in the builder to a default or previously selected
-	 * file
-	 */
+
 	@FXML
 	private void handleSaveButton() {
 		data.save();
 		saved = true;
 	}
 
-	/**
-	 * http://code.makery.ch/blog/javafx-dialogs-official/ sets the save file to
-	 * a new name and then saves the data to that file
-	 */
+
 	@FXML
 	private void handleSaveAsButton() {
 		TextInputDialog dialog = new TextInputDialog("");
@@ -363,11 +286,7 @@ public class MainPaneController {
 		}
 	}
 
-	/**
-	 * loads previously saved data from chosen file
-	 * 
-	 * @throws IOException
-	 */
+
 	@FXML
 	private void handleLoadButton() throws IOException {
 		FileChooser fileChooser = new FileChooser();
@@ -385,15 +304,13 @@ public class MainPaneController {
 			updateActionChoiceNumberChoiceBox();
 			updateItemChoiceBox();
 			saved = true;
-			
+
 		}
 	}
 
 	// Other main tab methods
 
-	/**
-	 * adds a new slide to the end of the slide list in GameData class
-	 */
+
 	@FXML
 	private void handleAddSlideButton() {
 		data.addSlide(new Slide());
@@ -404,18 +321,13 @@ public class MainPaneController {
 
 	// SE methods
 
-	/**
-	 * creates the slide type menu in the slide editor tab
-	 */
 	private void createSlideTypeMenu() {
 		ArrayList<SlideType> list = new ArrayList<SlideType>(Arrays.asList(SlideType.values()));
 		ObservableList<SlideType> observableList = FXCollections.observableList(list);
 		setSlideTypeChoiceBox.setItems(observableList);
 	}
 
-	/**
-	 * Handles collecting all data from user on the slide editor tab
-	 */
+	
 	@FXML
 	private void handleSubmitButton() {
 		if (wasSlideSelected()) {
@@ -427,9 +339,7 @@ public class MainPaneController {
 		pController.update();
 	}
 
-	/**
-	 * sets the image of the slide by calling on the slide editor class
-	 */
+	
 	@FXML
 	private void handleSelectSlideImageButton() {
 		if (wasSlideSelected()) {
@@ -450,9 +360,7 @@ public class MainPaneController {
 		pController.update();
 	}
 
-	/**
-	 * removes the slide that is currently being edited
-	 */
+	
 	@FXML
 	private void handleRemoveSlideButton() {
 		if (this.wasSlideSelected()) {
@@ -465,9 +373,7 @@ public class MainPaneController {
 
 	}
 
-	/**
-	 * sets slide editor tab to default
-	 */
+	
 	private void clearSlideEditor() {
 		currentSlideLabel.setText("N/A");
 		currentSlideLabel1.setText("N/A");
@@ -502,10 +408,7 @@ public class MainPaneController {
 
 	// ACE methods
 
-	/**
-	 * adds an action choice to the end of the action choice list by calling on
-	 * the slide editor class
-	 */
+
 	@FXML
 	private void handleAddActionChoiceButton() {
 		if (wasSlideSelected()) {
@@ -516,27 +419,8 @@ public class MainPaneController {
 		updateActionChoiceNumberChoiceBox();
 	}
 
-	public void changeActionChoice(int index) {
-		ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide())); // TODO
-																			// do
-																			// we
-																			// need
-																			// a
-																			// new
-																			// ace
-																			// here
-																			// or
-																			// can
-																			// we
-																			// set
-																			// it?
-																			// Don't
-																			// want
-																			// a
-																			// bunch
-																			// of
-																			// loose
-																			// objects
+	private void changeActionChoice(int index) {
+		ace = new ActionChoiceEditor(data.getSlide(se.getCurrentSlide()));
 		ace.setCurrentActionChoiceIndex(index);
 		currentACLabel.setText(Integer.toString(index));
 		ActionChoice choice = data.getSlide(se.getCurrentSlide()).getActionChoiceAt(index);
@@ -544,9 +428,7 @@ public class MainPaneController {
 		aceSetDestinationSlideIndexField.setText(Integer.toString(choice.getDestinationSlideIndex()));
 	}
 
-	/**
-	 * Handles collecting all data from user on the action choice editor tab
-	 */
+
 	@FXML
 	private void handleAceChoiceSubmitButton() {
 		String input = aceSetDestinationSlideIndexField.getText();
@@ -562,9 +444,7 @@ public class MainPaneController {
 			}
 	}
 
-	/**
-	 * sets Action Choice editor to default
-	 */
+	
 	private void clearACE() {
 		this.currentACLabel.setText("N/A");
 		this.updateActionChoiceNumberChoiceBox();
@@ -572,9 +452,7 @@ public class MainPaneController {
 		aceSetDestinationSlideIndexField.clear();
 	}
 
-	/**
-	 * removes the action choice that is currently being edited
-	 */
+	
 	@FXML
 	private void handleRemoveAcButton() {
 		if (this.wasAcSelected()) {
@@ -586,9 +464,7 @@ public class MainPaneController {
 		}
 	}
 
-	/**
-	 * displays information about the action choice in an alert message
-	 */
+	
 	@FXML
 	private void handleShowAceInfoButton() {
 		if (wasAcSelected()) {
@@ -598,7 +474,7 @@ public class MainPaneController {
 		}
 	}
 
-	public void updateActionChoiceNumberChoiceBox() {
+	private void updateActionChoiceNumberChoiceBox() {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		if (se.getCurrentSlide() != -1) {
 			for (int i = 0; i < data.getSlide(se.getCurrentSlide()).getActionChoiceListSize(); i++) {
@@ -638,92 +514,22 @@ public class MainPaneController {
 
 	}
 
-	// TODO change to result.isPresent
 	@FXML
 	private void handleAddEffect() {
 		if (this.wasAcSelected()) {
 			if (effectChiceBox.getValue() == null) {
 				new Alert(AlertType.ERROR, "Please Select an Effect Type").showAndWait();
-
 			} else if (effectChiceBox.getValue().equals("Item Effect")) {
-
-				if (data.getPlayer().getInventory().size() == 0) {// TODO move
-																	// this
-																	// check to
-																	// ace
-					new Alert(AlertType.ERROR, "There is nothing in the inventroy").showAndWait();
-				} else {
-
-					ArrayList<Item> inventory = data.getPlayer().getInventory();
-
-					ArrayList<Integer> itemIndices = new ArrayList<Integer>();
-
-					Alert itemInfo = new Alert(AlertType.INFORMATION);
-
-					String s = "";
-					for (int i = 0; i < inventory.size(); i++) {
-						itemIndices.add(i);
-						s += "Item " + inventory.get(i).toString() + " has index " + i + "\n";
-					}
-					itemInfo.setContentText(s);
-					ChoiceDialog<Integer> effectDialog = new ChoiceDialog<Integer>(null, itemIndices);
-					effectDialog.setContentText("Which item will be affected? Consult alert for refference");
-
-					itemInfo.setX(90);
-					itemInfo.setY(150);
-					itemInfo.show();
-					Optional<Integer> itemOptional = effectDialog.showAndWait();
-					itemInfo.close();
-
-					// TODO change to itemOptional.isPresent
-
-					try {
-						int itemChoice = itemOptional.get();
-
-						if (ace.hasItemEffect(inventory.get(itemChoice))) {
-							new Alert(AlertType.ERROR, "There is already an effect with that item").showAndWait();
-						} else {
-							////////// *************************************///////////////////////////////
-							// method for this is below. Check to see if this is
-							////////// what we want
-							int effectChoiceSize = getChoiceSize("Effect");
-
-							ace.addItemEffect(inventory.get(itemChoice), effectChoiceSize);
-							saved = false;
-						}
-					} catch (NumberFormatException e) {
-						new Alert(AlertType.ERROR, "Must be a number").showAndWait();
-					} catch (NoSuchElementException e1) {
-						new Alert(AlertType.ERROR, "Effect not added").showAndWait();
-
-					}
-				}
+				addItemEffect();
 			} else if (effectChiceBox.getValue().equals("Gender Change Effect")) {
 				if (ace.hasGenderEffect()) {
 					new Alert(AlertType.ERROR, "There is already a gender change effect for this action choice")
 							.showAndWait();
 				} else {
-					Alert genderAlert = new Alert(AlertType.CONFIRMATION);
-					genderAlert.setContentText("Which gender should the player be changed to?");
-
-					// As of now only supports binary gender, as that is all
-					// that is
-					// required by history students and I don't want to confuse
-					// them
-					// if they use the builder
-					ButtonType maleButton = new ButtonType("Male");
-					ButtonType femaleButton = new ButtonType("Female");
-					ButtonType cancelButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
-					genderAlert.getButtonTypes().setAll(maleButton, femaleButton, cancelButton);
-
-					genderAlert.setTitle("New Effect Specs");
-
-					Optional<ButtonType> genderOptional = genderAlert.showAndWait();
-					if (genderOptional.get().equals(maleButton)) {
-						ace.addGenderChangeEffect(Gender.MALE);
-					} else if (genderOptional.get().equals(femaleButton)) {
-						ace.addGenderChangeEffect(Gender.FEMALE);
-						saved=false;
+					Gender gender = getGenderFromUser();
+					if (gender != null) {
+						ace.addGenderChangeEffect(gender);
+						saved = false;
 					} else {
 						new Alert(AlertType.ERROR, "New Effect Canceled.");
 					}
@@ -733,14 +539,8 @@ public class MainPaneController {
 					new Alert(AlertType.ERROR, "There is already a name change effect for this action choice.")
 							.showAndWait();
 				} else {
-					TextInputDialog nameDialog = new TextInputDialog();
-					nameDialog.setContentText("Enter the new name.");
-					nameDialog.setTitle("New Effect Specs");
-
-					Optional<String> nameOptional = nameDialog.showAndWait();
-
-					if (nameOptional.isPresent()) {
-						String name = nameOptional.get();
+					String name = getNameFromUser();
+					if (name != null) {
 						ace.addNameChangeEffect(name);
 						saved = false;
 					} else {
@@ -752,8 +552,60 @@ public class MainPaneController {
 		pController.update();
 	}
 
-	// ***** abstracted method from above ^^^^
-	public int getChoiceSize(String EorC) throws NumberFormatException, NoSuchElementException {
+	private void addItemEffect() {
+		if (data.getPlayer().getInventory().size() == 0) {
+			new Alert(AlertType.ERROR, "There is nothing in the inventroy").showAndWait();
+		} else {
+			Item item = getItemFromUser();
+			if (item != null) {
+				try {
+					if (ace.hasItemEffect(item)) {
+						new Alert(AlertType.ERROR, "There is already an effect with that item").showAndWait();
+					} else {
+						int effectChoiceSize = getChoiceSize("Effect");
+						ace.addItemEffect(item, effectChoiceSize);
+						saved = false;
+					}
+				} catch (NumberFormatException e) {
+					new Alert(AlertType.ERROR, "Must be a number").showAndWait();
+				} catch (NoSuchElementException e1) {
+					new Alert(AlertType.ERROR, "Effect not added").showAndWait();
+				}
+			}
+		}
+	}
+
+	private Gender getGenderFromUser() {
+		Alert genderAlert = new Alert(AlertType.CONFIRMATION);
+		genderAlert.setContentText("Which gender should be used?");
+		ButtonType maleButton = new ButtonType("Male");
+		ButtonType femaleButton = new ButtonType("Female");
+		ButtonType cancelButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+		genderAlert.getButtonTypes().setAll(maleButton, femaleButton, cancelButton);
+		genderAlert.setTitle("New Effect Specs");
+		Optional<ButtonType> genderOptional = genderAlert.showAndWait();
+		if (genderOptional.isPresent()) {
+			if (genderOptional.get().equals(maleButton)) {
+				return Gender.MALE;
+			} else if (genderOptional.get().equals(femaleButton)) {
+				return Gender.FEMALE;
+			}
+		}
+		return null;
+	}
+
+	private String getNameFromUser() {
+		TextInputDialog nameDialog = new TextInputDialog();
+		nameDialog.setContentText("Enter the name.");
+		Optional<String> nameOptional = nameDialog.showAndWait();
+		if (nameOptional.isPresent()) {
+			return nameOptional.get();
+		} else {
+			return null;
+		}
+	}
+
+	private int getChoiceSize(String EorC) throws NumberFormatException, NoSuchElementException {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("New" + EorC + "Specs");
 		dialog.setHeaderText("Enter" + EorC + "Number");
@@ -762,7 +614,7 @@ public class MainPaneController {
 		return Integer.parseInt(choiceSizeOptional.get());
 	}
 
-	public Item getItemFromUser() {
+	private Item getItemFromUser() {
 		ArrayList<Item> inventory = data.getPlayer().getInventory();
 
 		ArrayList<Integer> itemIndices = new ArrayList<Integer>();
@@ -793,15 +645,11 @@ public class MainPaneController {
 	}
 
 	@FXML
-
-	public void handleRemoveEffectButton() {
+	private void handleRemoveEffectButton() {
 		if (this.wasAcSelected()) {
 			ArrayList<Effect> effects = ace.getEffects();
-
 			ArrayList<Integer> effectIndices = new ArrayList<Integer>();
-
 			Alert effectInfo = new Alert(AlertType.INFORMATION);
-
 			String s = "";
 			for (int i = 0; i < effects.size(); i++) {
 				effectIndices.add(i);
@@ -837,9 +685,7 @@ public class MainPaneController {
 	}
 
 	@FXML
-	// TODO change to strings instead of ints?
-	public void handleRemoveItemButton() {
-
+	private void handleRemoveItemButton() {
 		if (isieSelected()) {
 			if (data.itemUsed(ie.getCurrentItem())) {
 				Optional<ButtonType> inUseResponse = new Alert(AlertType.CONFIRMATION,
@@ -851,7 +697,6 @@ public class MainPaneController {
 					clearie();
 					saved = false;
 				}
-
 			} else {
 
 				data.getPlayer().getInventory().remove(ie.getCurrentItem());
@@ -860,81 +705,42 @@ public class MainPaneController {
 			}
 		}
 		pController.update();
-
 	}
 
 	@FXML
-	public void handleAddConditionButton() {
+	private void handleAddConditionButton() {
 		if (wasAcSelected()) {
 			if (conditionChoiceBox.getValue() != null) {
-				if (!(conditionChoiceBox.getValue().equals("Item Condition")// checks
+				if (!(conditionChoiceBox.getValue().equals("Item Condition")
+						&& data.getPlayer().getInventory().size() == 0)) {// checks
 																			// if
 																			// inventory
 																			// is
 																			// empty
-						&& data.getPlayer().getInventory().size() == 0)) {
-					int conditionType = this.getConditionType();
+																			// and
+																			// item
+																			// condition
+																			// was
+																			// selected
+					int conditionType = getConditionType();
 					Boolean wasTypeSelected = true;
 					if (!(conditionType == -1)) {
-
 						if (conditionChoiceBox.getValue().equals("Gender Condition") && wasTypeSelected) {
-							Alert genderAlert = new Alert(AlertType.CONFIRMATION);
-							genderAlert.setContentText("Should male or female be checked?");
-
-							ButtonType maleButton = new ButtonType("Male");
-							ButtonType femaleButton = new ButtonType("Female");
-						
-
-							genderAlert.getButtonTypes().setAll(maleButton, femaleButton, ButtonType.CANCEL);
-
-							Optional<ButtonType> genderOptional = genderAlert.showAndWait();
-
-							if (genderOptional.get() == maleButton) {
-								ace.addGenderCondition(Gender.MALE, conditionType);
+							Gender gender = getGenderFromUser();
+							if (gender != null) {
+								ace.addGenderCondition(gender, conditionType);
 								saved = false;
-							} else if (genderOptional.get() == femaleButton) {
-								ace.addGenderCondition(Gender.FEMALE, conditionType);
-								saved = false;
+							} else {
+								new Alert(AlertType.ERROR, "Condition Canceled");
 							}
 						} else if (conditionChoiceBox.getValue().equals("Item Condition") && wasTypeSelected) {
 							Item item = getItemFromUser();
 							if (item != null) {
-
 								try {
 									int choiceSize = getChoiceSize("Condition");
-
-									ArrayList<String> roList = new ArrayList<String>();
-									roList.add("Less Than");
-									roList.add("Less Than or Equal");
-									roList.add("Greater Than");
-									roList.add("Greater Than or Equal");
-									roList.add("Equal");
-									roList.add("Not Equal");
-
-									ChoiceDialog<String> roDialog = new ChoiceDialog<String>(null, roList);
-									Optional<String> roOptional = roDialog.showAndWait();
-
-									if (roOptional.isPresent()) {
-										RelationalOperator ro = null;
-										if (roOptional.get().equals("Less Than")) {
-											ro = RelationalOperator.LESS_THAN;
-										} else if (roOptional.get().equals("Less Than or Equal")) {
-											ro = RelationalOperator.LESS_THAN_OR_EQUAL;
-										} else if (roOptional.get().equals("Greater Than")) {
-											ro = RelationalOperator.GREATER_THAN;
-										} else if (roOptional.get().equals("Greater Than or Equal")) {
-											ro = RelationalOperator.GREATER_THAN_OR_EQUAL;
-										} else if (roOptional.get().equals("Equal")) {
-											ro = RelationalOperator.EQUAL;
-										} else if (roOptional.get().equals("Not Equal")) {
-											ro = RelationalOperator.NOT_EQUAL;
-										}
-										ace.addItemCondition(item, ro, choiceSize, conditionType);
-										saved = false;
-
-									}
-									
-
+									RelationalOperator ro = getRelationalOperatorFromUser();
+									ace.addItemCondition(item, ro, choiceSize, conditionType);
+									saved = false;
 								} catch (NumberFormatException e) {
 									new Alert(AlertType.ERROR, "Must be a number").showAndWait();
 								} catch (NoSuchElementException e) {
@@ -944,24 +750,46 @@ public class MainPaneController {
 								new Alert(AlertType.ERROR, "No item selected").showAndWait();
 							}
 						}
-					} else {
-						new Alert(AlertType.ERROR, "Nothing in inventory").showAndWait();
 					}
+				} else {
+					new Alert(AlertType.ERROR, "Nothing in inventory").showAndWait();
 				}
-				// TODO set up so only one condition can be applied (where
-				// applicable)
-
-				// TODO change remove item in gameData to also remove all item
-				// conditions of that item
-
-				// TODO change default slide index to 0 so doesn't break;
-				// TODO fix file path of that image thing that I didn't know
-				// where to put before
-			} else {
-				new Alert(AlertType.ERROR, "Please select a condition").showAndWait();
-			}
+			
+		} else {
+			new Alert(AlertType.ERROR, "Please select a condition").showAndWait();
+		}
 		}
 		pController.update();
+	}
+
+	private RelationalOperator getRelationalOperatorFromUser() {
+		ArrayList<String> roList = new ArrayList<String>();
+		roList.add("Less Than");
+		roList.add("Less Than or Equal");
+		roList.add("Greater Than");
+		roList.add("Greater Than or Equal");
+		roList.add("Equal");
+		roList.add("Not Equal");
+		ChoiceDialog<String> roDialog = new ChoiceDialog<String>(null, roList);
+		Optional<String> roOptional = roDialog.showAndWait();
+		if (roOptional.isPresent()) {
+			RelationalOperator ro = null;
+			if (roOptional.get().equals("Less Than")) {
+				ro = RelationalOperator.LESS_THAN;
+			} else if (roOptional.get().equals("Less Than or Equal")) {
+				ro = RelationalOperator.LESS_THAN_OR_EQUAL;
+			} else if (roOptional.get().equals("Greater Than")) {
+				ro = RelationalOperator.GREATER_THAN;
+			} else if (roOptional.get().equals("Greater Than or Equal")) {
+				ro = RelationalOperator.GREATER_THAN_OR_EQUAL;
+			} else if (roOptional.get().equals("Equal")) {
+				ro = RelationalOperator.EQUAL;
+			} else if (roOptional.get().equals("Not Equal")) {
+				ro = RelationalOperator.NOT_EQUAL;
+			}
+			return ro;
+		}
+		return null;
 	}
 
 	private int getConditionType() {
@@ -985,9 +813,7 @@ public class MainPaneController {
 	@FXML
 	private void handleRemoveConditionButton() {
 		if (this.wasAcSelected()) {
-
 			int conditionType = getConditionType();
-
 			if (!(conditionType == -1)) {
 				ArrayList<Condition> conditions = null;
 				if (conditionType == ActionChoice.FEASIBILITY) {
@@ -995,27 +821,20 @@ public class MainPaneController {
 				} else if (conditionType == ActionChoice.VISIBILITY) {
 					conditions = ace.getVConditions();
 				}
-
 				ArrayList<Integer> conditionIndices = new ArrayList<Integer>();
-
 				Alert conditionInfo = new Alert(AlertType.INFORMATION);
-
 				String s = "";
 				for (int i = 0; i < conditions.size(); i++) {
 					conditionIndices.add(i);
 					s += "Condition " + conditions.get(i).printEffectInfo() + " has index " + i + "\n";
 				}
-
 				ChoiceDialog<Integer> conditionDialog = new ChoiceDialog<Integer>(null, conditionIndices);
-				conditionDialog.setContentText("Which effect will be removed? Consult alert for refference");
-
+				conditionDialog.setContentText("Which condition will be removed? Consult alert for refference");
 				conditionInfo.setContentText(s);
 				conditionInfo.setX(200);
 				conditionInfo.show();
-
 				Optional<Integer> conditionOptional = conditionDialog.showAndWait();
 				conditionInfo.close();
-
 				if (conditionOptional.isPresent()) {
 					int conditionInt = conditionOptional.get();
 					ace.removeCondition(conditionInt, conditionType);
@@ -1029,7 +848,6 @@ public class MainPaneController {
 		}
 		pController.update();
 	}
-
 
 	@FXML
 	private void handleAdditemButton() {
@@ -1065,50 +883,54 @@ public class MainPaneController {
 
 	@FXML
 	private void handleSelectAnItemImageButton() {
-		if(isieSelected()){
-		File inFile = getItemImageFromUser();
+		if (isieSelected()) {
+			File inFile = getItemImageFromUser();
 
-		if (inFile != null) {
-			String path = "assets/art/icons/" + inFile.getName();
-			try {
-				Files.copy(inFile.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);
-				ie.setImagePath(inFile.getName());
-				itemImageLabel.setText(inFile.getName());
-				saved = false;
+			if (inFile != null) {
+				String path = "assets/art/icons/" + inFile.getName();
+				try {
+					Files.copy(inFile.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);
+					ie.setImagePath(inFile.getName());
+					itemImageLabel.setText(inFile.getName());
+					saved = false;
 
-			} catch (IOException e) {
-				// should never happen, checked before, needed for
-				// compile
-				e.printStackTrace();
+				} catch (IOException e) {
+					// should never happen, checked before, needed for
+					// compile
+					e.printStackTrace();
+				}
+				pController.update();
 			}
-			pController.update();
-		}
 		}
 	}
 
-	@FXML private void handleSellableCheckBox(){
-		if(isieSelected()){
-		ie.setSellable(sellableCheckBox.isSelected());
-		saved = false;
+	@FXML
+	private void handleSellableCheckBox() {
+		if (isieSelected()) {
+			ie.setSellable(sellableCheckBox.isSelected());
+			saved = false;
 		}
 		pController.update();
 	}
-	
-	@FXML private void handleBuyableCheckBox(){
-		if(ie.isItemSelected()){
+
+	@FXML
+	private void handleBuyableCheckBox() {
+		if (ie.isItemSelected()) {
 			ie.setBuyable(buyableCheckBox.isSelected());
 			saved = false;
 		}
 		pController.update();
 	}
-	private boolean isieSelected(){
-		if(ie.isItemSelected()){
+
+	private boolean isieSelected() {
+		if (ie.isItemSelected()) {
 			return true;
-		}else{
+		} else {
 			new Alert(AlertType.ERROR, "Please select an item").showAndWait();
 			return false;
 		}
 	}
+
 	private void clearie() {
 		ie.setCurrentItem(null);
 		currentItemLabel.setText("No item selected.");
@@ -1122,17 +944,17 @@ public class MainPaneController {
 		currentBuyPriceLabel.setText("N/A");
 
 	}
-	
+
 	@FXML
-	private void handleSetSellPriceButton(){
-		if(isieSelected()){
-			if(ie.canSell()){
-			int price = getPriceFromUser();
-			if(price!=-1){
-				ie.setSellPrice(price);
-				saved = false;
-			}
-			}else{
+	private void handleSetSellPriceButton() {
+		if (isieSelected()) {
+			if (ie.canSell()) {
+				int price = getPriceFromUser();
+				if (price != -1) {
+					ie.setSellPrice(price);
+					saved = false;
+				}
+			} else {
 				new Alert(AlertType.ERROR, "Item is not sellable").showAndWait();
 			}
 		}
@@ -1140,47 +962,43 @@ public class MainPaneController {
 	}
 
 	@FXML
-	private void handleSetBuyPriceButton(){
-		if(isieSelected()){
-			if(ie.canBuy()){
-			int price = getPriceFromUser();
-			if(price!=-1){
-				ie.setBuyPrice(price);
-				saved = false;
-			}
-			}else{
+	private void handleSetBuyPriceButton() {
+		if (isieSelected()) {
+			if (ie.canBuy()) {
+				int price = getPriceFromUser();
+				if (price != -1) {
+					ie.setBuyPrice(price);
+					saved = false;
+				}
+			} else {
 				new Alert(AlertType.ERROR, "Item is not buyable").showAndWait();
 			}
 		}
 		pController.update();
 	}
-	private int getPriceFromUser(){
+
+	private int getPriceFromUser() {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setContentText("Enter price: ");
 		Optional<String> dialogOptional = dialog.showAndWait();
-		if(dialogOptional.isPresent()){
+		if (dialogOptional.isPresent()) {
 			String priceString = dialogOptional.get();
-			if(isInputInt(priceString)){
-				int price =  Integer.parseInt(priceString);
-				if(price <0){
+			if (isInputInt(priceString)) {
+				int price = Integer.parseInt(priceString);
+				if (price < 0) {
 					new Alert(AlertType.ERROR, "Price can not be negitive").showAndWait();
 					return -1;
-				}else{
+				} else {
 					return price;
 				}
-			}else{
+			} else {
 				return -1;
 			}
-		}else{
+		} else {
 			new Alert(AlertType.ERROR, "No price given.").showAndWait();
 			return -1;
 		}
 	}
-	
-
-
-	
-
 
 	@FXML
 	private void handleMenuHelpAbout() {
