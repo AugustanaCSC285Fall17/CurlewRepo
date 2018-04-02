@@ -41,7 +41,7 @@ public class AdventureGame extends Game {
 	}
 	
 	public void restartGame() {
-		data = GameData.fromJSON(Gdx.files.internal("data/demo.json").readString("UTF-8"));
+		data = GameData.fromJSON(Gdx.files.internal("data/TESTER.json").readString("UTF-8"));
 		
 	}
 

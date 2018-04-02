@@ -1,4 +1,3 @@
-
 package edu.augustana.csc285.game;
 
 import java.util.ArrayList;
@@ -335,4 +334,3 @@ public class SlideScreen implements Screen {
 	}
 
 }
-

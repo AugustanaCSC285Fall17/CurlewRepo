@@ -368,12 +368,6 @@ public class MainPaneController {
 	@FXML
 	private void handleRemoveSlideButton() {
 		if (this.wasSlideSelected()) {
-			if(se.hasSlide()){
-			Optional<ButtonType> answer = new Alert(AlertType.CONFIRMATION, "Should the image associated with this slide also be removed?").showAndWait();
-			if(answer.get().equals(ButtonType.OK)){
-				se.removeImage();
-			}
-			}
 			se.removeSlide();
 			clearSlideEditor();
 			saved = false;
@@ -1023,7 +1017,7 @@ public class MainPaneController {
 				+ "At the bottom of the screen, you can change the slide type, select a slide image, add action choices to a slide, and even remove a slide."
 				+ "\n3. Next go to the action choice editor tab. Select an action choice index that you would like to edit.  "
 				+ "Now you can set the choice text and destination slide index, using the submit button to save any changes made.  "
-				+ "To add action choices and conditions,  first select a type from the drop down menu and then press the “add” button.");
+				+ "To add action choices and conditions,  first select a type from the drop down menu and then press the add button.");
 
 		aboutAlert.show();
 		aboutAlert.setWidth(1000);
