@@ -34,7 +34,7 @@ public class ItemEffect implements Effect {
 	
 	@Override
 	public void applyEffect(Player p) {
-		p.addInventory(item.getItemName(), effectSize);
+		p.incrementAvailableItem(item.getItemName(), effectSize);
 	}
 
 	@Override

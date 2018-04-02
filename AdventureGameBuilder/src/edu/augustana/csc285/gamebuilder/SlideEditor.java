@@ -39,11 +39,11 @@ public class SlideEditor {
 	 * @param currentSlideInd the index of the new current slide
 	 */
 	public void setCurrentSlide(int currentSlideInd) {
+		if(currentSlideInd!=-1){
 		this.currentSlideIndex = currentSlideInd;
-		if(currentSlideIndex == -1){
-			currentSlide = null;
-		}else{
 		currentSlide = data.getSlide(currentSlideIndex);
+		}else{
+			currentSlide = null;
 		}
 	}
 	/**
@@ -86,7 +86,8 @@ public class SlideEditor {
 
 		String path = "assets/slideImages/"+ slideImageIn.getName();
 		Files.copy(slideImageIn.toPath(), (new File(path)).toPath(), StandardCopyOption.REPLACE_EXISTING);		
-		currentSlide.setImageFileName(path);
+		//currentSlide.setImageFileName(path);
+		currentSlide.setImageFileName(slideImageIn.getName());
 	}
 
 	/**
@@ -107,15 +108,20 @@ public class SlideEditor {
 		data.removeSlide(currentSlideIndex);
 		setCurrentSlide(-1);
 	}
-	
-	public void removeImage(){
-		data.removeImage(currentSlide.getImageFileName());
+	/**
+	 * checks to see if the slide is a game over slide
+	 * @return true if the slide is a game over slide and false if not
+	 */
+	public boolean isGameOver(){
+		return currentSlide.isGameOver();
 	}
-	public Boolean hasSlide(){
-		if(currentSlide.getImageFileName().equals("")){
-			return false;
-		}else{
-			return true;
-		}
+
+	/**
+	 * sets the slide to the game over slide
+	 * @param gameOver a boolean that is true if the slide is supposed to be a game over slide
+	 * and false otherwise
+	 */
+	public void setGameOver(boolean gameOver){
+		currentSlide.setGameOver(gameOver);
 	}
 }

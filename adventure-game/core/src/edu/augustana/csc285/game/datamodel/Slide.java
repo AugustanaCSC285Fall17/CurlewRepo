@@ -12,7 +12,10 @@ public class Slide {
 	private boolean gameOver;
 	private ArrayList<ActionChoice> actionChoices;
 
-	//DON'T TOUCH IT
+	/**
+	 * Initialize a newly created Slide object with a title, a imageFileName, a gameText, 
+	 * an urlText, a SlideType, a gameOver boolean, and an ArrayList of actionChoices.
+	 */
 	public Slide() {
 		this.title = "NewSlide";
 		this.imageFileName = "";
@@ -22,6 +25,16 @@ public class Slide {
 		gameOver = false;
 	}
 
+	/**
+	 * Initialize a newly created Slide object with a title, a imageFileName, a gameText, 
+	 * an urlText, a SlideType, a gameOver boolean, and an ArrayList of actionChoices.
+	 * 
+	 * @param title			- slide title
+	 * @param imageFileName	- name of the image file, located in assets/slideImages/
+	 * @param gameText		- game text on the slide
+	 * @param slideType		- type of the slide
+	 * @param urlText		- url of the image file
+	 */
 	public Slide(String title, String imageFileName, String gameText
 			    , SlideType slideType, String urlText) {
 		this.gameText = gameText;
@@ -56,9 +69,16 @@ public class Slide {
 	public ActionChoice getActionChoiceAt(int index) {
 		return actionChoices.get(index);
 	}
-	//new method may change later
+	
+	/**
+	 * This method add a default action choice
+	 */
 	public void addActionChoice () {
 		actionChoices.add(new ActionChoice());
+	}
+
+	public void removeActionChoice(int index) {
+		actionChoices.remove(index);	
 	}
 	
 	// return gameText
@@ -83,11 +103,19 @@ public class Slide {
 	public boolean isGameOver() {
 		return gameOver;
 	}
+	
+	public void setGameOver (boolean isGameOver){
+		gameOver = isGameOver;
+	}
 
+	/**
+	 * This method takes in an ArrayList of ActionChoice and replace the current ArrayList
+	 * of ActionChoice with it.
+	 * @param actionChoices	- new set of ActionChoices
+	 */
 	public void setActionChoices(ArrayList<ActionChoice> actionChoices) {
 		this.actionChoices = actionChoices;
 	}
-	
 
 	//Set the gameText
 	public void setGameText(String text){
@@ -112,11 +140,7 @@ public class Slide {
 			s+= "Action Choice "+i+":\n"+actionChoices.get(i).toString()+"\n";
 		}
 		}
-		return "The title is "+title + "\nThe image file name is: "+imageFileName+"\nThe gameText is: "+gameText+"\nThe slide type is: "+slideType+"\nThe action Choices are: \n" +s;
-	}
-
-	public void removeAc(int index) {
-		actionChoices.remove(index);	
+		return "The title is "+title + "\nThe image file name is: "+imageFileName+"\nThe gameText is: "+gameText+"\nThe slide type is: "+slideType+"\nThe action Choices are: \n" +s + "\nGame Over Slide?: " + gameOver;
 	}
 
 }

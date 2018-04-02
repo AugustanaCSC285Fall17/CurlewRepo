@@ -39,8 +39,6 @@ public class InventoryScreen implements Screen {
 		this.game = game;
 		
 		initialize();
-		
-		Gdx.input.setInputProcessor(game.stage);
 	}
 	
 	@Override
@@ -63,8 +61,8 @@ public class InventoryScreen implements Screen {
 		Image pauseImg = new Image(new Texture(Gdx.files.internal("art/icons/pauseSMALL.png")));
 		pauseButton = new Button(game.skin);
 		pauseButton.add(pauseImg);
-		pauseButton.setWidth(40);
-		pauseButton.setHeight(40);
+		pauseButton.setWidth(SlideScreen.BUTTON_WIDTH);
+		pauseButton.setHeight(SlideScreen.BUTTON_WIDTH);
 		pauseButton.setPosition(Gdx.graphics.getWidth() - pauseButton.getWidth() - 10,
 				Gdx.graphics.getHeight() - pauseButton.getHeight() - 10);
 		pauseButton.addListener(new ClickListener() {
@@ -123,7 +121,7 @@ public class InventoryScreen implements Screen {
 			Image itemImage = new Image(new Texture(Gdx.files.internal("art/icons/" + item.getImageAddress())));
 			Label itemLabel = new Label(item.getItemQty() + "x " + item.getItemName(), game.skin);
 			itemLabel.setAlignment(Align.topLeft);
-			itemTable.add(itemImage).size(80, 80);
+			itemTable.add(itemImage);
 			itemTable.add(itemLabel).align(Align.left);
 			if (itemAdded % 2 == 0)
 				itemTable.add().pad(20);
@@ -142,11 +140,12 @@ public class InventoryScreen implements Screen {
 	private void createScrollPane(int gameTextWidth) {
 		scrollPane = new ScrollPane(itemTable, game.skin);
 		
-		int gameTextHeight = 300;
+		int gameTextHeight = 550;
 		
 	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 30 - gameTextHeight, gameTextWidth, gameTextHeight);
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);
+	    scrollPane.setFadeScrollBars(false);
 	}
 	
 	private void createPlayerStats() {
@@ -202,7 +201,7 @@ public class InventoryScreen implements Screen {
 		table.padLeft(40);
 		table.add(backButton).width(260).padTop(5);
 
-		int tableHeight = 350;
+		int tableHeight = 600;
 		table.padTop(tableHeight + title.getHeight());
 	}
 	

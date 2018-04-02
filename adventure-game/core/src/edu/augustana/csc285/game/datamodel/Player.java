@@ -10,13 +10,22 @@ public class Player {
 	private TreeMap<String, Integer> stats;
 	private ArrayList<Item> inventory = new ArrayList<Item>();
 
-	// constructor
+	/**
+	 * Initialize a newly created Player object with 
+	 * a name, a gender, a TreeMap of stats, and an inventory of items. This constructor
+	 * is mainly used for the JSON loader.
+	 */
 	public Player() {
 		this.name = "MinhJackSteveMax";
 		gender = Gender.MALE;
 		stats = new TreeMap<String, Integer>();
 	}
 
+	/**
+	 * Initialize a newly created Player object with 
+	 * a name, a gender, a TreeMap of stats, and an inventory of items.
+	 * @param name	- player's name
+	 */
 	public Player(String name) {
 		this.name = name;
 		gender = Gender.MALE;
@@ -72,13 +81,21 @@ public class Player {
 		inventory.add(new Item(name, value));
 	}
 	
+	public void addItem(Item item){
+		inventory.add(item);
+	}
+	
 	// adds the player stat value stored at a given key
 	public void addStat(String name, int value) {
 		stats.put(name, value + stats.get(name));
 	}
 
-	// adds the player inventory value stored at a given key
-	public void addInventory(String name, int value) {
+	/**
+	 * This method finds an existing item, and then increment (or decrease) its value.
+	 * @param name	- item name
+	 * @param value	- value of quantity change
+	 */
+	public void incrementAvailableItem(String name, int value) {
 		for (Item item : inventory) {
 			if (item.getItemName().equals(name)) {
 				int newQty = item.getItemQty() + value;
@@ -89,11 +106,18 @@ public class Player {
 		}
 	}
 	
-	// subtracts the player stat value stored at a given key
-	public void subtractStat(String name, int value) {
+	/**
+	 * This method finds an existing stat, and then increment (or decrease) its value.
+	 * @param name	- stat name
+	 * @param value	- value of quantity change
+	 */
+	public void incrementStat(String name, int value) {
 		stats.put(name, stats.get(name) - value);
 	}
 	
+	/**
+	 * @return a String representative of player's stats
+	 */
 	public String printStats (){
 		String s ="";
 		for (String key : stats.keySet()) {
@@ -101,16 +125,13 @@ public class Player {
 		}
 		return s;
 	}
-	
+
 	public String toString(){
 		String s = "";
 		s+= "Name: "+name+"\nGender: "+ gender.toString() + "\n\n";
 		s+= printStats();
-		for (int i = 0; i < inventory.size(); i++){
-			Item item = inventory.get(i);
-			s+= "Item Name: " + item.toString() + "\nItem Quantity: " + item.getItemQty()+  "\nItem Image Address: " + item.getImageAddress() + "\n";
-			s+= "Visibility: "+ item.isVisible();
-			s+="\n\n";
+		for (Item item : inventory){
+			s += item.printInfo();
 		}
 		return s;
 		

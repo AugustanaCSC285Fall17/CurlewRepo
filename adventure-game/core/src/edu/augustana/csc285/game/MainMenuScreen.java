@@ -18,9 +18,11 @@ public class MainMenuScreen implements Screen {
 	private final AdventureGame game;
 	
 	private Table table;
+	private TextButton resumeButton;
 	private TextButton startButton;
 	private TextButton aboutButton;
-	private TextButton quitButton;
+//	private TextButton quitButton;
+	private TextButton creditsButton;
 	private TextButton backButton;
 	private Label introText;
 	private Sprite logo;
@@ -28,10 +30,7 @@ public class MainMenuScreen implements Screen {
 	
 	public MainMenuScreen(final AdventureGame game) {
 		this.game = game; 
-		
-		initializeMain();		
-		
-		Gdx.input.setInputProcessor(game.stage);
+		initializeMain();
 	}
 	
 	private void initializeTable() {
@@ -46,12 +45,22 @@ public class MainMenuScreen implements Screen {
 		
 		initializeTable();
 		
+		resumeButton = new TextButton("Resume Game", game.skin);
+		resumeButton.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.stage.clear();
+				game.setScreen(new SlideScreen(game));
+			}
+		});
+		
 		startButton = new TextButton("Take the journey", game.skin);
 		startButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				game.stage.clear();
 				game.restartGame();
+				game.data.setGameStarted(true);
+				game.stage.clear();
 				game.setScreen(new SlideScreen(game));
 			}
 		});
@@ -65,13 +74,22 @@ public class MainMenuScreen implements Screen {
 			}
 		}); 
 		
-		quitButton = new TextButton("Quit Game", game.skin);
-		quitButton.addListener(new ClickListener() {
+		creditsButton = new TextButton("Credits", game.skin);
+		creditsButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				Gdx.app.exit();
+				game.stage.clear();
+				game.setScreen(new CreditsScreen(game));
 			}
-		});
+		}); 
+	
+//		quitButton = new TextButton("Quit Game", game.skin);
+//		quitButton.addListener(new ClickListener() {
+//			@Override
+//			public void clicked(InputEvent event, float x, float y) {
+//				Gdx.app.exit();
+//			}
+//		});
 		
 		String intro = "You are a young Swedish immigrant to America in 1880.\n"
 				+ "You have made the tough decision to leave your family and life in Sweden behind.\n"
@@ -83,13 +101,19 @@ public class MainMenuScreen implements Screen {
 		introText.setAlignment(Align.center|Align.top);
 		
 		table.padTop(300);
-		table.add(introText).width(800f);
+		table.add(introText).padBottom(30).width(800f);
 		table.row();
-		table.add(startButton).padTop(30).width(300);
+		if (game.data.isGameStarted()) {
+			table.add(resumeButton).padBottom(10).width(300);
+			table.row();
+		}
+		table.add(startButton).width(300);
 		table.row();
 		table.add(aboutButton).padTop(10).width(300);
-		table.row();
-		table.add(quitButton).padTop(10).width(300);
+		
+//		table.row();
+//		table.add(quitButton).padTop(10).width(300);
+		
 		game.stage.addActor(table);
 		
 		drawBackgroundAndLogo();
@@ -109,7 +133,7 @@ public class MainMenuScreen implements Screen {
 		String intro = "Game designed by Dr. Forrest Stonedahl's Software Development CSC 285 students and "
 				+ "Dr. Brian Leech's history students Abigail Buchanan, Brooks Fielder, and Katie Laschanzky "
 				+ "for the for the Swenson Swedish Immigration Research Center at Augustana College in Rock Island, "
-				+ "Illinois, 2017.\n\nGame by Team Curlew: Jack Carnell, Steve Jia, Minh Ta, and Maxwell McComb";
+				+ "Illinois, 2017.\n\nGame by Team Curlew: Jack Cannell, Steve Jia, Minh Ta, and Maxwell McComb";
 		
 		introText = new Label(intro, game.skin);
 		introText.setWrap(true);
@@ -119,7 +143,9 @@ public class MainMenuScreen implements Screen {
 		table.padTop(300);
 		table.add(introText).width(800f);
 		table.row();
-		table.add(backButton).padTop(30).width(300);
+		table.add(creditsButton).padTop(30).width(300);
+		table.row();
+		table.add(backButton).padTop(10).width(300);
 		
 		drawBackgroundAndLogo();
 	}

@@ -20,7 +20,7 @@ public class GameOverScreen implements Screen {
 	private Table table;
 	private TextButton startButton;
 	private TextButton aboutButton;
-	private TextButton quitButton;
+//	private TextButton quitButton;
 	private TextButton mainMenuButton;
 	private Label introText;
 	private Sprite logo;
@@ -29,9 +29,7 @@ public class GameOverScreen implements Screen {
 	public GameOverScreen(final AdventureGame game) {
 		this.game = game; 
 		
-		initializeMain();		
-		
-		Gdx.input.setInputProcessor(game.stage);
+		initializeMain();
 	}
 	
 	private void initializeTable() {
@@ -51,6 +49,7 @@ public class GameOverScreen implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
+				game.data.setGameStarted(false);
 				game.setScreen(new MainMenuScreen(game));
 			}
 		});
@@ -65,26 +64,24 @@ public class GameOverScreen implements Screen {
 			}
 		});
 		
-		quitButton = new TextButton("Quit Game", game.skin);
-		quitButton.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				Gdx.app.exit();
-			}
-		});
+//		quitButton = new TextButton("Quit Game", game.skin);
+//		quitButton.addListener(new ClickListener() {
+//			@Override
+//			public void clicked(InputEvent event, float x, float y) {
+//				Gdx.app.exit();
+//			}
+//		});
 
 		String intro = "Thank you for playing the game.\n"
-				+ "Game designed by Dr. Forrest Stonedahl's Software Development CSC 285 students and "
-				+ "Dr. Brian Leech's history students Abigail Buchanan, Brooks Fielder, and Katie Laschanzky "
-				+ "for the for the Swenson Swedish Immigration Research Center at Augustana College in Rock Island, "
-				+ "Illinois, 2017.\n\nGame by Team Curlew: Jack Carnell, Steve Jia, Minh Ta, and Maxwell McComb";
+				+ "Please check out the about screen in the main menu to see the awesome people who helped "
+				+ "so that this game can happen. Did you get a bad ending? Play again!";
 		
 		introText = new Label(intro, game.skin);
 		introText.setWrap(true);
 		introText.setWidth(800);
 		introText.setAlignment(Align.center|Align.top);
 		
-		table.padTop(300);
+		table.padTop(200);
 		table.add(introText).width(800f);
 		table.row();
 		table.add(mainMenuButton).padTop(30).width(300);
@@ -92,8 +89,10 @@ public class GameOverScreen implements Screen {
 		table.add(startButton).padTop(10).width(300);
 		table.row();
 		table.add(aboutButton).padTop(10).width(300);
-		table.row();
-		table.add(quitButton).padTop(10).width(300);
+		
+//		table.row();
+//		table.add(quitButton).padTop(10).width(300);
+		
 		game.stage.addActor(table);
 		
 		drawBackgroundAndLogo();
@@ -121,11 +120,11 @@ public class GameOverScreen implements Screen {
 		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/mainmenu2.jpg")));
 		game.sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
-		Texture logoTexture = new Texture(Gdx.files.internal("art/LogoStroked.png"));
+		Texture logoTexture = new Texture(Gdx.files.internal("art/gameover.png"));
 		int logoWidth = 500;
 		float logoHeight = (float) (logoTexture.getHeight() * logoWidth * 1.0 / logoTexture.getWidth());
 		logo = new Sprite(logoTexture);
-		logo.setPosition((Gdx.graphics.getWidth() - logoWidth) / 2, Gdx.graphics.getHeight() - logoHeight - 50);
+		logo.setPosition((Gdx.graphics.getWidth() - logoWidth) / 2, Gdx.graphics.getHeight() - logoHeight - 100);
 		logo.setSize(logoWidth, logoHeight);
 		
 		Texture swansonLogoTexture = new Texture(Gdx.files.internal("slideImages/image1.png"));

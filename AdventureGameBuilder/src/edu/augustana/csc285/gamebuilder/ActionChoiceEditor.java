@@ -9,12 +9,12 @@ public class ActionChoiceEditor {
 	private Slide slide;
 	private ActionChoice currentActionChoice;
 	
-/**
- * constructor accepts a Game Data object and a Slide Editor Object 
- * and sets the currentActionChoiceIndex equal to -1
- * @param slide the slide that the action choice is under
- * @param se the SlideEditor object the the action choice editor refers to
- */
+	/**
+	 * constructor accepts a Game Data object and a Slide Editor Object 
+	 * and sets the currentActionChoiceIndex equal to -1
+	 * @param slide the slide that the action choice is under
+	 * @param se the SlideEditor object the the action choice editor refers to
+	 */
 	public ActionChoiceEditor(Slide slide) {
 		currentActionChoiceIndex = -1;
 		this.slide = slide;
@@ -30,11 +30,12 @@ public class ActionChoiceEditor {
 	 * @param currentActionChoiceIndex the new current action choice index
 	 */
 	public void setCurrentActionChoiceIndex(int currentActionChoiceIndex) {
+		if (currentActionChoiceIndex != -1){
 		this.currentActionChoiceIndex = currentActionChoiceIndex;
-		if(currentActionChoiceIndex==-1){
-			currentActionChoice = null;
-		}else{
 		currentActionChoice = slide.getActionChoiceAt(currentActionChoiceIndex);
+		}
+		else{
+			currentActionChoice = null;
 		}
 	}
 
@@ -61,7 +62,7 @@ public class ActionChoiceEditor {
 	 * removes the action choice
 	 */
 	public void remove() {
-		slide.removeAc(currentActionChoiceIndex);
+		slide.removeActionChoice(currentActionChoiceIndex);
 		currentActionChoiceIndex = -1;
 	}
 	/**
@@ -73,7 +74,7 @@ public class ActionChoiceEditor {
 		currentActionChoice.addEffect(new ItemEffect (item,effectSize));
 	}
 	/**
-	 * 
+	 * removes the effect by calling on the remove method in the action choice class
 	 * @param effectIndex 
 	 */
 	public void removeEffect(int effectIndex){
@@ -129,7 +130,7 @@ public class ActionChoiceEditor {
 	 * @return a list of effects of the current action choice
 	 */
 	public ArrayList<Effect> getEffects() {
-		return currentActionChoice.getEffect();
+		return currentActionChoice.getEffects();
 	}
 	/**
 	 * 

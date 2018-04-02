@@ -7,15 +7,14 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Event;
-import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
+
+import edu.augustana.csc285.game.datamodel.SlideType;
 
 public class PauseScreen implements Screen{
 
@@ -24,44 +23,34 @@ public class PauseScreen implements Screen{
 	
 	private Table table;
 	private TextButton resumeButton;
-	private TextButton settingsButton;
 	private TextButton mainMenuButton;
-	private TextButton quitButton;
-	private TextButton backButton;
+//	private TextButton quitButton;
 	private Label introText;
 	private Sprite swansonLogo;
-	private Slider volumeSlider;
-	private Label musicVolumeLabel;
+	private Sprite pauseLogo;
 	
 	
 	public PauseScreen(final AdventureGame game) {
 		this.game = game; 
-		initializeMain();		
-		
-		Gdx.input.setInputProcessor(game.stage);
+		initializeMain();
 	}
 
 	private void initializeMain() {
 		
 		initializeTable();
 		
-		resumeButton = new TextButton("Resume", game.skin);
+		resumeButton = new TextButton("Resume Game", game.skin);
 		resumeButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
-				game.setScreen(new SlideScreen(game));
+				if (game.data.getSlide(game.data.getCurrentSlideIndex()).getSlideType() == SlideType.SHOP) {
+					game.setScreen(new ShopScreen(game, game.data.getCurrentSlideIndex() - 1));
+				} else {
+					game.setScreen(new SlideScreen(game));
+				}
 			}
 		});
-		
-		settingsButton = new TextButton("Settings", game.skin);
-		settingsButton.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				game.stage.clear();
-				initializeSetting();
-			}
-		}); 
 		
 		mainMenuButton = new TextButton("Main Menu", game.skin);
 		mainMenuButton.addListener(new ClickListener() {
@@ -72,81 +61,27 @@ public class PauseScreen implements Screen{
 			}
 		}); 
 		
-		quitButton = new TextButton("Quit Game", game.skin);
-		quitButton.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				Gdx.app.exit();
-			}
-		});
+//		quitButton = new TextButton("Quit Game", game.skin);
+//		quitButton.addListener(new ClickListener() {
+//			@Override
+//			public void clicked(InputEvent event, float x, float y) {
+//				Gdx.app.exit();
+//			}
+//		});
 		
-		introText = new Label("Paused", game.skin, "title");
-		introText.setWrap(true);
-		introText.setWidth(600);
-		introText.setAlignment(Align.center|Align.top);
 		
-		table.padTop(100);
-		table.add(introText).width(600f);;
+		table.padTop(300);
+		table.add(introText).width(600f);
 		table.row();
-		table.add(resumeButton).padTop(5);
+		table.add(resumeButton).padTop(5).width(300);
 		table.row();
-		table.add(settingsButton).padTop(5);
-		table.row();
-		table.add(mainMenuButton).padTop(5);
-		table.row();
-		table.add(quitButton).padTop(5);
+		table.add(mainMenuButton).padTop(5).width(300);
+//		table.row();
+//		table.add(quitButton).padTop(5);
 		game.stage.addActor(table);
 		
 		drawBackground();
 	}
-
-	private void initializeSetting() {
-		initializeTable();
-		backButton = new TextButton("Back", game.skin);
-		backButton.addListener(new ClickListener(){
-		
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				game.stage.clear();
-				initializeMain();
-			}
-		});
-		//parent = new VolumePreference();
-		volumeSlider = new Slider(0f, 1f, 0.1f, false, game.skin);
-		
-		//System.err.println(parent.getMusicVolume());
-		volumeSlider.setValue(game.bgMusic.getVolume());
-		volumeSlider.addListener(new EventListener(){
-
-			@Override
-			public boolean handle(Event event) {
-				game.bgMusic.setVolume(volumeSlider.getValue());
-				System.out.println(volumeSlider.getValue());
-				return false;
-			}
-			
-		});
-		
-		String text = "Setting";
-		String volumeText = "Volume";
-		
-		introText = new Label(text, game.skin, "title");
-		introText.setWrap(true);
-		introText.setWidth(600);
-		introText.setAlignment(Align.center|Align.top);
-		
-		musicVolumeLabel = new Label(volumeText, game.skin);
-		
-		table.padTop(100);
-		table.add(introText).width(600f);;
-		table.add(musicVolumeLabel);
-		table.add(volumeSlider);
-		table.row();
-		table.add(backButton).padTop(5);
-		
-		drawBackground();
-	}
-
 	
 	private void initializeTable() {
 		table = new Table();
@@ -163,6 +98,7 @@ public class PauseScreen implements Screen{
 		game.batch.begin();
 		game.sprite.draw(game.batch);
 		swansonLogo.draw(game.batch);
+		pauseLogo.draw(game.batch);
 		game.batch.end();
 		
 		game.stage.act(Gdx.graphics.getDeltaTime());
@@ -180,7 +116,14 @@ public class PauseScreen implements Screen{
 		Texture swansonLogoTexture = new Texture(Gdx.files.internal("slideImages/image1.png"));
 		swansonLogo = new Sprite(swansonLogoTexture);
 		swansonLogo.setPosition(40, 10);
-		swansonLogo.setSize(400, (float) (swansonLogoTexture.getHeight() * 400.0 / swansonLogoTexture.getWidth()));
+		swansonLogo.setSize(500, (float) (swansonLogoTexture.getHeight() * 500.0 / swansonLogoTexture.getWidth()));
+		
+		Texture logoTexture = new Texture(Gdx.files.internal("art/pausedBlueNoStroke.png"));
+		int logoWidth = 300;
+		float logoHeight = (float) (logoTexture.getHeight() * logoWidth * 1.0 / logoTexture.getWidth());
+		pauseLogo = new Sprite(logoTexture);
+		pauseLogo.setPosition((Gdx.graphics.getWidth() - logoWidth) / 2, Gdx.graphics.getHeight() - logoHeight - 100);
+		pauseLogo.setSize(logoWidth, logoHeight);
 	}
 
 	@Override

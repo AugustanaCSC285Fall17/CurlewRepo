@@ -24,19 +24,18 @@ public class AdventureGame extends Game {
 	public SpriteBatch batch;
 	public Sprite sprite;
 	
-	//Music bgMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Si_la_Rigueur.mp3"));
-	
 	public void create() {
 		skin = new Skin(Gdx.files.internal("skins/uiskin.json"));
 		stage = new Stage(new ScreenViewport());
 		data = GameData.fromJSON(Gdx.files.internal("data/TESTER.json").readString("UTF-8"));
 		
-		bgMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Si_la_Rigueur.mp3"));
+		bgMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Triumphant_Return.mp3"));
 		bgMusic.setLooping(true);
 		bgMusic.play();
-		
-		
 		Gdx.input.setInputProcessor(stage);
+		
+		// TODO: delete this when done testing
+//		this.setScreen(new CreditsScreen(this));
 		
 		this.setScreen(new MainMenuScreen(this));
 	}
