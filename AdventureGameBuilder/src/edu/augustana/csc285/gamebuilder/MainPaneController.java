@@ -295,6 +295,7 @@ public class MainPaneController {
 		if (inFile == null) {
 
 		} else {
+			try{
 			this.data = GameBuilderApplication.loadGameDataFromJSONFile(inFile);
 			se = new SlideEditor(data);
 			pController.updateData(data);
@@ -304,6 +305,9 @@ public class MainPaneController {
 			updateActionChoiceNumberChoiceBox();
 			updateItemChoiceBox();
 			saved = true;
+			}catch(Exception e){
+				new Alert(AlertType.ERROR, "Please select a .json file").showAndWait();
+			}
 
 		}
 	}

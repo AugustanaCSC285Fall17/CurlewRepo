@@ -1,0 +1,61 @@
+{
+slides: [
+	{
+		actionChoices: [
+			{
+				choiceText: go to room 1
+				destinationSlideIndex: 1
+				feasibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: A moustache
+							visible: true
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Money
+							visible: true
+						}
+						effectSize: 1000
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: A moustache
+							visible: true
+						}
+					}
+				]
+			}
+			{
+				choiceText: Get a moustache
+				destinationSlideIndex: 0
+			}
+		]
+	}
+	{}
+]
+player: {
+	name: Curlew!!
+	inventory: [
+		{
+			itemName: Money
+			visible: true
+		}
+		{
+			itemName: A moustache
+			visible: true
+		}
+	]
+}
+saveName: demo1
+}
