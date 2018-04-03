@@ -31,6 +31,7 @@ public class AdventureGame extends Game {
 		
 		bgMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Triumphant_Return.mp3"));
 		bgMusic.setLooping(true);
+		bgMusic.setVolume((float) .1);;
 		bgMusic.play();
 		Gdx.input.setInputProcessor(stage);
 		
