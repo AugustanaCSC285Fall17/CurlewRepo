@@ -6,8 +6,12 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -24,9 +28,12 @@ public class MainMenuScreen implements Screen {
 //	private TextButton quitButton;
 	private TextButton creditsButton;
 	private TextButton backButton;
+	private TextButton volumeButton;
 	private Label introText;
 	private Sprite logo;
 	private Sprite swansonLogo;
+	private Slider volumeSlider;
+	private Dialog volumeDialog;
 	
 	public MainMenuScreen(final AdventureGame game) {
 		this.game = game; 
@@ -83,6 +90,42 @@ public class MainMenuScreen implements Screen {
 			}
 		}); 
 	
+		volumeButton = new TextButton("Change Volume", game.skin);
+		volumeButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				volumeDialog.setVisible(true);
+			}
+		});
+		
+		//Slider
+		volumeSlider = new Slider(0f, 1f, 0.1f, false, game.skin);
+		volumeSlider.setValue(game.bgMusic.getVolume());
+		volumeSlider.addListener(new EventListener(){
+			@Override
+			public boolean handle(Event event) {
+				game.bgMusic.setVolume(volumeSlider.getValue());	
+				return false;
+			}
+			
+		});
+		
+		volumeDialog = new Dialog("", game.skin);
+		volumeDialog.setVisible(false);
+		volumeDialog.add(new Label("Volume: ", game.skin));
+		volumeDialog.add(volumeSlider).align(Align.left);
+		TextButton okButton = new TextButton("OK", game.skin);
+		okButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				volumeDialog.setVisible(false);
+			}
+		});
+		volumeDialog.add(okButton);
+		volumeDialog.setWidth(320);
+		volumeDialog.setHeight(70);
+		volumeDialog.setPosition(880, 530);
+		
 //		quitButton = new TextButton("Quit Game", game.skin);
 //		quitButton.addListener(new ClickListener() {
 //			@Override
@@ -110,6 +153,11 @@ public class MainMenuScreen implements Screen {
 		table.add(startButton).width(300);
 		table.row();
 		table.add(aboutButton).padTop(10).width(300);
+		
+		table.row();
+		table.add(volumeButton).padTop(20).width(300);
+		table.row();
+		table.add(volumeDialog);
 		
 //		table.row();
 //		table.add(quitButton).padTop(10).width(300);
