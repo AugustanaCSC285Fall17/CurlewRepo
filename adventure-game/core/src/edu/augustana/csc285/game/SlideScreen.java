@@ -99,7 +99,7 @@ public class SlideScreen implements Screen {
 		pauseButton.setWidth(BUTTON_WIDTH);
 		pauseButton.setHeight(BUTTON_WIDTH);
 							  //Gdx.graphics.getWidth() - pauseButton.getWidth() - 10
-		pauseButton.setPosition(10, Gdx.graphics.getHeight() - pauseButton.getHeight() - 10);
+		pauseButton.setPosition(10, Gdx.graphics.getHeight() - BUTTON_WIDTH - 10);
 		pauseButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -117,7 +117,7 @@ public class SlideScreen implements Screen {
 		inventoryButton.setWidth(BUTTON_WIDTH);
 		inventoryButton.setHeight(BUTTON_WIDTH);
 								  //Gdx.graphics.getWidth() - inventoryButton.getWidth() - 10
-		inventoryButton.setPosition(10,	Gdx.graphics.getHeight() - 2 * inventoryButton.getHeight() - 10);
+		inventoryButton.setPosition(10,	Gdx.graphics.getHeight() - 2 * BUTTON_WIDTH - 10);
 		inventoryButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -162,19 +162,20 @@ public class SlideScreen implements Screen {
 								//880
 		volumeDialog.setPosition(90, 530);
 		
-		//--------------------- mute button --------------------
-		
 		updateMute();
 	}
 
+	//--------------------- mute button --------------------
+	
 	private Image muteImg = new Image(new Texture(Gdx.files.internal("art/icons/muteSMALL.png")));
 	private Image unmuteImg = new Image(new Texture(Gdx.files.internal("art/icons/unmuteSMALL.png")));
+	
 	private void updateMute() {
 		muteButton = new Button(game.skin);
 		muteButton.setWidth(BUTTON_WIDTH);
 		muteButton.setHeight(BUTTON_WIDTH);
 							 //Gdx.graphics.getWidth() - inventoryButton.getWidth() - 10
-		muteButton.setPosition(10, Gdx.graphics.getHeight() - 3 * inventoryButton.getHeight() - 10);
+		muteButton.setPosition(10, Gdx.graphics.getHeight() - 3 * BUTTON_WIDTH - 10);
 		muteButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {

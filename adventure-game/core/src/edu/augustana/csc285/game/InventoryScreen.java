@@ -6,12 +6,16 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -31,8 +35,14 @@ public class InventoryScreen implements Screen {
 	private Label title;
 	private Label statsTitle;
 	private Button pauseButton;
+	private Button muteButton;
 	private Button backButton;
 	private ScrollPane scrollPane;
+	private Slider volumeSlider;
+	private Dialog pauseDialog;
+	private Dialog volumeDialog;
+	
+	private final int BUTTON_WIDTH = 60;
 	
 	public InventoryScreen(final AdventureGame game) {
 		this.game = game;
@@ -56,6 +66,8 @@ public class InventoryScreen implements Screen {
 	// Initialize slide elements
 	private void initialize() {
 		game.stage.clear();
+		
+		createPauseDialog();
 
 		Image pauseImg = new Image(new Texture(Gdx.files.internal("art/icons/pauseSMALL.png")));
 		pauseButton = new Button(game.skin);
@@ -63,22 +75,56 @@ public class InventoryScreen implements Screen {
 		pauseButton.setWidth(SlideScreen.BUTTON_WIDTH);
 		pauseButton.setHeight(SlideScreen.BUTTON_WIDTH);
 							  //Gdx.graphics.getWidth() - pauseButton.getWidth() - 10
-		pauseButton.setPosition(10,	Gdx.graphics.getHeight() - pauseButton.getHeight() - 10);
+		pauseButton.setPosition(10,	Gdx.graphics.getHeight() - BUTTON_WIDTH - 10);
 		pauseButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				game.stage.clear();
-				game.setScreen(new PauseScreen(game));
+				pauseDialog.setVisible(true);
 			}
 		});
 		game.stage.addActor(pauseButton);
+		
+		// -------------------- volume dialog & slider ------------------
+
+		// slider
+		volumeSlider = new Slider(0f, 1f, 0.1f, false, game.skin);
+		volumeSlider.setValue(game.bgMusic.getVolume());
+		volumeSlider.addListener(new EventListener() {
+			@Override
+			public boolean handle(Event event) {
+				game.bgMusic.setVolume(volumeSlider.getValue());
+				updateMute();
+				return false;
+			}
+
+		});
+
+		// dialog
+		volumeDialog = new Dialog("", game.skin);
+		volumeDialog.setVisible(false);
+		volumeDialog.add(new Label("Volume: ", game.skin));
+		volumeDialog.add(volumeSlider).align(Align.left);
+		TextButton okButton = new TextButton("OK", game.skin);
+		okButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				volumeDialog.setVisible(false);
+			}
+		});
+		volumeDialog.add(okButton);
+		volumeDialog.setWidth(320);
+		volumeDialog.setHeight(70);
+		// 880
+		volumeDialog.setPosition(90, 530);
+
+		updateMute();
 
 		backButton = new Button(game.skin);
 		backButton.add(new Image(new Texture(Gdx.files.internal("art/icons/backSMALL.png"))));
 		backButton.setWidth(SlideScreen.BUTTON_WIDTH);
 		backButton.setHeight(SlideScreen.BUTTON_WIDTH);
 							  //Gdx.graphics.getWidth() - backButton.getWidth() - 10
-		backButton.setPosition(10,	Gdx.graphics.getHeight() - 2 * backButton.getHeight() - 10);
+		backButton.setPosition(10,	Gdx.graphics.getHeight() - 2 * BUTTON_WIDTH - 10);
 		backButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -99,6 +145,8 @@ public class InventoryScreen implements Screen {
 		game.stage.addActor(title);
 		game.stage.addActor(table);
 		game.stage.addActor(scrollPane);
+		game.stage.addActor(volumeDialog);
+		game.stage.addActor(pauseDialog);
 		game.stage.addActor(statsTable);
 		
 		// Set the background
@@ -108,6 +156,46 @@ public class InventoryScreen implements Screen {
 		game.sprite.setPosition(Gdx.graphics.getWidth() - size, 0);
 		game.sprite.setSize(size, size);
 	}
+
+	private void createPauseDialog() {
+
+		// dialog
+		pauseDialog = new Dialog("", game.skin);
+		pauseDialog.setVisible(false);
+		pauseDialog.align(Align.topLeft);
+		pauseDialog.row();
+		pauseDialog.add(new Label("Paused", game.skin, "title")).align(Align.center);
+		pauseDialog.row();
+		
+		// resume button
+		TextButton resumeButton = new TextButton("Resume", game.skin);
+		resumeButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				pauseDialog.setVisible(false);
+			}
+		});
+		pauseDialog.add(resumeButton).align(Align.left);
+		pauseDialog.row();
+		
+		// main menu button
+		TextButton mainMenuButton = new TextButton("Main Menu", game.skin);
+		mainMenuButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.stage.clear();
+				game.setScreen(new MainMenuScreen(game));
+			}
+		});
+		pauseDialog.add(mainMenuButton).align(Align.left);
+		pauseDialog.row();
+		
+		pauseDialog.setWidth(300);
+		pauseDialog.setHeight(300);
+		// 880
+		pauseDialog.setPosition((Gdx.graphics.getWidth() - pauseDialog.getWidth()) / 2,
+				(Gdx.graphics.getHeight() - pauseDialog.getHeight()) / 2);
+	}	
 
 	private void createTitle() {
 		title = new Label("Inventory", game.skin, "title");
@@ -146,6 +234,29 @@ public class InventoryScreen implements Screen {
 		}
 		
 		createScrollPane(gameTextWidth);
+	}
+	
+	private Image muteImg = new Image(new Texture(Gdx.files.internal("art/icons/muteSMALL.png")));
+	private Image unmuteImg = new Image(new Texture(Gdx.files.internal("art/icons/unmuteSMALL.png")));
+	
+	private void updateMute() {
+		muteButton = new Button(game.skin);
+		muteButton.setWidth(BUTTON_WIDTH);
+		muteButton.setHeight(BUTTON_WIDTH);
+							 //Gdx.graphics.getWidth() - BUTTON_WIDTH - 10
+		muteButton.setPosition(10, Gdx.graphics.getHeight() - 3 * BUTTON_WIDTH - 10);
+		muteButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				volumeDialog.setVisible(true);
+			}
+		});
+		if (game.bgMusic.getVolume() != 0) {
+			muteButton.add(unmuteImg);
+		} else {
+			muteButton.add(muteImg);
+		}
+		game.stage.addActor(muteButton);
 	}
 	
 	private void createScrollPane(int gameTextWidth) {
