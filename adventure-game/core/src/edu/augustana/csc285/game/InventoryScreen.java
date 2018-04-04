@@ -1,4 +1,3 @@
-	
 package edu.augustana.csc285.game;
 
 import com.badlogic.gdx.Gdx;
@@ -32,7 +31,7 @@ public class InventoryScreen implements Screen {
 	private Label title;
 	private Label statsTitle;
 	private Button pauseButton;
-	private TextButton backButton;
+	private Button backButton;
 	private ScrollPane scrollPane;
 	
 	public InventoryScreen(final AdventureGame game) {
@@ -63,8 +62,8 @@ public class InventoryScreen implements Screen {
 		pauseButton.add(pauseImg);
 		pauseButton.setWidth(SlideScreen.BUTTON_WIDTH);
 		pauseButton.setHeight(SlideScreen.BUTTON_WIDTH);
-		pauseButton.setPosition(Gdx.graphics.getWidth() - pauseButton.getWidth() - 10,
-				Gdx.graphics.getHeight() - pauseButton.getHeight() - 10);
+							  //Gdx.graphics.getWidth() - pauseButton.getWidth() - 10
+		pauseButton.setPosition(10,	Gdx.graphics.getHeight() - pauseButton.getHeight() - 10);
 		pauseButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -73,14 +72,26 @@ public class InventoryScreen implements Screen {
 			}
 		});
 		game.stage.addActor(pauseButton);
-		
+
+		backButton = new Button(game.skin);
+		backButton.add(new Image(new Texture(Gdx.files.internal("art/icons/backSMALL.png"))));
+		backButton.setWidth(SlideScreen.BUTTON_WIDTH);
+		backButton.setHeight(SlideScreen.BUTTON_WIDTH);
+							  //Gdx.graphics.getWidth() - backButton.getWidth() - 10
+		backButton.setPosition(10,	Gdx.graphics.getHeight() - 2 * backButton.getHeight() - 10);
+		backButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.setScreen(new SlideScreen(game));
+			}
+		});
+		game.stage.addActor(backButton);
 		
 		// initialize slide contents
 		createTitle();
 		createItemTable();
 		createPlayerStats();
 		
-		createBackButton();
 		createTable();
 	    
 		
@@ -103,7 +114,7 @@ public class InventoryScreen implements Screen {
 		title.setWidth(350);
 		title.pack();
 		title.setWidth(350);
-		title.setPosition(40, Gdx.graphics.getHeight() - title.getHeight() - 20);
+		title.setPosition(110, Gdx.graphics.getHeight() - title.getHeight() - 20);
 		title.setAlignment(Align.left);
 	}
 	
@@ -142,7 +153,7 @@ public class InventoryScreen implements Screen {
 		
 		int gameTextHeight = 550;
 		
-	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 30 - gameTextHeight, gameTextWidth, gameTextHeight);
+	    scrollPane.setBounds(120, Gdx.graphics.getHeight() - title.getHeight() - 30 - gameTextHeight, gameTextWidth, gameTextHeight);
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);
 	    scrollPane.setFadeScrollBars(false);
@@ -180,26 +191,12 @@ public class InventoryScreen implements Screen {
 		statsTable.add(statsLabel).padTop(20);
 
 	}
-
-	private void createBackButton() {
-		backButton = new TextButton("Back", game.skin);
-		backButton.getLabel().setWrap(true);
-		backButton.addListener(new ClickListener() {
-
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				game.setScreen(new SlideScreen(game));
-			}
-		});
-	}
 	
 	private void createTable() {
 		table = new Table();
 		table.setWidth(Gdx.graphics.getWidth());
 		table.align(Align.topLeft);
 		table.setPosition(0, game.stage.getHeight());
-		table.padLeft(40);
-		table.add(backButton).width(260).padTop(5);
 
 		int tableHeight = 600;
 		table.padTop(tableHeight + title.getHeight());

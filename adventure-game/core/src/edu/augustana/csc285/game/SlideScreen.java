@@ -98,8 +98,8 @@ public class SlideScreen implements Screen {
 		pauseButton.add(pauseImg);
 		pauseButton.setWidth(BUTTON_WIDTH);
 		pauseButton.setHeight(BUTTON_WIDTH);
-		pauseButton.setPosition(Gdx.graphics.getWidth() - pauseButton.getWidth() - 10,
-				Gdx.graphics.getHeight() - pauseButton.getHeight() - 10);
+							  //Gdx.graphics.getWidth() - pauseButton.getWidth() - 10
+		pauseButton.setPosition(10, Gdx.graphics.getHeight() - pauseButton.getHeight() - 10);
 		pauseButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -116,8 +116,8 @@ public class SlideScreen implements Screen {
 		inventoryButton.add(invenImg);
 		inventoryButton.setWidth(BUTTON_WIDTH);
 		inventoryButton.setHeight(BUTTON_WIDTH);
-		inventoryButton.setPosition(Gdx.graphics.getWidth() - inventoryButton.getWidth() - 10,
-				Gdx.graphics.getHeight() - 2 * inventoryButton.getHeight() - 10);
+								  //Gdx.graphics.getWidth() - inventoryButton.getWidth() - 10
+		inventoryButton.setPosition(10,	Gdx.graphics.getHeight() - 2 * inventoryButton.getHeight() - 10);
 		inventoryButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -159,7 +159,8 @@ public class SlideScreen implements Screen {
 		volumeDialog.add(okButton);
 		volumeDialog.setWidth(320);
 		volumeDialog.setHeight(70);
-		volumeDialog.setPosition(880, 530);
+								//880
+		volumeDialog.setPosition(90, 530);
 		
 		//--------------------- mute button --------------------
 		
@@ -172,8 +173,8 @@ public class SlideScreen implements Screen {
 		muteButton = new Button(game.skin);
 		muteButton.setWidth(BUTTON_WIDTH);
 		muteButton.setHeight(BUTTON_WIDTH);
-		muteButton.setPosition(Gdx.graphics.getWidth() - inventoryButton.getWidth() - 10,
-				Gdx.graphics.getHeight() - 3 * inventoryButton.getHeight() - 10);
+							 //Gdx.graphics.getWidth() - inventoryButton.getWidth() - 10
+		muteButton.setPosition(10, Gdx.graphics.getHeight() - 3 * inventoryButton.getHeight() - 10);
 		muteButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -234,10 +235,10 @@ public class SlideScreen implements Screen {
 				|| curSlide.getSlideType() == SlideType.NORMAL) {
 			title.setWrap(true);
 		}
-		title.setWidth(400);
+		title.setWidth(380);
 		title.pack();
-		title.setWidth(400);
-		title.setPosition(40, Gdx.graphics.getHeight() - title.getHeight() - 20);
+		title.setWidth(380);
+		title.setPosition(100, Gdx.graphics.getHeight() - title.getHeight() - 20);
 		title.setAlignment(Align.left);
 	}
 	
@@ -266,10 +267,10 @@ public class SlideScreen implements Screen {
 		
 		table.setPosition(0, game.stage.getHeight());
 
-		table.padLeft(40);
+		table.padLeft(100);
 		
 		for (int i = 0; i < game.data.getVisibleChoicesForCurrentSlide().size(); i++) {
-			table.add(choiceButtons.get(i)).width(400).padTop(5);
+			table.add(choiceButtons.get(i)).width(370).padTop(5);
 			table.row();
 		}
 		
@@ -289,7 +290,7 @@ public class SlideScreen implements Screen {
 			gameTextHeight = 320;
 		else if (curSlide.getSlideType() == SlideType.MANY_BUTTONS)
 			gameTextHeight = 270;
-	    scrollPane.setBounds(50, Gdx.graphics.getHeight() - title.getHeight() - 30 - gameTextHeight, gameTextWidth, gameTextHeight);
+	    scrollPane.setBounds(110, Gdx.graphics.getHeight() - title.getHeight() - 30 - gameTextHeight, gameTextWidth, gameTextHeight);
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);
 	    scrollPane.setFadeScrollBars(false);
