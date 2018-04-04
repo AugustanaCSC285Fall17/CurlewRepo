@@ -4,12 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -30,8 +29,6 @@ public class MainMenuScreen implements Screen {
 	private TextButton backButton;
 	private TextButton volumeButton;
 	private Label introText;
-	private Sprite logo;
-	private Sprite swansonLogo;
 	private Slider volumeSlider;
 	private Dialog volumeDialog;
 	
@@ -164,14 +161,15 @@ public class MainMenuScreen implements Screen {
 		
 //		table.row();
 //		table.add(quitButton).padTop(10).width(300);
-		
+
+		drawBackgroundAndLogo();
 		game.stage.addActor(table);
 		
-		drawBackgroundAndLogo();
 	}
 
 	private void initializeAbout() {
 		initializeTable();
+		drawBackgroundAndLogo();
 		backButton = new TextButton("Back", game.skin);
 		backButton.addListener(new ClickListener(){
 			@Override
@@ -198,41 +196,23 @@ public class MainMenuScreen implements Screen {
 		table.row();
 		table.add(backButton).padTop(10).width(300);
 		
-		drawBackgroundAndLogo();
+		game.stage.addActor(table);
 	}
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-		game.batch.begin();
-		game.sprite.draw(game.batch);
-		logo.draw(game.batch);
-		swansonLogo.draw(game.batch);
-		game.batch.end();
 		
 		game.stage.act(Gdx.graphics.getDeltaTime());
 		game.stage.draw();
-
-		game.stage.addActor(table);
 		
 	}
 	
 	private void drawBackgroundAndLogo() {
-		game.batch = new SpriteBatch();
-		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/mainmenu2.jpg")));
-		game.sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		
-		Texture logoTexture = new Texture(Gdx.files.internal("art/LogoStroked.png"));
-		int logoWidth = 500;
-		float logoHeight = (float) (logoTexture.getHeight() * logoWidth * 1.0 / logoTexture.getWidth());
-		logo = new Sprite(logoTexture);
-		logo.setPosition((Gdx.graphics.getWidth() - logoWidth) / 2, Gdx.graphics.getHeight() - logoHeight - 50);
-		logo.setSize(logoWidth, logoHeight);
-		
-		Texture swansonLogoTexture = new Texture(Gdx.files.internal("slideImages/image1.png"));
-		swansonLogo = new Sprite(swansonLogoTexture);
-		swansonLogo.setPosition(40, 10);
-		swansonLogo.setSize(logoWidth, (float) (swansonLogoTexture.getHeight() * logoWidth * 1.0 / swansonLogoTexture.getWidth()));
+		Image bg = new Image(new Texture(Gdx.files.internal("slideImages/mainmenu2.jpg")));
+		bg.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		game.stage.addActor(bg);
+		game.stage.addActor(game.logo);
+		game.stage.addActor(game.swansonLogo);
 	}
 
 	@Override

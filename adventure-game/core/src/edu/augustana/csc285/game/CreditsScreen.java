@@ -4,10 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -20,7 +19,6 @@ public class CreditsScreen implements Screen {
 	
 	private TextButton backButton;
 	private Label introText;
-	private Sprite swansonLogo;
 	
 	public CreditsScreen(final AdventureGame game) {
 		this.game = game; 
@@ -31,6 +29,7 @@ public class CreditsScreen implements Screen {
 	
 
 	private void initializeAbout() {
+		drawBackgroundAndLogo();
 		Label credit = new Label("Credits", game.skin, "title");
 		credit.setPosition(50, 630);
 		game.stage.addActor(credit);
@@ -123,17 +122,11 @@ public class CreditsScreen implements Screen {
 	    
 		game.stage.addActor(scrollPane);
 		
-		drawBackgroundAndLogo();
 	}
 	
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-		game.batch.begin();
-		game.sprite.draw(game.batch);
-		swansonLogo.draw(game.batch);
-		game.batch.end();
 		
 		game.stage.act(Gdx.graphics.getDeltaTime());
 		game.stage.draw();
@@ -141,16 +134,16 @@ public class CreditsScreen implements Screen {
 	}
 	
 	private void drawBackgroundAndLogo() {
-		game.batch = new SpriteBatch();
-		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/mainmenu2.jpg")));
-		game.sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		
-		int logoWidth = 500;
-		
-		Texture swansonLogoTexture = new Texture(Gdx.files.internal("slideImages/image1.png"));
-		swansonLogo = new Sprite(swansonLogoTexture);
-		swansonLogo.setPosition(40, 10);
-		swansonLogo.setSize(logoWidth, (float) (swansonLogoTexture.getHeight() * logoWidth * 1.0 / swansonLogoTexture.getWidth()));
+		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/mainmenu2.jpg")));
+		game.bgImg.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+//		
+//		int logoWidth = 500;
+//		Texture swansonLogoTexture = new Texture(Gdx.files.internal("slideImages/image1.png"));
+//		game.swansonLogo = new Image(swansonLogoTexture);
+//		game.swansonLogo.setPosition(40, 10);
+//		game.swansonLogo.setSize(logoWidth, (float) (swansonLogoTexture.getHeight() * logoWidth * 1.0 / swansonLogoTexture.getWidth()));
+		game.stage.addActor(game.bgImg);
+		game.stage.addActor(game.swansonLogo);
 	}
 
 	@Override

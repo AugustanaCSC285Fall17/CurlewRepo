@@ -7,8 +7,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -58,7 +56,7 @@ public class SlideScreen implements Screen {
 	 */
 	private void initialize() {
 		game.stage.clear();
-
+		
 		// initialize slide contents
 		choiceButtons = new ArrayList<TextButton>();
 		curSlide = game.data.getSlide(game.data.getCurrentSlideIndex());
@@ -69,23 +67,24 @@ public class SlideScreen implements Screen {
 		createChoiceButtons();
 		createTable();
 
+		// Set the background
+		float size = Gdx.graphics.getHeight();
+		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())));
+		
+		if (curSlide.getImageFileName().equals("facts.png")) {
+			game.bgImg.setPosition(Gdx.graphics.getWidth() - size, 0);
+			game.bgImg.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		} else {
+			game.bgImg.setSize(size, size);
+			game.bgImg.setPosition(Gdx.graphics.getWidth() - size - 40, 0);
+		}
+		
 		// Add actors
 		game.stage.addActor(title);
 		game.stage.addActor(table);
 		game.stage.addActor(scrollPane);
 		game.stage.addActor(volumeDialog);
-
-		// Set the background
-		float size = Gdx.graphics.getHeight();
-		game.batch = new SpriteBatch();
-		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())));
-		if (curSlide.getImageFileName().equals("facts.png")) {
-			game.sprite.setPosition(Gdx.graphics.getWidth() - size, 0);
-		} else {
-			game.sprite.setPosition(Gdx.graphics.getWidth() - size - 40, 0);
-		}
-		game.sprite.setSize(size, size);
-
+		game.stage.addActor(game.bgImg);
 	}
 
 	public static final int BUTTON_WIDTH = 60;
@@ -301,10 +300,11 @@ public class SlideScreen implements Screen {
 	public void render (float delta) {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
-		game.batch.begin();
-		game.sprite.draw(game.batch);
-		game.batch.end();
+//		
+//		game.batch.begin();
+//		game.sprite.draw(game.batch);
+//		game.batch.end();
+			
 		
 		game.stage.act(Gdx.graphics.getDeltaTime());
 		game.stage.draw();
@@ -321,18 +321,25 @@ public class SlideScreen implements Screen {
 
 	@Override
 	public void pause() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void resume() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void hide() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void dispose () {
+	public void dispose() {
+		// TODO Auto-generated method stub
+		
 	}
-
 }

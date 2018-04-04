@@ -4,8 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -54,10 +52,6 @@ public class InventoryScreen implements Screen {
 	public void render (float delta) {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
-		game.batch.begin();
-		game.sprite.draw(game.batch);
-		game.batch.end();
 		
 		game.stage.act(Gdx.graphics.getDeltaTime());
 		game.stage.draw();
@@ -142,19 +136,19 @@ public class InventoryScreen implements Screen {
 	    
 		
 		// Add actors
+		float size = Gdx.graphics.getHeight();
+		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/facts.png")));
+		game.bgImg.setPosition(Gdx.graphics.getWidth() - size, 0);
+		game.bgImg.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		
+		game.stage.addActor(game.bgImg);
 		game.stage.addActor(title);
 		game.stage.addActor(table);
 		game.stage.addActor(scrollPane);
+		game.stage.addActor(statsTable);
 		game.stage.addActor(volumeDialog);
 		game.stage.addActor(pauseDialog);
-		game.stage.addActor(statsTable);
 		
-		// Set the background
-		float size = Gdx.graphics.getHeight();
-		game.batch = new SpriteBatch();
-		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/facts.png")));
-		game.sprite.setPosition(Gdx.graphics.getWidth() - size, 0);
-		game.sprite.setSize(size, size);
 	}
 
 	private void createPauseDialog() {
@@ -191,10 +185,10 @@ public class InventoryScreen implements Screen {
 		
 		pauseDialog.setWidth(300);
 		pauseDialog.setHeight(200);
-		// 880
+		
 		pauseDialog.setPosition((Gdx.graphics.getWidth() - pauseDialog.getWidth()) / 2,
 				(Gdx.graphics.getHeight() - pauseDialog.getHeight()) / 2);
-	}	
+	}
 
 	private void createTitle() {
 		title = new Label("Inventory", game.skin, "title");

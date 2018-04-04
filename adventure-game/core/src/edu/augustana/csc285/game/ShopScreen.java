@@ -5,8 +5,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -42,6 +40,7 @@ public class ShopScreen implements Screen {
 	private TextButton backButton;
 	private ScrollPane itemScrollPane;
 	private ScrollPane shopScrollPane;
+	private Image bgImg;
 	
 	public ShopScreen(final AdventureGame game, int backIndex) {
 		this.game = game;
@@ -53,10 +52,6 @@ public class ShopScreen implements Screen {
 	public void render (float delta) {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
-		game.batch.begin();
-		game.sprite.draw(game.batch);
-		game.batch.end();
 		
 		game.stage.act(Gdx.graphics.getDeltaTime());
 		game.stage.draw();
@@ -82,6 +77,12 @@ public class ShopScreen implements Screen {
 		});
 		game.stage.addActor(pauseButton);
 		
+
+		// Set the background
+		float size = Gdx.graphics.getHeight();
+		bgImg = new Image(new Texture(Gdx.files.internal("slideImages/facts.png")));
+		bgImg.setPosition(Gdx.graphics.getWidth() - size, 0);
+		bgImg.setSize(size, size);
 		
 		// initialize slide contents
 		createTitle();
@@ -94,18 +95,13 @@ public class ShopScreen implements Screen {
 	    
 		
 		// Add actors
+		game.stage.addActor(game.bgImg);
 		game.stage.addActor(table);
 		game.stage.addActor(shopTitle);
 		game.stage.addActor(shopScrollPane);
 		game.stage.addActor(itemTitle);
 		game.stage.addActor(itemScrollPane);
 		
-		// Set the background
-		float size = Gdx.graphics.getHeight();
-		game.batch = new SpriteBatch();
-		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/facts.png")));
-		game.sprite.setPosition(Gdx.graphics.getWidth() - size, 0);
-		game.sprite.setSize(size, size);
 	}
 
 	private void createTitle() {
