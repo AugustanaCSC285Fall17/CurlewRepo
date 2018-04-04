@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
@@ -23,6 +24,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextTooltip;
 import com.badlogic.gdx.scenes.scene2d.ui.TooltipManager;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 
 import edu.augustana.csc285.game.datamodel.ActionChoice;
@@ -41,11 +44,14 @@ public class SlideScreen implements Screen {
 	private Button pauseButton;
 	private Button inventoryButton;
 	private Button muteButton;
+	private Button creditButton;
 	private ArrayList<TextButton> choiceButtons;
 	private ScrollPane scrollPane;
 	private Slider volumeSlider;
 	private Dialog volumeDialog;
 	private Dialog rejectDialog;
+	
+	private Image zoomImage;
 	
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
@@ -59,48 +65,71 @@ public class SlideScreen implements Screen {
 	 */
 	private void initialize() {
 		game.stage.clear();
-		game.stage.addActor(game.bgImg);
 		
 		// initialize slide contents
 		choiceButtons = new ArrayList<TextButton>();
 		curSlide = game.data.getSlide(game.data.getCurrentSlideIndex());
 
+		// Set the background
+		float size = Gdx.graphics.getHeight();
+		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())));
+
+		game.bgImg.setSize(size, size);
+		game.bgImg.setPosition(Gdx.graphics.getWidth() - size, 0);
+
+		Vector2 touchPos = new Vector2();
+		int zoomW = 150;
+		int zoomH = 150;
+		
+		if (!curSlide.getImageFileName().equals("facts.png")) {
+			game.bgImg.addListener(new ClickListener() {
+				@Override
+				public boolean mouseMoved(InputEvent event, float x, float y) {
+					int offsetX = zoomW;
+					int offsetY = zoomH;
+					
+					if (offsetX < x || x < game.bgImg.getWidth() - offsetX - zoomW) {
+						offsetX = 0;
+					}
+					
+					if (offsetY < AdventureGame.GAME_SCREEN_HEIGHT - y || AdventureGame.GAME_SCREEN_HEIGHT - y < game.bgImg.getHeight() - offsetY - zoomH) {
+						offsetY = 0;
+					}
+					touchPos.x = x;
+					touchPos.y = AdventureGame.GAME_SCREEN_HEIGHT - y + offsetY;
+					System.out.println(touchPos.x + " " + touchPos.y);
+					if (Gdx.input.getX() >= Gdx.graphics.getWidth() - game.bgImg.getWidth()) {
+						zoomImage.setVisible(true);
+					}
+					zoomImage.setDrawable(new TextureRegionDrawable(
+							new TextureRegion(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())),
+							(int) touchPos.x, (int) touchPos.y, zoomW, zoomH)));
+					
+					return true;
+				}
+				
+			});
+		}
+		
+		zoomImage = new Image(new TextureRegion(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())),
+																					touchPos.x, touchPos.y, zoomW, zoomH));
+		zoomImage.setVisible(false);
+		zoomImage.setSize(400, 400);
+		zoomImage.setPosition(190, Gdx.graphics.getHeight() - zoomImage.getHeight() - 30);
+		
+		game.stage.addActor(game.bgImg);
 		createFunctionButtons();
 		createTitle();
 		createGameText();
 		createChoiceButtons();
 		createTable();
-
-		// Set the background
-		float size = Gdx.graphics.getHeight();
-		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())));
-		
-		if (curSlide.getImageFileName().equals("facts.png")) {
-			game.bgImg.setPosition(0, 0);
-			game.bgImg.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		} else {
-			game.bgImg.setSize(size, size);
-			game.bgImg.setPosition(Gdx.graphics.getWidth() - size - 40, 0);
-			game.bgImg.addListener(new ClickListener() {
-				Vector2 touchPos = new Vector2();
-				@Override
-				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-					touchPos.x = x;
-					touchPos.y = y;
-					return true;
-				}
-				@Override
-				public void touchDragged(InputEvent event, float x, float y, int pointer) {
-				
-				}
-			});
-		}
 		
 		// Add actors
 		game.stage.addActor(title);
 		game.stage.addActor(table);
 		game.stage.addActor(scrollPane);
 		game.stage.addActor(volumeDialog);
+		game.stage.addActor(zoomImage);
 	}
 
 	public static final int BUTTON_WIDTH = 60;
@@ -187,6 +216,28 @@ public class SlideScreen implements Screen {
 		volumeDialog.setPosition(90, 530);
 		
 		updateMute();
+		
+		
+		// -------------------- credit button ----------------------
+		
+		Image creditImg = new Image(new Texture(Gdx.files.internal("art/icons/creditSMALL.png")));
+		creditButton = new Button(game.skin);
+		creditButton.add(creditImg);
+		creditButton.setWidth(BUTTON_WIDTH);
+		creditButton.setHeight(BUTTON_WIDTH);
+								  //Gdx.graphics.getWidth() - inventoryButton.getWidth() - 10
+		creditButton.setPosition(10,	Gdx.graphics.getHeight() - 4 * BUTTON_WIDTH - 10);
+		creditButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				// set the destination of the back button of inventory to
+				// the last slide
+				game.stage.clear();
+				game.setScreen(new CreditsScreen(game));
+			}
+		});
+		creditButton.addListener(new TextTooltip("Credits", tooltip, game.skin));
+		game.stage.addActor(creditButton);
 	}
 
 	//--------------------- mute button --------------------
@@ -330,7 +381,10 @@ public class SlideScreen implements Screen {
 //		game.batch.begin();
 //		game.sprite.draw(game.batch);
 //		game.batch.end();
-			
+		
+		if (Gdx.input.getX() < Gdx.graphics.getWidth() - game.bgImg.getWidth()) {
+			zoomImage.setVisible(false);
+		}
 		
 		game.stage.act(Gdx.graphics.getDeltaTime());
 		game.stage.draw();

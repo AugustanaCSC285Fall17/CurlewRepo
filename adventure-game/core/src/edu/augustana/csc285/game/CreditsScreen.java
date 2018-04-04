@@ -39,14 +39,19 @@ public class CreditsScreen implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
-				game.setScreen(new MainMenuScreen(game));
+				game.setScreen(new SlideScreen(game));
 			}
 		});
 		backButton.setSize(300, 40);
 		backButton.setPosition(500, 130);
 		game.stage.addActor(backButton);
 		
-		String intro = ""
+		String intro =
+				"Game designed by Dr. Forrest Stonedahl's Software Development CSC 285 students and \n"
+				+ "Dr. Brian Leech's history students Abigail Buchanan, Brooks Fielder, and Katie Laschanzky \n"
+				+ "for the for the Swenson Swedish Immigration Research Center at Augustana College in \n"
+				+ "Rock Island, Illinois, 2017.\n\n"
+				+ "Game by Team Curlew: Jack Cannell, Steve Jia, Minh Ta, and Maxwell McComb\n\n"
 				+ "QA Testers:\n\n"
 				+ "     Thinh Nguyen\n"
 				+ "     Neo Hoang\n"

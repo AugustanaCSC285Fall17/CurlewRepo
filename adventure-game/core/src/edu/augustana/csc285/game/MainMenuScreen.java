@@ -210,6 +210,7 @@ public class MainMenuScreen implements Screen {
 	private void drawBackgroundAndLogo() {
 		Image bg = new Image(new Texture(Gdx.files.internal("slideImages/mainmenu2.jpg")));
 		bg.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		bg.setPosition(0, 0);
 		game.stage.addActor(bg);
 		game.stage.addActor(game.logo);
 		game.stage.addActor(game.swansonLogo);
