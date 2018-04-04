@@ -104,7 +104,7 @@ public class SlideScreen implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.stage.clear();
-				game.setScreen(new PauseScreen(game));
+				game.setScreen(new MainMenuScreen(game));
 			}
 		});
 		game.stage.addActor(pauseButton);

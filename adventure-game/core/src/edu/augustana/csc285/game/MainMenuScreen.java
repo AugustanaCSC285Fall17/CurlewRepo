@@ -62,6 +62,9 @@ public class MainMenuScreen implements Screen {
 		});
 		
 		startButton = new TextButton("Take the journey", game.skin);
+		if (game.data.isGameStarted()) {
+			startButton.setText("Restart Journey");
+		}
 		startButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -155,7 +158,7 @@ public class MainMenuScreen implements Screen {
 		table.add(aboutButton).padTop(10).width(300);
 		
 		table.row();
-		table.add(volumeButton).padTop(20).width(300);
+		table.add(volumeButton).padTop(10).width(300);
 		table.row();
 		table.add(volumeDialog);
 		
