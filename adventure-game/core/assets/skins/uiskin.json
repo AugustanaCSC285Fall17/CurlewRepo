@@ -1,7 +1,7 @@
 {
 com.badlogic.gdx.graphics.g2d.BitmapFont: {
 	font: {
-		file: fonts/MyriadProLightCond26.fnt
+		file: fonts/MyriadProLight26.fnt
 	}
 	title: {
 		file: fonts/MyriadPro40.fnt
