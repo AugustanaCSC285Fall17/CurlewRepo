@@ -162,9 +162,9 @@ public class InventoryScreen implements Screen {
 		// dialog
 		pauseDialog = new Dialog("", game.skin);
 		pauseDialog.setVisible(false);
-		pauseDialog.align(Align.topLeft);
+		pauseDialog.align(Align.top);
 		pauseDialog.row();
-		pauseDialog.add(new Label("Paused", game.skin, "title")).align(Align.center);
+		pauseDialog.add(new Label("PAUSE", game.skin, "title")).align(Align.center);
 		pauseDialog.row();
 		
 		// resume button
@@ -175,8 +175,7 @@ public class InventoryScreen implements Screen {
 				pauseDialog.setVisible(false);
 			}
 		});
-		pauseDialog.add(resumeButton).align(Align.left);
-		pauseDialog.row();
+		pauseDialog.add(resumeButton).pad(0, 10, 0, 0).width(275).align(Align.left).row();
 		
 		// main menu button
 		TextButton mainMenuButton = new TextButton("Main Menu", game.skin);
@@ -187,11 +186,11 @@ public class InventoryScreen implements Screen {
 				game.setScreen(new MainMenuScreen(game));
 			}
 		});
-		pauseDialog.add(mainMenuButton).align(Align.left);
-		pauseDialog.row();
+		mainMenuButton.setWidth(290);
+		pauseDialog.add(mainMenuButton).pad(0, 10, 20, 0).width(275).align(Align.left).row();
 		
 		pauseDialog.setWidth(300);
-		pauseDialog.setHeight(300);
+		pauseDialog.setHeight(200);
 		// 880
 		pauseDialog.setPosition((Gdx.graphics.getWidth() - pauseDialog.getWidth()) / 2,
 				(Gdx.graphics.getHeight() - pauseDialog.getHeight()) / 2);

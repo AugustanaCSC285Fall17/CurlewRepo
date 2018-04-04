@@ -236,9 +236,9 @@ public class SlideScreen implements Screen {
 				|| curSlide.getSlideType() == SlideType.NORMAL) {
 			title.setWrap(true);
 		}
-		title.setWidth(380);
+		title.setWidth(440);
 		title.pack();
-		title.setWidth(380);
+		title.setWidth(440);
 		title.setPosition(100, Gdx.graphics.getHeight() - title.getHeight() - 20);
 		title.setAlignment(Align.left);
 	}
