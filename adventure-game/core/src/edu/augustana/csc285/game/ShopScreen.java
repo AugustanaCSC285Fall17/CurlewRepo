@@ -40,7 +40,6 @@ public class ShopScreen implements Screen {
 	private TextButton backButton;
 	private ScrollPane itemScrollPane;
 	private ScrollPane shopScrollPane;
-	private Image bgImg;
 	
 	public ShopScreen(final AdventureGame game, int backIndex) {
 		this.game = game;
@@ -61,6 +60,12 @@ public class ShopScreen implements Screen {
 	private void initialize() {
 		game.stage.clear();
 
+		// Add actors
+		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/facts.png")));
+		game.bgImg.setPosition(0, 0);
+		game.bgImg.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		game.stage.addActor(game.bgImg);
+
 		Image pauseImg = new Image(new Texture(Gdx.files.internal("art/icons/pauseSMALL.png")));
 		pauseButton = new Button(game.skin);
 		pauseButton.add(pauseImg);
@@ -77,12 +82,6 @@ public class ShopScreen implements Screen {
 		});
 		game.stage.addActor(pauseButton);
 		
-
-		// Set the background
-		float size = Gdx.graphics.getHeight();
-		bgImg = new Image(new Texture(Gdx.files.internal("slideImages/facts.png")));
-		bgImg.setPosition(Gdx.graphics.getWidth() - size, 0);
-		bgImg.setSize(size, size);
 		
 		// initialize slide contents
 		createTitle();
@@ -95,7 +94,6 @@ public class ShopScreen implements Screen {
 	    
 		
 		// Add actors
-		game.stage.addActor(game.bgImg);
 		game.stage.addActor(table);
 		game.stage.addActor(shopTitle);
 		game.stage.addActor(shopScrollPane);

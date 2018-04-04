@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -19,6 +20,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextTooltip;
+import com.badlogic.gdx.scenes.scene2d.ui.TooltipManager;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
@@ -56,6 +59,7 @@ public class SlideScreen implements Screen {
 	 */
 	private void initialize() {
 		game.stage.clear();
+		game.stage.addActor(game.bgImg);
 		
 		// initialize slide contents
 		choiceButtons = new ArrayList<TextButton>();
@@ -72,11 +76,24 @@ public class SlideScreen implements Screen {
 		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())));
 		
 		if (curSlide.getImageFileName().equals("facts.png")) {
-			game.bgImg.setPosition(Gdx.graphics.getWidth() - size, 0);
+			game.bgImg.setPosition(0, 0);
 			game.bgImg.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		} else {
 			game.bgImg.setSize(size, size);
 			game.bgImg.setPosition(Gdx.graphics.getWidth() - size - 40, 0);
+			game.bgImg.addListener(new ClickListener() {
+				Vector2 touchPos = new Vector2();
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+					touchPos.x = x;
+					touchPos.y = y;
+					return true;
+				}
+				@Override
+				public void touchDragged(InputEvent event, float x, float y, int pointer) {
+				
+				}
+			});
 		}
 		
 		// Add actors
@@ -84,11 +101,16 @@ public class SlideScreen implements Screen {
 		game.stage.addActor(table);
 		game.stage.addActor(scrollPane);
 		game.stage.addActor(volumeDialog);
-		game.stage.addActor(game.bgImg);
 	}
 
 	public static final int BUTTON_WIDTH = 60;
+	
+	private TooltipManager tooltip = new TooltipManager();
+	
 	private void createFunctionButtons() {
+		tooltip.initialTime = 0;
+		tooltip.offsetX = 0;
+		tooltip.offsetY = 0;
 		
 		// ------------------- pause button ---------------------------
 		
@@ -106,6 +128,8 @@ public class SlideScreen implements Screen {
 				game.setScreen(new MainMenuScreen(game));
 			}
 		});
+		
+		pauseButton.addListener(new TextTooltip("Pause", tooltip, game.skin));
 		game.stage.addActor(pauseButton);
 		
 		// -------------------- inventory button ----------------------
@@ -126,6 +150,7 @@ public class SlideScreen implements Screen {
 				game.setScreen(new InventoryScreen(game));
 			}
 		});
+		inventoryButton.addListener(new TextTooltip("Inventory", tooltip, game.skin));
 		game.stage.addActor(inventoryButton);
 
 		//-------------------- volume dialog & slider ------------------
@@ -186,6 +211,7 @@ public class SlideScreen implements Screen {
 		} else {
 			muteButton.add(muteImg);
 		}
+		muteButton.addListener(new TextTooltip("Volume", tooltip, game.skin));
 		game.stage.addActor(muteButton);
 	}
 

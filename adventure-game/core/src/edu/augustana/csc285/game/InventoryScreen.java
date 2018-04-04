@@ -61,6 +61,12 @@ public class InventoryScreen implements Screen {
 	private void initialize() {
 		game.stage.clear();
 		
+		// Add actors
+		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/facts.png")));
+		game.bgImg.setPosition(0, 0);
+		game.bgImg.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		game.stage.addActor(game.bgImg);
+		
 		createPauseDialog();
 
 		Image pauseImg = new Image(new Texture(Gdx.files.internal("art/icons/pauseSMALL.png")));
@@ -133,15 +139,7 @@ public class InventoryScreen implements Screen {
 		createPlayerStats();
 		
 		createTable();
-	    
 		
-		// Add actors
-		float size = Gdx.graphics.getHeight();
-		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/facts.png")));
-		game.bgImg.setPosition(Gdx.graphics.getWidth() - size, 0);
-		game.bgImg.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		
-		game.stage.addActor(game.bgImg);
 		game.stage.addActor(title);
 		game.stage.addActor(table);
 		game.stage.addActor(scrollPane);
