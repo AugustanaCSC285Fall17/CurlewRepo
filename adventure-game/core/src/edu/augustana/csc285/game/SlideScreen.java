@@ -42,7 +42,7 @@ public class SlideScreen implements Screen {
 	private Label title;
 	private Label gameText;
 
-	private Button pauseButton;
+	private Button restartButton;
 	private Button inventoryButton;
 	private Button muteButton;
 	private Button creditButton;
@@ -51,6 +51,7 @@ public class SlideScreen implements Screen {
 	private Slider volumeSlider;
 	private Dialog volumeDialog;
 	private Dialog rejectDialog;
+	private Dialog restartDialog;
 	
 	private Image zoomImage;
 	private Image zoomRectangle;
@@ -166,12 +167,14 @@ public class SlideScreen implements Screen {
 		game.stage.addActor(title);
 		game.stage.addActor(table);
 		game.stage.addActor(scrollPane);
-		game.stage.addActor(volumeDialog);
 		
 		// zoom functionality
 		game.stage.addActor(zoomImage);
 		game.stage.addActor(zoomRectangle);
 		game.stage.addActor(zoomOverlay);
+
+		game.stage.addActor(volumeDialog);
+		game.stage.addActor(restartDialog);
 	}
 
 	public static final int BUTTON_WIDTH = 60;
@@ -183,25 +186,62 @@ public class SlideScreen implements Screen {
 		tooltip.offsetX = 0;
 		tooltip.offsetY = 0;
 		
-		// ------------------- pause button ---------------------------
+		// ------------------- restart button ---------------------------
+
+		restartDialog = new Dialog("", game.skin);
 		
-		Image pauseImg = new Image(new Texture(Gdx.files.internal("art/icons/pauseSMALL.png")));
-		pauseButton = new Button(game.skin);
-		pauseButton.add(pauseImg);
-		pauseButton.setWidth(BUTTON_WIDTH);
-		pauseButton.setHeight(BUTTON_WIDTH);
+		Image restartImg = new Image(new Texture(Gdx.files.internal("art/icons/restartSMALL.png")));
+		restartButton = new Button(game.skin);
+		restartButton.add(restartImg);
+		restartButton.setWidth(BUTTON_WIDTH);
+		restartButton.setHeight(BUTTON_WIDTH);
 							  //Gdx.graphics.getWidth() - pauseButton.getWidth() - 10
-		pauseButton.setPosition(10, Gdx.graphics.getHeight() - BUTTON_WIDTH - 10);
-		pauseButton.addListener(new ClickListener() {
+		restartButton.setPosition(10, Gdx.graphics.getHeight() - BUTTON_WIDTH - 10);
+		
+		restartButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				game.stage.clear();
-				game.setScreen(new MainMenuScreen(game));
+				restartDialog.setVisible(true);
 			}
 		});
 		
-		pauseButton.addListener(new TextTooltip("Pause", tooltip, game.skin));
-		game.stage.addActor(pauseButton);
+		
+		restartDialog.setVisible(false);
+		restartDialog.row();
+		restartDialog.align(Align.center);
+		restartDialog.add(new Label("Are you sure you want to restart the game?", game.skin));
+		restartDialog.row();
+		TextButton button = new TextButton("Yes", game.skin);
+		button.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.restartGame();
+				game.data.setGameStarted(true);
+				game.stage.clear();
+				game.setScreen(new SlideScreen(game));
+			}
+		});
+		TextButton noButton = new TextButton("No", game.skin);
+		noButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				restartDialog.setVisible(false);
+			}
+		});
+		Table buttonTable = new Table();
+		buttonTable.align(Align.center);
+		buttonTable.add(button);
+		buttonTable.add(noButton);
+		restartDialog.add(buttonTable);
+		restartDialog.setWidth(600);
+		restartDialog.setHeight(100);
+								//880
+		restartDialog.setPosition((AdventureGame.GAME_SCREEN_WIDTH - restartDialog.getWidth())/ 2, 
+				(AdventureGame.GAME_SCREEN_HEIGHT - restartDialog.getHeight())/ 2);	
+		
+		
+		restartButton.addListener(new TextTooltip("Restart", tooltip, game.skin));
+		game.stage.addActor(restartButton);
 		
 		// -------------------- inventory button ----------------------
 		
