@@ -77,33 +77,45 @@ public class SlideScreen implements Screen {
 		game.bgImg.setSize(size, size);
 		game.bgImg.setPosition(Gdx.graphics.getWidth() - size, 0);
 
-		Vector2 touchPos = new Vector2();
-		int zoomW = 150;
-		int zoomH = 150;
 		
 		if (!curSlide.getImageFileName().equals("facts.png")) {
 			game.bgImg.addListener(new ClickListener() {
 				@Override
 				public boolean mouseMoved(InputEvent event, float x, float y) {
-					int offsetX = zoomW;
-					int offsetY = zoomH;
+					Vector2 centerZoomImg = new Vector2();
+					int zoomWPanel = 150;
+					int zoomHPanel = 150;
+					Texture img = new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName()));
+
+					float porportion = (float) img.getWidth() / AdventureGame.GAME_SCREEN_HEIGHT;
 					
-					if (offsetX < x || x < game.bgImg.getWidth() - offsetX - zoomW) {
-						offsetX = 0;
+					int zoomW = (int) (zoomWPanel * porportion);
+					int zoomH = (int) (zoomHPanel * porportion);
+
+					centerZoomImg.x = (x - zoomWPanel / 2) * porportion;
+					centerZoomImg.y = (AdventureGame.GAME_SCREEN_HEIGHT - y - zoomHPanel / 2) * porportion;
+					
+					if ((float) zoomW / 2 > x * porportion) {
+						centerZoomImg.x = 0;
+					} else if (x > (float) AdventureGame.GAME_SCREEN_HEIGHT - zoomWPanel / 2) {
+						centerZoomImg.x = (AdventureGame.GAME_SCREEN_HEIGHT - zoomWPanel) * porportion;
 					}
 					
-					if (offsetY < AdventureGame.GAME_SCREEN_HEIGHT - y || AdventureGame.GAME_SCREEN_HEIGHT - y < game.bgImg.getHeight() - offsetY - zoomH) {
-						offsetY = 0;
+					if ((float) zoomH / 2 > (AdventureGame.GAME_SCREEN_HEIGHT - y) * porportion) {
+						centerZoomImg.y = 0;
+					} else if (AdventureGame.GAME_SCREEN_HEIGHT - y > (float) AdventureGame.GAME_SCREEN_HEIGHT - zoomHPanel / 2) {
+						centerZoomImg.y = (AdventureGame.GAME_SCREEN_HEIGHT - zoomHPanel) * porportion;
 					}
-					touchPos.x = x;
-					touchPos.y = AdventureGame.GAME_SCREEN_HEIGHT - y + offsetY;
-					System.out.println(touchPos.x + " " + touchPos.y);
+					
 					if (Gdx.input.getX() >= Gdx.graphics.getWidth() - game.bgImg.getWidth()) {
 						zoomImage.setVisible(true);
 					}
+					
+					System.out.println(centerZoomImg.x + " " + centerZoomImg.y);
 					zoomImage.setDrawable(new TextureRegionDrawable(
 							new TextureRegion(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())),
-							(int) touchPos.x, (int) touchPos.y, zoomW, zoomH)));
+							(int) (centerZoomImg.x), 
+							(int) (centerZoomImg.y), zoomW, zoomH)));
 					
 					return true;
 				}
@@ -111,11 +123,10 @@ public class SlideScreen implements Screen {
 			});
 		}
 		
-		zoomImage = new Image(new TextureRegion(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())),
-																					touchPos.x, touchPos.y, zoomW, zoomH));
+		zoomImage = new Image();
 		zoomImage.setVisible(false);
-		zoomImage.setSize(400, 400);
-		zoomImage.setPosition(190, Gdx.graphics.getHeight() - zoomImage.getHeight() - 30);
+		zoomImage.setSize(450, 450);
+		zoomImage.setPosition(100, Gdx.graphics.getHeight() - zoomImage.getHeight() - 30);
 		
 		game.stage.addActor(game.bgImg);
 		createFunctionButtons();
