@@ -82,9 +82,12 @@ public class SlideScreen implements Screen {
 			game.bgImg.addListener(new ClickListener() {
 				@Override
 				public boolean mouseMoved(InputEvent event, float x, float y) {
+					
+					float zoomMag = (float) 2.5;
+					
 					Vector2 centerZoomImg = new Vector2();
-					int zoomWPanel = 150;
-					int zoomHPanel = 150;
+					float zoomWPanel = zoomImage.getWidth() / zoomMag;
+					float zoomHPanel = zoomImage.getHeight() / zoomMag;
 					Texture img = new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName()));
 
 					float porportion = (float) img.getWidth() / AdventureGame.GAME_SCREEN_HEIGHT;
@@ -121,12 +124,13 @@ public class SlideScreen implements Screen {
 				}
 				
 			});
+			game.bgImg.addListener(new TextTooltip("Hover out of the image to exit zoom.", game.skin));
 		}
 		
 		zoomImage = new Image();
 		zoomImage.setVisible(false);
-		zoomImage.setSize(450, 450);
-		zoomImage.setPosition(100, Gdx.graphics.getHeight() - zoomImage.getHeight() - 30);
+		zoomImage.setSize(450, 650);
+		zoomImage.setPosition(90, Gdx.graphics.getHeight() - zoomImage.getHeight() - 20);
 		
 		game.stage.addActor(game.bgImg);
 		createFunctionButtons();
