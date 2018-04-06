@@ -1,7 +1,41 @@
 {
 com.badlogic.gdx.graphics.g2d.BitmapFont: {
+	
 	font: {
 		file: fonts/MyriadProLight26.fnt
+	}
+	font20: {
+		file: fonts/MyriadProLight20.fnt
+	}
+	font22: {
+		file: fonts/MyriadProLight22.fnt
+	}
+	font24: {
+		file: fonts/MyriadProLight24.fnt
+	}
+	font26: {
+		file: fonts/MyriadProLight26.fnt
+	}
+	font28: {
+		file: fonts/MyriadProLight28.fnt
+	}
+	font30: {
+		file: fonts/MyriadProLight30.fnt
+	}
+	font32: {
+		file: fonts/MyriadProLight32.fnt
+	}
+	font34: {
+		file: fonts/MyriadProLight34.fnt
+	}
+	font36: {
+		file: fonts/MyriadProLight36.fnt
+	}
+	font38: {
+		file: fonts/MyriadProLight38.fnt
+	}
+	font40: {
+		file: fonts/MyriadProLight40.fnt
 	}
 	title: {
 		file: fonts/MyriadPro40.fnt
@@ -132,7 +166,7 @@ com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton$ImageTextButtonStyle: {
 }
 com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 	default: {
-		font: font
+		font: font26
 		fontColor: black
 	}
 	title: {
@@ -140,8 +174,52 @@ com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 		fontColor: black
 	}
 	white: {
-		font: font
+		font: font26
 		fontColor: white
+	}
+	font20: {
+		font: font20
+		fontColor: black
+	}
+	font22: {
+		font: font22
+		fontColor: black
+	}
+	font24: {
+		font: font24
+		fontColor: black
+	}
+	font26: {
+		font: font26
+		fontColor: black
+	}
+	font28: {
+		font: font28
+		fontColor: black
+	}
+	font30: {
+		font: font30
+		fontColor: black
+	}
+	font32: {
+		font: font32
+		fontColor: black
+	}
+	font34: {
+		font: font34
+		fontColor: black
+	}
+	font36: {
+		font: font36
+		fontColor: black
+	}
+	font38: {
+		font: font38
+		fontColor: black
+	}
+	font40: {
+		font: font40
+		fontColor: black
 	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle: {
