@@ -143,11 +143,6 @@ public class SlideScreen implements Screen {
 				}
 				
 			});
-			
-			TooltipManager toolMng = new TooltipManager();
-			toolMng.initialTime = 3;
-			toolMng.subsequentTime = 5;
-			zoomOverlay.addListener(new TextTooltip("Hover out to exit zoom.", toolMng, game.skin));
 		}
 		
 		zoomRectangle = new Image(new Texture(Gdx.files.internal("art/zoomRect.png")));
