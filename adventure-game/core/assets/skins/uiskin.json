@@ -177,50 +177,6 @@ com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 		font: font26
 		fontColor: white
 	}
-	font20: {
-		font: font20
-		fontColor: black
-	}
-	font22: {
-		font: font22
-		fontColor: black
-	}
-	font24: {
-		font: font24
-		fontColor: black
-	}
-	font26: {
-		font: font26
-		fontColor: black
-	}
-	font28: {
-		font: font28
-		fontColor: black
-	}
-	font30: {
-		font: font30
-		fontColor: black
-	}
-	font32: {
-		font: font32
-		fontColor: black
-	}
-	font34: {
-		font: font34
-		fontColor: black
-	}
-	font36: {
-		font: font36
-		fontColor: black
-	}
-	font38: {
-		font: font38
-		fontColor: black
-	}
-	font40: {
-		font: font40
-		fontColor: black
-	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle: {
 	default: {

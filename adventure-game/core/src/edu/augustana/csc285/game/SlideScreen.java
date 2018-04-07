@@ -39,6 +39,8 @@ public class SlideScreen implements Screen {
 	private AdventureGame game;
 	private Slide curSlide;
 	
+	private static int fontSize = 26;
+
 	private Table table;
 	private Label title;
 	private Label gameText;
@@ -336,11 +338,12 @@ public class SlideScreen implements Screen {
 		fontButton.setPosition(10, Gdx.graphics.getHeight() - 5 * BUTTON_WIDTH - 10);
 		
 		fontSlider = new Slider(20, 40, 2, false, game.skin);
-		fontSlider.setValue(26);
+		fontSlider.setValue(fontSize);
 		fontSlider.addListener(new EventListener(){
 			@Override
 			public boolean handle(Event event) {
-				gameText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + (int) fontSlider.getValue() + ".fnt")), Color.BLACK));
+				fontSize = (int) fontSlider.getValue();
+				gameText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + fontSize + ".fnt")), Color.BLACK));
 				return false;
 			}
 			
@@ -453,6 +456,7 @@ public class SlideScreen implements Screen {
 	
 	private void createGameText() {
 		gameText = new Label(curSlide.getGameText(), game.skin);
+		gameText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + fontSize + ".fnt")), Color.BLACK));
 		gameText.setWrap(true);
 		
 		// for normal slide
