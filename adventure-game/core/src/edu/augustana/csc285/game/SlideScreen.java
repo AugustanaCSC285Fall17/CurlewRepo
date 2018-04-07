@@ -5,8 +5,10 @@ import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Event;
@@ -17,6 +19,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -36,6 +39,8 @@ public class SlideScreen implements Screen {
 	private AdventureGame game;
 	private Slide curSlide;
 	
+	private static int fontSize = 26;
+
 	private Table table;
 	private Label title;
 	private Label gameText;
@@ -44,12 +49,15 @@ public class SlideScreen implements Screen {
 	private Button inventoryButton;
 	private Button muteButton;
 	private Button creditButton;
+	private Button fontButton;
 	private ArrayList<TextButton> choiceButtons;
 	private ScrollPane scrollPane;
 	private Slider volumeSlider;
+	private Slider fontSlider;
 	private Dialog volumeDialog;
 	private Dialog rejectDialog;
 	private Dialog restartDialog;
+	private Dialog fontDialog;
 	
 	private Image zoomImage;
 	private Image zoomRectangle;
@@ -103,6 +111,7 @@ public class SlideScreen implements Screen {
 					
 					int zoomW = (int) (zoomWPanel * porportion);
 					int zoomH = (int) (zoomHPanel * porportion);
+					
 
 					float zoomRectX = AdventureGame.GAME_SCREEN_WIDTH - AdventureGame.GAME_SCREEN_HEIGHT + x 
 																							- zoomRectangle.getWidth() / 2;
@@ -167,6 +176,7 @@ public class SlideScreen implements Screen {
 		game.stage.addActor(zoomOverlay);
 
 		game.stage.addActor(volumeDialog);
+		game.stage.addActor(fontDialog);
 		game.stage.addActor(restartDialog);
 	}
 
@@ -301,7 +311,7 @@ public class SlideScreen implements Screen {
 		creditButton.setWidth(BUTTON_WIDTH);
 		creditButton.setHeight(BUTTON_WIDTH);
 								  //Gdx.graphics.getWidth() - inventoryButton.getWidth() - 10
-		creditButton.setPosition(10,	Gdx.graphics.getHeight() - 4 * BUTTON_WIDTH - 10);
+		creditButton.setPosition(10, Gdx.graphics.getHeight() - 4 * BUTTON_WIDTH - 10);
 		creditButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -313,6 +323,51 @@ public class SlideScreen implements Screen {
 		});
 		creditButton.addListener(new TextTooltip("Credits", tooltip, game.skin));
 		game.stage.addActor(creditButton);
+		
+		// -------------------- font button -------------------------
+		
+		fontButton = new Button(game.skin);
+		fontButton.add(new Image(new Texture(Gdx.files.internal("art/icons/fontSMALL.png"))));
+		fontButton.setWidth(BUTTON_WIDTH);
+		fontButton.setHeight(BUTTON_WIDTH);
+		fontButton.setPosition(10, Gdx.graphics.getHeight() - 5 * BUTTON_WIDTH - 10);
+		
+		fontSlider = new Slider(20, 40, 2, false, game.skin);
+		fontSlider.setValue(fontSize);
+		fontSlider.addListener(new EventListener(){
+			@Override
+			public boolean handle(Event event) {
+				fontSize = (int) fontSlider.getValue();
+				gameText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + fontSize + ".fnt")), Color.BLACK));
+				return false;
+			}
+			
+		});
+		
+		fontDialog = new Dialog("", game.skin);
+		fontDialog.setVisible(false);
+		fontDialog.add(new Label("Font Size: ", game.skin));
+		fontDialog.add(fontSlider).align(Align.left);
+		TextButton fontOkButton = new TextButton("OK", game.skin);
+		fontOkButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				fontDialog.setVisible(false);
+			}
+		});
+		fontDialog.add(fontOkButton);
+		fontDialog.setWidth(390);
+		fontDialog.setHeight(70);
+								//880
+		fontDialog.setPosition(90, 530);
+		
+		fontButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				fontDialog.setVisible(true);
+			}
+		});
+		game.stage.addActor(fontButton);
 	}
 
 	//--------------------- mute button --------------------
@@ -396,6 +451,7 @@ public class SlideScreen implements Screen {
 	
 	private void createGameText() {
 		gameText = new Label(curSlide.getGameText(), game.skin);
+		gameText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + fontSize + ".fnt")), Color.BLACK));
 		gameText.setWrap(true);
 		
 		// for normal slide
