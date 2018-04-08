@@ -302,35 +302,13 @@ public class SlideScreen implements Screen {
 		
 		updateMute();
 		
-		
-		// -------------------- credit button ----------------------
-		
-		Image creditImg = new Image(new Texture(Gdx.files.internal("art/icons/creditSMALL.png")));
-		creditButton = new Button(game.skin);
-		creditButton.add(creditImg);
-		creditButton.setWidth(BUTTON_WIDTH);
-		creditButton.setHeight(BUTTON_WIDTH);
-								  //Gdx.graphics.getWidth() - inventoryButton.getWidth() - 10
-		creditButton.setPosition(10, Gdx.graphics.getHeight() - 4 * BUTTON_WIDTH - 10);
-		creditButton.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				// set the destination of the back button of inventory to
-				// the last slide
-				game.stage.clear();
-				game.setScreen(new CreditsScreen(game));
-			}
-		});
-		creditButton.addListener(new TextTooltip("Credits", tooltip, game.skin));
-		game.stage.addActor(creditButton);
-		
 		// -------------------- font button -------------------------
 		
 		fontButton = new Button(game.skin);
 		fontButton.add(new Image(new Texture(Gdx.files.internal("art/icons/fontSMALL.png"))));
 		fontButton.setWidth(BUTTON_WIDTH);
 		fontButton.setHeight(BUTTON_WIDTH);
-		fontButton.setPosition(10, Gdx.graphics.getHeight() - 5 * BUTTON_WIDTH - 10);
+		fontButton.setPosition(10, Gdx.graphics.getHeight() - 4 * BUTTON_WIDTH - 10);
 		
 		fontSlider = new Slider(20, 40, 2, false, game.skin);
 		fontSlider.setValue(fontSize);
@@ -346,8 +324,10 @@ public class SlideScreen implements Screen {
 		
 		fontDialog = new Dialog("", game.skin);
 		fontDialog.setVisible(false);
+		fontDialog.row();
+		fontDialog.align(Align.center);
 		fontDialog.add(new Label("Font Size: ", game.skin));
-		fontDialog.add(fontSlider).align(Align.left);
+		fontDialog.add(fontSlider);
 		TextButton fontOkButton = new TextButton("OK", game.skin);
 		fontOkButton.addListener(new ClickListener() {
 			@Override
@@ -368,6 +348,28 @@ public class SlideScreen implements Screen {
 			}
 		});
 		game.stage.addActor(fontButton);
+		
+		
+		// -------------------- credit button ----------------------
+		
+		Image creditImg = new Image(new Texture(Gdx.files.internal("art/icons/creditSMALL.png")));
+		creditButton = new Button(game.skin);
+		creditButton.add(creditImg);
+		creditButton.setWidth(BUTTON_WIDTH);
+		creditButton.setHeight(BUTTON_WIDTH);
+								  //Gdx.graphics.getWidth() - inventoryButton.getWidth() - 10
+		creditButton.setPosition(10, Gdx.graphics.getHeight() - 5 * BUTTON_WIDTH - 10);
+		creditButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				// set the destination of the back button of inventory to
+				// the last slide
+				game.stage.clear();
+				game.setScreen(new CreditsScreen(game));
+			}
+		});
+		creditButton.addListener(new TextTooltip("Credits", tooltip, game.skin));
+		game.stage.addActor(creditButton);
 	}
 
 	//--------------------- mute button --------------------
