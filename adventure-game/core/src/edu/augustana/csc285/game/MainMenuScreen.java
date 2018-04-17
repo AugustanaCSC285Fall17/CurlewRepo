@@ -155,7 +155,7 @@ public class MainMenuScreen implements Screen {
 		table.add(aboutButton).padTop(10).width(300);
 		
 		table.row();
-		table.add(volumeButton).padTop(20).width(300);
+		table.add(volumeButton).padTop(10).width(300);
 		table.row();
 		table.add(volumeDialog);
 		
