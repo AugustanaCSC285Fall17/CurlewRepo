@@ -59,7 +59,7 @@ public class MainMenuScreen implements Screen {
 		});
 		
 		startButton = new TextButton("Take the journey", game.skin);
-		if (game.data.isGameStarted()) {
+		if (game.data.gameStarted()) {
 			startButton.setText("Restart Journey");
 		}
 		startButton.addListener(new ClickListener(){
@@ -142,13 +142,13 @@ public class MainMenuScreen implements Screen {
 		
 		introText = new Label(intro, game.skin);
 		introText.setWrap(true);
-		introText.setWidth(800);
+		introText.setWidth(1000);
 		introText.setAlignment(Align.center|Align.top);
 		
 		table.padTop(300);
-		table.add(introText).padBottom(30).width(800f);
+		table.add(introText).padBottom(20).width(1000f);
 		table.row();
-		if (game.data.isGameStarted()) {
+		if (game.data.gameStarted()) {
 			table.add(resumeButton).padBottom(10).width(300);
 			table.row();
 		}
@@ -190,11 +190,11 @@ public class MainMenuScreen implements Screen {
 		
 		introText = new Label(intro, game.skin);
 		introText.setWrap(true);
-		introText.setWidth(800);
+		introText.setWidth(1000);
 		introText.setAlignment(Align.center|Align.top);
 		
 		table.padTop(300);
-		table.add(introText).width(800f);
+		table.add(introText).width(1000f);
 		table.row();
 		table.add(creditsButton).padTop(30).width(300);
 		table.row();

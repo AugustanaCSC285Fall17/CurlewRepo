@@ -251,7 +251,7 @@ public class GameData {
 
 	}
 
-	public boolean isGameStarted() {
+	public boolean gameStarted() {
 		return gameStarted;
 	}
 

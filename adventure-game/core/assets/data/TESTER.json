@@ -3,7 +3,7 @@ startSlideIndex: 10
 slides: [
 	{
 		title: Choose Your Character
-		imageFileName: image4.jpg
+		imageFileName: image15.jpg
 		gameText: "It's the 1880s in Sweden. The opportunities in America, such as cheap land and a stable economy, make migration attractive to many Europeans who face problems related to overpopulation. Millions have migrated from their homelands for a new life. You now wish to join them. \n\nWho are you?"
 		urlText: www.google.com
 		actionChoices: [
@@ -55,8 +55,8 @@ slides: [
 	}
 	{
 		title: Anders Bengtsson
-		imageFileName: image2.jpg
-		gameText: "You are an 18 year-old male from Mellby Parish, SmÃ¥land. You are the youngest of 4 brothers and will not have any farmland to work. There are too many men in your family and not enough farmland. Additionally, the crop failures of 1867-1868 hit your family farm hard. You would also like to avoid Swedish military conscription. You are coming to America to own your own farmland or find a good job. "
+		imageFileName: image16.jpg
+		gameText: "You are an 18 year-old male from Mellby Parish, Småland. You are the youngest of 4 brothers and will not have any farmland to work. There are too many men in your family and not enough farmland. Additionally, the crop failures of 1867-1868 hit your family farm hard. You would also like to avoid Swedish military conscription. You are coming to America to own your own farmland or find a good job."
 		urlText: url1
 		slideType: LETTER
 		actionChoices: [

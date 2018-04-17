@@ -38,8 +38,13 @@ public class CreditsScreen implements Screen {
 		backButton.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				game.stage.clear();
-				game.setScreen(new SlideScreen(game));
+				if (game.data.gameStarted()) {
+					game.stage.clear();
+					game.setScreen(new SlideScreen(game));
+				} else {
+					game.stage.clear();
+					game.setScreen(new MainMenuScreen(game));
+				}
 			}
 		});
 		backButton.setSize(300, 40);
