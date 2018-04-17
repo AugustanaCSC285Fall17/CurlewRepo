@@ -181,6 +181,8 @@ public class MainMenuScreen implements Screen {
 		
 		String intro = "Game designed by Dr. Forrest Stonedahl's Software Development CSC 285 students and "
 				+ "Dr. Brian Leech's history students Abigail Buchanan, Brooks Fielder, and Katie Laschanzky "
+				+ "in collaboration with Lisa Huntsha and the staff of the Senson Swedish Immigration Research "
+				+ "Center at Augustana College in Rock Island, Illinois, 2017-2018"
 				+ "for the for the Swenson Swedish Immigration Research Center at Augustana College in Rock Island, "
 				+ "Illinois, 2017.\n\nGame by Team Curlew: Jack Cannell, Steve Jia, Minh Ta, and Maxwell McComb";
 		
