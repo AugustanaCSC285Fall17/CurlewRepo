@@ -167,8 +167,8 @@ public class SlideScreen implements Screen {
 		
 		// Add actors
 		game.stage.addActor(title);
-		game.stage.addActor(table);
 		game.stage.addActor(scrollPane);
+		game.stage.addActor(table);
 		
 		// zoom functionality
 		game.stage.addActor(zoomImage);
@@ -406,6 +406,10 @@ public class SlideScreen implements Screen {
 			
 			TextButton newButton = new TextButton(curChoiceText, game.skin);
 			newButton.getLabel().setWrap(true);
+			newButton.getLabel().pack();
+			newButton.getLabel().setWidth(350);
+			newButton.getLabel().pack();
+			newButton.getLabel().setWidth(350);
 			newButton.addListener(new ClickListener(){
 					
 				@Override
@@ -463,6 +467,10 @@ public class SlideScreen implements Screen {
 				|| curSlide.getSlideType() == SlideType.MANY_BUTTONS) {
 			gameTextWidth = 700;
 		}
+		
+		gameText.pack();
+		gameText.setWidth(gameTextWidth);
+		gameText.pack();
 		gameText.setWidth(gameTextWidth);
 		gameText.setAlignment(Align.topLeft);
 		
@@ -470,37 +478,31 @@ public class SlideScreen implements Screen {
 	
 	}
 	
+	float tableHeight;
+	
 	private void createTable() {
-		table = new Table(game.skin);
-		table.setWidth(Gdx.graphics.getWidth());
-		table.align(Align.topLeft);
 		
-		table.setPosition(0, game.stage.getHeight());
-
-		table.padLeft(100);
+		table = new Table(game.skin);
+		table.align(Align.topLeft);
 		
 		for (int i = 0; i < game.data.getVisibleChoicesForCurrentSlide().size(); i++) {
 			table.add(choiceButtons.get(i)).width(370).padTop(5);
 			table.row();
 		}
-		
-		int tableHeight = 450;
-		if (curSlide.getSlideType() == SlideType.NORMAL)
-			tableHeight = 350;
-		else if (curSlide.getSlideType() == SlideType.MANY_BUTTONS)
-			tableHeight = 300;
-		table.padTop(tableHeight + title.getHeight());
+
+		tableHeight = table.getPrefHeight();
+//		if (curSlide.getSlideType() == SlideType.NORMAL)
+//			tableHeight = 350;
+//		else if (curSlide.getSlideType() == SlideType.MANY_BUTTONS)
+//			tableHeight = 300;
+		table.setPosition(100, tableHeight + 10);
 	}
 	
 	private void createScrollPane(int gameTextWidth) {
 		scrollPane = new ScrollPane(gameText, game.skin);
 		
-		int gameTextHeight = 400;
-		if (curSlide.getSlideType() == SlideType.NORMAL)
-			gameTextHeight = 320;
-		else if (curSlide.getSlideType() == SlideType.MANY_BUTTONS)
-			gameTextHeight = 270;
-	    scrollPane.setBounds(110, Gdx.graphics.getHeight() - title.getHeight() - 30 - gameTextHeight, gameTextWidth, gameTextHeight);
+	    scrollPane.setBounds(110, tableHeight - 20,
+	    		gameTextWidth, Gdx.graphics.getHeight() - title.getHeight() - tableHeight);
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);
 	    scrollPane.setFadeScrollBars(false);
