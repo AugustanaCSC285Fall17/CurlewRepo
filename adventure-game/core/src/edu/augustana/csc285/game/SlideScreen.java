@@ -101,6 +101,55 @@ public class SlideScreen implements Screen {
 		if (!curSlide.getImageFileName().equals("facts.png")) {
 			zoomOverlay.addListener(new ClickListener() {
 				@Override
+				public void touchDragged(InputEvent event, float x, float y, int pointer) {
+					
+					
+					Vector2 centerZoomImg = new Vector2();
+					Texture img = new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName()));
+
+					float porportion = (float) img.getWidth() / AdventureGame.GAME_SCREEN_HEIGHT;
+					
+					int zoomW = (int) (zoomWPanel * porportion);
+					int zoomH = (int) (zoomHPanel * porportion);
+					
+
+					float zoomRectX = AdventureGame.GAME_SCREEN_WIDTH - AdventureGame.GAME_SCREEN_HEIGHT + x 
+																							- zoomRectangle.getWidth() / 2;
+					float zoomRectY = y - zoomRectangle.getHeight() / 2;
+					
+					centerZoomImg.x = (x - zoomWPanel / 2) * porportion;
+					centerZoomImg.y = (AdventureGame.GAME_SCREEN_HEIGHT - y - zoomHPanel / 2) * porportion;
+					
+					if ((float) zoomW / 2 > x * porportion) {
+						centerZoomImg.x = 0;
+						zoomRectX = AdventureGame.GAME_SCREEN_WIDTH - AdventureGame.GAME_SCREEN_HEIGHT;
+						
+					} else if (x > (float) AdventureGame.GAME_SCREEN_HEIGHT - zoomWPanel / 2) {
+						centerZoomImg.x = (AdventureGame.GAME_SCREEN_HEIGHT - zoomWPanel) * porportion;
+						zoomRectX = AdventureGame.GAME_SCREEN_WIDTH - zoomRectangle.getWidth();
+					}
+					
+					if ((float) zoomH / 2 > (AdventureGame.GAME_SCREEN_HEIGHT - y) * porportion) {
+						centerZoomImg.y = 0;
+						zoomRectY = AdventureGame.GAME_SCREEN_HEIGHT - zoomRectangle.getHeight();
+					} else if (AdventureGame.GAME_SCREEN_HEIGHT - y > (float) AdventureGame.GAME_SCREEN_HEIGHT - zoomHPanel / 2) {
+						centerZoomImg.y = (AdventureGame.GAME_SCREEN_HEIGHT - zoomHPanel) * porportion;
+						zoomRectY = 0;
+					}
+					
+					if (Gdx.input.getX() >= Gdx.graphics.getWidth() - game.bgImg.getWidth()) {
+						zoomImage.setVisible(true);
+					}
+					
+					zoomImage.setDrawable(new TextureRegionDrawable(
+							new TextureRegion(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())),
+							(int) (centerZoomImg.x), 
+							(int) (centerZoomImg.y), zoomW, zoomH)));
+
+					zoomRectangle.setPosition(zoomRectX, zoomRectY);
+					zoomRectangle.setVisible(true);
+				}
+				@Override
 				public boolean mouseMoved(InputEvent event, float x, float y) {
 					
 					
