@@ -134,9 +134,11 @@ public class MainMenuScreen implements Screen {
 //			}
 //		});
 		
-		String intro = "You are a young Swedish immigrant to America in 1880.\n"
-				+ "You have made the tough decision to leave your family and life in Sweden behind.\n"
-				+ "Will you survive and prosper in America?";
+		String intro = "You are a young Swedish immigrant to America in 1880."
+				+ "You have made the tough decision to leave your family and life in Sweden behind."
+				+ " Will you survive and prosper in America?"
+				+ "\n\nPlease note, this game is a work of historical fiction based on information found "
+				+ "in the Swenson Center’s collections and additional research done by Augustana College students.";
 		
 		introText = new Label(intro, game.skin);
 		introText.setWrap(true);
@@ -181,6 +183,8 @@ public class MainMenuScreen implements Screen {
 		
 		String intro = "Game designed by Dr. Forrest Stonedahl's Software Development CSC 285 students and "
 				+ "Dr. Brian Leech's history students Abigail Buchanan, Brooks Fielder, and Katie Laschanzky "
+				+ "in collaboration with Lisa Huntsha and the staff of the Senson Swedish Immigration Research "
+				+ "Center at Augustana College in Rock Island, Illinois, 2017-2018"
 				+ "for the for the Swenson Swedish Immigration Research Center at Augustana College in Rock Island, "
 				+ "Illinois, 2017.\n\nGame by Team Curlew: Jack Cannell, Steve Jia, Minh Ta, and Maxwell McComb";
 		
