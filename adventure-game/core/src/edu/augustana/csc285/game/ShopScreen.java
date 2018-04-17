@@ -5,8 +5,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -54,10 +52,6 @@ public class ShopScreen implements Screen {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
-		game.batch.begin();
-		game.sprite.draw(game.batch);
-		game.batch.end();
-		
 		game.stage.act(Gdx.graphics.getDeltaTime());
 		game.stage.draw();
 	}
@@ -65,6 +59,12 @@ public class ShopScreen implements Screen {
 	// Initialize slide elements
 	private void initialize() {
 		game.stage.clear();
+
+		// Add actors
+		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/facts.png")));
+		game.bgImg.setPosition(0, 0);
+		game.bgImg.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		game.stage.addActor(game.bgImg);
 
 		Image pauseImg = new Image(new Texture(Gdx.files.internal("art/icons/pauseSMALL.png")));
 		pauseButton = new Button(game.skin);
@@ -100,12 +100,6 @@ public class ShopScreen implements Screen {
 		game.stage.addActor(itemTitle);
 		game.stage.addActor(itemScrollPane);
 		
-		// Set the background
-		float size = Gdx.graphics.getHeight();
-		game.batch = new SpriteBatch();
-		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/facts.png")));
-		game.sprite.setPosition(Gdx.graphics.getWidth() - size, 0);
-		game.sprite.setSize(size, size);
 	}
 
 	private void createTitle() {

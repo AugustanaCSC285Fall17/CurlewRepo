@@ -5,9 +5,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -26,8 +25,7 @@ public class PauseScreen implements Screen{
 	private TextButton mainMenuButton;
 //	private TextButton quitButton;
 	private Label introText;
-	private Sprite swansonLogo;
-	private Sprite pauseLogo;
+	private Image pauseLogo;
 	
 	
 	public PauseScreen(final AdventureGame game) {
@@ -95,33 +93,24 @@ public class PauseScreen implements Screen{
 	public void render(float delta) {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		game.batch.begin();
-		game.sprite.draw(game.batch);
-		swansonLogo.draw(game.batch);
-		pauseLogo.draw(game.batch);
-		game.batch.end();
+		game.stage.addActor(game.bgImg);
+		game.stage.addActor(game.swansonLogo);
+		game.stage.addActor(pauseLogo);
 		
 		game.stage.act(Gdx.graphics.getDeltaTime());
 		game.stage.draw();
-
-		game.stage.addActor(table);
 		
 	}
 	
 	private void drawBackground() {
-		game.batch = new SpriteBatch();
-		game.sprite = new Sprite(new Texture(Gdx.files.internal("slideImages/mainmenu2.jpg")));
-		game.sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/mainmenu2.jpg")));
+		game.bgImg.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
-		Texture swansonLogoTexture = new Texture(Gdx.files.internal("slideImages/image1.png"));
-		swansonLogo = new Sprite(swansonLogoTexture);
-		swansonLogo.setPosition(40, 10);
-		swansonLogo.setSize(500, (float) (swansonLogoTexture.getHeight() * 500.0 / swansonLogoTexture.getWidth()));
 		
 		Texture logoTexture = new Texture(Gdx.files.internal("art/pausedBlueNoStroke.png"));
 		int logoWidth = 300;
 		float logoHeight = (float) (logoTexture.getHeight() * logoWidth * 1.0 / logoTexture.getWidth());
-		pauseLogo = new Sprite(logoTexture);
+		pauseLogo = new Image(logoTexture);
 		pauseLogo.setPosition((Gdx.graphics.getWidth() - logoWidth) / 2, Gdx.graphics.getHeight() - logoHeight - 100);
 		pauseLogo.setSize(logoWidth, logoHeight);
 	}

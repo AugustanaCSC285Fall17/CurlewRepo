@@ -232,7 +232,7 @@ public class GameData {
 					if (ac.getFeasibilityCond().get(i) instanceof ItemCondition) {
 						ItemCondition ic = (ItemCondition) ac.getFeasibilityCond().get(i);
 						if (ic.getItem().equals(item)) {
-							ac.removeCondition(ac.getFeasibilityCond().remove(i), ac.FEASIBILITY);
+							ac.removeCondition(ac.getFeasibilityCond().remove(i), ActionChoice.FEASIBILITY);
 						}
 					}
 				}
@@ -240,7 +240,7 @@ public class GameData {
 					if (ac.getVisibilityCond().get(i) instanceof ItemCondition) {
 						ItemCondition ic = (ItemCondition) ac.getVisibilityCond().get(i);
 						if (ic.getItem().equals(item)) {
-							ac.removeCondition(ac.getVisibilityCond().remove(i), ac.FEASIBILITY);
+							ac.removeCondition(ac.getVisibilityCond().remove(i), ActionChoice.FEASIBILITY);
 						}
 					}
 				}
