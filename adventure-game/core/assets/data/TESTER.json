@@ -1745,9 +1745,61 @@ slides: [
 		]
 	}
 	{
-		title: Demo over!
-		imageFileName: facts.png
-		gameText: Thank you for playing through our team's demo!
+		title: Medical examiner
+		imageFileName: image39.jpg
+		gameText: "After the ship has docked and been properly inspected, you and the other passengers form lines to be individually checked by the medical examiner. When it is finally your turn, he inspects your hairlines and eyes. He asks you a few questions concerning your health. The first being: \"Were you quarantined?\""
+		actionChoices: [
+			{
+				choiceText: Yes
+				destinationSlideIndex: 71
+			}
+			{
+				choiceText: No
+				destinationSlideIndex: 72
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: ~quarantine
+						}
+						op: {
+							opcode: ==
+						}
+					}
+				]
+			}
+			{
+				choiceText: No
+				destinationSlideIndex: 73
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: ~quarantine
+						}
+						op: {
+							opcode: !=
+						}
+					}
+				]
+			}
+		]
+	}
+	{
+		title: "Yes, you were quarantined"
+		imageFileName: image39.jpg
+		gameText: "You relayed your bout of sickness aboard the ship. The medical examiner draws the conclusion it was nothing to be concerned with, merely sea sickness. Because you were truthful and you appear to have successfully recovered you are cleared for the health inspection. "
+		actionChoices: [
+			{
+				choiceText: Proceed to the clerk
+				destinationSlideIndex: 74
+			}
+		]
+	}
+	{
+		title: "No, you were not quarantined"
+		imageFileName: image39.jpg
+		gameText: The medical examiner takes your word. He does a final inspection and notices your left eye appears swollen and red. He sends you to a separate line where you are taken into custody and sent to the hospital. You have contracted trachoma and are required to be sent back to Sweden.
 		gameOver: true
 		actionChoices: [
 			{
@@ -1756,6 +1808,29 @@ slides: [
 			}
 		]
 	}
+	{
+		title: "No, you were not quarantined"
+		imageFileName: image39.jpg
+		gameText: You appear to be in perfect health and are cleared for the health inspection. He instructs you to proceed to the clerk.
+		actionChoices: [
+			{
+				choiceText: Proceed to the clerk
+				destinationSlideIndex: 74
+			}
+		]
+	}
+	{
+		title: Historical Note: Medical Examinations
+		imageFileName: facts.png
+		gameText: "Immigration  inspections focused increasingly on keeping diseases out of the country. Trachoma, an eye disease, became a particular worry. This disease had previously been an epidemic."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 75
+			}
+		]
+	}
+	{}
 ]
 player: {
 	name: UNKNOWN
