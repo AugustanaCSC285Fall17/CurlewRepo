@@ -727,7 +727,7 @@ slides: [
 	}
 	{
 		title: Market
-		imageFileName: image14.jpg
+		imageFileName: image4.jpg
 		gameText: You see a market at the end of the lane. Do you wish to shop here?
 		urlText: dieUrl
 		actionChoices: [
@@ -749,7 +749,7 @@ slides: [
 	}
 	{
 		title: Go Straight To Ship
-		imageFileName: image15.jpg
+		imageFileName: image18.jpg
 		gameText: "Inspection After passing initial health inspection, the ticketmaster asks for your papers. Do you have your ticket?"
 		urlText: dieUrl
 		actionChoices: [
@@ -787,7 +787,7 @@ slides: [
 	}
 	{
 		title: Board Ship for Hull
-		imageFileName: image13.jpg
+		imageFileName: image21.jpg
 		gameText: "\"Seems to be in order. Proceed.\" You board the ship for Hull, England."
 		urlText: dieUrl
 		actionChoices: [
@@ -800,7 +800,7 @@ slides: [
 	}
 	{
 		title: No Ticket
-		imageFileName: facts.png
+		imageFileName: image18.jpg
 		gameText: "\"No ticket? What are you doing here?? Go back and get a ticket. Next!\" You head back"
 		urlText: dieUrl
 		actionChoices: [
@@ -813,7 +813,7 @@ slides: [
 	}
 	{
 		title: You Found the Ticket Agent
-		imageFileName: image15.jpg
+		imageFileName: image18.jpg
 		gameText: Ticket agent: "What can I do for you?"
 		urlText: dieUrl
 		actionChoices: [
@@ -905,9 +905,8 @@ slides: [
 	}
 	{
 		title: Pay for ticket to Hull
-		imageFileName: facts.png
+		imageFileName: image18.jpg
 		gameText: You put the ticket into your pocket.
-		slideType: HISTORICAL
 		actionChoices: [
 			{
 				choiceText: Continue
@@ -917,9 +916,8 @@ slides: [
 	}
 	{
 		title: Pay for ticket to Hull with connection to Liverpool
-		imageFileName: facts.png
+		imageFileName: image18.jpg
 		gameText: "You put both tickets into your pocket. "
-		slideType: HISTORICAL
 		actionChoices: [
 			{
 				choiceText: Continue
@@ -941,7 +939,7 @@ slides: [
 	}
 	{
 		title: "Arrive in Hull, England"
-		imageFileName: image19.jpg
+		imageFileName: image29.jpg
 		gameText: "After a relatively smooth journey, you make it to Hull, England - a thriving port and the next step in your journey. In order to proceed, you need to buy passage to Liverpool."
 		actionChoices: [
 			{
@@ -960,7 +958,7 @@ slides: [
 	}
 	{
 		title: You Found the Ticket Agent
-		imageFileName: image17.jpg
+		imageFileName: image25.jpg
 		gameText: Ticket agent: "Welcome to Hull. What are you looking for?"
 		actionChoices: [
 			{
@@ -1024,7 +1022,7 @@ slides: [
 	}
 	{
 		title: Train to Liverpool
-		imageFileName: image18.jpg
+		imageFileName: image30.jpg
 		gameText: A sign above you says Liverpool station. A ticketmaster is inspecting tickets in front out you.
 		actionChoices: [
 			{
@@ -1059,7 +1057,7 @@ slides: [
 	}
 	{
 		title: "Arrive in Liverpool, England"
-		imageFileName: image21.jpg
+		imageFileName: image26.jpg
 		gameText: "Made it to Liverpool: The journey to Liverpool went well. Aside from the uncomfortable seating on the train and the occasional strange looks from the English, you feel more confident about your travels. Liverpool is known as a waypoint for immigrants seeking passage to America."
 		actionChoices: [
 			{
@@ -1074,7 +1072,7 @@ slides: [
 	}
 	{
 		title: You Found the Inspection Line
-		imageFileName: facts.png
+		imageFileName: image25.jpg
 		gameText: Inspection: You encounter the ticketmaster inspecting the passengers. You present him your ticket. He nods and gestures for your papers.
 		actionChoices: [
 			{
@@ -1120,7 +1118,7 @@ slides: [
 	}
 	{
 		title: Forged Papers
-		imageFileName: facts.png
+		imageFileName: image14.jpg
 		gameText: You present your papers and hope they will pay off. You start to become nervous as he eyes them. Perhaps you can silence his questioning glance...
 		actionChoices: [
 			{
@@ -1135,7 +1133,7 @@ slides: [
 	}
 	{
 		title: Bribe him
-		imageFileName: image20.jpg
+		imageFileName: image23.jpg
 		gameText: He makes a gesture for his superior officer to come over. The superior officer glances at the papers and murmurs instructions to his subordinate. The superior officer makes some sharp remarks to you and hands you over to the police for forgery and bribing an officer. You are immediately put in prison for your crimes and are stripped of all your belongings. You must now wait to serve your sentence before you attempt to make it to America.
 		gameOver: true
 		actionChoices: [
@@ -1146,8 +1144,8 @@ slides: [
 	}
 	{
 		title: Don't bribe him
-		imageFileName: image20.jpg
-		gameText: He makes a gesture for his superior officer to come over. The superior officer glances at the papers and murmurs instructions to his subordinate. The superior officer makes some sharp remarks to you and hands you over to the police for forgery. You are immediately deported and put on a watch list for travelling in England. Your hopes of making it to America are squandered and now must live the rest of your days finding work in Sweden.
+		imageFileName: image22.jpg
+		gameText: "He makes a gesture for his superior officer to come over. The superior officer glances at the papers and murmurs instructions to his subordinate. The superior officer makes some sharp remarks to you and hands you over to the police for forgery. You are immediately deported and put on a watch list for travelling in England. Your hopes of making it to America are squandered and you must now live the rest of your days finding work in Sweden."
 		gameOver: true
 		actionChoices: [
 			{
@@ -1157,7 +1155,7 @@ slides: [
 	}
 	{
 		title: Present your papers
-		imageFileName: image27.jpg
+		imageFileName: image32.jpg
 		gameText: "You present your papers. You start to become nervous as he eyes them. He makes a gesture for his superior officer to come over. The superior officer glances at the papers and murmurs instructions to his subordinate. The superior officer nods his head and presents you with a stamped ticket and papers. Happy to have made it thus far, you proceed onto the boat."
 		actionChoices: [
 			{
@@ -1168,7 +1166,7 @@ slides: [
 	}
 	{
 		title: Yuck!
-		imageFileName: facts.png
+		imageFileName: image34.jpg
 		gameText: The narrow walkway smells like old fish and urine. This is not a nice place. You should go back!
 		actionChoices: [
 			{
@@ -1191,9 +1189,8 @@ slides: [
 	}
 	{
 		title: On the Boat to America
-		imageFileName: image27.jpg
+		imageFileName: image32.jpg
 		gameText: You made it on the boat!
-		slideType: MANY_BUTTONS
 		actionChoices: [
 			{
 				choiceText: "Go left [dining hall]"
@@ -1232,7 +1229,7 @@ slides: [
 	}
 	{
 		title: You're in the Dining Room
-		imageFileName: image23.jpg
+		imageFileName: image31.jpg
 		gameText: You meet a lone crew member prepping the dining hall. He stares at you curiously and asks what are you doing here.
 		actionChoices: [
 			{
@@ -1261,7 +1258,7 @@ slides: [
 	}
 	{
 		title: Thanks for the gift
-		imageFileName: facts.png
+		imageFileName: image35.jpg
 		gameText: The crew member smiles and and accepts the gift. In return he presents you with an American almanac. This might come in handy in the future!
 		actionChoices: [
 			{
@@ -1289,7 +1286,7 @@ slides: [
 	}
 	{
 		title: No more rations for you
-		imageFileName: facts.png
+		imageFileName: image31.jpg
 		gameText: The crew member glances at you strangely and swiftly rejects you before attending to his duties.
 		actionChoices: [
 			{
@@ -1300,7 +1297,7 @@ slides: [
 	}
 	{
 		title: You're in the reading room
-		imageFileName: image25.jpg
+		imageFileName: image28.jpg
 		actionChoices: [
 			{
 				choiceText: Interact with passengers
@@ -1314,7 +1311,7 @@ slides: [
 	}
 	{
 		title: Interact with passengers
-		imageFileName: facts.png
+		imageFileName: image33.jpg
 		gameText: "You spend a while with some of the passengers: exchanging stories, sharing meals, and playing music. However, you are now feeling sick..."
 		actionChoices: [
 			{
@@ -1334,7 +1331,7 @@ slides: [
 	{
 		title: Historical Note: Illness and Travel
 		imageFileName: facts.png
-		gameText: "One of the dangers of being onboard is being exposed to germs and disease, partly from traveling in close quarters to others. Cramped living spaces, a lack of access to medical care, and the lack of a clean plumbing system were not ideal conditions. If a person did not bring along home remedies, have additional money to pay for nursing services or contracted something prior to boarding, then passengers had to fend for themselves. Combined with seasickness, the journey could be physically exhausting. \n"
+		gameText: "One of the dangers of being onboard is being exposed to germs and disease, partly from traveling in close quarters to others. Cramped living spaces, a lack of access to medical care, and the lack of a clean plumbing system were not ideal conditions. If passengers did not bring along home remedies, have additional money to pay for nursing services, or had contracted something prior to boarding, then they had to fend for themselves. Combined with seasickness, the journey could be physically exhausting. "
 		slideType: HISTORICAL
 		actionChoices: [
 			{
@@ -1345,7 +1342,7 @@ slides: [
 	}
 	{
 		title: You fell ill!
-		imageFileName: facts.png
+		imageFileName: image36.jpg
 		gameText: You begin to cough uncontrollably. Other passengers stop what they're doing and look at you. What do you do?
 		actionChoices: [
 			{
@@ -1384,7 +1381,7 @@ slides: [
 	}
 	{
 		title: Take Medicine
-		imageFileName: facts.png
+		imageFileName: image27.jpg
 		gameText: All better! Thankfully you brought along some remedies from home.
 		actionChoices: [
 			{
@@ -1403,7 +1400,7 @@ slides: [
 	}
 	{
 		title: Suffer and hope it goes away
-		imageFileName: facts.png
+		imageFileName: image36.jpg
 		gameText: You seem to be getting worse. What do you do?
 		actionChoices: [
 			{
@@ -1441,7 +1438,7 @@ slides: [
 	}
 	{
 		title: Pay for a physician
-		imageFileName: facts.png
+		imageFileName: image36.jpg
 		gameText: You get better but unfortunately you are quarantined for the rest of your journey. You may have missed seeing your first glimpse from afar of America but at least you are alive and well.
 		actionChoices: [
 			{
@@ -1452,7 +1449,7 @@ slides: [
 	}
 	{
 		title: Quarantine
-		imageFileName: facts.png
+		imageFileName: image43.jpg
 		gameText: "You denied medical care. Unfortunately, you died before you reached New York."
 		gameOver: true
 		actionChoices: [
@@ -1464,7 +1461,7 @@ slides: [
 	}
 	{
 		title: Read to yourself
-		imageFileName: facts.png
+		imageFileName: image42.jpg
 		gameText: "You spend some time to yourself- exploring the ship, reading the few materials on the ship, reflecting on how far you have come and thinking about the journey still to come."
 		actionChoices: [
 			{
@@ -1475,7 +1472,7 @@ slides: [
 	}
 	{
 		title: You're on the Deck
-		imageFileName: facts.png
+		imageFileName: image41.jpg
 		gameText: What do you want to do?
 		actionChoices: [
 			{
@@ -1503,7 +1500,7 @@ slides: [
 	}
 	{
 		title: Oceanside
-		imageFileName: image24.jpg
+		imageFileName: image34.jpg
 		gameText: "You situate yourself near the railing of the deck. Your face feels the gentle breeze and you can smell the salty air. The sea is roaring with life as you make your way to America. The weather is fair and your spirits lift as you see the sun glisten onto the shining waters. From the corner of your eye, you notice a shiny glimpse beside you. On one of the lounge chairs there are some small coins. You inspect and find 20 Kronor ($5)! How fortunate!"
 		actionChoices: [
 			{
@@ -1530,7 +1527,7 @@ slides: [
 	}
 	{
 		title: First class deck
-		imageFileName: image26.jpg
+		imageFileName: image46.jpg
 		gameText: "You notice the gate is wide open to the upper decks. Hoping to sneak a better glimpse of the vast ocean, you climb your way up the steps. Before you could find your balance onto the final step, the first officer rounds the corner and catches you. He gives you a sharp warning and orders you to head back to your deck."
 		actionChoices: [
 			{
@@ -1541,7 +1538,7 @@ slides: [
 	}
 	{
 		title: Social Floor
-		imageFileName: image28.jpg
+		imageFileName: image49.jpg
 		gameText: You can hear some lively discussion ahead. However you can also see the entrance to a peaceful cabin room. What do you decide to do?
 		actionChoices: [
 			{
@@ -1556,8 +1553,8 @@ slides: [
 	}
 	{
 		title: Chat with other passengers
-		imageFileName: image28.jpg
-		gameText: "You meet and socialize with other passengers, exchanging stories of the journey thus far. You are both excited and scared when the boat docks in New York"
+		imageFileName: image49.jpg
+		gameText: "You meet and socialize with other passengers, exchanging stories of the journey thus far. You are both excited and scared when the boat docks in New York."
 		actionChoices: [
 			{
 				choiceText: Head back
@@ -1571,7 +1568,7 @@ slides: [
 	}
 	{
 		title: Discuss Scripture
-		imageFileName: image30.jpg
+		imageFileName: image40.jpg
 		gameText: "You encounter a priest reading some psalms and verses to himself. He notices you and begs you to come closer. Interested, you sit beside him and he tells you about the word of God and the inspiration of men like Moses, Noah, and Job- all who were tested on their journeys. Through faith in the Lord, they were triumphant and lived peacefully preaching the word of God."
 		actionChoices: [
 			{
@@ -1632,7 +1629,7 @@ slides: [
 	}
 	{
 		title: Scripture
-		imageFileName: image30.jpg
+		imageFileName: image40.jpg
 		gameText: You reflect on his words and feel a sense of belonging with these stories. You hope you too will find success on your journey. Perhaps God has a special plan for you in America.
 		actionChoices: [
 			{
@@ -1644,7 +1641,7 @@ slides: [
 	{
 		title: Historical Note: Religion and Immigration
 		imageFileName: facts.png
-		gameText: "Although dwarfed by economic reasons, another push factor inspiring immigrants to leave Europe was religious persecution. During the 18th century, official laws forbade Swedes from any religion outside of a recognized Lutheran parish. Around 1860, the Church of Sweden relinquished some of the restrictions and allowed Swedes to practice other denominations."
+		gameText: "Although dwarfed by economic motives, another push factor inspiring immigrants to leave Europe was religious persecution. During the 18th century, official laws forbade Swedes from practicing any religion outside of the recognized Lutheran denomination. Around 1860, the Church of Sweden relinquished some of the restrictions and allowed Swedes to practice other denominations. "
 		slideType: HISTORICAL
 		actionChoices: [
 			{
@@ -1666,7 +1663,7 @@ slides: [
 	}
 	{
 		title: Go below to the boiler room
-		imageFileName: image29.jpg
+		imageFileName: image37.jpg
 		gameText: "You creep down to the belly of the ship and find a world of coal and fire. Men all around are keeping the boilers running. The squeals and churnings of the machine were matched with the yells of crew men giving out orders. Amidst all the noise, someone notices your presence."
 		actionChoices: [
 			{
@@ -1693,7 +1690,7 @@ slides: [
 	}
 	{
 		title: Boiler Room
-		imageFileName: image29.jpg
+		imageFileName: image37.jpg
 		gameText: "You meet a disgruntled boilerman hard at work. He eyes you and starts yelling and pointing for you to get out of there. \nQuickly, you make your way out."
 		actionChoices: [
 			{
@@ -1704,7 +1701,7 @@ slides: [
 	}
 	{
 		title: Boiler Room
-		imageFileName: image29.jpg
+		imageFileName: image37.jpg
 		gameText: "The boilerman mistakes you for a worker, forces you to work. The boilerman eyes you and makes gestures to pick up a shovel and work. What do you do?"
 		actionChoices: [
 			{
@@ -1719,7 +1716,7 @@ slides: [
 	}
 	{
 		title: Say you're a passenger
-		imageFileName: image29.jpg
+		imageFileName: image37.jpg
 		gameText: "You shake your head and try your best to explain you are a passenger. The boilerman yells at you, presumably to get out. You scurry back up."
 		actionChoices: [
 			{
@@ -1730,7 +1727,7 @@ slides: [
 	}
 	{
 		title: You cause the boat to sink!
-		imageFileName: image33.jpg
+		imageFileName: image57.jpg
 		gameText: "Confused and afraid, you don't say anything. He points to a boiler to work on and orders you to shovel the coal into the fire pit. You try to walk away but he pushes you back to the boiler. You hesitantly do as he says. He orders you to fix the gears on the pressure system when you are done. Because of your lack of engineering skills, you fiddle with the gears which causes great amounts of pressure. So much pressure that you cause the boiler to implode. One by one, the boilers catch on fire and cause the room to collapse. The ship sinks into the abyss, lost forever."
 		gameOver: true
 		actionChoices: [
@@ -1742,8 +1739,8 @@ slides: [
 	}
 	{
 		title: "Arrived! Castle Garden, New York City"
-		imageFileName: image32.jpg
-		gameText: "Arrived! You've arrived at Castle Garden in New York City. Before 1890, the federal government practiced some oversight of immigration to the U.S., but it largely contracted out the duties. The famous Ellis Island did not open as the country's primary immigration center until 1892. From 1855 to 1890, more than 8 million immigrants who arrived in New York City were instead processed at Castle Garden, America's first official immigration center, by New York state officials."
+		imageFileName: image38.jpg
+		gameText: "Arrived! You’ve arrived at Castle Garden in New York City. Before 1890, the federal government practiced some oversight of immigration to the U.S., but it largely contracted out the duties. The famous Ellis Island did not open as the country’s primary immigration center until 1892. From 1855 to 1890, more than 8 million immigrants who arrived in New York City were processed at Castle Garden, America’s first official immigration center, by New York state officials. "
 		actionChoices: [
 			{
 				choiceText: Continue
