@@ -56,7 +56,7 @@ slides: [
 	{
 		title: Anders Bengtsson
 		imageFileName: image16.jpg
-		gameText: "You are an 18 year-old male from Mellby Parish, Sm�land. You are the youngest of 4 brothers and will not have any farmland to work. There are too many men in your family and not enough farmland. Additionally, the crop failures of 1867-1868 hit your family farm hard. You would also like to avoid Swedish military conscription. You are coming to America to own your own farmland or find a good job."
+		gameText: "You are an 18 year-old male from Mellby Parish, Småland. You are the youngest of 4 brothers and will not have any farmland to work. There are too many men in your family and not enough farmland. Additionally, the crop failures of 1867-1868 hit your family farm hard. You would also like to avoid Swedish military conscription. You are coming to America to own your own farmland or find a good job."
 		urlText: url1
 		slideType: LETTER
 		actionChoices: [
@@ -97,7 +97,7 @@ slides: [
 	}
 	{
 		title: You've received a letter from America.
-		imageFileName: image9.jpg
+		imageFileName: image10.jpg
 		gameText: "Receiving letters from those who journeyed to America prompted many of your family friends to pursue their own journey over. Life must be treating them well in America- economic opportunities, building their own legacy and family. The American Dream is a strong pull for Swedes, yourself included. \n\nChoose a letter to read:"
 		urlText: dieUrl
 		actionChoices: [
@@ -175,7 +175,7 @@ slides: [
 	}
 	{
 		title: John Deere letter
-		imageFileName: image5.jpg
+		imageFileName: image6.jpg
 		gameText: "To Whom It May Concern,\n\nWe hope you find this letter in good spirits. On behalf of the John Deere Company, we thank you for meeting with us concerning about jobs within our factories. We are pleased to inform you you have been recruited for a position at the Moline factory site. We are looking forward to seeing you again and have safe travels. Please bring along this notarized letter with you to our recruitment office.\n\nGod speed,\n\nFrom the Office of John Deere, President of John Deere Co."
 		urlText: dieUrl
 		slideType: LETTER
@@ -190,7 +190,7 @@ slides: [
 	{
 		title: Illinois letter
 		imageFileName: image7.jpg
-		gameText: "Dear Cousin,\n\nMay God find you well, dear friend! God is good and God is plentiful. He has shown me the way to a brighter future here in America. My journey has led myself and my travelling companions to a quaint town in the state of Illinois called Moline. It may be quaint now but we are fortunate to have factories and farming jobs available for the people. I have friends all over Illinois including Rockford and Chicago! We stay in touch through correspondence and the occasional social visit when we can. My piece of advice for you, should you make the journey, is to find peace with yourself and our loving God. For He is the way and will guide you! The Christian faith has given me hope and salvation along my journey. My fellow companions and myself attend the Lutheran service held by a pastor who is also from Sweden. It is wonderful to have familiarity in a strange place. Services are something to look forward to as it brings us closer to our Maker and builds a strong sense of community. I pray for all the success in the world for you as you make your own journey. \n\nLovingly,\n\nErika Leiffson"
+		gameText: "Dear Cousin,\n\nMay God find you well, dear friend! God is good and God is plentiful. He has shown me the way to a brighter future here in America. My journey has led my travelling companions and me to a quaint town in the state of Illinois called Moline. It may be quaint now but we are fortunate to have factories and farming jobs available for the people. I have friends all over Illinois including Rockford and Chicago! We stay in touch through correspondence and the occasional social visit when we can. My piece of advice for you, should you make the journey, is to find peace with yourself and our loving God. For He is the way and will guide you! The Christian faith has given me hope and salvation along my journey. My fellow companions and I attend the Lutheran service held by a pastor who is also from Sweden. It is wonderful to have familiarity in a strange place. Services are something to look forward to as it brings us closer to our Maker and builds a strong sense of community. I pray for all the success in the world for you as you make your own journey. \nLovingly,\nErika Leiffson"
 		urlText: dieUrl
 		slideType: LETTER
 		actionChoices: [
@@ -203,7 +203,7 @@ slides: [
 	}
 	{
 		title: Washington letter
-		imageFileName: image8.jpg
+		imageFileName: image17.jpg
 		gameText: "Dear Cousin,\n\nI have been blessed to have found a place I can call home. My journeys were long, and at times I had felt grief for leaving my beautiful Sweden. I remember so clearly how it felt to be a stranger in a strange place. Only having a small trunk and broken English left me apprehensive of my surroundings. I am thankful that I have experienced no ill wills on my passage to America. I had heard some of my kin had travelled to the far west of this vast country, in a place called Washington state. My family settled near Tacoma and are now prosperous farmers and fishermen! I decided to try my hand for this place. I took the Walla Walla railroad instead of the Northern Pacific, as it was the cheaper option. I was taken to Seattle and found a boardinghouse for Swedes. Within a month I had found employment as a maid to one of the founding families. They treat me well despite some language barrier, but I am becoming more proficient and feel more confident in my new home.\n\nI do wish you well and hope someday to meet you again in my new home! Give my love to my family and friends!\n\nLinnea Parsson"
 		urlText: dieUrl
 		slideType: LETTER
@@ -217,7 +217,7 @@ slides: [
 	}
 	{
 		title: Minnesota letter
-		imageFileName: image8.jpg
+		imageFileName: image20.jpg
 		gameText: "Dear Cousin,\n\nI am content to report that I have found steady employment as my own master. I had arrived only two months in St. Paul, working odds and ends in the town when I noticed an advertisement of purchasable land not far from my lodgings. Land is so cheap here in America! I saved enough to buy my own lot and have begun to till and grind the land. My hope is to grow peas and potatoes and sell them at market. Let us pray for a good harvest this next season!\n\nLife has treated me well. The journey is hard on everyone, harder for others. My companion on the trip to America arrived well but I have received word that he has fallen into poverty. He was swindled by a false recruiter at the docks. He is struggling to find employment in the city but, God willing, I hope he will find something soon!\n\nAs you make the journey, make sure to bring plenty of food. They treat you well on the ships and trains but the journey alone can make one homesick. A little piece of home can appease the qualms of the stomach and might make you a friend or two!\n\nGodspeed dear cousin! \n\nArvid Lothbrok"
 		urlText: dieUrl
 		slideType: LETTER
@@ -259,8 +259,8 @@ slides: [
 	}
 	{
 		title: Travel Papers
-		imageFileName: image9.jpg
-		gameText: "To start your journey, you need a few provisions. The first and foremost being your papers. Check your inventory to see how much money you currently have.  Do you:",
+		imageFileName: image14.jpg
+		gameText: "To start your journey, you need a few provisions. The first and foremost being your papers. Check your inventory to see how much money you have saved up, which is 280 Kronor. Do you:"
 		urlText: dieUrl
 		actionChoices: [
 			{
@@ -308,7 +308,7 @@ slides: [
 	{
 		title: Historical Note: Getting Papers for Travel
 		imageFileName: facts.png
-		gameText: "Immigrants from Sweden usually gained needed papers for travel from their Parish. Tickets were costly; $30 USD in 1880 is the equivalent of $775 USD in 2017. Forging papers was not typical for immigrants; however, one letter, translated by the Swenson Center and sent to a Mr. Hjalmar Andersson, mentions that Swedish men were drafted in the military when they turned 18. In order for these men to migrate, they needed to find alternative ways to seek passage and documentation, so the letter writer suggests pursuing a forgery."
+		gameText: "Immigrants from Sweden usually gained needed papers for travel from their parishes. Tickets were costly; $30 USD in 1880 is the equivalent of $775 USD in 2017. Forging papers was not typical for immigrants; however, one letter, sent to a Mr. Hjalmar Andersson and translated by the Swenson Center, mentions that Swedish men were drafted in the military when they turned 18. In order for these men to migrate, they needed to find alternative ways to seek passage and documentation, so the letter writer suggests pursuing a forgery."
 		urlText: dieUrl
 		slideType: HISTORICAL
 		actionChoices: [
@@ -321,10 +321,9 @@ slides: [
 	}
 	{
 		title: Choose your Inventory items
-		imageFileName: facts.png
-		gameText: "Excellent. You are the first in your family to take on this journey. They are counting on your success in America. Your family has pooled enough money for passage, thankfully. You cannot take very much with you, so you must choose carefully which items to bring. Some items are more useful than others but even the smallest, trivial item can lead to unexpected use. Remember, you have some money left after purchasing papers.\n\nChoose one item"
+		imageFileName: image8.jpg
+		gameText: "Excellent. You are the first in your family to take on this journey. They are counting on your success in America. Your family has pooled enough money for passage, thankfully. You cannot take very much with you, so you must choose carefully which items to bring. Some items are more useful than others but even the smallest, trivial item can lead to unexpected use. Remember, you have some money left after purchasing papers."
 		urlText: dieUrl
-		slideType: MANY_BUTTONS
 		actionChoices: [
 			{
 				choiceText: Bible
@@ -395,10 +394,9 @@ slides: [
 	}
 	{
 		title: Choose another Inventory items
-		imageFileName: facts.png
-		gameText: "Excellent. You are the first in your family to take on this journey. They are counting on your success in America. Your family has pooled enough money for passage, thankfully. You cannot take too much with you, so you must choose carefully which items to bring. Some items are more useful than others but even the smallest, trivial item can lead to unexpected use. \n\nChoose one item"
+		imageFileName: image8.jpg
+		gameText: "Excellent. You are the first in your family to take on this journey. They are counting on your success in America. Your family has pooled enough money for passage, thankfully. You cannot take very much with you, so you must choose carefully which items to bring. Some items are more useful than others but even the smallest, trivial item can lead to unexpected use. "
 		urlText: dieUrl
-		slideType: MANY_BUTTONS
 		actionChoices: [
 			{
 				choiceText: Bible
@@ -524,10 +522,9 @@ slides: [
 	}
 	{
 		title: Choose your final Inventory item
-		imageFileName: facts.png
-		gameText: "Excellent. You are the first in your family to take on this journey. They are counting on your success in America. Your family has pooled enough money for passage, thankfully. You cannot take too much with you, so you must choose carefully which items to bring. Some items are more useful than others but even the smallest, trivial item can lead to unexpected use. \n\nChoose one item"
+		imageFileName: image8.jpg
+		gameText: "Excellent. You are the first in your family to take on this journey. They are counting on your success in America. Your family has pooled enough money for passage, thankfully. You cannot take very much with you, so you must choose carefully which items to bring. Some items are more useful than others but even the smallest, trivial item can lead to unexpected use. "
 		urlText: dieUrl
-		slideType: MANY_BUTTONS
 		actionChoices: [
 			{
 				choiceText: Bible
@@ -654,7 +651,7 @@ slides: [
 	{
 		title: Historical Note: Inventory
 		imageFileName: facts.png
-		gameText: Many immigrants sold much of what they owned both in order to pay for the immense travel fees. Others planned to start over in America and so liquidated all their assets.
+		gameText: "Many immigrants sold much of what they owned in order to pay for the immense travel fees. Others planned to start over in America and so liquidated all their assets."
 		urlText: dieUrl
 		slideType: HISTORICAL
 		actionChoices: [
@@ -667,7 +664,7 @@ slides: [
 	}
 	{
 		title: Transport to Gothenburg
-		imageFileName: image12.jpg
+		imageFileName: image3.jpg
 		gameText: "You take a wagon to the port city of Gothenburg. You walk along Sillgatan or \"Herring Street\" where there were many emigrant agents, hotels, shops, and taverns. Here you wait to board a ship to England."
 		urlText: dieUrl
 		actionChoices: [
@@ -681,7 +678,7 @@ slides: [
 	{
 		title: Historical Note: Gothenburg Port
 		imageFileName: facts.png
-		gameText: "Over a million Swedish immigrants left through the port of Gothenburg in southwest Sweden. Many American genealogists believe their ancestors lived in Gothenburg, when really this was just the port they left through. Provinces of Sweden including Småland, Västergötland, Dalsland, Värmland, and Öland saw large numbers emigrate. "
+		gameText: "Over a million Swedish immigrants left through the port of Gothenburg in southwest Sweden. Some Swedish Americans believe their ancestors lived in Gothenburg, when really this was just the port they left through. Provinces of Sweden including Småland, Västergötland, Dalsland, Värmland, and Öland saw large numbers emigrate. "
 		urlText: dieUrl
 		slideType: HISTORICAL
 		actionChoices: [
@@ -694,10 +691,9 @@ slides: [
 	}
 	{
 		title: Historical Note: The Travel Route
-		imageFileName: facts.png
+		imageFileName: image11.jpg
 		gameText: "After the American Civil War, big steamship companies like the White Star Line organized emigrant travel. For Swedes, this often meant traveling to Gothenburg, taking a ship to Hull, England, crossing England by train, and taking a steamliner from Liverpool to New York. After World War I, the Swedish American Line was established with a direct route from Gothenburg to New York and Swedish immigrants no longer had to travel through England."
 		urlText: dieUrl
-		slideType: HISTORICAL
 		actionChoices: [
 			{
 				choiceText: Continue
@@ -708,7 +704,7 @@ slides: [
 	}
 	{
 		title: Gothenburg Port
-		imageFileName: image11.jpg
+		imageFileName: image13.jpg
 		gameText: You have arrived at Gothenburg port. The port of Gothenburg promises good sailing today. You need to find the ticket agent for the White Star Line.
 		urlText: dieUrl
 		actionChoices: [
