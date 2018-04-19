@@ -25,9 +25,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -263,26 +265,44 @@ public class MainPaneController {
 	// Main tab methods
 
 	// Save and load methods
-
+	private File currentFile;
 
 	@FXML
 	private void handleSaveButton() {
-		data.save();
-		saved = true;
+		if (currentFile == null) {
+			Alert alert = new Alert(AlertType.ERROR, "You don't have any files to save.");
+			alert.showAndWait();
+		} else {
+			data.save(currentFile.getAbsolutePath());
+			saved = true;
+		}
 	}
 
 
 	@FXML
 	private void handleSaveAsButton() {
-		TextInputDialog dialog = new TextInputDialog("");
-		dialog.setTitle("Save As");
-		dialog.setContentText("Please enter desired name:");
-		Optional<String> result = dialog.showAndWait();
-		if (result.isPresent()) {
-			data.saveAs(result.get());
-			saved = true;
+//		TextInputDialog dialog = new TextInputDialog("");
+//		dialog.setTitle("Save As");
+//		dialog.setContentText("Please enter desired name:");
+//		Optional<String> result = dialog.showAndWait();
+//		if (result.isPresent()) {
+//			data.saveAs(result.get());
+//			saved = true;
+//		} else {
+//			new Alert(AlertType.ERROR, "File not saved");
+//		}
+		
+		if (currentFile == null) {
+			Alert alert = new Alert(AlertType.ERROR, "You don't have any files to save.");
+			alert.showAndWait();
 		} else {
-			new Alert(AlertType.ERROR, "File not saved");
+			FileChooser fileChooser = new FileChooser();
+			fileChooser.setTitle("Save As");
+			fileChooser.getExtensionFilters().add(new ExtensionFilter("JSON files (*.json)", "*.json"));
+			File chosenFile = fileChooser.showSaveDialog(mainWindow);
+			if (chosenFile != null) {
+				currentFile = chosenFile;
+			}
 		}
 	}
 
@@ -291,12 +311,12 @@ public class MainPaneController {
 	private void handleLoadButton() throws IOException {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Chose a file to load");
-		File inFile = fileChooser.showOpenDialog(mainWindow);
-		if (inFile == null) {
+		currentFile = fileChooser.showOpenDialog(mainWindow);
+		if (currentFile == null) {
 
 		} else {
 			try{
-			this.data = GameBuilderApplication.loadGameDataFromJSONFile(inFile);
+			this.data = GameBuilderApplication.loadGameDataFromJSONFile(currentFile);
 			se = new SlideEditor(data);
 			pController.updateData(data);
 			clearSlideEditor();

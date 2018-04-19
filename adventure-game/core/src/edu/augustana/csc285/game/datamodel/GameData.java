@@ -100,7 +100,7 @@ public class GameData {
 	}
 
 	public void removeSlide(int index) {
-
+		slides.remove(index);
 		// loops through every slide
 		for (int currentSlide = 0; currentSlide < slides.size(); currentSlide++) {
 			List<ActionChoice> choices = slides.get(currentSlide).getActionChoices();
@@ -162,19 +162,17 @@ public class GameData {
 	 * saves the progress in the game builder with a save as name by calling the save method below
 	 * @param saveName string that the user wants the data to be saved under
 	 */
-	public void saveAs(String saveName) {
-		this.saveName = saveName;
-		save();
+	public void saveAs(String newAddress) {
+		save(newAddress);
 	}
 
 	/**
 	 * saves the info in the game builder
 	 */
-	public void save() {
+	public void save(String currentAddress) {
 		String toSave = toJSON();
-		String path = "assets/data/" + saveName + ".json";
 		try {
-			FileWriter writer = new FileWriter(path);
+			FileWriter writer = new FileWriter(currentAddress);
 			writer.write(toSave);
 			writer.close();
 		} catch (IOException e) {
