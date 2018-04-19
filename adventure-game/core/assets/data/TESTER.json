@@ -1763,8 +1763,9 @@ slides: [
 							itemName: ~quarantine
 						}
 						op: {
-							opcode: ==
+							opcode: !=
 						}
+						qtyToCompare: 0
 					}
 				]
 			}
@@ -1778,8 +1779,9 @@ slides: [
 							itemName: ~quarantine
 						}
 						op: {
-							opcode: !=
+							opcode: ==
 						}
+						qtyToCompare: 0
 					}
 				]
 			}
@@ -1830,6 +1832,193 @@ slides: [
 			}
 		]
 	}
+	{
+		title: Immigrant processing line
+		imageFileName: image44.jpg
+		gameText: "You are directed to a separate holding area, joining a long line for processing. When you get to the end of the line, the clerk asks you what nation you're coming from, as that line on your first form has been smudged. You see a set of national flags nearby and point to the one that identifies your country. To which flag do you point?  "
+		actionChoices: [
+			{
+				choiceText: Flag on Top
+				destinationSlideIndex: 76
+			}
+			{
+				choiceText: Flag in Middle
+				destinationSlideIndex: 77
+			}
+			{
+				choiceText: Flag on Bottom
+				destinationSlideIndex: 78
+			}
+		]
+	}
+	{
+		title: Italian nationality
+		imageFileName: image44.jpg
+		gameText: "The clerk looks at you strangely. Clearly, the language you’re speaking is not Italian. He angrily barks at you to tell the truth."
+		actionChoices: [
+			{
+				choiceText: Pick another flag
+				destinationSlideIndex: 75
+			}
+		]
+	}
+	{
+		title: Irish nationality
+		imageFileName: image44.jpg
+		gameText: "The clerk is really confused. You’re not from the British empire, he barks, as you’re speaking some different sort of language. The Irish immigrants behind you snicker."
+		actionChoices: [
+			{
+				choiceText: Pick another flag
+				destinationSlideIndex: 75
+			}
+		]
+	}
+	{
+		title: United Kingdoms of Sweden and Norway
+		imageFileName: image47.jpg
+		gameText: "You point to the flag for the United Kingdoms of Sweden and Norway, a union that began in 1814 (and would end peacefully in 1905, although you don’t yet know that!). The clerk asks for your papers."
+		actionChoices: [
+			{
+				choiceText: Hand over immigration Papers
+				destinationSlideIndex: 79
+			}
+		]
+	}
+	{
+		title: Official papers
+		imageFileName: image47.jpg
+		gameText: He inspects your boarding and disembarkation documents and cross-references with your official Swedish papers. He stamps the documents accordingly and sends you on your way.
+		actionChoices: [
+			{
+				choiceText: Proceed on your journey
+				destinationSlideIndex: 80
+			}
+		]
+	}
+	{
+		title: Money exchange
+		imageFileName: image45.jpg
+		gameText: "Your Swedish kronor will be of little use in America. You need to exchange your money for dollars. The exchange rate appears to be about 4 to 1, which means for every 40 kronor, you’ll get $10 back."
+		actionChoices: [
+			{
+				choiceText: Proceed to transport station
+				destinationSlideIndex: 81
+			}
+		]
+	}
+	{
+		title: Transport Clerk
+		imageFileName: image51.jpg
+		gameText: "Another hour passes by while you are waiting in line for the transport station. When it is finally your time, you approach the transport clerk. Train ticket prices typically were about $.02 per mile in 1890, so you really hope you have enough money. Where are you going?"
+		actionChoices: [
+			{
+				choiceText: "Moline, IL ($20)"
+				destinationSlideIndex: 82
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Illinois letter
+							imageName: letter.png
+							visible: true
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.GenderCondition
+						genderToCheck: MALE
+					}
+				]
+			}
+			{
+				choiceText: "Chicago, IL ($15)"
+				destinationSlideIndex: 83
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Illinois letter
+							imageName: letter.png
+							visible: true
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.GenderCondition
+						genderToCheck: FEMALE
+					}
+				]
+			}
+			{
+				choiceText: "Moline, IL ($20)"
+				destinationSlideIndex: 82
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: John Deere letter
+							imageName: letter.png
+							visible: true
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.GenderCondition
+						genderToCheck: MALE
+					}
+				]
+			}
+			{
+				choiceText: "St. Paul, MN ($30)"
+				destinationSlideIndex: 84
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Minnesota letter
+							imageName: letter.png
+							visible: true
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+				]
+			}
+			{
+				choiceText: "Seattle, WA ($50)"
+				destinationSlideIndex: 85
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Washington letter
+							imageName: letter.png
+							visible: true
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+				]
+			}
+		]
+	}
+	{}
+	{}
+	{}
+	{}
 	{}
 ]
 player: {
