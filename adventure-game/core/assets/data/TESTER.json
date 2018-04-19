@@ -1897,8 +1897,16 @@ slides: [
 			{
 				choiceText: Proceed to transport station
 				destinationSlideIndex: 81
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.CurrencyChangeEffect
+						from: Kronor
+						to: Dollar
+					}
+				]
 			}
 		]
+		
 	}
 	{
 		title: Transport Clerk
@@ -2116,6 +2124,11 @@ player: {
 		{
 			itemName: Washington letter
 			imageName: letter.png
+			visible: true
+		}
+		{
+			itemName: Dollar
+			imageName: coincash.png
 			visible: true
 		}
 	]
