@@ -60,6 +60,7 @@ public class SlideScreen implements Screen {
 	private Dialog fontDialog;
 	
 	private Image zoomImage;
+	private Image zoomBorder;
 	private Image zoomRectangle;
 	
 	public SlideScreen(final AdventureGame game) {
@@ -88,8 +89,11 @@ public class SlideScreen implements Screen {
 		
 		zoomImage = new Image();
 		zoomImage.setVisible(false);
-		zoomImage.setSize(450, 650);
+		zoomImage.setSize(450, 680);
 		zoomImage.setPosition(90, Gdx.graphics.getHeight() - zoomImage.getHeight() - 20);
+
+		zoomBorder = new Image(new Texture(Gdx.files.internal("art/grid.png")));
+		zoomBorder.setBounds(zoomImage.getX(), zoomImage.getY(), zoomImage.getWidth(), zoomImage.getHeight());
 		
 		Label zoomOverlay = new Label("", game.skin);
 		zoomOverlay.setSize(size, size);
@@ -152,6 +156,7 @@ public class SlideScreen implements Screen {
 
 					zoomRectangle.setPosition(zoomRectX, zoomRectY);
 					zoomRectangle.setVisible(true);
+					zoomBorder.setVisible(true);
 					return true;
 				}
 				
@@ -160,6 +165,7 @@ public class SlideScreen implements Screen {
 		
 		zoomRectangle = new Image(new Texture(Gdx.files.internal("art/zoomRect.png")));
 		zoomRectangle.setVisible(false);
+		zoomBorder.setVisible(false);
 		zoomRectangle.setBounds(0, 0, zoomWPanel, zoomHPanel);
 		
 		game.stage.addActor(game.bgImg);
@@ -177,6 +183,7 @@ public class SlideScreen implements Screen {
 		// zoom functionality
 		game.stage.addActor(zoomImage);
 		game.stage.addActor(zoomRectangle);
+		game.stage.addActor(zoomBorder);
 		game.stage.addActor(zoomOverlay);
 
 		game.stage.addActor(volumeDialog);
@@ -448,8 +455,7 @@ public class SlideScreen implements Screen {
 	
 	private void createTitle() {
 		title = new Label(curSlide.getTitle(), game.skin, "title");
-		if (curSlide.getSlideType() == SlideType.LETTER
-				|| curSlide.getSlideType() == SlideType.NORMAL) {
+		if (curSlide.getSlideType() == SlideType.NORMAL) {
 			title.setWrap(true);
 		}
 		title.setWidth(440);
@@ -467,8 +473,7 @@ public class SlideScreen implements Screen {
 		// for normal slide
 		int gameTextWidth = 400;
 		
-		if (curSlide.getSlideType() == SlideType.HISTORICAL
-				|| curSlide.getSlideType() == SlideType.MANY_BUTTONS) {
+		if (curSlide.getSlideType() == SlideType.HISTORICAL) {
 			gameTextWidth = 700;
 		}
 		
@@ -524,6 +529,7 @@ public class SlideScreen implements Screen {
 		if (Gdx.input.getX() < Gdx.graphics.getWidth() - game.bgImg.getWidth()) {
 			zoomImage.setVisible(false);
 			zoomRectangle.setVisible(false);
+			zoomBorder.setVisible(false);
 		}
 		
 		game.stage.act(Gdx.graphics.getDeltaTime());

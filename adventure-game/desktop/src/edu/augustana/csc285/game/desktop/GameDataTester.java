@@ -23,7 +23,7 @@ public class GameDataTester{
 		s1.getActionChoices().add(new ActionChoice("die", -1));
 		s1.getActionChoices().add(new ActionChoice("go to room 2", 2));
 		
-		Slide s2 = new Slide("Room 2", "slide_002.png", "text2", SlideType.MANY_BUTTONS, "url2");
+		Slide s2 = new Slide("Room 2", "slide_002.png", "text2", SlideType.NORMAL, "url2");
 		s2.getActionChoices().add(new ActionChoice("go back to room 0", 0));
 		s2.getActionChoiceAt(0).getVisibilityCond().add(new ItemCondition("emus", RelationalOperator.GREATER_THAN, 1));
 		
