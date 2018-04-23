@@ -1759,7 +1759,6 @@ slides: [
 						op: {
 							opcode: !=
 						}
-						qtyToCompare: 0
 					}
 				]
 			}
@@ -1775,7 +1774,6 @@ slides: [
 						op: {
 							opcode: ==
 						}
-						qtyToCompare: 0
 					}
 				]
 			}
@@ -1906,7 +1904,6 @@ slides: [
 				]
 			}
 		]
-		
 	}
 	{
 		title: Transport Clerk
@@ -1916,6 +1913,21 @@ slides: [
 			{
 				choiceText: "Moline, IL ($20)"
 				destinationSlideIndex: 82
+				rejText: Insufficient funds!
+				feasibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 20
+					}
+				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -1938,6 +1950,21 @@ slides: [
 			{
 				choiceText: "Chicago, IL ($15)"
 				destinationSlideIndex: 83
+				rejText: Insufficient funds!
+				feasibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 15
+					}
+				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -1960,6 +1987,21 @@ slides: [
 			{
 				choiceText: "Moline, IL ($20)"
 				destinationSlideIndex: 82
+				rejText: Insufficient funds!
+				feasibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 20
+					}
+				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -1982,6 +2024,21 @@ slides: [
 			{
 				choiceText: "St. Paul, MN ($30)"
 				destinationSlideIndex: 84
+				rejText: Insufficient funds!
+				feasibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 30
+					}
+				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -2000,6 +2057,21 @@ slides: [
 			{
 				choiceText: "Seattle, WA ($50)"
 				destinationSlideIndex: 85
+				rejText: Insufficient funds!
+				feasibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 50
+					}
+				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -2015,8 +2087,1019 @@ slides: [
 					}
 				]
 			}
+			{
+				choiceText: Not enough money
+				destinationSlideIndex: 86
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Illinois letter
+							imageName: letter.png
+							visible: true
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.GenderCondition
+						genderToCheck: MALE
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <
+						}
+						qtyToCompare: 20
+					}
+				]
+			}
+			{
+				choiceText: Not enough money
+				destinationSlideIndex: 86
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Illinois letter
+							imageName: letter.png
+							visible: true
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.GenderCondition
+						genderToCheck: FEMALE
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <
+						}
+						qtyToCompare: 15
+					}
+				]
+			}
+			{
+				choiceText: Not enough money
+				destinationSlideIndex: 86
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: John Deere letter
+							imageName: letter.png
+							visible: true
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <
+						}
+						qtyToCompare: 20
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.GenderCondition
+						genderToCheck: MALE
+					}
+				]
+			}
+			{
+				choiceText: Not enough money
+				destinationSlideIndex: 86
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Minnesota letter
+							imageName: letter.png
+							visible: true
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <
+						}
+						qtyToCompare: 30
+					}
+				]
+			}
+			{
+				choiceText: Not enough money
+				destinationSlideIndex: 86
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Washington letter
+							imageName: letter.png
+							visible: true
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <
+						}
+						qtyToCompare: 50
+					}
+				]
+			}
 		]
 	}
+	{
+		title: "Journey to Moline, IL"
+		imageFileName: image51.jpg
+		gameText: "After paying the fee, you are handed your ticket. It will take you to Chicago before you transfer lines to the Moline area."
+		actionChoices: [
+			{
+				choiceText: Proceed to ferry
+				destinationSlideIndex: 88
+			}
+		]
+	}
+	{
+		title: "Journey to Chicago, IL"
+		imageFileName: image51.jpg
+		gameText: "After paying the fee, you are handed your ticket."
+		actionChoices: [
+			{
+				choiceText: Proceed to ferry
+				destinationSlideIndex: 88
+			}
+		]
+	}
+	{
+		title: "Journey to St. Paul, MN"
+		imageFileName: image51.jpg
+		gameText: "After paying the fee, you are handed your ticket. It will take you to your first stop in Chicago. From there you will transfer lines to St. Paul."
+		actionChoices: [
+			{
+				choiceText: Proceed to ferry
+				destinationSlideIndex: 88
+			}
+		]
+	}
+	{
+		title: "Journey to Seattle, WA"
+		imageFileName: image51.jpg
+		gameText: "After paying the fee, you are handed your ticket. It will take you to your first stop in Chicago. From there you will transfer lines to St. Paul, and once again to get to Seattle."
+		actionChoices: [
+			{
+				choiceText: Proceed to ferry
+				destinationSlideIndex: 88
+			}
+		]
+	}
+	{
+		title: Not enough money
+		imageFileName: image53.jpg
+		gameText: "You do not have enough, but you’re talking to a number of new arrivals nearby and many of them seen interested in items from your trunk. What would you like to sell?"
+		actionChoices: [
+			{
+				choiceText: Bible
+				destinationSlideIndex: 86
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Bible
+							imageName: biblebook.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 1
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Bible
+							visible: true
+						}
+						effectSize: -1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 5
+					}
+				]
+			}
+			{
+				choiceText: Family heirloom
+				destinationSlideIndex: 86
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Family heirloom
+							imageName: heirloom.png
+							visible: true
+							sellPrice: 15
+							canSell: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 1
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Family heirloom
+							visible: true
+						}
+						effectSize: -1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 5
+					}
+				]
+			}
+			{
+				choiceText: Sewing materials
+				destinationSlideIndex: 86
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Sewing materials
+							imageName: sewing.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 1
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Sewing materials
+							visible: true
+						}
+						effectSize: -1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 5
+					}
+				]
+			}
+			{
+				choiceText: Medicine
+				destinationSlideIndex: 86
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Medicine
+							imageName: medicinebottle.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 1
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Medicine
+							visible: true
+						}
+						effectSize: -1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 5
+					}
+				]
+			}
+			{
+				choiceText: Cured meat
+				destinationSlideIndex: 86
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Cured Meat
+							imageName: curedmeat.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 1
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Cured Meat
+							visible: true
+						}
+						effectSize: -1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 5
+					}
+				]
+			}
+			{
+				choiceText: Go back
+				destinationSlideIndex: 81
+			}
+			{
+				choiceText: Oh no! I still don’t have enough money after these sales!
+				destinationSlideIndex: 87
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Bible
+							imageName: biblebook.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Cured Meat
+							imageName: curedmeat.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Family heirloom
+							imageName: heirloom.png
+							visible: true
+							sellPrice: 15
+							canSell: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Medicine
+							imageName: medicinebottle.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Sewing materials
+							imageName: sewing.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Illinois letter
+							imageName: letter.png
+							visible: true
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.GenderCondition
+						genderToCheck: MALE
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <
+						}
+						qtyToCompare: 20
+					}
+				]
+			}
+			{
+				choiceText: Oh no! I still don’t have enough money after these sales!
+				destinationSlideIndex: 87
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Bible
+							imageName: biblebook.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Cured Meat
+							imageName: curedmeat.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Family heirloom
+							imageName: heirloom.png
+							visible: true
+							sellPrice: 15
+							canSell: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Medicine
+							imageName: medicinebottle.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Sewing materials
+							imageName: sewing.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Illinois letter
+							imageName: letter.png
+							visible: true
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.GenderCondition
+						genderToCheck: FEMALE
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <
+						}
+						qtyToCompare: 15
+					}
+				]
+			}
+			{
+				choiceText: Oh no! I still don’t have enough money after these sales!
+				destinationSlideIndex: 87
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Bible
+							imageName: biblebook.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Cured Meat
+							imageName: curedmeat.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Family heirloom
+							imageName: heirloom.png
+							visible: true
+							sellPrice: 15
+							canSell: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Medicine
+							imageName: medicinebottle.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Sewing materials
+							imageName: sewing.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: John Deere letter
+							imageName: letter.png
+							visible: true
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <
+						}
+						qtyToCompare: 20
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.GenderCondition
+						genderToCheck: MALE
+					}
+				]
+			}
+			{
+				choiceText: Oh no! I still don’t have enough money after these sales!
+				destinationSlideIndex: 87
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Bible
+							imageName: biblebook.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Cured Meat
+							imageName: curedmeat.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Family heirloom
+							imageName: heirloom.png
+							visible: true
+							sellPrice: 15
+							canSell: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Medicine
+							imageName: medicinebottle.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Sewing materials
+							imageName: sewing.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Minnesota letter
+							imageName: letter.png
+							visible: true
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <
+						}
+						qtyToCompare: 30
+					}
+				]
+			}
+			{
+				choiceText: Oh no! I still don’t have enough money after these sales!
+				destinationSlideIndex: 87
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Bible
+							imageName: biblebook.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Cured Meat
+							imageName: curedmeat.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Family heirloom
+							imageName: heirloom.png
+							visible: true
+							sellPrice: 15
+							canSell: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Medicine
+							imageName: medicinebottle.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Sewing materials
+							imageName: sewing.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Washington letter
+							imageName: letter.png
+							visible: true
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <
+						}
+						qtyToCompare: 50
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Oh No!
+		imageFileName: image53.jpg
+		gameText: "You still don’t have enough money, so your journey ends for now in New York City, home to many other immigrants from your homeland. Unfortunately, you won’t be able to earn enough money to send for your brother until you find a good line of work."
+		gameOver: true
+		actionChoices: [
+			{
+				choiceText: "Try following another path from the start. "
+				destinationSlideIndex: 1
+			}
+		]
+	}
+	{
+		title: Ferry from Castle Garden
+		imageFileName: image50.jpg
+		gameText: "You journey over by ferry. You marvel at the city before you. Finally, after many struggles you have made it to America. You step on land and feel an immense relief."
+		actionChoices: [
+			{
+				choiceText: Talk with recruiter
+				destinationSlideIndex: 89
+			}
+			{
+				choiceText: Take New York Central Railroad to Chicago - tickets A-D
+				destinationSlideIndex: 1
+			}
+		]
+	}
+	{
+		title: Recruiter
+		imageFileName: image52.jpg
+		gameText: "A recruiter notices you and approaches you. He offers you a job at a factory nearby. You feel wary about his demeanor, but you’d love to get your new life started in America right away. What do you do?"
+		actionChoices: [
+			{
+				choiceText: Accept job
+				destinationSlideIndex: 90
+			}
+			{
+				choiceText: Decline offer
+				destinationSlideIndex: 91
+			}
+		]
+	}
+	{
+		title: "\"Factory job\""
+		imageFileName: image54.jpg
+		gameText: "You accept the job, thinking the best. He walks with you to the \"factory\" and tells you to take a shortcut through an alleyway. It turns out the recruiter was a swindler. At knife point, he demands that you turn over your money. Frightened, you do as he tells you. Because you are not a citizen, you do not feel the police would take up your case. You lose everything and end up in a poorhouse. So much for the American Dream..."
+		gameOver: true
+		actionChoices: [
+			{
+				choiceText: Start over
+				destinationSlideIndex: 1
+			}
+		]
+	}
+	{
+		title: Decline offer
+		imageFileName: image52.jpg
+		gameText: You decline the offer. He shrugs and continues to approach others about the job offer.
+		actionChoices: [
+			{
+				choiceText: Go back
+				destinationSlideIndex: 88
+			}
+		]
+	}
+	{}
+	{}
+	{}
+	{}
 	{}
 	{}
 	{}
