@@ -1444,7 +1444,7 @@ slides: [
 		actionChoices: [
 			{
 				choiceText: Head back to main hallway
-				destinationSlideIndex: 41
+				destinationSlideIndex: 68
 			}
 		]
 	}
@@ -1946,6 +1946,15 @@ slides: [
 						genderToCheck: MALE
 					}
 				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: ~TicketA
+							visible: true
+						}
+					}
+				]
 			}
 			{
 				choiceText: "Chicago, IL ($15)"
@@ -1981,6 +1990,15 @@ slides: [
 					{
 						class: edu.augustana.csc285.game.datamodel.GenderCondition
 						genderToCheck: FEMALE
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: ~TicketB
+							visible: true
+						}
 					}
 				]
 			}
@@ -2020,6 +2038,15 @@ slides: [
 						genderToCheck: MALE
 					}
 				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: ~TicketA
+							visible: true
+						}
+					}
+				]
 			}
 			{
 				choiceText: "St. Paul, MN ($30)"
@@ -2053,6 +2080,15 @@ slides: [
 						qtyToCompare: 1
 					}
 				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: ~TicketC
+							visible: true
+						}
+					}
+				]
 			}
 			{
 				choiceText: "Seattle, WA ($50)"
@@ -2084,6 +2120,15 @@ slides: [
 							opcode: ==
 						}
 						qtyToCompare: 1
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: ~TicketD
+							visible: true
+						}
 					}
 				]
 			}
@@ -3054,7 +3099,7 @@ slides: [
 			}
 			{
 				choiceText: Take New York Central Railroad to Chicago - tickets A-D
-				destinationSlideIndex: 1
+				destinationSlideIndex: 92
 			}
 		]
 	}
@@ -3096,6 +3141,1408 @@ slides: [
 			}
 		]
 	}
+	{
+		title: Aboard the train
+		imageFileName: image58.jpg
+		gameText: "You board the train successfully and find your seat. It will take a few days before you arrive in Chicago. You are mesmerized by the landscape of this country. You think about your brother back in Sweden. He would enjoy the beauty of America. You start missing him. Perhaps, if you find a job, you can make enough to send for him to make his own journey to America. You become determined to find a way to bring your family to America. In the meantime, you might as well explore your new surroundings!"
+		actionChoices: [
+			{
+				choiceText: Go towards the front of the train
+				destinationSlideIndex: 93
+			}
+			{
+				choiceText: Head towards the back of the train
+				destinationSlideIndex: 100
+			}
+		]
+	}
+	{
+		title: Go toward Dining Car
+		imageFileName: image58.jpg
+		gameText: "You see the dining car ahead and you're really hungry, but you also overhear a man speaking your mother tongue. What should you do?"
+		actionChoices: [
+			{
+				choiceText: Dining Car
+				destinationSlideIndex: 94
+			}
+			{
+				choiceText: Speak with the man
+				destinationSlideIndex: 99
+			}
+			{
+				choiceText: Go back
+				destinationSlideIndex: 92
+			}
+		]
+	}
+	{
+		title: Dining Car
+		imageFileName: image55.jpg
+		gameText: The dining area has several small tables and seats. There is a bar area where a bartender is wiping down glasses and serving customers food and beverages.
+		actionChoices: [
+			{
+				choiceText: Speak to bartender
+				destinationSlideIndex: 95
+			}
+			{
+				choiceText: Go back
+				destinationSlideIndex: 93
+			}
+		]
+	}
+	{
+		title: Speak to bartender
+		imageFileName: image55.jpg
+		gameText: You approach the bartender. He asks you what would you like.
+		actionChoices: [
+			{
+				choiceText: Sandwich
+				destinationSlideIndex: 96
+			}
+			{
+				choiceText: Alcoholic drink
+				destinationSlideIndex: 97
+				rejText: Insufficient funds!
+				feasibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 1
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: -1
+					}
+				]
+			}
+			{
+				choiceText: Go back
+				destinationSlideIndex: 94
+			}
+		]
+	}
+	{
+		title: Sandwich
+		imageFileName: image55.jpg
+		gameText: The bartender looks at you questioningly and explicitly says that the lunch hour is over and sandwiches will be served in a few hours.
+		actionChoices: [
+			{
+				choiceText: Go back
+				destinationSlideIndex: 95
+			}
+		]
+	}
+	{
+		title: Alcoholic drink
+		imageFileName: image63.jpg
+		gameText: You become tipsy and get into an altercation with some passengers. You are thrown off the train at the next depot. Now you miss the train and are in a strange place.
+		actionChoices: [
+			{
+				choiceText: Buy new ticket for the next train
+				destinationSlideIndex: 92
+				feasibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 4
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: -4
+					}
+				]
+			}
+			{
+				choiceText: Sneak past the conductor
+				destinationSlideIndex: 98
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: American Almanac
+							visible: true
+						}
+						effectSize: -99
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Bible
+							visible: true
+						}
+						effectSize: -99
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Cured Meat
+							visible: true
+						}
+						effectSize: -99
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Family heirloom
+							visible: true
+						}
+						effectSize: -99
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Medicine
+							visible: true
+						}
+						effectSize: -99
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Sewing materials
+							visible: true
+						}
+						effectSize: -99
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: -9999999
+					}
+				]
+			}
+		]
+	}
+	{
+		title: On board without a ticket
+		imageFileName: image62.jpg
+		gameText: "You’re on the next train to Chicago, but your trunk had to be left behind. Hence, you’ve now lost all of your baggage. On the positive side, at least you’re still on track to your destination! You had even managed to hide in a sleeping car when people went through your passenger car, looking for tickets. It looks like you’re getting close!"
+		actionChoices: [
+			{
+				choiceText: Get some rest before the train stops
+				destinationSlideIndex: 1
+			}
+		]
+	}
+	{
+		title: Speak with a pastor
+		imageFileName: image59.jpg
+		gameText: You notice a pastor giving a sermon to a group of people—other Swedish immigrants! You listen to the sermon and feel spiritually at ease. It is good to hear the Swedish language in America. The pastor mentions that his training at the Seminary in Rock Island helped him come closer to God. He encourages you to join the Augustana Lutheran Synod and hands you a bible.
+		actionChoices: [
+			{
+				choiceText: Go back
+				destinationSlideIndex: 93
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Bible
+							imageName: biblebook.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 1
+					}
+				]
+			}
+			{
+				choiceText: Go back
+				destinationSlideIndex: 93
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Bible
+							imageName: biblebook.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: ==
+						}
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Bible
+							visible: true
+						}
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Go to the back of the train
+		imageFileName: image61.jpg
+		actionChoices: [
+			{
+				choiceText: Proceed down the hall to the baggage compartment
+				destinationSlideIndex: 101
+			}
+			{}
+			{
+				choiceText: Head back
+				destinationSlideIndex: 92
+			}
+		]
+	}
+	{
+		title: Baggage compartment
+		imageFileName: image66.jpg
+		gameText: You catch someone rummaging through baggage. What do you do?
+		actionChoices: [
+			{
+				choiceText: Nothing
+				destinationSlideIndex: 103
+			}
+			{
+				choiceText: Apprehend him
+				destinationSlideIndex: 102
+			}
+		]
+	}
+	{
+		title: Apprehend him
+		imageFileName: image63.jpg
+		gameText: "Actually, he is the owner of the baggage. He accuses you of aggravated assault. You are detained and thrown off the train at the next depot."
+		actionChoices: [
+			{
+				choiceText: Buy new ticket for the next train
+				destinationSlideIndex: 92
+				feasibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 5
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: -5
+					}
+				]
+			}
+			{
+				choiceText: Sneak past the conductor
+				destinationSlideIndex: 98
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: American Almanac
+							visible: true
+						}
+						effectSize: -99
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Bible
+							visible: true
+						}
+						effectSize: -99
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Cured Meat
+							visible: true
+						}
+						effectSize: -99
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Family heirloom
+							visible: true
+						}
+						effectSize: -99
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Medicine
+							visible: true
+						}
+						effectSize: -99
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Sewing materials
+							visible: true
+						}
+						effectSize: -99
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: -9999999
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Do nothing
+		imageFileName: image66.jpg
+		gameText: "A stranger asks if you could help lift a suitcase that's on top of his own. You help him out. He is very appreciative and wishes you good luck on your journey. "
+		actionChoices: [
+			{
+				choiceText: Go back
+				destinationSlideIndex: 105
+			}
+		]
+	}
+	{
+		title: Talk to stranger
+		imageFileName: image64.jpg
+		gameText: "As you excuse yourself through the barrage of people walking in the hallway, a stranger notices your foreign accent. His face turns in disdain and he verbally harasses you. You are taken aback and decide to leave before he makes a scene."
+		actionChoices: [
+			{
+				choiceText: Go back
+				destinationSlideIndex: 105
+			}
+		]
+	}
+	{
+		title: Chicago!
+		imageFileName: image65.jpg
+		gameText: You arrive at Chicago. You disembark here.
+		actionChoices: [
+			{
+				choiceText: Continue through the train station
+				destinationSlideIndex: 106
+			}
+		]
+	}
+	{
+		title: Chicago Train Station
+		imageFileName: image65.jpg
+		actionChoices: [
+			{
+				choiceText: Take out your ticket for the Rock Island Line
+				destinationSlideIndex: 107
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: ~TicketA
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+				]
+			}
+			{
+				choiceText: Head into Chicago
+				destinationSlideIndex: 110
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: ~TicketB
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+				]
+			}
+			{
+				choiceText: Take out your ticket for the CMO Line
+				destinationSlideIndex: 108
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: ~TicketC
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+				]
+			}
+			{
+				choiceText: Take out your ticket for the CMO/Great Northern Line
+				destinationSlideIndex: 109
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: ~TicketD
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Sightsee in Chicago
+		imageFileName: image70.jpg
+		gameText: You explore Chicago. The city has made significant progress since the Chicago Fire (1871). Where would you like to go?
+		actionChoices: [
+			{
+				choiceText: Augustana Hospital
+				destinationSlideIndex: 110
+			}
+			{
+				choiceText: Art Institute
+				destinationSlideIndex: 108
+			}
+			{
+				choiceText: Public Library/City Hall
+				destinationSlideIndex: 109
+			}
+			{
+				choiceText: Go back
+				destinationSlideIndex: 105
+			}
+		]
+	}
+	{
+		title: Art Institute
+		imageFileName: image75.jpg
+		gameText: "As you stroll Michigan Avenue, you approach the newly designed Art Institute of Chicago. You learned the Institute used to be an exclusive art school prior to its transition as an art gallery. You spend the time viewing the interesting collections on display."
+		actionChoices: [
+			{
+				choiceText: Continue on
+				destinationSlideIndex: 107
+			}
+		]
+	}
+	{
+		title: Public Library/City Hall
+		imageFileName: image79.jpg
+		gameText: "You see City Hall ahead. On the fourth floor is the Public Library where over 13,000 books are available for borrowing. You learn that the Public Library was badly damaged in the Great Fire. Circulation was moved to an untouched abandoned water tank until it was moved again to City Hall. Books were donated to replace those lost in the fire. A good deal of donations came from the English including Benjamin Disraeli, John Stuart Mill, and even the Queen!"
+		actionChoices: [
+			{
+				choiceText: Continue on
+				destinationSlideIndex: 107
+			}
+		]
+	}
+	{
+		title: Augustana Hospital
+		imageFileName: image72.jpg
+		gameText: "As you explore Chicago, you pass by the Augustana Hospital School of Nursing. By the hospital entrance you see an advertisement for a new training school for nurses."
+		actionChoices: [
+			{
+				choiceText: Take advertisement
+				destinationSlideIndex: 148
+				rejText: The program is for female only. You cannot enroll in it.
+				feasibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.GenderCondition
+						genderToCheck: FEMALE
+					}
+				]
+			}
+			{
+				choiceText: Continue on
+				destinationSlideIndex: 107
+			}
+		]
+	}
+	{
+		title: Historical Note: Augustana Hospital
+		imageFileName: image72.jpg
+		gameText: "Religious institutions began forming benevolent societies to address the humanitarian needs of the sick and poor. The Augustana Synod was no different. In 1880, Rev. O. Olson (later the third president of Augustana College) returned from a trip to Europe convinced that the Swedish Lutheran Church should have a charitable institution. Thus, in 1882, the Deaconess Institution of the Swedish Evangelical Lutheran Church was incorporated. Its mission was to aid the “training of well qualified nurses, the establishment and support of hospitals, the care of the aged, the education of the young, and in general the exercise of mercy among the suffering. Their first order of business was to establish the Augustana Hospital, which opened in 1884 in Rev. Erland Carlsson’s rented house with a capacity of 15 patients.\\n\\nFor more information, see A History of the Augustana Hospital School of Nursing, 1884-1938 by Amy O. Schjolberg, 1939."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 112
+			}
+		]
+	}
+	{
+		title: You're a nurse in training!
+		imageFileName: image76.jpg
+		gameText: "After taking a few courses on basic health care, they assign your group to start training at the hospital. As you do your rounds, you notice a family appearing to be lost. They stop you and say they are looking for their cousin who is a patient. They tell you the ward number and ask where that would be."
+		actionChoices: [
+			{
+				choiceText: Tell them to go left
+				destinationSlideIndex: 113
+			}
+			{
+				choiceText: Tell them to go right
+				destinationSlideIndex: 114
+			}
+		]
+	}
+	{
+		title: "Oops, it was the operating room"
+		imageFileName: image80.jpg
+		gameText: They thank you and proceed to follow your instructions. You later hear from the director that you directed the family to the operating room and they walked in on an intensive surgery. The director of the hospital reprimands you and instructs you to direct patients to the building secretary if they are looking for a patient.
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 115
+			}
+		]
+	}
+	{
+		title: You were helpful
+		imageFileName: image74.jpg
+		gameText: They thank you and proceed to follow your instructions. You continue on with your duties.
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 115
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 15
+					}
+				]
+			}
+		]
+	}
+	{
+		title: A patient needs help
+		imageFileName: image78.jpg
+		gameText: "A patient needs assistance with a bath. You haven't been trained on working directly with patients yet, but the patient is rather insistent."
+		actionChoices: [
+			{
+				choiceText: Help the patient
+				destinationSlideIndex: 116
+			}
+			{
+				choiceText: Do nothing
+				destinationSlideIndex: 117
+			}
+		]
+	}
+	{
+		title: Bath
+		imageFileName: image78.jpg
+		gameText: You assist the patient with a sponge bath. The patient is thankful for your help and the other nurses put in a good word about you to the director. The director thanks you for being attentive to the patients.
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 118
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 15
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Don't help the patient
+		imageFileName: image78.jpg
+		gameText: You insist you cannot help and tell them you will send for one of the experienced nurses to attend them. The patient appears frustrated. The director is notified that you refused a patient help. They reprimand you.
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 118
+			}
+		]
+	}
+	{
+		title: Helping the doctor
+		imageFileName: image81.jpg
+		gameText: "You are assisting a doctor with a patient who is suffering from diphtheria, a very common and worrying childhood disease. You follow the doctor’s instructions and prep materials for him. The doctor requires a painkiller and asks you to get it on the medical tray behind him. You notice there are two vials nearby. You think back on your training and believe you found the right one."
+		actionChoices: [
+			{
+				choiceText: You choose the one labeled Anti-Toxine
+				destinationSlideIndex: 119
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 15
+					}
+				]
+			}
+			{
+				choiceText: You choose the one labeled Laudanum.
+				destinationSlideIndex: 120
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 15
+					}
+				]
+			}
+		]
+	}
+	{
+		title: You chose the Anti-Toxine
+		imageFileName: image81.jpg
+		gameText: "You hand the doctor the vial on the left. The doctor is happy to see the new Diphtheria drug Anti-Toxine, just now arrived at the hospital. (Diphtheria anti-toxin was first used in the U.S. in 1894 and became more commonplace by 1895.) The doctor injects the liquid into the patient's arm. After a few days the patient appears to be recovering. The doctor thanks you for your assistance, as morphine can help lessen a patient's pain, and comments that you are doing well with your training."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 121
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 50
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 122
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 21
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 49
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 123
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 20
+					}
+				]
+			}
+		]
+	}
+	{
+		title: You choose Laudanum
+		imageFileName: image81.jpg
+		gameText: "You hand the doctor the vial on the right. The Doctor gets angry as you've handed him a painkiller that's a derivative of opium, not the new miraculous anti-toxin for diphtheria. The doctor dismisses you and asks for another nurse who is capable of following his instructions."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 121
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 50
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 122
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 21
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 49
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 123
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 20
+					}
+				]
+			}
+		]
+	}
+	{
+		title: You're a great nurse!
+		imageFileName: image84.jpg
+		gameText: "You take a look at your savings and realize that in just a few months, you can afford to send for your brother back home."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 124
+			}
+		]
+	}
+	{
+		title: You have more to learn
+		imageFileName: image84.jpg
+		gameText: The hospital docks your pay in order to pay for the cost of your mistakes. At this rate you'll barely have enough for expenses. You wish you had paid more attention in school. It is going to take more time to get your brother over here.
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 124
+			}
+		]
+	}
+	{
+		title: You've failed at nursing
+		imageFileName: image84.jpg
+		gameText: "You are fired after numerous complaints of incompetence from patients and staff. You must find a new job soon or be out on the streets. Life in America is different than you had hoped. "
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 124
+			}
+		]
+	}
+	{
+		title: Nursing credits
+		imageFileName: image76.jpg
+		gameText: "Thanks for playing! Try again and see what other choices and consequences awaited Swedish immigrants!\\nThis nurse's story was inspired by:\\n\\n\\tMSS P:344 Euphemia Peterson nursing papers, Swenson Swedish Immigration Research Center, Augustana College, Rock Island, Illinois.\\n\\tSickness and Health in America: Readings in the History of Medicine and Public Health, Third Edition. Edited by Judith Walzer Leavitt and Ronald L. Numbers, 1997.\\n\\tThe Deadly Truth: A History of Disease in America, by Gerald N. Grob, 2005.  "
+		gameOver: true
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 0
+			}
+		]
+	}
+	{
+		title: Moline
+		imageFileName: image82.jpg
+		gameText: You arrive in Moline! You rest at the Harper House Hotel in Rock Island before you make arrangements to find a more permanent residence. Where do you want to go?
+		actionChoices: [
+			{
+				choiceText: Augustana College and Theological Seminary
+				destinationSlideIndex: 126
+				feasibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Bible
+							imageName: biblebook.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 1
+					}
+				]
+			}
+			{
+				choiceText: John Deere factory
+				destinationSlideIndex: 141
+			}
+		]
+	}
+	{
+		title: Augustana College and Seminary
+		imageFileName: image83.jpg
+		gameText: You approach the campus and come across one of the seminary professors. He greets you and notices you are not from around here. You tell him you have journeyed to America in search of work and the chance to bring your family to this country. You express how thankful you are for making it this far and hope God will continue to guide you. The professor finds your tale inspiring and asks if you ever thought about studying the word of God.
+		actionChoices: [
+			{
+				choiceText: Yes
+				destinationSlideIndex: 127
+			}
+			{
+				choiceText: "No, just visitin. Continue traveling to John Deere\n"
+				destinationSlideIndex: 141
+			}
+		]
+	}
+	{
+		title: Studying the Word of God
+		imageFileName: image85.jpg
+		gameText: You respond that this path makes a lot of sense to you. Faith has been a pillar for you throughout your journey. Not everyone has made it this far. You ask questions about the seminary program at Augustana and learn how religion impacts the individual and the community. You become convinced of this and decide to enroll as a seminary student.
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 128
+			}
+		]
+	}
+	{
+		title: First sermon
+		imageFileName: image86.jpg
+		gameText: "After months of studying scripture, you and your fellow classmates are allowed to present sermons at church services. You are assigned to preach the Sunday morning service. You are nervous about preaching. Your English is getting better but you feel better speaking in Swedish. Which language should you use?"
+		actionChoices: [
+			{
+				choiceText: Swedish
+				destinationSlideIndex: 129
+			}
+			{
+				choiceText: English
+				destinationSlideIndex: 130
+			}
+		]
+	}
+	{
+		title: First sermon in Swedish
+		imageFileName: image86.jpg
+		gameText: "You feel comfortable using Swedish. You give your first sermon in perfect Swedish. Fortunately, many of the churchgoers know Swedish. You receive compliments after the service for incorporating your heritage into the message. As a result, you attract more churchgoers to services."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 131
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 15
+					}
+				]
+			}
+		]
+	}
+	{
+		title: First Sermon in English
+		imageFileName: image86.jpg
+		gameText: You give your first sermon in English. You practice the correct words and phrases in English over and over. You are nervous and stumble a few times. The pastor gives you some encouraging remarks and tips for next time.
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 131
+			}
+		]
+	}
+	{
+		title: Local Luther League
+		imageFileName: image88.jpg
+		gameText: You are invited by some colleagues to attend a new society called the Luther League. Participating in the League would interfere with your sermons in the evenings. You can't do both. What do you do?
+		actionChoices: [
+			{
+				choiceText: Choose the Luther League
+				destinationSlideIndex: 132
+			}
+			{
+				choiceText: Choose your sermons
+				destinationSlideIndex: 133
+			}
+		]
+	}
+	{
+		title: Local Luther League
+		imageFileName: image87.jpg
+		gameText: "You choose to attend the local Luther League, a religious association for the local youth. You socialize with others in the community and make some real connections. The Luther League is a great opportunity to gauge the community’s religious ties. You make friends and are inspired for future sermons."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 134
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 15
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Focus on your sermons
+		imageFileName: image90.jpg
+		gameText: "You decide against joining the league. Practicing your material and perfecting your English is more important. Your diligence in your studies is reflected in your ability to deliver good sermons and praise from your professors. Unfortunately, apart from campus life, you feel isolated from the community."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 134
+			}
+		]
+	}
+	{
+		title: It's all Greek to me
+		imageFileName: image91.jpg
+		gameText: "You have a big examination in your Greek class next week. There is a study session available at the professor's home the night before the examination,  but you also have to practice for a performance of Handel's Messiah. The director has been pressuring everyone to perform their best for the community. What do you do?"
+		actionChoices: [
+			{
+				choiceText: Spend more time working on the oratorio and study Greek when you can
+				destinationSlideIndex: 135
+			}
+			{
+				choiceText: Attend the study session and no additional practice for the oratorio
+				destinationSlideIndex: 136
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 15
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Focus on Oratorio
+		imageFileName: image91.jpg
+		gameText: You heed the word of the director and spend more time working on the oratorio. You spend some time on your Greek studies but all your energy is focused on perfecting the performance. Your hard work is rewarded by the cheers and applause from the audience and praise from the director. It's too bad that your Greek studies suffer.
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 137
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 50
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 138
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 49
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 21
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 139
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 20
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Focus on Greek
+		imageFileName: image92.jpg
+		gameText: You decide to take the professor's extra study session in addition to making additional time to practice for your performance. You feel that your performance during the oratorio was average; you could have done better. But your perfect score on the Greek exam lifts your spirits!
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 137
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 50
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 138
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 49
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 21
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 139
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 20
+					}
+				]
+			}
+		]
+	}
+	{
+		title: You finish seminary school!
+		imageFileName: image89.jpg
+		gameText: "You have passed seminary schooling and are well on your way to establishing your own place in the community. You have made friends and made solid connections between God and yourself. You are hopeful that one day you will see your brother again soon. The journey has been rough, but at the end of the day, you've made it."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 140
+			}
+		]
+	}
+	{
+		title: Seminary progress
+		imageFileName: image93.jpg
+		gameText: "After some rough spots along the way, you find a place to settle and call home. You may need extra schooling and make more connections in order to be called to a congregation. It might be years before you are able to send for your brother."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 140
+			}
+		]
+	}
+	{
+		title: Continue schooling
+		imageFileName: image94.jpg
+		gameText: "Seminary school is proving to be quite an arduous task. Your professors have said it will take additional schooling and extra help in order to graduate. You have not made many connections in the community, making it difficult to connect your sermons to the people. It will be years before you will be able to send for your brother."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 140
+			}
+		]
+	}
+	{
+		title: Seminary student credits
+		imageFileName: image85.jpg
+		gameText: "Thanks for playing! Try again and see what other choices and consequences awaited Swedish immigrants!\\n\\nThis seminary student's story was inspired by: \\n\\n\\tMSS P:258 Mabel Anderson and Carl Lorimer correspondence, Swenson Swedish Immigration Research Center, Augustana College, Rock Island, Illinois"
+		gameOver: true
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 0
+			}
+		]
+	}
+	{
+		title: John Deere factory
+		imageFileName: image100.jpg
+		gameText: "You arrive at the factory. You hand over your papers to the secretary and are directed to a foreman. You sign some forms and are immediately put to work on the line. The foreman shows you how to assemble the tubes for the seed sower. Much of the first day is instruction - identifying parts of the drills, how to piece them together, and which equipment to use. After the workday is done, you head back to Rock Island and find a boarding house with cheap rooms. You are excited for your first full day of work tomorrow."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 142
+			}
+		]
+	}
+	{
+		title: Day at the factory
+		imageFileName: image99.jpg
+		gameText: "You wake up refreshed and head to the factory. As your shift continues, you notice one of your co-workers slacking. His work is slowing down your work and you are worried you will all get in trouble for slowing production. What do you do?"
+		actionChoices: [
+			{
+				choiceText: Do nothing. Continue working.
+				destinationSlideIndex: 143
+			}
+			{
+				choiceText: Talk to the worker
+				destinationSlideIndex: 144
+			}
+		]
+	}
+	{
+		title: Continue working
+		imageFileName: image99.jpg
+		gameText: "You decide to play it safe and continue doing your own work. The foreman notices production has slowed down. He figures out your co-worker is the root of the slowed production. You watch as the foreman yells at him. After a few words are exchanged, the foreman fires the worker. You feel guilty. Perhaps there is something you could have done. At least you have your job."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 145
+			}
+		]
+	}
+	{
+		title: Talk
+		imageFileName: image99.jpg
+		gameText: "You say something to the gentleman who isn't working as hard. You find out that he's not only originally from the town near yours, but that he's feeling incredibly sad due to his wife's illness. Both of you get yelled at by the foreman, but your words of encouragement to him convince him to start working harder. Plus, it looks like you may have made a friend!"
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 145
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 15
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Fire!
+		imageFileName: image96.jpg
+		gameText: "During the next week, just as your shift is starting, you see sparks coming out from some malfunctioning equipment. A careless workers next to you fails to notice the sparks and so a couple of oily rags catch fire. You notice there are wool blankets nearby. Maybe you can extinguish it on your own. Or should you notify the foreman and let him handle it?"
+		actionChoices: [
+			{
+				choiceText: Notify foreman
+				destinationSlideIndex: 146
+			}
+			{
+				choiceText: Try to put it out with the fire retardant blankets
+				destinationSlideIndex: 147
+			}
+		]
+	}
+	{
+		title: Notify the foreman
+		imageFileName: image96.jpg
+		gameText: "You run to find the foreman, but he can’t hear you over the clatter and it takes some time to get there. You explain about the fire and the foreman immediately ceases production. The foreman reprimands you for not using the blankets to smother the fire immediately. Hadn't you been paying attention when he mentioned them earlier?"
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 148
+			}
+		]
+	}
+	{
+		title: Try to put out fire
+		imageFileName: image96.jpg
+		gameText: You run to the wool blankets and rush over to try to contain the small fire. Others notice your action and either run away or try to assist you. You are able to contain the fire immediately. The foreman comes over to congratulate you on keeping everyone safe.
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 148
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 15
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Take advertisement
+		imageFileName: image72.jpg
+		gameText: "You take the advertisement. You are reminded of the times you had taken care of your family when they had fallen ill. Perhaps this is a chance to turn your skills into a job! You approach the secretary and inquire about the nursing program. Excited, you sign up for the program and start as soon as possible."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 111
+			}
+		]
+	}
+	{}
+	{}
+	{}
+	{}
+	{}
+	{}
+	{}
+	{}
+	{}
+	{}
+	{}
+	{}
+	{}
+	{}
+	{}
+	{}
+	{}
+	{}
 	{}
 	{}
 	{}
@@ -3213,6 +4660,18 @@ player: {
 			itemName: Dollar
 			imageName: coincash.png
 			visible: true
+		}
+		{
+			itemName: ~TicketA
+		}
+		{
+			itemName: ~TicketB
+		}
+		{
+			itemName: ~TicketC
+		}
+		{
+			itemName: ~TicketD
 		}
 	]
 }
