@@ -27,7 +27,7 @@ public class AdventureGame extends Game {
 	public void create() {
 		skin = new Skin(Gdx.files.internal("skins/uiskin.json"));
 		stage = new Stage(new ScreenViewport());
-		data = GameData.fromJSON(Gdx.files.internal("data/TESTER.json").readString("UTF-8"));
+		data = GameData.fromJSON(Gdx.files.internal("data/data.json").readString("UTF-8"));
 		bgImg = new Image();
 		
 		bgMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Triumphant_Return.mp3"));
