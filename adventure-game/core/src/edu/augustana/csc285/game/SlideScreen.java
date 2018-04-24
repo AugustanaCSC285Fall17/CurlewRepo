@@ -103,6 +103,7 @@ public class SlideScreen implements Screen {
 		float zoomMag = (float) 2.5;
 		float zoomWPanel = zoomImage.getWidth() / zoomMag;
 		float zoomHPanel = zoomImage.getHeight() / zoomMag;
+		Texture img = new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName()));
 		if (!curSlide.getImageFileName().equals("facts.png")) {
 			zoomOverlay.addListener(new ClickListener() {
 				@Override
@@ -114,7 +115,6 @@ public class SlideScreen implements Screen {
 					
 					
 					Vector2 centerZoomImg = new Vector2();
-					Texture img = new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName()));
 
 					float porportion = (float) img.getWidth() / AdventureGame.GAME_SCREEN_HEIGHT;
 					

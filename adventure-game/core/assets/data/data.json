@@ -744,7 +744,7 @@ slides: [
 	{
 		title: Go Straight To Ship
 		imageFileName: image18.jpg
-		gameText: "Inspection After passing initial health inspection, the ticketmaster asks for your papers. Do you have your ticket?"
+		gameText: "Inspection: After passing initial health inspection, the ticketmaster asks for your papers. Do you have your ticket?"
 		urlText: dieUrl
 		actionChoices: [
 			{
