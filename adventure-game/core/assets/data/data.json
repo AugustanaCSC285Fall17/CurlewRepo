@@ -1184,15 +1184,22 @@ slides: [
 							itemName: ~went_reading
 						}
 						op: {
-							opcode: >=
+							opcode: >
 						}
-						qtyToCompare: 1
 					}
 				]
 			}
 			{
 				choiceText: "Go right [reading room]"
 				destinationSlideIndex: 45
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: ~went_reading
+						}
+					}
+				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -1202,7 +1209,6 @@ slides: [
 						op: {
 							opcode: ==
 						}
-						qtyToCompare: 0
 					}
 				]
 			}
@@ -1310,14 +1316,6 @@ slides: [
 			{
 				choiceText: Continue
 				destinationSlideIndex: 47
-				effectList: [
-					{
-						class: edu.augustana.csc285.game.datamodel.ItemEffect
-						item: {
-							itemName: ~went_reading
-						}
-					}
-				]
 			}
 		]
 	}
@@ -5485,6 +5483,7 @@ slides: [
 	}
 	{
 		title: Reading room
+		imageFileName: image28.jpg
 		gameText: "Right after you enter the reading room, the ship bell rang. You look out of the window and see a glimpse of America is right before your eyes."
 		actionChoices: [
 			{
