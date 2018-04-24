@@ -134,7 +134,7 @@ public class MainMenuScreen implements Screen {
 //			}
 //		});
 		
-		String intro = "You are a young Swedish immigrant to America in 1880."
+		String intro = "You are a young Swedish immigrant to America in 1880. "
 				+ "You have made the tough decision to leave your family and life in Sweden behind."
 				+ " Will you survive and prosper in America?"
 				+ "\n\nPlease note, this game is a work of historical fiction based on information found "
