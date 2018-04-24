@@ -1846,7 +1846,7 @@ slides: [
 	{
 		title: Italian nationality
 		imageFileName: image44.jpg
-		gameText: "The clerk looks at you strangely. Clearly, the language you’re speaking is not Italian. He angrily barks at you to tell the truth."
+		gameText: "The clerk looks at you strangely. Clearly, the language you're speaking is not Italian. He angrily barks at you to tell the truth."
 		actionChoices: [
 			{
 				choiceText: Pick another flag
@@ -1857,7 +1857,7 @@ slides: [
 	{
 		title: Irish nationality
 		imageFileName: image44.jpg
-		gameText: "The clerk is really confused. You’re not from the British empire, he barks, as you’re speaking some different sort of language. The Irish immigrants behind you snicker."
+		gameText: "The clerk is really confused. You're not from the British empire, he barks, as you're speaking some different sort of language. The Irish immigrants behind you snicker."
 		actionChoices: [
 			{
 				choiceText: Pick another flag
@@ -1868,7 +1868,7 @@ slides: [
 	{
 		title: United Kingdoms of Sweden and Norway
 		imageFileName: image47.jpg
-		gameText: "You point to the flag for the United Kingdoms of Sweden and Norway, a union that began in 1814 (and would end peacefully in 1905, although you don’t yet know that!). The clerk asks for your papers."
+		gameText: "You point to the flag for the United Kingdoms of Sweden and Norway, a union that began in 1814 (and would end peacefully in 1905, although you don't yet know that!). The clerk asks for your papers."
 		actionChoices: [
 			{
 				choiceText: Hand over immigration Papers
@@ -1890,7 +1890,7 @@ slides: [
 	{
 		title: Money exchange
 		imageFileName: image45.jpg
-		gameText: "Your Swedish kronor will be of little use in America. You need to exchange your money for dollars. The exchange rate appears to be about 4 to 1, which means for every 40 kronor, you’ll get $10 back."
+		gameText: "Your Swedish kronor will be of little use in America. You need to exchange your money for dollars. The exchange rate appears to be about 4 to 1, which means for every 40 kronor, you'll get $10 back."
 		actionChoices: [
 			{
 				choiceText: Proceed to transport station
@@ -2343,7 +2343,7 @@ slides: [
 	{
 		title: Not enough money
 		imageFileName: image53.jpg
-		gameText: "You do not have enough, but you’re talking to a number of new arrivals nearby and many of them seen interested in items from your trunk. What would you like to sell?"
+		gameText: "You do not have enough, but you're talking to a number of new arrivals nearby and many of them seen interested in items from your trunk. What would you like to sell?"
 		actionChoices: [
 			{
 				choiceText: Bible
@@ -2548,7 +2548,7 @@ slides: [
 				destinationSlideIndex: 81
 			}
 			{
-				choiceText: Oh no! I still don’t have enough money after these sales!
+				choiceText: Oh no! I still don't have enough money after these sales!
 				destinationSlideIndex: 87
 				visibilityCond: [
 					{
@@ -2655,7 +2655,7 @@ slides: [
 				]
 			}
 			{
-				choiceText: Oh no! I still don’t have enough money after these sales!
+				choiceText: Oh no! I still don't have enough money after these sales!
 				destinationSlideIndex: 87
 				visibilityCond: [
 					{
@@ -2762,7 +2762,7 @@ slides: [
 				]
 			}
 			{
-				choiceText: Oh no! I still don’t have enough money after these sales!
+				choiceText: Oh no! I still don't have enough money after these sales!
 				destinationSlideIndex: 87
 				visibilityCond: [
 					{
@@ -2869,7 +2869,7 @@ slides: [
 				]
 			}
 			{
-				choiceText: Oh no! I still don’t have enough money after these sales!
+				choiceText: Oh no! I still don't have enough money after these sales!
 				destinationSlideIndex: 87
 				visibilityCond: [
 					{
@@ -2972,7 +2972,7 @@ slides: [
 				]
 			}
 			{
-				choiceText: Oh no! I still don’t have enough money after these sales!
+				choiceText: Oh no! I still don't have enough money after these sales!
 				destinationSlideIndex: 87
 				visibilityCond: [
 					{
@@ -3079,7 +3079,7 @@ slides: [
 	{
 		title: Oh No!
 		imageFileName: image53.jpg
-		gameText: "You still don’t have enough money, so your journey ends for now in New York City, home to many other immigrants from your homeland. Unfortunately, you won’t be able to earn enough money to send for your brother until you find a good line of work."
+		gameText: "You still don't have enough money, so your journey ends for now in New York City, home to many other immigrants from your homeland. Unfortunately, you won't be able to earn enough money to send for your brother until you find a good line of work."
 		gameOver: true
 		actionChoices: [
 			{
@@ -3106,7 +3106,7 @@ slides: [
 	{
 		title: Recruiter
 		imageFileName: image52.jpg
-		gameText: "A recruiter notices you and approaches you. He offers you a job at a factory nearby. You feel wary about his demeanor, but you’d love to get your new life started in America right away. What do you do?"
+		gameText: "A recruiter notices you and approaches you. He offers you a job at a factory nearby. You feel wary about his demeanor, but you'd love to get your new life started in America right away. What do you do?"
 		actionChoices: [
 			{
 				choiceText: Accept job
@@ -3345,7 +3345,7 @@ slides: [
 	{
 		title: On board without a ticket
 		imageFileName: image62.jpg
-		gameText: "You’re on the next train to Chicago, but your trunk had to be left behind. Hence, you’ve now lost all of your baggage. On the positive side, at least you’re still on track to your destination! You had even managed to hide in a sleeping car when people went through your passenger car, looking for tickets. It looks like you’re getting close!"
+		gameText: "You're on the next train to Chicago, but your trunk had to be left behind. Hence, you've now lost all of your baggage. On the positive side, at least you're still on track to your destination! You had even managed to hide in a sleeping car when people went through your passenger car, looking for tickets. It looks like you're getting close!"
 		actionChoices: [
 			{
 				choiceText: Get some rest before the train stops
@@ -3356,7 +3356,7 @@ slides: [
 	{
 		title: Speak with a pastor
 		imageFileName: image59.jpg
-		gameText: You notice a pastor giving a sermon to a group of people—other Swedish immigrants! You listen to the sermon and feel spiritually at ease. It is good to hear the Swedish language in America. The pastor mentions that his training at the Seminary in Rock Island helped him come closer to God. He encourages you to join the Augustana Lutheran Synod and hands you a bible.
+		gameText: You notice a pastor giving a sermon to a group of people-other Swedish immigrants! You listen to the sermon and feel spiritually at ease. It is good to hear the Swedish language in America. The pastor mentions that his training at the Seminary in Rock Island helped him come closer to God. He encourages you to join the Augustana Lutheran Synod and hands you a bible.
 		actionChoices: [
 			{
 				choiceText: Go back
@@ -3420,7 +3420,10 @@ slides: [
 				choiceText: Proceed down the hall to the baggage compartment
 				destinationSlideIndex: 101
 			}
-			{}
+			{
+				choiceText: Talk to stranger
+				destinationSlideIndex: 104
+			}
 			{
 				choiceText: Head back
 				destinationSlideIndex: 92
@@ -3578,7 +3581,7 @@ slides: [
 		actionChoices: [
 			{
 				choiceText: Take out your ticket for the Rock Island Line
-				destinationSlideIndex: 107
+				destinationSlideIndex: 125
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -3594,7 +3597,7 @@ slides: [
 			}
 			{
 				choiceText: Head into Chicago
-				destinationSlideIndex: 110
+				destinationSlideIndex: 107
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -3610,7 +3613,7 @@ slides: [
 			}
 			{
 				choiceText: Take out your ticket for the CMO Line
-				destinationSlideIndex: 108
+				destinationSlideIndex: 171
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -3626,7 +3629,7 @@ slides: [
 			}
 			{
 				choiceText: Take out your ticket for the CMO/Great Northern Line
-				destinationSlideIndex: 109
+				destinationSlideIndex: 156
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -3712,7 +3715,7 @@ slides: [
 	{
 		title: Historical Note: Augustana Hospital
 		imageFileName: image72.jpg
-		gameText: "Religious institutions began forming benevolent societies to address the humanitarian needs of the sick and poor. The Augustana Synod was no different. In 1880, Rev. O. Olson (later the third president of Augustana College) returned from a trip to Europe convinced that the Swedish Lutheran Church should have a charitable institution. Thus, in 1882, the Deaconess Institution of the Swedish Evangelical Lutheran Church was incorporated. Its mission was to aid the “training of well qualified nurses, the establishment and support of hospitals, the care of the aged, the education of the young, and in general the exercise of mercy among the suffering. Their first order of business was to establish the Augustana Hospital, which opened in 1884 in Rev. Erland Carlsson’s rented house with a capacity of 15 patients.\\n\\nFor more information, see A History of the Augustana Hospital School of Nursing, 1884-1938 by Amy O. Schjolberg, 1939."
+		gameText: "Religious institutions began forming benevolent societies to address the humanitarian needs of the sick and poor. The Augustana Synod was no different. In 1880, Rev. O. Olson (later the third president of Augustana College) returned from a trip to Europe convinced that the Swedish Lutheran Church should have a charitable institution. Thus, in 1882, the Deaconess Institution of the Swedish Evangelical Lutheran Church was incorporated. Its mission was to aid the \"training of well qualified nurses, the establishment and support of hospitals, the care of the aged, the education of the young, and in general the exercise of mercy among the suffering. Their first order of business was to establish the Augustana Hospital, which opened in 1884 in Rev. Erland Carlsson's rented house with a capacity of 15 patients.\n\nFor more information, see A History of the Augustana Hospital School of Nursing, 1884-1938 by Amy O. Schjolberg, 1939."
 		actionChoices: [
 			{
 				choiceText: Continue
@@ -3817,7 +3820,7 @@ slides: [
 	{
 		title: Helping the doctor
 		imageFileName: image81.jpg
-		gameText: "You are assisting a doctor with a patient who is suffering from diphtheria, a very common and worrying childhood disease. You follow the doctor’s instructions and prep materials for him. The doctor requires a painkiller and asks you to get it on the medical tray behind him. You notice there are two vials nearby. You think back on your training and believe you found the right one."
+		gameText: "You are assisting a doctor with a patient who is suffering from diphtheria, a very common and worrying childhood disease. You follow the doctor's instructions and prep materials for him. The doctor requires a painkiller and asks you to get it on the medical tray behind him. You notice there are two vials nearby. You think back on your training and believe you found the right one."
 		actionChoices: [
 			{
 				choiceText: You choose the one labeled Anti-Toxine
@@ -4031,7 +4034,7 @@ slides: [
 	{
 		title: Nursing credits
 		imageFileName: image76.jpg
-		gameText: "Thanks for playing! Try again and see what other choices and consequences awaited Swedish immigrants!\\nThis nurse's story was inspired by:\\n\\n\\tMSS P:344 Euphemia Peterson nursing papers, Swenson Swedish Immigration Research Center, Augustana College, Rock Island, Illinois.\\n\\tSickness and Health in America: Readings in the History of Medicine and Public Health, Third Edition. Edited by Judith Walzer Leavitt and Ronald L. Numbers, 1997.\\n\\tThe Deadly Truth: A History of Disease in America, by Gerald N. Grob, 2005.  "
+		gameText: "Thanks for playing! Try again and see what other choices and consequences awaited Swedish immigrants!\nThis nurse's story was inspired by:\n\n\tMSS P:344 Euphemia Peterson nursing papers, Swenson Swedish Immigration Research Center, Augustana College, Rock Island, Illinois.\n\tSickness and Health in America: Readings in the History of Medicine and Public Health, Third Edition. Edited by Judith Walzer Leavitt and Ronald L. Numbers, 1997.\n\tThe Deadly Truth: A History of Disease in America, by Gerald N. Grob, 2005.  "
 		gameOver: true
 		actionChoices: [
 			{
@@ -4164,7 +4167,7 @@ slides: [
 	{
 		title: Local Luther League
 		imageFileName: image87.jpg
-		gameText: "You choose to attend the local Luther League, a religious association for the local youth. You socialize with others in the community and make some real connections. The Luther League is a great opportunity to gauge the community’s religious ties. You make friends and are inspired for future sermons."
+		gameText: "You choose to attend the local Luther League, a religious association for the local youth. You socialize with others in the community and make some real connections. The Luther League is a great opportunity to gauge the community's religious ties. You make friends and are inspired for future sermons."
 		actionChoices: [
 			{
 				choiceText: Continue
@@ -4400,7 +4403,7 @@ slides: [
 	{
 		title: Seminary student credits
 		imageFileName: image85.jpg
-		gameText: "Thanks for playing! Try again and see what other choices and consequences awaited Swedish immigrants!\\n\\nThis seminary student's story was inspired by: \\n\\n\\tMSS P:258 Mabel Anderson and Carl Lorimer correspondence, Swenson Swedish Immigration Research Center, Augustana College, Rock Island, Illinois"
+		gameText: "Thanks for playing! Try again and see what other choices and consequences awaited Swedish immigrants!\n\nThis seminary student's story was inspired by: \n\n\tMSS P:258 Mabel Anderson and Carl Lorimer correspondence, Swenson Swedish Immigration Research Center, Augustana College, Rock Island, Illinois"
 		gameOver: true
 		actionChoices: [
 			{
@@ -4485,11 +4488,11 @@ slides: [
 	{
 		title: Notify the foreman
 		imageFileName: image96.jpg
-		gameText: "You run to find the foreman, but he can’t hear you over the clatter and it takes some time to get there. You explain about the fire and the foreman immediately ceases production. The foreman reprimands you for not using the blankets to smother the fire immediately. Hadn't you been paying attention when he mentioned them earlier?"
+		gameText: "You run to find the foreman, but he can't hear you over the clatter and it takes some time to get there. You explain about the fire and the foreman immediately ceases production. The foreman reprimands you for not using the blankets to smother the fire immediately. Hadn't you been paying attention when he mentioned them earlier?"
 		actionChoices: [
 			{
 				choiceText: Continue
-				destinationSlideIndex: 148
+				destinationSlideIndex: 149
 			}
 		]
 	}
@@ -4500,7 +4503,7 @@ slides: [
 		actionChoices: [
 			{
 				choiceText: Continue
-				destinationSlideIndex: 148
+				destinationSlideIndex: 149
 				effectList: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemEffect
@@ -4525,33 +4528,946 @@ slides: [
 			}
 		]
 	}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
-	{}
+	{
+		title: A well-dressed man
+		imageFileName: image97.jpg
+		gameText: "The next week at the factory, your keen eyes notice a distinguished gentleman walking through the factory, with a series of other well-dressed men by his side. He waves his hands in your direction. You're still working your shift. Should you come over to talk with him?"
+		actionChoices: [
+			{
+				choiceText: Say something
+				destinationSlideIndex: 150
+			}
+			{
+				choiceText: Say nothing. Keep working.
+				destinationSlideIndex: 151
+			}
+		]
+	}
+	{
+		title: Talk to the gentleman
+		imageFileName: image97.jpg
+		gameText: "You walk over to the gentleman, but the foreman yells at you for leaving your station! You hasten back. Other workers confirm that the well-dressed man is Charles Deere, son of the company's founder and a long-time president himself. He is just showing off some new equipment at the factory to a number of bankers. The waving isn't to you."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 152
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 50
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 153
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 21
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 49
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 154
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 20
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Say nothing
+		imageFileName: image97.jpg
+		gameText: "You get right back to work. Others on the line get distracted and reprimanded by the foreman, but you only receive compliments at the end of your shift. Other workers confirm that the well-dressed man is Charles Deere, son of the company's founder and a long-time president himself. He is just showing off some new equipment at the factory to a number of bankers. He is not actually waving to you."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 152
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 50
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 153
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 21
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 49
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 154
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 20
+					}
+				]
+			}
+		]
+	}
+	{
+		title: You're successful as a factory worker!
+		imageFileName: image98.jpg
+		gameText: "Your first months at John Deere are promising. You are earning a decent wage and are integrating into the community. A few more months' worth of savings and you can send your brother over! Through all the struggles, you are filled with hope for the future."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 155
+			}
+		]
+	}
+	{
+		title: You're struggling as a factory worker
+		imageFileName: image98.jpg
+		gameText: "You are struggling to keep up with work. You have made some mistakes along the way but you are learning from them. Unfortunately, with the meager pay and daily expenses, you won't have enough to bring your brother to America anytime soon. Maybe one day you will have some savings to bring him here. Until then, another day, another dime."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 155
+			}
+		]
+	}
+	{
+		title: You failed as a factory worker
+		imageFileName: image54.jpg
+		gameText: "The foreman cannot afford to have a worker make mistakes on the company's time and money. You are, unfortunately, let go. You have just enough to pay for a week's lodging but you need to find work soon or you will be left on the streets. Life in America was not what you expected."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 155
+			}
+		]
+	}
+	{
+		title: Factory worker credits
+		imageFileName: image100.jpg
+		gameText: "Thanks for playing! Try again and see what other choices and consequences awaited Swedish immigrants!\n\nThis factory worker's story was inspired by:\n\tWayne G. Broehl, Jr.'s \"John Deere's company: a history of Deere and Company and its times\" (Doubleday: New York, 1984: 96, 230-232)."
+		gameOver: true
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 0
+			}
+		]
+	}
+	{
+		title: Seattle
+		imageFileName: image101.jpg
+		gameText: You arrive at Seattle! The town is bustling with excitement. You see fishermen hauling their catches to nearby markets and milled logs rolling into construction sites. You walk alongside the waterfront and notice a lady having some difficulty with a tear at the end of her skirt. You approach her and ask if she needs help.
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 157
+			}
+		]
+	}
+	{
+		title: Become a seamstress/maid
+		imageFileName: image102.jpg
+		gameText: "The lady thanks you for your assistance as you patch up the tear to the best of your ability. She assumes you are skilled in all the domestic arts (e.g., cooking, caring for children, laundering) and asks if you would like a job in her home as a seamstress and maid. You would!"
+		actionChoices: [
+			{
+				choiceText: Start the job right away
+				destinationSlideIndex: 158
+				rejText: You need sewing materials to start the job.
+				feasibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Sewing materials
+							imageName: sewing.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 1
+					}
+				]
+			}
+			{
+				choiceText: Purchase some sewing supplies before starting the job
+				destinationSlideIndex: 158
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Sewing materials
+							visible: true
+						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: -5
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Too many sewing projects
+		imageFileName: image105.jpg
+		gameText: "Along with your other duties, you are juggling several sewing projects for your employer. Your employer's wife has requested you to fix the children's best clothing for church; however, your employer's suit needs to be tailored for an important meeting concerning his company. You only have time for one. Which do you fix?"
+		actionChoices: [
+			{
+				choiceText: Sew children's clothing
+				destinationSlideIndex: 159
+			}
+			{
+				choiceText: Tailor suit
+				destinationSlideIndex: 160
+			}
+		]
+	}
+	{
+		title: Choose children's clothing
+		imageFileName: image104.jpg
+		gameText: "You decide to sew the children's clothing. Their mother is appreciative of your efforts and commends you for a job well done. However, your employer notices a tear in his nicest suit and has to wear his other suit. He's annoyed at the inconvenience. It was his lucky suit, after all!"
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 161
+			}
+		]
+	}
+	{
+		title: Choose the suit
+		imageFileName: image108.jpg
+		gameText: You decide to fix the tear in the suit. Your employer is appreciative of your efforts and commends you for your initiative. He does so well in his meeting that he gives you a bonus as a reward.
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 161
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 20
+					}
+				]
+			}
+		]
+	}
+	{
+		title: A young man
+		imageFileName: image103.jpg
+		gameText: "You take the children to the park for some fresh air. While you are watching the children playing in the park, you notice a young man distributing papers. His accent suggests he, too, is a Swedish immigrant. You are curious about what he is handing out. What do you do?"
+		actionChoices: [
+			{
+				choiceText: Focus on the children
+				destinationSlideIndex: 162
+			}
+			{
+				choiceText: Inquire about the papers
+				destinationSlideIndex: 163
+			}
+		]
+	}
+	{
+		title: Focus on the children
+		imageFileName: image106.jpg
+		gameText: "You decide not to wander from the children. After some time, you take them home, manage the affairs of the household and turn in early. You can not help but wonder about the young man in the park. Perhaps you will see him around town soon..."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 164
+			}
+		]
+	}
+	{
+		title: Talk to the man
+		imageFileName: image103.jpg
+		gameText: "After reassuring yourself the children will be fine, you wander over to the young man. He introduces himself to you as Olof Larsson, a Swedish immigrant who came to Seattle recently. He works at the cannery and is a member of a local Scandinavian club in town. He is handing out papers to recruit new members. You smile and take one. He hopes you can come to the next meeting."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 164
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 20
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Dessert time
+		imageFileName: image113.jpg
+		gameText: "You are creating a menu for an important dinner held at the house tonight. The only thing left to prepare is dessert. Your employer requests apple pudding as it is his favorite, but you do not have enough ingredients to make it for everyone. However, you do have enough ingredients to make your favorite dish from home - saffron buns (lussekatter). Do you risk it and make a smaller dish of apple pudding or make enough saffron buns for everyone and hope they like it?"
+		actionChoices: [
+			{
+				choiceText: Apple pudding
+				destinationSlideIndex: 165
+			}
+			{
+				choiceText: Saffron buns
+				destinationSlideIndex: 166
+			}
+		]
+	}
+	{
+		title: Apple pudding
+		imageFileName: image113.jpg
+		gameText: "You decide to play it safe and make a smaller portion of apple pudding. It is your first attempt at making the dish and you follow the employer's recipe to the letter. At the dinner, your employer is pleased with the apple pudding. He only wishes there were more."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 167
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 50
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 168
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 49
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 21
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 169
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 20
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Saffron Buns
+		imageFileName: image113.jpg
+		gameText: "You decide to make the saffron buns with what you have. At the dinner, the guests and your employer are impressed with your dessert. So impressed that your employer, his wife, and children request that you make it again soon! You are the hit of the dinner!"
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 167
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 50
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 168
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 49
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 21
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 169
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 20
+					}
+				]
+			}
+		]
+	}
+	{
+		title: You're successful as a maid/seamstress!
+		imageFileName: image115.jpg
+		gameText: "You should feel proud of yourself for making it this far. You have managed to cross the sea, secure employment, and find a place you can call home. At the rate you are going, you will have enough to bring your brother to America. You are hopeful for the future."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 170
+			}
+		]
+	}
+	{
+		title: You're surviving as a maid/seamstress
+		imageFileName: image116.jpg
+		gameText: "You are struggling to keep up with work. You have made some mistakes along the way but you are learning from them. Unfortunately, with the meager pay and daily expenses, you won't have enough to bring your brother to America anytime soon. Maybe one day you will have some savings to bring him here. Until then, another day, another dime."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 170
+			}
+		]
+	}
+	{
+		title: You're struggling as a maid/seamstress
+		imageFileName: image116.jpg
+		gameText: You are struggling as a live-in servant. You feel isolated from the community and feel that you are not adequate according to your employers. You are given notice by your employer that you are being let go due to your poor performance. Life in America is not what you thought it would be.
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 170
+			}
+		]
+	}
+	{
+		title: Maid/Seamstress Credits
+		imageFileName: image110.jpg
+		gameText: "Thanks for playing! Try again and see what other choices and consequences awaited Swedish immigrants!\n\nThis maid/seamstress story was inspired by:\n\tMSS P:329 Anna Persson Cave family papers, 1897-2006, Swenson Swedish Immigration Research Center, Augustana College, Rock Island, Illinois \n\tJanice Reiff Webster's \"Domestication and Americanization: Scandinavian Women in Seattle 1888-1900\""
+		gameOver: true
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 0
+			}
+		]
+	}
+	{
+		title: Minneapolis
+		imageFileName: image109.jpg
+		gameText: "You arrive in Minneapolis!\n\nYou catch a ride towards the countryside where your cousin lives. You manage to find your cousin's farm and greet him as he is inspecting the crops. After catching up with him about your journey, you ask if he would need any help on the farm. Your cousin offers you a farmhand position and you decide to get started with your new duties right away!\n"
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 172
+			}
+		]
+	}
+	{
+		title: Minneapolis
+		imageFileName: image118.jpg
+		gameText: "You remember your childhood spent working the land and you are confident that you can continue to succeed here as well. \n\nFinally, something seems familiar--the soil of the Minnesota prairie reminds you of home and you feel hopeful.\n"
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 173
+			}
+		]
+	}
+	{
+		title: Planting
+		imageFileName: image114.jpg
+		gameText: "Your cousin has graciously given you your own plot of land to take care of since his farm has grown so rapidly. He has a large stock of seeds from previous years as well as all of the farm implements that you need to begin. However, it is up to you to decide what to plant. You've heard wheat and corn are good cash crops, but you're not sure if you should focus on one crop to maximize profits. You decide to:"
+		actionChoices: [
+			{
+				choiceText: Plant wheat and potatoes
+				destinationSlideIndex: 174
+			}
+			{
+				choiceText: Plant only wheat
+				destinationSlideIndex: 175
+			}
+			{
+				choiceText: Consult your almanac to decide the best crop for the season
+				destinationSlideIndex: 176
+				rejText: You need an American Almanac!
+				feasibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: American Almanac
+							imageName: almanac.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 1
+					}
+				]
+			}
+		]
+	}
+	{
+		title: You plant wheat and potatoes
+		imageFileName: image112.jpg
+		gameText: "Just like in Sweden, wheat is always desired in America. Your crops seem to do well. Even when the grasshoppers and chinch bugs attack your wheat, the potatoes do quite well. In a couple of months your plot of land becomes a sea of golden grain. Your cousin is very pleased and decides to offer you a larger plot of land next year."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 177
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 20
+					}
+				]
+			}
+		]
+	}
+	{
+		title: You only plant wheat
+		imageFileName: image111.jpg
+		gameText: "According to your cousin, wheat is one of the most important crops in this area. You decide to plant only wheat this season. Unfortunately, as soon as the shoots began to spring up from the ground a month later, they were devastated by a swarm of grasshoppers and chinch bugs. You will have to rely on the corn and potatoes planted by your cousin for the rest of the year. "
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 177
+			}
+		]
+	}
+	{
+		title: You plant corn using almanac
+		imageFileName: image119.jpg
+		gameText: "You decide to consult your almanac to decide which crop to plant. The book predicts that waiting an extra few weeks to plant corn will allow you take advantage of the heat of the summer. You decide to follow these directions. In doing so, your crops are completely missed by the swarm of grasshoppers devastating other farms. What a close call!"
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 177
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 20
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Harvest time
+		imageFileName: image117.jpg
+		gameText: "Other nearby farmers are harvesting their crops, but you are unsure when to harvest. Your cousin is away from the farm and you need to decide what to do.  "
+		actionChoices: [
+			{
+				choiceText: Harvest your crops now
+				destinationSlideIndex: 178
+			}
+			{
+				choiceText: Wait until your cousin returns
+				destinationSlideIndex: 179
+			}
+		]
+	}
+	{
+		title: Harvest immediately
+		imageFileName: image117.jpg
+		gameText: "Based on your previous experience growing up in Sweden, you decide to harvest your crops right away and err on the side of caution. You don't want to lose any of the year's harvest while your cousin is away.\n\nWhen your cousin returns, he is very thankful and says that waiting even one day could have resulted in a devastating crop yield.  "
+		actionChoices: [
+			{
+				choiceText: Continue
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 20
+					}
+				]
+				destinationSlideIndex: 180
+			}
+		]
+	}
+	{
+		title: Wait for your cousin
+		imageFileName: image120.jpg
+		gameText: "You decide to wait for your cousin to return and tell you when to harvest the crop. \n\nThe crop is rich and bountiful, but then it becomes so hot that in within a few days many crops are wilted and unsalvageable. Your cousin comes home and is disappointed that you couldn't harvest all that had been planted. "
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 180
+			}
+		]
+	}
+	{
+		title: The market
+		imageFileName: image122.jpg
+		gameText: "You and your cousin take the crops to market. There you meet a man who offers to not only buy your crops, but also to come help you pick the rest. You could really use an extra set of hands on the farm, but you're not sure if you have enough food around or cash on hand to employ anyone. "
+		actionChoices: [
+			{
+				choiceText: Hire the man to help
+				destinationSlideIndex: 181
+			}
+			{
+				choiceText: Decline his offer
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 20
+					}
+				]
+				destinationSlideIndex: 182
+			}
+		]
+	}
+	{
+		title: Hire the man
+		imageFileName: image122.jpg
+		gameText: "The man comes to the farm, but he turns out to be a lazy worker. He isn't much help and you're spending too much time trying to show him what to do. You wish you hadn't agreed to hire him"
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 183
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 50
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 184
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 49
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 21
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 185
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 20
+					}
+				]
+			}
+		]
+	}
+	{
+		title: Decline his offer
+		imageFileName: image122.jpg
+		gameText: "You're not sure you can afford his help right now, so you decline his offer. The rest of your crops don't produce as much as anticipated, so you're glad you didn't have another mouth to feed. "
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 183
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 50
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 184
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 49
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 21
+					}
+				]
+			}
+			{
+				choiceText: Continue
+				destinationSlideIndex: 185
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: coincash.png
+							visible: true
+						}
+						op: {
+							opcode: <=
+						}
+						qtyToCompare: 20
+					}
+				]
+			}
+		]
+	}
+	{
+		title: You're successful as a farmer!
+		imageFileName: image121.jpg
+		gameText: "You have managed to cross the sea, establish yourself as a farmer, and and will soon be able to rent your own land. At the rate you are going, you will have enough to bring your brother to America and own your own property in this new land. You are hopeful for the future."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 186
+			}
+		]
+	}
+	{
+		title: You're surviving as a farmer
+		imageFileName: image121.jpg
+		gameText: "Farming the Minnesota land has proven to be harder than you anticipated. You have made some mistakes along the way but you are learning from them. However, your crops have failed to turn a profit and you won't have enough to bring your brother to America anytime soon. Maybe one day you will have some savings to bring him here. Until then, another day, another dime."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 186
+			}
+		]
+	}
+	{
+		title: You're struggling as a farmer
+		imageFileName: image111.jpg
+		gameText: "Before you can think about sending for your brother, you must first be able to support yourself. You are lucky that you've been able to rely on your family for support and a job in America. Without them, who knows where you would have ended up...Life in America is not what you thought it would be."
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 186
+			}
+		]
+	}
+	{
+		title: Farmer Credits
+		imageFileName: image117.jpg
+		gameText: "Thanks for playing! Try again and see what other choices and consequences awaited Swedish immigrants!\n\nThis farmer story was inspired by:\n\tArticles in the journal Swedish American Genealogist published by the Swenson Center\n\"Here I have worked and sweated for thirty years. Thanks be to God, my health has been good, and courage and hope have never failed me. I am not wealthy, since I have never striven to acquire riches, but I am well provided for and I am hopeful that until the end of my days I shall not be in want for my daily bread.\"\n\tGustaf Mellberg, farmer in Wisconsin, from letter to brother Sven in Sweden, 1872., Swedish American Genealogist Vol. 3, No. 4, 1983\n"
+		gameOver: true
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 0
+			}
+		]
+	}
 ]
 player: {
 	name: UNKNOWN
