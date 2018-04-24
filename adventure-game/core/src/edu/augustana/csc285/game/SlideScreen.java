@@ -172,9 +172,9 @@ public class SlideScreen implements Screen {
 		game.stage.addActor(game.bgImg);
 		createFunctionButtons();
 		createTitle();
-		createGameText();
 		createChoiceButtons();
 		createTable();
+		createGameText();
 		
 		// Add actors
 		game.stage.addActor(title);
@@ -417,11 +417,11 @@ public class SlideScreen implements Screen {
 			String curChoiceText = curChoice.getChoiceText();
 			
 			TextButton newButton = new TextButton(curChoiceText, game.skin);
+			newButton.padTop(10).padBottom(10);
 			newButton.getLabel().setWrap(true);
-			newButton.getLabel().pack();
 			newButton.getLabel().setWidth(350);
 			newButton.getLabel().pack();
-			newButton.getLabel().setWidth(350);
+			
 			newButton.addListener(new ClickListener(){
 					
 				@Override
@@ -488,8 +488,6 @@ public class SlideScreen implements Screen {
 	
 	}
 	
-	float tableHeight;
-	
 	private void createTable() {
 		
 		table = new Table(game.skin);
@@ -499,20 +497,19 @@ public class SlideScreen implements Screen {
 			table.add(choiceButtons.get(i)).width(370).padTop(5);
 			table.row();
 		}
-
-		tableHeight = table.getPrefHeight();
+		table.pack();
 //		if (curSlide.getSlideType() == SlideType.NORMAL)
 //			tableHeight = 350;
 //		else if (curSlide.getSlideType() == SlideType.MANY_BUTTONS)
 //			tableHeight = 300;
-		table.setPosition(100, tableHeight + 10);
+		table.setPosition(100, 10);
 	}
 	
 	private void createScrollPane(int gameTextWidth) {
 		scrollPane = new ScrollPane(gameText, game.skin);
 		
-	    scrollPane.setBounds(110, tableHeight - 20,
-	    		gameTextWidth, Gdx.graphics.getHeight() - title.getHeight() - tableHeight);
+	    scrollPane.setBounds(110, 20 + table.getHeight(),
+	    		gameTextWidth, Gdx.graphics.getHeight() - (title.getHeight() + table.getHeight()) - 40);
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);
 	    scrollPane.setFadeScrollBars(false);
