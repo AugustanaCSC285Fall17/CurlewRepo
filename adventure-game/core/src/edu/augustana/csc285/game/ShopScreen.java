@@ -13,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Payload;
@@ -36,8 +35,7 @@ public class ShopScreen implements Screen {
 	private Label itemTitle;
 	private Label shopTitle;
 	private Label cashLabel;
-	private Button pauseButton;
-	private TextButton backButton;
+	private Button backButton;
 	private ScrollPane itemScrollPane;
 	private ScrollPane shopScrollPane;
 	
@@ -65,22 +63,6 @@ public class ShopScreen implements Screen {
 		game.bgImg.setPosition(0, 0);
 		game.bgImg.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		game.stage.addActor(game.bgImg);
-
-		Image pauseImg = new Image(new Texture(Gdx.files.internal("art/icons/pauseSMALL.png")));
-		pauseButton = new Button(game.skin);
-		pauseButton.add(pauseImg);
-		pauseButton.setWidth(SlideScreen.BUTTON_WIDTH);
-		pauseButton.setHeight(SlideScreen.BUTTON_WIDTH);
-		pauseButton.setPosition(Gdx.graphics.getWidth() - pauseButton.getWidth() - 10,
-				Gdx.graphics.getHeight() - pauseButton.getHeight() - 10);
-		pauseButton.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				game.stage.clear();
-				game.setScreen(new PauseScreen(game));
-			}
-		});
-		game.stage.addActor(pauseButton);
 		
 		
 		// initialize slide contents
@@ -99,6 +81,14 @@ public class ShopScreen implements Screen {
 		game.stage.addActor(shopScrollPane);
 		game.stage.addActor(itemTitle);
 		game.stage.addActor(itemScrollPane);
+		game.stage.addActor(SlideScreen.restartButton);
+		game.stage.addActor(SlideScreen.muteButton);
+		game.stage.addActor(SlideScreen.creditButton);
+		game.stage.addActor(SlideScreen.fontButton);
+		game.stage.addActor(SlideScreen.volumeDialog);
+		game.stage.addActor(SlideScreen.restartDialog);
+		game.stage.addActor(SlideScreen.fontDialog);
+		game.stage.addActor(SlideScreen.volumeDialog);
 		
 	}
 
@@ -107,7 +97,7 @@ public class ShopScreen implements Screen {
 		itemTitle.setWidth(350);
 		itemTitle.pack();
 		itemTitle.setWidth(350);
-		itemTitle.setPosition(40, Gdx.graphics.getHeight() - itemTitle.getHeight() - 20);
+		itemTitle.setPosition(90, Gdx.graphics.getHeight() - itemTitle.getHeight() - 20);
 		itemTitle.setAlignment(Align.left);
 	}
 
@@ -131,7 +121,7 @@ public class ShopScreen implements Screen {
 		
 		int gameTextHeight = 300;
 		
-	    itemScrollPane.setBounds(50, Gdx.graphics.getHeight() - itemTitle.getHeight() - 60 - gameTextHeight, gameTextWidth, gameTextHeight);
+	    itemScrollPane.setBounds(100, Gdx.graphics.getHeight() - itemTitle.getHeight() - 60 - gameTextHeight, gameTextWidth, gameTextHeight);
 	    itemScrollPane.layout();
 	    itemScrollPane.setTouchable(Touchable.enabled);
 	    itemScrollPane.setFadeScrollBars(false);
@@ -209,16 +199,20 @@ public class ShopScreen implements Screen {
 	}
 	
 	private void createBackButton() {
-		backButton = new TextButton("Back", game.skin);
-		backButton.getLabel().setWrap(true);
+		backButton = new Button(game.skin);
+		backButton.add(new Image(new Texture(Gdx.files.internal("art/icons/backSMALL.png"))));
+		backButton.setWidth(SlideScreen.BUTTON_WIDTH);
+		backButton.setHeight(SlideScreen.BUTTON_WIDTH);
+							  //Gdx.graphics.getWidth() - backButton.getWidth() - 10
+		backButton.setPosition(10,	Gdx.graphics.getHeight() - 2 * SlideScreen.BUTTON_WIDTH - 10);
 		backButton.addListener(new ClickListener() {
-
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.data.attemptChoice(new ActionChoice("", backIndex));
 				game.setScreen(new SlideScreen(game));
 			}
 		});
+		game.stage.addActor(backButton);
 	}
 	
 	private void createTable() {
@@ -233,8 +227,6 @@ public class ShopScreen implements Screen {
 		table.add(cashLabel).align(Align.left);
 		table.row();
 		table.add(direction);
-		table.row();
-		table.add(backButton).width(260).padTop(5).align(Align.left);
 
 		int tableHeight = 400;
 		table.padTop(tableHeight + itemTitle.getHeight());

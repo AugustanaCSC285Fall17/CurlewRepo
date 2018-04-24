@@ -28,21 +28,16 @@ public class GameOverScreen implements Screen {
 	
 	public GameOverScreen(final AdventureGame game) {
 		this.game = game; 
-		
+		drawBackgroundAndLogo();
 		initializeMain();
 	}
-	
-	private void initializeTable() {
+
+	private void initializeMain() {
 		table = new Table();
 		table.setWidth(game.stage.getWidth());
 		table.align(Align.center|Align.top);
 		
 		table.setPosition(0, Gdx.graphics.getHeight());
-	}
-
-	private void initializeMain() {
-		
-		initializeTable();
 		
 		mainMenuButton = new TextButton("Main Menu", game.skin);
 		mainMenuButton.addListener(new ClickListener(){
@@ -94,20 +89,7 @@ public class GameOverScreen implements Screen {
 //		table.add(quitButton).padTop(10).width(300);
 		
 		game.stage.addActor(table);
-		
-		drawBackgroundAndLogo();
-	}
-	
-	@Override
-	public void render(float delta) {
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
-		game.stage.act(Gdx.graphics.getDeltaTime());
-		game.stage.draw();
-
-		game.stage.addActor(table);
-		
-	}
+	}	
 	
 	private void drawBackgroundAndLogo() {
 		bgImg = new Image(new Texture(Gdx.files.internal("slideImages/mainmenu2.jpg")));
@@ -128,6 +110,17 @@ public class GameOverScreen implements Screen {
 		swansonLogo.setSize(logoWidth, (float) (swansonLogoTexture.getHeight() * logoWidth * 1.0 / swansonLogoTexture.getWidth()));
 		game.stage.addActor(swansonLogo);
 	
+	}
+	
+	@Override
+	public void render(float delta) {
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
+		game.stage.act(Gdx.graphics.getDeltaTime());
+		game.stage.draw();
+
+		game.stage.addActor(table);
+		
 	}
 
 	@Override

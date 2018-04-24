@@ -45,19 +45,20 @@ public class SlideScreen implements Screen {
 	private Label title;
 	private Label gameText;
 
-	private Button restartButton;
-	private Button inventoryButton;
-	private Button muteButton;
-	private Button creditButton;
-	private Button fontButton;
-	private ArrayList<TextButton> choiceButtons;
-	private ScrollPane scrollPane;
-	private Slider volumeSlider;
-	private Slider fontSlider;
-	private Dialog volumeDialog;
+	public static Button restartButton;
+	public static Button inventoryButton;
+	public static Button muteButton;
+	public static Button creditButton;
+	public static Button fontButton;
+	public static Dialog volumeDialog;
+	public static Dialog restartDialog;
+	public static Dialog fontDialog;
+
+	public static Slider volumeSlider;
+	public static Slider fontSlider;
 	private Dialog rejectDialog;
-	private Dialog restartDialog;
-	private Dialog fontDialog;
+	private ScrollPane scrollPane;
+	private ArrayList<TextButton> choiceButtons;
 	
 	private Image zoomImage;
 	private Image zoomBorder;

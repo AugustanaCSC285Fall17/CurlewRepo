@@ -4,18 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.Event;
-import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
-import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
@@ -32,13 +27,8 @@ public class InventoryScreen implements Screen {
 	private Label statsLabel;
 	private Label title;
 	private Label statsTitle;
-	private Button pauseButton;
-	private Button muteButton;
 	private Button backButton;
 	private ScrollPane scrollPane;
-	private Slider volumeSlider;
-	private Dialog pauseDialog;
-	private Dialog volumeDialog;
 	
 	private final int BUTTON_WIDTH = 60;
 	
@@ -66,58 +56,8 @@ public class InventoryScreen implements Screen {
 		game.bgImg.setPosition(0, 0);
 		game.bgImg.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		game.stage.addActor(game.bgImg);
-		
-		createPauseDialog();
 
-		Image pauseImg = new Image(new Texture(Gdx.files.internal("art/icons/pauseSMALL.png")));
-		pauseButton = new Button(game.skin);
-		pauseButton.add(pauseImg);
-		pauseButton.setWidth(SlideScreen.BUTTON_WIDTH);
-		pauseButton.setHeight(SlideScreen.BUTTON_WIDTH);
-							  //Gdx.graphics.getWidth() - pauseButton.getWidth() - 10
-		pauseButton.setPosition(10,	Gdx.graphics.getHeight() - BUTTON_WIDTH - 10);
-		pauseButton.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				pauseDialog.setVisible(true);
-			}
-		});
-		game.stage.addActor(pauseButton);
-		
-		// -------------------- volume dialog & slider ------------------
 
-		// slider
-		volumeSlider = new Slider(0f, 1f, 0.1f, false, game.skin);
-		volumeSlider.setValue(game.bgMusic.getVolume());
-		volumeSlider.addListener(new EventListener() {
-			@Override
-			public boolean handle(Event event) {
-				game.bgMusic.setVolume(volumeSlider.getValue());
-				updateMute();
-				return false;
-			}
-
-		});
-
-		// dialog
-		volumeDialog = new Dialog("", game.skin);
-		volumeDialog.setVisible(false);
-		volumeDialog.add(new Label("Volume: ", game.skin));
-		volumeDialog.add(volumeSlider).align(Align.left);
-		TextButton okButton = new TextButton("OK", game.skin);
-		okButton.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				volumeDialog.setVisible(false);
-			}
-		});
-		volumeDialog.add(okButton);
-		volumeDialog.setWidth(320);
-		volumeDialog.setHeight(70);
-		// 880
-		volumeDialog.setPosition(90, 530);
-
-		updateMute();
 
 		backButton = new Button(game.skin);
 		backButton.add(new Image(new Texture(Gdx.files.internal("art/icons/backSMALL.png"))));
@@ -144,49 +84,55 @@ public class InventoryScreen implements Screen {
 		game.stage.addActor(table);
 		game.stage.addActor(scrollPane);
 		game.stage.addActor(statsTable);
-		game.stage.addActor(volumeDialog);
-		game.stage.addActor(pauseDialog);
+		game.stage.addActor(SlideScreen.restartButton);
+		game.stage.addActor(SlideScreen.muteButton);
+		game.stage.addActor(SlideScreen.creditButton);
+		game.stage.addActor(SlideScreen.fontButton);
+		game.stage.addActor(SlideScreen.volumeDialog);
+		game.stage.addActor(SlideScreen.restartDialog);
+		game.stage.addActor(SlideScreen.fontDialog);
+		game.stage.addActor(SlideScreen.volumeDialog);
 		
 	}
 
-	private void createPauseDialog() {
-
-		// dialog
-		pauseDialog = new Dialog("", game.skin);
-		pauseDialog.setVisible(false);
-		pauseDialog.align(Align.top);
-		pauseDialog.row();
-		pauseDialog.add(new Label("PAUSE", game.skin, "title")).align(Align.center);
-		pauseDialog.row();
-		
-		// resume button
-		TextButton resumeButton = new TextButton("Resume", game.skin);
-		resumeButton.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				pauseDialog.setVisible(false);
-			}
-		});
-		pauseDialog.add(resumeButton).pad(0, 10, 0, 0).width(275).align(Align.left).row();
-		
-		// main menu button
-		TextButton mainMenuButton = new TextButton("Main Menu", game.skin);
-		mainMenuButton.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				game.stage.clear();
-				game.setScreen(new MainMenuScreen(game));
-			}
-		});
-		mainMenuButton.setWidth(290);
-		pauseDialog.add(mainMenuButton).pad(0, 10, 20, 0).width(275).align(Align.left).row();
-		
-		pauseDialog.setWidth(300);
-		pauseDialog.setHeight(200);
-		
-		pauseDialog.setPosition((Gdx.graphics.getWidth() - pauseDialog.getWidth()) / 2,
-				(Gdx.graphics.getHeight() - pauseDialog.getHeight()) / 2);
-	}
+//	private void createPauseDialog() {
+//
+//		// dialog
+//		pauseDialog = new Dialog("", game.skin);
+//		pauseDialog.setVisible(false);
+//		pauseDialog.align(Align.top);
+//		pauseDialog.row();
+//		pauseDialog.add(new Label("PAUSE", game.skin, "title")).align(Align.center);
+//		pauseDialog.row();
+//		
+//		// resume button
+//		TextButton resumeButton = new TextButton("Resume", game.skin);
+//		resumeButton.addListener(new ClickListener() {
+//			@Override
+//			public void clicked(InputEvent event, float x, float y) {
+//				pauseDialog.setVisible(false);
+//			}
+//		});
+//		pauseDialog.add(resumeButton).pad(0, 10, 0, 0).width(275).align(Align.left).row();
+//		
+//		// main menu button
+//		TextButton mainMenuButton = new TextButton("Main Menu", game.skin);
+//		mainMenuButton.addListener(new ClickListener() {
+//			@Override
+//			public void clicked(InputEvent event, float x, float y) {
+//				game.stage.clear();
+//				game.setScreen(new MainMenuScreen(game));
+//			}
+//		});
+//		mainMenuButton.setWidth(290);
+//		pauseDialog.add(mainMenuButton).pad(0, 10, 20, 0).width(275).align(Align.left).row();
+//		
+//		pauseDialog.setWidth(300);
+//		pauseDialog.setHeight(200);
+//		
+//		pauseDialog.setPosition((Gdx.graphics.getWidth() - pauseDialog.getWidth()) / 2,
+//				(Gdx.graphics.getHeight() - pauseDialog.getHeight()) / 2);
+//	}
 
 	private void createTitle() {
 		title = new Label("Inventory", game.skin, "title");
@@ -225,29 +171,6 @@ public class InventoryScreen implements Screen {
 		}
 		
 		createScrollPane(gameTextWidth);
-	}
-	
-	private Image muteImg = new Image(new Texture(Gdx.files.internal("art/icons/muteSMALL.png")));
-	private Image unmuteImg = new Image(new Texture(Gdx.files.internal("art/icons/unmuteSMALL.png")));
-	
-	private void updateMute() {
-		muteButton = new Button(game.skin);
-		muteButton.setWidth(BUTTON_WIDTH);
-		muteButton.setHeight(BUTTON_WIDTH);
-							 //Gdx.graphics.getWidth() - BUTTON_WIDTH - 10
-		muteButton.setPosition(10, Gdx.graphics.getHeight() - 3 * BUTTON_WIDTH - 10);
-		muteButton.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				volumeDialog.setVisible(true);
-			}
-		});
-		if (game.bgMusic.getVolume() != 0) {
-			muteButton.add(unmuteImg);
-		} else {
-			muteButton.add(muteImg);
-		}
-		game.stage.addActor(muteButton);
 	}
 	
 	private void createScrollPane(int gameTextWidth) {
