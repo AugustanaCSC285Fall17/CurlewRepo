@@ -1459,7 +1459,7 @@ slides: [
 		actionChoices: [
 			{
 				choiceText: Head back to main hallway
-				destinationSlideIndex: 68
+				destinationSlideIndex: 41
 			}
 		]
 	}
