@@ -1,0 +1,8 @@
+#game-start{
+	text-decoration: none;
+	font-size: 40px;
+	color: indigo;
+	background-color: yellow;
+	padding: 10%;
+	display: inline-block;
+}

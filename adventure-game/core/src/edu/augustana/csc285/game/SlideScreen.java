@@ -104,6 +104,9 @@ public class SlideScreen implements Screen {
 		float zoomWPanel = zoomImage.getWidth() / zoomMag;
 		float zoomHPanel = zoomImage.getHeight() / zoomMag;
 		Texture img = new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName()));
+		
+		Vector2 centerZoomImg = new Vector2();
+		TextureRegionDrawable zoomTexture = new TextureRegionDrawable();
 		if (!curSlide.getImageFileName().equals("facts.png")) {
 			zoomOverlay.addListener(new ClickListener() {
 				@Override
@@ -114,7 +117,6 @@ public class SlideScreen implements Screen {
 				public boolean mouseMoved(InputEvent event, float x, float y) {
 					
 					
-					Vector2 centerZoomImg = new Vector2();
 
 					float porportion = (float) img.getWidth() / AdventureGame.GAME_SCREEN_HEIGHT;
 					
@@ -150,10 +152,8 @@ public class SlideScreen implements Screen {
 						zoomImage.setVisible(true);
 					}
 					
-					zoomImage.setDrawable(new TextureRegionDrawable(
-							new TextureRegion(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())),
-							(int) (centerZoomImg.x), 
-							(int) (centerZoomImg.y), zoomW, zoomH)));
+					zoomTexture.setRegion(new TextureRegion(img, (int) (centerZoomImg.x), (int) (centerZoomImg.y), zoomW, zoomH));
+					zoomImage.setDrawable(zoomTexture);
 
 					zoomRectangle.setPosition(zoomRectX, zoomRectY);
 					zoomRectangle.setVisible(true);
