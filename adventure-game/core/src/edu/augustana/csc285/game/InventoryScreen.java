@@ -155,10 +155,16 @@ public class InventoryScreen implements Screen {
 
 		for (Item item : game.data.getCurrentVisibleItems()) {
 			Image itemImage = new Image(new Texture(Gdx.files.internal("art/icons/" + item.getImageAddress())));
-			Label itemLabel = new Label(item.getItemQty() + "x " + item.getItemName(), game.skin);
+			String itemName = item.getItemQty() + "x " + item.getItemName();
+			if (item.getItemName().equals("Dollar")) {
+				itemName = "$" + item.getItemQty();
+			} else if (item.getItemName().equals("Kronor")) {
+				itemName = item.getItemQty() + " kr";
+			}
+			Label itemLabel = new Label(itemName, game.skin);
 			itemLabel.setAlignment(Align.topLeft);
 			itemTable.add(itemImage);
-			itemTable.add(itemLabel).align(Align.left);
+			itemTable.add(itemLabel).align(Align.left).padLeft(5);
 			if (itemAdded % 2 == 0)
 				itemTable.add().pad(20);
 			else
@@ -203,11 +209,11 @@ public class InventoryScreen implements Screen {
 
 		Image avatar;
 		if (game.data.getPlayer().getGender() == Gender.UNKNOWN) 
-			avatar = new Image(new Texture(Gdx.files.internal("art/icons/unknown.jpg")));
+			avatar = new Image(new Texture(Gdx.files.internal("art/icons/unknown.png")));
 		else if (game.data.getPlayer().getGender() == Gender.MALE) 
-			avatar = new Image(new Texture(Gdx.files.internal("art/icons/male.jpg")));
+			avatar = new Image(new Texture(Gdx.files.internal("art/icons/male.png")));
 		else
-			avatar = new Image(new Texture(Gdx.files.internal("art/icons/female.jpg")));
+			avatar = new Image(new Texture(Gdx.files.internal("art/icons/female.png")));
 		
 		statsTable.add(statsTitle).width(260);
 		statsTable.row();
