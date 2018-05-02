@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -53,6 +54,7 @@ public class SlideScreen implements Screen {
 	public static Dialog volumeDialog;
 	public static Dialog restartDialog;
 	public static Dialog fontDialog;
+	public static Dialog itemDialog;
 
 	public static Slider volumeSlider;
 	public static Slider fontSlider;
@@ -115,8 +117,6 @@ public class SlideScreen implements Screen {
 				}
 				@Override
 				public boolean mouseMoved(InputEvent event, float x, float y) {
-					
-					
 
 					float porportion = (float) img.getWidth() / AdventureGame.GAME_SCREEN_HEIGHT;
 					
@@ -186,7 +186,8 @@ public class SlideScreen implements Screen {
 		game.stage.addActor(zoomRectangle);
 		game.stage.addActor(zoomBorder);
 		game.stage.addActor(zoomOverlay);
-
+		
+		game.stage.addActor(itemDialog);
 		game.stage.addActor(volumeDialog);
 		game.stage.addActor(fontDialog);
 		game.stage.addActor(restartDialog);
@@ -413,6 +414,11 @@ public class SlideScreen implements Screen {
 	
 	private void createChoiceButtons() {
 		List<ActionChoice> curChoices = game.data.getVisibleChoicesForCurrentSlide();
+		itemDialog = new Dialog("", game.skin);
+		itemDialog.add(new Button());
+		itemDialog.setPosition(60, Gdx.graphics.getHeight() - 300, Align.center);
+		itemDialog.setVisible(false);
+		
 		for (ActionChoice curChoice : curChoices) {
 			String curChoiceText = curChoice.getChoiceText();
 			
@@ -436,7 +442,20 @@ public class SlideScreen implements Screen {
 							if (game.data.getSlide(game.data.getCurrentSlideIndex()).getSlideType() == SlideType.SHOP) {
 								game.setScreen(new ShopScreen(game, lastSlideIndex));
 							} else {
-								initialize();
+//								if(!curChoice.getEffectsString().equals("You gained:\\n")) {
+//									itemDialog.setVisible(true);
+//									itemDialog.addAction(Actions.delay(2000));
+//									itemDialog.addAction(Actions.fadeOut(1000));
+//									itemDialog.addAction(Actions.run(new Runnable() {
+//										@Override
+//										public void run() {
+//											initialize();
+//											
+//										}
+//									}));
+//								} else {
+									initialize();
+//									}
 							}
 						} else {
 							rejectDialog = new Dialog("", game.skin);

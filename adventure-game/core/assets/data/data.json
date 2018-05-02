@@ -1950,7 +1950,53 @@ slides: [
 							visible: true
 						}
 						op: {
-							opcode: ==
+							opcode: >=
+						}
+						qtyToCompare: 1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.GenderCondition
+						genderToCheck: MALE
+					}
+				]
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: ~TicketA
+							visible: true
+						}
+					}
+				]
+			}
+			{
+				choiceText: "Moline, IL ($20)"
+				destinationSlideIndex: 82
+				rejText: Insufficient funds!
+				feasibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: dollar.png
+							visible: true
+						}
+						op: {
+							opcode: >=
+						}
+						qtyToCompare: 20
+					}
+				]
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: John Deere letter
+							imageName: letter.png
+							visible: true
+						}
+						op: {
+							opcode: >=
 						}
 						qtyToCompare: 1
 					}
@@ -1996,7 +2042,7 @@ slides: [
 							visible: true
 						}
 						op: {
-							opcode: ==
+							opcode: >=
 						}
 						qtyToCompare: 1
 					}
@@ -2010,52 +2056,6 @@ slides: [
 						class: edu.augustana.csc285.game.datamodel.ItemEffect
 						item: {
 							itemName: ~TicketB
-							visible: true
-						}
-					}
-				]
-			}
-			{
-				choiceText: "Moline, IL ($20)"
-				destinationSlideIndex: 82
-				rejText: Insufficient funds!
-				feasibilityCond: [
-					{
-						class: edu.augustana.csc285.game.datamodel.ItemCondition
-						item: {
-							itemName: Dollar
-							imageName: dollar.png
-							visible: true
-						}
-						op: {
-							opcode: >=
-						}
-						qtyToCompare: 20
-					}
-				]
-				visibilityCond: [
-					{
-						class: edu.augustana.csc285.game.datamodel.ItemCondition
-						item: {
-							itemName: John Deere letter
-							imageName: letter.png
-							visible: true
-						}
-						op: {
-							opcode: ==
-						}
-						qtyToCompare: 1
-					}
-					{
-						class: edu.augustana.csc285.game.datamodel.GenderCondition
-						genderToCheck: MALE
-					}
-				]
-				effectList: [
-					{
-						class: edu.augustana.csc285.game.datamodel.ItemEffect
-						item: {
-							itemName: ~TicketA
 							visible: true
 						}
 					}
@@ -2088,7 +2088,7 @@ slides: [
 							visible: true
 						}
 						op: {
-							opcode: ==
+							opcode: >=
 						}
 						qtyToCompare: 1
 					}
@@ -2130,7 +2130,7 @@ slides: [
 							visible: true
 						}
 						op: {
-							opcode: ==
+							opcode: >=
 						}
 						qtyToCompare: 1
 					}
@@ -2186,40 +2186,6 @@ slides: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
 						item: {
-							itemName: Illinois letter
-							imageName: letter.png
-							visible: true
-						}
-						op: {
-							opcode: ==
-						}
-						qtyToCompare: 1
-					}
-					{
-						class: edu.augustana.csc285.game.datamodel.GenderCondition
-						genderToCheck: FEMALE
-					}
-					{
-						class: edu.augustana.csc285.game.datamodel.ItemCondition
-						item: {
-							itemName: Dollar
-							imageName: dollar.png
-							visible: true
-						}
-						op: {
-							opcode: <
-						}
-						qtyToCompare: 15
-					}
-				]
-			}
-			{
-				choiceText: Not enough money
-				destinationSlideIndex: 86
-				visibilityCond: [
-					{
-						class: edu.augustana.csc285.game.datamodel.ItemCondition
-						item: {
 							itemName: John Deere letter
 							imageName: letter.png
 							visible: true
@@ -2244,6 +2210,40 @@ slides: [
 					{
 						class: edu.augustana.csc285.game.datamodel.GenderCondition
 						genderToCheck: MALE
+					}
+				]
+			}
+			{
+				choiceText: Not enough money
+				destinationSlideIndex: 86
+				visibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Illinois letter
+							imageName: letter.png
+							visible: true
+						}
+						op: {
+							opcode: ==
+						}
+						qtyToCompare: 1
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.GenderCondition
+						genderToCheck: FEMALE
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Dollar
+							imageName: dollar.png
+							visible: true
+						}
+						op: {
+							opcode: <
+						}
+						qtyToCompare: 15
 					}
 				]
 			}
@@ -3266,6 +3266,7 @@ slides: [
 			{
 				choiceText: Buy new ticket for the next train
 				destinationSlideIndex: 92
+				rejText: "Insufficient funds!"
 				feasibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -3362,7 +3363,7 @@ slides: [
 		actionChoices: [
 			{
 				choiceText: Get some rest before the train stops
-				destinationSlideIndex: 1
+				destinationSlideIndex: 105
 			}
 		]
 	}
