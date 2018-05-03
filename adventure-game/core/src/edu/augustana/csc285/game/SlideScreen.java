@@ -419,8 +419,18 @@ public class SlideScreen implements Screen {
 	private void createChoiceButtons() {
 		List<ActionChoice> curChoices = game.data.getVisibleChoicesForCurrentSlide();
 		itemDialog = new Dialog("", game.skin);
-		itemDialog.add(new Button());
-		itemDialog.setPosition(60, Gdx.graphics.getHeight() - 300, Align.center);
+		Label itemLabel = new Label("", game.skin);
+		itemDialog.row();
+		itemDialog.align(Align.left);
+		itemDialog.add(itemLabel);
+		
+		//ok button
+//		TextButton kButton = new TextButton("OK", game.skin);
+//		kButton.addListener(new Cl)
+//		itemDialog.add(kButton);
+		
+		
+		itemDialog.setPosition(130, Gdx.graphics.getHeight() - 300, Align.left);
 		itemDialog.setVisible(false);
 		
 		for (ActionChoice curChoice : curChoices) {
@@ -446,20 +456,27 @@ public class SlideScreen implements Screen {
 							if (game.data.getSlide(game.data.getCurrentSlideIndex()).getSlideType() == SlideType.SHOP) {
 								game.setScreen(new ShopScreen(game, lastSlideIndex));
 							} else {
-//								if(!curChoice.getEffectsString().equals("You gained:\\n")) {
-//									itemDialog.setVisible(true);
-//									itemDialog.addAction(Actions.delay(2000));
-//									itemDialog.addAction(Actions.fadeOut(1000));
-//									itemDialog.addAction(Actions.run(new Runnable() {
-//										@Override
-//										public void run() {
-//											initialize();
-//											
-//										}
-//									}));
-//								} else {
+								if(!curChoice.getEffectsString().equals("Inventory change:\n")) {
+									System.out.println("dialog should open");
+									itemDialog.setVisible(true);
+									itemLabel.setText(curChoice.getEffectsString());
+									itemLabel.pack();
+									itemDialog.setWidth(itemLabel.getWidth() + 150);
+									itemDialog.addAction(Actions.sequence(
+											Actions.fadeIn(0.5f),
+											Actions.delay(1),
+											Actions.fadeOut(0.5f),
+											Actions.run(new Runnable() {
+												@Override
+												public void run() {
+													initialize();
+													
+												}
+											})
+											));
+								} else {
 									initialize();
-//									}
+								}
 							}
 						} else {
 							rejectDialog = new Dialog("", game.skin);

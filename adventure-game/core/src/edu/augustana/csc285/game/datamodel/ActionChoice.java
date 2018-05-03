@@ -170,7 +170,7 @@ public class ActionChoice {// implements Feasible
 	 * @return s the string of string info
 	 */
 	public String getEffectsString() {
-		String s = "You gained:\n";
+		String s = "Inventory change:\n";
 		for (Effect effect : effectList) {
 			if (effect instanceof ItemEffect) {
 				ItemEffect itemEffect = (ItemEffect) effect;
