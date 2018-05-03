@@ -30,7 +30,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TooltipManager;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
-import com.sun.prism.shader.AlphaOne_LinearGradient_AlphaTest_Loader;
 
 import edu.augustana.csc285.game.datamodel.ActionChoice;
 import edu.augustana.csc285.game.datamodel.Slide;
@@ -292,7 +291,7 @@ public class SlideScreen implements Screen {
 			@Override
 			public boolean handle(Event event) {
 				game.bgMusic.setVolume(volumeSlider.getValue());
-				volumeLabel.setText(" " + (int) (volumeSlider.getValue() * 100) + " %");
+				volumeLabel.setText(" " + (int) (volumeSlider.getValue() * 100) + "%");
 				updateMute();
 				return false;
 			}
@@ -306,7 +305,7 @@ public class SlideScreen implements Screen {
 		Table volumeTab = new Table(game.skin);
 		volumeTab.add(new Label("Volume: ", game.skin));
 		volumeTab.add(volumeSlider);
-		volumeTab.add(volumeLabel).left();
+		volumeTab.add(volumeLabel).width(70);
 		
 		TextButton okButton = new TextButton("OK", game.skin);
 		okButton.addListener(new ClickListener() {
@@ -318,11 +317,12 @@ public class SlideScreen implements Screen {
 //		okButton.center();
 		
 		volumeTab.row();
-		volumeTab.add(okButton).colspan(2);
+		volumeTab.add(okButton).colspan(3);
+		volumeTab.pack();
 
 		volumeDialog.add(volumeTab);
-		volumeDialog.setWidth(320);
-		volumeDialog.setHeight(110);
+		volumeDialog.setWidth(volumeTab.getWidth() + 20);
+		volumeDialog.setHeight(volumeTab.getHeight() + 20);
 								//880
 		volumeDialog.setPosition(90, 530);
 		
@@ -336,6 +336,16 @@ public class SlideScreen implements Screen {
 		fontButton.setHeight(BUTTON_WIDTH);
 		fontButton.setPosition(10, Gdx.graphics.getHeight() - 4 * BUTTON_WIDTH - 10);
 		
+		
+		
+		fontDialog = new Dialog("", game.skin);
+		fontDialog.setVisible(false);
+
+		Table fontTab = new Table(game.skin);
+		fontTab.center();
+		fontTab.add(new Label("Font Size: ", game.skin));
+		
+		Label fontLabel = new Label(" " + fontSize + "px", game.skin);
 		fontSlider = new Slider(20, 40, 2, false, game.skin);
 		fontSlider.setValue(fontSize);
 		fontSlider.addListener(new EventListener(){
@@ -343,17 +353,15 @@ public class SlideScreen implements Screen {
 			public boolean handle(Event event) {
 				fontSize = (int) fontSlider.getValue();
 				gameText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + fontSize + ".fnt")), Color.BLACK));
+				fontLabel.setText(" " + fontSize + "px");
 				return false;
 			}
 			
 		});
+		fontTab.add(fontSlider);
+		fontTab.add(fontLabel).width(70);
+		fontTab.row();
 		
-		fontDialog = new Dialog("", game.skin);
-		fontDialog.setVisible(false);
-		fontDialog.row();
-		fontDialog.align(Align.center);
-		fontDialog.add(new Label("Font Size: ", game.skin));
-		fontDialog.add(fontSlider);
 		TextButton fontOkButton = new TextButton("OK", game.skin);
 		fontOkButton.addListener(new ClickListener() {
 			@Override
@@ -361,9 +369,12 @@ public class SlideScreen implements Screen {
 				fontDialog.setVisible(false);
 			}
 		});
-		fontDialog.add(fontOkButton);
-		fontDialog.setWidth(390);
-		fontDialog.setHeight(70);
+		fontTab.add(fontOkButton).colspan(3);
+		fontTab.pack();
+		
+		fontDialog.add(fontTab);
+		fontDialog.setWidth(fontTab.getWidth() + 20);
+		fontDialog.setHeight(fontTab.getHeight() + 20);
 								//880
 		fontDialog.setPosition(90, 530);
 		
