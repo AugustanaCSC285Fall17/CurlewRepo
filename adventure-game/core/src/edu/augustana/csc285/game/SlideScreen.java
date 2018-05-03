@@ -207,7 +207,7 @@ public class SlideScreen implements Screen {
 
 	public static final int BUTTON_SIZE = 70;
 	
-	private TooltipManager tooltip = new TooltipManager();
+	public static TooltipManager tooltip = new TooltipManager();
 	
 	private void createFunctionButtons() {
 		tooltip.initialTime = 0;

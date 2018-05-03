@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextTooltip;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
@@ -64,13 +65,14 @@ public class InventoryScreen implements Screen {
 		backButton.setWidth(SlideScreen.BUTTON_SIZE);
 		backButton.setHeight(SlideScreen.BUTTON_SIZE);
 							  //Gdx.graphics.getWidth() - backButton.getWidth() - 10
-		backButton.setPosition(10,	Gdx.graphics.getHeight() - 2 * BUTTON_WIDTH - 10);
+		backButton.setPosition(10,	Gdx.graphics.getHeight() - 2 * SlideScreen.BUTTON_SIZE - 10);
 		backButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.setScreen(new SlideScreen(game));
 			}
 		});
+		backButton.addListener(new TextTooltip("Back", SlideScreen.tooltip, game.skin));
 		game.stage.addActor(backButton);
 		
 		// initialize slide contents
@@ -88,9 +90,11 @@ public class InventoryScreen implements Screen {
 		game.stage.addActor(SlideScreen.muteButton);
 		game.stage.addActor(SlideScreen.creditButton);
 		game.stage.addActor(SlideScreen.fontButton);
+		game.stage.addActor(SlideScreen.zoomButton);
 		game.stage.addActor(SlideScreen.volumeDialog);
 		game.stage.addActor(SlideScreen.restartDialog);
 		game.stage.addActor(SlideScreen.fontDialog);
+		game.stage.addActor(SlideScreen.zoomDialog);
 		game.stage.addActor(SlideScreen.volumeDialog);
 		
 	}
