@@ -225,7 +225,6 @@ public class SlideScreen implements Screen {
 		restartButton.setHeight(BUTTON_SIZE);
 							  //Gdx.graphics.getWidth() - pauseButton.getWidth() - 10
 		restartButton.setPosition(10, Gdx.graphics.getHeight() - BUTTON_SIZE - 10);
-		
 		restartButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {

@@ -31,8 +31,6 @@ public class InventoryScreen implements Screen {
 	private Button backButton;
 	private ScrollPane scrollPane;
 	
-	private final int BUTTON_WIDTH = 60;
-	
 	public InventoryScreen(final AdventureGame game) {
 		this.game = game;
 		

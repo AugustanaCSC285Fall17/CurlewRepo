@@ -24,12 +24,12 @@ public class CreditsScreen implements Screen {
 		this.game = game; 
 		
 
+		drawBackgroundAndLogo();
 		initializeAbout();
 	}
 	
 
 	private void initializeAbout() {
-		drawBackgroundAndLogo();
 		Label credit = new Label("Credits", game.skin, "title");
 		credit.setPosition(50, 630);
 		game.stage.addActor(credit);
@@ -121,14 +121,18 @@ public class CreditsScreen implements Screen {
 		
 		introText = new Label(intro, game.skin);
 		introText.setWrap(true);
-		introText.setWidth(1000);
+		introText.setWidth(1200);
+		introText.pack();
+		introText.setWidth(1200);
+		introText.pack();
 		introText.setAlignment(Align.topLeft);
 		
-		ScrollPane scrollPane = new ScrollPane(introText);
-	    scrollPane.setBounds(70, 200, 1000, 430);
+		ScrollPane scrollPane = new ScrollPane(introText, game.skin);
+	    scrollPane.setBounds(50, 200, 1200, 430);
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);
 	    scrollPane.setFadeScrollBars(false);
+	    
 	    
 		game.stage.addActor(scrollPane);
 		
