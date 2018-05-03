@@ -30,6 +30,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TooltipManager;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
+import com.sun.prism.shader.AlphaOne_LinearGradient_AlphaTest_Loader;
 
 import edu.augustana.csc285.game.datamodel.ActionChoice;
 import edu.augustana.csc285.game.datamodel.Slide;
@@ -284,11 +285,14 @@ public class SlideScreen implements Screen {
 		
 		// slider
 		volumeSlider = new Slider(0f, 1f, 0.1f, false, game.skin);
+		Label volumeLabel = new Label(" 10%", game.skin);
+		volumeLabel.setWidth(53);
 		volumeSlider.setValue(game.bgMusic.getVolume());
 		volumeSlider.addListener(new EventListener(){
 			@Override
 			public boolean handle(Event event) {
-				game.bgMusic.setVolume(volumeSlider.getValue());	
+				game.bgMusic.setVolume(volumeSlider.getValue());
+				volumeLabel.setText(" " + (int) (volumeSlider.getValue() * 100) + " %");
 				updateMute();
 				return false;
 			}
@@ -298,8 +302,12 @@ public class SlideScreen implements Screen {
 		// dialog
 		volumeDialog = new Dialog("", game.skin);
 		volumeDialog.setVisible(false);
-		volumeDialog.add(new Label("Volume: ", game.skin));
-		volumeDialog.add(volumeSlider).align(Align.left);
+		
+		Table volumeTab = new Table(game.skin);
+		volumeTab.add(new Label("Volume: ", game.skin));
+		volumeTab.add(volumeSlider);
+		volumeTab.add(volumeLabel).left();
+		
 		TextButton okButton = new TextButton("OK", game.skin);
 		okButton.addListener(new ClickListener() {
 			@Override
@@ -307,11 +315,12 @@ public class SlideScreen implements Screen {
 				volumeDialog.setVisible(false);
 			}
 		});
-		System.out.println(volumeSlider.getValue());
-		Label volumeLabel = new Label("" + volumeSlider.getValue(), game.skin);
-		volumeDialog.pad(10).add(volumeLabel);
-		volumeDialog.row();
-		volumeDialog.add(okButton).align(Align.center);
+//		okButton.center();
+		
+		volumeTab.row();
+		volumeTab.add(okButton).colspan(2);
+
+		volumeDialog.add(volumeTab);
 		volumeDialog.setWidth(320);
 		volumeDialog.setHeight(110);
 								//880
