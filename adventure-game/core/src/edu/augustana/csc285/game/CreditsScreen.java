@@ -84,7 +84,7 @@ public class CreditsScreen implements Screen {
 				+ "     Vecna (Braden Isbell)\n"
 				+ "     Zineb Zirari\n"
 				+ "\nImages:\n\n"
-				+ "     Slide images by Swenson Swedish Immigration Research Center, Augustana College\n"
+				+ "     Images in the game are from the Swenson Center's library and archival collections.\n"
 				+ "     Other images:\n"
 				+ "     Kronor:\n" 
 				+ "          http://www.myntkabinettet.se/fakta/galleri/mynt_1/nyare_tid/oskar_ii_1/oskar_ii_krona_guld\n" 
@@ -125,7 +125,7 @@ public class CreditsScreen implements Screen {
 		introText.setAlignment(Align.topLeft);
 		
 		ScrollPane scrollPane = new ScrollPane(introText);
-	    scrollPane.setBounds(70, 200, 1300, 430);
+	    scrollPane.setBounds(70, 200, 1000, 430);
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);
 	    scrollPane.setFadeScrollBars(false);

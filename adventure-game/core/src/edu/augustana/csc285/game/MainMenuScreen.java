@@ -186,15 +186,17 @@ public class MainMenuScreen implements Screen {
 				+ "in collaboration with Lisa Huntsha and the staff of the Senson Swedish Immigration Research "
 				+ "Center at Augustana College in Rock Island, Illinois, 2017-2018"
 				+ "for the for the Swenson Swedish Immigration Research Center at Augustana College in Rock Island, "
-				+ "Illinois, 2017.\n\nGame by Team Curlew: Jack Cannell, Steve Jia, Minh Ta, and Maxwell McComb";
+				+ "Illinois, 2017.\n"
+				+ "Images in the game are from the Swenson Center's library and archival collections.\n\n"
+				+ "Game by Team Curlew: Jack Cannell, Steve Jia, Minh Ta, and Maxwell McComb";
 		
 		introText = new Label(intro, game.skin);
 		introText.setWrap(true);
-		introText.setWidth(1000);
+		introText.setWidth(1200);
 		introText.setAlignment(Align.center|Align.top);
 		
 		table.padTop(300);
-		table.add(introText).width(1000f);
+		table.add(introText).width(1200f);
 		table.row();
 		table.add(creditsButton).padTop(30).width(300);
 		table.row();

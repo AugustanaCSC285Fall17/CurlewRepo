@@ -61,8 +61,8 @@ public class InventoryScreen implements Screen {
 
 		backButton = new Button(game.skin);
 		backButton.add(new Image(new Texture(Gdx.files.internal("art/icons/backSMALL.png"))));
-		backButton.setWidth(SlideScreen.BUTTON_WIDTH);
-		backButton.setHeight(SlideScreen.BUTTON_WIDTH);
+		backButton.setWidth(SlideScreen.BUTTON_SIZE);
+		backButton.setHeight(SlideScreen.BUTTON_SIZE);
 							  //Gdx.graphics.getWidth() - backButton.getWidth() - 10
 		backButton.setPosition(10,	Gdx.graphics.getHeight() - 2 * BUTTON_WIDTH - 10);
 		backButton.addListener(new ClickListener() {
