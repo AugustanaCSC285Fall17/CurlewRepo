@@ -3467,6 +3467,7 @@ slides: [
 			{
 				choiceText: Buy new ticket for the next train
 				destinationSlideIndex: 92
+				rejText: "Insufficient funds!"
 				feasibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -4065,6 +4066,22 @@ slides: [
 			{
 				choiceText: Augustana College and Theological Seminary
 				destinationSlideIndex: 126
+			}
+			{
+				choiceText: John Deere factory
+				destinationSlideIndex: 141
+			}
+		]
+	}
+	{
+		title: Augustana College and Seminary
+		imageFileName: image83.jpg
+		gameText: You approach the campus and come across one of the seminary professors. He greets you and notices you are not from around here. You tell him you have journeyed to America in search of work and the chance to bring your family to this country. You express how thankful you are for making it this far and hope God will continue to guide you. The professor finds your tale inspiring and asks if you ever thought about studying the word of God.
+		actionChoices: [
+			{
+				choiceText: Yes
+				rejText: "You need a Bible to attend Augustana College."
+				destinationSlideIndex: 127
 				feasibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -4085,22 +4102,7 @@ slides: [
 				]
 			}
 			{
-				choiceText: John Deere factory
-				destinationSlideIndex: 141
-			}
-		]
-	}
-	{
-		title: Augustana College and Seminary
-		imageFileName: image83.jpg
-		gameText: You approach the campus and come across one of the seminary professors. He greets you and notices you are not from around here. You tell him you have journeyed to America in search of work and the chance to bring your family to this country. You express how thankful you are for making it this far and hope God will continue to guide you. The professor finds your tale inspiring and asks if you ever thought about studying the word of God.
-		actionChoices: [
-			{
-				choiceText: Yes
-				destinationSlideIndex: 127
-			}
-			{
-				choiceText: "No, just visitin. Continue traveling to John Deere\n"
+				choiceText: "No, just visiting. Continue traveling to John Deere\n"
 				destinationSlideIndex: 141
 			}
 		]

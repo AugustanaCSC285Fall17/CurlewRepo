@@ -307,9 +307,13 @@ public class SlideScreen implements Screen {
 				volumeDialog.setVisible(false);
 			}
 		});
-		volumeDialog.add(okButton);
+		System.out.println(volumeSlider.getValue());
+		Label volumeLabel = new Label("" + volumeSlider.getValue(), game.skin);
+		volumeDialog.pad(10).add(volumeLabel);
+		volumeDialog.row();
+		volumeDialog.add(okButton).align(Align.center);
 		volumeDialog.setWidth(320);
-		volumeDialog.setHeight(70);
+		volumeDialog.setHeight(110);
 								//880
 		volumeDialog.setPosition(90, 530);
 		
