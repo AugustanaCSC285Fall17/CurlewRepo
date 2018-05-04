@@ -201,13 +201,13 @@ public class SlideScreen implements Screen {
 				
 				@Override
 				public boolean scrolled(InputEvent event, float x, float y, int amount) {
-					if (amount > 0 && zoomMag <= 4) {
+					if (amount > 0 && zoomMag < 4) {
 						zoomMag += .25;
 						zoomWPanel = zoomImage.getWidth() / zoomMag;
 						zoomHPanel = zoomImage.getHeight() / zoomMag;
 						zoomRectangle.setSize(zoomWPanel, zoomHPanel);
 						mouseMoved(event, x, y);
-					} else if (amount < 0 && zoomMag >= 1.25) {
+					} else if (amount < 0 && zoomMag > 1.25) {
 						zoomMag -= .25;
 						zoomWPanel = zoomImage.getWidth() / zoomMag;
 						zoomHPanel = zoomImage.getHeight() / zoomMag;
