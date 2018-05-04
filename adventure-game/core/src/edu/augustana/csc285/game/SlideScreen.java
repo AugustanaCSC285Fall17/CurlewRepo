@@ -69,6 +69,7 @@ public class SlideScreen implements Screen {
 	private Image zoomBorder;
 	private Image zoomRectangle;
 	private Label zoomOverlay;
+	private Label zoomLabel;
 	
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
@@ -145,7 +146,9 @@ public class SlideScreen implements Screen {
 		Vector2 centerZoomImg = new Vector2();
 		TextureRegionDrawable zoomTexture = new TextureRegionDrawable();
 		if (!curSlide.getImageFileName().equals("facts.png")) {
+
 			zoomOverlay.addListener(new ClickListener() {
+				
 				@Override
 				public void touchDragged(InputEvent event, float x, float y, int pointer) {
 					mouseMoved(event,x , y);
@@ -196,6 +199,26 @@ public class SlideScreen implements Screen {
 					return true;
 				}
 				
+				@Override
+				public boolean scrolled(InputEvent event, float x, float y, int amount) {
+					if (amount > 0 && zoomMag <= 4) {
+						zoomMag += .25;
+						zoomWPanel = zoomImage.getWidth() / zoomMag;
+						zoomHPanel = zoomImage.getHeight() / zoomMag;
+						zoomRectangle.setSize(zoomWPanel, zoomHPanel);
+						mouseMoved(event, x, y);
+					} else if (amount < 0 && zoomMag >= 1.25) {
+						zoomMag -= .25;
+						zoomWPanel = zoomImage.getWidth() / zoomMag;
+						zoomHPanel = zoomImage.getHeight() / zoomMag;
+						zoomRectangle.setSize(zoomWPanel, zoomHPanel);
+						mouseMoved(event, x, y);
+					}
+					zoomSlider.setValue(zoomMag);
+					zoomLabel.setText(" " + (int) (zoomMag * 100) + " %");
+					System.out.println(amount);
+					return true;
+				}
 			});
 		}
 		
@@ -413,7 +436,7 @@ public class SlideScreen implements Screen {
 		zoomTab.center();
 		zoomTab.add(new Label("Zoom: ", game.skin));
 		
-		Label zoomLabel = new Label(" " + (int) (zoomMag * 100) + " %", game.skin);
+		zoomLabel = new Label(" " + (int) (zoomMag * 100) + " %", game.skin);
 		zoomSlider = new Slider(1.25f, 4.0f, .25f, false, game.skin);
 		zoomSlider.setValue(zoomMag);
 		zoomSlider.addListener(new EventListener(){
@@ -659,6 +682,9 @@ public class SlideScreen implements Screen {
 			zoomImage.setVisible(false);
 			zoomRectangle.setVisible(false);
 			zoomBorder.setVisible(false);
+			game.stage.setScrollFocus(scrollPane);
+		} else {
+			game.stage.setScrollFocus(zoomOverlay);
 		}
 		
 		game.stage.act(Gdx.graphics.getDeltaTime());
