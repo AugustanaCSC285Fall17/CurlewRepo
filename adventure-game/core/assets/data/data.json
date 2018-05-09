@@ -174,8 +174,7 @@ slides: [
 	{
 		title: John Deere letter
 		imageFileName: image6.jpg
-		gameText: "To Whom It May Concern,\n\nWe hope you find this letter in good spirits. On behalf of the John Deere Company, we thank you for meeting with us concerning about jobs within our factories. We are pleased to inform you you have been recruited for a position at the Moline factory site. We are looking forward to seeing you again and have safe travels. Please bring along this notarized letter with you to our recruitment office.\n\nGod speed,\n\nFrom the Office of John Deere, President of John Deere Co."
-		urlText: dieUrl
+		gameText: "To Whom It May Concern,\n\nWe hope you find this letter in good spirits. On behalf of the John Deere Company, you have been selected for a position at the Moline factory site. We are looking forward to seeing you again and have safe travels. Please bring this notarized letter with you to our recruitment office.\n\nGodspeed,\n\nFrom the Office of John Deere, President of John Deere Co."
 		actionChoices: [
 			{
 				choiceText: Continue
