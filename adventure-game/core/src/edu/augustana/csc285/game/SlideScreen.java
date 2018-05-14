@@ -133,9 +133,11 @@ public class SlideScreen implements Screen {
 		zoomImage.setSize(450, 680);
 		zoomImage.setPosition(90, Gdx.graphics.getHeight() - zoomImage.getHeight() - 20);
 
-		zoomImageLabel = new Label("Zoom Panel\nScroll to change zoom level", game.skin);
+		zoomImageLabel = new Label("Zoom Panel\nScroll to change zoom level\nDrag out to hide", game.skin);
+		zoomImageLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight22.fnt")), Color.BLACK));		
 		zoomImageLabel.pack();
-		zoomImageLabel.setPosition(zoomImage.getX() + 20, Gdx.graphics.getHeight() - zoomImage.getY() - zoomImageLabel.getHeight() - 10);
+		zoomImageLabel.setColor(0, 0, 0, .7f);
+		zoomImageLabel.setPosition(zoomImage.getX() + 20, Gdx.graphics.getHeight() - zoomImage.getY() - zoomImageLabel.getHeight() - 15);
 		zoomImageLabel.setVisible(false);
 		
 		zoomBorder = new Image(new Texture(Gdx.files.internal("art/grid.png")));
