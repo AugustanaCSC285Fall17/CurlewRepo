@@ -56,7 +56,7 @@ slides: [
 	{
 		title: Anders Bengtsson
 		imageFileName: image16.jpg
-		gameText: "You are an 18 year-old male from Mellby Parish, Småland. You are the youngest of 4 brothers and will not have any farmland to work. There are too many men in your family and not enough farmland. Additionally, the crop failures of 1867-1868 hit your family farm hard. You would also like to avoid Swedish military conscription. You are coming to America to own your own farmland or find a good job."
+		gameText: "You are an 18-year-old male from Mellby Parish, Småland. You are the youngest of 4 brothers and will not have any farmland to work. There are too many men in your family and not enough farmland. Additionally, the crop failures of 1867-1868 hit your family farm hard. You would also like to avoid Swedish military conscription. You are coming to America to own your own farmland or find a good job."
 		urlText: url1
 		actionChoices: [
 			{
@@ -69,7 +69,7 @@ slides: [
 	{
 		title: Lovisa Eriksdotter
 		imageFileName: image3.jpg
-		gameText: You are an 18 year-old female maid from Stockholm. You dislike your job as maid and can't seem to find a better one because there is too much competition (population has been booming in the city and countryside). You decide to seek better employment in America.
+		gameText: You are an 18-year-old female maid from Stockholm. You dislike your job as maid and can't seem to find a better one because there is too much competition (population has been booming in the city and countryside). You decide to seek better employment in America.
 		urlText: url2
 		actionChoices: [
 			{
@@ -82,7 +82,7 @@ slides: [
 	{
 		title: Historical Note: Swedish Names
 		imageFileName: facts.png
-		gameText: "Sweden followed a patronymic naming system until the late 19th-century. For example, Anders Bengtsson was so named because he was Anders, the son of Bengt. His son might be named Nils Andersson. A daughter could be Britta Andersdotter (dotter = daughter). Exceptions to this include nobility and clergy. Priests would often combine Greek or Roman endings -ander or -ius to names of parishes to form new names (for example, Eric Norelius). "
+		gameText: "Sweden followed a patronymic naming system until the late 19th century. For example, Anders Bengtsson was so named because he was Anders, the son of Bengt. His son might be named Nils Andersson. A daughter could be Britta Andersdotter (dotter = daughter). Exceptions to this include nobility and clergy. Priests would often combine Greek or Roman endings -ander or -ius to names of parishes to form new names (for example, Eric Norelius). "
 		urlText: dieUrl
 		slideType: HISTORICAL
 		actionChoices: [
@@ -96,7 +96,7 @@ slides: [
 	{
 		title: You've received a letter from America.
 		imageFileName: image10.jpg
-		gameText: "Receiving letters from those who journeyed to America prompted many of your family friends to pursue their own journey over. Life must be treating them well in America- economic opportunities, building their own legacy and family. The American Dream is a strong pull for Swedes, yourself included. \n\nChoose a letter to read:"
+		gameText: "Receiving letters from those who journeyed to America prompted many of your family friends to pursue their own journey over. Life must be treating them well in America - economic opportunities, building their own legacy and family. The American Dream is a strong pull for Swedes, yourself included. \n\nChoose a letter to read:"
 		urlText: dieUrl
 		actionChoices: [
 			{
@@ -225,7 +225,7 @@ slides: [
 	{
 		title: Historical Note: the Pull of America
 		imageFileName: facts.png
-		gameText: "Immigrants were inspired to move to America not only by \"push\" factors that pushed them to leave their country of origin, but by \"pull\" factors that suggested the United States would offer great opportunities. Many immigrants found out about these opportunities from family and friends, then they often followed those family and friends to places where they had already become established--a process called chain migration. Letters from the U.S.  to Sweden provided lots of advice about the long journey as well as information about opportunities in their new American homes and sometimes encouragement to join them. Other immigrants were recruited in Sweden to go straight to particular jobs in the United States. John Deere, in Moline, Illinois, was well known for recruiting Swedes for its growing factory operation."
+		gameText: "Immigrants were inspired to move to America not only by \"push\" factors that pushed them to leave their country of origin, but by \"pull\" factors that suggested the United States would offer great opportunities. Many immigrants found out about these opportunities from family and friends, then they often followed those family and friends to places where they had already become established - a process called chain migration. Letters from the U.S.  to Sweden provided lots of advice about the long journey as well as information about opportunities in their new American homes and sometimes encouragement to join them. Other immigrants were recruited in Sweden to go straight to particular jobs in the United States. John Deere, in Moline, Illinois, was well known for recruiting Swedes for its growing factory operation."
 		urlText: dieUrl
 		slideType: HISTORICAL
 		actionChoices: [
@@ -3096,7 +3096,7 @@ slides: [
 		actionChoices: [
 			{
 				choiceText: "Try following another path from the start. "
-				destinationSlideIndex: 1
+				destinationSlideIndex: 0
 			}
 		]
 	}
@@ -3138,7 +3138,7 @@ slides: [
 		actionChoices: [
 			{
 				choiceText: Start over
-				destinationSlideIndex: 1
+				destinationSlideIndex: 0
 			}
 		]
 	}
@@ -3369,7 +3369,7 @@ slides: [
 	{
 		title: Speak with a pastor
 		imageFileName: image59.jpg
-		gameText: You notice a pastor giving a sermon to a group of people-other Swedish immigrants! You listen to the sermon and feel spiritually at ease. It is good to hear the Swedish language in America. The pastor mentions that his training at the Seminary in Rock Island helped him come closer to God. He encourages you to join the Augustana Lutheran Synod and hands you a bible.
+		gameText: You notice a pastor giving a sermon to a group of people-other Swedish immigrants! You listen to the sermon and feel spiritually at ease. It is good to hear the Swedish language in America. The pastor mentions that his training at the Seminary in Rock Island helped him come closer to God. He encourages you to join the Augustana Lutheran Synod."
 		actionChoices: [
 			{
 				choiceText: Go back
@@ -4048,7 +4048,7 @@ slides: [
 	{
 		title: Nursing credits
 		imageFileName: image76.jpg
-		gameText: "Thanks for playing! Try again and see what other choices and consequences awaited Swedish immigrants!\nThis nurse's story was inspired by:\n\n\tMSS P:344 Euphemia Peterson nursing papers, Swenson Swedish Immigration Research Center, Augustana College, Rock Island, Illinois.\n\tSickness and Health in America: Readings in the History of Medicine and Public Health, Third Edition. Edited by Judith Walzer Leavitt and Ronald L. Numbers, 1997.\n\tThe Deadly Truth: A History of Disease in America, by Gerald N. Grob, 2005.  "
+		gameText: "Thanks for playing! Try again and see what other choices and consequences awaited Swedish immigrants!\nThis nurse's story was inspired by:\n\nMSS P:344 Euphemia Peterson nursing papers, Swenson Swedish Immigration Research Center, Augustana College, Rock Island, Illinois.\nSickness and Health in America: Readings in the History of Medicine and Public Health, Third Edition. Edited by Judith Walzer Leavitt and Ronald L. Numbers, 1997.\nThe Deadly Truth: A History of Disease in America, by Gerald N. Grob, 2005.  "
 		gameOver: true
 		actionChoices: [
 			{
@@ -4418,7 +4418,7 @@ slides: [
 	{
 		title: Seminary student credits
 		imageFileName: image85.jpg
-		gameText: "Thanks for playing! Try again and see what other choices and consequences awaited Swedish immigrants!\n\nThis seminary student's story was inspired by: \n\n\tMSS P:258 Mabel Anderson and Carl Lorimer correspondence, Swenson Swedish Immigration Research Center, Augustana College, Rock Island, Illinois"
+		gameText: "Thanks for playing! Try again and see what other choices and consequences awaited Swedish immigrants!\n\nThis seminary student's story was inspired by: \n\nMSS P:258 Mabel Anderson and Carl Lorimer correspondence, Swenson Swedish Immigration Research Center, Augustana College, Rock Island, Illinois"
 		gameOver: true
 		actionChoices: [
 			{
@@ -4488,7 +4488,7 @@ slides: [
 	{
 		title: Fire!
 		imageFileName: image96.jpg
-		gameText: "During the next week, just as your shift is starting, you see sparks coming out from some malfunctioning equipment. A careless workers next to you fails to notice the sparks and so a couple of oily rags catch fire. You notice there are wool blankets nearby. Maybe you can extinguish it on your own. Or should you notify the foreman and let him handle it?"
+		gameText: "During the next week, just as your shift is starting, you see sparks coming out from some malfunctioning equipment. A careless worker next to you fails to notice the sparks, so a couple of oily rags catch fire. You notice there are wool blankets nearby. Maybe you can extinguish it on your own. Or should you notify the foreman and let him handle it?"
 		actionChoices: [
 			{
 				choiceText: Notify foreman
@@ -4740,7 +4740,7 @@ slides: [
 	{
 		title: Factory worker credits
 		imageFileName: image100.jpg
-		gameText: "Thanks for playing! Try again and see what other choices and consequences awaited Swedish immigrants!\n\nThis factory worker's story was inspired by:\n\tWayne G. Broehl, Jr.'s \"John Deere's company: a history of Deere and Company and its times\" (Doubleday: New York, 1984: 96, 230-232)."
+		gameText: "Thanks for playing! Try again and see what other choices and consequences awaited Swedish immigrants!\n\nThis factory worker's story was inspired by:\nWayne G. Broehl, Jr.'s \"John Deere's company: a history of Deere and Company and its times\" (Doubleday: New York, 1984: 96, 230-232)."
 		gameOver: true
 		actionChoices: [
 			{
@@ -5102,7 +5102,7 @@ slides: [
 	{
 		title: Maid/Seamstress Credits
 		imageFileName: image110.jpg
-		gameText: "Thanks for playing! Try again and see what other choices and consequences awaited Swedish immigrants!\n\nThis maid/seamstress story was inspired by:\n\tMSS P:329 Anna Persson Cave family papers, 1897-2006, Swenson Swedish Immigration Research Center, Augustana College, Rock Island, Illinois \n\tJanice Reiff Webster's \"Domestication and Americanization: Scandinavian Women in Seattle 1888-1900\""
+		gameText: "Thanks for playing! Try again and see what other choices and consequences awaited Swedish immigrants!\n\nThis maid/seamstress story was inspired by:\nMSS P:329 Anna Persson Cave family papers, 1897-2006, Swenson Swedish Immigration Research Center, Augustana College, Rock Island, Illinois \nJanice Reiff Webster's \"Domestication and Americanization: Scandinavian Women in Seattle 1888-1900\""
 		gameOver: true
 		actionChoices: [
 			{
@@ -5125,7 +5125,7 @@ slides: [
 	{
 		title: Minneapolis
 		imageFileName: image118.jpg
-		gameText: "You remember your childhood spent working the land and you are confident that you can continue to succeed here as well. \n\nFinally, something seems familiar--the soil of the Minnesota prairie reminds you of home and you feel hopeful.\n"
+		gameText: "You remember your childhood spent working the land and you are confident that you can continue to succeed here as well. \n\nFinally, something seems familiar - the soil of the Minnesota prairie reminds you of home and you feel hopeful.\n"
 		actionChoices: [
 			{
 				choiceText: Continue
@@ -5474,7 +5474,7 @@ slides: [
 	{
 		title: Farmer Credits
 		imageFileName: image117.jpg
-		gameText: "Thanks for playing! Try again and see what other choices and consequences awaited Swedish immigrants!\n\nThis farmer story was inspired by:\n\tArticles in the journal Swedish American Genealogist published by the Swenson Center\n\"Here I have worked and sweated for thirty years. Thanks be to God, my health has been good, and courage and hope have never failed me. I am not wealthy, since I have never striven to acquire riches, but I am well provided for and I am hopeful that until the end of my days I shall not be in want for my daily bread.\"\n\tGustaf Mellberg, farmer in Wisconsin, from letter to brother Sven in Sweden, 1872., Swedish American Genealogist Vol. 3, No. 4, 1983\n"
+		gameText: "Thanks for playing! Try again and see what other choices and consequences awaited Swedish immigrants!\n\nThis farmer story was inspired by:\nArticles in the journal Swedish American Genealogist published by the Swenson Center\n\"Here I have worked and sweated for thirty years. Thanks be to God, my health has been good, and courage and hope have never failed me. I am not wealthy, since I have never striven to acquire riches, but I am well provided for and I am hopeful that until the end of my days I shall not be in want for my daily bread.\"\nGustaf Mellberg, farmer in Wisconsin, from letter to brother Sven in Sweden, 1872., Swedish American Genealogist Vol. 3, No. 4, 1983\n"
 		gameOver: true
 		actionChoices: [
 			{
