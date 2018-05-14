@@ -4223,16 +4223,6 @@ slides: [
 			{
 				choiceText: Attend the study session and no additional practice for the oratorio
 				destinationSlideIndex: 136
-				effectList: [
-					{
-						class: edu.augustana.csc285.game.datamodel.ItemEffect
-						item: {
-							itemName: Dollar
-							visible: true
-						}
-						effectSize: 15
-					}
-				]
 			}
 		]
 	}
@@ -4317,6 +4307,16 @@ slides: [
 			{
 				choiceText: Continue
 				destinationSlideIndex: 137
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 15
+					}
+				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -4328,13 +4328,23 @@ slides: [
 						op: {
 							opcode: >=
 						}
-						qtyToCompare: 50
+						qtyToCompare: 35
 					}
 				]
 			}
 			{
 				choiceText: Continue
 				destinationSlideIndex: 138
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 15
+					}
+				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -4346,7 +4356,7 @@ slides: [
 						op: {
 							opcode: <=
 						}
-						qtyToCompare: 49
+						qtyToCompare: 34
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -4358,13 +4368,23 @@ slides: [
 						op: {
 							opcode: >=
 						}
-						qtyToCompare: 21
+						qtyToCompare: 16
 					}
 				]
 			}
 			{
 				choiceText: Continue
 				destinationSlideIndex: 139
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 15
+					}
+				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -4376,7 +4396,7 @@ slides: [
 						op: {
 							opcode: <=
 						}
-						qtyToCompare: 20
+						qtyToCompare: 5
 					}
 				]
 			}
@@ -4639,6 +4659,16 @@ slides: [
 			{
 				choiceText: Continue
 				destinationSlideIndex: 152
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 15
+					}
+				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -4650,13 +4680,23 @@ slides: [
 						op: {
 							opcode: >=
 						}
-						qtyToCompare: 50
+						qtyToCompare: 35
 					}
 				]
 			}
 			{
 				choiceText: Continue
 				destinationSlideIndex: 153
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 15
+					}
+				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -4668,7 +4708,7 @@ slides: [
 						op: {
 							opcode: >=
 						}
-						qtyToCompare: 21
+						qtyToCompare: 6
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -4680,13 +4720,23 @@ slides: [
 						op: {
 							opcode: <=
 						}
-						qtyToCompare: 49
+						qtyToCompare: 34
 					}
 				]
 			}
 			{
 				choiceText: Continue
 				destinationSlideIndex: 154
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 15
+					}
+				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -4698,7 +4748,7 @@ slides: [
 						op: {
 							opcode: <=
 						}
-						qtyToCompare: 20
+						qtyToCompare: 5
 					}
 				]
 			}
@@ -5001,6 +5051,16 @@ slides: [
 			{
 				choiceText: Continue
 				destinationSlideIndex: 167
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 20
+					}
+				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -5012,13 +5072,23 @@ slides: [
 						op: {
 							opcode: >=
 						}
-						qtyToCompare: 50
+						qtyToCompare: 30
 					}
 				]
 			}
 			{
 				choiceText: Continue
 				destinationSlideIndex: 168
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 20
+					}
+				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -5030,7 +5100,7 @@ slides: [
 						op: {
 							opcode: <=
 						}
-						qtyToCompare: 49
+						qtyToCompare: 29
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -5042,13 +5112,23 @@ slides: [
 						op: {
 							opcode: >=
 						}
-						qtyToCompare: 21
+						qtyToCompare: 1
 					}
 				]
 			}
 			{
 				choiceText: Continue
 				destinationSlideIndex: 169
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 20
+					}
+				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -5060,7 +5140,7 @@ slides: [
 						op: {
 							opcode: <=
 						}
-						qtyToCompare: 20
+						qtyToCompare: 0
 					}
 				]
 			}
@@ -5279,16 +5359,6 @@ slides: [
 			{
 				choiceText: Decline his offer
 				destinationSlideIndex: 182
-				effectList: [
-					{
-						class: edu.augustana.csc285.game.datamodel.ItemEffect
-						item: {
-							itemName: Dollar
-							visible: true
-						}
-						effectSize: 20
-					}
-				]
 			}
 		]
 	}
@@ -5373,6 +5443,16 @@ slides: [
 			{
 				choiceText: Continue
 				destinationSlideIndex: 183
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 20
+					}
+				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -5384,13 +5464,23 @@ slides: [
 						op: {
 							opcode: >=
 						}
-						qtyToCompare: 50
+						qtyToCompare: 30
 					}
 				]
 			}
 			{
 				choiceText: Continue
 				destinationSlideIndex: 184
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 20
+					}
+				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -5402,7 +5492,7 @@ slides: [
 						op: {
 							opcode: <=
 						}
-						qtyToCompare: 49
+						qtyToCompare: 29
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -5414,13 +5504,23 @@ slides: [
 						op: {
 							opcode: >=
 						}
-						qtyToCompare: 21
+						qtyToCompare: 1
 					}
 				]
 			}
 			{
 				choiceText: Continue
 				destinationSlideIndex: 185
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: 20
+					}
+				]
 				visibilityCond: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
@@ -5432,7 +5532,7 @@ slides: [
 						op: {
 							opcode: <=
 						}
-						qtyToCompare: 20
+						qtyToCompare: 0
 					}
 				]
 			}

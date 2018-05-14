@@ -185,6 +185,28 @@ public class ActionChoice {// implements Feasible
 		return s;
 	}
 	/**
+	 * used to display information about the effect that we do not want displayed in the toString. This method ignore invisible items
+	 * @return s the string of string info
+	 */
+	public String getEffectsStringIfVisible() {
+		String s = "Inventory change:\n";
+		for (Effect effect : effectList) {
+			if (effect instanceof ItemEffect) {
+				ItemEffect itemEffect = (ItemEffect) effect;
+				String effectSize = "" + itemEffect.getEffectSize();
+				if (!itemEffect.getItem().getItemName().substring(0, 1).equals("~")) {
+					// add a plus sign if the quantity is positive (since negative effect size already have a negative sign, duh!)
+					if (itemEffect.getEffectSize() > 0)
+						effectSize = "+" + itemEffect.getEffectSize();
+						
+					s += effectSize + " " + itemEffect.getItem().getItemName() + "\n";
+				}
+			}
+		}
+		
+		return s;
+	}
+	/**
 	 * returns the string of action choice info to be displayed in the preview pane
 	 */
 	public String toString() {

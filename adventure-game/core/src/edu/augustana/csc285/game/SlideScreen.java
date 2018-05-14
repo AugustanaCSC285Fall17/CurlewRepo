@@ -70,6 +70,7 @@ public class SlideScreen implements Screen {
 	private Image zoomRectangle;
 	private Label zoomOverlay;
 	private Label zoomLabel;
+	private Label zoomImageLabel;
 	
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
@@ -94,7 +95,7 @@ public class SlideScreen implements Screen {
 
 		game.bgImg.setSize(size, size);
 		game.bgImg.setPosition(Gdx.graphics.getWidth() - size, 0);
-		
+
 		setupZoom();
 		
 		game.stage.addActor(game.bgImg);
@@ -115,6 +116,7 @@ public class SlideScreen implements Screen {
 		game.stage.addActor(zoomBorder);
 		game.stage.addActor(zoomOverlay);
 		game.stage.addActor(zoomDialog);
+		game.stage.addActor(zoomImageLabel);
 		
 		game.stage.addActor(volumeDialog);
 		game.stage.addActor(fontDialog);
@@ -131,12 +133,20 @@ public class SlideScreen implements Screen {
 		zoomImage.setSize(450, 680);
 		zoomImage.setPosition(90, Gdx.graphics.getHeight() - zoomImage.getHeight() - 20);
 
+		zoomImageLabel = new Label("Zoom Panel\nScroll to change zoom level", game.skin);
+		zoomImageLabel.pack();
+		zoomImageLabel.setPosition(zoomImage.getX() + 20, Gdx.graphics.getHeight() - zoomImage.getY() - zoomImageLabel.getHeight() - 10);
+		zoomImageLabel.setVisible(false);
+		
 		zoomBorder = new Image(new Texture(Gdx.files.internal("art/grid.png")));
 		zoomBorder.setBounds(zoomImage.getX(), zoomImage.getY(), zoomImage.getWidth(), zoomImage.getHeight());
 		
 		zoomOverlay = new Label("", game.skin);
 		zoomOverlay.setSize(Gdx.graphics.getHeight(), Gdx.graphics.getHeight());
 		zoomOverlay.setPosition(Gdx.graphics.getWidth() - Gdx.graphics.getHeight(), 0);
+		if (curSlide.getImageFileName().equals("facts.png")) {
+			zoomOverlay.setVisible(false);
+		}
 		
 		zoomMag = 2.5f;
 		zoomWPanel = zoomImage.getWidth() / zoomMag;
@@ -196,6 +206,7 @@ public class SlideScreen implements Screen {
 					zoomRectangle.setPosition(zoomRectX, zoomRectY);
 					zoomRectangle.setVisible(true);
 					zoomBorder.setVisible(true);
+					zoomImageLabel.setVisible(true);
 					return true;
 				}
 				
@@ -216,7 +227,6 @@ public class SlideScreen implements Screen {
 					}
 					zoomSlider.setValue(zoomMag);
 					zoomLabel.setText(" " + (int) (zoomMag * 100) + " %");
-					System.out.println(amount);
 					return true;
 				}
 			});
@@ -570,7 +580,7 @@ public class SlideScreen implements Screen {
 							if (game.data.getSlide(game.data.getCurrentSlideIndex()).getSlideType() == SlideType.SHOP) {
 								game.setScreen(new ShopScreen(game, lastSlideIndex));
 							} else {
-								if(!curChoice.getEffectsString().equals("Inventory change:\n")) {
+								if(!curChoice.getEffectsStringIfVisible().equals("Inventory change:\n")) {
 									itemDialog.setVisible(true);
 									itemLabel.setText(curChoice.getEffectsString());
 									itemLabel.pack();
@@ -578,7 +588,7 @@ public class SlideScreen implements Screen {
 									itemDialog.setWidth(itemLabel.getWidth() + 150);
 									itemDialog.addAction(Actions.sequence(
 											Actions.fadeIn(0.5f),
-											Actions.delay(1),
+											Actions.delay(0.5f),
 											Actions.fadeOut(0.5f),
 											Actions.run(new Runnable() {
 												@Override
@@ -682,6 +692,7 @@ public class SlideScreen implements Screen {
 			zoomImage.setVisible(false);
 			zoomRectangle.setVisible(false);
 			zoomBorder.setVisible(false);
+			zoomImageLabel.setVisible(false);
 			game.stage.setScrollFocus(scrollPane);
 		} else {
 			game.stage.setScrollFocus(zoomOverlay);
