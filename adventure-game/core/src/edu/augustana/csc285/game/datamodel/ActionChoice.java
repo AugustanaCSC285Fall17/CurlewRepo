@@ -9,6 +9,7 @@ public class ActionChoice {// implements Feasible
 	private int destinationSlideIndex = -1;
 	private boolean visible;
 	private String rejText;
+	private boolean effectVisible;
 	
 	private ArrayList<Condition> feasibilityCond = new ArrayList<>();
 	private ArrayList<Condition> visibilityCond = new ArrayList<>();
@@ -18,6 +19,7 @@ public class ActionChoice {// implements Feasible
 	 */
 	public ActionChoice() {
 		this("", new ArrayList<Feasible>(), new ArrayList<Effect>());
+		effectVisible = true;
 		visible = true;
 	}
 	/**
@@ -40,6 +42,19 @@ public class ActionChoice {// implements Feasible
 		this.setRejText(rejText);
 		this.effectList = effectList;
 		visible = true;
+	}
+	/**
+	 * constructor with 3 parameters, is called by the "smaller" constructors
+	 * @param rejText 
+	 * @param feasibilityReq
+	 * @param effectList
+	 * @param displayEffect
+	 */
+	public ActionChoice(String rejText, ArrayList<Feasible> feasibilityReq, ArrayList<Effect> effectList, boolean displayEffect) {
+		this.setRejText(rejText);
+		this.effectList = effectList;
+		visible = true;
+		this.effectVisible = displayEffect;
 	}
 
 	public String getChoiceText() {
@@ -64,6 +79,13 @@ public class ActionChoice {// implements Feasible
 	 */
 	public boolean isVisible() {
 		return visible;
+	}
+	/**
+	 *  test if the effect is visible and return true or false
+	 * @return
+	 */
+	public boolean isEffectVisible() {
+		return effectVisible;
 	}
 
 	/**

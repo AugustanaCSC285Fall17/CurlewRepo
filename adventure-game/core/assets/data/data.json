@@ -3212,7 +3212,7 @@ slides: [
 				destinationSlideIndex: 96
 			}
 			{
-				choiceText: Alcoholic drink
+				choiceText: Alcoholic drink ($1)
 				destinationSlideIndex: 97
 				rejText: Insufficient funds!
 				feasibilityCond: [
@@ -3294,6 +3294,7 @@ slides: [
 			{
 				choiceText: Sneak past the conductor
 				destinationSlideIndex: 98
+				effectVisible: false
 				effectList: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemEffect

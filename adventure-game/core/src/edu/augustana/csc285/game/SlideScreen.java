@@ -569,14 +569,6 @@ public class SlideScreen implements Screen {
 		itemDialog.row();
 		itemDialog.align(Align.left);
 		itemDialog.add(itemLabel);
-		
-		//ok button
-//		TextButton kButton = new TextButton("OK", game.skin);
-//		kButton.addListener(new Cl)
-//		itemDialog.add(kButton);
-		
-		
-		itemDialog.setPosition(130, Gdx.graphics.getHeight() - 300, Align.left);
 		itemDialog.setVisible(false);
 		
 		for (ActionChoice curChoice : curChoices) {
@@ -602,12 +594,14 @@ public class SlideScreen implements Screen {
 							if (game.data.getSlide(game.data.getCurrentSlideIndex()).getSlideType() == SlideType.SHOP) {
 								game.setScreen(new ShopScreen(game, lastSlideIndex));
 							} else {
-								if(!curChoice.getEffectsStringIfVisible().equals("Inventory change:\n")) {
+								if(!curChoice.getEffectsStringIfVisible().equals("Inventory change:\n") && curChoice.isEffectVisible()) {
 									itemDialog.setVisible(true);
 									itemLabel.setText(curChoice.getEffectsString());
+									itemLabel.setAlignment(Align.center);
 									itemLabel.pack();
 									itemDialog.setHeight(itemLabel.getHeight() + 20);
 									itemDialog.setWidth(itemLabel.getWidth() + 150);
+									itemDialog.setPosition((Gdx.graphics.getWidth() - itemDialog.getWidth()) / 2, (Gdx.graphics.getHeight() - itemDialog.getHeight()) / 2);
 									itemDialog.addAction(Actions.sequence(
 											Actions.fadeIn(0.5f),
 											Actions.delay(0.5f),
