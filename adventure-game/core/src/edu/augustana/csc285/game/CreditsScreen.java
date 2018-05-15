@@ -133,7 +133,8 @@ public class CreditsScreen implements Screen {
 	    scrollPane.setTouchable(Touchable.enabled);
 	    scrollPane.setFadeScrollBars(false);
 	    
-	    
+
+		game.stage.setScrollFocus(scrollPane);
 		game.stage.addActor(scrollPane);
 		
 	}
