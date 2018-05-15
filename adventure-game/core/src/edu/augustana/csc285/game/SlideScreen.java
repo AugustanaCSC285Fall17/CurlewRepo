@@ -11,12 +11,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -27,6 +29,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextTooltip;
 import com.badlogic.gdx.scenes.scene2d.ui.TooltipManager;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
@@ -71,6 +74,8 @@ public class SlideScreen implements Screen {
 	private Label zoomOverlay;
 	private Label zoomLabel;
 	private Label zoomImageLabel;
+	private CheckBox zoomInsCheckbox;
+	private static boolean zoomInsChecked = true;
 	
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
@@ -133,8 +138,8 @@ public class SlideScreen implements Screen {
 		zoomImage.setSize(450, 680);
 		zoomImage.setPosition(90, Gdx.graphics.getHeight() - zoomImage.getHeight() - 20);
 
-		zoomImageLabel = new Label("Zoom Panel\nScroll to change zoom level\nDrag out to hide", game.skin);
-		zoomImageLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight22.fnt")), Color.BLACK));		
+		zoomImageLabel = new Label("IMAGE ZOOM PANEL\n1. Move mouse left to hide.\n2. Scroll to zoom in/out.", game.skin);
+		zoomImageLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro26.fnt")), Color.BLACK));		
 		zoomImageLabel.pack();
 		zoomImageLabel.setColor(0, 0, 0, .7f);
 		zoomImageLabel.setPosition(zoomImage.getX() + 20, Gdx.graphics.getHeight() - zoomImage.getY() - zoomImageLabel.getHeight() - 15);
@@ -208,7 +213,9 @@ public class SlideScreen implements Screen {
 					zoomRectangle.setPosition(zoomRectX, zoomRectY);
 					zoomRectangle.setVisible(true);
 					zoomBorder.setVisible(true);
-					zoomImageLabel.setVisible(true);
+					if (zoomInsCheckbox.isChecked()) {
+						zoomImageLabel.setVisible(true);
+					}
 					return true;
 				}
 				
@@ -220,7 +227,7 @@ public class SlideScreen implements Screen {
 						zoomHPanel = zoomImage.getHeight() / zoomMag;
 						zoomRectangle.setSize(zoomWPanel, zoomHPanel);
 						mouseMoved(event, x, y);
-					} else if (amount > 0 && zoomMag > 1.25) {
+					} else if (amount > 0 && zoomMag > 1.5) {
 						zoomMag -= .25;
 						zoomWPanel = zoomImage.getWidth() / zoomMag;
 						zoomHPanel = zoomImage.getHeight() / zoomMag;
@@ -330,7 +337,7 @@ public class SlideScreen implements Screen {
 		
 		// slider
 		volumeSlider = new Slider(0f, 1f, 0.1f, false, game.skin);
-		Label volumeLabel = new Label(" 10%", game.skin);
+		Label volumeLabel = new Label(" " + (int) (game.bgMusic.getVolume() * 100) + "%", game.skin);
 		volumeLabel.setWidth(53);
 		volumeSlider.setValue(game.bgMusic.getVolume());
 		volumeSlider.addListener(new EventListener(){
@@ -444,12 +451,23 @@ public class SlideScreen implements Screen {
 		zoomDialog = new Dialog("", game.skin);
 		zoomDialog.setVisible(false);
 
+		zoomInsCheckbox = new CheckBox("Zoom instructions", game.skin);
+		zoomInsCheckbox.setChecked(zoomInsChecked);
+		zoomInsCheckbox.addListener(new ChangeListener() {
+		    @Override
+		    public void changed(ChangeEvent event, Actor actor) {
+				zoomInsChecked = zoomInsCheckbox.isChecked();
+				zoomImageLabel.setVisible(zoomInsChecked);
+			}
+			
+		});
+
 		Table zoomTab = new Table(game.skin);
 		zoomTab.center();
 		zoomTab.add(new Label("Zoom: ", game.skin));
 		
 		zoomLabel = new Label(" " + (int) (zoomMag * 100) + " %", game.skin);
-		zoomSlider = new Slider(1.25f, 4.0f, .25f, false, game.skin);
+		zoomSlider = new Slider(1.5f, 4.0f, .25f, false, game.skin);
 		zoomSlider.setValue(zoomMag);
 		zoomSlider.addListener(new EventListener(){
 			@Override
@@ -459,12 +477,14 @@ public class SlideScreen implements Screen {
 				zoomHPanel = zoomImage.getHeight() / zoomMag;
 				zoomRectangle.setSize(zoomWPanel, zoomHPanel);
 				zoomLabel.setText(" " + (int) (zoomMag * 100) + " %");
-				return false;
+				return true;
 			}
 			
 		});
 		zoomTab.add(zoomSlider);
 		zoomTab.add(zoomLabel).width(70);
+		zoomTab.row();
+		zoomTab.add(zoomInsCheckbox).colspan(2);
 		zoomTab.row();
 		
 		TextButton zoomOkButton = new TextButton("OK", game.skin);
