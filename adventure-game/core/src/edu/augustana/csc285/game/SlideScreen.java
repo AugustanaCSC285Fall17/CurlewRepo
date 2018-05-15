@@ -596,7 +596,7 @@ public class SlideScreen implements Screen {
 							} else {
 								if(!curChoice.getEffectsStringIfVisible().equals("Inventory change:\n") && curChoice.isEffectVisible()) {
 									itemDialog.setVisible(true);
-									itemLabel.setText(curChoice.getEffectsString());
+									itemLabel.setText(curChoice.getEffectsStringIfVisible());
 									itemLabel.setAlignment(Align.center);
 									itemLabel.pack();
 									itemDialog.setHeight(itemLabel.getHeight() + 20);

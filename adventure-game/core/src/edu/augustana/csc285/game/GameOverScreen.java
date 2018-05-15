@@ -68,8 +68,8 @@ public class GameOverScreen implements Screen {
 //		});
 
 		String intro = "Thank you for playing the game.\n"
-				+ "Please check out the about screen in the main menu to see the awesome people who helped "
-				+ "so that this game can happen. Did you get a bad ending? Play again!";
+				+ "Please check out the About Screen to see the awesome people who worked hard to create this game.\n"
+				+ "Did you get a bad ending? Play again!";
 		
 		introText = new Label(intro, game.skin);
 		introText.setWrap(true);

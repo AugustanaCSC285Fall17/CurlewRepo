@@ -216,6 +216,7 @@ public class ActionChoice {// implements Feasible
 			if (effect instanceof ItemEffect) {
 				ItemEffect itemEffect = (ItemEffect) effect;
 				String effectSize = "" + itemEffect.getEffectSize();
+				System.out.println(itemEffect.getEffectSize() + " " + itemEffect.getItem().getItemName());
 				if (!itemEffect.getItem().getItemName().substring(0, 1).equals("~")) {
 					// add a plus sign if the quantity is positive (since negative effect size already have a negative sign, duh!)
 					if (itemEffect.getEffectSize() > 0)
@@ -225,7 +226,7 @@ public class ActionChoice {// implements Feasible
 				}
 			}
 		}
-		
+		System.out.println("-----");
 		return s;
 	}
 	/**

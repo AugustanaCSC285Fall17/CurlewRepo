@@ -1377,14 +1377,6 @@ slides: [
 			{
 				choiceText: Head back
 				destinationSlideIndex: 41
-				effectList: [
-					{
-						class: edu.augustana.csc285.game.datamodel.ItemEffect
-						item: {
-							itemName: ~quarantine
-						}
-					}
-				]
 			}
 		]
 	}
@@ -1434,6 +1426,14 @@ slides: [
 			{
 				choiceText: Head to dock
 				destinationSlideIndex: 68
+				effectList: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: ~quarantine
+						}
+					}
+				]
 			}
 		]
 	}
@@ -1473,7 +1473,7 @@ slides: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemCondition
 						item: {
-							itemName: ~quarantine
+							itemName: ~on_deck
 						}
 						op: {
 							opcode: <
@@ -1500,16 +1500,16 @@ slides: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemEffect
 						item: {
-							itemName: Kronor
-							visible: true
+							itemName: ~on_deck
 						}
-						effectSize: 20
 					}
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemEffect
 						item: {
-							itemName: ~quarantine
+							itemName: Kronor
+							visible: true
 						}
+						effectSize: 20
 					}
 				]
 			}
@@ -5602,6 +5602,9 @@ player: {
 	inventory: [
 		{
 			itemName: ~quarantine
+		}
+		{
+			itemName: ~on_deck
 		}
 		{
 			itemName: ~went_reading
