@@ -18,7 +18,7 @@ public class GameOverScreen implements Screen {
 	
 	private Table table;
 	private TextButton startButton;
-	private TextButton aboutButton;
+	private TextButton creditsButton;
 //	private TextButton quitButton;
 	private TextButton mainMenuButton;
 	private Label introText;
@@ -59,6 +59,16 @@ public class GameOverScreen implements Screen {
 			}
 		});
 		
+		creditsButton = new TextButton("Credits", game.skin);
+		creditsButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.stage.clear();
+				game.setScreen(new CreditsScreen(game));
+			}
+		}); 
+		
+		
 //		quitButton = new TextButton("Quit Game", game.skin);
 //		quitButton.addListener(new ClickListener() {
 //			@Override
@@ -68,7 +78,7 @@ public class GameOverScreen implements Screen {
 //		});
 
 		String intro = "Thank you for playing the game.\n"
-				+ "Please check out the About Screen to see the awesome people who worked hard to create this game.\n"
+				+ "Please check out the Credits Screen below to see the awesome people who have worked hard to create this game. "
 				+ "Did you get a bad ending? Play again!";
 		
 		introText = new Label(intro, game.skin);
@@ -79,11 +89,11 @@ public class GameOverScreen implements Screen {
 		table.padTop(200);
 		table.add(introText).width(800f);
 		table.row();
-		table.add(mainMenuButton).padTop(30).width(300);
+		table.add(startButton).padTop(30).width(300);
 		table.row();
-		table.add(startButton).padTop(10).width(300);
+		table.add(mainMenuButton).padTop(10).width(300);
 		table.row();
-		table.add(aboutButton).padTop(10).width(300);
+		table.add(creditsButton).padTop(10).width(300);
 		
 //		table.row();
 //		table.add(quitButton).padTop(10).width(300);

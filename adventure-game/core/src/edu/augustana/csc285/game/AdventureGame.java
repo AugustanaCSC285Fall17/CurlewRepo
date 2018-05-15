@@ -50,9 +50,9 @@ public class AdventureGame extends Game {
 		swansonLogo.setSize(logoWidth, (float) (swansonLogoTexture.getHeight() * logoWidth * 1.0 / swansonLogoTexture.getWidth()));
 		
 		// TODO: delete this when done testing
-		this.setScreen(new MainMenuScreen(this));
+//		this.setScreen(new GameOverScreen(this));
 		
-//		this.setScreen(new MainMenuScreen(this));
+		this.setScreen(new MainMenuScreen(this));
 	}
 	
 	public void restartGame() {
