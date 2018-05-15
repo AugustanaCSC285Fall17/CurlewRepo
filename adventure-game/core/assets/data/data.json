@@ -25,7 +25,7 @@ slides: [
 						item: {
 							itemName: Kronor
 						}
-						effectSize: 280
+						effectSize: 400
 					}
 				]
 			}
@@ -47,7 +47,7 @@ slides: [
 						item: {
 							itemName: Kronor
 						}
-						effectSize: 280
+						effectSize: 400
 					}
 				]
 			}
@@ -253,7 +253,7 @@ slides: [
 	{
 		title: Travel Papers
 		imageFileName: image14.jpg
-		gameText: "To start your journey, you need a few provisions. The first and foremost being your papers. Check your inventory to see how much money you have saved up, which is 280 Kronor. Do you:"
+		gameText: "To start your journey, you need a few provisions. The first and foremost being your papers. Check your inventory to see how much money you have saved up, which is 400 Kronor. Do you:"
 		urlText: dieUrl
 		actionChoices: [
 			{
@@ -1966,6 +1966,14 @@ slides: [
 							visible: true
 						}
 					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: -20
+					}
 				]
 			}
 			{
@@ -2011,6 +2019,14 @@ slides: [
 							itemName: ~TicketA
 							visible: true
 						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: -20
 					}
 				]
 			}
@@ -2058,6 +2074,14 @@ slides: [
 							visible: true
 						}
 					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: -15
+					}
 				]
 			}
 			{
@@ -2100,6 +2124,14 @@ slides: [
 							visible: true
 						}
 					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: -30
+					}
 				]
 			}
 			{
@@ -2141,6 +2173,14 @@ slides: [
 							itemName: ~TicketD
 							visible: true
 						}
+					}
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemEffect
+						item: {
+							itemName: Dollar
+							visible: true
+						}
+						effectSize: -50
 					}
 				]
 			}
@@ -4842,6 +4882,25 @@ slides: [
 			{
 				choiceText: Purchase some sewing supplies before starting the job
 				destinationSlideIndex: 158
+				rejText: You have sewing materials already!
+				feasibilityCond: [
+					{
+						class: edu.augustana.csc285.game.datamodel.ItemCondition
+						item: {
+							itemName: Sewing materials
+							imageName: sewing.png
+							visible: true
+							sellPrice: 15
+							buyPrice: 20
+							canSell: true
+							canBuy: true
+						}
+						op: {
+							opcode: <
+						}
+						qtyToCompare: 1
+					}
+				]
 				effectList: [
 					{
 						class: edu.augustana.csc285.game.datamodel.ItemEffect
@@ -5587,7 +5646,7 @@ slides: [
 	{
 		title: Reading room
 		imageFileName: image28.jpg
-		gameText: "Just when you sit down, the ship bell rang. You look out the window and see a glimpse of America right before your eyes."
+		gameText: "Just when you sit down, the ship bell rings. You look out the window and see a glimpse of America right before your eyes."
 		actionChoices: [
 			{
 				choiceText: Continue
