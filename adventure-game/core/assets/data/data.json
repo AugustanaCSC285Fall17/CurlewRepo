@@ -5587,7 +5587,7 @@ slides: [
 	{
 		title: Reading room
 		imageFileName: image28.jpg
-		gameText: "Right after you enter the reading room, the ship bell rang. You look out of the window and see a glimpse of America right before your eyes."
+		gameText: "Just when you sit down, the ship bell rang. You look out the window and see a glimpse of America right before your eyes."
 		actionChoices: [
 			{
 				choiceText: Continue
