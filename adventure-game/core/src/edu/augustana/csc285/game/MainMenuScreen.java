@@ -215,7 +215,7 @@ public class MainMenuScreen implements Screen {
 	
 	private void drawBackgroundAndLogo() {
 		Image bg = new Image(new Texture(Gdx.files.internal("slideImages/mainmenu2.jpg")));
-		bg.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		bg.setSize(AdventureGame.GAME_SCREEN_WIDTH, AdventureGame.GAME_SCREEN_HEIGHT);
 		bg.setPosition(0, 0);
 		game.stage.addActor(bg);
 		game.stage.addActor(game.logo);
@@ -228,7 +228,7 @@ public class MainMenuScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		game.stage.getViewport().update(width, height, true);
+		game.stage.getViewport().update(width, height);
 	}
 
 	@Override

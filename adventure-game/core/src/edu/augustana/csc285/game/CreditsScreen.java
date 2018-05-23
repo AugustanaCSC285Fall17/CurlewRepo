@@ -150,7 +150,7 @@ public class CreditsScreen implements Screen {
 	
 	private void drawBackgroundAndLogo() {
 		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/mainmenu2.jpg")));
-		game.bgImg.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		game.bgImg.setSize(AdventureGame.GAME_SCREEN_WIDTH, AdventureGame.GAME_SCREEN_HEIGHT);
 //		
 //		int logoWidth = 500;
 //		Texture swansonLogoTexture = new Texture(Gdx.files.internal("slideImages/image1.png"));

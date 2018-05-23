@@ -95,11 +95,11 @@ public class SlideScreen implements Screen {
 		curSlide = game.data.getSlide(game.data.getCurrentSlideIndex());
 
 		// Set the background
-		float size = Gdx.graphics.getHeight();
+		float size = AdventureGame.GAME_SCREEN_HEIGHT;
 		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())));
 
 		game.bgImg.setSize(size, size);
-		game.bgImg.setPosition(Gdx.graphics.getWidth() - size, 0);
+		game.bgImg.setPosition(AdventureGame.GAME_SCREEN_WIDTH - size, 0);
 
 		setupZoom();
 		
@@ -136,21 +136,21 @@ public class SlideScreen implements Screen {
 		zoomImage = new Image();
 		zoomImage.setVisible(false);
 		zoomImage.setSize(450, 680);
-		zoomImage.setPosition(90, Gdx.graphics.getHeight() - zoomImage.getHeight() - 20);
+		zoomImage.setPosition(90, AdventureGame.GAME_SCREEN_HEIGHT - zoomImage.getHeight() - 20);
 
 		zoomImageLabel = new Label("IMAGE ZOOM PANEL\n1. Move mouse left to hide.\n2. Scroll to zoom in/out.", game.skin);
 		zoomImageLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro26.fnt")), Color.BLACK));		
 		zoomImageLabel.pack();
 		zoomImageLabel.setColor(0, 0, 0, .7f);
-		zoomImageLabel.setPosition(zoomImage.getX() + 20, Gdx.graphics.getHeight() - zoomImage.getY() - zoomImageLabel.getHeight() - 15);
+		zoomImageLabel.setPosition(zoomImage.getX() + 20, AdventureGame.GAME_SCREEN_HEIGHT - zoomImage.getY() - zoomImageLabel.getHeight() - 15);
 		zoomImageLabel.setVisible(false);
 		
 		zoomBorder = new Image(new Texture(Gdx.files.internal("art/grid.png")));
 		zoomBorder.setBounds(zoomImage.getX(), zoomImage.getY(), zoomImage.getWidth(), zoomImage.getHeight());
 		
 		zoomOverlay = new Label("", game.skin);
-		zoomOverlay.setSize(Gdx.graphics.getHeight(), Gdx.graphics.getHeight());
-		zoomOverlay.setPosition(Gdx.graphics.getWidth() - Gdx.graphics.getHeight(), 0);
+		zoomOverlay.setSize(AdventureGame.GAME_SCREEN_HEIGHT, AdventureGame.GAME_SCREEN_HEIGHT);
+		zoomOverlay.setPosition(AdventureGame.GAME_SCREEN_WIDTH - AdventureGame.GAME_SCREEN_HEIGHT, 0);
 		if (curSlide.getImageFileName().equals("facts.png")) {
 			zoomOverlay.setVisible(false);
 		}
@@ -203,7 +203,8 @@ public class SlideScreen implements Screen {
 						zoomRectY = 0;
 					}
 					
-					if (Gdx.input.getX() >= Gdx.graphics.getWidth() - game.bgImg.getWidth()) {
+					if (Gdx.input.getX() * 1280 / Gdx.graphics.getWidth() >= AdventureGame.GAME_SCREEN_WIDTH - game.bgImg.getWidth()) {
+						System.out.println(game.bgImg.getWidth());
 						zoomImage.setVisible(true);
 					}
 					
@@ -265,8 +266,8 @@ public class SlideScreen implements Screen {
 		restartButton.add(restartImg);
 		restartButton.setWidth(BUTTON_SIZE);
 		restartButton.setHeight(BUTTON_SIZE);
-							  //Gdx.graphics.getWidth() - pauseButton.getWidth() - 10
-		restartButton.setPosition(10, Gdx.graphics.getHeight() - BUTTON_SIZE - 10);
+							  //AdventureGame.GAME_SCREEN_WIDTH - pauseButton.getWidth() - 10
+		restartButton.setPosition(10, AdventureGame.GAME_SCREEN_HEIGHT - BUTTON_SIZE - 10);
 		restartButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -319,8 +320,8 @@ public class SlideScreen implements Screen {
 		inventoryButton.add(invenImg);
 		inventoryButton.setWidth(BUTTON_SIZE);
 		inventoryButton.setHeight(BUTTON_SIZE);
-								  //Gdx.graphics.getWidth() - inventoryButton.getWidth() - 10
-		inventoryButton.setPosition(10,	Gdx.graphics.getHeight() - 2 * BUTTON_SIZE - 10);
+								  //AdventureGame.GAME_SCREEN_WIDTH - inventoryButton.getWidth() - 10
+		inventoryButton.setPosition(10,	AdventureGame.GAME_SCREEN_HEIGHT - 2 * BUTTON_SIZE - 10);
 		inventoryButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -377,7 +378,7 @@ public class SlideScreen implements Screen {
 		volumeDialog.setWidth(volumeTab.getWidth() + 20);
 		volumeDialog.setHeight(volumeTab.getHeight() + 20);
 								//880
-		volumeDialog.setPosition(90, Gdx.graphics.getHeight() - BUTTON_SIZE * 3);
+		volumeDialog.setPosition(90, AdventureGame.GAME_SCREEN_HEIGHT - BUTTON_SIZE * 3);
 		
 		updateMute();
 		
@@ -387,7 +388,7 @@ public class SlideScreen implements Screen {
 		fontButton.add(new Image(new Texture(Gdx.files.internal("art/icons/fontSMALL.png"))));
 		fontButton.setWidth(BUTTON_SIZE);
 		fontButton.setHeight(BUTTON_SIZE);
-		fontButton.setPosition(10, Gdx.graphics.getHeight() - 4 * BUTTON_SIZE - 10);
+		fontButton.setPosition(10, AdventureGame.GAME_SCREEN_HEIGHT - 4 * BUTTON_SIZE - 10);
 		
 		
 		
@@ -429,7 +430,7 @@ public class SlideScreen implements Screen {
 		fontDialog.setWidth(fontTab.getWidth() + 20);
 		fontDialog.setHeight(fontTab.getHeight() + 20);
 								//880
-		fontDialog.setPosition(90, Gdx.graphics.getHeight() - BUTTON_SIZE * 4);
+		fontDialog.setPosition(90, AdventureGame.GAME_SCREEN_HEIGHT - BUTTON_SIZE * 4);
 		
 		fontButton.addListener(new ClickListener() {
 			@Override
@@ -446,7 +447,7 @@ public class SlideScreen implements Screen {
 		zoomButton.add(new Image(new Texture(Gdx.files.internal("art/icons/zoom.png"))));
 		zoomButton.setWidth(BUTTON_SIZE);
 		zoomButton.setHeight(BUTTON_SIZE);
-		zoomButton.setPosition(10, Gdx.graphics.getHeight() - 5 * BUTTON_SIZE - 10);
+		zoomButton.setPosition(10, AdventureGame.GAME_SCREEN_HEIGHT - 5 * BUTTON_SIZE - 10);
 		
 		zoomDialog = new Dialog("", game.skin);
 		zoomDialog.setVisible(false);
@@ -501,7 +502,7 @@ public class SlideScreen implements Screen {
 		zoomDialog.setWidth(zoomTab.getWidth() + 20);
 		zoomDialog.setHeight(zoomTab.getHeight() + 20);
 								//880
-		zoomDialog.setPosition(90,  Gdx.graphics.getHeight() - BUTTON_SIZE * 5);
+		zoomDialog.setPosition(90,  AdventureGame.GAME_SCREEN_HEIGHT - BUTTON_SIZE * 5);
 		
 		zoomButton.addListener(new ClickListener() {
 			@Override
@@ -520,8 +521,8 @@ public class SlideScreen implements Screen {
 		creditButton.add(creditImg);
 		creditButton.setWidth(BUTTON_SIZE);
 		creditButton.setHeight(BUTTON_SIZE);
-								  //Gdx.graphics.getWidth() - inventoryButton.getWidth() - 10
-		creditButton.setPosition(10, Gdx.graphics.getHeight() - 6 * BUTTON_SIZE - 10);
+								  //AdventureGame.GAME_SCREEN_WIDTH - inventoryButton.getWidth() - 10
+		creditButton.setPosition(10, AdventureGame.GAME_SCREEN_HEIGHT - 6 * BUTTON_SIZE - 10);
 		creditButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -544,8 +545,8 @@ public class SlideScreen implements Screen {
 		muteButton = new Button(game.skin);
 		muteButton.setWidth(BUTTON_SIZE);
 		muteButton.setHeight(BUTTON_SIZE);
-							 //Gdx.graphics.getWidth() - inventoryButton.getWidth() - 10
-		muteButton.setPosition(10, Gdx.graphics.getHeight() - 3 * BUTTON_SIZE - 10);
+							 //AdventureGame.GAME_SCREEN_WIDTH - inventoryButton.getWidth() - 10
+		muteButton.setPosition(10, AdventureGame.GAME_SCREEN_HEIGHT - 3 * BUTTON_SIZE - 10);
 		muteButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -601,7 +602,7 @@ public class SlideScreen implements Screen {
 									itemLabel.pack();
 									itemDialog.setHeight(itemLabel.getHeight() + 20);
 									itemDialog.setWidth(itemLabel.getWidth() + 150);
-									itemDialog.setPosition((Gdx.graphics.getWidth() - itemDialog.getWidth()) / 2, (Gdx.graphics.getHeight() - itemDialog.getHeight()) / 2);
+									itemDialog.setPosition((AdventureGame.GAME_SCREEN_WIDTH - itemDialog.getWidth()) / 2, (AdventureGame.GAME_SCREEN_HEIGHT - itemDialog.getHeight()) / 2);
 									itemDialog.addAction(Actions.sequence(
 											Actions.fadeIn(0.5f),
 											Actions.delay(0.5f),
@@ -642,7 +643,7 @@ public class SlideScreen implements Screen {
 		title.setWidth(440);
 		title.pack();
 		title.setWidth(440);
-		title.setPosition(100, Gdx.graphics.getHeight() - title.getHeight() - 20);
+		title.setPosition(100, AdventureGame.GAME_SCREEN_HEIGHT - title.getHeight() - 20);
 		title.setAlignment(Align.left);
 	}
 	
@@ -689,7 +690,7 @@ public class SlideScreen implements Screen {
 		scrollPane = new ScrollPane(gameText, game.skin);
 		
 	    scrollPane.setBounds(110, 20 + table.getHeight(),
-	    		gameTextWidth, Gdx.graphics.getHeight() - (title.getHeight() + table.getHeight()) - 40);
+	    		gameTextWidth, AdventureGame.GAME_SCREEN_HEIGHT - (title.getHeight() + table.getHeight()) - 40);
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);
 	    scrollPane.setFadeScrollBars(false);
@@ -704,7 +705,7 @@ public class SlideScreen implements Screen {
 //		game.sprite.draw(game.batch);
 //		game.batch.end();
 		
-		if (Gdx.input.getX() < Gdx.graphics.getWidth() - game.bgImg.getWidth()) {
+		if (Gdx.input.getX() * 1280 / Gdx.graphics.getWidth() < AdventureGame.GAME_SCREEN_WIDTH - game.bgImg.getWidth()) {
 			zoomImage.setVisible(false);
 			zoomRectangle.setVisible(false);
 			zoomBorder.setVisible(false);

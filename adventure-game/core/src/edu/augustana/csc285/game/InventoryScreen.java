@@ -53,7 +53,7 @@ public class InventoryScreen implements Screen {
 		// Add actors
 		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/facts.png")));
 		game.bgImg.setPosition(0, 0);
-		game.bgImg.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		game.bgImg.setSize(AdventureGame.GAME_SCREEN_WIDTH, AdventureGame.GAME_SCREEN_HEIGHT);
 		game.stage.addActor(game.bgImg);
 
 
@@ -62,8 +62,8 @@ public class InventoryScreen implements Screen {
 		backButton.add(new Image(new Texture(Gdx.files.internal("art/icons/backSMALL.png"))));
 		backButton.setWidth(SlideScreen.BUTTON_SIZE);
 		backButton.setHeight(SlideScreen.BUTTON_SIZE);
-							  //Gdx.graphics.getWidth() - backButton.getWidth() - 10
-		backButton.setPosition(10,	Gdx.graphics.getHeight() - 2 * SlideScreen.BUTTON_SIZE - 10);
+							  //AdventureGame.GAME_SCREEN_WIDTH - backButton.getWidth() - 10
+		backButton.setPosition(10,	AdventureGame.GAME_SCREEN_HEIGHT - 2 * SlideScreen.BUTTON_SIZE - 10);
 		backButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -132,8 +132,8 @@ public class InventoryScreen implements Screen {
 //		pauseDialog.setWidth(300);
 //		pauseDialog.setHeight(200);
 //		
-//		pauseDialog.setPosition((Gdx.graphics.getWidth() - pauseDialog.getWidth()) / 2,
-//				(Gdx.graphics.getHeight() - pauseDialog.getHeight()) / 2);
+//		pauseDialog.setPosition((AdventureGame.GAME_SCREEN_WIDTH - pauseDialog.getWidth()) / 2,
+//				(AdventureGame.GAME_SCREEN_HEIGHT - pauseDialog.getHeight()) / 2);
 //	}
 
 	private void createTitle() {
@@ -141,7 +141,7 @@ public class InventoryScreen implements Screen {
 		title.setWidth(350);
 		title.pack();
 		title.setWidth(350);
-		title.setPosition(110, Gdx.graphics.getHeight() - title.getHeight() - 20);
+		title.setPosition(110, AdventureGame.GAME_SCREEN_HEIGHT - title.getHeight() - 20);
 		title.setAlignment(Align.left);
 	}
 	
@@ -186,7 +186,7 @@ public class InventoryScreen implements Screen {
 		
 		int gameTextHeight = 550;
 		
-	    scrollPane.setBounds(120, Gdx.graphics.getHeight() - title.getHeight() - 30 - gameTextHeight, gameTextWidth, gameTextHeight);
+	    scrollPane.setBounds(120, AdventureGame.GAME_SCREEN_HEIGHT - title.getHeight() - 30 - gameTextHeight, gameTextWidth, gameTextHeight);
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);
 	    scrollPane.setFadeScrollBars(false);
@@ -203,7 +203,7 @@ public class InventoryScreen implements Screen {
 		statsLabel.setAlignment(Align.topLeft);
 
 		statsTable = new Table();
-		statsTable.setWidth(Gdx.graphics.getWidth());
+		statsTable.setWidth(AdventureGame.GAME_SCREEN_WIDTH);
 		statsTable.align(Align.topLeft);
 		statsTable.setPosition(0, game.stage.getHeight());
 		statsTable.padTop(20);
@@ -227,7 +227,7 @@ public class InventoryScreen implements Screen {
 	
 	private void createTable() {
 		table = new Table();
-		table.setWidth(Gdx.graphics.getWidth());
+		table.setWidth(AdventureGame.GAME_SCREEN_WIDTH);
 		table.align(Align.topLeft);
 		table.setPosition(0, game.stage.getHeight());
 

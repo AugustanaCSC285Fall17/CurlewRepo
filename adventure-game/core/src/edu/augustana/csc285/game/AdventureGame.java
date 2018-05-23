@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import edu.augustana.csc285.game.datamodel.GameData;
 
@@ -26,13 +25,13 @@ public class AdventureGame extends Game {
 	
 	public void create() {
 		skin = new Skin(Gdx.files.internal("skins/uiskin.json"));
-		stage = new Stage(new ScreenViewport());
+		stage = new Stage();
 		data = GameData.fromJSON(Gdx.files.internal("data/data.json").readString("UTF-8"));
 		bgImg = new Image();
 		
 		bgMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Triumphant_Return.mp3"));
 		bgMusic.setLooping(true);
-		bgMusic.setVolume((float) .1);;
+		bgMusic.setVolume((float) .1);
 		bgMusic.play();
 		Gdx.input.setInputProcessor(stage);
 		
