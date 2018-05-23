@@ -47,6 +47,7 @@ public class AdventureGame extends Game {
 		swansonLogo = new Image(swansonLogoTexture);
 		swansonLogo.setPosition(40, 10);
 		swansonLogo.setSize(logoWidth, (float) (swansonLogoTexture.getHeight() * logoWidth * 1.0 / swansonLogoTexture.getWidth()));
+
 		
 		// TODO: delete this when done testing
 //		this.setScreen(new GameOverScreen(this));
@@ -60,7 +61,9 @@ public class AdventureGame extends Game {
 	}
 
 	public void render() {
-		
+		Gdx.graphics.setWindowedMode(800, 450);
+        Gdx.gl.glViewport(0, 0, 800, 450);
+//		stage.getViewport().update(640, 360);
 		super.render(); //important!
 	}
 	
