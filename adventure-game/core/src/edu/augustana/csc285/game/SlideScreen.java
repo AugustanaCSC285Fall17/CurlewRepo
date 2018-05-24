@@ -282,6 +282,7 @@ public class SlideScreen implements Screen {
 		restartDialog.add(restartLabel);
 		restartDialog.row();
 		TextButton button = new TextButton("Yes", game.skin);
+		button.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		button.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -292,6 +293,7 @@ public class SlideScreen implements Screen {
 			}
 		});
 		TextButton noButton = new TextButton("No", game.skin);
+		noButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		noButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -384,8 +386,8 @@ public class SlideScreen implements Screen {
 		volumeTab.pack();
 
 		volumeDialog.add(volumeTab);
-		volumeDialog.setWidth(volumeTab.getWidth() + AdventureGame.percentWidth(2));
-		volumeDialog.setHeight(volumeTab.getHeight() + AdventureGame.percentHeight(2));
+		volumeDialog.setWidth(volumeTab.getWidth() + AdventureGame.percentWidth(4));
+		volumeDialog.setHeight(volumeTab.getHeight() + AdventureGame.percentHeight(4));
 								//880
 		volumeDialog.setPosition(AdventureGame.percentWidth(7), AdventureGame.SCREEN_HEIGHT - BUTTON_SIZE * 3);
 		
@@ -440,8 +442,8 @@ public class SlideScreen implements Screen {
 		fontTab.pack();
 		
 		fontDialog.add(fontTab);
-		fontDialog.setWidth(fontTab.getWidth() + AdventureGame.percentWidth(2));
-		fontDialog.setHeight(fontTab.getHeight() + AdventureGame.percentHeight(2));
+		fontDialog.setWidth(fontTab.getWidth() + AdventureGame.percentWidth(4));
+		fontDialog.setHeight(fontTab.getHeight() + AdventureGame.percentHeight(4));
 								//880
 		fontDialog.setPosition(AdventureGame.percentWidth(7), AdventureGame.SCREEN_HEIGHT - BUTTON_SIZE * 4);
 		
@@ -520,8 +522,8 @@ public class SlideScreen implements Screen {
 		zoomTab.pack();
 		
 		zoomDialog.add(zoomTab);
-		zoomDialog.setWidth(zoomTab.getWidth() + AdventureGame.percentWidth(2));
-		zoomDialog.setHeight(zoomTab.getHeight() + AdventureGame.percentHeight(2));
+		zoomDialog.setWidth(zoomTab.getWidth() + AdventureGame.percentWidth(4));
+		zoomDialog.setHeight(zoomTab.getHeight() + AdventureGame.percentHeight(4));
 								//880
 		zoomDialog.setPosition(AdventureGame.percentWidth(7),  AdventureGame.SCREEN_HEIGHT - BUTTON_SIZE * 5);
 		
@@ -633,7 +635,7 @@ public class SlideScreen implements Screen {
 									itemLabel.setAlignment(Align.center);
 									itemLabel.pack();
 									itemDialog.setWidth(itemLabel.getWidth() + AdventureGame.percentWidth(12));
-									itemDialog.setHeight(itemLabel.getHeight() + AdventureGame.percentHeight(2));
+									itemDialog.setHeight(itemLabel.getHeight() + AdventureGame.percentHeight(4));
 									itemDialog.setPosition((AdventureGame.SCREEN_WIDTH - itemDialog.getWidth()) / 2, (AdventureGame.SCREEN_HEIGHT - itemDialog.getHeight()) / 2);
 									itemDialog.addAction(Actions.sequence(
 											Actions.fadeIn(0.5f),

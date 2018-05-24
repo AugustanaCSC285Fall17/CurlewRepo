@@ -133,7 +133,7 @@ public class MainMenuScreen implements Screen {
 		});
 		volumeDialog.add(okButton);
 		volumeDialog.setWidth(AdventureGame.percentWidth(25));
-		volumeDialog.setHeight(AdventureGame.percentHeight(1));
+		volumeDialog.setHeight(AdventureGame.percentHeight(4));
 		volumeDialog.setPosition(AdventureGame.percentWidth(69), AdventureGame.percentHeight(74));
 		
 //		quitButton = new TextButton("Quit Game", game.skin);

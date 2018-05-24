@@ -2,8 +2,10 @@ package edu.augustana.csc285.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -12,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextTooltip;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
@@ -63,7 +66,7 @@ public class InventoryScreen implements Screen {
 		backButton.setWidth(SlideScreen.BUTTON_SIZE);
 		backButton.setHeight(SlideScreen.BUTTON_SIZE);
 							  //AdventureGame.GAME_SCREEN_WIDTH - backButton.getWidth() - 10
-		backButton.setPosition(10,	AdventureGame.SCREEN_HEIGHT - 2 * SlideScreen.BUTTON_SIZE - 10);
+		backButton.setPosition(AdventureGame.percentWidth(1),	AdventureGame.SCREEN_HEIGHT - 2 * SlideScreen.BUTTON_SIZE - AdventureGame.percentHeight(1));
 		backButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -138,16 +141,16 @@ public class InventoryScreen implements Screen {
 
 	private void createTitle() {
 		title = new Label("Inventory", game.skin, "title");
-		title.setWidth(350);
+		title.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro" + (AdventureGame.appFontSize + 8) + ".fnt")), Color.BLACK));
+		title.setWidth(AdventureGame.percentWidth(27));
 		title.pack();
-		title.setWidth(350);
-		title.setPosition(110, AdventureGame.SCREEN_HEIGHT - title.getHeight() - 20);
+		title.setPosition(AdventureGame.percentWidth(8), AdventureGame.SCREEN_HEIGHT - title.getHeight() - AdventureGame.percentHeight(1));
 		title.setAlignment(Align.left);
 	}
 	
 	private void createItemTable() {
 		
-		int gameTextWidth = 700;
+		float gameTextWidth = AdventureGame.percentWidth(55);
 		
 		itemTable = new Table();
 		itemTable.setWidth(gameTextWidth);
@@ -164,29 +167,32 @@ public class InventoryScreen implements Screen {
 				itemName = item.getItemQty() + " kr";
 			}
 			Label itemLabel = new Label(itemName, game.skin);
+			itemLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 			itemLabel.setAlignment(Align.topLeft);
-			itemTable.add(itemImage);
+			itemTable.add(itemImage).size(AdventureGame.percentWidth(6), AdventureGame.percentWidth(6));
 			itemTable.add(itemLabel).align(Align.left).padLeft(5);
 			if (itemAdded % 2 == 0)
-				itemTable.add().pad(20);
+				itemTable.add().pad(AdventureGame.percentWidth(1));
 			else
-				itemTable.row().padTop(20);
+				itemTable.row().padTop(AdventureGame.percentHeight(1));
 			itemAdded++;
 		}
 		
 		if (itemAdded == 0) {
-			itemTable.add(new Label("You have no items in your inventory.", game.skin));
+			Label noItemLabel = new Label("You have no items in your inventory.", game.skin);
+			noItemLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+			itemTable.add(noItemLabel);
 		}
 		
 		createScrollPane(gameTextWidth);
 	}
 	
-	private void createScrollPane(int gameTextWidth) {
+	private void createScrollPane(float gameTextWidth) {
 		scrollPane = new ScrollPane(itemTable, game.skin);
 		
-		int gameTextHeight = 550;
+		float gameTextHeight = AdventureGame.percentHeight(75);
 		
-	    scrollPane.setBounds(120, AdventureGame.SCREEN_HEIGHT - title.getHeight() - 30 - gameTextHeight, gameTextWidth, gameTextHeight);
+	    scrollPane.setBounds(AdventureGame.percentWidth(8), AdventureGame.SCREEN_HEIGHT - title.getHeight() - AdventureGame.percentHeight(1) - gameTextHeight, gameTextWidth, gameTextHeight);
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);
 	    scrollPane.setFadeScrollBars(false);
@@ -196,18 +202,20 @@ public class InventoryScreen implements Screen {
 		
 		
 		statsTitle = new Label("Player Status", game.skin, "title");
+		statsTitle.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro" + (AdventureGame.appFontSize + 8) + ".fnt")), Color.BLACK));
 		statsTitle.setAlignment(Align.center);
 		
 		statsLabel = new Label("Name: " + game.data.getPlayer().getName()
 				+ "\nGender: " + game.data.getPlayer().getGender().toString(), game.skin);
+		statsLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		statsLabel.setAlignment(Align.topLeft);
 
 		statsTable = new Table();
 		statsTable.setWidth(AdventureGame.SCREEN_WIDTH);
 		statsTable.align(Align.topLeft);
-		statsTable.setPosition(0, game.stage.getHeight());
-		statsTable.padTop(20);
-		statsTable.padLeft(760);
+		statsTable.setPosition(0, AdventureGame.SCREEN_HEIGHT);
+		statsTable.padTop(AdventureGame.percentHeight(1));
+		statsTable.padLeft(AdventureGame.percentWidth(60));
 
 		Image avatar;
 		if (game.data.getPlayer().getGender() == Gender.UNKNOWN) 
@@ -217,11 +225,11 @@ public class InventoryScreen implements Screen {
 		else
 			avatar = new Image(new Texture(Gdx.files.internal("art/icons/female.png")));
 		
-		statsTable.add(statsTitle).width(260);
+		statsTable.add(statsTitle).width(AdventureGame.percentWidth(20));
 		statsTable.row();
-		statsTable.add(avatar).size(150, 150).padTop(20);
+		statsTable.add(avatar).size(AdventureGame.percentWidth(12), AdventureGame.percentWidth(12)).padTop(AdventureGame.percentHeight(1));
 		statsTable.row();
-		statsTable.add(statsLabel).padTop(20);
+		statsTable.add(statsLabel).padTop(AdventureGame.percentHeight(1));
 
 	}
 	
@@ -229,9 +237,9 @@ public class InventoryScreen implements Screen {
 		table = new Table();
 		table.setWidth(AdventureGame.SCREEN_WIDTH);
 		table.align(Align.topLeft);
-		table.setPosition(0, game.stage.getHeight());
+		table.setPosition(0, AdventureGame.SCREEN_HEIGHT);
 
-		int tableHeight = 600;
+		float tableHeight = AdventureGame.percentHeight(83);
 		table.padTop(tableHeight + title.getHeight());
 	}
 	

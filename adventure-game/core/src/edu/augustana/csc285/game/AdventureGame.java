@@ -11,10 +11,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import edu.augustana.csc285.game.datamodel.GameData;
 
 public class AdventureGame extends Game {
-	public static final int SCREEN_WIDTH = 800;
-	public static final int SCREEN_HEIGHT = 450;
-	public static int textFontSize = 16;
-	public static int appFontSize = 16;
+	public static final int SCREEN_WIDTH = 1000;
+	public static final int SCREEN_HEIGHT = 562;
+	public static int textFontSize = 20;
+	public static int appFontSize = 20;
 
 	public GameData data;
 
