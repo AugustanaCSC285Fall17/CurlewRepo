@@ -207,7 +207,7 @@ public class MainMenuScreen implements Screen {
 		introText.setWidth(AdventureGame.percentWidth(94));
 		introText.setAlignment(Align.center|Align.top);
 		
-		table.padTop(AdventureGame.percentWidth(42));
+		table.padTop(AdventureGame.percentHeight(42));
 		table.add(introText).width(AdventureGame.percentWidth(94));
 		table.row();
 		table.add(creditsButton).padTop(AdventureGame.percentHeight(2)).width(AdventureGame.percentWidth(24));
