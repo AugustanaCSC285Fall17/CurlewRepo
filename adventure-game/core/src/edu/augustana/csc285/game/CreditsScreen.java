@@ -2,14 +2,17 @@ package edu.augustana.csc285.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
@@ -31,7 +34,7 @@ public class CreditsScreen implements Screen {
 
 	private void initializeAbout() {
 		Label credit = new Label("Credits", game.skin, "title");
-		credit.setPosition(50, 630);
+		credit.setPosition(AdventureGame.percentWidth(1), AdventureGame.percentHeight(88));
 		game.stage.addActor(credit);
 		
 		backButton = new TextButton("Back", game.skin);
@@ -47,8 +50,9 @@ public class CreditsScreen implements Screen {
 				}
 			}
 		});
-		backButton.setSize(300, 40);
-		backButton.setPosition(500, 130);
+		backButton.setWidth(AdventureGame.percentWidth(23));
+		backButton.setPosition(AdventureGame.percentWidth(40), AdventureGame.percentHeight(18));
+		backButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		game.stage.addActor(backButton);
 		
 		String intro =
@@ -120,15 +124,14 @@ public class CreditsScreen implements Screen {
 				+ "     Artist: http://audionautix.com/";
 		
 		introText = new Label(intro, game.skin);
+		introText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		introText.setWrap(true);
-		introText.setWidth(1200);
-		introText.pack();
-		introText.setWidth(1200);
+		introText.setWidth(AdventureGame.percentWidth(94));
 		introText.pack();
 		introText.setAlignment(Align.topLeft);
 		
 		ScrollPane scrollPane = new ScrollPane(introText, game.skin);
-	    scrollPane.setBounds(50, 200, 1200, 430);
+	    scrollPane.setBounds(AdventureGame.percentWidth(1), AdventureGame.percentHeight(28), AdventureGame.percentWidth(94), AdventureGame.percentHeight(60));
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);
 	    scrollPane.setFadeScrollBars(false);
