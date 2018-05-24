@@ -52,9 +52,9 @@ public class AdventureGame extends Game {
 
 		
 		// TODO: delete this when done testing
-		this.setScreen(new GameOverScreen(this));
+//		this.setScreen(new GameOverScreen(this));
 		
-//		this.setScreen(new MainMenuScreen(this));
+		this.setScreen(new MainMenuScreen(this));
 	}
 	
 	public void restartGame() {
