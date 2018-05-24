@@ -37,7 +37,7 @@ public class GameOverScreen implements Screen {
 		table.setWidth(game.stage.getWidth());
 		table.align(Align.center|Align.top);
 		
-		table.setPosition(0, AdventureGame.GAME_SCREEN_HEIGHT);
+		table.setPosition(0, AdventureGame.SCREEN_HEIGHT);
 		
 		mainMenuButton = new TextButton("Main Menu", game.skin);
 		mainMenuButton.addListener(new ClickListener(){
@@ -104,14 +104,14 @@ public class GameOverScreen implements Screen {
 	
 	private void drawBackgroundAndLogo() {
 		bgImg = new Image(new Texture(Gdx.files.internal("slideImages/mainmenu2.jpg")));
-		bgImg.setSize(AdventureGame.GAME_SCREEN_WIDTH, AdventureGame.GAME_SCREEN_HEIGHT);
+		bgImg.setSize(AdventureGame.SCREEN_WIDTH, AdventureGame.SCREEN_HEIGHT);
 		game.stage.addActor(bgImg);
 		
 		Texture logoTexture = new Texture(Gdx.files.internal("art/gameover.png"));
 		int logoWidth = 500;
 		float logoHeight = (float) (logoTexture.getHeight() * logoWidth * 1.0 / logoTexture.getWidth());
 		logo = new Image(logoTexture);
-		logo.setPosition((AdventureGame.GAME_SCREEN_WIDTH - logoWidth) / 2, AdventureGame.GAME_SCREEN_HEIGHT - logoHeight - 100);
+		logo.setPosition((AdventureGame.SCREEN_WIDTH - logoWidth) / 2, AdventureGame.SCREEN_HEIGHT - logoHeight - 100);
 		logo.setSize(logoWidth, logoHeight);
 		game.stage.addActor(logo);
 		

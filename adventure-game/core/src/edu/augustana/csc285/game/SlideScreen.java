@@ -28,6 +28,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextTooltip;
+import com.badlogic.gdx.scenes.scene2d.ui.TextTooltip.TextTooltipStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TooltipManager;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -42,8 +43,6 @@ public class SlideScreen implements Screen {
 	
 	private AdventureGame game;
 	private Slide curSlide;
-	
-	private static int fontSize = 26;
 
 	private Table table;
 	private Label title;
@@ -95,11 +94,11 @@ public class SlideScreen implements Screen {
 		curSlide = game.data.getSlide(game.data.getCurrentSlideIndex());
 
 		// Set the background
-		float size = AdventureGame.GAME_SCREEN_HEIGHT;
+		float size = AdventureGame.SCREEN_HEIGHT;
 		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())));
 
 		game.bgImg.setSize(size, size);
-		game.bgImg.setPosition(AdventureGame.GAME_SCREEN_WIDTH - size, 0);
+		game.bgImg.setPosition(AdventureGame.SCREEN_WIDTH - size, 0);
 
 		setupZoom();
 		
@@ -135,22 +134,22 @@ public class SlideScreen implements Screen {
 	private void setupZoom() {
 		zoomImage = new Image();
 		zoomImage.setVisible(false);
-		zoomImage.setSize(450, 680);
-		zoomImage.setPosition(90, AdventureGame.GAME_SCREEN_HEIGHT - zoomImage.getHeight() - 20);
+		zoomImage.setSize(AdventureGame.percentWidth(35), AdventureGame.percentHeight(95));
+		zoomImage.setPosition(AdventureGame.percentWidth(7), AdventureGame.SCREEN_HEIGHT - zoomImage.getHeight() - AdventureGame.percentHeight(3));
 
 		zoomImageLabel = new Label("IMAGE ZOOM PANEL\n1. Move mouse left to hide.\n2. Scroll to zoom in/out.", game.skin);
-		zoomImageLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro26.fnt")), Color.BLACK));		
+		zoomImageLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		zoomImageLabel.pack();
 		zoomImageLabel.setColor(0, 0, 0, .7f);
-		zoomImageLabel.setPosition(zoomImage.getX() + 20, AdventureGame.GAME_SCREEN_HEIGHT - zoomImage.getY() - zoomImageLabel.getHeight() - 15);
+		zoomImageLabel.setPosition(zoomImage.getX() + AdventureGame.percentWidth(2), AdventureGame.SCREEN_HEIGHT - zoomImage.getY() - zoomImageLabel.getHeight() - AdventureGame.percentHeight(2));
 		zoomImageLabel.setVisible(false);
 		
 		zoomBorder = new Image(new Texture(Gdx.files.internal("art/grid.png")));
 		zoomBorder.setBounds(zoomImage.getX(), zoomImage.getY(), zoomImage.getWidth(), zoomImage.getHeight());
 		
 		zoomOverlay = new Label("", game.skin);
-		zoomOverlay.setSize(AdventureGame.GAME_SCREEN_HEIGHT, AdventureGame.GAME_SCREEN_HEIGHT);
-		zoomOverlay.setPosition(AdventureGame.GAME_SCREEN_WIDTH - AdventureGame.GAME_SCREEN_HEIGHT, 0);
+		zoomOverlay.setSize(AdventureGame.SCREEN_HEIGHT, AdventureGame.SCREEN_HEIGHT);
+		zoomOverlay.setPosition(AdventureGame.SCREEN_WIDTH - AdventureGame.SCREEN_HEIGHT, 0);
 		if (curSlide.getImageFileName().equals("facts.png")) {
 			zoomOverlay.setVisible(false);
 		}
@@ -173,38 +172,37 @@ public class SlideScreen implements Screen {
 				@Override
 				public boolean mouseMoved(InputEvent event, float x, float y) {
 
-					float porportion = (float) img.getWidth() / AdventureGame.GAME_SCREEN_HEIGHT;
+					float porportion = (float) img.getWidth() / AdventureGame.SCREEN_HEIGHT;
 					
 					int zoomW = (int) (zoomWPanel * porportion);
 					int zoomH = (int) (zoomHPanel * porportion);
 					
 
-					float zoomRectX = AdventureGame.GAME_SCREEN_WIDTH - AdventureGame.GAME_SCREEN_HEIGHT + x 
+					float zoomRectX = AdventureGame.SCREEN_WIDTH - AdventureGame.SCREEN_HEIGHT + x 
 																							- zoomRectangle.getWidth() / 2;
 					float zoomRectY = y - zoomRectangle.getHeight() / 2;
 					
 					centerZoomImg.x = (x - zoomWPanel / 2) * porportion;
-					centerZoomImg.y = (AdventureGame.GAME_SCREEN_HEIGHT - y - zoomHPanel / 2) * porportion;
+					centerZoomImg.y = (AdventureGame.SCREEN_HEIGHT - y - zoomHPanel / 2) * porportion;
 					
 					if ((float) zoomW / 2 > x * porportion) {
 						centerZoomImg.x = 0;
-						zoomRectX = AdventureGame.GAME_SCREEN_WIDTH - AdventureGame.GAME_SCREEN_HEIGHT;
+						zoomRectX = AdventureGame.SCREEN_WIDTH - AdventureGame.SCREEN_HEIGHT;
 						
-					} else if (x > (float) AdventureGame.GAME_SCREEN_HEIGHT - zoomWPanel / 2) {
-						centerZoomImg.x = (AdventureGame.GAME_SCREEN_HEIGHT - zoomWPanel) * porportion;
-						zoomRectX = AdventureGame.GAME_SCREEN_WIDTH - zoomRectangle.getWidth();
+					} else if (x > (float) AdventureGame.SCREEN_HEIGHT - zoomWPanel / 2) {
+						centerZoomImg.x = (AdventureGame.SCREEN_HEIGHT - zoomWPanel) * porportion;
+						zoomRectX = AdventureGame.SCREEN_WIDTH - zoomRectangle.getWidth();
 					}
 					
-					if ((float) zoomH / 2 > (AdventureGame.GAME_SCREEN_HEIGHT - y) * porportion) {
+					if ((float) zoomH / 2 > (AdventureGame.SCREEN_HEIGHT - y) * porportion) {
 						centerZoomImg.y = 0;
-						zoomRectY = AdventureGame.GAME_SCREEN_HEIGHT - zoomRectangle.getHeight();
-					} else if (AdventureGame.GAME_SCREEN_HEIGHT - y > (float) AdventureGame.GAME_SCREEN_HEIGHT - zoomHPanel / 2) {
-						centerZoomImg.y = (AdventureGame.GAME_SCREEN_HEIGHT - zoomHPanel) * porportion;
+						zoomRectY = AdventureGame.SCREEN_HEIGHT - zoomRectangle.getHeight();
+					} else if (AdventureGame.SCREEN_HEIGHT - y > (float) AdventureGame.SCREEN_HEIGHT - zoomHPanel / 2) {
+						centerZoomImg.y = (AdventureGame.SCREEN_HEIGHT - zoomHPanel) * porportion;
 						zoomRectY = 0;
 					}
 					
-					if (Gdx.input.getX() * 1280 / Gdx.graphics.getWidth() >= AdventureGame.GAME_SCREEN_WIDTH - game.bgImg.getWidth()) {
-						System.out.println(game.bgImg.getWidth());
+					if (Gdx.input.getX() * AdventureGame.SCREEN_WIDTH / Gdx.graphics.getWidth() >= AdventureGame.SCREEN_WIDTH - game.bgImg.getWidth()) {
 						zoomImage.setVisible(true);
 					}
 					
@@ -248,7 +246,7 @@ public class SlideScreen implements Screen {
 		zoomRectangle.setBounds(0, 0, zoomWPanel, zoomHPanel);
 	}
 
-	public static final int BUTTON_SIZE = 70;
+	public static final float BUTTON_SIZE = AdventureGame.percentWidth(6);
 	
 	public static TooltipManager tooltip = new TooltipManager();
 	
@@ -267,7 +265,7 @@ public class SlideScreen implements Screen {
 		restartButton.setWidth(BUTTON_SIZE);
 		restartButton.setHeight(BUTTON_SIZE);
 							  //AdventureGame.GAME_SCREEN_WIDTH - pauseButton.getWidth() - 10
-		restartButton.setPosition(10, AdventureGame.GAME_SCREEN_HEIGHT - BUTTON_SIZE - 10);
+		restartButton.setPosition(AdventureGame.percentWidth(1), AdventureGame.SCREEN_HEIGHT - BUTTON_SIZE - AdventureGame.percentHeight(1));
 		restartButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -279,7 +277,9 @@ public class SlideScreen implements Screen {
 		restartDialog.setVisible(false);
 		restartDialog.row();
 		restartDialog.align(Align.center);
-		restartDialog.add(new Label("Are you sure you want to restart the game?", game.skin));
+		Label restartLabel = new Label("Are you sure you want to restart the game?", game.skin);
+		restartLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		restartDialog.add(restartLabel);
 		restartDialog.row();
 		TextButton button = new TextButton("Yes", game.skin);
 		button.addListener(new ClickListener() {
@@ -303,14 +303,16 @@ public class SlideScreen implements Screen {
 		buttonTable.add(button);
 		buttonTable.add(noButton);
 		restartDialog.add(buttonTable);
-		restartDialog.setWidth(600);
-		restartDialog.setHeight(100);
+		restartDialog.setWidth(AdventureGame.percentWidth(45));
+		restartDialog.setHeight(AdventureGame.percentHeight(14));
 								//880
-		restartDialog.setPosition((AdventureGame.GAME_SCREEN_WIDTH - restartDialog.getWidth())/ 2, 
-				(AdventureGame.GAME_SCREEN_HEIGHT - restartDialog.getHeight())/ 2);	
+		restartDialog.setPosition((AdventureGame.SCREEN_WIDTH - restartDialog.getWidth())/ 2, 
+				(AdventureGame.SCREEN_HEIGHT - restartDialog.getHeight())/ 2);	
 		
 		
-		restartButton.addListener(new TextTooltip("Restart", tooltip, game.skin));
+		TextTooltip restartTt = new TextTooltip("Restart", tooltip, game.skin);
+		restartTt.getActor().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		restartButton.addListener(restartTt);
 		game.stage.addActor(restartButton);
 		
 		// -------------------- inventory button ----------------------
@@ -321,7 +323,7 @@ public class SlideScreen implements Screen {
 		inventoryButton.setWidth(BUTTON_SIZE);
 		inventoryButton.setHeight(BUTTON_SIZE);
 								  //AdventureGame.GAME_SCREEN_WIDTH - inventoryButton.getWidth() - 10
-		inventoryButton.setPosition(10,	AdventureGame.GAME_SCREEN_HEIGHT - 2 * BUTTON_SIZE - 10);
+		inventoryButton.setPosition(AdventureGame.percentWidth(1), AdventureGame.SCREEN_HEIGHT - 2 * BUTTON_SIZE - AdventureGame.percentHeight(1));
 		inventoryButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -331,7 +333,10 @@ public class SlideScreen implements Screen {
 				game.setScreen(new InventoryScreen(game));
 			}
 		});
-		inventoryButton.addListener(new TextTooltip("Inventory", tooltip, game.skin));
+		
+		TextTooltip invenTt = new TextTooltip("Inventory", tooltip, game.skin);
+		invenTt.getActor().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		inventoryButton.addListener(invenTt);
 		game.stage.addActor(inventoryButton);
 
 		//-------------------- volume dialog & slider ------------------
@@ -339,7 +344,8 @@ public class SlideScreen implements Screen {
 		// slider
 		volumeSlider = new Slider(0f, 1f, 0.1f, false, game.skin);
 		Label volumeLabel = new Label(" " + (int) (game.bgMusic.getVolume() * 100) + "%", game.skin);
-		volumeLabel.setWidth(53);
+		volumeLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		volumeLabel.setWidth(AdventureGame.percentWidth(4));
 		volumeSlider.setValue(game.bgMusic.getVolume());
 		volumeSlider.addListener(new EventListener(){
 			@Override
@@ -357,11 +363,14 @@ public class SlideScreen implements Screen {
 		volumeDialog.setVisible(false);
 		
 		Table volumeTab = new Table(game.skin);
-		volumeTab.add(new Label("Volume: ", game.skin));
+		Label volTabLabel = new Label("Volume: ", game.skin);
+		volTabLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		volumeTab.add(volTabLabel);
 		volumeTab.add(volumeSlider);
-		volumeTab.add(volumeLabel).width(70);
+		volumeTab.add(volumeLabel).width(AdventureGame.percentWidth(5));
 		
 		TextButton okButton = new TextButton("OK", game.skin);
+		okButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		okButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -375,10 +384,10 @@ public class SlideScreen implements Screen {
 		volumeTab.pack();
 
 		volumeDialog.add(volumeTab);
-		volumeDialog.setWidth(volumeTab.getWidth() + 20);
-		volumeDialog.setHeight(volumeTab.getHeight() + 20);
+		volumeDialog.setWidth(volumeTab.getWidth() + AdventureGame.percentWidth(2));
+		volumeDialog.setHeight(volumeTab.getHeight() + AdventureGame.percentHeight(2));
 								//880
-		volumeDialog.setPosition(90, AdventureGame.GAME_SCREEN_HEIGHT - BUTTON_SIZE * 3);
+		volumeDialog.setPosition(AdventureGame.percentWidth(7), AdventureGame.SCREEN_HEIGHT - BUTTON_SIZE * 3);
 		
 		updateMute();
 		
@@ -388,7 +397,7 @@ public class SlideScreen implements Screen {
 		fontButton.add(new Image(new Texture(Gdx.files.internal("art/icons/fontSMALL.png"))));
 		fontButton.setWidth(BUTTON_SIZE);
 		fontButton.setHeight(BUTTON_SIZE);
-		fontButton.setPosition(10, AdventureGame.GAME_SCREEN_HEIGHT - 4 * BUTTON_SIZE - 10);
+		fontButton.setPosition(AdventureGame.percentWidth(1), AdventureGame.SCREEN_HEIGHT - 4 * BUTTON_SIZE - AdventureGame.percentHeight(1));
 		
 		
 		
@@ -397,26 +406,30 @@ public class SlideScreen implements Screen {
 
 		Table fontTab = new Table(game.skin);
 		fontTab.center();
-		fontTab.add(new Label("Font Size: ", game.skin));
+		Label fontTabLabel = new Label("Font Size: ", game.skin);
+		fontTabLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		fontTab.add(fontTabLabel);
 		
-		Label fontLabel = new Label(" " + fontSize + "px", game.skin);
-		fontSlider = new Slider(20, 40, 2, false, game.skin);
-		fontSlider.setValue(fontSize);
+		Label fontLabel = new Label(" " + AdventureGame.appFontSize + "px", game.skin);
+		fontLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		fontSlider = new Slider(AdventureGame.appFontSize - 6, AdventureGame.appFontSize + 14, 2, false, game.skin);
+		fontSlider.setValue(AdventureGame.textFontSize);
 		fontSlider.addListener(new EventListener(){
 			@Override
 			public boolean handle(Event event) {
-				fontSize = (int) fontSlider.getValue();
-				gameText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + fontSize + ".fnt")), Color.BLACK));
-				fontLabel.setText(" " + fontSize + "px");
+				AdventureGame.textFontSize = (int) fontSlider.getValue();
+				gameText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.textFontSize + ".fnt")), Color.BLACK));
+				fontLabel.setText(" " + AdventureGame.textFontSize + "px");
 				return false;
 			}
 			
 		});
 		fontTab.add(fontSlider);
-		fontTab.add(fontLabel).width(70);
+		fontTab.add(fontLabel).width(AdventureGame.percentWidth(5));
 		fontTab.row();
 		
 		TextButton fontOkButton = new TextButton("OK", game.skin);
+		fontOkButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		fontOkButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -427,10 +440,10 @@ public class SlideScreen implements Screen {
 		fontTab.pack();
 		
 		fontDialog.add(fontTab);
-		fontDialog.setWidth(fontTab.getWidth() + 20);
-		fontDialog.setHeight(fontTab.getHeight() + 20);
+		fontDialog.setWidth(fontTab.getWidth() + AdventureGame.percentWidth(2));
+		fontDialog.setHeight(fontTab.getHeight() + AdventureGame.percentHeight(2));
 								//880
-		fontDialog.setPosition(90, AdventureGame.GAME_SCREEN_HEIGHT - BUTTON_SIZE * 4);
+		fontDialog.setPosition(AdventureGame.percentWidth(7), AdventureGame.SCREEN_HEIGHT - BUTTON_SIZE * 4);
 		
 		fontButton.addListener(new ClickListener() {
 			@Override
@@ -438,7 +451,10 @@ public class SlideScreen implements Screen {
 				fontDialog.setVisible(true);
 			}
 		});
-		fontButton.addListener(new TextTooltip("Font Size", tooltip, game.skin));
+		
+		TextTooltip fontTt = new TextTooltip("Font Size", tooltip, game.skin);
+		fontTt.getActor().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		fontButton.addListener(fontTt);
 		game.stage.addActor(fontButton);
 		
 		// -------------------- zoom button ------------------------
@@ -447,12 +463,13 @@ public class SlideScreen implements Screen {
 		zoomButton.add(new Image(new Texture(Gdx.files.internal("art/icons/zoom.png"))));
 		zoomButton.setWidth(BUTTON_SIZE);
 		zoomButton.setHeight(BUTTON_SIZE);
-		zoomButton.setPosition(10, AdventureGame.GAME_SCREEN_HEIGHT - 5 * BUTTON_SIZE - 10);
+		zoomButton.setPosition(AdventureGame.percentWidth(1), AdventureGame.SCREEN_HEIGHT - 5 * BUTTON_SIZE - AdventureGame.percentHeight(1));
 		
 		zoomDialog = new Dialog("", game.skin);
 		zoomDialog.setVisible(false);
 
 		zoomInsCheckbox = new CheckBox("Zoom instructions", game.skin);
+		zoomInsCheckbox.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		zoomInsCheckbox.setChecked(zoomInsChecked);
 		zoomInsCheckbox.addListener(new ChangeListener() {
 		    @Override
@@ -465,9 +482,12 @@ public class SlideScreen implements Screen {
 
 		Table zoomTab = new Table(game.skin);
 		zoomTab.center();
-		zoomTab.add(new Label("Zoom: ", game.skin));
+		Label zoomTabLabel = new Label("Zoom: ", game.skin);
+		zoomTabLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		zoomTab.add(zoomTabLabel);
 		
 		zoomLabel = new Label(" " + (int) (zoomMag * 100) + " %", game.skin);
+		zoomLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		zoomSlider = new Slider(1.5f, 4.0f, .25f, false, game.skin);
 		zoomSlider.setValue(zoomMag);
 		zoomSlider.addListener(new EventListener(){
@@ -483,12 +503,13 @@ public class SlideScreen implements Screen {
 			
 		});
 		zoomTab.add(zoomSlider);
-		zoomTab.add(zoomLabel).width(70);
+		zoomTab.add(zoomLabel).width(AdventureGame.percentWidth(5));
 		zoomTab.row();
 		zoomTab.add(zoomInsCheckbox).colspan(2);
 		zoomTab.row();
 		
 		TextButton zoomOkButton = new TextButton("OK", game.skin);
+		zoomOkButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		zoomOkButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -499,10 +520,10 @@ public class SlideScreen implements Screen {
 		zoomTab.pack();
 		
 		zoomDialog.add(zoomTab);
-		zoomDialog.setWidth(zoomTab.getWidth() + 20);
-		zoomDialog.setHeight(zoomTab.getHeight() + 20);
+		zoomDialog.setWidth(zoomTab.getWidth() + AdventureGame.percentWidth(2));
+		zoomDialog.setHeight(zoomTab.getHeight() + AdventureGame.percentHeight(2));
 								//880
-		zoomDialog.setPosition(90,  AdventureGame.GAME_SCREEN_HEIGHT - BUTTON_SIZE * 5);
+		zoomDialog.setPosition(AdventureGame.percentWidth(7),  AdventureGame.SCREEN_HEIGHT - BUTTON_SIZE * 5);
 		
 		zoomButton.addListener(new ClickListener() {
 			@Override
@@ -510,7 +531,10 @@ public class SlideScreen implements Screen {
 				zoomDialog.setVisible(true);
 			}
 		});
-		zoomButton.addListener(new TextTooltip("Zoom Magnitude", tooltip, game.skin));
+		
+		TextTooltip zoomTt = new TextTooltip("Zoom Magnitude", tooltip, game.skin);
+		zoomTt.getActor().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		zoomButton.addListener(zoomTt);
 		game.stage.addActor(zoomButton);
 		
 		
@@ -522,7 +546,7 @@ public class SlideScreen implements Screen {
 		creditButton.setWidth(BUTTON_SIZE);
 		creditButton.setHeight(BUTTON_SIZE);
 								  //AdventureGame.GAME_SCREEN_WIDTH - inventoryButton.getWidth() - 10
-		creditButton.setPosition(10, AdventureGame.GAME_SCREEN_HEIGHT - 6 * BUTTON_SIZE - 10);
+		creditButton.setPosition(AdventureGame.percentWidth(1), AdventureGame.SCREEN_HEIGHT - 6 * BUTTON_SIZE - AdventureGame.percentHeight(1));
 		creditButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -532,7 +556,10 @@ public class SlideScreen implements Screen {
 				game.setScreen(new CreditsScreen(game));
 			}
 		});
-		creditButton.addListener(new TextTooltip("Credits", tooltip, game.skin));
+		
+		TextTooltip creditsTt = new TextTooltip("Credits", tooltip, game.skin);
+		creditsTt.getActor().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		creditButton.addListener(creditsTt);
 		game.stage.addActor(creditButton);
 	}
 
@@ -546,7 +573,7 @@ public class SlideScreen implements Screen {
 		muteButton.setWidth(BUTTON_SIZE);
 		muteButton.setHeight(BUTTON_SIZE);
 							 //AdventureGame.GAME_SCREEN_WIDTH - inventoryButton.getWidth() - 10
-		muteButton.setPosition(10, AdventureGame.GAME_SCREEN_HEIGHT - 3 * BUTTON_SIZE - 10);
+		muteButton.setPosition(AdventureGame.percentWidth(1), AdventureGame.SCREEN_HEIGHT - 3 * BUTTON_SIZE - AdventureGame.percentHeight(1));
 		muteButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -558,7 +585,10 @@ public class SlideScreen implements Screen {
 		} else {
 			muteButton.add(muteImg);
 		}
-		muteButton.addListener(new TextTooltip("Volume", tooltip, game.skin));
+		
+		TextTooltip muteTt = new TextTooltip("Volume", tooltip, game.skin);
+		muteTt.getActor().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		muteButton.addListener(muteTt);
 		game.stage.addActor(muteButton);
 	}
 
@@ -567,6 +597,7 @@ public class SlideScreen implements Screen {
 		List<ActionChoice> curChoices = game.data.getVisibleChoicesForCurrentSlide();
 		itemDialog = new Dialog("", game.skin);
 		Label itemLabel = new Label("", game.skin);
+		itemLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		itemDialog.row();
 		itemDialog.align(Align.left);
 		itemDialog.add(itemLabel);
@@ -576,9 +607,10 @@ public class SlideScreen implements Screen {
 			String curChoiceText = curChoice.getChoiceText();
 			
 			TextButton newButton = new TextButton(curChoiceText, game.skin);
-			newButton.padTop(10).padBottom(10);
+			newButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+			newButton.padTop(AdventureGame.percentWidth(1)).padBottom(AdventureGame.percentHeight(1));
 			newButton.getLabel().setWrap(true);
-			newButton.getLabel().setWidth(350);
+			newButton.getLabel().setWidth(AdventureGame.percentWidth(27));
 			newButton.getLabel().pack();
 			
 			newButton.addListener(new ClickListener(){
@@ -600,9 +632,9 @@ public class SlideScreen implements Screen {
 									itemLabel.setText(curChoice.getEffectsStringIfVisible());
 									itemLabel.setAlignment(Align.center);
 									itemLabel.pack();
-									itemDialog.setHeight(itemLabel.getHeight() + 20);
-									itemDialog.setWidth(itemLabel.getWidth() + 150);
-									itemDialog.setPosition((AdventureGame.GAME_SCREEN_WIDTH - itemDialog.getWidth()) / 2, (AdventureGame.GAME_SCREEN_HEIGHT - itemDialog.getHeight()) / 2);
+									itemDialog.setWidth(itemLabel.getWidth() + AdventureGame.percentWidth(12));
+									itemDialog.setHeight(itemLabel.getHeight() + AdventureGame.percentHeight(2));
+									itemDialog.setPosition((AdventureGame.SCREEN_WIDTH - itemDialog.getWidth()) / 2, (AdventureGame.SCREEN_HEIGHT - itemDialog.getHeight()) / 2);
 									itemDialog.addAction(Actions.sequence(
 											Actions.fadeIn(0.5f),
 											Actions.delay(0.5f),
@@ -623,8 +655,8 @@ public class SlideScreen implements Screen {
 							rejectDialog = new Dialog("", game.skin);
 							rejectDialog.button("Ok");
 							rejectDialog.text(rejText);
-							rejectDialog.setWidth(700);
-							rejectDialog.setPosition(300, 300);
+							rejectDialog.setWidth(AdventureGame.percentWidth(55));
+							rejectDialog.setPosition(AdventureGame.percentWidth(23), AdventureGame.percentHeight(42));
 							game.stage.addActor(rejectDialog);
 						}
 					}
@@ -637,26 +669,27 @@ public class SlideScreen implements Screen {
 	
 	private void createTitle() {
 		title = new Label(curSlide.getTitle(), game.skin, "title");
+		title.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro" + (AdventureGame.appFontSize + 8) + ".fnt")), Color.BLACK));
 		if (curSlide.getSlideType() == SlideType.NORMAL) {
 			title.setWrap(true);
 		}
-		title.setWidth(440);
+		title.setWidth(AdventureGame.percentWidth(34));
 		title.pack();
-		title.setWidth(440);
-		title.setPosition(100, AdventureGame.GAME_SCREEN_HEIGHT - title.getHeight() - 20);
+		title.setWidth(AdventureGame.percentWidth(34));
+		title.setPosition(AdventureGame.percentWidth(8), AdventureGame.SCREEN_HEIGHT - title.getHeight() - AdventureGame.percentHeight(2));
 		title.setAlignment(Align.left);
 	}
 	
 	private void createGameText() {
 		gameText = new Label(curSlide.getGameText(), game.skin);
-		gameText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + fontSize + ".fnt")), Color.BLACK));
+		gameText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		gameText.setWrap(true);
 		
 		// for normal slide
-		int gameTextWidth = 400;
+		float gameTextWidth = AdventureGame.percentWidth(31);
 		
 		if (curSlide.getSlideType() == SlideType.HISTORICAL) {
-			gameTextWidth = 700;
+			gameTextWidth = AdventureGame.percentWidth(55);
 		}
 		
 		gameText.pack();
@@ -675,7 +708,7 @@ public class SlideScreen implements Screen {
 		table.align(Align.topLeft);
 		
 		for (int i = 0; i < game.data.getVisibleChoicesForCurrentSlide().size(); i++) {
-			table.add(choiceButtons.get(i)).width(370).padTop(5);
+			table.add(choiceButtons.get(i)).width(AdventureGame.percentWidth(29)).padTop(AdventureGame.percentHeight(1));
 			table.row();
 		}
 		table.pack();
@@ -683,14 +716,14 @@ public class SlideScreen implements Screen {
 //			tableHeight = 350;
 //		else if (curSlide.getSlideType() == SlideType.MANY_BUTTONS)
 //			tableHeight = 300;
-		table.setPosition(100, 10);
+		table.setPosition(AdventureGame.percentWidth(8), AdventureGame.percentHeight(1));
 	}
 	
-	private void createScrollPane(int gameTextWidth) {
+	private void createScrollPane(float gameTextWidth) {
 		scrollPane = new ScrollPane(gameText, game.skin);
 		
-	    scrollPane.setBounds(110, 20 + table.getHeight(),
-	    		gameTextWidth, AdventureGame.GAME_SCREEN_HEIGHT - (title.getHeight() + table.getHeight()) - 40);
+	    scrollPane.setBounds(AdventureGame.percentWidth(8), AdventureGame.percentHeight(1) + table.getHeight(),
+	    		gameTextWidth, AdventureGame.SCREEN_HEIGHT - (title.getHeight() + table.getHeight()) - AdventureGame.percentHeight(3));
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);
 	    scrollPane.setFadeScrollBars(false);
@@ -705,7 +738,7 @@ public class SlideScreen implements Screen {
 //		game.sprite.draw(game.batch);
 //		game.batch.end();
 		
-		if (Gdx.input.getX() * 1280 / Gdx.graphics.getWidth() < AdventureGame.GAME_SCREEN_WIDTH - game.bgImg.getWidth()) {
+		if (Gdx.input.getX() * AdventureGame.SCREEN_WIDTH / Gdx.graphics.getWidth() < AdventureGame.SCREEN_WIDTH - game.bgImg.getWidth()) {
 			zoomImage.setVisible(false);
 			zoomRectangle.setVisible(false);
 			zoomBorder.setVisible(false);

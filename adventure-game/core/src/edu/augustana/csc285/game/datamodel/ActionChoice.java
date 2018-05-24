@@ -225,7 +225,6 @@ public class ActionChoice {// implements Feasible
 				}
 			}
 		}
-		System.out.println("-----");
 		return s;
 	}
 	/**

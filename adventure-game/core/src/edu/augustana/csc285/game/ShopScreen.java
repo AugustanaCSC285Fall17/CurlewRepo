@@ -61,7 +61,7 @@ public class ShopScreen implements Screen {
 		// Add actors
 		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/facts.png")));
 		game.bgImg.setPosition(0, 0);
-		game.bgImg.setSize(AdventureGame.GAME_SCREEN_WIDTH, AdventureGame.GAME_SCREEN_HEIGHT);
+		game.bgImg.setSize(AdventureGame.SCREEN_WIDTH, AdventureGame.SCREEN_HEIGHT);
 		game.stage.addActor(game.bgImg);
 		
 		
@@ -97,7 +97,7 @@ public class ShopScreen implements Screen {
 		itemTitle.setWidth(350);
 		itemTitle.pack();
 		itemTitle.setWidth(350);
-		itemTitle.setPosition(90, AdventureGame.GAME_SCREEN_HEIGHT - itemTitle.getHeight() - 20);
+		itemTitle.setPosition(90, AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - 20);
 		itemTitle.setAlignment(Align.left);
 	}
 
@@ -105,7 +105,7 @@ public class ShopScreen implements Screen {
 	
 	private void createItemTable() {
 		Label categoryLabel = new Label("Item Name              Quantity     Value", game.skin);
-		categoryLabel.setPosition(160, AdventureGame.GAME_SCREEN_HEIGHT - itemTitle.getHeight() - 60);
+		categoryLabel.setPosition(160, AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - 60);
 		game.stage.addActor(categoryLabel);
 		
 		redrawItemTable();		
@@ -121,14 +121,14 @@ public class ShopScreen implements Screen {
 		
 		int gameTextHeight = 300;
 		
-	    itemScrollPane.setBounds(100, AdventureGame.GAME_SCREEN_HEIGHT - itemTitle.getHeight() - 60 - gameTextHeight, gameTextWidth, gameTextHeight);
+	    itemScrollPane.setBounds(100, AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - 60 - gameTextHeight, gameTextWidth, gameTextHeight);
 	    itemScrollPane.layout();
 	    itemScrollPane.setTouchable(Touchable.enabled);
 	    itemScrollPane.setFadeScrollBars(false);
 	    
 		shopScrollPane = new ScrollPane(shopTable, game.skin);
 		
-		shopScrollPane.setBounds(760, AdventureGame.GAME_SCREEN_HEIGHT - itemTitle.getHeight() - 60 - gameTextHeight, gameTextWidth, gameTextHeight);
+		shopScrollPane.setBounds(760, AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - 60 - gameTextHeight, gameTextWidth, gameTextHeight);
 		shopScrollPane.layout();
 		shopScrollPane.setTouchable(Touchable.enabled);
 		shopScrollPane.setFadeScrollBars(false);
@@ -139,11 +139,11 @@ public class ShopScreen implements Screen {
 		shopTitle.setWidth(350);
 		shopTitle.pack();
 		shopTitle.setWidth(350);
-		shopTitle.setPosition(730, AdventureGame.GAME_SCREEN_HEIGHT - itemTitle.getHeight() - 20);
+		shopTitle.setPosition(730, AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - 20);
 		shopTitle.setAlignment(Align.left);
 		
 		Label categoryLabel = new Label("Item Name                    Price", game.skin);
-		categoryLabel.setPosition(870, AdventureGame.GAME_SCREEN_HEIGHT - itemTitle.getHeight() - 60);
+		categoryLabel.setPosition(870, AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - 60);
 		game.stage.addActor(categoryLabel);
 
 		
@@ -204,7 +204,7 @@ public class ShopScreen implements Screen {
 		backButton.setWidth(SlideScreen.BUTTON_SIZE);
 		backButton.setHeight(SlideScreen.BUTTON_SIZE);
 							  //AdventureGame.GAME_SCREEN_WIDTH - backButton.getWidth() - 10
-		backButton.setPosition(10,	AdventureGame.GAME_SCREEN_HEIGHT - 2 * SlideScreen.BUTTON_SIZE - 10);
+		backButton.setPosition(10,	AdventureGame.SCREEN_HEIGHT - 2 * SlideScreen.BUTTON_SIZE - 10);
 		backButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -217,7 +217,7 @@ public class ShopScreen implements Screen {
 	
 	private void createTable() {
 		table = new Table();
-		table.setWidth(AdventureGame.GAME_SCREEN_WIDTH);
+		table.setWidth(AdventureGame.SCREEN_WIDTH);
 		table.align(Align.topLeft);
 		table.setPosition(0, game.stage.getHeight());
 		table.padLeft(40);

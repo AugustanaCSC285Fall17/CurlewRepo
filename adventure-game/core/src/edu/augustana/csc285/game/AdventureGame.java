@@ -11,8 +11,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import edu.augustana.csc285.game.datamodel.GameData;
 
 public class AdventureGame extends Game {
-	public static final int GAME_SCREEN_WIDTH = 1280;
-	public static final int GAME_SCREEN_HEIGHT = 720;
+	public static final int SCREEN_WIDTH = 800;
+	public static final int SCREEN_HEIGHT = 450;
+	public static int textFontSize = 16;
+	public static int appFontSize = 16;
 
 	public GameData data;
 
@@ -37,15 +39,15 @@ public class AdventureGame extends Game {
 		
 
 		Texture logoTexture = new Texture(Gdx.files.internal("art/LogoStroked.png"));
-		int logoWidth = 500;
+		float logoWidth = AdventureGame.percentWidth(40);
 		float logoHeight = (float) (logoTexture.getHeight() * logoWidth * 1.0 / logoTexture.getWidth());
 		logo = new Image(logoTexture);
-		logo.setPosition((Gdx.graphics.getWidth() - logoWidth) / 2, Gdx.graphics.getHeight() - logoHeight - 50);
+		logo.setPosition((AdventureGame.SCREEN_WIDTH - logoWidth) / 2, AdventureGame.SCREEN_HEIGHT - logoHeight - AdventureGame.percentHeight(2));
 		logo.setSize(logoWidth, logoHeight);
 		
 		Texture swansonLogoTexture = new Texture(Gdx.files.internal("slideImages/image1.png"));
 		swansonLogo = new Image(swansonLogoTexture);
-		swansonLogo.setPosition(40, 10);
+		swansonLogo.setPosition(AdventureGame.percentWidth(1), AdventureGame.percentHeight(1));
 		swansonLogo.setSize(logoWidth, (float) (swansonLogoTexture.getHeight() * logoWidth * 1.0 / swansonLogoTexture.getWidth()));
 
 		
@@ -61,8 +63,8 @@ public class AdventureGame extends Game {
 	}
 
 	public void render() {
-		Gdx.graphics.setWindowedMode(800, 450);
-        Gdx.gl.glViewport(0, 0, 800, 450);
+//		Gdx.graphics.setWindowedMode(800, 450);
+//        Gdx.gl.glViewport(0, 0, 800, 450);
 //		stage.getViewport().update(640, 360);
 		super.render(); //important!
 	}
@@ -70,6 +72,14 @@ public class AdventureGame extends Game {
 	public void dispose() {
 		skin.dispose();
 		stage.dispose();
+	}
+
+	public static float percentWidth(int percentage) {
+		return SCREEN_WIDTH * percentage / 100f;
+	}
+	
+	public static float percentHeight(int percentage) {
+		return SCREEN_HEIGHT * percentage / 100f;
 	}
 	
 }
