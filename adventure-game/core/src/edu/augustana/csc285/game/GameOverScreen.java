@@ -2,13 +2,16 @@ package edu.augustana.csc285.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
@@ -48,6 +51,7 @@ public class GameOverScreen implements Screen {
 				game.setScreen(new MainMenuScreen(game));
 			}
 		});
+		mainMenuButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		
 		startButton = new TextButton("Play Again", game.skin);
 		startButton.addListener(new ClickListener(){
@@ -58,6 +62,7 @@ public class GameOverScreen implements Screen {
 				game.setScreen(new SlideScreen(game));
 			}
 		});
+		startButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		
 		creditsButton = new TextButton("Credits", game.skin);
 		creditsButton.addListener(new ClickListener() {
@@ -68,6 +73,7 @@ public class GameOverScreen implements Screen {
 				game.setScreen(new CreditsScreen(game));
 			}
 		}); 
+		creditsButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		
 		
 //		quitButton = new TextButton("Quit Game", game.skin);
@@ -83,18 +89,19 @@ public class GameOverScreen implements Screen {
 				+ "Did you get a bad ending? Play again!";
 		
 		introText = new Label(intro, game.skin);
+		introText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		introText.setWrap(true);
 		introText.setWidth(800);
 		introText.setAlignment(Align.center|Align.top);
 		
-		table.padTop(200);
-		table.add(introText).width(800f);
+		table.padTop(AdventureGame.percentHeight(28));
+		table.add(introText).width(AdventureGame.percentWidth(63));
 		table.row();
-		table.add(startButton).padTop(30).width(300);
+		table.add(startButton).padTop(AdventureGame.percentHeight(1)).width(AdventureGame.percentWidth(24));
 		table.row();
-		table.add(mainMenuButton).padTop(10).width(300);
+		table.add(mainMenuButton).padTop(AdventureGame.percentHeight(1)).width(AdventureGame.percentWidth(24));
 		table.row();
-		table.add(creditsButton).padTop(10).width(300);
+		table.add(creditsButton).padTop(AdventureGame.percentHeight(1)).width(AdventureGame.percentWidth(24));
 		
 //		table.row();
 //		table.add(quitButton).padTop(10).width(300);
@@ -108,18 +115,14 @@ public class GameOverScreen implements Screen {
 		game.stage.addActor(bgImg);
 		
 		Texture logoTexture = new Texture(Gdx.files.internal("art/gameover.png"));
-		int logoWidth = 500;
+		float logoWidth = AdventureGame.percentWidth(40);
 		float logoHeight = (float) (logoTexture.getHeight() * logoWidth * 1.0 / logoTexture.getWidth());
 		logo = new Image(logoTexture);
-		logo.setPosition((AdventureGame.SCREEN_WIDTH - logoWidth) / 2, AdventureGame.SCREEN_HEIGHT - logoHeight - 100);
+		logo.setPosition((AdventureGame.SCREEN_WIDTH - logoWidth) / 2, AdventureGame.SCREEN_HEIGHT - logoHeight - AdventureGame.percentHeight(14));
 		logo.setSize(logoWidth, logoHeight);
 		game.stage.addActor(logo);
 		
-		Texture swansonLogoTexture = new Texture(Gdx.files.internal("slideImages/image1.png"));
-		swansonLogo = new Image(swansonLogoTexture);
-		swansonLogo.setPosition(40, 10);
-		swansonLogo.setSize(logoWidth, (float) (swansonLogoTexture.getHeight() * logoWidth * 1.0 / swansonLogoTexture.getWidth()));
-		game.stage.addActor(swansonLogo);
+		game.stage.addActor(game.swansonLogo);
 	
 	}
 	
