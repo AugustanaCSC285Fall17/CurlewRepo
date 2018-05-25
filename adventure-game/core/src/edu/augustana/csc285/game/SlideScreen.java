@@ -74,6 +74,8 @@ public class SlideScreen implements Screen {
 	private Label zoomImageLabel;
 	private CheckBox zoomInsCheckbox;
 	private static boolean zoomInsChecked = true;
+	private static LabelStyle appTextStyle;
+	private static LabelStyle appTitleStyle;
 	
 	public SlideScreen(final AdventureGame game) {
 		this.game = game;
@@ -91,6 +93,8 @@ public class SlideScreen implements Screen {
 		// initialize slide contents
 		choiceButtons = new ArrayList<TextButton>();
 		curSlide = game.data.getSlide(game.data.getCurrentSlideIndex());
+		appTextStyle = new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK);
+		appTitleStyle = new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro" + (AdventureGame.appFontSize + 8) + ".fnt")), Color.BLACK);
 
 		// Set the background
 		float size = AdventureGame.SCREEN_HEIGHT;
@@ -136,8 +140,7 @@ public class SlideScreen implements Screen {
 		zoomImage.setSize(AdventureGame.percentWidth(35), AdventureGame.percentHeight(95));
 		zoomImage.setPosition(AdventureGame.percentWidth(7), AdventureGame.SCREEN_HEIGHT - zoomImage.getHeight() - AdventureGame.percentHeight(3));
 
-		zoomImageLabel = new Label("IMAGE ZOOM PANEL\n1. Move mouse left to hide.\n2. Scroll to zoom in/out.", game.skin);
-		zoomImageLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		zoomImageLabel = new Label("IMAGE ZOOM PANEL\n1. Move mouse left to hide.\n2. Scroll to zoom in/out.", appTextStyle);
 		zoomImageLabel.pack();
 		zoomImageLabel.setColor(0, 0, 0, .7f);
 		zoomImageLabel.setPosition(zoomImage.getX() + AdventureGame.percentWidth(2), AdventureGame.SCREEN_HEIGHT - zoomImage.getY() - zoomImageLabel.getHeight() - AdventureGame.percentHeight(2));
@@ -276,8 +279,7 @@ public class SlideScreen implements Screen {
 		restartDialog.setVisible(false);
 		restartDialog.row();
 		restartDialog.align(Align.center);
-		Label restartLabel = new Label("Are you sure you want to restart the game?", game.skin);
-		restartLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		Label restartLabel = new Label("Are you sure you want to restart the game?", appTextStyle);
 		restartDialog.add(restartLabel);
 		restartDialog.row();
 		TextButton button = new TextButton("Yes", game.skin);
@@ -344,8 +346,7 @@ public class SlideScreen implements Screen {
 		
 		// slider
 		volumeSlider = new Slider(0f, 1f, 0.1f, false, game.skin);
-		Label volumeLabel = new Label(" " + (int) (game.bgMusic.getVolume() * 100) + "%", game.skin);
-		volumeLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		Label volumeLabel = new Label(" " + (int) (game.bgMusic.getVolume() * 100) + "%", appTextStyle);
 		volumeLabel.setWidth(AdventureGame.percentWidth(4));
 		volumeSlider.setValue(game.bgMusic.getVolume());
 		volumeSlider.addListener(new EventListener(){
@@ -364,8 +365,7 @@ public class SlideScreen implements Screen {
 		volumeDialog.setVisible(false);
 		
 		Table volumeTab = new Table(game.skin);
-		Label volTabLabel = new Label("Volume: ", game.skin);
-		volTabLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		Label volTabLabel = new Label("Volume: ", appTextStyle);
 		volumeTab.add(volTabLabel);
 		volumeTab.add(volumeSlider);
 		volumeTab.add(volumeLabel).width(AdventureGame.percentWidth(5));
@@ -407,12 +407,10 @@ public class SlideScreen implements Screen {
 
 		Table fontTab = new Table(game.skin);
 		fontTab.center();
-		Label fontTabLabel = new Label("Font Size: ", game.skin);
-		fontTabLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		Label fontTabLabel = new Label("Font Size: ", appTextStyle);
 		fontTab.add(fontTabLabel);
 		
-		Label fontLabel = new Label(" " + AdventureGame.appFontSize + "px", game.skin);
-		fontLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		Label fontLabel = new Label(" " + AdventureGame.appFontSize + "px", appTextStyle);
 		fontSlider = new Slider(AdventureGame.appFontSize - 6, AdventureGame.appFontSize + 14, 2, false, game.skin);
 		fontSlider.setValue(AdventureGame.textFontSize);
 		fontSlider.addListener(new EventListener(){
@@ -483,12 +481,10 @@ public class SlideScreen implements Screen {
 
 		Table zoomTab = new Table(game.skin);
 		zoomTab.center();
-		Label zoomTabLabel = new Label("Zoom: ", game.skin);
-		zoomTabLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		Label zoomTabLabel = new Label("Zoom: ", appTextStyle);
 		zoomTab.add(zoomTabLabel);
 		
-		zoomLabel = new Label(" " + (int) (zoomMag * 100) + " %", game.skin);
-		zoomLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		zoomLabel = new Label(" " + (int) (zoomMag * 100) + " %", appTextStyle);
 		zoomSlider = new Slider(1.5f, 4.0f, .25f, false, game.skin);
 		zoomSlider.setValue(zoomMag);
 		zoomSlider.addListener(new EventListener(){
@@ -597,8 +593,7 @@ public class SlideScreen implements Screen {
 	private void createChoiceButtons() {
 		List<ActionChoice> curChoices = game.data.getVisibleChoicesForCurrentSlide();
 		itemDialog = new Dialog("", game.skin);
-		Label itemLabel = new Label("", game.skin);
-		itemLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		Label itemLabel = new Label("", appTextStyle);
 		itemDialog.row();
 		itemDialog.align(Align.left);
 		itemDialog.add(itemLabel);
@@ -669,8 +664,7 @@ public class SlideScreen implements Screen {
 	}
 	
 	private void createTitle() {
-		title = new Label(curSlide.getTitle(), game.skin, "title");
-		title.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro" + (AdventureGame.appFontSize + 8) + ".fnt")), Color.BLACK));
+		title = new Label(curSlide.getTitle(), appTitleStyle);
 		if (curSlide.getSlideType() == SlideType.NORMAL) {
 			title.setWrap(true);
 		}
@@ -682,8 +676,7 @@ public class SlideScreen implements Screen {
 	}
 	
 	private void createGameText() {
-		gameText = new Label(curSlide.getGameText(), game.skin);
-		gameText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.textFontSize + ".fnt")), Color.BLACK));
+		gameText = new Label(curSlide.getGameText(), appTextStyle);
 		gameText.setWrap(true);
 		
 		// for normal slide
