@@ -313,7 +313,7 @@ slides: [
 		]
 	}
 	{
-		title: Choose your Inventory items
+		title: Choose three Inventory items
 		imageFileName: image8.jpg
 		gameText: "Excellent. You are the first in your family to take on this journey. They are counting on your success in America. Your family has pooled enough money for passage, thankfully. You cannot take very much with you, so you must choose carefully which items to bring. Some items are more useful than others but even the smallest, trivial item can lead to unexpected use. Remember, you have some money left after purchasing papers."
 		urlText: dieUrl
@@ -386,7 +386,7 @@ slides: [
 		]
 	}
 	{
-		title: Choose another Inventory items
+		title: Choose three Inventory items
 		imageFileName: image8.jpg
 		gameText: "Excellent. You are the first in your family to take on this journey. They are counting on your success in America. Your family has pooled enough money for passage, thankfully. You cannot take very much with you, so you must choose carefully which items to bring. Some items are more useful than others but even the smallest, trivial item can lead to unexpected use. "
 		urlText: dieUrl
@@ -514,7 +514,7 @@ slides: [
 		]
 	}
 	{
-		title: Choose your final Inventory item
+		title: Choose three Inventory items
 		imageFileName: image8.jpg
 		gameText: "Excellent. You are the first in your family to take on this journey. They are counting on your success in America. Your family has pooled enough money for passage, thankfully. You cannot take very much with you, so you must choose carefully which items to bring. Some items are more useful than others but even the smallest, trivial item can lead to unexpected use. "
 		urlText: dieUrl
