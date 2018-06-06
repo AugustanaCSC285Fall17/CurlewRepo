@@ -2,10 +2,8 @@ package edu.augustana.csc285.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -27,7 +25,8 @@ public class GameOverScreen implements Screen {
 	private Label introText;
 	private Image bgImg;
 	private Image logo;
-	private Image swansonLogo;
+	public static LabelStyle appTextStyle;
+	public static LabelStyle appTitleStyle;
 	
 	public GameOverScreen(final AdventureGame game) {
 		this.game = game; 
@@ -51,7 +50,7 @@ public class GameOverScreen implements Screen {
 				game.setScreen(new MainMenuScreen(game));
 			}
 		});
-		mainMenuButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		mainMenuButton.getLabel().setStyle(AdventureGame.appTextStyle);
 		
 		startButton = new TextButton("Play Again", game.skin);
 		startButton.addListener(new ClickListener(){
@@ -62,7 +61,7 @@ public class GameOverScreen implements Screen {
 				game.setScreen(new SlideScreen(game));
 			}
 		});
-		startButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		startButton.getLabel().setStyle(AdventureGame.appTextStyle);
 		
 		creditsButton = new TextButton("Credits", game.skin);
 		creditsButton.addListener(new ClickListener() {
@@ -73,7 +72,7 @@ public class GameOverScreen implements Screen {
 				game.setScreen(new CreditsScreen(game));
 			}
 		}); 
-		creditsButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		creditsButton.getLabel().setStyle(AdventureGame.appTextStyle);
 		
 		
 //		quitButton = new TextButton("Quit Game", game.skin);
@@ -89,7 +88,7 @@ public class GameOverScreen implements Screen {
 				+ "Did you get a bad ending? Play again!";
 		
 		introText = new Label(intro, game.skin);
-		introText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		introText.setStyle(AdventureGame.appTextStyle);
 		introText.setWrap(true);
 		introText.setWidth(800);
 		introText.setAlignment(Align.center|Align.top);

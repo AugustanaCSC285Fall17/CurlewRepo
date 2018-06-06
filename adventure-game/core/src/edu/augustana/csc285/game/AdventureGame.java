@@ -3,10 +3,13 @@ package edu.augustana.csc285.game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 
 import edu.augustana.csc285.game.datamodel.GameData;
 
@@ -24,6 +27,8 @@ public class AdventureGame extends Game {
 	public Image bgImg;
 	public Image logo;
 	public Image swansonLogo;
+	public static LabelStyle appTextStyle;
+	public static LabelStyle appTitleStyle;
 	
 	public void create() {
 		skin = new Skin(Gdx.files.internal("skins/uiskin.json"));
@@ -36,7 +41,9 @@ public class AdventureGame extends Game {
 		bgMusic.setVolume((float) .1);
 		bgMusic.play();
 		Gdx.input.setInputProcessor(stage);
-		
+
+		appTextStyle = new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + appFontSize + ".fnt")), Color.BLACK);
+		appTitleStyle = new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro" + (appFontSize + 8) + ".fnt")), Color.BLACK);
 
 		Texture logoTexture = new Texture(Gdx.files.internal("art/LogoStroked.png"));
 		float logoWidth = AdventureGame.percentWidth(40);

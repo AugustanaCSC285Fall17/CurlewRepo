@@ -3,8 +3,10 @@ package edu.augustana.csc285.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -13,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Payload;
@@ -38,6 +41,7 @@ public class ShopScreen implements Screen {
 	private Button backButton;
 	private ScrollPane itemScrollPane;
 	private ScrollPane shopScrollPane;
+	private static LabelStyle shopTitleStyle;
 	
 	public ShopScreen(final AdventureGame game, int backIndex) {
 		this.game = game;
@@ -63,7 +67,7 @@ public class ShopScreen implements Screen {
 		game.bgImg.setPosition(0, 0);
 		game.bgImg.setSize(AdventureGame.SCREEN_WIDTH, AdventureGame.SCREEN_HEIGHT);
 		game.stage.addActor(game.bgImg);
-		
+		shopTitleStyle = new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro" + (AdventureGame.appFontSize) + ".fnt")), Color.BLACK);
 		
 		// initialize slide contents
 		createTitle();
@@ -88,69 +92,115 @@ public class ShopScreen implements Screen {
 		game.stage.addActor(SlideScreen.volumeDialog);
 		game.stage.addActor(SlideScreen.restartDialog);
 		game.stage.addActor(SlideScreen.fontDialog);
+		game.stage.addActor(SlideScreen.zoomButton);
+		game.stage.addActor(SlideScreen.zoomDialog);
 		game.stage.addActor(SlideScreen.volumeDialog);
 		
 	}
 
 	private void createTitle() {
-		itemTitle = new Label("Inventory", game.skin, "title");
-		itemTitle.setWidth(350);
+		itemTitle = new Label("Inventory", AdventureGame.appTitleStyle);
+		itemTitle.setWidth(AdventureGame.percentWidth(27));
 		itemTitle.pack();
-		itemTitle.setWidth(350);
-		itemTitle.setPosition(90, AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - 20);
+		itemTitle.setPosition(AdventureGame.percentWidth(9), AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - AdventureGame.percentHeight(3));
 		itemTitle.setAlignment(Align.left);
 	}
 
-	private int gameTextWidth = 500;
+	private float gameTextWidth = AdventureGame.percentWidth(39);
 	
 	private void createItemTable() {
-		Label categoryLabel = new Label("Item Name              Quantity     Value", game.skin);
-		categoryLabel.setPosition(160, AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - 60);
-		game.stage.addActor(categoryLabel);
+//		Label categoryLabel = new Label("Item Name              Quantity     Value", AdventureGame.appTextStyle);
+//		categoryLabel.setPosition(AdventureGame.percentWidth(13), AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - AdventureGame.percentHeight(8));
+//		game.stage.addActor(categoryLabel);
+
+		cashLabel.setText("Kronor: " + game.data.getPlayer().getItemQuantity("Kronor"));
+		itemTable.clear();
+		itemTable.setWidth(gameTextWidth);
+		itemTable.setTouchable(Touchable.enabled);
+		itemTable.align(Align.topLeft);
 		
-		redrawItemTable();		
+		itemTable.add().size(AdventureGame.percentWidth(6));
+		itemTable.add(new Label("Item Name", shopTitleStyle)).padLeft(AdventureGame.percentWidth(2)).width(AdventureGame.percentWidth(12)).align(Align.left);
+		itemTable.add(new Label("Quantity", shopTitleStyle)).padLeft(AdventureGame.percentWidth(3)).width(AdventureGame.percentWidth(4)).align(Align.center);
+		itemTable.add(new Label("Price", shopTitleStyle)).padLeft(AdventureGame.percentWidth(4)).width(AdventureGame.percentWidth(4)).align(Align.center);
+		itemTable.row();
+		
+		// ------------------------------------------------------
+
+		for (Item item : game.data.getCurrentVisibleItems()) {
+			if (!item.getItemName().equals("Kronor")) {
+				Table itemRow = getItemRow(item, false);
+
+				DragAndDrop dnd = new DragAndDrop();
+				dnd.addSource(new Source(itemRow) {
+					Payload payload = new Payload();
+
+					@Override
+					public Payload dragStart(InputEvent event, float x, float y, int pointer) {
+						Image itemImage = new Image(
+								new Texture(Gdx.files.internal("art/icons/" + item.getImageAddress())));
+						itemImage.setSize(AdventureGame.percentWidth(6), AdventureGame.percentWidth(6));
+						payload.setObject(itemRow);
+						payload.setDragActor(itemImage);
+						return payload;
+					}
+				});
+				dnd.addTarget(new Target(shopScrollPane) {
+					@Override
+					public boolean drag(Source source, Payload payload, float x, float y, int pointer) {
+						return true;
+					}
+
+					@Override
+					public void drop(Source source, Payload payload, float x, float y, int pointer) {
+
+						if (!item.canSell()) {
+							Dialog rejectDialog = new Dialog("", game.skin);
+							rejectDialog.button("OK");
+							rejectDialog.text(new Label("You cannot sell " + item.getItemName() + "!", AdventureGame.appTextStyle));
+							rejectDialog.setWidth(AdventureGame.percentWidth(55));
+							rejectDialog.setPosition(AdventureGame.percentWidth(23), AdventureGame.percentHeight(43));
+							game.stage.addActor(rejectDialog);
+						} else {
+							game.data.getPlayer().incrementAvailableItem("Kronor", item.getSellPrice());
+							game.data.getPlayer().incrementAvailableItem(item.getItemName(), -1);
+							createItemTable();
+							showDialog(item, true);
+						}
+					}
+				});
+				itemTable.add(itemRow).fill().colspan(4);
+				itemTable.row().padTop(AdventureGame.percentHeight(1));
+			}
+		}	
 		
 //		if (itemAdded == 0) {
 //			itemTable.add(new Label("You have no items in your inventory.", game.skin));
 //		}
 		
-	}
-	
-	private void createScrollPanes(int gameTextWidth) {
-		itemScrollPane = new ScrollPane(itemTable, game.skin);
-		
-		int gameTextHeight = 300;
-		
-	    itemScrollPane.setBounds(100, AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - 60 - gameTextHeight, gameTextWidth, gameTextHeight);
-	    itemScrollPane.layout();
-	    itemScrollPane.setTouchable(Touchable.enabled);
-	    itemScrollPane.setFadeScrollBars(false);
-	    
-		shopScrollPane = new ScrollPane(shopTable, game.skin);
-		
-		shopScrollPane.setBounds(760, AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - 60 - gameTextHeight, gameTextWidth, gameTextHeight);
-		shopScrollPane.layout();
-		shopScrollPane.setTouchable(Touchable.enabled);
-		shopScrollPane.setFadeScrollBars(false);
-	}
+	}	
 	
 	private void createShopTable() {
-		shopTitle = new Label("Shop", game.skin, "title");
-		shopTitle.setWidth(350);
+		shopTitle = new Label("Shop", AdventureGame.appTitleStyle);
+		shopTitle.setWidth(AdventureGame.percentWidth(27));
 		shopTitle.pack();
-		shopTitle.setWidth(350);
-		shopTitle.setPosition(730, AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - 20);
+		shopTitle.setPosition(AdventureGame.percentWidth(57), AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - AdventureGame.percentHeight(3));
 		shopTitle.setAlignment(Align.left);
-		
-		Label categoryLabel = new Label("Item Name                    Price", game.skin);
-		categoryLabel.setPosition(870, AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - 60);
-		game.stage.addActor(categoryLabel);
+//		
+//		Label categoryLabel = new Label("Item Name                    Price", AdventureGame.appTextStyle);
+//		categoryLabel.setPosition(AdventureGame.percentWidth(68), AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - AdventureGame.percentHeight(8));
+//		game.stage.addActor(categoryLabel);
 
 		
 		shopTable.setWidth(gameTextWidth);
 		itemTable.setTouchable(Touchable.enabled);
 		shopTable.align(Align.topLeft);
-
+		
+		shopTable.add().size(AdventureGame.percentWidth(6));
+		shopTable.add(new Label("Item Name", shopTitleStyle)).padLeft(AdventureGame.percentWidth(2)).width(AdventureGame.percentWidth(12)).align(Align.left);
+		shopTable.add(new Label("Price", shopTitleStyle)).padLeft(AdventureGame.percentWidth(3)).width(AdventureGame.percentWidth(4)).align(Align.center);
+		shopTable.row();
+		
 		for (Item item : game.data.getPlayer().getInventory()) {
 			if (item.canBuy()) {
 				Table itemRow = getItemRow(item, true);
@@ -180,23 +230,69 @@ public class ShopScreen implements Screen {
 						if (game.data.getPlayer().getItemQuantity("Kronor") < item.getBuyPrice()) {
 							Dialog rejectDialog = new Dialog("", game.skin);
 							rejectDialog.button("Ok");
-							rejectDialog.text("Insufficient funds!");
-							rejectDialog.setWidth(700);
-							rejectDialog.setPosition(300, 300);
+							rejectDialog.text(new Label("Insufficient funds!", AdventureGame.appTextStyle));
+							rejectDialog.setWidth(AdventureGame.percentWidth(55));
+							rejectDialog.setPosition(AdventureGame.percentWidth(23), AdventureGame.percentHeight(43));
 							game.stage.addActor(rejectDialog);
 						} else {
 							game.data.getPlayer().incrementAvailableItem("Kronor", -item.getBuyPrice());
 							game.data.getPlayer().incrementAvailableItem(item.getItemName(), 1);
-							redrawItemTable();
+							createItemTable();
 							showDialog(item, false);
 						}
 					}
 				});
-				shopTable.add(itemRow).fill();
-				shopTable.row().padTop(10);
+				shopTable.add(itemRow).fill().colspan(3);
+				shopTable.row().padTop(AdventureGame.percentHeight(1));
 			}
 		}
 	}
+	
+	private Table getItemRow(Item item, boolean isShop) {
+		Table itemRow = new Table(game.skin);
+		Image itemImage = new Image(new Texture(Gdx.files.internal("art/icons/" + item.getImageAddress())));
+		Label itemLabel = new Label(item.getItemName(), AdventureGame.appTextStyle);
+		int price = item.getSellPrice();
+		if (isShop) {
+			price = item.getBuyPrice();
+		} else if (!item.canSell()) {
+			price = 0;
+		}
+		
+		Label quantityLabel = new Label("" + item.getItemQty(), AdventureGame.appTextStyle);
+		Label valueLabel = new Label("" + price, AdventureGame.appTextStyle);
+		
+		quantityLabel.setAlignment(Align.center);
+		valueLabel.setAlignment(Align.center);
+		itemRow.add(itemImage).size(AdventureGame.percentWidth(6), AdventureGame.percentWidth(6));
+		itemRow.add(itemLabel).padLeft(AdventureGame.percentWidth(2)).size(AdventureGame.percentWidth(12), AdventureGame.percentHeight(4)).align(Align.left);
+		if (!isShop) {
+			itemRow.add(quantityLabel).padLeft(AdventureGame.percentWidth(5)).size(AdventureGame.percentWidth(2));
+		}
+		itemRow.add(valueLabel).padLeft(AdventureGame.percentWidth(5)).size(AdventureGame.percentWidth(2));
+		
+		return itemRow;
+	}
+	
+	private void createScrollPanes(float gameTextWidth2) {
+		itemScrollPane = new ScrollPane(itemTable, game.skin);
+		
+		float gameTextHeight = AdventureGame.percentHeight(50);
+		
+	    itemScrollPane.setBounds(AdventureGame.percentWidth(9), AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - AdventureGame.percentHeight(3) - gameTextHeight, gameTextWidth2, gameTextHeight);
+	    itemScrollPane.layout();
+	    itemScrollPane.setTouchable(Touchable.enabled);
+	    itemScrollPane.setFadeScrollBars(false);
+	    
+		shopScrollPane = new ScrollPane(shopTable, game.skin);
+		
+		shopScrollPane.setBounds(AdventureGame.percentWidth(59), AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - AdventureGame.percentHeight(3) - gameTextHeight, gameTextWidth2, gameTextHeight);
+		shopScrollPane.layout();
+		shopScrollPane.setTouchable(Touchable.enabled);
+		shopScrollPane.setFadeScrollBars(false);
+	}
+	
+
 	
 	private void createBackButton() {
 		backButton = new Button(game.skin);
@@ -204,7 +300,7 @@ public class ShopScreen implements Screen {
 		backButton.setWidth(SlideScreen.BUTTON_SIZE);
 		backButton.setHeight(SlideScreen.BUTTON_SIZE);
 							  //AdventureGame.GAME_SCREEN_WIDTH - backButton.getWidth() - 10
-		backButton.setPosition(10,	AdventureGame.SCREEN_HEIGHT - 2 * SlideScreen.BUTTON_SIZE - 10);
+		backButton.setPosition(10,	AdventureGame.SCREEN_HEIGHT - 2 * SlideScreen.BUTTON_SIZE - AdventureGame.percentHeight(1));
 		backButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -219,106 +315,22 @@ public class ShopScreen implements Screen {
 		table = new Table();
 		table.setWidth(AdventureGame.SCREEN_WIDTH);
 		table.align(Align.topLeft);
-		table.setPosition(0, game.stage.getHeight());
-		table.padLeft(40);
-		cashLabel = new Label("Kronor: " + game.data.getPlayer().getItemQuantity("Kronor"), game.skin);
+		table.setPosition(AdventureGame.percentWidth(9), AdventureGame.SCREEN_HEIGHT);
+		cashLabel = new Label("Kronor: " + game.data.getPlayer().getItemQuantity("Kronor"), AdventureGame.appTextStyle);
 		
-		Label direction = new Label("Direction: Drag items from your inventory to the shop to sell and from the shop to your inventory to buy them.", game.skin);
+		Label direction = new Label("Direction: Drag items from your inventory to the shop to sell and from the shop to your inventory to buy.", AdventureGame.appTextStyle);
 		table.add(cashLabel).align(Align.left);
 		table.row();
 		table.add(direction);
 
-		int tableHeight = 400;
+		float tableHeight = AdventureGame.percentHeight(56);
 		table.padTop(tableHeight + itemTitle.getHeight());
-	}
-	
-	private Table getItemRow(Item item, boolean isShop) {
-		Table itemRow = new Table(game.skin);
-		Image itemImage = new Image(new Texture(Gdx.files.internal("art/icons/" + item.getImageAddress())));
-		Label itemLabel = new Label(item.getItemName(), game.skin);
-		int price = item.getSellPrice();
-		if (isShop) {
-			price = item.getBuyPrice();
-		} else if (!item.canSell()) {
-			price = 0;
-		}
-		
-		Label quantityLabel = new Label("" + item.getItemQty(), game.skin);
-		Label valueLabel = new Label("" + price, game.skin);
-		
-		quantityLabel.setAlignment(Align.center);
-		valueLabel.setAlignment(Align.center);
-		itemRow.add(itemImage).size(80, 80);
-		itemRow.add(itemLabel).padLeft(30).size(150, 30).align(Align.left);
-		if (!isShop) {
-			itemRow.add(quantityLabel).padLeft(55).size(30);
-		}
-		itemRow.add(valueLabel).padLeft(60).size(30);
-		
-		return itemRow;
-	}
-	
-	public void redrawItemTable() {
-		cashLabel.setText("Kronor: " + game.data.getPlayer().getItemQuantity("Kronor"));
-		itemTable.clear();
-		itemTable.setWidth(gameTextWidth);
-		itemTable.setTouchable(Touchable.enabled);
-		itemTable.align(Align.topLeft);
-		
-		// ------------------------------------------------------
-
-		for (Item item : game.data.getCurrentVisibleItems()) {
-			if (!item.getItemName().equals("Kronor")) {
-				Table itemRow = getItemRow(item, false);
-
-				DragAndDrop dnd = new DragAndDrop();
-				dnd.addSource(new Source(itemRow) {
-					Payload payload = new Payload();
-
-					@Override
-					public Payload dragStart(InputEvent event, float x, float y, int pointer) {
-						Image itemImage = new Image(
-								new Texture(Gdx.files.internal("art/icons/" + item.getImageAddress())));
-						itemImage.setSize(80, 80);
-						payload.setObject(itemRow);
-						payload.setDragActor(itemImage);
-						return payload;
-					}
-				});
-				dnd.addTarget(new Target(shopScrollPane) {
-					@Override
-					public boolean drag(Source source, Payload payload, float x, float y, int pointer) {
-						return true;
-					}
-
-					@Override
-					public void drop(Source source, Payload payload, float x, float y, int pointer) {
-
-						if (!item.canSell()) {
-							Dialog rejectDialog = new Dialog("", game.skin);
-							rejectDialog.button("OK");
-							rejectDialog.text("You cannot sell " + item.getItemName() + "!");
-							rejectDialog.setWidth(700);
-							rejectDialog.setPosition(300, 300);
-							game.stage.addActor(rejectDialog);
-						} else {
-							game.data.getPlayer().incrementAvailableItem("Kronor", item.getSellPrice());
-							game.data.getPlayer().incrementAvailableItem(item.getItemName(), -1);
-							redrawItemTable();
-							showDialog(item, true);
-						}
-					}
-				});
-				itemTable.add(itemRow).fill();
-				itemTable.row().padTop(10);
-			}
-		}
 	}
 	
 	private void showDialog(Item item, boolean isSelling) {
 		Dialog dialog = new Dialog("", game.skin);
-		dialog.setPosition(300, 300);
-		dialog.setWidth(700);
+		dialog.setPosition(AdventureGame.percentWidth(23), AdventureGame.percentHeight(42));
+		dialog.setWidth(AdventureGame.percentWidth(55));
 		dialog.button("OK");
 		String message;
 		if (isSelling) {
@@ -326,7 +338,7 @@ public class ShopScreen implements Screen {
 		} else {
 			message = "You bought " + item.getItemName() + " for " + item.getBuyPrice() + " Kronor.";
 		}
-		dialog.text(new Label(message, game.skin));
+		dialog.text(new Label(message, AdventureGame.appTextStyle));
 		game.stage.addActor(dialog);
 	}
 	

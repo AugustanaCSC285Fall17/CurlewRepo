@@ -2,17 +2,14 @@ package edu.augustana.csc285.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
@@ -33,7 +30,7 @@ public class CreditsScreen implements Screen {
 	
 
 	private void initializeAbout() {
-		Label credit = new Label("Credits", game.skin, "title");
+		Label credit = new Label("Credits", AdventureGame.appTitleStyle);
 		credit.setPosition(AdventureGame.percentWidth(1), AdventureGame.percentHeight(88));
 		game.stage.addActor(credit);
 		
@@ -52,7 +49,7 @@ public class CreditsScreen implements Screen {
 		});
 		backButton.setWidth(AdventureGame.percentWidth(23));
 		backButton.setPosition(AdventureGame.percentWidth(40), AdventureGame.percentHeight(18));
-		backButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		backButton.getLabel().setStyle(AdventureGame.appTextStyle);
 		game.stage.addActor(backButton);
 		
 		String intro =
@@ -124,7 +121,7 @@ public class CreditsScreen implements Screen {
 				+ "     Artist: http://audionautix.com/";
 		
 		introText = new Label(intro, game.skin);
-		introText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		introText.setStyle(AdventureGame.appTextStyle);
 		introText.setWrap(true);
 		introText.setWidth(AdventureGame.percentWidth(94));
 		introText.pack();

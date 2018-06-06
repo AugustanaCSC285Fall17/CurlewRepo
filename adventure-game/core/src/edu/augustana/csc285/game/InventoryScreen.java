@@ -2,10 +2,8 @@ package edu.augustana.csc285.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -14,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextTooltip;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
@@ -141,7 +138,7 @@ public class InventoryScreen implements Screen {
 
 	private void createTitle() {
 		title = new Label("Inventory", game.skin, "title");
-		title.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro" + (AdventureGame.appFontSize + 8) + ".fnt")), Color.BLACK));
+		title.setStyle(AdventureGame.appTitleStyle);
 		title.setWidth(AdventureGame.percentWidth(27));
 		title.pack();
 		title.setPosition(AdventureGame.percentWidth(8), AdventureGame.SCREEN_HEIGHT - title.getHeight() - AdventureGame.percentHeight(1));
@@ -167,7 +164,7 @@ public class InventoryScreen implements Screen {
 				itemName = item.getItemQty() + " kr";
 			}
 			Label itemLabel = new Label(itemName, game.skin);
-			itemLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+			itemLabel.setStyle(AdventureGame.appTextStyle);
 			itemLabel.setAlignment(Align.topLeft);
 			itemTable.add(itemImage).size(AdventureGame.percentWidth(6), AdventureGame.percentWidth(6));
 			itemTable.add(itemLabel).align(Align.left).padLeft(5);
@@ -180,7 +177,7 @@ public class InventoryScreen implements Screen {
 		
 		if (itemAdded == 0) {
 			Label noItemLabel = new Label("You have no items in your inventory.", game.skin);
-			noItemLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+			noItemLabel.setStyle(AdventureGame.appTextStyle);
 			itemTable.add(noItemLabel);
 		}
 		
@@ -202,12 +199,12 @@ public class InventoryScreen implements Screen {
 		
 		
 		statsTitle = new Label("Player Status", game.skin, "title");
-		statsTitle.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro" + (AdventureGame.appFontSize + 8) + ".fnt")), Color.BLACK));
+		statsTitle.setStyle(AdventureGame.appTitleStyle);
 		statsTitle.setAlignment(Align.center);
 		
 		statsLabel = new Label("Name: " + game.data.getPlayer().getName()
 				+ "\nGender: " + game.data.getPlayer().getGender().toString(), game.skin);
-		statsLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
+		statsLabel.setStyle(AdventureGame.appTextStyle);
 		statsLabel.setAlignment(Align.topLeft);
 
 		statsTable = new Table();
