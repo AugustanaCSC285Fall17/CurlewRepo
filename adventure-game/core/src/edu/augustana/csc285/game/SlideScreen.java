@@ -272,7 +272,6 @@ public class SlideScreen implements Screen {
 		restartButton.add(restartImg);
 		restartButton.setWidth(BUTTON_SIZE);
 		restartButton.setHeight(BUTTON_SIZE);
-							  //AdventureGame.GAME_SCREEN_WIDTH - pauseButton.getWidth() - 10
 		restartButton.setPosition(AdventureGame.percentWidth(1), AdventureGame.SCREEN_HEIGHT - BUTTON_SIZE - AdventureGame.percentHeight(1));
 		restartButton.addListener(new ClickListener() {
 			@Override
@@ -312,10 +311,8 @@ public class SlideScreen implements Screen {
 		restartDialog.add(buttonTable);
 		restartDialog.setWidth(AdventureGame.percentWidth(45));
 		restartDialog.setHeight(AdventureGame.percentHeight(14));
-								//880
 		restartDialog.setPosition((AdventureGame.SCREEN_WIDTH - restartDialog.getWidth())/ 2, 
-				(AdventureGame.SCREEN_HEIGHT - restartDialog.getHeight())/ 2);	
-		addOutsideClickFadeListener(restartDialog);
+				(AdventureGame.SCREEN_HEIGHT - restartDialog.getHeight())/ 2);
 		
 		
 		TextTooltip restartTt = new TextTooltip("Restart", tooltip, game.skin);
@@ -329,7 +326,6 @@ public class SlideScreen implements Screen {
 		inventoryButton.add(invenImg);
 		inventoryButton.setWidth(BUTTON_SIZE);
 		inventoryButton.setHeight(BUTTON_SIZE);
-								  //AdventureGame.GAME_SCREEN_WIDTH - inventoryButton.getWidth() - 10
 		inventoryButton.setPosition(AdventureGame.percentWidth(1), AdventureGame.SCREEN_HEIGHT - 2 * BUTTON_SIZE - AdventureGame.percentHeight(1));
 		inventoryButton.addListener(new ClickListener() {
 			@Override
@@ -345,7 +341,7 @@ public class SlideScreen implements Screen {
 		inventoryButton.addListener(invenTt);
 		game.stage.addActor(inventoryButton);
 
-		//-------------------- volume dialog & slider ------------------
+		//-------------------- volume button, dialog & slider ------------------
 		
 
 		volumeButton = new Button(game.skin);
@@ -407,7 +403,6 @@ public class SlideScreen implements Screen {
 		volumeDialog.add(volumeTab).expandX().expandY().left();
 		volumeDialog.setWidth(volumeTab.getWidth() + AdventureGame.percentWidth(4));
 		volumeDialog.setHeight(volumeTab.getHeight() + AdventureGame.percentHeight(4));
-								//880
 		volumeDialog.setPosition(AdventureGame.percentWidth(7), AdventureGame.SCREEN_HEIGHT - BUTTON_SIZE * 3);
 		addOutsideClickFadeListener(volumeDialog);
 		
@@ -468,7 +463,6 @@ public class SlideScreen implements Screen {
 		fontDialog.add(fontTab).align(Align.center).expandX().expandY().left();
 		fontDialog.setWidth(fontTab.getWidth() + AdventureGame.percentWidth(4));
 		fontDialog.setHeight(fontTab.getHeight() + AdventureGame.percentHeight(4));
-								//880
 		fontDialog.setPosition(AdventureGame.percentWidth(7), AdventureGame.SCREEN_HEIGHT - BUTTON_SIZE * 4);
 		
 		fontButton.addListener(new ClickListener() {
@@ -543,7 +537,6 @@ public class SlideScreen implements Screen {
 		zoomDialog.add(zoomTab).expandX().expandY().left();
 		zoomDialog.setWidth(zoomTab.getWidth() + AdventureGame.percentWidth(4));
 		zoomDialog.setHeight(zoomTab.getHeight() + AdventureGame.percentHeight(4));
-								//880
 		zoomDialog.setPosition(AdventureGame.percentWidth(7),  AdventureGame.SCREEN_HEIGHT - BUTTON_SIZE * 5);
 		
 		zoomButton.addListener(new ClickListener() {
@@ -565,7 +558,6 @@ public class SlideScreen implements Screen {
 		creditButton.add(creditImg);
 		creditButton.setWidth(BUTTON_SIZE);
 		creditButton.setHeight(BUTTON_SIZE);
-								  //AdventureGame.GAME_SCREEN_WIDTH - inventoryButton.getWidth() - 10
 		creditButton.setPosition(AdventureGame.percentWidth(1), AdventureGame.SCREEN_HEIGHT - 6 * BUTTON_SIZE - AdventureGame.percentHeight(1));
 		creditButton.addListener(new ClickListener() {
 			@Override
@@ -589,7 +581,6 @@ public class SlideScreen implements Screen {
 	private void updateMute() {
 		volumeButton.setWidth(BUTTON_SIZE);
 		volumeButton.setHeight(BUTTON_SIZE);
-							 //AdventureGame.GAME_SCREEN_WIDTH - inventoryButton.getWidth() - 10
 		volumeButton.setPosition(AdventureGame.percentWidth(1), AdventureGame.SCREEN_HEIGHT - 3 * BUTTON_SIZE - AdventureGame.percentHeight(1));
 		volumeButton.addListener(new ClickListener() {
 			@Override
@@ -732,10 +723,6 @@ public class SlideScreen implements Screen {
 			table.row();
 		}
 		table.pack();
-//		if (curSlide.getSlideType() == SlideType.NORMAL)
-//			tableHeight = 350;
-//		else if (curSlide.getSlideType() == SlideType.MANY_BUTTONS)
-//			tableHeight = 300;
 		table.setPosition(AdventureGame.percentWidth(8), AdventureGame.percentHeight(1));
 	}
 	
@@ -753,10 +740,6 @@ public class SlideScreen implements Screen {
 	public void render (float delta) {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-//		
-//		game.batch.begin();
-//		game.sprite.draw(game.batch);
-//		game.batch.end();
 		
 		if (Gdx.input.getX() * AdventureGame.SCREEN_WIDTH / Gdx.graphics.getWidth() < AdventureGame.SCREEN_WIDTH - game.bgImg.getWidth()) {
 			zoomImage.setVisible(false);
