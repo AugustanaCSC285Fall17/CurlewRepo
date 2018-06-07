@@ -12,9 +12,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Event;
-import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -316,6 +315,7 @@ public class SlideScreen implements Screen {
 								//880
 		restartDialog.setPosition((AdventureGame.SCREEN_WIDTH - restartDialog.getWidth())/ 2, 
 				(AdventureGame.SCREEN_HEIGHT - restartDialog.getHeight())/ 2);	
+		addOutsideClickFadeListener(restartDialog);
 		
 		
 		TextTooltip restartTt = new TextTooltip("Restart", tooltip, game.skin);
@@ -355,13 +355,12 @@ public class SlideScreen implements Screen {
 		Label volumeLabel = new Label(" " + (int) (game.bgMusic.getVolume() * 100) + "%", game.skin);
 		volumeLabel.setWidth(AdventureGame.percentWidth(4));
 		volumeSlider.setValue(game.bgMusic.getVolume());
-		volumeSlider.addListener(new EventListener(){
+		volumeSlider.addListener(new ChangeListener(){
 			@Override
-			public boolean handle(Event event) {
+			public void changed(ChangeEvent event, Actor actor) {
 				game.bgMusic.setVolume(volumeSlider.getValue());
 				volumeLabel.setText(" " + (int) (volumeSlider.getValue() * 100) + "%");
 				updateMute();
-				return false;
 			}
 			
 		});
@@ -410,6 +409,7 @@ public class SlideScreen implements Screen {
 		volumeDialog.setHeight(volumeTab.getHeight() + AdventureGame.percentHeight(4));
 								//880
 		volumeDialog.setPosition(AdventureGame.percentWidth(7), AdventureGame.SCREEN_HEIGHT - BUTTON_SIZE * 3);
+		addOutsideClickFadeListener(volumeDialog);
 		
 		updateMute();
 		
@@ -425,6 +425,7 @@ public class SlideScreen implements Screen {
 		
 		fontDialog = new Dialog("", game.skin);
 		fontDialog.setVisible(false);
+		addOutsideClickFadeListener(fontDialog);
 
 		Table fontTab = new Table(game.skin);
 		fontTab.center();
@@ -434,13 +435,19 @@ public class SlideScreen implements Screen {
 		Label fontLabel = new Label(" " + AdventureGame.textFontSize + "px", game.skin);
 		fontSlider = new Slider(AdventureGame.appFontSize - 6, AdventureGame.appFontSize + 14, 2, false, game.skin);
 		fontSlider.setValue(AdventureGame.textFontSize);
-		fontSlider.addListener(new EventListener(){
+		fontSlider.addListener(new ChangeListener(){
 			@Override
-			public boolean handle(Event event) {
+			public void changed(ChangeEvent event, Actor actor) {
 				AdventureGame.textFontSize = (int) fontSlider.getValue();
+				title.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro" + (AdventureGame.textFontSize + 10) + ".fnt")), Color.BLACK));
 				gameText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.textFontSize + ".fnt")), Color.BLACK));
+				title.pack();
+				gameText.pack();
+				scrollPane.pack();
+				title.setPosition(AdventureGame.percentWidth(8), AdventureGame.SCREEN_HEIGHT - title.getHeight() - AdventureGame.percentHeight(2));
+			    scrollPane.setBounds(AdventureGame.percentWidth(8), AdventureGame.percentHeight(1) + table.getHeight(),
+			    		gameTextWidth, AdventureGame.SCREEN_HEIGHT - (title.getHeight() + table.getHeight()) - AdventureGame.percentHeight(3));
 				fontLabel.setText(" " + AdventureGame.textFontSize + "px");
-				return false;
 			}
 			
 		});
@@ -486,6 +493,7 @@ public class SlideScreen implements Screen {
 		zoomDialog = new Dialog("", game.skin);
 		zoomDialog.setVisible(false);
 		zoomDialog.align(Align.left);
+		addOutsideClickFadeListener(zoomDialog);
 
 		zoomInsCheckbox = new CheckBox("Zoom instructions", game.skin);
 		zoomInsCheckbox.setChecked(zoomInsChecked);
@@ -505,15 +513,14 @@ public class SlideScreen implements Screen {
 		zoomLabel = new Label(" " + (int) (zoomMag * 100) + " %", game.skin);
 		zoomSlider = new Slider(1.5f, 4.0f, .25f, false, game.skin);
 		zoomSlider.setValue(zoomMag);
-		zoomSlider.addListener(new EventListener(){
+		zoomSlider.addListener(new ChangeListener(){
 			@Override
-			public boolean handle(Event event) {
+			public void changed(ChangeEvent event, Actor actor) {
 				zoomMag = zoomSlider.getValue();
 				zoomWPanel = zoomImage.getWidth() / zoomMag;
 				zoomHPanel = zoomImage.getHeight() / zoomMag;
 				zoomRectangle.setSize(zoomWPanel, zoomHPanel);
 				zoomLabel.setText(" " + (int) (zoomMag * 100) + " %");
-				return true;
 			}
 			
 		});
@@ -609,6 +616,13 @@ public class SlideScreen implements Screen {
 		itemDialog.align(Align.left);
 		itemDialog.add(itemLabel);
 		itemDialog.setVisible(false);
+		itemDialog.addListener(new InputListener() {
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+            	itemDialog.clearActions();
+				initialize();
+                return true;
+            }
+       });
 		
 		for (ActionChoice curChoice : curChoices) {
 			String curChoiceText = curChoice.getChoiceText();
@@ -663,6 +677,7 @@ public class SlideScreen implements Screen {
 							rejectDialog.text(rejText);
 							rejectDialog.setWidth(AdventureGame.percentWidth(55));
 							rejectDialog.setPosition(AdventureGame.percentWidth(23), AdventureGame.percentHeight(42));
+							addOutsideClickFadeListener(rejectDialog);
 							game.stage.addActor(rejectDialog);
 						}
 					}
@@ -674,7 +689,7 @@ public class SlideScreen implements Screen {
 	}
 	
 	private void createTitle() {
-		title = new Label(curSlide.getTitle(), game.skin, "title");
+		title = new Label(curSlide.getTitle(), new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro" + (AdventureGame.textFontSize + 10) + ".fnt")), Color.BLACK));
 		if (curSlide.getSlideType() == SlideType.NORMAL) {
 			title.setWrap(true);
 		}
@@ -684,14 +699,15 @@ public class SlideScreen implements Screen {
 		title.setPosition(AdventureGame.percentWidth(8), AdventureGame.SCREEN_HEIGHT - title.getHeight() - AdventureGame.percentHeight(2));
 		title.setAlignment(Align.left);
 	}
+
+	// for normal slide
+	private float gameTextWidth;
 	
 	private void createGameText() {
 		gameText = new Label(curSlide.getGameText(), new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.textFontSize + ".fnt")), Color.BLACK));
 		gameText.setWrap(true);
 		
-		// for normal slide
-		float gameTextWidth = AdventureGame.percentWidth(31);
-		
+		gameTextWidth = AdventureGame.percentWidth(31);
 		if (curSlide.getSlideType() == SlideType.HISTORICAL) {
 			gameTextWidth = AdventureGame.percentWidth(55);
 		}
@@ -755,6 +771,18 @@ public class SlideScreen implements Screen {
 		
 		game.stage.act(Gdx.graphics.getDeltaTime());
 		game.stage.draw();
+	}
+	
+	public void addOutsideClickFadeListener(Dialog newDialog) {
+		newDialog.addListener(new InputListener() {
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                if (x < 0 || x > newDialog.getWidth() || y < 0 || y > newDialog.getHeight()){
+                	newDialog.setVisible(false);
+                    return true;
+                }
+                return false;
+            }
+       });
 	}
 	
 	@Override
