@@ -49,7 +49,7 @@ public class SlideScreen implements Screen {
 
 	public static Button restartButton;
 	public static Button inventoryButton;
-	public static Button muteButton;
+	public static Button volumeButton;
 	public static Button creditButton;
 	public static Button fontButton;
 	public static Button zoomButton;
@@ -114,6 +114,8 @@ public class SlideScreen implements Screen {
 		game.stage.addActor(title);
 		game.stage.addActor(scrollPane);
 		game.stage.addActor(table);
+
+		game.stage.addActor(volumeButton);
 		
 		// zoom functionality
 		game.stage.addActor(zoomGray);
@@ -345,6 +347,9 @@ public class SlideScreen implements Screen {
 
 		//-------------------- volume dialog & slider ------------------
 		
+
+		volumeButton = new Button(game.skin);
+		volumeButton.add(curImg);
 		// slider
 		volumeSlider = new Slider(0f, 1f, 0.1f, false, game.skin);
 		Label volumeLabel = new Label(" " + (int) (game.bgMusic.getVolume() * 100) + "%", game.skin);
@@ -389,6 +394,7 @@ public class SlideScreen implements Screen {
 				} else {
 					game.bgMusic.play();
 				}
+				updateMute();
 			}
 			
 		});
@@ -571,30 +577,27 @@ public class SlideScreen implements Screen {
 
 	//--------------------- mute button --------------------
 	
-	private Image muteImg = new Image(new Texture(Gdx.files.internal("art/icons/muteSMALL.png")));
-	private Image unmuteImg = new Image(new Texture(Gdx.files.internal("art/icons/unmuteSMALL.png")));
+	private Image curImg = new Image();
 	
 	private void updateMute() {
-		muteButton = new Button(game.skin);
-		muteButton.setWidth(BUTTON_SIZE);
-		muteButton.setHeight(BUTTON_SIZE);
+		volumeButton.setWidth(BUTTON_SIZE);
+		volumeButton.setHeight(BUTTON_SIZE);
 							 //AdventureGame.GAME_SCREEN_WIDTH - inventoryButton.getWidth() - 10
-		muteButton.setPosition(AdventureGame.percentWidth(1), AdventureGame.SCREEN_HEIGHT - 3 * BUTTON_SIZE - AdventureGame.percentHeight(1));
-		muteButton.addListener(new ClickListener() {
+		volumeButton.setPosition(AdventureGame.percentWidth(1), AdventureGame.SCREEN_HEIGHT - 3 * BUTTON_SIZE - AdventureGame.percentHeight(1));
+		volumeButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				volumeDialog.setVisible(true);
 			}
 		});
-		if (game.bgMusic.getVolume() != 0) {
-			muteButton.add(unmuteImg);
+		if (game.bgMusic.getVolume() != 0 && !game.musicMuted) {
+			curImg.setDrawable(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("art/icons/unmuteSMALL.png")))));
 		} else {
-			muteButton.add(muteImg);
+			curImg.setDrawable(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("art/icons/muteSMALL.png")))));
 		}
 		
 		TextTooltip muteTt = new TextTooltip("Volume", tooltip, game.skin);
-		muteButton.addListener(muteTt);
-		game.stage.addActor(muteButton);
+		volumeButton.addListener(muteTt);
 	}
 
 	

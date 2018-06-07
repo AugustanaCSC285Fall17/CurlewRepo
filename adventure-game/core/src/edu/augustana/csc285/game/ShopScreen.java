@@ -86,7 +86,7 @@ public class ShopScreen implements Screen {
 		game.stage.addActor(itemTitle);
 		game.stage.addActor(itemScrollPane);
 		game.stage.addActor(SlideScreen.restartButton);
-		game.stage.addActor(SlideScreen.muteButton);
+		game.stage.addActor(SlideScreen.volumeButton);
 		game.stage.addActor(SlideScreen.creditButton);
 		game.stage.addActor(SlideScreen.fontButton);
 		game.stage.addActor(SlideScreen.volumeDialog);

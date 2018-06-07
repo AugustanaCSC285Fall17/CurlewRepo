@@ -85,7 +85,7 @@ public class InventoryScreen implements Screen {
 		game.stage.addActor(scrollPane);
 		game.stage.addActor(statsTable);
 		game.stage.addActor(SlideScreen.restartButton);
-		game.stage.addActor(SlideScreen.muteButton);
+		game.stage.addActor(SlideScreen.volumeButton);
 		game.stage.addActor(SlideScreen.creditButton);
 		game.stage.addActor(SlideScreen.fontButton);
 		game.stage.addActor(SlideScreen.zoomButton);
