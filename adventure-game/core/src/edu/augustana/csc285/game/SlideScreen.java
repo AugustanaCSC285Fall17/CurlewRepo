@@ -613,13 +613,13 @@ public class SlideScreen implements Screen {
 		for (ActionChoice curChoice : curChoices) {
 			String curChoiceText = curChoice.getChoiceText();
 			
-			TextButton newButton = new TextButton(curChoiceText, game.skin);
-			newButton.padTop(AdventureGame.percentWidth(1)).padBottom(AdventureGame.percentHeight(1));
-			newButton.getLabel().setWrap(true);
-			newButton.getLabel().setWidth(AdventureGame.percentWidth(27));
-			newButton.getLabel().pack();
+			TextButton choiceButton = new TextButton(curChoiceText, game.skin);
+			choiceButton.padTop(AdventureGame.percentWidth(1)).padBottom(AdventureGame.percentHeight(1));
+			choiceButton.getLabel().setWrap(true);
+			choiceButton.getLabel().setWidth(AdventureGame.percentWidth(27));
+			choiceButton.getLabel().pack();
 			
-			newButton.addListener(new ClickListener(){
+			choiceButton.addListener(new ClickListener(){
 					
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
@@ -668,7 +668,7 @@ public class SlideScreen implements Screen {
 					}
 				}	
 			});
-			choiceButtons.add(newButton);
+			choiceButtons.add(choiceButton);
 			
 		}
 	}
