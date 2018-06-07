@@ -409,7 +409,7 @@ public class SlideScreen implements Screen {
 		Label fontTabLabel = new Label("Font Size: ", game.skin);
 		fontTab.add(fontTabLabel);
 		
-		Label fontLabel = new Label(" " + AdventureGame.appFontSize + "px", game.skin);
+		Label fontLabel = new Label(" " + AdventureGame.textFontSize + "px", game.skin);
 		fontSlider = new Slider(AdventureGame.appFontSize - 6, AdventureGame.appFontSize + 14, 2, false, game.skin);
 		fontSlider.setValue(AdventureGame.textFontSize);
 		fontSlider.addListener(new EventListener(){
@@ -667,7 +667,7 @@ public class SlideScreen implements Screen {
 	}
 	
 	private void createGameText() {
-		gameText = new Label(curSlide.getGameText(), game.skin);
+		gameText = new Label(curSlide.getGameText(), new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.textFontSize + ".fnt")), Color.BLACK));
 		gameText.setWrap(true);
 		
 		// for normal slide
