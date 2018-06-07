@@ -14,7 +14,8 @@ import edu.augustana.csc285.game.datamodel.GameData;
 
 public class AdventureGame extends Game {
 	public static final int SCREEN_WIDTH = 1000;
-	public static final int SCREEN_HEIGHT = 562;
+											// this to maintain 16:9 aspect ratio
+	public static final int SCREEN_HEIGHT = (int) (9f * SCREEN_WIDTH / 16f);
 	public static int textFontSize = 20;
 	public static int appFontSize = 20;
 
