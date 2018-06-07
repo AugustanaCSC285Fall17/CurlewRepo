@@ -62,6 +62,7 @@ public class SlideScreen implements Screen {
 	public static Slider volumeSlider;
 	public static Slider fontSlider;
 	public static Slider zoomSlider;
+	public static CheckBox muteCheckbox;
 	private Dialog rejectDialog;
 	private ScrollPane scrollPane;
 	private ArrayList<TextButton> choiceButtons;
@@ -377,13 +378,28 @@ public class SlideScreen implements Screen {
 				volumeDialog.setVisible(false);
 			}
 		});
-//		okButton.center();
+		muteCheckbox = new CheckBox("Mute", game.skin);
+		muteCheckbox.setChecked(game.musicMuted);
+		muteCheckbox.addListener(new ChangeListener() {
+		    @Override
+		    public void changed(ChangeEvent event, Actor actor) {
+				game.musicMuted = muteCheckbox.isChecked();
+				if (game.musicMuted) {
+					game.bgMusic.pause();
+				} else {
+					game.bgMusic.play();
+				}
+			}
+			
+		});
 		
+		volumeTab.row();
+		volumeTab.add(muteCheckbox).colspan(3).left().pad(AdventureGame.percentHeight(1));
 		volumeTab.row();
 		volumeTab.add(okButton).colspan(3);
 		volumeTab.pack();
 
-		volumeDialog.add(volumeTab);
+		volumeDialog.add(volumeTab).expandX().expandY().left();
 		volumeDialog.setWidth(volumeTab.getWidth() + AdventureGame.percentWidth(4));
 		volumeDialog.setHeight(volumeTab.getHeight() + AdventureGame.percentHeight(4));
 								//880
@@ -436,7 +452,7 @@ public class SlideScreen implements Screen {
 		fontTab.add(fontOkButton).colspan(3);
 		fontTab.pack();
 		
-		fontDialog.add(fontTab).align(Align.center);
+		fontDialog.add(fontTab).align(Align.center).expandX().expandY().left();
 		fontDialog.setWidth(fontTab.getWidth() + AdventureGame.percentWidth(4));
 		fontDialog.setHeight(fontTab.getHeight() + AdventureGame.percentHeight(4));
 								//880
@@ -463,6 +479,7 @@ public class SlideScreen implements Screen {
 		
 		zoomDialog = new Dialog("", game.skin);
 		zoomDialog.setVisible(false);
+		zoomDialog.align(Align.left);
 
 		zoomInsCheckbox = new CheckBox("Zoom instructions", game.skin);
 		zoomInsCheckbox.setChecked(zoomInsChecked);
@@ -476,7 +493,6 @@ public class SlideScreen implements Screen {
 		});
 
 		Table zoomTab = new Table(game.skin);
-		zoomTab.center();
 		Label zoomTabLabel = new Label("Zoom: ", game.skin);
 		zoomTab.add(zoomTabLabel);
 		
@@ -498,7 +514,7 @@ public class SlideScreen implements Screen {
 		zoomTab.add(zoomSlider);
 		zoomTab.add(zoomLabel).width(AdventureGame.percentWidth(5));
 		zoomTab.row();
-		zoomTab.add(zoomInsCheckbox).colspan(2);
+		zoomTab.add(zoomInsCheckbox).colspan(3).pad(AdventureGame.percentHeight(1)).align(Align.left);
 		zoomTab.row();
 		
 		TextButton zoomOkButton = new TextButton("OK", game.skin);
@@ -508,10 +524,10 @@ public class SlideScreen implements Screen {
 				zoomDialog.setVisible(false);
 			}
 		});
-		zoomTab.add(zoomOkButton).colspan(3);
+		zoomTab.add(zoomOkButton).colspan(3).align(Align.center);
 		zoomTab.pack();
 		
-		zoomDialog.add(zoomTab);
+		zoomDialog.add(zoomTab).expandX().expandY().left();
 		zoomDialog.setWidth(zoomTab.getWidth() + AdventureGame.percentWidth(4));
 		zoomDialog.setHeight(zoomTab.getHeight() + AdventureGame.percentHeight(4));
 								//880

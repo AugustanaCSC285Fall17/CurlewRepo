@@ -21,6 +21,7 @@ public class AdventureGame extends Game {
 	public GameData data;
 
 	public Music bgMusic;
+	public boolean musicMuted;
 	public Stage stage;
 	public Skin skin;
 	public Image bgImg;
@@ -40,6 +41,7 @@ public class AdventureGame extends Game {
 		bgMusic.setLooping(true);
 		bgMusic.setVolume((float) .1);
 		bgMusic.play();
+		musicMuted = false;
 		Gdx.input.setInputProcessor(stage);
 
 		Texture logoTexture = new Texture(Gdx.files.internal("art/LogoStroked.png"));

@@ -31,7 +31,7 @@ public class CreditsScreen implements Screen {
 
 	private void initializeAbout() {
 		Label credit = new Label("Credits", game.skin, "title");
-		credit.setPosition(AdventureGame.percentWidth(1), AdventureGame.percentHeight(88));
+		credit.setPosition(AdventureGame.percentWidth(3), AdventureGame.percentHeight(88));
 		game.stage.addActor(credit);
 		
 		backButton = new TextButton("Back", game.skin);
@@ -121,12 +121,12 @@ public class CreditsScreen implements Screen {
 		
 		introText = new Label(intro, game.skin); 
 		introText.setWrap(true);
-		introText.setWidth(AdventureGame.percentWidth(94));
+		introText.setWidth(AdventureGame.percentWidth(92));
 		introText.pack();
 		introText.setAlignment(Align.topLeft);
 		
 		ScrollPane scrollPane = new ScrollPane(introText, game.skin);
-	    scrollPane.setBounds(AdventureGame.percentWidth(1), AdventureGame.percentHeight(28), AdventureGame.percentWidth(94), AdventureGame.percentHeight(60));
+	    scrollPane.setBounds(AdventureGame.percentWidth(3), AdventureGame.percentHeight(28), AdventureGame.percentWidth(92), AdventureGame.percentHeight(60));
 	    scrollPane.layout();
 	    scrollPane.setTouchable(Touchable.enabled);
 	    scrollPane.setFadeScrollBars(false);
