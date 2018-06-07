@@ -143,7 +143,7 @@ public class SlideScreen implements Screen {
 		zoomGray.setSize(AdventureGame.SCREEN_WIDTH - game.bgImg.getWidth(), AdventureGame.percentHeight(100));
 		zoomGray.setPosition(0, 0);
 		
-		zoomImageLabel = new Label("IMAGE ZOOM PANEL\n1. Move mouse left to hide.\n2. Scroll to zoom in/out.", AdventureGame.appTextStyle);
+		zoomImageLabel = new Label("IMAGE ZOOM PANEL\n1. Move mouse left to hide.\n2. Scroll to zoom in/out.", game.skin);
 		zoomImageLabel.pack();
 		zoomImageLabel.setColor(0, 0, 0, .7f);
 		zoomImageLabel.setPosition(zoomImage.getX() + AdventureGame.percentWidth(2), zoomImage.getY() + zoomImage.getHeight() - zoomImageLabel.getHeight() - AdventureGame.percentHeight(2));
@@ -283,11 +283,10 @@ public class SlideScreen implements Screen {
 		restartDialog.setVisible(false);
 		restartDialog.row();
 		restartDialog.align(Align.center);
-		Label restartLabel = new Label("Are you sure you want to restart the game?", AdventureGame.appTextStyle);
+		Label restartLabel = new Label("Are you sure you want to restart the game?", game.skin);
 		restartDialog.add(restartLabel);
 		restartDialog.row();
 		TextButton button = new TextButton("Yes", game.skin);
-		button.getLabel().setStyle(AdventureGame.appTextStyle);
 		button.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -298,7 +297,6 @@ public class SlideScreen implements Screen {
 			}
 		});
 		TextButton noButton = new TextButton("No", game.skin);
-		noButton.getLabel().setStyle(AdventureGame.appTextStyle);
 		noButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -318,7 +316,6 @@ public class SlideScreen implements Screen {
 		
 		
 		TextTooltip restartTt = new TextTooltip("Restart", tooltip, game.skin);
-		restartTt.getActor().setStyle(AdventureGame.appTextStyle);
 		restartButton.addListener(restartTt);
 		game.stage.addActor(restartButton);
 		
@@ -342,7 +339,6 @@ public class SlideScreen implements Screen {
 		});
 		
 		TextTooltip invenTt = new TextTooltip("Inventory", tooltip, game.skin);
-		invenTt.getActor().setStyle(AdventureGame.appTextStyle);
 		inventoryButton.addListener(invenTt);
 		game.stage.addActor(inventoryButton);
 
@@ -350,7 +346,7 @@ public class SlideScreen implements Screen {
 		
 		// slider
 		volumeSlider = new Slider(0f, 1f, 0.1f, false, game.skin);
-		Label volumeLabel = new Label(" " + (int) (game.bgMusic.getVolume() * 100) + "%", AdventureGame.appTextStyle);
+		Label volumeLabel = new Label(" " + (int) (game.bgMusic.getVolume() * 100) + "%", game.skin);
 		volumeLabel.setWidth(AdventureGame.percentWidth(4));
 		volumeSlider.setValue(game.bgMusic.getVolume());
 		volumeSlider.addListener(new EventListener(){
@@ -369,13 +365,12 @@ public class SlideScreen implements Screen {
 		volumeDialog.setVisible(false);
 		
 		Table volumeTab = new Table(game.skin);
-		Label volTabLabel = new Label("Volume: ", AdventureGame.appTextStyle);
+		Label volTabLabel = new Label("Volume: ", game.skin);
 		volumeTab.add(volTabLabel);
 		volumeTab.add(volumeSlider);
 		volumeTab.add(volumeLabel).width(AdventureGame.percentWidth(5));
 		
 		TextButton okButton = new TextButton("OK", game.skin);
-		okButton.getLabel().setStyle(AdventureGame.appTextStyle);
 		okButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -411,10 +406,10 @@ public class SlideScreen implements Screen {
 
 		Table fontTab = new Table(game.skin);
 		fontTab.center();
-		Label fontTabLabel = new Label("Font Size: ", AdventureGame.appTextStyle);
+		Label fontTabLabel = new Label("Font Size: ", game.skin);
 		fontTab.add(fontTabLabel);
 		
-		Label fontLabel = new Label(" " + AdventureGame.appFontSize + "px", AdventureGame.appTextStyle);
+		Label fontLabel = new Label(" " + AdventureGame.appFontSize + "px", game.skin);
 		fontSlider = new Slider(AdventureGame.appFontSize - 6, AdventureGame.appFontSize + 14, 2, false, game.skin);
 		fontSlider.setValue(AdventureGame.textFontSize);
 		fontSlider.addListener(new EventListener(){
@@ -427,12 +422,11 @@ public class SlideScreen implements Screen {
 			}
 			
 		});
-		fontTab.add(fontSlider);
+		fontTab.add(fontSlider);	
 		fontTab.add(fontLabel).width(AdventureGame.percentWidth(5));
 		fontTab.row();
 		
 		TextButton fontOkButton = new TextButton("OK", game.skin);
-		fontOkButton.getLabel().setStyle(AdventureGame.appTextStyle);
 		fontOkButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -456,7 +450,6 @@ public class SlideScreen implements Screen {
 		});
 		
 		TextTooltip fontTt = new TextTooltip("Font Size", tooltip, game.skin);
-		fontTt.getActor().setStyle(AdventureGame.appTextStyle);
 		fontButton.addListener(fontTt);
 		game.stage.addActor(fontButton);
 		
@@ -472,7 +465,6 @@ public class SlideScreen implements Screen {
 		zoomDialog.setVisible(false);
 
 		zoomInsCheckbox = new CheckBox("Zoom instructions", game.skin);
-		zoomInsCheckbox.getLabel().setStyle(AdventureGame.appTextStyle);
 		zoomInsCheckbox.setChecked(zoomInsChecked);
 		zoomInsCheckbox.addListener(new ChangeListener() {
 		    @Override
@@ -485,10 +477,10 @@ public class SlideScreen implements Screen {
 
 		Table zoomTab = new Table(game.skin);
 		zoomTab.center();
-		Label zoomTabLabel = new Label("Zoom: ", AdventureGame.appTextStyle);
+		Label zoomTabLabel = new Label("Zoom: ", game.skin);
 		zoomTab.add(zoomTabLabel);
 		
-		zoomLabel = new Label(" " + (int) (zoomMag * 100) + " %", AdventureGame.appTextStyle);
+		zoomLabel = new Label(" " + (int) (zoomMag * 100) + " %", game.skin);
 		zoomSlider = new Slider(1.5f, 4.0f, .25f, false, game.skin);
 		zoomSlider.setValue(zoomMag);
 		zoomSlider.addListener(new EventListener(){
@@ -510,7 +502,6 @@ public class SlideScreen implements Screen {
 		zoomTab.row();
 		
 		TextButton zoomOkButton = new TextButton("OK", game.skin);
-		zoomOkButton.getLabel().setStyle(AdventureGame.appTextStyle);
 		zoomOkButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -534,7 +525,6 @@ public class SlideScreen implements Screen {
 		});
 		
 		TextTooltip zoomTt = new TextTooltip("Zoom Magnitude", tooltip, game.skin);
-		zoomTt.getActor().setStyle(AdventureGame.appTextStyle);
 		zoomButton.addListener(zoomTt);
 		game.stage.addActor(zoomButton);
 		
@@ -559,7 +549,6 @@ public class SlideScreen implements Screen {
 		});
 		
 		TextTooltip creditsTt = new TextTooltip("Credits", tooltip, game.skin);
-		creditsTt.getActor().setStyle(AdventureGame.appTextStyle);
 		creditButton.addListener(creditsTt);
 		game.stage.addActor(creditButton);
 	}
@@ -588,7 +577,6 @@ public class SlideScreen implements Screen {
 		}
 		
 		TextTooltip muteTt = new TextTooltip("Volume", tooltip, game.skin);
-		muteTt.getActor().setStyle(AdventureGame.appTextStyle);
 		muteButton.addListener(muteTt);
 		game.stage.addActor(muteButton);
 	}
@@ -597,7 +585,7 @@ public class SlideScreen implements Screen {
 	private void createChoiceButtons() {
 		List<ActionChoice> curChoices = game.data.getVisibleChoicesForCurrentSlide();
 		itemDialog = new Dialog("", game.skin);
-		Label itemLabel = new Label("", AdventureGame.appTextStyle);
+		Label itemLabel = new Label("", game.skin);
 		itemDialog.row();
 		itemDialog.align(Align.left);
 		itemDialog.add(itemLabel);
@@ -607,7 +595,6 @@ public class SlideScreen implements Screen {
 			String curChoiceText = curChoice.getChoiceText();
 			
 			TextButton newButton = new TextButton(curChoiceText, game.skin);
-			newButton.getLabel().setStyle(AdventureGame.appTextStyle);
 			newButton.padTop(AdventureGame.percentWidth(1)).padBottom(AdventureGame.percentHeight(1));
 			newButton.getLabel().setWrap(true);
 			newButton.getLabel().setWidth(AdventureGame.percentWidth(27));
@@ -668,7 +655,7 @@ public class SlideScreen implements Screen {
 	}
 	
 	private void createTitle() {
-		title = new Label(curSlide.getTitle(), AdventureGame.appTitleStyle);
+		title = new Label(curSlide.getTitle(), game.skin, "title");
 		if (curSlide.getSlideType() == SlideType.NORMAL) {
 			title.setWrap(true);
 		}
@@ -680,7 +667,7 @@ public class SlideScreen implements Screen {
 	}
 	
 	private void createGameText() {
-		gameText = new Label(curSlide.getGameText(), AdventureGame.appTextStyle);
+		gameText = new Label(curSlide.getGameText(), game.skin);
 		gameText.setWrap(true);
 		
 		// for normal slide

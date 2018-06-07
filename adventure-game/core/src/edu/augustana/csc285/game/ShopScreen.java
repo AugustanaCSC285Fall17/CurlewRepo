@@ -99,7 +99,7 @@ public class ShopScreen implements Screen {
 	}
 
 	private void createTitle() {
-		itemTitle = new Label("Inventory", AdventureGame.appTitleStyle);
+		itemTitle = new Label("Inventory", game.skin, "title");
 		itemTitle.setWidth(AdventureGame.percentWidth(27));
 		itemTitle.pack();
 		itemTitle.setPosition(AdventureGame.percentWidth(9), AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - AdventureGame.percentHeight(3));
@@ -109,7 +109,7 @@ public class ShopScreen implements Screen {
 	private float gameTextWidth = AdventureGame.percentWidth(39);
 	
 	private void createItemTable() {
-//		Label categoryLabel = new Label("Item Name              Quantity     Value", AdventureGame.appTextStyle);
+//		Label categoryLabel = new Label("Item Name              Quantity     Value", game.skin);
 //		categoryLabel.setPosition(AdventureGame.percentWidth(13), AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - AdventureGame.percentHeight(8));
 //		game.stage.addActor(categoryLabel);
 
@@ -157,7 +157,7 @@ public class ShopScreen implements Screen {
 						if (!item.canSell()) {
 							Dialog rejectDialog = new Dialog("", game.skin);
 							rejectDialog.button("OK");
-							rejectDialog.text(new Label("You cannot sell " + item.getItemName() + "!", AdventureGame.appTextStyle));
+							rejectDialog.text(new Label("You cannot sell " + item.getItemName() + "!", game.skin));
 							rejectDialog.setWidth(AdventureGame.percentWidth(55));
 							rejectDialog.setPosition(AdventureGame.percentWidth(23), AdventureGame.percentHeight(43));
 							game.stage.addActor(rejectDialog);
@@ -181,13 +181,13 @@ public class ShopScreen implements Screen {
 	}	
 	
 	private void createShopTable() {
-		shopTitle = new Label("Shop", AdventureGame.appTitleStyle);
+		shopTitle = new Label("Shop", game.skin, "title");
 		shopTitle.setWidth(AdventureGame.percentWidth(27));
 		shopTitle.pack();
 		shopTitle.setPosition(AdventureGame.percentWidth(57), AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - AdventureGame.percentHeight(3));
 		shopTitle.setAlignment(Align.left);
 //		
-//		Label categoryLabel = new Label("Item Name                    Price", AdventureGame.appTextStyle);
+//		Label categoryLabel = new Label("Item Name                    Price", game.skin);
 //		categoryLabel.setPosition(AdventureGame.percentWidth(68), AdventureGame.SCREEN_HEIGHT - itemTitle.getHeight() - AdventureGame.percentHeight(8));
 //		game.stage.addActor(categoryLabel);
 
@@ -230,7 +230,7 @@ public class ShopScreen implements Screen {
 						if (game.data.getPlayer().getItemQuantity("Kronor") < item.getBuyPrice()) {
 							Dialog rejectDialog = new Dialog("", game.skin);
 							rejectDialog.button("Ok");
-							rejectDialog.text(new Label("Insufficient funds!", AdventureGame.appTextStyle));
+							rejectDialog.text(new Label("Insufficient funds!", game.skin));
 							rejectDialog.setWidth(AdventureGame.percentWidth(55));
 							rejectDialog.setPosition(AdventureGame.percentWidth(23), AdventureGame.percentHeight(43));
 							game.stage.addActor(rejectDialog);
@@ -251,7 +251,7 @@ public class ShopScreen implements Screen {
 	private Table getItemRow(Item item, boolean isShop) {
 		Table itemRow = new Table(game.skin);
 		Image itemImage = new Image(new Texture(Gdx.files.internal("art/icons/" + item.getImageAddress())));
-		Label itemLabel = new Label(item.getItemName(), AdventureGame.appTextStyle);
+		Label itemLabel = new Label(item.getItemName(), game.skin);
 		int price = item.getSellPrice();
 		if (isShop) {
 			price = item.getBuyPrice();
@@ -259,8 +259,8 @@ public class ShopScreen implements Screen {
 			price = 0;
 		}
 		
-		Label quantityLabel = new Label("" + item.getItemQty(), AdventureGame.appTextStyle);
-		Label valueLabel = new Label("" + price, AdventureGame.appTextStyle);
+		Label quantityLabel = new Label("" + item.getItemQty(), game.skin);
+		Label valueLabel = new Label("" + price, game.skin);
 		
 		quantityLabel.setAlignment(Align.center);
 		valueLabel.setAlignment(Align.center);
@@ -316,9 +316,9 @@ public class ShopScreen implements Screen {
 		table.setWidth(AdventureGame.SCREEN_WIDTH);
 		table.align(Align.topLeft);
 		table.setPosition(AdventureGame.percentWidth(9), AdventureGame.SCREEN_HEIGHT);
-		cashLabel = new Label("Kronor: " + game.data.getPlayer().getItemQuantity("Kronor"), AdventureGame.appTextStyle);
+		cashLabel = new Label("Kronor: " + game.data.getPlayer().getItemQuantity("Kronor"), game.skin);
 		
-		Label direction = new Label("Direction: Drag items from your inventory to the shop to sell and from the shop to your inventory to buy.", AdventureGame.appTextStyle);
+		Label direction = new Label("Direction: Drag items from your inventory to the shop to sell and from the shop to your inventory to buy.", game.skin);
 		table.add(cashLabel).align(Align.left);
 		table.row();
 		table.add(direction);
@@ -338,7 +338,7 @@ public class ShopScreen implements Screen {
 		} else {
 			message = "You bought " + item.getItemName() + " for " + item.getBuyPrice() + " Kronor.";
 		}
-		dialog.text(new Label(message, AdventureGame.appTextStyle));
+		dialog.text(new Label(message, game.skin));
 		game.stage.addActor(dialog);
 	}
 	

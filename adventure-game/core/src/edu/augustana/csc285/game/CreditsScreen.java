@@ -30,7 +30,7 @@ public class CreditsScreen implements Screen {
 	
 
 	private void initializeAbout() {
-		Label credit = new Label("Credits", AdventureGame.appTitleStyle);
+		Label credit = new Label("Credits", game.skin, "title");
 		credit.setPosition(AdventureGame.percentWidth(1), AdventureGame.percentHeight(88));
 		game.stage.addActor(credit);
 		
@@ -49,7 +49,6 @@ public class CreditsScreen implements Screen {
 		});
 		backButton.setWidth(AdventureGame.percentWidth(23));
 		backButton.setPosition(AdventureGame.percentWidth(40), AdventureGame.percentHeight(18));
-		backButton.getLabel().setStyle(AdventureGame.appTextStyle);
 		game.stage.addActor(backButton);
 		
 		String intro =
@@ -120,8 +119,7 @@ public class CreditsScreen implements Screen {
 				+ "     (https://creativecommons.org/licenses/by/4.0/)\n" 
 				+ "     Artist: http://audionautix.com/";
 		
-		introText = new Label(intro, game.skin);
-		introText.setStyle(AdventureGame.appTextStyle);
+		introText = new Label(intro, game.skin); 
 		introText.setWrap(true);
 		introText.setWidth(AdventureGame.percentWidth(94));
 		introText.pack();

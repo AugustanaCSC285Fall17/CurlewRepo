@@ -138,7 +138,6 @@ public class InventoryScreen implements Screen {
 
 	private void createTitle() {
 		title = new Label("Inventory", game.skin, "title");
-		title.setStyle(AdventureGame.appTitleStyle);
 		title.setWidth(AdventureGame.percentWidth(27));
 		title.pack();
 		title.setPosition(AdventureGame.percentWidth(8), AdventureGame.SCREEN_HEIGHT - title.getHeight() - AdventureGame.percentHeight(1));
@@ -164,7 +163,6 @@ public class InventoryScreen implements Screen {
 				itemName = item.getItemQty() + " kr";
 			}
 			Label itemLabel = new Label(itemName, game.skin);
-			itemLabel.setStyle(AdventureGame.appTextStyle);
 			itemLabel.setAlignment(Align.topLeft);
 			itemTable.add(itemImage).size(AdventureGame.percentWidth(6), AdventureGame.percentWidth(6));
 			itemTable.add(itemLabel).align(Align.left).padLeft(5);
@@ -176,8 +174,7 @@ public class InventoryScreen implements Screen {
 		}
 		
 		if (itemAdded == 0) {
-			Label noItemLabel = new Label("You have no items in your inventory.", game.skin);
-			noItemLabel.setStyle(AdventureGame.appTextStyle);
+			Label noItemLabel = new Label("You have no items in your inventory.", game.skin); 
 			itemTable.add(noItemLabel);
 		}
 		
@@ -198,13 +195,11 @@ public class InventoryScreen implements Screen {
 	private void createPlayerStats() {
 		
 		
-		statsTitle = new Label("Player Status", game.skin, "title");
-		statsTitle.setStyle(AdventureGame.appTitleStyle);
+		statsTitle = new Label("Player Status", game.skin, "title"); 
 		statsTitle.setAlignment(Align.center);
 		
 		statsLabel = new Label("Name: " + game.data.getPlayer().getName()
-				+ "\nGender: " + game.data.getPlayer().getGender().toString(), game.skin);
-		statsLabel.setStyle(AdventureGame.appTextStyle);
+				+ "\nGender: " + game.data.getPlayer().getGender().toString(), game.skin); 
 		statsLabel.setAlignment(Align.topLeft);
 
 		statsTable = new Table();

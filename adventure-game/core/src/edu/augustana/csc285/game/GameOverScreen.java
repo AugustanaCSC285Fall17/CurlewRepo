@@ -49,8 +49,7 @@ public class GameOverScreen implements Screen {
 				game.data.setGameStarted(false);
 				game.setScreen(new MainMenuScreen(game));
 			}
-		});
-		mainMenuButton.getLabel().setStyle(AdventureGame.appTextStyle);
+		}); 
 		
 		startButton = new TextButton("Play Again", game.skin);
 		startButton.addListener(new ClickListener(){
@@ -60,8 +59,7 @@ public class GameOverScreen implements Screen {
 				game.restartGame();
 				game.setScreen(new SlideScreen(game));
 			}
-		});
-		startButton.getLabel().setStyle(AdventureGame.appTextStyle);
+		}); 
 		
 		creditsButton = new TextButton("Credits", game.skin);
 		creditsButton.addListener(new ClickListener() {
@@ -71,8 +69,7 @@ public class GameOverScreen implements Screen {
 				game.data.setGameStarted(false);
 				game.setScreen(new CreditsScreen(game));
 			}
-		}); 
-		creditsButton.getLabel().setStyle(AdventureGame.appTextStyle);
+		});  
 		
 		
 //		quitButton = new TextButton("Quit Game", game.skin);
@@ -87,8 +84,7 @@ public class GameOverScreen implements Screen {
 				+ "Please check out the Credits Screen below to see the awesome people who have worked hard to create this game. "
 				+ "Did you get a bad ending? Play again!";
 		
-		introText = new Label(intro, game.skin);
-		introText.setStyle(AdventureGame.appTextStyle);
+		introText = new Label(intro, game.skin); 
 		introText.setWrap(true);
 		introText.setWidth(800);
 		introText.setAlignment(Align.center|Align.top);

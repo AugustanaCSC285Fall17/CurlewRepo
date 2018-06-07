@@ -2,10 +2,8 @@ package edu.augustana.csc285.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -15,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
@@ -60,7 +57,6 @@ public class MainMenuScreen implements Screen {
 				game.setScreen(new SlideScreen(game));
 			}
 		});
-		resumeButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		startButton = new TextButton("Take the journey", game.skin);
 		if (game.data.gameStarted()) {
 			startButton.setText("Restart Journey");
@@ -74,7 +70,6 @@ public class MainMenuScreen implements Screen {
 				game.setScreen(new SlideScreen(game));
 			}
 		});
-		startButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		
 		aboutButton = new TextButton("About", game.skin);
 		aboutButton.addListener(new ClickListener() {
@@ -84,7 +79,6 @@ public class MainMenuScreen implements Screen {
 				initializeAbout();
 			}
 		}); 
-		aboutButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		
 		creditsButton = new TextButton("Credits", game.skin);
 		creditsButton.addListener(new ClickListener() {
@@ -94,8 +88,7 @@ public class MainMenuScreen implements Screen {
 				game.setScreen(new CreditsScreen(game));
 			}
 		}); 
-		creditsButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
-	
+		
 		volumeButton = new TextButton("Change Volume", game.skin);
 		volumeButton.addListener(new ClickListener() {
 			@Override
@@ -103,7 +96,6 @@ public class MainMenuScreen implements Screen {
 				volumeDialog.setVisible(true);
 			}
 		});
-		volumeButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		
 		//Slider
 		volumeSlider = new Slider(0f, 1f, 0.1f, false, game.skin);
@@ -120,11 +112,9 @@ public class MainMenuScreen implements Screen {
 		volumeDialog = new Dialog("", game.skin);
 		volumeDialog.setVisible(false);
 		Label volLabel = new Label("Volume: ", game.skin);
-		volLabel.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		volumeDialog.add(volLabel);
 		volumeDialog.add(volumeSlider).align(Align.left);
 		TextButton okButton = new TextButton("OK", game.skin);
-		okButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		okButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -151,7 +141,6 @@ public class MainMenuScreen implements Screen {
 				+ "in the Swenson Center's collections and additional research done by Augustana College students.";
 		
 		introText = new Label(intro, game.skin);
-		introText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		introText.setWrap(true);
 		introText.setWidth(AdventureGame.percentWidth(79));
 		introText.setAlignment(Align.center|Align.top);
@@ -190,7 +179,6 @@ public class MainMenuScreen implements Screen {
 				initializeMain();
 			}
 		});
-		backButton.getLabel().setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		
 		String intro = "Game designed by Dr. Forrest Stonedahl's Software Development CSC 285 students and "
 				+ "Dr. Brian Leech's history students Abigail Buchanan, Brooks Fielder, and Katie Laschanzky "
@@ -202,7 +190,6 @@ public class MainMenuScreen implements Screen {
 				+ "Game by Team Curlew: Jack Cannell, Steve Jia, Minh Ta, and Maxwell McComb";
 		
 		introText = new Label(intro, game.skin);
-		introText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.appFontSize + ".fnt")), Color.BLACK));
 		introText.setWrap(true);
 		introText.setWidth(AdventureGame.percentWidth(94));
 		introText.setAlignment(Align.center|Align.top);
