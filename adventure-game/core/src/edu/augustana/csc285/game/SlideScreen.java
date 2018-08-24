@@ -119,167 +119,7 @@ public class SlideScreen implements Screen {
 		zoomHPanel = zoomImage.getHeight() / zoomMag;
 	}
 	
-	/*
-	 *  Initialize slide elements, including:
-	 *  	- create the stage.
-	 */
-	private void initializeGameContent() {
-		game.stage.clear();
-		
-		// initialize slide contents
-		choiceButtons = new ArrayList<TextButton>();
-		curSlide = game.data.getSlide(game.data.getCurrentSlideIndex());
-
-		// Set the background
-		float size = AdventureGame.SCREEN_HEIGHT;
-		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())));
-
-		game.bgImg.setSize(size, size);
-		game.bgImg.setPosition(AdventureGame.SCREEN_WIDTH - size, 0);
-
-		setupZoom();
-
-		game.stage.addActor(game.bgImg);
-		createTitle();
-		createChoiceButtons();
-		createTable();
-		createGameText();
-		
-
-		
-
-		// Add actors
-		game.stage.addActor(title);
-		game.stage.addActor(scrollPane);
-		game.stage.addActor(table);
-		
-		game.stage.addActor(restartButton);
-		game.stage.addActor(volumeButton);
-		game.stage.addActor(inventoryButton);
-		game.stage.addActor(fontButton);
-		game.stage.addActor(zoomButton);
-		game.stage.addActor(creditButton);
-
-		
-		// zoom functionality
-		game.stage.addActor(zoomGray);
-		game.stage.addActor(zoomImage);
-		game.stage.addActor(zoomBorder);
-		game.stage.addActor(zoomRectangle);
-		game.stage.addActor(zoomOverlay);
-		game.stage.addActor(zoomImageLabel);
-
-		//dialogs
-		game.stage.addActor(volumeDialog);
-		game.stage.addActor(fontDialog);
-		game.stage.addActor(restartDialog);
-		game.stage.addActor(itemDialog);
-		game.stage.addActor(zoomDialog);
-	}
 	
-	private float zoomMag;
-	private float zoomWPanel;
-	private float zoomHPanel;
-	
-	private void setupZoom() {
-		if (curSlide.getImageFileName().equals("facts.png")) {
-			zoomOverlay.setVisible(false);
-		} else {
-			zoomOverlay.setVisible(true);
-		}
-		Texture img = new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName()));
-		
-		Vector2 centerZoomImg = new Vector2();
-		TextureRegionDrawable zoomTexture = new TextureRegionDrawable();
-		if (!curSlide.getImageFileName().equals("facts.png")) {
-
-			zoomOverlay.addListener(new ClickListener() {
-				
-				@Override
-				public void touchDragged(InputEvent event, float x, float y, int pointer) {
-					mouseMoved(event,x , y);
-				}
-				@Override
-				public boolean mouseMoved(InputEvent event, float x, float y) {
-
-					float porportion = (float) img.getWidth() / AdventureGame.SCREEN_HEIGHT;
-					
-					int zoomW = (int) (zoomWPanel * porportion);
-					int zoomH = (int) (zoomHPanel * porportion);
-					
-
-					float zoomRectX = AdventureGame.SCREEN_WIDTH - AdventureGame.SCREEN_HEIGHT + x 
-																							- zoomRectangle.getWidth() / 2;
-					float zoomRectY = y - zoomRectangle.getHeight() / 2;
-					
-					centerZoomImg.x = (x - zoomWPanel / 2) * porportion;
-					centerZoomImg.y = (AdventureGame.SCREEN_HEIGHT - y - zoomHPanel / 2) * porportion;
-					
-					if ((float) zoomW / 2 > x * porportion) {
-						centerZoomImg.x = 0;
-						zoomRectX = AdventureGame.SCREEN_WIDTH - AdventureGame.SCREEN_HEIGHT;
-						
-					} else if (x > (float) AdventureGame.SCREEN_HEIGHT - zoomWPanel / 2) {
-						centerZoomImg.x = (AdventureGame.SCREEN_HEIGHT - zoomWPanel) * porportion;
-						zoomRectX = AdventureGame.SCREEN_WIDTH - zoomRectangle.getWidth();
-					}
-					
-					if ((float) zoomH / 2 > (AdventureGame.SCREEN_HEIGHT - y) * porportion) {
-						centerZoomImg.y = 0;
-						zoomRectY = AdventureGame.SCREEN_HEIGHT - zoomRectangle.getHeight();
-					} else if (AdventureGame.SCREEN_HEIGHT - y > (float) AdventureGame.SCREEN_HEIGHT - zoomHPanel / 2) {
-						centerZoomImg.y = (AdventureGame.SCREEN_HEIGHT - zoomHPanel) * porportion;
-						zoomRectY = 0;
-					}
-					
-					if (Gdx.input.getX() * AdventureGame.SCREEN_WIDTH / Gdx.graphics.getWidth() >= AdventureGame.SCREEN_WIDTH - game.bgImg.getWidth()) {
-						zoomImage.setVisible(true);
-					}
-					
-					zoomTexture.setRegion(new TextureRegion(img, (int) (centerZoomImg.x), (int) (centerZoomImg.y), zoomW, zoomH));
-					zoomImage.setDrawable(zoomTexture);
-
-					zoomRectangle.setPosition(zoomRectX, zoomRectY);
-					zoomRectangle.setVisible(true);
-					zoomBorder.setVisible(true);
-					if (zoomInsCheckbox.isChecked()) {
-						zoomImageLabel.setVisible(true);
-					}
-					zoomGray.setVisible(true);
-					return true;
-				}
-				
-				@Override
-				public boolean scrolled(InputEvent event, float x, float y, int amount) {
-					if (amount < 0 && zoomMag < 4) {
-						zoomMag += .25;
-						zoomWPanel = zoomImage.getWidth() / zoomMag;
-						zoomHPanel = zoomImage.getHeight() / zoomMag;
-						zoomRectangle.setSize(zoomWPanel, zoomHPanel);
-						mouseMoved(event, x, y);
-					} else if (amount > 0 && zoomMag > 1.5) {
-						zoomMag -= .25;
-						zoomWPanel = zoomImage.getWidth() / zoomMag;
-						zoomHPanel = zoomImage.getHeight() / zoomMag;
-						zoomRectangle.setSize(zoomWPanel, zoomHPanel);
-						mouseMoved(event, x, y);
-					}
-					zoomSlider.setValue(zoomMag);
-					zoomLabel.setText(" " + (int) (zoomMag * 100) + " %");
-					return true;
-				}
-			});
-		}
-		
-		zoomRectangle = new Image(new Texture(Gdx.files.internal("art/zoomRect.png")));
-		zoomRectangle.setVisible(false);
-		zoomBorder.setVisible(false);
-		zoomRectangle.setBounds(0, 0, zoomWPanel, zoomHPanel);
-		
-		
-		
-	}
-
 	public static final float BUTTON_SIZE = AdventureGame.percentWidth(6);
 	
 	public static TooltipManager tooltip = new TooltipManager();
@@ -618,6 +458,170 @@ public class SlideScreen implements Screen {
 		TextTooltip muteTt = new TextTooltip("Volume", tooltip, game.skin);
 		volumeButton.addListener(muteTt);
 	}
+	
+	/*
+	 *  Initialize slide elements, including:
+	 *  	- create the stage.
+	 */
+	private void initializeGameContent() {
+		game.stage.clear();
+		
+		// initialize slide contents
+		choiceButtons = new ArrayList<TextButton>();
+		curSlide = game.data.getSlide(game.data.getCurrentSlideIndex());
+
+		// Set the background
+		float size = AdventureGame.SCREEN_HEIGHT;
+		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())));
+
+		game.bgImg.setSize(size, size);
+		game.bgImg.setPosition(AdventureGame.SCREEN_WIDTH - size, 0);
+
+		setupZoom();
+
+		game.stage.addActor(game.bgImg);
+		createTitle();
+		createChoiceButtons();
+		createTable();
+		createGameText();
+		
+
+		
+
+		// Add actors
+		game.stage.addActor(title);
+		game.stage.addActor(scrollPane);
+		game.stage.addActor(table);
+		
+		game.stage.addActor(restartButton);
+		game.stage.addActor(volumeButton);
+		game.stage.addActor(inventoryButton);
+		game.stage.addActor(fontButton);
+		game.stage.addActor(zoomButton);
+		game.stage.addActor(creditButton);
+
+		
+		// zoom functionality
+		game.stage.addActor(zoomGray);
+		game.stage.addActor(zoomImage);
+		game.stage.addActor(zoomBorder);
+		game.stage.addActor(zoomRectangle);
+		game.stage.addActor(zoomOverlay);
+		game.stage.addActor(zoomImageLabel);
+
+		//dialogs
+		game.stage.addActor(volumeDialog);
+		game.stage.addActor(fontDialog);
+		game.stage.addActor(restartDialog);
+		game.stage.addActor(itemDialog);
+		game.stage.addActor(zoomDialog);
+	}
+	
+	private float zoomMag;
+	private float zoomWPanel;
+	private float zoomHPanel;
+	
+	private void setupZoom() {
+		zoomOverlay.clear();
+		if (curSlide.getImageFileName().equals("facts.png")) {
+			zoomOverlay.setVisible(false);
+		} else {
+			zoomOverlay.setVisible(true);
+		}
+		Texture img = new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName()));
+		
+		Vector2 centerZoomImg = new Vector2();
+		TextureRegionDrawable zoomTexture = new TextureRegionDrawable();
+		if (!curSlide.getImageFileName().equals("facts.png")) {
+
+			zoomOverlay.addListener(new ClickListener() {
+				
+				@Override
+				public void touchDragged(InputEvent event, float x, float y, int pointer) {
+					mouseMoved(event,x , y);
+				}
+				@Override
+				public boolean mouseMoved(InputEvent event, float x, float y) {
+
+					float porportion = (float) img.getWidth() / AdventureGame.SCREEN_HEIGHT;
+					
+					int zoomW = (int) (zoomWPanel * porportion);
+					int zoomH = (int) (zoomHPanel * porportion);
+					
+
+					float zoomRectX = AdventureGame.SCREEN_WIDTH - AdventureGame.SCREEN_HEIGHT + x 
+																							- zoomRectangle.getWidth() / 2;
+					float zoomRectY = y - zoomRectangle.getHeight() / 2;
+					
+					centerZoomImg.x = (x - zoomWPanel / 2) * porportion;
+					centerZoomImg.y = (AdventureGame.SCREEN_HEIGHT - y - zoomHPanel / 2) * porportion;
+					
+					if ((float) zoomW / 2 > x * porportion) {
+						centerZoomImg.x = 0;
+						zoomRectX = AdventureGame.SCREEN_WIDTH - AdventureGame.SCREEN_HEIGHT;
+						
+					} else if (x > (float) AdventureGame.SCREEN_HEIGHT - zoomWPanel / 2) {
+						centerZoomImg.x = (AdventureGame.SCREEN_HEIGHT - zoomWPanel) * porportion;
+						zoomRectX = AdventureGame.SCREEN_WIDTH - zoomRectangle.getWidth();
+					}
+					
+					if ((float) zoomH / 2 > (AdventureGame.SCREEN_HEIGHT - y) * porportion) {
+						centerZoomImg.y = 0;
+						zoomRectY = AdventureGame.SCREEN_HEIGHT - zoomRectangle.getHeight();
+					} else if (AdventureGame.SCREEN_HEIGHT - y > (float) AdventureGame.SCREEN_HEIGHT - zoomHPanel / 2) {
+						centerZoomImg.y = (AdventureGame.SCREEN_HEIGHT - zoomHPanel) * porportion;
+						zoomRectY = 0;
+					}
+					
+					if (Gdx.input.getX() * AdventureGame.SCREEN_WIDTH / Gdx.graphics.getWidth() >= AdventureGame.SCREEN_WIDTH - game.bgImg.getWidth()) {
+						zoomImage.setVisible(true);
+					}
+					
+					zoomTexture.setRegion(new TextureRegion(img, (int) (centerZoomImg.x), (int) (centerZoomImg.y), zoomW, zoomH));
+					zoomImage.setDrawable(zoomTexture);
+
+					zoomRectangle.setPosition(zoomRectX, zoomRectY);
+					zoomRectangle.setVisible(true);
+					zoomBorder.setVisible(true);
+					if (zoomInsCheckbox.isChecked()) {
+						zoomImageLabel.setVisible(true);
+					}
+					zoomGray.setVisible(true);
+					return true;
+				}
+				
+				@Override
+				public boolean scrolled(InputEvent event, float x, float y, int amount) {
+					if (amount < 0 && zoomMag < 4) {
+						zoomMag += .25;
+						zoomWPanel = zoomImage.getWidth() / zoomMag;
+						zoomHPanel = zoomImage.getHeight() / zoomMag;
+						zoomRectangle.setSize(zoomWPanel, zoomHPanel);
+						mouseMoved(event, x, y);
+					} else if (amount > 0 && zoomMag > 1.5) {
+						zoomMag -= .25;
+						zoomWPanel = zoomImage.getWidth() / zoomMag;
+						zoomHPanel = zoomImage.getHeight() / zoomMag;
+						zoomRectangle.setSize(zoomWPanel, zoomHPanel);
+						mouseMoved(event, x, y);
+					}
+					zoomSlider.setValue(zoomMag);
+					zoomLabel.setText(" " + (int) (zoomMag * 100) + " %");
+					return true;
+				}
+			});
+		}
+		
+		zoomRectangle = new Image(new Texture(Gdx.files.internal("art/zoomRect.png")));
+		zoomRectangle.setVisible(false);
+		zoomBorder.setVisible(false);
+		zoomRectangle.setBounds(0, 0, zoomWPanel, zoomHPanel);
+		
+		
+		
+	}
+
+	
 
 	
 	private void createChoiceButtons() {
