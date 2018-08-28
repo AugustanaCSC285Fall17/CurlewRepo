@@ -41,8 +41,7 @@ public class AdventureGame extends Game {
 		bgMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Triumphant_Return.mp3"));
 		bgMusic.setLooping(true);
 		bgMusic.setVolume((float) .1);
-		bgMusic.play();
-		musicMuted = false;
+		musicMuted = true;
 		Gdx.input.setInputProcessor(stage);
 
 		Texture logoTexture = new Texture(Gdx.files.internal("art/LogoStroked.png"));
