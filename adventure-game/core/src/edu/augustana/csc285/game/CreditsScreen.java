@@ -47,11 +47,7 @@ public class CreditsScreen implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				if (game.data.gameStarted()) {
 					game.stage.clear();
-					if (game.data.getSlide(game.data.getCurrentSlideIndex()).getSlideType() == SlideType.SHOP) {
-						game.setScreen(new ShopScreen(game, game.data.getCurrentSlideIndex() - 1));
-					} else {
-						game.setScreen(new SlideScreen(game));
-					}
+					game.setScreen(new SlideScreen(game));
 				} else {
 					game.stage.clear();
 					game.setScreen(new MainMenuScreen(game));

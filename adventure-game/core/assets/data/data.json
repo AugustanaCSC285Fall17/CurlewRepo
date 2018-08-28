@@ -738,15 +738,21 @@ slides: [
 	}
 	{
 		title: Dr. Stonedahl chooses Windows 10. How about you?
-		imageFileName: facts.png
-		gameText: You see Dr. Stonedahl holding a box of genuine Windows 10 OS. You are very eager to use Windows 10.
+		imageFileName: stonedahl.jpg
+		gameText: You see Dr. Stonedahl holding a box of Windows 10. You are very eager to use Windows 10.
 		slideType: SHOP
 		actionChoices: [
 			{
 				choiceText: Use Windows 10 now.
+				destinationSlideIndex: 188
+				visible: false
+			}
+			{
+				choiceText: Maybe later...
 				destinationSlideIndex: 21
 				visible: false
 			}
+		]
 	}
 	{
 		title: Go Straight To Ship
@@ -5659,6 +5665,18 @@ slides: [
 			{
 				choiceText: Continue
 				destinationSlideIndex: 68
+			}
+		]
+	}
+	{
+		title: ":("g
+		imageFileName: stonedahl.jpg
+		gameText: "Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you."
+		gameOver: true
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 0
 			}
 		]
 	}

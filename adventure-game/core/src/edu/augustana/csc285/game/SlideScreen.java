@@ -706,7 +706,7 @@ public class SlideScreen implements Screen {
 	
 	private void createTitle() {
 		title = new Label(curSlide.getTitle(), new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro" + (AdventureGame.textFontSize + 10) + ".fnt")), Color.BLACK));
-		if (curSlide.getSlideType() == SlideType.NORMAL) {
+		if (curSlide.getSlideType() == SlideType.NORMAL || curSlide.getSlideType() == SlideType.SHOP) {
 			title.setWrap(true);
 		}
 		title.setWidth(AdventureGame.percentWidth(34));
