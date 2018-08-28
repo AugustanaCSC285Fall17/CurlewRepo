@@ -13,12 +13,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 
+import edu.augustana.csc285.game.datamodel.SlideType;
+
 public class CreditsScreen implements Screen {
 
 	private final AdventureGame game;
 	
 	private TextButton backButton;
 	private Label introText;
+	private int backIndex;
 	
 	public CreditsScreen(final AdventureGame game) {
 		this.game = game; 
@@ -28,6 +31,10 @@ public class CreditsScreen implements Screen {
 		initializeAbout();
 	}
 	
+	public CreditsScreen(final AdventureGame game, int backIndex) {
+		this(game);
+		this.backIndex = backIndex;
+	}
 
 	private void initializeAbout() {
 		Label credit = new Label("Credits", game.skin, "title");
@@ -40,7 +47,11 @@ public class CreditsScreen implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				if (game.data.gameStarted()) {
 					game.stage.clear();
-					game.setScreen(new SlideScreen(game));
+					if (game.data.getSlide(game.data.getCurrentSlideIndex()).getSlideType() == SlideType.SHOP) {
+						game.setScreen(new ShopScreen(game, game.data.getCurrentSlideIndex() - 1));
+					} else {
+						game.setScreen(new SlideScreen(game));
+					}
 				} else {
 					game.stage.clear();
 					game.setScreen(new MainMenuScreen(game));
