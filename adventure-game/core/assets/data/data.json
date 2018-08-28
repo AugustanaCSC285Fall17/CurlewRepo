@@ -737,8 +737,16 @@ slides: [
 		]
 	}
 	{
+		title: Dr. Stonedahl chooses Windows 10. How about you?
 		imageFileName: facts.png
+		gameText: You see Dr. Stonedahl holding a box of genuine Windows 10 OS. You are very eager to use Windows 10.
 		slideType: SHOP
+		actionChoices: [
+			{
+				choiceText: Use Windows 10 now.
+				destinationSlideIndex: 21
+				visible: false
+			}
 	}
 	{
 		title: Go Straight To Ship
