@@ -8,7 +8,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -305,8 +304,8 @@ public class SlideScreen implements Screen {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				AdventureGame.textFontSize = (int) fontSlider.getValue();
-				title.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro" + (AdventureGame.textFontSize + 10) + ".fnt")), Color.BLACK));
-				gameText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.textFontSize + ".fnt")), Color.BLACK));
+				title.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/BodoniBold" + (AdventureGame.textFontSize + 14) + ".fnt")), Color.BLACK));
+				gameText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/GeorgiaProLight" + AdventureGame.textFontSize + ".fnt")), Color.BLACK));
 				title.pack();
 				gameText.pack();
 				scrollPane.pack();
@@ -722,14 +721,14 @@ public class SlideScreen implements Screen {
 	}
 	
 	private void createTitle() {
-		title = new Label(curSlide.getTitle(), new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro" + (AdventureGame.textFontSize + 10) + ".fnt")), Color.BLACK));
+		title = new Label(curSlide.getTitle(), new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/BodoniBold" + (AdventureGame.textFontSize + 14) + ".fnt")), Color.BLACK));
 		if (curSlide.getSlideType() == SlideType.NORMAL || curSlide.getSlideType() == SlideType.SHOP) {
 			title.setWrap(true);
 		}
 		title.setWidth(AdventureGame.percentWidth(34));
 		title.pack();
 		title.setWidth(AdventureGame.percentWidth(34));
-		title.setPosition(AdventureGame.percentWidth(8), AdventureGame.SCREEN_HEIGHT - title.getHeight() - AdventureGame.percentHeight(2));
+		title.setPosition(AdventureGame.percentWidth(8), AdventureGame.SCREEN_HEIGHT - title.getHeight() - AdventureGame.percentHeight(0));
 		title.setAlignment(Align.left);
 	}
 
@@ -737,7 +736,7 @@ public class SlideScreen implements Screen {
 	private float gameTextWidth;
 	
 	private void createGameText() {
-		BitmapFont textFont = new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.textFontSize + ".fnt"));
+		BitmapFont textFont = new BitmapFont(Gdx.files.internal("fonts/GeorgiaProLight" + AdventureGame.textFontSize + ".fnt"));
 		gameText = new Label(curSlide.getGameText(), new LabelStyle(textFont, Color.BLACK));
 		gameText.setWrap(true);
 		

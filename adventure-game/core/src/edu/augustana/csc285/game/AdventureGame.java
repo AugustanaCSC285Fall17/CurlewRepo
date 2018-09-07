@@ -31,8 +31,8 @@ public class AdventureGame extends Game {
 	
 	public void create() {
 		skin = new Skin(new TextureAtlas(Gdx.files.internal("skins/uiskin.atlas")));
-		skin.add("font", new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + appFontSize + ".fnt")), BitmapFont.class);
-		skin.add("title", new BitmapFont(Gdx.files.internal("fonts/MyriadPro" + (appFontSize + 8) + ".fnt")), BitmapFont.class);
+		skin.add("font", new BitmapFont(Gdx.files.internal("fonts/GeorgiaProLight" + appFontSize + ".fnt")), BitmapFont.class);
+		skin.add("title", new BitmapFont(Gdx.files.internal("fonts/BodoniBold" + (appFontSize + 8) + ".fnt")), BitmapFont.class);
 		skin.load(Gdx.files.internal("skins/uiskin.json"));
 		stage = new Stage();
 		data = GameData.fromJSON(Gdx.files.internal("data/data.json").readString("UTF-8"));

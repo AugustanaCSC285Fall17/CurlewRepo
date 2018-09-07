@@ -737,20 +737,26 @@ slides: [
 		]
 	}
 	{
-		title: Dr. Stonedahl chooses Windows 10. How about you?
-		imageFileName: stonedahl.jpg
-		gameText: You see Dr. Stonedahl holding a box of Windows 10. You are very eager to use Windows 10.
+		title: "A Wild Dr. Stonedahl Appears!"
+		imageFileName: wildstonedahl.jpg
+		gameText: "What will you do?"
 		slideType: SHOP
 		actionChoices: [
 			{
-				choiceText: Use Windows 10 now.
+				choiceText: "Fight"
 				destinationSlideIndex: 188
-				visible: false
 			}
 			{
-				choiceText: Maybe later...
-				destinationSlideIndex: 189
-				visible: false
+				choiceText: "Fight"
+				destinationSlideIndex: 188
+			}
+			{
+				choiceText: "Fight"
+				destinationSlideIndex: 188
+			}
+			{
+				choiceText: "Fight"
+				destinationSlideIndex: 188
 			}
 		]
 	}
@@ -1135,7 +1141,7 @@ slides: [
 	}
 	{
 		title: Don't bribe him
-		imageFileName: image22.jpg
+		imageFileName: image23.jpg
 		gameText: He makes a gesture for his superior officer to come over. The superior officer glances at the papers and murmurs instructions to his subordinate. The superior officer makes some sharp remarks to you and hands you over to the police for forgery. You are immediately deported and put on a watch list for travelling in England. Your hopes of making it to America are squandered and you must now live the rest of your days finding work in Sweden.
 		gameOver: true
 		actionChoices: [
@@ -5669,6 +5675,23 @@ slides: [
 		]
 	}
 	{
+		title: Dr. Stonedahl chooses Windows 10. How about you?
+		imageFileName: stonedahl.jpg
+		gameText: You see Dr. Stonedahl holding a box of Windows 10. You are very eager to use Windows 10.
+		actionChoices: [
+			{
+				choiceText: Use Windows 10 now.
+				destinationSlideIndex: 189
+				visible: false
+			}
+			{
+				choiceText: Maybe later...
+				destinationSlideIndex: 190
+				visible: false
+			}
+		]
+	}
+	{
 		title: ":("
 		imageFileName: stonedahl.jpg
 		gameText: "Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you.\n\nFor more information about this issue and possible fixes, visit\nhttps://lovelace.augustana.edu/q2a\n\nIf you call a support person, give them this info:\n\nStop code: AN_EMU_CHOMPED_YOUR_COMPUTER\n\nWhat failed: explorer.exe"
@@ -5676,19 +5699,19 @@ slides: [
 		actionChoices: [
 			{
 				choiceText: Continue
-				destinationSlideIndex: 190
+				destinationSlideIndex: 191
 			}
 		]
 	}
 	{
 		title: "Too bad"
 		imageFileName: stonedahlangry.jpg
-		gameText: "You made Dr. Stonedahl angry. You have never seen him this angry before. He is now angrier than when we was talking to someone who refused to attend the annual Programming Contest. You better try Windows 10 or your day wouldn't end so well."
+		gameText: "You made Dr. Stonedahl angry. You have never seen him this angry before. He is now angrier than when he was talking to someone who refused to attend the annual Programming Contest. You better try Windows 10 or your day wouldn't end so well."
 		gameOver: false
 		actionChoices: [
 			{
 				choiceText: Try Windows 10
-				destinationSlideIndex: 188
+				destinationSlideIndex: 189
 			}
 		]
 	}
