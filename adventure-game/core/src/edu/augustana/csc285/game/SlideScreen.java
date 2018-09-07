@@ -304,9 +304,12 @@ public class SlideScreen implements Screen {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				AdventureGame.textFontSize = (int) fontSlider.getValue();
-				title.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/BodoniBold" + (AdventureGame.textFontSize + 14) + ".fnt")), Color.BLACK));
+				title.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/BodoniBold" + (AdventureGame.textFontSize + 14	) + ".fnt")), Color.BLACK));
 				gameText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/GeorgiaProLight" + AdventureGame.textFontSize + ".fnt")), Color.BLACK));
+				title.setWrap(true);
+				title.setWidth(AdventureGame.percentWidth(34));
 				title.pack();
+				title.setWidth(AdventureGame.percentWidth(34));
 				gameText.pack();
 				scrollPane.pack();
 				title.setPosition(AdventureGame.percentWidth(8), AdventureGame.SCREEN_HEIGHT - title.getHeight() - AdventureGame.percentHeight(2));
