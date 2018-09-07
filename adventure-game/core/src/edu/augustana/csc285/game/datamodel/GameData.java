@@ -121,7 +121,11 @@ public class GameData {
 	public int getSlideListSize() {
 		return slides.size();
 	}
-
+	
+	public void setCurrentSlideIndex(int index) {
+		currentSlideIndex = index;
+	}
+	
 	public int getCurrentSlideIndex() {
 		return currentSlideIndex;
 	}

@@ -749,7 +749,7 @@ slides: [
 			}
 			{
 				choiceText: Maybe later...
-				destinationSlideIndex: 21
+				destinationSlideIndex: 189
 				visible: false
 			}
 		]
@@ -5672,10 +5672,34 @@ slides: [
 		title: ":("
 		imageFileName: stonedahl.jpg
 		gameText: "Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you.\n\nFor more information about this issue and possible fixes, visit\nhttps://lovelace.augustana.edu/q2a\n\nIf you call a support person, give them this info:\n\nStop code: AN_EMU_CHOMPED_YOUR_COMPUTER\n\nWhat failed: explorer.exe"
-		gameOver: true
+		gameOver: false
 		actionChoices: [
 			{
 				choiceText: Continue
+				destinationSlideIndex: 190
+			}
+		]
+	}
+	{
+		title: "Too bad"
+		imageFileName: stonedahlangry.jpg
+		gameText: "You made Dr. Stonedahl angry. You have never seen him this angry before. He is now angrier than when we was talking to someone who refused to attend the annual Programming Contest. You better try Windows 10 or your day wouldn't end so well."
+		gameOver: false
+		actionChoices: [
+			{
+				choiceText: Try Windows 10
+				destinationSlideIndex: 188
+			}
+		]
+	}
+	{
+		title: "Great experience"
+		imageFileName: stonedahlhappy.jpg
+		gameText: "\"See, I told you Windows 10 is a great OS! It can even handle printers flawlessly!\" - Dr. Stonedahl pats your shoulder with a great smile."
+		gameOver: true
+		actionChoices: [
+			{
+				choiceText: "\" Thank you Dr. Stonedahl. You made my day!\""
 				destinationSlideIndex: 0
 			}
 		]

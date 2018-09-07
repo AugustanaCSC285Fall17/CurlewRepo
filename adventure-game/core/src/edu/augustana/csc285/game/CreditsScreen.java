@@ -25,6 +25,7 @@ public class CreditsScreen implements Screen {
 	
 	public CreditsScreen(final AdventureGame game) {
 		this.game = game; 
+		backIndex = -1;
 		
 
 		drawBackgroundAndLogo();
@@ -47,6 +48,9 @@ public class CreditsScreen implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				if (game.data.gameStarted()) {
 					game.stage.clear();
+					if (game.data.getCurrentSlideType() == SlideType.SHOP) {
+						game.data.setCurrentSlideIndex(21);
+					}
 					game.setScreen(new SlideScreen(game));
 				} else {
 					game.stage.clear();

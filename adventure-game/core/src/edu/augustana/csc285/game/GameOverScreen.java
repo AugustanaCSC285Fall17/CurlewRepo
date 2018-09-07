@@ -25,6 +25,7 @@ public class GameOverScreen implements Screen {
 	private Label introText;
 	private Image bgImg;
 	private Image logo;
+	private Label clickable;
 	public static LabelStyle appTextStyle;
 	public static LabelStyle appTitleStyle;
 	
@@ -32,6 +33,7 @@ public class GameOverScreen implements Screen {
 		this.game = game; 
 		drawBackgroundAndLogo();
 		initializeMain();
+		initializeClickable();
 	}
 
 	private void initializeMain() {
@@ -120,6 +122,20 @@ public class GameOverScreen implements Screen {
 		
 		game.stage.addActor(game.swansonLogo);
 	
+	}
+	
+	private void initializeClickable() {
+		clickable = new Label("", game.skin);
+		clickable.setSize(AdventureGame.percentWidth(20), AdventureGame.percentHeight(20));
+		clickable.setPosition(AdventureGame.percentWidth(40), AdventureGame.SCREEN_HEIGHT - AdventureGame.percentHeight(25));
+		clickable.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.data.setCurrentSlideIndex(22);
+				game.setScreen(new SlideScreen(game));
+			}
+		}); 
+		game.stage.addActor(clickable);
 	}
 	
 	@Override
