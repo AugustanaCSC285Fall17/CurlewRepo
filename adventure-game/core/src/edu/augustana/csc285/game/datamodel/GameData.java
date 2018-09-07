@@ -125,6 +125,10 @@ public class GameData {
 	public int getCurrentSlideIndex() {
 		return currentSlideIndex;
 	}
+	
+	public SlideType getCurrentSlideType() {
+		return getSlide(currentSlideIndex).getSlideType();
+	}
 
 	public Player getPlayer() {
 		return player;

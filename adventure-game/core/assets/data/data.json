@@ -737,8 +737,22 @@ slides: [
 		]
 	}
 	{
-		imageFileName: facts.png
+		title: Dr. Stonedahl chooses Windows 10. How about you?
+		imageFileName: stonedahl.jpg
+		gameText: You see Dr. Stonedahl holding a box of Windows 10. You are very eager to use Windows 10.
 		slideType: SHOP
+		actionChoices: [
+			{
+				choiceText: Use Windows 10 now.
+				destinationSlideIndex: 188
+				visible: false
+			}
+			{
+				choiceText: Maybe later...
+				destinationSlideIndex: 21
+				visible: false
+			}
+		]
 	}
 	{
 		title: Go Straight To Ship
@@ -5651,6 +5665,18 @@ slides: [
 			{
 				choiceText: Continue
 				destinationSlideIndex: 68
+			}
+		]
+	}
+	{
+		title: ":("
+		imageFileName: stonedahl.jpg
+		gameText: "Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you.\n\nFor more information about this issue and possible fixes, visit\nhttps://lovelace.augustana.edu/q2a\n\nIf you call a support person, give them this info:\n\nStop code: AN_EMU_CHOMPED_YOUR_COMPUTER\n\nWhat failed: explorer.exe"
+		gameOver: true
+		actionChoices: [
+			{
+				choiceText: Continue
+				destinationSlideIndex: 0
 			}
 		]
 	}

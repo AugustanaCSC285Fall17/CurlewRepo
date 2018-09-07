@@ -89,11 +89,19 @@ public class MainMenuScreen implements Screen {
 			}
 		}); 
 		
-		volumeButton = new TextButton("Change Volume", game.skin);
+		volumeButton = new TextButton("Start Music", game.skin);
 		volumeButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				volumeDialog.setVisible(true);
+				if (game.musicMuted) {
+					volumeDialog.setVisible(true);
+					volumeButton.setText("Stop Music");
+					game.bgMusic.play();
+				} else {
+					volumeButton.setText("Start Music");
+					game.bgMusic.stop();
+				}
+				game.musicMuted = !game.musicMuted;
 			}
 		});
 		
