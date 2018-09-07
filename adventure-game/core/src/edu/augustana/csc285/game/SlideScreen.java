@@ -8,6 +8,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -133,7 +134,9 @@ public class SlideScreen implements Screen {
 
 		restartDialog = new Dialog("", game.skin);
 		
-		Image restartImg = new Image(new Texture(Gdx.files.internal("art/icons/restartSMALL.png")));
+		Texture resTex = new Texture(Gdx.files.internal("art/icons/restartSMALL.png"));
+		resTex.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+		Image restartImg = new Image(resTex);
 		restartButton = new Button(game.skin);
 		restartButton.add(restartImg);
 		restartButton.setWidth(BUTTON_SIZE);
@@ -186,7 +189,9 @@ public class SlideScreen implements Screen {
 		
 		// -------------------- inventory button ----------------------
 		
-		Image invenImg = new Image(new Texture(Gdx.files.internal("art/icons/inventorySMALL.png")));
+		Texture invenTex = new Texture(Gdx.files.internal("art/icons/inventorySMALL.png"));
+		invenTex.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+		Image invenImg = new Image(invenTex);
 		inventoryButton = new Button(game.skin);
 		inventoryButton.add(invenImg);
 		inventoryButton.setWidth(BUTTON_SIZE);
@@ -275,7 +280,9 @@ public class SlideScreen implements Screen {
 		// -------------------- font button -------------------------
 		
 		fontButton = new Button(game.skin);
-		fontButton.add(new Image(new Texture(Gdx.files.internal("art/icons/fontSMALL.png"))));
+		Texture fontTex = new Texture(Gdx.files.internal("art/icons/fontSMALL.png"));
+		fontTex.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+		fontButton.add(new Image(fontTex));
 		fontButton.setWidth(BUTTON_SIZE);
 		fontButton.setHeight(BUTTON_SIZE);
 		fontButton.setPosition(AdventureGame.percentWidth(1), AdventureGame.SCREEN_HEIGHT - 4 * BUTTON_SIZE - AdventureGame.percentHeight(1));
@@ -342,7 +349,9 @@ public class SlideScreen implements Screen {
 		// -------------------- zoom button ------------------------
 		
 		zoomButton = new Button(game.skin);
-		zoomButton.add(new Image(new Texture(Gdx.files.internal("art/icons/zoom.png"))));
+		Texture zoomTex = new Texture(Gdx.files.internal("art/icons/zoom.png"));
+		zoomTex.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+		zoomButton.add(new Image(zoomTex));
 		zoomButton.setWidth(BUTTON_SIZE);
 		zoomButton.setHeight(BUTTON_SIZE);
 		zoomButton.setPosition(AdventureGame.percentWidth(1), AdventureGame.SCREEN_HEIGHT - 5 * BUTTON_SIZE - AdventureGame.percentHeight(1));
@@ -415,7 +424,9 @@ public class SlideScreen implements Screen {
 		
 		// -------------------- credit button ----------------------
 		
-		Image creditImg = new Image(new Texture(Gdx.files.internal("art/icons/creditSMALL.png")));
+		Texture creditTex = new Texture(Gdx.files.internal("art/icons/creditSMALL.png"));
+		creditTex.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+		Image creditImg = new Image(creditTex);
 		creditButton = new Button(game.skin);
 		creditButton.add(creditImg);
 		creditButton.setWidth(BUTTON_SIZE);
@@ -450,9 +461,13 @@ public class SlideScreen implements Screen {
 			}
 		});
 		if (game.bgMusic.getVolume() != 0 && !game.musicMuted) {
-			curImg.setDrawable(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("art/icons/unmuteSMALL.png")))));
+			Texture texture = new Texture(Gdx.files.internal("art/icons/unmuteSMALL.png"));
+			texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+			curImg.setDrawable(new TextureRegionDrawable(new TextureRegion(texture)));
 		} else {
-			curImg.setDrawable(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("art/icons/muteSMALL.png")))));
+			Texture texture = new Texture(Gdx.files.internal("art/icons/muteSMALL.png"));
+			texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+			curImg.setDrawable(new TextureRegionDrawable(new TextureRegion(texture)));
 		}
 		
 		TextTooltip muteTt = new TextTooltip("Volume", tooltip, game.skin);
@@ -472,8 +487,9 @@ public class SlideScreen implements Screen {
 
 		// Set the background
 		float size = AdventureGame.SCREEN_HEIGHT;
-		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName())));
-
+		Texture bgTexture = new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName()));
+		bgTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+		game.bgImg = new Image(bgTexture);
 		game.bgImg.setSize(size, size);
 		game.bgImg.setPosition(AdventureGame.SCREEN_WIDTH - size, 0);
 
@@ -529,6 +545,7 @@ public class SlideScreen implements Screen {
 			zoomOverlay.setVisible(true);
 		}
 		Texture img = new Texture(Gdx.files.internal("slideImages/" + curSlide.getImageFileName()));
+		img.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 		
 		Vector2 centerZoomImg = new Vector2();
 		TextureRegionDrawable zoomTexture = new TextureRegionDrawable();
@@ -720,7 +737,8 @@ public class SlideScreen implements Screen {
 	private float gameTextWidth;
 	
 	private void createGameText() {
-		gameText = new Label(curSlide.getGameText(), new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.textFontSize + ".fnt")), Color.BLACK));
+		BitmapFont textFont = new BitmapFont(Gdx.files.internal("fonts/MyriadProLight" + AdventureGame.textFontSize + ".fnt"));
+		gameText = new Label(curSlide.getGameText(), new LabelStyle(textFont, Color.BLACK));
 		gameText.setWrap(true);
 		
 		gameTextWidth = AdventureGame.percentWidth(31);
