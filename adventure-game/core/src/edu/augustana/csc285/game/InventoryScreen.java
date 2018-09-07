@@ -59,7 +59,9 @@ public class InventoryScreen implements Screen {
 
 
 		backButton = new Button(game.skin);
-		backButton.add(new Image(new Texture(Gdx.files.internal("art/icons/backSMALL.png"))));
+		Texture backTex = new Texture(Gdx.files.internal("art/icons/backSMALL.png"));
+		backTex.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+		backButton.add(new Image(backTex));
 		backButton.setWidth(SlideScreen.BUTTON_SIZE);
 		backButton.setHeight(SlideScreen.BUTTON_SIZE);
 							  //AdventureGame.GAME_SCREEN_WIDTH - backButton.getWidth() - 10

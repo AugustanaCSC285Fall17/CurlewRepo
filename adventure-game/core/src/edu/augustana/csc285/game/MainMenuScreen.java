@@ -195,7 +195,7 @@ public class MainMenuScreen implements Screen {
 				+ "for the Swenson Swedish Immigration Research Center at Augustana College in Rock Island, "
 				+ "Illinois, 2017.\n"
 				+ "Images in the game are from the Swenson Center's library and archival collections.\n\n"
-				+ "Game by Team Curlew: Jack Cannell, Steve Jia, Minh Ta, and Maxwell McComb";
+				+ "Coding by Team Curlew: Jack Cannell, Steve Jia, Minh Ta, and Maxwell McComb";
 		
 		introText = new Label(intro, game.skin);
 		introText.setWrap(true);

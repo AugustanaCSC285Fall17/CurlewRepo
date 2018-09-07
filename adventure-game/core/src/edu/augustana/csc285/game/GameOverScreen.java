@@ -110,6 +110,7 @@ public class GameOverScreen implements Screen {
 		game.stage.addActor(bgImg);
 		
 		Texture logoTexture = new Texture(Gdx.files.internal("art/gameover.png"));
+		logoTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 		float logoWidth = AdventureGame.percentWidth(40);
 		float logoHeight = (float) (logoTexture.getHeight() * logoWidth * 1.0 / logoTexture.getWidth());
 		logo = new Image(logoTexture);

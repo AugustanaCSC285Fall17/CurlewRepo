@@ -63,7 +63,7 @@ public class CreditsScreen implements Screen {
 				+ "Dr. Brian Leech's history students Abigail Buchanan, Brooks Fielder, and Katie Laschanzky \n"
 				+ "for the Swenson Swedish Immigration Research Center at Augustana College in \n"
 				+ "Rock Island, Illinois.\n\n"
-				+ "Game by Team Curlew: Jack Cannell, Steve Jia, Minh Ta, and Maxwell McComb\n\n"
+				+ "Coding by Team Curlew: Jack Cannell, Steve Jia, Minh Ta, and Maxwell McComb\n\n"
 				+ "QA Testers:\n\n"
 				+ "     Samuel Totten\n"
 				+ "     Angelica Garcia\n" 

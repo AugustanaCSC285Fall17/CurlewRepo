@@ -63,7 +63,7 @@ public class ShopScreen implements Screen {
 		game.stage.clear();
 
 		// Add actors
-		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/facts.png")));
+		game.bgImg = new Image(new Texture(Gdx.files.internal("slideImages/mainmenu2.jpg")));
 		game.bgImg.setPosition(0, 0);
 		game.bgImg.setSize(AdventureGame.SCREEN_WIDTH, AdventureGame.SCREEN_HEIGHT);
 		game.stage.addActor(game.bgImg);
@@ -296,7 +296,9 @@ public class ShopScreen implements Screen {
 	
 	private void createBackButton() {
 		backButton = new Button(game.skin);
-		backButton.add(new Image(new Texture(Gdx.files.internal("art/icons/backSMALL.png"))));
+		Texture backTex = new Texture(Gdx.files.internal("art/icons/backSMALL.png"));
+		backTex.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+		backButton.add(new Image(backTex));
 		backButton.setWidth(SlideScreen.BUTTON_SIZE);
 		backButton.setHeight(SlideScreen.BUTTON_SIZE);
 							  //AdventureGame.GAME_SCREEN_WIDTH - backButton.getWidth() - 10

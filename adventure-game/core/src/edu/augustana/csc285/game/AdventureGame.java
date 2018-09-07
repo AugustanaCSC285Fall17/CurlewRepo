@@ -45,6 +45,7 @@ public class AdventureGame extends Game {
 		Gdx.input.setInputProcessor(stage);
 
 		Texture logoTexture = new Texture(Gdx.files.internal("art/LogoStroked.png"));
+		logoTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 		float logoWidth = AdventureGame.percentWidth(40);
 		float logoHeight = (float) (logoTexture.getHeight() * logoWidth * 1.0 / logoTexture.getWidth());
 		logo = new Image(logoTexture);
@@ -52,6 +53,7 @@ public class AdventureGame extends Game {
 		logo.setSize(logoWidth, logoHeight);
 		
 		Texture swansonLogoTexture = new Texture(Gdx.files.internal("slideImages/image1.png"));
+		swansonLogoTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 		swansonLogo = new Image(swansonLogoTexture);
 		swansonLogo.setPosition(AdventureGame.percentWidth(1), AdventureGame.percentHeight(1));
 		swansonLogo.setSize(logoWidth, (float) (swansonLogoTexture.getHeight() * logoWidth * 1.0 / swansonLogoTexture.getWidth()));
