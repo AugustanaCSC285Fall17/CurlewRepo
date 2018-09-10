@@ -57,7 +57,7 @@ public class MainMenuScreen implements Screen {
 				game.setScreen(new SlideScreen(game));
 			}
 		});
-		startButton = new TextButton("Take the journey", game.skin);
+		startButton = new TextButton("Take the Journey", game.skin);
 		if (game.data.gameStarted()) {
 			startButton.setText("Restart Journey");
 		}
@@ -202,7 +202,7 @@ public class MainMenuScreen implements Screen {
 		introText.setWidth(AdventureGame.percentWidth(94));
 		introText.setAlignment(Align.center|Align.top);
 		
-		table.padTop(AdventureGame.percentHeight(42));
+		table.padTop(AdventureGame.percentHeight(38));
 		table.add(introText).width(AdventureGame.percentWidth(94));
 		table.row();
 		table.add(creditsButton).padTop(AdventureGame.percentHeight(2)).width(AdventureGame.percentWidth(24));

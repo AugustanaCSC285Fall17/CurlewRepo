@@ -306,13 +306,15 @@ public class SlideScreen implements Screen {
 				AdventureGame.textFontSize = (int) fontSlider.getValue();
 				title.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/BodoniBold" + (AdventureGame.textFontSize + 14	) + ".fnt")), Color.BLACK));
 				gameText.setStyle(new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/GeorgiaProLight" + AdventureGame.textFontSize + ".fnt")), Color.BLACK));
-				title.setWrap(true);
+				if (curSlide.getSlideType() == SlideType.NORMAL || curSlide.getSlideType() == SlideType.SHOP) {
+					title.setWrap(true);
+				}
 				title.setWidth(AdventureGame.percentWidth(34));
 				title.pack();
 				title.setWidth(AdventureGame.percentWidth(34));
 				gameText.pack();
 				scrollPane.pack();
-				title.setPosition(AdventureGame.percentWidth(8), AdventureGame.SCREEN_HEIGHT - title.getHeight() - AdventureGame.percentHeight(2));
+				title.setPosition(AdventureGame.percentWidth(8), AdventureGame.SCREEN_HEIGHT - title.getHeight() - AdventureGame.percentHeight(0));
 			    scrollPane.setBounds(AdventureGame.percentWidth(8), AdventureGame.percentHeight(1) + table.getHeight(),
 			    		gameTextWidth, AdventureGame.SCREEN_HEIGHT - (title.getHeight() + table.getHeight()) - AdventureGame.percentHeight(3));
 				fontLabel.setText(" " + AdventureGame.textFontSize + "px");
