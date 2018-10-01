@@ -64,7 +64,7 @@ public class CreditsScreen implements Screen {
 		
 		String intro =
 				"Game designed by Dr. Forrest Stonedahl's Software Development CSC 285 students and \n"
-				+ "Dr. Brian Leech's history students Abigail Buchanan, Brooks Fielder, and Katie Laschanzky \n"
+				+ "Dr. Brian Leech's history students Abigail Buchanan, Brooks Fiedler, and Katie Laschanzky \n"
 				+ "for the Swenson Swedish Immigration Research Center at Augustana College in \n"
 				+ "Rock Island, Illinois.\n\n"
 				+ "Coding by Team Curlew: Jack Cannell, Steve Jia, Minh Ta, and Maxwell McComb\n\n"

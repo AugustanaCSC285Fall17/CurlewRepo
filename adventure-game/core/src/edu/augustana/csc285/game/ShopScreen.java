@@ -67,7 +67,7 @@ public class ShopScreen implements Screen {
 		game.bgImg.setPosition(0, 0);
 		game.bgImg.setSize(AdventureGame.SCREEN_WIDTH, AdventureGame.SCREEN_HEIGHT);
 		game.stage.addActor(game.bgImg);
-		shopTitleStyle = new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/MyriadPro" + (AdventureGame.appFontSize) + ".fnt")), Color.BLACK);
+		shopTitleStyle = new LabelStyle(new BitmapFont(Gdx.files.internal("fonts/GeorgiaProLight" + (AdventureGame.appFontSize) + ".fnt")), Color.BLACK);
 		
 		// initialize slide contents
 		createTitle();
